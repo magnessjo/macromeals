@@ -1,0 +1,20 @@
+{
+  "build":   "build",
+  "default": "staging",
+  "nginx": "http-macromeals.conf",
+  "database": "macromeals",
+  "targets": {
+    "staging": {
+      "user": "ec2-user",
+      "host": "52.204.122.202",
+      "destination": "/srv/http/macromeals",
+      "config": "deploy/staging"
+    },
+    "production": {
+      "user":        "ec2-user",
+      "host":        "52.204.122.202",
+      "destination": "/srv/http/macromeals",
+      "config":      "deploy/production"
+    }
+  }
+}

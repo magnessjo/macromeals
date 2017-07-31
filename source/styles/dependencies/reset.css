@@ -1,0 +1,64 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  outline: none;
+}
+
+body {
+  position: relative;
+  min-width: 320px;
+}
+
+section {
+  position: relative;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+p, h1, h2, h3, h4, h5, h6, li {
+  line-height: 1.3em;
+  font-size: 16px;
+
+  @media (--tablet-min) {
+    font-size: 18px;
+  }
+
+}
+
+p {
+  margin-bottom: 20px;
+}
+
+img {
+  max-width: 100%;
+}
+
+ul, ol {
+  padding-left: 30px;
+}
+
+ul li {
+  list-style: disc;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  -webkit-appearance: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+input {
+  -webkit-appearance: none;
+}

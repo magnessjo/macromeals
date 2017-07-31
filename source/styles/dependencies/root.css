@@ -1,0 +1,23 @@
+
+@font-face{
+    font-family:"Apercu";
+    src:url("/fonts/apercu_regular.woff2") format("woff2"),
+}
+
+@font-face{
+    font-family:"Apercu Bold";
+    src:url("/fonts/apercu_bold.woff2") format("woff2"),
+}
+
+:root {
+
+  --apercu : 'Apercu', sans-serif;
+  --apercubold : 'Apercu Bold', sans-serif;
+
+  --white:         #ffffff;
+
+  font-family: var(--apercu);
+  font-size: 16px;
+  font-weight: 400;
+
+}

@@ -1,0 +1,16 @@
+
+.lock {
+  padding: 0 20px;
+  max-width: 1040px;
+  margin: 0 auto;
+  width: 100%;
+
+  @media (--large-min) {
+    padding: 0 30px;
+  }
+
+  @media (--tablet-min) {
+    padding: 0 40px;
+  }
+
+}

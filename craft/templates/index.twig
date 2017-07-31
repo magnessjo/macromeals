@@ -1,0 +1,32 @@
+
+{% extends "layout" %}
+{% includeCssFile "/homepage.css" %}
+
+{% set from = craft.request.getQuery('from') %}
+
+{% block main %}
+
+  <section id="intro">
+
+    <div class="coming">
+
+      <h1>Coming Soon</h1>
+      <p>We are excited to announce that we have begun providing our freshly prepared meals to the Maryland area.  We currently are only shipping to a limited number of clients.</p>
+      <p>Please submit your email address if you would like to be notified when we are accepting new clients.</p>
+
+      <form method="post" accept-charset="UTF-8">
+        {{ getCsrfInput() }}
+        <input type="hidden" name="action" value="contactForm/sendMessage">
+        <input type="hidden" name="redirect" value="/thank.twig?from={fromName}">
+
+        <input id="fromEmail" name="fromEmail" type="email" placeholder="example@gmail.com">
+        <input type="hidden" id="message" name="message" value="example" />
+
+        <input type="submit" >
+      </form>
+
+    </div>
+
+  </section>
+
+{% endblock %}
