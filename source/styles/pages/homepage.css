@@ -75,9 +75,16 @@
     overflow: hidden;
     padding: 80px 0;
 
+    & .one-column, & .two-column {
+
+      @media (--large-min) {
+        margin-bottom: 40px;
+      }
+
+    }
+
     & .two-column {
       overflow: hidden;
-      margin-bottom: 40px;
 
       @media (--large-min) {
         display: flex;

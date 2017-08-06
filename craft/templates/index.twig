@@ -1,6 +1,8 @@
 
 {% extends "layout" %}
 {% includeCssFile "/homepage.css" %}
+{% includeJsFile "/homepage.js" %}
+
 
 {% set from = craft.request.getQuery('from') %}
 
@@ -59,7 +61,7 @@
 
         </div>
 
-        <div>
+        <div class="one-column">
 
           <div>
             <label>Street Address</label>
