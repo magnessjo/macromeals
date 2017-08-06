@@ -6,20 +6,135 @@
 
 {% block main %}
 
+  <section id="stage">
+
+    <div class="image"></div>
+    <div class="text">
+      <h1>Coming Soon</h1>
+    </div>
+
+  </section>
+
   <section id="intro">
 
-    <div class="coming">
+    <div class="lock">
 
-      <h1>Coming Soon</h1>
-      <p>We are excited to announce that we have begun providing our freshly prepared meals to the Maryland area.  We currently are only shipping to a limited number of clients.</p>
-      <p>Please submit your email address if you would like to be notified when we are accepting new clients.</p>
+      <div class="coming">
+
+        <p>We are excited to announce that we have begun providing our freshly prepared meals to the Maryland area.  We currently are only shipping to a limited number of clients.</p>
+        <p>Please submit your email address if you would like to be notified when we are accepting new clients.</p>
+
+      </div>
 
       <form method="post" accept-charset="UTF-8">
         {{ getCsrfInput() }}
         <input type="hidden" name="action" value="contactForm/sendMessage">
         <input type="hidden" name="redirect" value="/thank.twig?from={fromName}">
 
-        <input id="fromEmail" name="fromEmail" type="email" placeholder="example@gmail.com">
+        <div class="two-column">
+
+          <div>
+            <label>First Name</label>
+            <input type="text" placeholder="John/Jane" id="fromFirstName" for="fromFirstName" />
+          </div>
+
+          <div>
+            <label>Last Name</label>
+            <input type="text" placeholder="Doe" id="fromLastName" for="fromLastName" />
+          </div>
+
+        </div>
+
+        <div class="two-column">
+
+          <div>
+            <label>Email</label>
+            <input id="fromEmail" name="fromEmail" type="email" placeholder="example@gmail.com">
+          </div>
+
+          <div>
+            <label>Phone Number</label>
+            <input id="fromPhone" name="fromPhone" type="email" placeholder="555-555-5555">
+          </div>
+
+        </div>
+
+        <div>
+
+          <div>
+            <label>Street Address</label>
+            <input id="fromAddress" name="fromAddress" type="text" placeholder="111 Street Name">
+          </div>
+
+        </div>
+
+        <div class="two-column">
+
+          <div>
+            <label>State</label>
+            <select>
+             <option disabled selected value> please choose </option>
+             <option>Alabama</option>
+             <option>Alaska</option>
+             <option>Arizona</option>
+             <option>Arkansas</option>
+             <option>California</option>
+             <option>Colorado</option>
+             <option>Connecticut</option>
+             <option>Delaware</option>
+             <option>Florida</option>
+             <option>Georgia</option>
+             <option>Hawaii</option>
+             <option>Idaho</option>
+             <option>Illinois</option>
+             <option>Indiana</option>
+             <option>Iowa</option>
+             <option>Kansas</option>
+             <option>Kentucky</option>
+             <option>Louisiana</option>
+             <option>Maine</option>
+             <option>Maryland</option>
+             <option>Massachusetts</option>
+             <option>Michigan</option>
+             <option>Minnesota</option>
+             <option>Mississippi</option>
+             <option>Missouri</option>
+             <option>Montana</option>
+             <option>Nebraska</option>
+             <option>Nevada</option>
+             <option>New Hampshire</option>
+             <option>New Jersey</option>
+             <option>New Mexico</option>
+             <option>New York</option>
+             <option>North Carolina</option>
+             <option>North Dakota</option>
+             <option>Ohio</option>
+             <option>Oklahoma</option>
+             <option>Oregon</option>
+             <option>Pennsylvania</option>
+             <option>Rhode Island</option>
+             <option>South Carolina</option>
+             <option>South Dakota</option>
+             <option>Tennessee</option>
+             <option>Texas</option>
+             <option>Utah</option>
+             <option>Vermont</option>
+             <option>Virginia</option>
+             <option>Washington</option>
+             <option>West Virginia</option>
+             <option>Wisconsin</option>
+             <option>Wyoming</option>
+            </select>
+          </div>
+
+          <div>
+            <label>Zip Code</label>
+            <input id="fromZip" name="fromZip" type="text" placeholder="21224">
+          </div>
+
+        </div>
+
+
         <input type="hidden" id="message" name="message" value="example" />
 
         <input type="submit" >

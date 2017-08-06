@@ -1,51 +1,57 @@
 
 @import "../master.css";
 
-#intro {
-  height: 100vh;
+#stage {
+  height: 60vh;
+  min-height: 300px;
 
-  &:before {
-    content: "";
+  & .image {
     background-image: url(/images/main.jpg);
     background-position: center;
     background-size: cover;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     filter: blur(4px);
-  }
-
-  & .coming {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: var(--white);
-    padding: 20px;
-    border-radius: 20px;
-    max-width: 700px;
-    width: 90%;
+    height: 100%;
+    width: 100%;
 
     @media (--tablet-min) {
-      padding: 40px 60px;
+      position: fixed;
+      top: 0;
     }
 
   }
 
-  & h1 {
-    text-align: center;
-    font-size: 22px;
-    margin-bottom: 40px;
-    text-transform: uppercase;
-    font-family: var(--apercubold);
-    font-weight: 700;
-    color: #616161;
-    letter-spacing: 1px;
+  & .text {
+    color: var(--green);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 40px;
+    background-color: var(--white);
 
-    @media (--tablet-min) {
-      font-size: 42px;
+    & h1 {
+      font-size: 80px;
+      text-transform: uppercase;
+      font-family: var(--apercubold);
+      font-weight: 700;
+    }
+
+  }
+
+}
+
+#intro {
+  background-color: var(--white);
+  padding: 80px 0;
+  z-index: 9;
+
+  & .coming {
+    max-width: 70%;
+    min-width: 300px;
+
+    & p {
+      line-height: 1.7em;
+      font-size: 24px;
     }
 
   }
@@ -67,13 +73,54 @@
 
   & form {
     overflow: hidden;
+    padding: 80px 0;
+
+    & .two-column {
+      overflow: hidden;
+      margin-bottom: 40px;
+
+      @media (--large-min) {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      & > div {
+
+        @media (--medium-max) {
+          margin-bottom: 20px;
+        }
+
+        @media (--large-min) {
+          width: 49%;
+        }
+
+      }
+
+    }
+
   }
 
-  & input[type="email"] {
+  & label {
+    display: block;
+    margin-bottom: 5px;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 700;
+    font-family: var(--apercubold);
+    letter-spacing: .2px;
+  }
+
+  & select {
+    width: 100%;
+    border: none;
+    height: 44px;
+    border: 1px solid #999;
+  }
+
+  & input[type="email"], & input[type="text"] {
     height: 44px;
     width: 44px;
     width: 100%;
-    border-radius: 5px;
     margin-bottom: 20px;
     border: 1px solid #999;
     padding: 0 10px;
@@ -85,10 +132,11 @@
     padding: 0 20px;
     float: right;
     border: none;
-    background-color: #616161;;
+    background-color: var(--green);
     color: var(--white);
     text-transform: uppercase;
     cursor: pointer;
+    font-size: 16px;
   }
 
 }

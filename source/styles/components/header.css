@@ -1,0 +1,17 @@
+
+header {
+  background-color: var(--white);
+  z-index: 99;
+  position: relative;
+  padding: 10px 0;
+
+  & .logo {
+    display: block;
+
+    & img {
+      max-width: 100px;
+    }
+
+  }
+
+}

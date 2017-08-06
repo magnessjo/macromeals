@@ -11,10 +11,13 @@
 
 :root {
 
-  --apercu : 'Apercu', sans-serif;
-  --apercubold : 'Apercu Bold', sans-serif;
+  --apercu:     'Apercu', sans-serif;
+  --apercubold: 'Apercu Bold', sans-serif;
+  --futura:     'futura-pt',  sans-serif;
 
-  --white:         #ffffff;
+  --white: #ffffff;
+
+  --green: #659331;
 
   font-family: var(--apercu);
   font-size: 16px;
