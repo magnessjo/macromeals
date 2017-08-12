@@ -10,6 +10,7 @@
 body {
   position: relative;
   min-width: 320px;
+  background-color: var(--white);
 }
 
 section {
