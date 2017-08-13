@@ -1,9 +1,17 @@
 
 {% extends "layout" %}
 {% set title = "404" %}
+{% includeCssFile "/homepage.css" %}
 
-{% block content %}
-	<h1>Page not found</h1>
+{% block main %}
 
-	<p>What’s worse, a hilarious 404 page can’t be found either.</p>
+<section id="stage">
+
+	<div class="image"></div>
+	<div class="text">
+		<h1>Page not found</h1>
+	</div>
+
+</section>
+
 {% endblock %}

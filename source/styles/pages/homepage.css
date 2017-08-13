@@ -58,8 +58,11 @@
   z-index: 9;
 
   & .coming {
-    max-width: 70%;
-    min-width: 300px;
+
+    @media (--large-min) {
+      max-width: 70%;
+      min-width: 300px;
+    }
 
     & p {
       line-height: 1.7em;
