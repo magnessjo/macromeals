@@ -96,7 +96,7 @@
     }
 
     & .two-column {
-      overflow: hidden;
+      clear: both;
 
       @media (--large-min) {
         display: flex;
@@ -104,6 +104,7 @@
       }
 
       & > div {
+        position: relative;
 
         @media (--medium-max) {
           margin-bottom: 20px;
@@ -127,6 +128,51 @@
     font-weight: 700;
     font-family: var(--apercubold);
     letter-spacing: .2px;
+  }
+
+  & .required span {
+    position: relative;
+
+    &:after {
+      content: "*";
+      color: red;
+      position: absolute;
+    }
+
+  }
+
+  & .required-feild {
+
+    & span:after {
+      right: -8px;
+      top: -5px;
+      font-size: 16px;
+    }
+
+  }
+
+  & .required-disclaimer {
+    padding-left: 10px;
+    margin-bottom: 30px;
+    font-size: 14px;
+    text-align: right;
+
+    & span:after {
+      left: -10px;
+      top: 0;
+      right: inherit;
+    }
+
+  }
+
+  & .instructions {
+    visibility: hidden;
+    opacity: 1;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    font-size: 12px;
+    color: red;
   }
 
   & select {
@@ -156,6 +202,39 @@
     text-transform: uppercase;
     cursor: pointer;
     font-size: 16px;
+  }
+
+  & .not-valid {
+
+    & label {
+      color: red;
+    }
+
+    & input[type="email"], & input[type="text"] {
+      border: 1px solid red;
+    }
+
+    & input[type="email"]::placeholder, & input[type="text"]::placeholder {
+      visibility: hidden;
+    }
+
+    & .instructions {
+      opacity: 1;
+      visibility: visible;
+    }
+
+  }
+
+  & .valid {
+
+    & label {
+      color: green;
+    }
+
+    & input[type="email"], & input[type="text"] {
+      border: 1px solid green;
+    }
+
   }
 
 }

@@ -32,25 +32,30 @@
         <input type="hidden" name="action" value="contactForm/client/sendMessage">
         {{ getCsrfInput() }}
 
+        <p class="required required-disclaimer"><span></span>Required Field</p>
+
         <div class="two-column">
 
-          <div>
-            <label>First Name</label>
+          <div class="required required-feild">
+            <label><span>First Name</span></label>
             <input type="text" placeholder="John/Jane" id="firstName" name="firstName" />
+            <p class="instructions">First name is a required field</p>
           </div>
 
-          <div>
-            <label>Last Name</label>
+          <div class="required required-feild">
+            <label><span>Last Name</span></label>
             <input type="text" placeholder="Doe" id="lastName" name="lastName" />
+            <p class="instructions">Last name is a required field</p>
           </div>
 
         </div>
 
         <div class="two-column">
 
-          <div>
-            <label>Email</label>
+          <div class="required required-feild">
+            <label><span>Email</span></label>
             <input id="email" name="email" type="text" placeholder="example@gmail.com">
+            <p class="instructions">Email is a required field</p>
           </div>
 
           <div>
