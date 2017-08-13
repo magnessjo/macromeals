@@ -29,20 +29,19 @@
       </div>
 
       <form method="post" accept-charset="UTF-8">
+        <input type="hidden" name="action" value="contactForm/client/sendMessage">
         {{ getCsrfInput() }}
-        <input type="hidden" name="action" value="contactForm/sendMessage">
-        <input type="hidden" name="redirect" value="/thank.twig?from={fromName}">
 
         <div class="two-column">
 
           <div>
             <label>First Name</label>
-            <input type="text" placeholder="John/Jane" id="fromFirstName" for="fromFirstName" />
+            <input type="text" placeholder="John/Jane" id="firstName" name="firstName" />
           </div>
 
           <div>
             <label>Last Name</label>
-            <input type="text" placeholder="Doe" id="fromLastName" for="fromLastName" />
+            <input type="text" placeholder="Doe" id="lastName" name="lastName" />
           </div>
 
         </div>
@@ -51,12 +50,12 @@
 
           <div>
             <label>Email</label>
-            <input id="fromEmail" name="fromEmail" type="email" placeholder="example@gmail.com">
+            <input id="email" name="email" type="text" placeholder="example@gmail.com">
           </div>
 
           <div>
             <label>Phone Number</label>
-            <input id="fromPhone" name="fromPhone" type="email" placeholder="555-555-5555">
+            <input id="pehone" name="phone" type="text" placeholder="555-555-5555">
           </div>
 
         </div>
@@ -65,7 +64,7 @@
 
           <div>
             <label>Street Address</label>
-            <input id="fromAddress" name="fromAddress" type="text" placeholder="111 Street Name">
+            <input id="address" name="address" type="text" placeholder="111 Street Name">
           </div>
 
         </div>
@@ -131,13 +130,10 @@
 
           <div>
             <label>Zip Code</label>
-            <input id="fromZip" name="fromZip" type="text" placeholder="21224">
+            <input id="zip" name="zip" type="text" placeholder="21224">
           </div>
 
         </div>
-
-
-        <input type="hidden" id="message" name="message" value="example" />
 
         <input type="submit" >
       </form>
