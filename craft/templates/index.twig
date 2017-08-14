@@ -30,6 +30,7 @@
 
       <form method="post" accept-charset="UTF-8">
         <input type="hidden" name="action" value="contactForm/client/sendMessage">
+        <input type="hidden" name="redirect" value="/thank">
         {{ getCsrfInput() }}
 
         <p class="required required-disclaimer"><span></span>Required Field</p>
