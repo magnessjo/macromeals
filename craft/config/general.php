@@ -11,7 +11,7 @@ return [
     'requireMatchingUserAgentForSession' => false,
   ],
 
-  'macromeals.life' => [
+  '*.macromeals.life' => [
     'devMode' => false,
     'overridePhpSessionLocation' => false,
     'environmentVariables' => [
