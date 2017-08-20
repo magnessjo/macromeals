@@ -17,7 +17,12 @@
 
   --white: #ffffff;
 
+  --black: #171717;
+
   --green: #659331;
+
+  --gray: #7f7f7f;
+  --mid-gray: #a7a7a7;
 
   font-family: var(--apercu);
   font-size: 16px;

@@ -5,11 +5,142 @@ header {
   position: relative;
   padding: 10px 0;
 
+  & .lock {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: inherit;
+  }
+
   & .logo {
-    display: block;
 
     & img {
-      max-width: 100px;
+      width: 100px;
+    }
+
+  }
+
+  & .menu-toggle {
+    cursor: pointer;
+
+    & p {
+      text-transform: uppercase;
+      font-size: 12px;
+      margin-bottom: 0;
+    }
+
+  }
+
+  & .menu-button {
+    position: relative;
+    height: 20px;
+    width: 20px;
+    margin: 0 auto 5px auto;
+
+    & > div {
+      position: absolute;
+      height: 2px;
+      left: 0;
+      right: 0;
+      background-color: var(--black);
+
+      &:first-child {
+        top: 4px;
+      }
+
+      &:nth-of-type(2n) {
+        top: 10px;
+      }
+
+      &:last-child {
+        top: 16px;
+      }
+
+    }
+
+  }
+
+}
+
+menu {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  right: -400px;
+  width: 300px;
+  max-width: 100%;
+  background-color: var(--white);
+  z-index: 99;
+  transform: translateX(0);
+  transition: transform 1s ease-out;
+
+  &.show {
+    transform: translateX(-400px);
+    transition: transform 1s ease-out;
+  }
+
+  & > div {
+    box-shadow: 0 5px 20px -5px #565656;
+    height: 100%;
+    position: relative;
+  }
+
+  & button {
+    height: 40px;
+    display: block;
+    width: 100%;
+    padding-left: 20px;
+    text-transform: uppercase;
+    color: var(--black);
+    text-align: left;
+    font-size: 12px;
+    letter-spacing: 1px;
+    position: relative;
+    border-bottom: 1px solid var(--mid-gray);
+
+    &:before, &:after {
+      content: "";
+      position: absolute;
+      top: 0;
+      height: 14px;
+      width: 2px;
+      top: 50%;
+      margin-top: -7px;
+      left: 10px;
+      background-color: var(--black);
+    }
+
+    &:before {
+      transform: rotate(-45deg);
+    }
+
+    &:after {
+      transform: rotate(45deg);
+    }
+
+  }
+
+  & nav {
+    height: calc(100% - 40px);
+  }
+
+  & a {
+    height: 20%;
+    display: block;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    color: var(--gray);
+    border-bottom: 1px solid var(--mid-gray);
+    letter-spacing: 1px;
+
+    & span {
+      display: block;
+      font-size: 12px;
+      width: 100%;
+      text-align: center;
     }
 
   }
