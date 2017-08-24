@@ -6,45 +6,110 @@
   min-height: 300px;
 
   & .image {
-    background-image: url(/images/main.jpg);
+    background-image: url(/images/stage.jpg);
     background-position: center;
     background-size: cover;
-    filter: blur(4px);
-    height: 100%;
-    width: 100%;
+
+    @media (--medium-max) {
+      height: 50%;
+      margin-bottom: 40px;
+    }
+
+    @media (--large-min) {
+      height: 100%;
+      width: 100%;
+    }
+
   }
 
   & .text {
-    color: var(--green);
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 20px;
-    background-color: var(--white);
+    color: var(--black);
+    z-index: 9;
+    text-transform: uppercase;
+    text-align: center;
 
     @media (--large-min) {
-      padding: 40px;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 50%;
     }
 
     & h1 {
-      font-size: 30px;
-      text-transform: uppercase;
       font-family: var(--apercubold);
-      font-weight: 700;
-      white-space: nowrap;
-
-      @media (--large-min) {
-        font-size: 50px;
-      }
+      margin-bottom: 40px;
+      font-size: 32px;
+      line-height: 1em;
 
       @media (--tablet-min) {
-        font-size: 70px;
+        font-size: 42px;
       }
 
       @media (--desktop-min) {
-        font-size: 80px;
+        font-size: 48px;
       }
+
+      @media (--desktop-min) {
+        font-size: 58px;
+      }
+
+      & span {
+        display: block;
+        font-size: 18px;
+        margin-bottom: 0;
+        line-height: 1em;
+
+        @media (--tablet-min) {
+          font-size: 22px;
+        }
+
+        @media (--tablet-min) {
+          font-size: 26px;
+        }
+
+        @media (--desktop-min) {
+          font-size: 30px;
+        }
+
+      }
+
+    }
+
+    & a {
+      background-color: var(--black);
+      padding: 15px 25px;
+      border-radius: 10px;
+      color: #ffd777;
+    }
+
+  }
+
+  & .triangle {
+    position: absolute;
+    top: 50%;
+    left: calc(25% - 150px);
+    transform: translateY(-50%);
+    height: 300px;
+    width: 300px;
+    background-image: url(/images/triangle.svg);
+    background-position: center;
+  }
+
+  & .bottom-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px 0;
+    background-color: rgba(0, 0, 0, .6);
+    text-align: center;
+
+    & h1 {
+      color: #ffd777;
+      font-size: 32px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 1px 1px var(--white);
 
     }
 
