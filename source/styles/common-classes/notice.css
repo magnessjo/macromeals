@@ -1,0 +1,40 @@
+
+.notice {
+
+  & .lock > div {
+    background-color: rgba(255, 252, 143, .4);
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 80px 80px 30px 80px;
+    position: relative;
+
+    &:before, &:after {
+      position: absolute;
+      top: 30px;
+      left: 80px;
+    }
+
+    &:before {
+      content: "";
+      background-image: url(/images/icons/warning.svg);
+      height: 25px;
+      width: 30px;
+      left: 40px;
+      top: 26px;
+      background-size: contain;
+      background-position: bottom center;
+      background-repeat: no-repeat;
+    }
+
+    &:after {
+      content: "Notice";
+      color: var(--black);
+      text-transform: uppercase;
+      font-family: var(--apercubold);
+      font-size: 22px;
+      font-weight: 700;
+    }
+
+  }
+
+}
