@@ -25,6 +25,7 @@ const config = {
     files: {
       homepage: 'source/styles/pages/homepage.css',
       macros: 'source/styles/pages/macros.css',
+      beta: 'source/styles/pages/beta.css',
     },
   },
 
@@ -34,6 +35,7 @@ const config = {
     files: {
       app: `source/scripts/app.js`,
       homepage: `source/scripts/homepage`,
+      beta: `source/scripts/beta`,
     },
   },
 

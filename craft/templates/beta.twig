@@ -1,0 +1,136 @@
+
+{% extends "layout" %}
+{% includeCssFile "/beta.css" %}
+{% includeJsFile "/beta.js" %}
+
+{% block main %}
+
+  <section id="intro">
+
+  <div class="lock">
+
+    <div class="coming">
+      <p>Thank you for your interest in a beta program.  All beta members will receive 25% off until January 1st, 2018</p>
+    </div>
+
+    <form method="post" accept-charset="UTF-8">
+      <input type="hidden" name="action" value="contactForm/client/sendMessage">
+      <input type="hidden" name="redirect" value="/thank">
+      {{ getCsrfInput() }}
+
+      <p class="required required-disclaimer"><span></span>Required Field</p>
+
+      <div class="two-column">
+
+        <div class="required required-feild">
+          <label><span>First Name</span></label>
+          <input type="text" placeholder="John/Jane" id="firstName" name="firstName" />
+          <p class="instructions">First name is a required field</p>
+        </div>
+
+        <div class="required required-feild">
+          <label><span>Last Name</span></label>
+          <input type="text" placeholder="Doe" id="lastName" name="lastName" />
+          <p class="instructions">Last name is a required field</p>
+        </div>
+
+      </div>
+
+      <div class="two-column">
+
+        <div class="required required-feild">
+          <label><span>Email</span></label>
+          <input id="email" name="email" type="text" placeholder="example@gmail.com">
+          <p class="instructions">Email is a required field</p>
+        </div>
+
+        <div>
+          <label>Phone Number</label>
+          <input id="pehone" name="phone" type="text" placeholder="555-555-5555">
+        </div>
+
+      </div>
+
+      <div class="one-column">
+
+        <div>
+          <label>Street Address</label>
+          <input id="address" name="address" type="text" placeholder="111 Street Name">
+        </div>
+
+      </div>
+
+      <div class="two-column">
+
+        <div>
+          <label>State</label>
+          <select>
+           <option disabled selected value> please choose </option>
+           <option>Alabama</option>
+           <option>Alaska</option>
+           <option>Arizona</option>
+           <option>Arkansas</option>
+           <option>California</option>
+           <option>Colorado</option>
+           <option>Connecticut</option>
+           <option>Delaware</option>
+           <option>Florida</option>
+           <option>Georgia</option>
+           <option>Hawaii</option>
+           <option>Idaho</option>
+           <option>Illinois</option>
+           <option>Indiana</option>
+           <option>Iowa</option>
+           <option>Kansas</option>
+           <option>Kentucky</option>
+           <option>Louisiana</option>
+           <option>Maine</option>
+           <option>Maryland</option>
+           <option>Massachusetts</option>
+           <option>Michigan</option>
+           <option>Minnesota</option>
+           <option>Mississippi</option>
+           <option>Missouri</option>
+           <option>Montana</option>
+           <option>Nebraska</option>
+           <option>Nevada</option>
+           <option>New Hampshire</option>
+           <option>New Jersey</option>
+           <option>New Mexico</option>
+           <option>New York</option>
+           <option>North Carolina</option>
+           <option>North Dakota</option>
+           <option>Ohio</option>
+           <option>Oklahoma</option>
+           <option>Oregon</option>
+           <option>Pennsylvania</option>
+           <option>Rhode Island</option>
+           <option>South Carolina</option>
+           <option>South Dakota</option>
+           <option>Tennessee</option>
+           <option>Texas</option>
+           <option>Utah</option>
+           <option>Vermont</option>
+           <option>Virginia</option>
+           <option>Washington</option>
+           <option>West Virginia</option>
+           <option>Wisconsin</option>
+           <option>Wyoming</option>
+          </select>
+        </div>
+
+        <div>
+          <label>Zip Code</label>
+          <input id="zip" name="zip" type="text" placeholder="21224">
+        </div>
+
+      </div>
+
+      <input type="submit" >
+    </form>
+
+  </div>
+
+  </section>
+
+{% endblock %}
