@@ -85,3 +85,37 @@
   }
 
 }
+
+#featured {
+
+  & .product {
+
+    & > div {
+
+      @media (--large-min) {
+        display: flex;
+      }
+
+    }
+
+    & .image {
+      background-size: contain;
+      background-position: center;
+
+      @media (--large-min) {
+        order: 0;
+      }
+
+    }
+
+    & .text {
+
+      @media (--large-min) {
+        order: 1;
+      }
+
+    }
+
+  }
+
+}
