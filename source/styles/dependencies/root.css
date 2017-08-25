@@ -5,18 +5,8 @@
 }
 
 @font-face{
-  font-family:"Apercu Bold";
-  src:url("/fonts/apercu_bold.woff2") format("woff2"),
-}
-
-@font-face{
   font-family:"Didot";
   src:url("/fonts/didot-regular.woff2") format("woff2"),
-}
-
-@font-face{
-  font-family:"vfsans";
-  src:url("/fonts/vfsans-book.woff2") format("woff2"),
 }
 
 @font-face{
@@ -24,14 +14,17 @@
   src:url("/fonts/flama-basic.woff2") format("woff2"),
 }
 
+@font-face{
+  font-family:"flama-bold";
+  src:url("/fonts/flama-bold.woff2") format("woff2"),
+}
+
 :root {
 
   --didot:      'Didot', serif;
   --apercu:     'Apercu', sans-serif;
-  --apercubold: 'Apercu Bold', sans-serif;
-  --vfsans:     'vfsans', sans-serif;
-  --futura:     'futura-pt',  sans-serif;
-  --flama:     'futura-pt',  sans-serif;
+  --flama:      'flama', sans-serif;
+  --flamabold:  'flama-bold', sans-serif;
 
   --white: #ffffff;
 
@@ -42,7 +35,7 @@
   --gray: #7f7f7f;
   --mid-gray: #a7a7a7;
 
-  font-family: var(--apercu);
+  font-family: var(--flama);
   font-size: 16px;
   font-weight: 400;
 
