@@ -4,7 +4,6 @@
 #stage {
   height: 60vh;
   min-height: 300px;
-  margin-bottom: 80px;
 
   & .image {
     background-image: url(/images/stage.jpg);
