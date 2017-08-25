@@ -23,7 +23,8 @@ const config = {
     paths: ['source/styles/**/*.css'],
     task: builder.styles,
     files: {
-      homepage: 'source/styles/pages/homepage.css'
+      homepage: 'source/styles/pages/homepage.css',
+      macros: 'source/styles/pages/macros.css',
     },
   },
 

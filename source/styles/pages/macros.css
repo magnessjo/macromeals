@@ -1,0 +1,103 @@
+
+@import "../master.css";
+
+#stage {
+  height: 120px;
+  margin-bottom: 80px;
+
+  @media (--large-min) {
+    height: 20vh;
+    min-height: 180px;
+  }
+
+  & .image {
+    background-image: url(/images/macros/stage.jpg);
+    background-position: center;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+  }
+
+}
+
+.row {
+  margin-bottom: 80px;
+
+  & h1 {
+    font-size: 28px;
+    font-family: var(--didot);
+    margin-bottom: 30px;
+
+    & span {
+      position: relative;
+      color: var(--green);
+      text-transform: uppercase;
+
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        height: 1px;
+        background-color: var(--green);
+        left: 0;
+        right: -10%;
+      }
+
+    }
+
+  }
+
+  & .two-column {
+
+    @media (--tablet-min) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 40vh;
+      min-height: 400px;
+    }
+
+    & > div {
+
+      @media (--tablet-min) {
+        width: 50%;
+      }
+
+    }
+
+    & .text {
+      order: 1;
+      padding-left: 40px;
+    }
+
+    & .image {
+      background-position: center;
+      background-size: cover;
+      order: 0;
+
+      @media (--large-max) {
+        height: 100vw;
+      }
+
+      @media (--tablet-min) {
+        height: 100%;
+      }
+
+    }
+
+  }
+
+}
+
+.row:nth-of-type(even) .two-column {
+
+  & .text {
+    order: 0;
+    padding-right: 40px;
+  }
+
+  & .image {
+    order: 1;
+  }
+
+}
