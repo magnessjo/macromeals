@@ -7,6 +7,7 @@
     margin: 0 auto;
     padding: 80px 80px 30px 80px;
     position: relative;
+    overflow: hidden;
 
     &:before, &:after {
       position: absolute;
@@ -35,6 +36,15 @@
       font-weight: 700;
     }
 
+  }
+
+  & a {
+    float: right;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    color: var(--white);
+    background-color: var(--black);
+    border-radius: 10px;
   }
 
 }
