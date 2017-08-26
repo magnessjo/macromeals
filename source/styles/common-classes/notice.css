@@ -1,39 +1,60 @@
 
 .notice {
 
-  & .lock > div {
+  & .lock > .text {
     background-color: rgba(255, 252, 143, .4);
     max-width: 900px;
     margin: 0 auto;
-    padding: 80px 80px 30px 80px;
+    padding: 30px 60px;
     position: relative;
     overflow: hidden;
 
-    &:before, &:after {
-      position: absolute;
-      top: 30px;
-      left: 80px;
+    & h1 {
+      position: relative;
+      padding-left: 45px;
+      margin-bottom: 0;
+      cursor: pointer;
+
+      &:before {
+        content: "";
+        position: absolute;
+        background-image: url(/images/icons/warning.svg);
+        height: 20px;
+        width: 30px;
+        top: 0;
+        left: 0;
+        background-size: contain;
+        background-position: bottom center;
+        background-repeat: no-repeat;
+      }
+
+      &:after {
+        content: "";
+        background-image: url(/images/icons/chevron.svg);
+        height: 20px;
+        width: 20px;
+        background-size: contain;
+        position: absolute;
+        transform: rotate(90deg);
+        right: 0px;
+        font-size: 18px;
+      }
+
+      &.expanded:after {
+        transform: rotate(-90deg);
+      }
+
     }
 
-    &:before {
-      content: "";
-      background-image: url(/images/icons/warning.svg);
-      height: 25px;
-      width: 30px;
-      left: 40px;
-      top: 26px;
-      background-size: contain;
-      background-position: bottom center;
-      background-repeat: no-repeat;
-    }
+    & .expand-content {
+      height: 0;
+      overflow: hidden;
+      transition: height 1s;
 
-    &:after {
-      content: "Notice";
-      color: var(--black);
-      text-transform: uppercase;
-      font-family: var(--apercubold);
-      font-size: 22px;
-      font-weight: 700;
+      & > div {
+        padding-top: 20px;
+      }
+
     }
 
   }
