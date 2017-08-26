@@ -8,10 +8,12 @@
     padding: 30px 60px;
     position: relative;
     overflow: hidden;
+    overflow: hidden;
 
     & h1 {
       position: relative;
       padding-left: 45px;
+      padding-right: 30px;
       margin-bottom: 0;
       cursor: pointer;
 
@@ -37,6 +39,7 @@
         position: absolute;
         transform: rotate(90deg);
         right: 0px;
+        top: 0;
         font-size: 18px;
       }
 
@@ -49,10 +52,9 @@
     & .expand-content {
       height: 0;
       overflow: hidden;
-      transition: height 1s;
 
       & > div {
-        padding-top: 20px;
+        padding-top: 30px;
       }
 
     }
