@@ -16,6 +16,7 @@ body {
 section {
   position: relative;
   margin-bottom: 80px;
+  overflow: hidden;
 }
 
 a {

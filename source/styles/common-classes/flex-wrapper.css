@@ -8,12 +8,24 @@
   & .flex-headline {
     text-transform: uppercase;
 
+    @media (--large-max) {
+      margin-bottom: 40px;
+    }
+
     @media (--tablet-min) {
       width: 200px;
     }
 
     & span {
       display: block;
+    }
+
+    & .didot-headline span {
+
+      @media (--large-max) {
+        display: inline;
+      }
+
     }
 
   }

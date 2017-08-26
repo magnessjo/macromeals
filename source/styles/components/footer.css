@@ -19,21 +19,28 @@ footer {
     padding: 40px 0;
 
     & .lock {
-      display: flex;
-      justify-content: space-between;
-      max-width: 900px;
-      margin: 0 auto;
+
+      @media (--tablet-min) {
+        display: flex;
+        justify-content: space-between;
+        max-width: 900px;
+        margin: 0 auto;
+      }
 
       & > div {
-        width: 50%;
+
+        @media (--tablet-min) {
+          width: 50%;
+        }
+
       }
 
     }
 
     & .links {
 
-      @media (--tablet-min) {
-
+      @media (--large-max) {
+        margin-bottom: 40px;
       }
 
       & > div {
@@ -102,17 +109,29 @@ footer {
 
     & a {
       position: relative;
-      padding-left: 10px;
+
+      @media (--tablet-min) {
+        padding-left: 10px;
+      }
+
+      @media (--large-max) {
+        display: block;
+        margin-top: 10px;
+      }
 
       &:before {
-        content: "";
-        position: absolute;
-        left: 5px;
-        top: 50%;
-        transform: translateY(-50%);
-        height: 12px;
-        width: 1px;
-        background-color: var(--white);
+
+        @media (--tablet-min) {
+          content: "";
+          position: absolute;
+          left: 5px;
+          top: 50%;
+          transform: translateY(-50%);
+          height: 12px;
+          width: 1px;
+          background-color: var(--white);
+        }
+
       }
 
       &:first-of-type {
@@ -139,21 +158,31 @@ footer {
   }
 
   & .love {
-    position: relative;
     margin-left: auto;
     padding-right: 100px;
     text-transform: uppercase;
+
+    & span {
+
+      @media (--large-max) {
+        display: none;
+      }
+
+    }
 
     &:after {
       content: "";
       background-image: url(/images/love.png);
       background-repeat: no-repeat;
-      background-size: contain;
-      position: absolute;
+      background-size: cover;
       top: -20px;
       bottom: -20px;
+      display: block;
+      position: absolute;
       right: 0;
       width: 95px;
+
+      @m
     }
 
   }

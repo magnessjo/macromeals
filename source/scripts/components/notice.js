@@ -11,9 +11,11 @@ const padding = parseInt(window.getComputedStyle(text).getPropertyValue('padding
 
 function resize() {
 
-  const height = wrapper.querySelector('div').offsetHeight + padding * 2;
-  wrapper.style.height = `${height}px`;
-  wrapper.style.transition = 'none';
+  if (button.classList.contains('expanded')) {
+    const height = wrapper.querySelector('div').offsetHeight + padding * 2;
+    wrapper.style.height = `${height}px`;
+    wrapper.style.transition = 'none';
+  }
 
 }
 

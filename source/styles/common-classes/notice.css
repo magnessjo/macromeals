@@ -5,10 +5,14 @@
     background-color: rgba(255, 252, 143, .4);
     max-width: 900px;
     margin: 0 auto;
-    padding: 30px 60px;
+    padding: 30px;
     position: relative;
     overflow: hidden;
     overflow: hidden;
+
+    @media (--tablet-min) {
+      padding: 30px 60px;
+    }
 
     & h1 {
       position: relative;

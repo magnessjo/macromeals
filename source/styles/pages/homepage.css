@@ -2,22 +2,26 @@
 @import "../master.css";
 
 #stage {
-  height: 60vh;
-  min-height: 300px;
+
+  @media (--large-min) {
+    height: 60vh;
+    min-height: 300px;
+  }
 
   & .image {
     background-image: url(/images/stage.jpg);
-    background-position: center;
     background-size: cover;
 
     @media (--medium-max) {
-      height: 50%;
+      height: 200px;
+      background-position: right center;
       margin-bottom: 40px;
     }
 
     @media (--large-min) {
       height: 100%;
       width: 100%;
+      background-position: center;
     }
 
   }
@@ -75,11 +79,11 @@
 
     }
 
-    & a {
+    & .call-to-action {
       background-color: var(--black);
       padding: 15px 25px;
-      border-radius: 10px;
       color: #ffd777;
+      float: none;
     }
 
   }
@@ -157,6 +161,10 @@
       background-position: center;
       background-size: cover;
       margin-bottom: 10px;
+
+      @media (--large-max) {
+        height: 150px;
+      }
 
       @media (--tablet-min) {
         height: 200px;
