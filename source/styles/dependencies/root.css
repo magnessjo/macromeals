@@ -9,22 +9,10 @@
   src:url("/fonts/didot-regular.woff2") format("woff2"),
 }
 
-@font-face{
-  font-family:"flama";
-  src:url("/fonts/flama-basic.woff2") format("woff2"),
-}
-
-@font-face{
-  font-family:"flama-bold";
-  src:url("/fonts/flama-bold.woff2") format("woff2"),
-}
-
 :root {
 
   --didot:      'Didot', serif;
   --apercu:     'Apercu', sans-serif;
-  --flama:      'flama', sans-serif;
-  --flamabold:  'flama-bold', sans-serif;
 
   --white:        #ffffff;
   --black:        #171717;
@@ -36,7 +24,7 @@
   --gray:         #7f7f7f;
   --mid-gray:     #a7a7a7;
 
-  font-family: var(--flama);
+  font-family: var(--apercu);
   font-size: 17px;
   font-weight: 400;
 

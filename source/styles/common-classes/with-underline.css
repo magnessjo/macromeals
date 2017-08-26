@@ -1,0 +1,21 @@
+
+.with-underline {
+
+  & span {
+    text-transform: uppercase;
+    position: relative;
+    color: var(--green);
+
+    &:after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      height: 1px;
+      background-color: var(--green);
+      left: 0;
+      right: -10%;
+    }
+
+  }
+
+}

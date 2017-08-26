@@ -23,30 +23,6 @@
 .row {
   margin-bottom: 80px;
 
-  & h1 {
-    font-size: 28px;
-    font-family: var(--didot);
-    margin-bottom: 30px;
-
-    & span {
-      position: relative;
-      color: var(--green);
-      text-transform: uppercase;
-
-      &:after {
-        content: "";
-        position: absolute;
-        bottom: -2px;
-        height: 1px;
-        background-color: var(--green);
-        left: 0;
-        right: -10%;
-      }
-
-    }
-
-  }
-
   & .two-column {
 
     @media (--tablet-min) {

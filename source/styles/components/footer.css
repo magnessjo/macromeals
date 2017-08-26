@@ -1,6 +1,161 @@
 
 footer {
-  background-color: var(--darker-green);
-  color: var(--white);
-  padding: 40px 0;
+
+  & a {
+    color: var(--white);
+  }
+
+  & .with-underline span {
+    color: var(--white);
+  }
+
+  & .with-underline span:after {
+    background-color: var(--white);
+  }
+
+  & .contact {
+    background-color: var(--darker-green);
+    color: var(--white);
+    padding: 40px 0;
+
+    & .lock {
+      display: flex;
+      justify-content: space-between;
+      max-width: 900px;
+      margin: 0 auto;
+
+      & > div {
+        width: 50%;
+      }
+
+    }
+
+    & .links {
+
+      @media (--tablet-min) {
+
+      }
+
+      & > div {
+        display: flex;
+        margin-bottom: 20px;
+
+        & p {
+          margin-bottom: 0;
+          font-family: var(--apercu);
+          font-style: normal;
+        }
+
+        & > p {
+          width: 100px;
+          text-transform: uppercase;
+        }
+
+      }
+
+    }
+
+    & .social {
+
+      @media (--tablet-min) {
+
+      }
+
+      & a {
+        display: inline-block;
+        height: 50px;
+        width: 50px;
+        background-position: center;
+        background-size: contain;
+        color: var(--white);
+        margin-left: 40px;
+      }
+
+      & a[href*="facebook"] {
+        background-image: url(/images/social/facebook.svg);
+        margin-left: 0;
+      }
+
+      & a[href*="instagram"] {
+        background-image: url(/images/social/instagram.svg);
+      }
+
+      & a[href*="twitter"] {
+        background-image: url(/images/social/twitter.svg);
+      }
+
+    }
+
+  }
+
+  & .info {
+    padding: 20px 0;
+    color: var(--white);
+    position: relative;
+    background-color: #7c6650;
+
+    & p, & a {
+      display: inline-block;
+      margin-bottom: 0;
+      font-size: 14px;
+    }
+
+    & a {
+      position: relative;
+      padding-left: 10px;
+
+      &:before {
+        content: "";
+        position: absolute;
+        left: 5px;
+        top: 50%;
+        transform: translateY(-50%);
+        height: 12px;
+        width: 1px;
+        background-color: var(--white);
+      }
+
+      &:first-of-type {
+        padding-left: 0;
+      }
+
+      &:first-of-type:before {
+        display: none;
+      }
+
+    }
+
+    & .lock {
+      display: flex;
+      position: relative;
+      z-index: 9;
+      align-items: center;
+    }
+
+    & .lock > div p {
+      margin-right: 40px;
+    }
+
+  }
+
+  & .love {
+    position: relative;
+    margin-left: auto;
+    padding-right: 100px;
+    text-transform: uppercase;
+
+    &:after {
+      content: "";
+      background-image: url(/images/love.png);
+      background-repeat: no-repeat;
+      background-size: contain;
+      position: absolute;
+      top: -20px;
+      bottom: -20px;
+      right: 0;
+      width: 95px;
+    }
+
+  }
+
 }
