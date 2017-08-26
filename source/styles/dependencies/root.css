@@ -26,17 +26,18 @@
   --flama:      'flama', sans-serif;
   --flamabold:  'flama-bold', sans-serif;
 
-  --white: #ffffff;
-
-  --black: #171717;
-
-  --green: #659331;
-
-  --gray: #7f7f7f;
-  --mid-gray: #a7a7a7;
+  --white:        #ffffff;
+  --black:        #171717;
+  --green:        #659331;
+  --light-green:  #AFFF55;
+  --off-green:    #D3FFA1;
+  --darker-green: #6A7F51;
+  --dark-green:   #8CCC44;
+  --gray:         #7f7f7f;
+  --mid-gray:     #a7a7a7;
 
   font-family: var(--flama);
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 400;
 
 }

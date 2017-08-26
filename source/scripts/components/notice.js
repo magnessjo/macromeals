@@ -21,8 +21,6 @@ function resize() {
 
 export default function() {
 
-  console.log(padding);
-
   button.addEventListener('click', () => {
 
     const height = wrapper.querySelector('div').offsetHeight + padding * 2;

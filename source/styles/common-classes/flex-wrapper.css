@@ -1,0 +1,30 @@
+
+.flex-wrapper {
+
+  @media (--tablet-min) {
+    display: flex;
+  }
+
+  & .flex-headline {
+    text-transform: uppercase;
+
+    @media (--tablet-min) {
+      width: 200px;
+    }
+
+    & span {
+      display: block;
+    }
+
+  }
+
+  & .flex-section {
+
+    @media (--tablet-min) {
+      width: calc(100% - 200px);
+      padding-left: 40px;
+    }
+
+  }
+
+}
