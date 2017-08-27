@@ -1,25 +1,6 @@
 
 @import "../master.css";
 
-#stage {
-  height: 120px;
-  margin-bottom: 80px;
-
-  @media (--large-min) {
-    height: 20vh;
-    min-height: 180px;
-  }
-
-  & .image {
-    background-image: url(/images/macros/stage.jpg);
-    background-position: center;
-    background-size: cover;
-    height: 100%;
-    width: 100%;
-  }
-
-}
-
 .row {
   margin-bottom: 80px;
 

@@ -1,0 +1,15 @@
+
+@import "../master.css";
+
+.slim-stage .image {
+  background-image: url(/images/register/stage.jpg);
+}
+
+section {
+
+  & .call-to-action {
+    float: none;
+    font-size: 14px;
+  }
+
+}

@@ -26,6 +26,7 @@ const config = {
       homepage: 'source/styles/pages/homepage.css',
       macros: 'source/styles/pages/macros.css',
       beta: 'source/styles/pages/beta.css',
+      register: 'source/styles/pages/register.css',
     },
   },
 
