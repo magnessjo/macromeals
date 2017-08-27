@@ -20,6 +20,7 @@
       padding-right: 30px;
       margin-bottom: 0;
       cursor: pointer;
+      display: flex;
 
       &:before {
         content: "";
@@ -45,6 +46,10 @@
         right: 0px;
         top: 0;
         font-size: 18px;
+      }
+
+      & span:first-of-type {
+        padding-right: 20px;
       }
 
       &.expanded:after {
