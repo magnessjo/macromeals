@@ -13,7 +13,7 @@
     }
 
     @media (--tablet-min) {
-      width: 200px;
+      width: 170px;
     }
 
     & span {
@@ -33,7 +33,7 @@
   & .flex-section {
 
     @media (--tablet-min) {
-      width: calc(100% - 200px);
+      width: calc(100% - 170px);
       padding-left: 40px;
     }
 
