@@ -13,10 +13,13 @@
       <p>Thank you for your interest in a beta program.  All beta members will receive 25% off until January 1st, 2018</p>
     </div>
 
+    <script type="text/javascript">
+      window.csrfTokenName = "{{ craft.config.csrfTokenName|e('js') }}";
+      window.csrfTokenValue = "{{ craft.request.csrfToken|e('js') }}";
+    </script>
+
     <form method="post" accept-charset="UTF-8">
       <input type="hidden" name="action" value="contactForm/client/sendMessage">
-      <input type="hidden" name="redirect" value="/thank">
-      {{ getCsrfInput() }}
 
       <p class="required required-disclaimer"><span></span>Required Field</p>
 

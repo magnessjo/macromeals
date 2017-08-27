@@ -2,6 +2,8 @@
 // Variables
 
 const form = document.querySelector('form');
+const inputs = Array.from(form.querySelectorAll('input[type="text"]'));
+const state = form.querySelector('select');
 const button = form.querySelector('input[type="submit"]');
 const firstName = form.querySelector('#firstName');
 const lastName = form.querySelector('#lastName');
@@ -31,7 +33,45 @@ function checkSubmit() {
     }
 
     if (isValid) {
-      form.submit();
+
+      const xhr = new XMLHttpRequest();
+      const url = '/actions/contactForm/client/sendMessage';
+      const selected = state.options[state.selectedIndex].value;
+      let data = '';
+
+      console.log(selected);
+
+      data = `${window.csrfTokenName}=${window.csrfTokenValue}&`;
+      inputs.forEach((item) => {
+
+        if(item.value != '') {
+          const test = item.getAttribute('name');
+          data += `${test}=${item.value}&`;
+        }
+
+      });
+
+      data += 'state=${selected}';
+
+      xhr.open('POST', url);
+
+      xhr.onreadystatechange = () => {
+
+        if (xhr.readyState === xhr.DONE) {
+          if (xhr.status === 200) {
+            const text = JSON.parse(xhr.responseText);
+            if (text == 'success') {
+              form.style.display = 'none';
+            }
+          }
+        }
+
+      }
+
+      xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+      xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+      xhr.send(data);
+
     }
 
   });
