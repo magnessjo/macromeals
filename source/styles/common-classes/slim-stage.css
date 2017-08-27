@@ -9,7 +9,7 @@
   }
 
   & .image {
-    background-image: url(/images/macros/stage.jpg);
+    background-image: url(/images/generic/stage.jpg);
     background-position: center;
     background-size: cover;
     height: 100%;
