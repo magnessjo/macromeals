@@ -51,7 +51,9 @@ function checkSubmit() {
 
       });
 
-      data += 'state=${selected}';
+      data += `state=${selected}`;
+
+      console.log(data);
 
       xhr.open('POST', url);
 
