@@ -136,7 +136,7 @@ menu {
   }
 
   & a {
-    height: 20%;
+    height: 25%;
     display: block;
     display: flex;
     flex-wrap: wrap;

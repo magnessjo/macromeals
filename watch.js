@@ -28,6 +28,7 @@ const config = {
       beta: 'source/styles/pages/beta.css',
       register: 'source/styles/pages/register.css',
       generic: 'source/styles/pages/generic.css',
+      faq: 'source/styles/pages/faq.css',
     },
   },
 
