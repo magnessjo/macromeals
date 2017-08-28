@@ -37,11 +37,6 @@
   font-weight: 400;
 }
 
-.apercu {
-  font-family: var(--apercu);
-  font-size: 40px;
-}
-
 .didot-large {
   font-size: 28px;
   font-family: var(--didot);

@@ -9,7 +9,7 @@
   }
 
   & .image {
-    background-image: url(/images/stage.jpg);
+    background-image: url(/images/stage/main.jpg);
     background-size: cover;
 
     @media (--medium-max) {

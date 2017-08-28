@@ -213,7 +213,7 @@ footer {
 
     &:after {
       content: "";
-      background-image: url(/images/love.png);
+      background-image: url(/images/footer/love.png);
       background-repeat: no-repeat;
       background-size: cover;
       top: -20px;
