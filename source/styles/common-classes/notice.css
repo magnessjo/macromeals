@@ -8,7 +8,6 @@
     padding: 30px;
     position: relative;
     overflow: hidden;
-    overflow: hidden;
 
     @media (--tablet-min) {
       padding: 30px 60px;
@@ -20,7 +19,10 @@
       padding-right: 30px;
       margin-bottom: 0;
       cursor: pointer;
-      display: flex;
+
+      @media (--large-min) {
+        display: flex;
+      }
 
       & span {
         font-weight: bold;
