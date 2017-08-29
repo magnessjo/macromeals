@@ -93,88 +93,83 @@
 #featured {
 
   & .product {
-    display: flex;
-    flex-wrap: wrap;
+
+    @media (--desktop-min) {
+      display: flex;
+    }
 
     & .image {
       margin-bottom: 20px;
+      background-size: cover;
+      background-position: center;
 
-      @media (--large-min) {
-        order: 0;
+      @media (--tablet-max) {
+        height: 200px;
+        width: 100%;
+      }
+
+      @media (--tablet-min) {
+        height: 300px;
       }
 
       @media (--desktop-min) {
-        margin-bottom: 0;
-      }
-
-      & > div {
-        background-size: contain;
-        background-position: center;
-
-        @media (--medium-max) {
-          height: 200px;
-          width: 100%;
-        }
-
-        @media (--large-min) {
-          height: 250px;
-          background-position: left top;
-          width: 400px;
-        }
-
-      }
-
-      & h2 {
-
-        @media (--desktop-min) {
-          display: none;
-        }
-
+        width: 65%;
       }
 
     }
 
     & .text {
 
-      @media (--large-min) {
-        order: 1;
-        padding-left: 40px;
+      @media (--tablet-max) {
+        margin-bottom: 30px;
+        width: 100%;
       }
 
-      & h2 {
-
-        @media (--tablet-max) {
-          display: none;
-        }
-
+      @media (--desktop-min) {
+        padding-right: 30px;
       }
 
       & > div {
-        display: flex;
-        align-items: center;
-      }
 
-      & .info {
-        padding-right: 30px;
+        &:first-of-type {
+          margin-bottom: 20px;
+        }
 
-        & p {
-          margin-bottom: 0;
+        &:last-of-type {
+          position: relative;
+          display: flex;
+          align-items: center;
 
-          & span {
-            width: 70px;
-            display: inline-block;
+          & > div {
+            padding-left: 40px;
           }
 
         }
 
-      }
-
-      & .chart {
-
-        & img {
-          width: 150px;
+        & span {
+          display: block;
+          font-weight: 700;
         }
 
+      }
+
+      & p {
+        margin-bottom: 0;
+
+        &:last-of-type {
+          margin-bottom: 10px;
+        }
+
+        & span {
+          width: 80px;
+          display: inline-block;
+        }
+
+      }
+
+      & img {
+        max-width: 140px;
+        display: block;
       }
 
     }
