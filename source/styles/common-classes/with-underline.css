@@ -1,10 +1,13 @@
 
 .with-underline {
+  font-family: var(--didot);
+  font-size: calc(22px + 1.5vw);
+  margin-bottom: 20px;
+  color: var(--green);
+  text-transform: uppercase;
 
   & span {
-    text-transform: uppercase;
     position: relative;
-    color: var(--green);
 
     &:after {
       content: "";

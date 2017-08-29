@@ -5,6 +5,10 @@
   background-image: url(/images/stage/assortment.jpg);
 }
 
+.with-underline  {
+  font-size: calc(22px + .5vw);
+}
+
 .row {
   margin-bottom: 80px;
 

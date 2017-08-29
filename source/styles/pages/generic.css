@@ -1,2 +1,10 @@
 
 @import "../master.css";
+
+.text-page {
+
+  & .lock > div {
+    margin-bottom: 60px;
+  }
+
+}
