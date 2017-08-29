@@ -22,6 +22,10 @@
       cursor: pointer;
       display: flex;
 
+      & span {
+        font-weight: bold;
+      }
+
       &:before {
         content: "";
         position: absolute;
