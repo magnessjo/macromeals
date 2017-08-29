@@ -10,42 +10,51 @@
 }
 
 .row {
-  margin-bottom: 80px;
+  margin-bottom: 0;
+
+  &:last-of-type {
+    margin-bottom: 80px;
+  }
 
   & .two-column {
 
-    @media (--tablet-min) {
+    @media (--desktop-min) {
       display: flex;
       justify-content: space-between;
-      align-items: center;
-      height: 40vh;
-      min-height: 400px;
+      min-height: 500px;
     }
 
     & > div {
 
-      @media (--tablet-min) {
+      @media (--tablet-max) {
+        margin-bottom: 40px;
+      }
+
+      @media (--desktop-min) {
         width: 50%;
       }
 
     }
 
     & .text {
-      order: 1;
-      padding-left: 40px;
+
+      @media (--desktop-min) {
+        padding-top: 100px;
+        padding-bottom: 100px;
+      }
+
     }
 
     & .image {
       background-position: center;
-      background-size: cover;
-      order: 0;
 
-      @media (--large-max) {
-        height: 100vw;
+      @media (--tablet-max) {
+        height: 50vh;
+        background-size: contain;
       }
 
-      @media (--tablet-min) {
-        height: 100%;
+      @media (--desktop-min) {
+        background-size: cover;
       }
 
     }
@@ -57,12 +66,41 @@
 .row:nth-of-type(even) .two-column {
 
   & .text {
-    order: 0;
-    padding-right: 40px;
+
+    @media (--desktop-min) {
+      order: 0;
+      padding-right: 40px;
+    }
+
   }
 
   & .image {
-    order: 1;
+
+    @media (--desktop-min) {
+      order: 1;
+    }
+
+  }
+
+}
+
+.row:nth-of-type(odd) .two-column {
+
+  & .text {
+
+    @media (--desktop-min) {
+      order: 1;
+      padding-left: 40px;
+    }
+
+  }
+
+  & .image {
+
+    @media (--desktop-min) {
+      order: 0;
+    }
+
   }
 
 }
