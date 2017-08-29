@@ -40,6 +40,7 @@ header {
     & a {
       text-transform: uppercase;
       color: var(--green);
+      line-height: 1em;
 
       @media (--large-min) {
         margin-right: 15px;
@@ -53,6 +54,14 @@ header {
         margin-right: 40px;
       }
 
+    }
+
+    & span {
+      position: relative;
+      text-align: center;
+      font-size: 12px;
+      line-height: 1em;
+      display: block;
     }
 
   }
