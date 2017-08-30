@@ -170,7 +170,7 @@
       }
 
       & img {
-        max-width: 100px;
+        width: 100px;
         display: block;
 
         @media (--large-min) {
