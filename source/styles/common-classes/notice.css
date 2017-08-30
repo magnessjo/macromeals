@@ -13,35 +13,58 @@
       padding: 30px 60px;
     }
 
-    & h1 {
-      position: relative;
-      padding-left: 45px;
-      padding-right: 30px;
-      margin-bottom: 0;
+    & .toggle {
       cursor: pointer;
 
-      @media (--large-min) {
-        display: flex;
+      & h1 {
+        position: relative;
+        padding-left: 45px;
+        padding-right: 30px;
+        margin-bottom: 20px;
+
+        @media (--large-min) {
+          display: flex;
+        }
+
+        & span {
+          font-weight: bold;
+        }
+
+        &:before {
+          content: "";
+          position: absolute;
+          background-image: url(/images/icons/warning.svg);
+          height: 20px;
+          width: 30px;
+          top: 0;
+          left: 0;
+          background-size: contain;
+          background-position: bottom center;
+          background-repeat: no-repeat;
+        }
+
       }
 
-      & span {
-        font-weight: bold;
+      & p {
+        position: relative;
+        padding-right: 50px;
+
+        & span {
+          display: block;
+          margin-top: 5px;
+        }
+
       }
 
-      &:before {
-        content: "";
+      & p:before {
+        content: "Learn More";
         position: absolute;
-        background-image: url(/images/icons/warning.svg);
-        height: 20px;
-        width: 30px;
-        top: 0;
-        left: 0;
-        background-size: contain;
-        background-position: bottom center;
-        background-repeat: no-repeat;
+        right: -20px;
+        top: -18px;
+        font-size: 12px;
       }
 
-      &:after {
+      & p:after {
         content: "";
         background-image: url(/images/icons/chevron.svg);
         height: 20px;
@@ -54,14 +77,10 @@
         font-size: 18px;
       }
 
-      & span:first-of-type {
-        padding-right: 20px;
-      }
+    }
 
-      &.expanded:after {
-        transform: rotate(-90deg);
-      }
-
+    & .expanded p:after {
+      transform: rotate(-90deg);
     }
 
     & .expand-content {

@@ -3,7 +3,7 @@
 
 const container = document.querySelector('.notice');
 const text = container.querySelector('.text');
-const button = container.querySelector('h1');
+const button = container.querySelector('.toggle');
 const wrapper = container.querySelector('.expand-content');
 const padding = parseInt(window.getComputedStyle(text).getPropertyValue('padding-top'));
 

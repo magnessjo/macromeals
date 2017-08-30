@@ -132,13 +132,14 @@
       & > div {
 
         &:first-of-type {
-          margin-bottom: 20px;
+          margin-bottom: 40px;
         }
 
         &:last-of-type {
           position: relative;
           display: flex;
           align-items: center;
+          justify-content: center;
 
           & > div {
             padding-left: 40px;
@@ -149,6 +150,7 @@
         & span {
           display: block;
           font-weight: 700;
+          margin-bottom: 5px;
         }
 
       }
@@ -168,8 +170,13 @@
       }
 
       & img {
-        max-width: 140px;
+        max-width: 100px;
         display: block;
+
+        @media (--large-min) {
+          width: 140px;
+        }
+
       }
 
     }
