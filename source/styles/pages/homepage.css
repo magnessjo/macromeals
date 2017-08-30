@@ -120,6 +120,10 @@
     min-height: 200px;
     margin-bottom: 40px;
 
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
     @media (--desktop-min) {
       display: flex;
       justify-content: space-between;
@@ -175,13 +179,14 @@
 }
 
 #featured-example {
+  background-color: rgba(101, 147, 49, .5);
+  padding: 50px 0;
 
   & .with-underline {
-    margin-bottom: 60px;
-    color: var(--black);
+    color: var(--white);
 
     & span:after {
-      background-color: var(--black);
+      background-color: var(--white);
     }
 
   }

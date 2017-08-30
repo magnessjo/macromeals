@@ -76,24 +76,24 @@
 
 
 
-.bookman-large {
-  font-family: var(--bookman);
+.didot-large {
+  font-family: var(--didot);
   font-size: calc(22px + 1.25vw);
   margin-bottom: 30px;
   text-transform: uppercase;
   line-height: 1em;
 }
 
-.bookman-headline {
-  font-family: var(--bookman);
+.didot-headline {
+  font-family: var(--didot);
   font-size: calc(18px + .6vw);
   margin-bottom: 20px;
   text-transform: uppercase;
   line-height: 1em;
 }
 
-.bookman-small {
-  font-family: var(--bookman);
+.didot-small {
+  font-family: var(--didot);
   font-size: 18px;
   margin-bottom: 20px;
   text-transform: uppercase;

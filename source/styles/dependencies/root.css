@@ -1,8 +1,13 @@
 
+@font-face{
+  font-family:"Didot";
+  src:url("/fonts/didot-regular.woff2") format("woff2"),
+}
+
 :root {
 
   --nimbus:   'nimbus-sans', sans-serif;
-  --bookman:  'bookman-jf-pro', serif;
+  --didot:    'Didot', serif;
 
   --white:        #ffffff;
   --black:        #171717;
