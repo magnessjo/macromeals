@@ -164,6 +164,8 @@
         & span {
           width: 80px;
           display: inline-block;
+          text-transform: uppercase;
+          font-weight: 400;
         }
 
       }

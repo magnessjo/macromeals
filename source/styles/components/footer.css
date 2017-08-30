@@ -5,12 +5,8 @@ footer {
     color: var(--white);
   }
 
-  & .with-underline span {
-    color: var(--white);
-  }
-
-  & .with-underline span:after {
-    background-color: var(--white);
+  & .nimbus-medium {
+    text-transform: uppercase;
   }
 
   & .contact {

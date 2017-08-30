@@ -3,13 +3,13 @@ header {
   background-color: var(--white);
   z-index: 99;
   position: relative;
-  padding: 10px 0;
 
   & .lock {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     max-width: inherit;
+    padding-right: 0;
+    height: 60px;
   }
 
   & .logo {
@@ -25,13 +25,11 @@ header {
 
   }
 
-  & .actions {
-    display: flex;
-  }
-
   & nav {
     display: flex;
     align-items: center;
+    margin-left: 40px;
+    height: 100%;
 
     @media (--medium-max) {
       display: none;
@@ -41,44 +39,49 @@ header {
       text-transform: uppercase;
       color: var(--green);
       line-height: 1em;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      font-size: 16px;
+      padding: 0 20px;
 
-      @media (--large-min) {
-        margin-right: 15px;
-      }
-
-      @media (--tablet-min) {
-        margin-right: 20px;
-      }
-
-      @media (--desktop-min) {
-        margin-right: 40px;
+      &:hover {
+        background-color: var(--green);
+        color: var(--white);
       }
 
     }
+
+  }
+
+  & .actions {
+    margin-left: auto;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  & .sign-up {
+    color: var(--black);
+    margin-right: 30px;
+  }
+
+  & .register {
+    font-size: 14px;
+    font-size: calc(14px + .4vw);
+    padding: 0 20px;
+    height: 100%;
+    display: flex;
+    background-color: var(--green);
+    color: var(--white);
 
     & span {
-      position: relative;
-      text-align: center;
-      font-size: 12px;
-      line-height: 1em;
-      display: block;
-      text-transform: capitalize;
+      align-self: center;
     }
 
   }
 
-  & .call-to-action {
-    font-size: 14px;
-    padding: 8px 15px;
-    align-self: center;
-
-    @media (--medium-max) {
-      margin-right: 20px;
-    }
-
-  }
-
-  & .menu-toggle {
+  /*& .menu-toggle {
     cursor: pointer;
 
     @media (--large-min) {
@@ -91,9 +94,9 @@ header {
       margin-bottom: 0;
     }
 
-  }
+  }*/
 
-  & .menu-button {
+  /*& .menu-button {
     position: relative;
     height: 20px;
     width: 20px;
@@ -120,11 +123,11 @@ header {
 
     }
 
-  }
+  }*/
 
 }
 
-menu {
+/*menu {
   position: fixed;
   top: 0;
   bottom: 0;
@@ -207,4 +210,4 @@ menu {
 
   }
 
-}
+}*/

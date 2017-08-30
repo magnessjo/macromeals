@@ -28,6 +28,12 @@
   font-size: 22px;
   font-size: calc(18px + .8vw);
   margin-bottom: 20px;
+
+  & span {
+    font-weight: 400;
+    font-size: calc(14px + .6vw);
+  }
+
 }
 
 .nimbus-small {
@@ -39,6 +45,7 @@
 
 .nimbus-small-bold {
   font-family: var(--nimbus);
+  font-weight: 700;
   font-size: 18px;
   font-size: calc(12px + .8vw);
   margin-bottom: 10px;
@@ -46,8 +53,15 @@
 
 .nimbus-tiny {
   font-family: var(--nimbus);
-  font-size: 14px;
+  font-size: calc(12px + .4vw);
   margin-bottom: 5px;
+}
+
+.nimbus-tiny-bold {
+  font-family: var(--nimbus);
+  font-size: calc(12px + .4vw);
+  margin-bottom: 5px;
+  font-weight: 700;
 }
 
 
