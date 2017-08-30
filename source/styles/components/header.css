@@ -15,12 +15,8 @@ header {
   & .logo {
 
     & img {
-      width: 70px;
-
-      @media (--large-min) {
-        width: 100px;
-      }
-
+      height: 40px;
+      margin-top: 10px;
     }
 
   }
