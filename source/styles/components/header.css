@@ -62,6 +62,7 @@ header {
       font-size: 12px;
       line-height: 1em;
       display: block;
+      text-transform: capitalize;
     }
 
   }

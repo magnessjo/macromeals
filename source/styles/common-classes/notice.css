@@ -3,7 +3,6 @@
 
   & .lock > .text {
     background-color: rgba(255, 252, 143, .4);
-    max-width: 900px;
     margin: 0 auto;
     padding: 30px;
     position: relative;
@@ -16,11 +15,12 @@
     & .toggle {
       cursor: pointer;
 
-      & h1 {
+      & .nimbus-small-bold {
         position: relative;
         padding-left: 45px;
         padding-right: 30px;
         margin-bottom: 20px;
+        line-height: 1em;
 
         @media (--large-min) {
           display: flex;
@@ -47,7 +47,11 @@
 
       & p {
         position: relative;
-        padding-right: 50px;
+        padding-right: 40px;
+
+        @media (--tablet-min) {
+          padding-right: 100px;
+        }
 
         & span {
           display: block;
@@ -57,11 +61,15 @@
       }
 
       & p:before {
-        content: "Learn More";
         position: absolute;
-        right: -20px;
-        top: -18px;
+        right: 25px;
+        top: -4px;
         font-size: 12px;
+
+        @media (--tablet-min) {
+          content: "Learn More";
+        }
+
       }
 
       & p:after {
@@ -83,12 +91,16 @@
       transform: rotate(-90deg);
     }
 
+    & .expanded p:before {
+      content: "";
+    }
+
     & .expand-content {
       height: 0;
       overflow: hidden;
 
       & > div {
-        padding-top: 30px;
+        padding-top: 10px;
       }
 
     }

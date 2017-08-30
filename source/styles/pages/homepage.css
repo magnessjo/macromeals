@@ -40,7 +40,6 @@
     }
 
     & h1 {
-      font-family: var(--apercubold);
       margin-bottom: 40px;
       font-size: 32px;
       line-height: 1em;
