@@ -107,13 +107,11 @@
 
   }
 
-  & a {
+  & .call-to-action {
     float: right;
-    text-transform: uppercase;
-    padding: 10px 20px;
     color: var(--white);
     background-color: var(--black);
-    border-radius: 10px;
+    margin-right: 50px;
   }
 
 }
