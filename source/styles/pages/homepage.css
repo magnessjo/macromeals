@@ -131,6 +131,15 @@
         padding-right: 150px;
       }
 
+      & .nimbus-medium-bold {
+        line-height: 1em;
+      }
+
+      & .nimbus-medium-bold span {
+        display: block;
+        line-height: 1em;
+      }
+
       & .nimbus-tiny-bold span {
         font-weight: 400;
         width: 70px;

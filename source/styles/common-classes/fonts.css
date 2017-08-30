@@ -31,7 +31,7 @@
 
   & span {
     font-weight: 400;
-    font-size: calc(14px + .6vw);
+    font-size: calc(14px + .4vw);
   }
 
 }
