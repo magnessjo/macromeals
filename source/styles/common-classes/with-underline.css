@@ -1,7 +1,7 @@
 
 .with-underline {
   font-family: var(--bookman);
-  font-size: calc(22px + 1.5vw);
+  font-size: calc(18px + 1vw);
   margin-bottom: 20px;
   color: var(--green);
   text-transform: uppercase;
