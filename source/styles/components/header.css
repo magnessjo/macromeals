@@ -59,6 +59,11 @@ header {
     height: 100%;
     display: flex;
     align-items: center;
+
+    & a {
+      text-transform: uppercase;
+    }
+
   }
 
   & .sign-up {
@@ -67,13 +72,19 @@ header {
   }
 
   & .register {
-    font-size: 14px;
-    font-size: calc(14px + .4vw);
     padding: 0 20px;
     height: 100%;
     display: flex;
     background-color: var(--green);
     color: var(--white);
+
+    @media (--desktop-min) {
+      padding: 0 30px;
+    }
+
+    @media (--x-large) {
+      padding: 0 40px;
+    }
 
     & span {
       align-self: center;
