@@ -29,6 +29,7 @@ const config = {
       register: 'source/styles/pages/register.css',
       generic: 'source/styles/pages/generic.css',
       faq: 'source/styles/pages/faq.css',
+      store: 'source/styles/pages/store.css',
     },
   },
 

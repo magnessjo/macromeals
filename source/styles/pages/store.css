@@ -1,0 +1,15 @@
+
+@import "../master.css";
+
+.slim-stage .image {
+  background-image: url(/images/stage/chopping.jpg);
+}
+
+section {
+
+  & .call-to-action {
+    float: none;
+    font-size: 14px;
+  }
+
+}
