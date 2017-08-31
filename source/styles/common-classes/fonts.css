@@ -76,7 +76,7 @@
 
 
 
-.didot-large {
+.trajan-large {
   font-family: var(--trajan);
   font-size: calc(22px + 1.25vw);
   margin-bottom: 30px;
@@ -84,7 +84,7 @@
   line-height: 1em;
 }
 
-.didot-headline {
+.trajan-headline {
   font-family: var(--trajan);
   font-size: calc(18px + .6vw);
   margin-bottom: 20px;
@@ -92,7 +92,7 @@
   line-height: 1em;
 }
 
-.didot-small {
+.trajan-small {
   font-family: var(--trajan);
   font-size: 18px;
   margin-bottom: 20px;

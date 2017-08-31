@@ -110,7 +110,12 @@
     margin-bottom: 40px;
 
     & p {
-      margin-bottom: 10px;
+      margin-bottom: 5px;
+
+      &:first-of-type {
+        font-weight: 700;
+      }
+
     }
 
   }
@@ -178,7 +183,7 @@
 
 }
 
-#featured-example {
+#featured {
   background-color: rgba(101, 147, 49, .5);
   padding: 50px 0;
 
@@ -275,135 +280,52 @@
 
 }
 
-#featured {
+#reviews {
 
-  & .product {
+  & .quote {
+    display: flex;
+    margin-bottom: 60px;
+    align-items: center;
 
-    @media (--desktop-min) {
-      display: flex;
+    &:last-of-type {
+      margin-bottom: 0;
     }
 
-    & .image {
-      margin-bottom: 20px;
-      background-size: cover;
-      background-position: center;
+    &:nth-of-type(odd) {
 
-      @media (--tablet-max) {
-        height: 200px;
-        width: 100%;
+      & blockquote {
+        order: 1;
       }
 
-      @media (--tablet-min) {
-        height: 300px;
-      }
-
-      @media (--desktop-min) {
-        width: 65%;
+      & .person {
+        order: 2;
+        margin-left: 20px;
       }
 
     }
 
-    & .text {
+    &:nth-of-type(even) {
 
-      @media (--tablet-max) {
-        margin-bottom: 30px;
-        width: 100%;
+      & blockquote {
+        order: 2;
       }
 
-      @media (--desktop-min) {
-        padding-right: 30px;
-      }
-
-      & > div {
-
-        &:first-of-type {
-          margin-bottom: 40px;
-        }
-
-        &:last-of-type {
-          position: relative;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-
-          & > div {
-            padding-left: 40px;
-          }
-
-        }
-
-        & span {
-          display: block;
-          font-weight: 700;
-          margin-bottom: 5px;
-        }
-
-      }
-
-      & p {
-        margin-bottom: 0;
-
-        &:last-of-type {
-          margin-bottom: 10px;
-        }
-
-        & span {
-          width: 80px;
-          display: inline-block;
-          text-transform: uppercase;
-          font-weight: 400;
-        }
-
-      }
-
-      & img {
-        width: 100px;
-        display: block;
-
-        @media (--large-min) {
-          width: 140px;
-        }
-
+      & .person {
+        order: 1;
+        margin-right: 20px;
+        text-align: right;
       }
 
     }
 
-  }
-
-}
-
-#seasonal {
-
-  & .flex-section {
-
-    @media (--tablet-min) {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
+    & blockquote {
+      flex-basis: 60%;
+      border: 1px solid var(--black);
+      padding: 40px;
     }
 
-    & > div {
-      margin-bottom: 40px;
-
-      @media (--tablet-min) {
-        width: 49%;
-      }
-
-    }
-
-    & .image {
-      background-position: center;
-      background-size: cover;
-      margin-bottom: 10px;
-
-      @media (--large-max) {
-        height: 150px;
-      }
-
-      @media (--tablet-min) {
-        height: 200px;
-      }
-
+    & .person {
+      flex-basis: 40%;
     }
 
   }

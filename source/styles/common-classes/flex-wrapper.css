@@ -20,7 +20,7 @@
       display: block;
     }
 
-    & .didot-headline span {
+    & .trajan-headline  span {
 
       @media (--large-max) {
         display: inline;
