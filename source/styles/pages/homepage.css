@@ -130,14 +130,14 @@
     position: relative;
     min-height: 200px;
     margin-bottom: 40px;
+    overflow: hidden;
 
     &:last-of-type {
       margin-bottom: 0;
     }
 
-    @media (--desktop-min) {
-      display: flex;
-      justify-content: space-between;
+    & > div {
+      float: left;
     }
 
     & .trajan-headline {
@@ -147,10 +147,9 @@
 
     & .text {
 
-      @media (--desktop-min) {
+      @media (--tablet-min) {
         padding: 20px 40px;
-        flex-basis: 50%;
-        align-self: center;
+        width: 50%;
       }
 
       & h1 {
@@ -163,26 +162,54 @@
 
     }
 
+    & .images {
+      width: 50%;
+      float: left;
+    }
+
     & .image {
+      height: 100%;
+      width: 50%;
+      position: absolute;
+      left: 50%;
+      top: 0;
+      bottom: 0;
       background-size: cover;
       background-position: center;
+      opacity: 0;
+    }
 
-      &:first-of-type {
+    & .previous {
+      opacity: 1;
+    }
 
-        @media (--tablet-max) {
-          display: none;
-        }
+  }
 
-      }
+  & .skip-animation {
 
-      @media (--tablet-max) {
-        height: 300px;
-      }
+    & .previous {
+      opacity: 0;
+      visibility: hidden;
+    }
 
-      @media (--desktop-min) {
-        width: 25%;
-      }
+    & .current {
+      opacity: 1;
+      visibility: visible;
+    }
 
+  }
+
+  & .start-animation {
+
+    & .previous {
+      opacity: 0;
+      transition: opacity 1s ease-out;
+    }
+
+    & .current {
+      opacity: 1;
+      transition: opacity 1s ease-in;
+      transition-delay: 1s;
     }
 
   }
