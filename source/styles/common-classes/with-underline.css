@@ -1,22 +1,36 @@
 
 .with-underline {
-  font-family: var(--didot);
+  font-family: var(--trajan);
   font-size: calc(18px + 1vw);
   margin-bottom: 50px;
   color: var(--green);
   text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 300;
 
   & span {
     position: relative;
+    display: inline-block;
+    padding-top: 15px;
 
-    &:after {
+    &:before, &:after {
       content: "";
       position: absolute;
-      bottom: -2px;
-      height: 1px;
+      height: 2px;
       background-color: var(--green);
       left: 0;
-      right: -10%;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+
+    &:before {
+      /*top: 0;
+      width: 20%;*/
+    }
+
+    &:after {
+      bottom: -15px;
+      width: 70%;
     }
 
   }

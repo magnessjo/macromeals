@@ -129,7 +129,7 @@
       justify-content: space-between;
     }
 
-    & .nimbus-small-bold {
+    & .nimbus-medium-bold {
       text-transform: uppercase;
       color: var(--green);
     }

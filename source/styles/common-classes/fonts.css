@@ -77,7 +77,7 @@
 
 
 .didot-large {
-  font-family: var(--didot);
+  font-family: var(--trajan);
   font-size: calc(22px + 1.25vw);
   margin-bottom: 30px;
   text-transform: uppercase;
@@ -85,7 +85,7 @@
 }
 
 .didot-headline {
-  font-family: var(--didot);
+  font-family: var(--trajan);
   font-size: calc(18px + .6vw);
   margin-bottom: 20px;
   text-transform: uppercase;
@@ -93,7 +93,7 @@
 }
 
 .didot-small {
-  font-family: var(--didot);
+  font-family: var(--trajan);
   font-size: 18px;
   margin-bottom: 20px;
   text-transform: uppercase;
