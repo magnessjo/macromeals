@@ -109,6 +109,12 @@
   & .summary {
     margin-bottom: 40px;
 
+    & .nimbus-medium-bold {
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto 60px auto;
+    }
+
     & p {
       margin-bottom: 5px;
 
@@ -134,7 +140,7 @@
       justify-content: space-between;
     }
 
-    & .nimbus-medium-bold {
+    & .trajan-headline {
       text-transform: uppercase;
       color: var(--green);
     }
@@ -187,13 +193,9 @@
   background-color: rgba(101, 147, 49, .5);
   padding: 50px 0;
 
-  & .with-underline {
+  & .trajan-large  {
     color: var(--white);
-
-    & span:after {
-      background-color: var(--white);
-    }
-
+    margin-bottom: 40px;
   }
 
   & .product {
@@ -204,10 +206,16 @@
     }
 
     & .info {
+      background-color: var(--white);
 
-      @media (--medium-max) {
-        margin-bottom: 30px;
-        width: 100%;
+      @media (--large-max) {
+        padding: 20px 20px 50px 20px;
+        border-radius: 20px 20px 0 0;
+      }
+
+      @media (--tablet-min) {
+        padding: 20px 50px 20px 20px;
+        border-radius: 20px 0 0 20px;
       }
 
       @media (--tablet-min) {
@@ -241,7 +249,7 @@
       background-position: center;
       position: relative;
 
-      @media (--medium-max) {
+      @media (--large-max) {
         height: 200px;
         width: 100%;
       }
@@ -256,16 +264,22 @@
       background-size: contain;
       background-position: center;
       position: absolute;
-      top: 50%;
-      left: -50px;
-      height: 100px;
-      width: 100px;
-      transform: translateY(-50%);
+
+      @media (--large-max) {
+        left: 50%;
+        height: 100px;
+        width: 100px;
+        top: -50px;
+        transform: translateX(-50%);
+      }
 
       @media (--tablet-min) {
         left: -70px;
         height: 140px;
         width: 140px;
+        top: 50%;
+        left: -50px;
+        transform: translateY(-50%);
       }
 
       @media (--desktop-min) {
@@ -281,6 +295,11 @@
 }
 
 #reviews {
+
+  /*& .quotes-wrapper {
+    max-width: 700px;
+    margin: 0 auto;
+  }*/
 
   & .quote {
     display: flex;
@@ -319,13 +338,43 @@
     }
 
     & blockquote {
+      padding: 30px 60px;
+      border-radius: 40px;
+      border: 2px solid var(--green);
       flex-basis: 60%;
-      border: 1px solid var(--black);
-      padding: 40px;
+      position: relative;
+
+      &:before, &:after {
+        content: ' ';
+        position: absolute;
+        width: 0;
+        height: 0;
+      }
+
+      &:before {
+        left: -50px;
+        top: 50%;
+        transform: translateY(-50%);
+        border-top: 25px solid transparent ;
+        border-right: 25px solid var(--green);
+        border-bottom: 25px solid var(--green);
+        border-left: 25px solid transparent;
+      }
+
+      &:after {
+        left: -20px;
+        top: 50%;
+        border-top: 15px solid transparent;
+        border-right: 15px solid var(--white);
+        border-bottom: 15px solid var(--white);
+        border-left: 15px solid transparent;
+      }
+
     }
 
     & .person {
       flex-basis: 40%;
+      text-transform: uppercase;
     }
 
   }
