@@ -294,93 +294,31 @@
 
 }
 
-#reviews {
+#article {
 
-  /*& .quotes-wrapper {
-    max-width: 700px;
-    margin: 0 auto;
-  }*/
+  & .lock {
 
-  & .quote {
-    display: flex;
-    margin-bottom: 60px;
-    align-items: center;
-
-    &:last-of-type {
-      margin-bottom: 0;
-    }
-
-    &:nth-of-type(odd) {
-
-      & blockquote {
-        order: 1;
-      }
-
-      & .person {
-        order: 2;
-        margin-left: 20px;
-      }
-
-    }
-
-    &:nth-of-type(even) {
-
-      & blockquote {
-        order: 2;
-      }
-
-      & .person {
-        order: 1;
-        margin-right: 20px;
-        text-align: right;
-      }
-
-    }
-
-    & blockquote {
-      padding: 30px 60px;
-      border-radius: 40px;
-      border: 2px solid var(--green);
-      flex-basis: 60%;
-      position: relative;
-
-      &:before, &:after {
-        content: ' ';
-        position: absolute;
-        width: 0;
-        height: 0;
-      }
-
-      &:before {
-        left: -50px;
-        top: 50%;
-        transform: translateY(-50%);
-        border-top: 25px solid transparent ;
-        border-right: 25px solid var(--green);
-        border-bottom: 25px solid var(--green);
-        border-left: 25px solid transparent;
-      }
-
-      &:after {
-        left: -20px;
-        top: 50%;
-        border-top: 15px solid transparent;
-        border-right: 15px solid var(--white);
-        border-bottom: 15px solid var(--white);
-        border-left: 15px solid transparent;
-      }
-
-    }
-
-    & .person {
-      flex-basis: 40%;
-      text-transform: uppercase;
+    @media (--tablet-min) {
+      display: flex;
     }
 
   }
 
-}
+  & .image {
 
-.callout {
-  margin-bottom: 0;
+    @media (--tablet-min) {
+      max-width: 40%;
+      height: inherit;
+    }
+
+  }
+
+  & .text {
+
+    @media (--tablet-min) {
+      padding-left: 40px;
+    }
+
+  }
+
 }
