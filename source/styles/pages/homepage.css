@@ -247,6 +247,14 @@
       min-height: 30vh;
     }
 
+    @media (--desktop-min) {
+      min-height: 35vh;
+    }
+
+    @media (--x-large) {
+      min-height: 40vh;
+    }
+
     & .info {
       background-color: var(--white);
 
@@ -258,15 +266,16 @@
       @media (--tablet-min) {
         padding: 20px 50px 20px 20px;
         border-radius: 20px 0 0 20px;
-      }
-
-      @media (--tablet-min) {
         padding-right: 100px;
         width: 35%;
       }
 
       @media (--desktop-min) {
-        padding-right: 150px;
+        padding: 30px 150px 30px 30px;
+      }
+
+      @media (--x-large) {
+        padding: 40px 180px 40px 40px;
       }
 
       & .nimbus-medium-bold {
@@ -292,9 +301,10 @@
       position: relative;
 
       @media (--large-max) {
-        height: 200px;
+        height: 40vw;
+        min-height: 200px;
         width: 100%;
-        border-radius: 20px 20px 0 0;
+        border-radius: 0 0 20px 20px;
       }
 
       @media (--tablet-min) {
