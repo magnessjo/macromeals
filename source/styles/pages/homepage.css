@@ -279,10 +279,12 @@
       @media (--large-max) {
         height: 200px;
         width: 100%;
+        border-radius: 20px 20px 0 0;
       }
 
       @media (--tablet-min) {
         width: 65%;
+        border-radius: 0 20px 20px 0;
       }
 
     }
