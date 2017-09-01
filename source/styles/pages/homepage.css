@@ -107,21 +107,17 @@
   }
 
   & .summary {
-    margin-bottom: 40px;
+    margin-bottom: 60px;
 
     & .nimbus-medium-bold {
       text-align: center;
       max-width: 600px;
-      margin: 0 auto 60px auto;
+      margin: 0 auto;
+      line-height: 1em;
     }
 
-    & p {
-      margin-bottom: 5px;
-
-      &:first-of-type {
-        font-weight: 700;
-      }
-
+    & .nimbus-medium-bold:first-of-type {
+      margin-bottom: 20px;
     }
 
   }
@@ -129,15 +125,10 @@
   & .size-row {
     position: relative;
     min-height: 200px;
-    margin-bottom: 40px;
     overflow: hidden;
 
     &:last-of-type {
       margin-bottom: 0;
-    }
-
-    & > div {
-      float: left;
     }
 
     & .trajan-headline {
@@ -148,8 +139,13 @@
     & .text {
 
       @media (--tablet-min) {
-        padding: 20px 40px;
+        padding-top: 80px;
+        padding-bottom: 80px;
+        padding-right: 40px;
         width: 50%;
+        display: flex;
+        align-items: center;
+        height: 100%;
       }
 
       & h1 {
@@ -158,6 +154,10 @@
           text-align: center;
         }
 
+      }
+
+      & p:last-of-type {
+        margin-bottom: 0;
       }
 
     }
@@ -184,6 +184,21 @@
     }
 
   }
+
+  & .size-row:nth-of-type(even) {
+
+    & .image {
+      left: 0;
+    }
+
+    & .text {
+      float: right;
+      padding-right: 0;
+      padding-left: 40px;
+    }
+
+  }
+
 
   & .skip-animation {
 
