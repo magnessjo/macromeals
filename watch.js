@@ -40,6 +40,7 @@ const config = {
       app: `source/scripts/app.js`,
       homepage: `source/scripts/homepage`,
       beta: `source/scripts/beta`,
+      faq: `source/scripts/faq`,
     },
   },
 

@@ -2,18 +2,51 @@
 .slim-stage {
   height: 120px;
   margin-bottom: 80px;
+  position: relative;
 
   @media (--large-min) {
     height: 20vh;
     min-height: 180px;
   }
 
+  @media (--tablet-min) {
+    height: 30vwh;
+    min-height: 300px;
+  }
+
   & .image {
     background-image: url(/images/stage/chopping.jpg);
     background-position: center;
     background-size: cover;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    &:before {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: -50px;
+      right: -50px;;
+      background-color: rgba(255, 255, 255, .5);
+    }
+
+  }
+
+  & .lock {
     height: 100%;
-    width: 100%;
+  }
+
+  & h1 {
+    z-index: 9;
+    color: var(--green);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+
   }
 
 }

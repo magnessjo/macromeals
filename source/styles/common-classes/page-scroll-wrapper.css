@@ -1,0 +1,68 @@
+
+.page-scroll-wrapper {
+  overflow: hidden;
+
+  & .lock {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  & .page-navigation {
+    position: relative;
+
+    @media (--large-max) {
+      display: none;
+    }
+
+    @media (--tablet-min) {
+      width: 300px;
+      padding-right: 80px;
+    }
+
+    & .nimbus-tiny-bold {
+      margin-bottom: 30px;
+    }
+
+    & .page-nav {
+
+      @media (--tablet-min) {
+        width: 220px;
+        top: 0;
+      }
+
+    }
+
+    & button {
+      display: block;
+      padding: 20px 0;
+      border-bottom: 0;
+      width: 100%;
+      border-radius: 0;
+      text-align: left;
+      border-bottom: 1px solid var(--green);
+      text-transform: uppercase;
+
+      &:last-of-type {
+      border-bottom: none;
+      }
+
+    }
+
+  }
+
+  & .page-content {
+
+    @media (--tablet-min) {
+      width: calc(100% - 300px);
+    }
+
+    & .trajan-headline  {
+      margin-bottom: 30px;
+      font-weight: 300;
+      text-transform: uppercase;
+      color: var(--green);
+    }
+
+  }
+
+}

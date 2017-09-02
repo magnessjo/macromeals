@@ -1,59 +1,159 @@
 
 {% extends "_layout" %}
 {% includeCssFile "/faq.css" %}
+{% includeJsFile "/faq.js" %}
 
 {% block main %}
 
   <section id="stage" class="slim-stage">
     <div class="image"></div>
+    <div class="lock">
+      <h1 class="trajan-large">Frequently Asked Questions</h1>
+    </div>
   </section>
 
-  <section id="questions">
+  <div class="page-scroll-wrapper">
 
     <div class="lock">
 
-      <h1 class="nimbus-large">Frequently Asked Questions</h1>
+      <div class="page-navigation">
 
-      <div class="wrapper">
-
-        <div class="faq-wrapper">
-
-          <div class="faq-entry">
-            <h2>How many jellybeans are included with my meal?</h2>
-            <div>
-              <div>A minimum of 3 jellybeans are included with each meal</div>
-            </div>
-          </div>
-
-          <div class="faq-entry">
-            <h2>Does Becky really have a big butt?</h2>
-            <div>
-              <div>Yes, yes she does</div>
-            </div>
-          </div>
-
-          <div class="faq-entry">
-            <h2>What if I hate your food?</h2>
-            <div>
-              <div>Um, contact us</div>
-            </div>
-          </div>
-
-          <div class="faq-entry">
-            <h2>A vegan question?</h2>
-            <div>
-              <div>Um, contact us</div>
-            </div>
-          </div>
-
+        <div class="page-nav">
+          <button data-id="general">General</button>
+          <button data-id="beta-program">Beta Program</button>
+          <button data-id="shipping">Shipping</button>
+          <button data-id="food">Food</button>
         </div>
 
-        <div clas="image"></div>
+      </div>
+
+      <div class="page-content">
+
+        <section data-location="general">
+
+          <div class="faq-wrapper">
+
+            <h1 class="trajan-headline">General</h1>
+
+            <div class="faq-entry">
+              <h2 class="nimbus-small-bold">How long have you been in business?</h2>
+              <div>
+                <div>
+                  <p>We started delivering fresh meals outside of our friends in 2017.  We have been doing food prep on Sunday's for over a decade.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-entry">
+              <h2 class="nimbus-small-bold">Which local farms do you partner with?</h2>
+              <div>
+                <div>
+                  <p>Every season, we work with numerous farms in the Harford county area to do farm share.  We also attend several farmers markets a month.  If you're a farm and interested in partnering with us then we would love to hear from you!</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+        <section data-location="beta-program">
+
+          <div class="faq-wrapper">
+
+            <h1 class="trajan-headline">Beta Program</h1>
+
+            <div class="faq-entry">
+              <h2 class="nimbus-small-bold">What is the beta program?</h2>
+              <div>
+                <div>
+                  <p>The program allows us to guarantee food quality by controlling the demand.  The beta period will end on January 1st after 6 months of working with local farmers to help the demand.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+        <section data-location="shipping">
+
+          <div class="faq-wrapper">
+
+            <h1 class="trajan-headline">Shipping/Delivery</h1>
+
+            <div class="faq-entry">
+              <h2 class="nimbus-small-bold">How are your meals delivered?</h2>
+              <div>
+                <div>
+                  <p>We ship with Fed Ex overnight so your meals arrive fresh and not frozen.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-entry">
+              <h2 class="nimbus-small-bold">Where do you ship?</h2>
+              <div>
+                <div>
+                  <p>Currently, we ship to Maryland, Delaware and some lower parts of Pennsylvania.  We can do overnight shipping to any part of the U.S.  Please inquire with us to find out what the pricing would be if you live outside of our stated regions.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-entry">
+              <h2 class="nimbus-small-bold">Where do you deliver?</h2>
+              <div>
+                <div>
+                  <p>Currently, we deliver to Harford county on Sunday night between 6-10pm</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
+
+        <section data-location="food">
+
+          <div class="faq-wrapper">
+
+            <h1 class="trajan-headline">Food</h1>
+
+            <div class="faq-entry">
+              <h2 class="nimbus-small-bold">How long do the meals stay fresh?</h2>
+              <div>
+                <div>
+                  <p>Different meals have different expiration dates due to the type of protein included in the meal.  Vegan meals tend to have a longer shelf life than meats as a general rule of thumb.  Every meal comes is packaged with a enjoy by date and we recommend that you enjoy your meal by that date.  We general prepare, package and ship you meal within 48 hours so all meat meals should have a shelf life on 5 - 7 days when it arrives.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-entry">
+              <h2 class="nimbus-small-bold">Does the food contain antibiotics?</h2>
+              <div>
+                <div>
+                  <p>No</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-entry">
+              <h2 class="nimbus-small-bold">Is the food organic?</h2>
+              <div>
+                <div>
+                  <p>We work with local farmers to provide the fresh ingredients organic.  Unfortunately, it is impossible to provide year round produce from Maryland farms so produce from out of state is required and we are at the mersey of distributors.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </section>
 
       </div>
 
     </div>
 
-  </section>
+  </div>
 
 {% endblock %}
