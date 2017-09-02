@@ -57,7 +57,6 @@
       background-color: rgba(255, 255, 255, .9);
     }
 
-
     @media (--tablet-min) {
       width: 100%;
       position: relative;
@@ -81,6 +80,14 @@
           rgba(255, 255, 255, .05) 70%,
           rgba(255, 255, 255, 0) 100%
         );
+      }
+
+      @media (--desktop-min) {
+        padding: 350px;
+      }
+
+      @media (--x-large) {
+        padding: 550px;
       }
 
     }
