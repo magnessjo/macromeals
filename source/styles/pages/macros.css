@@ -59,6 +59,14 @@
 
     }
 
+    & .blackboard {
+
+      @media (--desktop-min) {
+        background-position: -80px center;
+      }
+
+    }
+
   }
 
 }
