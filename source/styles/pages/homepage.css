@@ -171,6 +171,12 @@
         margin-bottom: 0;
       }
 
+      & .shopping span {
+        font-weight: 700;
+        display: block;
+        margin-top: 5px;
+      }
+
     }
 
     & .images {
