@@ -1,6 +1,5 @@
 
 .slim-stage {
-  height: 120px;
   margin-bottom: 80px;
   position: relative;
 
@@ -15,37 +14,87 @@
   }
 
   & .image {
-    background-image: url(/images/stage/chopping.jpg);
     background-position: center;
     background-size: cover;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    background-image: url(/images/stage/chopping.jpg);
 
-    &:before {
-      content: "";
+    @media (--large-max) {
+      height: 200px;
+    }
+
+    @media (--tablet-min) {
       position: absolute;
       top: 0;
       bottom: 0;
-      left: -50px;
-      right: -50px;;
-      background-color: rgba(255, 255, 255, .5);
+      left: 0;
+      right: 0;
     }
 
   }
 
   & .lock {
     height: 100%;
+    display: flex;
+    align-items: center;
+
+    @media (--large-max) {
+      padding: 0;
+    }
+
   }
 
   & h1 {
     z-index: 9;
     color: var(--green);
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+    margin-bottom: 0;
+
+    @media (--large-max) {
+      position: absolute;
+      top: 50%;
+      left: 0;
+      padding: 20px;
+      transform: translateY(-50%);
+      background-color: rgba(255, 255, 255, .9);
+    }
+
+
+    @media (--tablet-min) {
+      width: 100%;
+      position: relative;
+    }
+
+    &:before {
+
+      @media (--tablet-min) {
+        content: '';
+        position: absolute;
+        padding: 250px;
+        top: 50%;
+        bottom: 0;
+        left: -40%;
+        right: 40%;
+        transform: translateY(-50%);
+        background: radial-gradient(ellipse,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(255, 255, 255, .9) 40%,
+          rgba(255, 255, 255, .1) 60%,
+          rgba(255, 255, 255, .05) 70%,
+          rgba(255, 255, 255, 0) 100%
+        );
+      }
+
+    }
+
+    & div {
+      position: relative;
+
+      & span {
+        display: block;
+        line-height: 1em;
+        margin-top: 10px;
+      }
+
+    }
 
   }
 
