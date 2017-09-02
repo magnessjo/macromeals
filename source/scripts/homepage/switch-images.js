@@ -49,14 +49,14 @@ function resize() {
 
   windowHeight = window.innerHeight;
 
-  calculateSize().then(() => {
+	calculateSize().then(() => {
 
-    rows.forEach((row, i) => {
-      const position = row.getBoundingClientRect();
-      locationMap[position.top + windowTop] = row;
-    });
+		rows.forEach((row, i) => {
+			const position = row.getBoundingClientRect();
+			locationMap[position.top + windowTop] = row;
+		});
 
-  });
+	});
 
 }
 
@@ -91,9 +91,19 @@ function calculateSize() {
 
 function setSize(size) {
 
-  rows.forEach((block) => {
-    block.style.height = `${size}px`;
-  });
+	if (window.innerWidth >= 768) {
+
+		rows.forEach((block) => {
+	    block.style.height = `${size}px`;
+	  });
+
+	} else {
+
+		rows.forEach((row, i) => {
+			row.removeAttribute('style');
+		});
+
+	}
 
 }
 
@@ -118,14 +128,11 @@ function load() {
 
 export default function() {
 
-  if (window.matchMedia('(min-width: 768px)').matches) {
+  window.addEventListener('resize', resize);
+  window.addEventListener('scroll', scroll);
 
-    window.addEventListener('resize', resize);
-    window.addEventListener('scroll', scroll);
+  resize();
+  load();
 
-    resize();
-    load();
-
-	}
 
 }

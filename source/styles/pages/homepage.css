@@ -124,8 +124,15 @@
 
   & .size-row {
     position: relative;
-    min-height: 200px;
     overflow: hidden;
+
+    @media (--large-max) {
+      margin-bottom: 50px;
+    }
+
+    @media (--tablet-min) {
+
+    }
 
     &:last-of-type {
       margin-bottom: 0;
@@ -137,6 +144,10 @@
     }
 
     & .text {
+
+      @media (--large-max) {
+        margin-bottom: 20px;
+      }
 
       @media (--tablet-min) {
         padding-top: 80px;
@@ -163,20 +174,38 @@
     }
 
     & .images {
-      width: 50%;
-      float: left;
+
+      @media (--large-max) {
+        height: 30vh;
+        min-height: 200px;
+        position: relative;
+      }
+
+      @media (--tablet-min) {
+        width: 50%;
+        float: left;
+      }
+
     }
 
     & .image {
+      opacity: 0;
       height: 100%;
-      width: 50%;
       position: absolute;
-      left: 50%;
       top: 0;
       bottom: 0;
       background-size: cover;
       background-position: center;
-      opacity: 0;
+
+      @media (--large-max) {
+        width: 100%;
+      }
+
+      @media (--tablet-min) {
+        width: 50%;
+        left: 50%;
+      }
+
     }
 
     & .previous {
@@ -192,9 +221,13 @@
     }
 
     & .text {
-      float: right;
-      padding-right: 0;
-      padding-left: 40px;
+
+      @media (--tablet-min) {
+        float: right;
+        padding-right: 0;
+        padding-left: 40px;
+      }
+
     }
 
   }
