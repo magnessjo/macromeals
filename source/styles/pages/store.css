@@ -2,7 +2,8 @@
 @import "../master.css";
 
 .slim-stage .image {
-  background-image: url(/images/stage/chopping.jpg);
+  background-image: url(/images/stage/meals.jpg);
+  background-position: top center;
 }
 
 section {
