@@ -90,8 +90,17 @@
       padding: 15px 25px;
       color: #ffd777;
       float: none;
+      white-space: nowrap;
     }
 
+  }
+
+}
+
+.notice {
+
+  @media (--large-max) {
+    padding-top: 40px;
   }
 
 }
