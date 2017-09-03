@@ -219,7 +219,10 @@ footer {
       right: 0;
       width: 95px;
 
-      @m
+      @media (--large-max) {
+        width: 155px;
+      }
+
     }
 
   }
