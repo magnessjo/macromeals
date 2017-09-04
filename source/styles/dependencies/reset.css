@@ -59,6 +59,6 @@ button {
   font-weight: 400;
 }
 
-input {
+input[type='submit'] {
   -webkit-appearance: none;
 }
