@@ -1,0 +1,40 @@
+
+{% set category = craft.categories('mealType').slug('featured') %}
+
+{% for entry in craft.commerce.products.relatedTo(category).limit(1) %}
+
+  {% if entry.productImage|length > 0 %}
+    {% set image = entry.productImage[0].url %}
+  {% else %}
+    {% set image = '/images/products/placeholder.jpg' %}
+  {% endif %}
+
+  <section id="featured">
+
+    <div class="lock">
+
+      <h1 class="trajan-large"><span>Meal of the Month</span></h1>
+
+      <div class="product">
+
+        <div class="info">
+          <h2 class="nimbus-medium-bold">{{ entry.title}} <span>{{ entry.subTitle }}</span></h2>
+          <p><span class="nimbus-tiny-bold">Ingredients:</span> {{ entry.ingredients }}</p>
+          {% for row in entry.productMacros %}
+            <p class="nimbus-tiny-bold"><span>Protein:</span> {{ row.protein }}</p>
+            <p class="nimbus-tiny-bold"><span>Carbs:</span> {{ row.carbs }}</p>
+            <p class="nimbus-tiny-bold"><span>Fat:</span> {{ row.fat }}</p>
+          {% endfor %}
+
+        </div>
+
+        <div class="image" style="background-image: url({{ image }})">
+          <div class="pie-chart" style="background-image: url({{ entry.productPieChart[0].url }})"></div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+{% endfor %}

@@ -25,7 +25,7 @@ return [
     'overridePhpSessionLocation' => false,
     'environmentVariables' => [
       'siteUrl'  => 'https://macromeals.localhost.dev/',
-      'basePath' => '/Users/joshmagness/Sites/personals/macromeals/source/assets/images/uploads',
+      'basePath' => '/Users/magnessjo/Sites/personal/macromeals/source/assets/uploads',
     ],
   ],
 
