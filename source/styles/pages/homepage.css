@@ -253,11 +253,13 @@
     & .previous {
       opacity: 0;
       visibility: hidden;
+      transition: none;
     }
 
     & .current {
       opacity: 1;
       visibility: visible;
+      transition: none;
     }
 
   }

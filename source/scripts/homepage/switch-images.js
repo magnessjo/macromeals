@@ -112,15 +112,17 @@ function setSize(size) {
 
 function load() {
 
-  calculateSize();
+  calculateSize().then(() => {
 
-  for (const key in locationMap) {
+		for (const key in locationMap) {
 
-    if (key - windowHeight < windowTop ) {
-      locationMap[key].classList.add('skip-animation');
-    }
+	    if (key - windowHeight < windowTop ) {
+	      locationMap[key].classList.add('skip-animation');
+	    }
 
-  }
+	  }
+
+	});
 
 }
 
