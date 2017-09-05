@@ -1,0 +1,117 @@
+
+#featured-meal {
+  background-color: var(--light-green);
+  padding: 50px 0;
+
+  & .trajan-large  {
+    color: var(--white);
+    margin-bottom: 40px;
+  }
+
+  & .product {
+
+    @media (--tablet-min) {
+      display: flex;
+      min-height: 30vh;
+    }
+
+    @media (--desktop-min) {
+      min-height: 35vh;
+    }
+
+    @media (--x-large) {
+      min-height: 40vh;
+    }
+
+    & .info {
+      background-color: var(--white);
+
+      @media (--large-max) {
+        padding: 20px 20px 50px 20px;
+        border-radius: 20px 20px 0 0;
+      }
+
+      @media (--tablet-min) {
+        padding: 20px 50px 20px 20px;
+        border-radius: 20px 0 0 20px;
+        padding-right: 100px;
+        width: 35%;
+      }
+
+      @media (--desktop-min) {
+        padding: 30px 150px 30px 30px;
+      }
+
+      @media (--x-large) {
+        padding: 40px 180px 40px 40px;
+      }
+
+      & .nimbus-medium-bold {
+        line-height: 1em;
+      }
+
+      & .nimbus-medium-bold span {
+        display: block;
+        line-height: 1em;
+      }
+
+      & .nimbus-tiny-bold span {
+        font-weight: 400;
+        width: 70px;
+        display: inline-block;
+      }
+
+    }
+
+    & .image {
+      background-size: cover;
+      background-position: center;
+      position: relative;
+
+      @media (--large-max) {
+        height: 40vw;
+        min-height: 200px;
+        width: 100%;
+        border-radius: 0 0 20px 20px;
+      }
+
+      @media (--tablet-min) {
+        width: 65%;
+        border-radius: 0 20px 20px 0;
+      }
+
+    }
+
+    & .pie-chart {
+      background-size: contain;
+      background-position: center;
+      position: absolute;
+
+      @media (--large-max) {
+        left: 50%;
+        height: 100px;
+        width: 100px;
+        top: -50px;
+        transform: translateX(-50%);
+      }
+
+      @media (--tablet-min) {
+        left: -70px;
+        height: 140px;
+        width: 140px;
+        top: 50%;
+        left: -50px;
+        transform: translateY(-50%);
+      }
+
+      @media (--desktop-min) {
+        left: -100px;
+        height: 200px;
+        width: 200px;
+      }
+
+    }
+
+  }
+
+}
