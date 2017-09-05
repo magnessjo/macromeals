@@ -41,6 +41,8 @@
   & span {
     font-weight: 400;
     font-size: calc(14px + .4vw);
+    line-height: 1em;
+    display: block;
   }
 
 }

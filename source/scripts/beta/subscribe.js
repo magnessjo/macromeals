@@ -39,8 +39,6 @@ function checkSubmit() {
       const selected = state.options[state.selectedIndex].value;
       let data = '';
 
-      console.log(selected);
-
       data = `${window.csrfTokenName}=${window.csrfTokenValue}&`;
       inputs.forEach((item) => {
 
@@ -52,8 +50,6 @@ function checkSubmit() {
       });
 
       data += `state=${selected}`;
-
-      console.log(data);
 
       xhr.open('POST', url);
 

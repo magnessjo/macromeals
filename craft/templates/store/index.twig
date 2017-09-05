@@ -1,6 +1,7 @@
 
 {% extends "_layout" %}
 {% includeCssFile "/store.css" %}
+{% includeJsFile "/store.js" %}
 
 {% block main %}
 
@@ -11,12 +12,88 @@
     </div>
   </section>
 
+  <section class="notice">
+
+    <div class="lock">
+
+      <div class="text">
+        <div class="toggle">
+          <h1 class="nimbus-small-bold"><span>NOTICE</span></h1>
+          <p class="nimbus-small">The store is only available for those enrolled in our beta program until January 1st, 2018.</p>
+        </div>
+        <div class="expand-content">
+          <div>
+            <p>Currently we are accepting applications for new beta members for our October 15th enrollment.  If your are interested please signup below.</p>
+            <p>We apologize for the inconvenience but we want to ensure the best product and ingredients for all of our members.</p>
+            <a href="/beta" class='call-to-action'>Sign Up</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
   <section>
 
     <div class="lock">
-      <p>The registration will be available soon.</p>
-      <p>Please register on the beta membership page to receive updates</p>
-      <a href="/beta" class="call-to-action">Sign Up</a>
+
+      <div class="meal-wrapper">
+
+        <div class="meal-controller">
+
+          <div class="proteins">
+            <p class="label">Types of Protein</p>
+
+
+              <form id="checkbox" class="checkbox-options">
+                <div>
+                  <input type="checkbox" id="vegan" name="vegan" value="vegan">
+                  <label for="vegan">Vegan</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="chicken" name="chicken" value="chicken" />
+                  <label for="chicken">Chicken</label>
+                </div>
+                <div>
+                  <input type="checkbox" id="pork" name="pork" value="pork" />
+                  <label for="pork">Pork</label>
+                </div>
+              </form>
+
+
+          </div>
+
+        </div>
+
+        <div class="meal-list">
+
+          <div class="entry" data-type="chicken">
+            <h2 class="nimbus-medium-bold">Kabob Meal <span>With Chicken</span></h2>
+            <img src="/images/products/placeholder.jpg" alt="image of the Kabob Meal" />
+          </div>
+
+          <div class="entry" data-type="vegan">
+            <h2 class="nimbus-medium-bold">Kabob Meal <span>With Tofu</span></h2>
+            <img src="/images/products/placeholder.jpg" alt="image of the Kabob Meal" />
+          </div>
+
+          <div class="entry" data-type="pork">
+            <h2 class="nimbus-medium-bold">Pork <span>With Apple Butter</span></h2>
+            <img src="/images/products/placeholder.jpg" alt="image of the Kabob Meal" />
+          </div>
+
+          <div class="entry" data-type="chicken">
+            <h2 class="nimbus-medium-bold">Chicken <span>With Butternut Squash</span></h2>
+            <img src="/images/products/placeholder.jpg" alt="image of the Kabob Meal" />
+          </div>
+
+        </div>
+
+      </div>
+
+      </div>
+
     </div>
 
   </section>

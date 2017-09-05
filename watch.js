@@ -42,6 +42,7 @@ const config = {
       homepage: `source/scripts/homepage`,
       beta: `source/scripts/beta`,
       faq: `source/scripts/faq`,
+      store: `source/scripts/store`,
     },
   },
 

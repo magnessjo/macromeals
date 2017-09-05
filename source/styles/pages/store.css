@@ -1,16 +1,80 @@
 
 @import "../master.css";
 
+#stage {
+  margin-bottom: 0;
+}
+
 .slim-stage .image {
   background-image: url(/images/stage/meals.jpg);
   background-position: top center;
 }
 
-section {
+input[type='checkbox'] {
+  height: 15px;
+  width: 15px;
+  border: 1px solid var(--black);
+  cursor: pointer;
+}
 
-  & .call-to-action {
-    float: none;
-    font-size: 14px;
+.meal-wrapper {
+
+  @media (--tablet-min) {
+    display: flex;
+  }
+
+}
+
+.checkbox-options {
+
+  & > div {
+    margin-bottom: 10px;
+    overflow: hidden;
+    padding-left: 10px;
+  }
+
+}
+
+.meal-controller {
+
+  @media (--tablet-min) {
+    flex-basis: 150px;
+    margin-right: 40px;
+    padding-right: 40px;
+  }
+
+  @media (--tablet-min) {
+    flex-basis: 250px;
+    border-right: 1px solid var(--black);
+  }
+
+}
+
+.meal-list {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  @media (--tablet-min) {
+    flex-basis: calc(100% - 150px);
+  }
+
+  @media (--tablet-min) {
+    flex-basis: calc(100% - 250px);
+  }
+
+  & > div {
+    margin-bottom: 30px;
+
+    @media (--tablet-min) {
+      width: 49%;
+    }
+
+  }
+
+  & .nimbus-medium-bold {
+    height: 50px;
+    line-height: 1em;
   }
 
 }
