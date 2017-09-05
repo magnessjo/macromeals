@@ -90,6 +90,16 @@
                 <img src="{{ image }}" alt="image of {{ entry.title}} {{ entry.subTitle }}" />
               </div>
               <h2 class="nimbus-medium-bold">{{ entry.title}}<span>{{ entry.subTitle }}</span></h2>
+              <div class="info">
+                <div class="facts">
+                  {% for row in entry.productMacros %}
+                    {% if row.calories %}<p class="nimbus-tiny-bold"><span>Calories:</span> {{ row.calories }}</p>{% endif %}
+                    {% if row.protein %}<p class="nimbus-tiny-bold"><span>Protein:</span> {{ row.protein }}</p>{% endif %}
+                    {% if row.carbs %}<p class="nimbus-tiny-bold"><span>Carbs:</span> {{ row.carbs }}</p>{% endif %}
+                    {% if row.fat %}<p class="nimbus-tiny-bold"><span>Fat:</span> {{ row.fat }}</p>{% endif %}
+                  {% endfor %}
+                </div>
+              </div>
             </div>
 
           {% endfor %}
