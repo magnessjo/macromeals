@@ -48,18 +48,16 @@
               <p class="nimbus-tiny label">Types of Protein</p>
 
               <form id="checkbox" class="checkbox-options">
-                <div>
-                  <input type="checkbox" id="vegan" name="vegan" value="vegan">
-                  <label for="vegan">Vegan</label>
-                </div>
-                <div>
-                  <input type="checkbox" id="chicken" name="chicken" value="chicken" />
-                  <label for="chicken">Chicken</label>
-                </div>
-                <div>
-                  <input type="checkbox" id="pork" name="pork" value="pork" />
-                  <label for="pork">Pork</label>
-                </div>
+
+                {% for cat in craft.categories.group('protein') %}
+
+                  <div>
+                    <input type="checkbox" id="{{ cat }}" name="{{ cat }}" value="{{ cat }}">
+                    <label for="{{ cat }}">{{ cat }}</label>
+                  </div>
+
+                {% endfor %}
+
               </form>
 
             </div>
@@ -78,7 +76,7 @@
               {% set image = '/images/products/placeholder.jpg' %}
             {% endif %}
 
-            <div class="entry" data-protein="{% for cat in entry.foodCategory %}{{ cat }}{% endfor %}">
+            <div class="entry" data-protein="{% for cat in entry.protein %}{{ cat }}{% endfor %}">
               <div class="image">
 
                 {% if entry.productPieChart|length > 0 %}
