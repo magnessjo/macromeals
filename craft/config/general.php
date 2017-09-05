@@ -11,12 +11,12 @@ return [
     'requireMatchingUserAgentForSession' => false,
   ],
 
-  '*.macromeals.life' => [
+  'www.macromeals.life' => [
     'devMode' => false,
     'overridePhpSessionLocation' => false,
     'environmentVariables' => [
       'siteUrl'  => 'https://www.macromeals.life/',
-      'basePath' => '/srv/http/macromeals/source/assets/',
+      'basePath' => '/srv/http/macromeals/shared/uploads/',
     ],
   ],
 
