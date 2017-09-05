@@ -70,25 +70,29 @@
 
         <div class="meal-list">
 
-          <div class="entry" data-protein="chicken">
-            <img src="/images/products/placeholder.jpg" alt="image of the Kabob Meal" />
-            <h2 class="nimbus-medium-bold">Kabob Meal <span>With Chicken</span></h2>
-          </div>
+          {% for entry in craft.commerce.products %}
 
-          <div class="entry" data-protein="vegan">
-            <img src="/images/products/placeholder.jpg" alt="image of the Kabob Meal" />
-            <h2 class="nimbus-medium-bold">Kabob Meal <span>With Tofu</span></h2>
-          </div>
+            {% if entry.productImage|length > 0 %}
+              {% set image = entry.productImage[0].url %}
+            {% else %}
+              {% set image = '/images/products/placeholder.jpg' %}
+            {% endif %}
 
-          <div class="entry" data-protein="pork">
-            <img src="/images/products/placeholder.jpg" alt="image of the Kabob Meal" />
-            <h2 class="nimbus-medium-bold">Pork <span>With Apple Butter</span></h2>
-          </div>
+            <div class="entry" data-protein="{% for cat in entry.foodCategory %}{{ cat }}{% endfor %}">
+              <div class="image">
 
-          <div class="entry" data-protein="chicken">
-            <img src="/images/products/placeholder.jpg" alt="image of the Kabob Meal" />
-            <h2 class="nimbus-medium-bold">Chicken <span>With Butternut Squash</span></h2>
-          </div>
+                {% if entry.productPieChart|length > 0 %}
+                  <div class="pie-chart">
+                    <img src="{{ entry.productPieChart[0].url }}" alt="image of {{ entry.title }} macros" />
+                  </div>
+                {% endif %}
+
+                <img src="{{ image }}" alt="image of {{ entry.title}} {{ entry.subTitle }}" />
+              </div>
+              <h2 class="nimbus-medium-bold">{{ entry.title}}<span>{{ entry.subTitle }}</span></h2>
+            </div>
+
+          {% endfor %}
 
         </div>
 
