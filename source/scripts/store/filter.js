@@ -12,7 +12,7 @@ let currentSelectedCategories = [];
 // Load DOM Data
 
 // function loadMeals() {
-// 
+//
 //   const xhr = new XMLHttpRequest();
 //   const url = '/meals.json';
 //   let postString = '';
@@ -46,13 +46,13 @@ let currentSelectedCategories = [];
 
 // Filter Enteries By Category
 
-function filterByCategory() {
+function filterByProtein() {
 
   if(currentSelectedCategories.length > 0) {
 
     enteries.forEach((entry) => {
 
-      const type = entry.getAttribute('data-type');
+      const type = entry.getAttribute('data-protein');
       let shouldShow = false;
 
       currentSelectedCategories.forEach((cat) => {
@@ -94,7 +94,7 @@ function eventFilterCategory() {
         if (index > -1) currentSelectedCategories.splice(index, 1);
       }
 
-      filterByCategory();
+      filterByProtein();
 
     });
 
