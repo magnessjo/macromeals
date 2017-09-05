@@ -6,7 +6,7 @@ import config from './config.json';
 import symlink from './symlink.js';
 
 shell.rm('build/index.php');
-shell.rm('-rf', 'build/images/uploads');
+shell.rm('-rf', 'build/uploads');
 
 deploy.release(config);
 symlink();
