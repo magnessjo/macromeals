@@ -30,7 +30,6 @@ const config = {
       generic: 'source/styles/pages/generic.css',
       faq: 'source/styles/pages/faq.css',
       store: 'source/styles/pages/store.css',
-      how: 'source/styles/pages/how.css',
     },
   },
 

@@ -1,6 +1,6 @@
 
 .notice {
-  background-color: rgba(255, 252, 143, .4);
+  background-color: var(--light-yellow);
 
   & .lock > .text {
     margin: 0 auto;

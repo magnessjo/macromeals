@@ -281,29 +281,12 @@
 
 }
 
-#article {
+#location {
 
-  & .lock {
+  & .lock > div {
 
     @media (--tablet-min) {
       display: flex;
-    }
-
-  }
-
-  & .image {
-
-    @media (--tablet-min) {
-      max-width: 40%;
-      height: inherit;
-    }
-
-  }
-
-  & .text {
-
-    @media (--tablet-min) {
-      padding-left: 40px;
     }
 
   }
