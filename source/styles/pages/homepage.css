@@ -291,4 +291,75 @@
 
   }
 
+  & .text {
+
+    @media (--tablet-min) {
+      width: 60%;
+      padding-right: 40px;
+    }
+
+  }
+
+  & .image {
+
+    @media (--tablet-min) {
+      width: 40%;
+    }
+
+    & img {
+      max-width: 80%;
+      display: block;
+
+      @media (--tablet-min) {
+        margin: 0 auto;
+      }
+
+    }
+
+  }
+
+  & .example-cost {
+
+    @media (--tablet-min) {
+      display: flex;
+      align-items: flex-start;
+    }
+
+    & .shipping-cost-result {
+      background-color: var(--light-yellow);
+      display: none;
+
+      @media (--tablet-min) {
+        margin-left: 40px;
+        width: calc(100% - 400px);
+        padding: 20px;
+      }
+
+      & p {
+        margin-bottom: 0;
+        text-align: center;
+        line-height: 1em;
+
+        & span {
+          font-family: var(--nimbus);
+          font-size: 12px;
+          font-weight: 700;
+          display: block;
+          line-height: 1em;
+        }
+
+      }
+
+    }
+
+  }
+
+  & form {
+
+    @media (--tablet-min) {
+      width: 400px;
+    }
+
+  }
+
 }

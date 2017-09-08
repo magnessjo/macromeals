@@ -9,6 +9,7 @@
 
 @import "/components/header.css";
 @import "/components/footer.css";
+@import "/components/form.css";
 @import "/components/featured-meal.css";
 
 /* Common Classes Layout */

@@ -23,6 +23,7 @@ return [
   'macromeals.localhost.dev' => [
     'devMode' => true,
     'overridePhpSessionLocation' => false,
+    'enableCsrfProtection' => false,
     'environmentVariables' => [
       'siteUrl'  => 'https://macromeals.localhost.dev/',
       'basePath' => '/Users/magnessjo/Sites/personal/macromeals/source/assets/uploads',
