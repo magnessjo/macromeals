@@ -17,6 +17,7 @@ return [
     'environmentVariables' => [
       'siteUrl'  => 'https://www.macromeals.life/',
       'basePath' => '/srv/http/macromeals/shared/uploads/',
+      'pluginPath' => '/srv/http/macromeals/craft/plugins'
     ],
   ],
 
@@ -26,6 +27,7 @@ return [
     'environmentVariables' => [
       'siteUrl'  => 'http://macromeals.joshmagness.me/',
       'basePath' => '/srv/http/macromeals/shared/uploads/',
+      'pluginPath' => '/srv/http/macromeals/craft/plugins'
     ],
   ],
 
@@ -36,6 +38,7 @@ return [
     'environmentVariables' => [
       'siteUrl'  => 'https://macromeals.localhost.dev/',
       'basePath' => '/Users/magnessjo/Sites/personal/macromeals/source/assets/uploads',
+      'pluginPath' => '/Users/magnessjo/Sites/personal/macromeals/craft/plugins'
     ],
   ],
 
