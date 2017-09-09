@@ -9,6 +9,7 @@ const firstName = form.querySelector('#firstName');
 const lastName = form.querySelector('#lastName');
 const email = form.querySelector('#email');
 const requiredFields = Array.from(form.querySelectorAll('.required-feild'));
+const thankYouText = document.querySelector('.submitted-text');
 
 // Check Submit Action
 
@@ -60,6 +61,7 @@ function checkSubmit() {
             const text = JSON.parse(xhr.responseText);
             if (text == 'success') {
               form.style.display = 'none';
+              thankYouText.style.display = 'block';
             }
           }
         }
