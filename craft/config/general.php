@@ -12,10 +12,19 @@ return [
   ],
 
   'www.macromeals.life' => [
-    'devMode' => false,
+    'devMode' => true,
     'overridePhpSessionLocation' => false,
     'environmentVariables' => [
       'siteUrl'  => 'https://www.macromeals.life/',
+      'basePath' => '/srv/http/macromeals/shared/uploads/',
+    ],
+  ],
+
+  'macromeals.joshmagness.me' => [
+    'devMode' => true,
+    'overridePhpSessionLocation' => false,
+    'environmentVariables' => [
+      'siteUrl'  => 'http://macromeals.joshmagness.me/',
       'basePath' => '/srv/http/macromeals/shared/uploads/',
     ],
   ],

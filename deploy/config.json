@@ -6,7 +6,7 @@
   "targets": {
     "staging": {
       "user": "ec2-user",
-      "host": "52.204.122.202",
+      "host": "joshmagness.me",
       "destination": "/srv/http/macromeals",
       "config": "deploy/staging"
     },
