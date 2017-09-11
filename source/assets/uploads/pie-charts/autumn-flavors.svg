@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" viewBox="0 0 358.01 357.94">
+  <defs>
+    <style>.cls-1{fill:#386189;}.cls-1,.cls-2,.cls-3{stroke:#f8f8f8;stroke-miterlimit:10;stroke-width:0.5px;}.cls-2{fill:#65943f;}.cls-3{fill:#9c4b46;}.cls-4{font-size:26px;fill:#fff;font-family:NimbusSan-Reg, Nimbus Sans;}.cls-5{letter-spacing:0em;}.cls-6{letter-spacing:0em;}.cls-7{letter-spacing:-0.02em;}.cls-8{letter-spacing:0.01em;}.cls-9{letter-spacing:-0.01em;}.cls-10{letter-spacing:0.01em;}.cls-11{letter-spacing:0.01em;}.cls-12{letter-spacing:-0.05em;}.cls-13{letter-spacing:-0.06em;}</style>
+  </defs>
+  <title>autumn-flavors</title>
+  <path class="cls-1" d="M287.7,403.18,411.85,531.74c-34.08,32.91-76.77,50.16-124.15,50.16Z" transform="translate(-108.73 -224.2)"></path>
+  <path class="cls-2" d="M287.7,403.18,275.24,224.89A178.72,178.72,0,0,1,466,390.71c3.86,55.14-14.37,102.63-54.13,141Z" transform="translate(-108.73 -224.2)"></path>
+  <path class="cls-3" d="M287.7,403.18V581.9A178.72,178.72,0,0,1,109,403.18c0-94.76,71.73-171.67,166.25-178.28Z" transform="translate(-108.73 -224.2)"></path>
+  <text class="cls-4" transform="translate(40.27 173.14)">
+    <tspan class="cls-5">P</tspan>
+    <tspan class="cls-6" x="15.34" y="0">R</tspan>
+    <tspan class="cls-7" x="31.98" y="0">O</tspan>
+    <tspan class="cls-8" x="50.86" y="0">T</tspan>
+    <tspan x="64.82" y="0">EIN</tspan>
+  </text>
+  <text class="cls-4" transform="translate(70.27 196.14)">49%</text>
+  <text class="cls-4" transform="translate(204.27 124.89)">
+    <tspan class="cls-9">C</tspan>
+    <tspan x="17.5" y="0">A</tspan>
+    <tspan class="cls-10" x="33.44" y="0">R</tspan>
+    <tspan class="cls-11" x="50.31" y="0">B</tspan>
+    <tspan x="67.21" y="0">S</tspan>
+  </text>
+  <text class="cls-4" transform="translate(229.27 147.89)">39%</text>
+  <text class="cls-4" transform="translate(188.27 282.14)">
+    <tspan class="cls-12">F</tspan>
+    <tspan class="cls-13" x="13.08" y="0">A</tspan>
+    <tspan class="cls-6" x="27.38" y="0">T</tspan>
+    <tspan x="41.21" y="0">S</tspan>
+  </text>
+  <text class="cls-4" transform="translate(200.27 305.14)">12%</text>
+</svg>

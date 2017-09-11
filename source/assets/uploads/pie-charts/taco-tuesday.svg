@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" viewBox="0 0 357.98 357.95">
+  <defs>
+    <style>.cls-1{fill:#386189;}.cls-1,.cls-2,.cls-3{stroke:#fcfcfc;stroke-miterlimit:10;stroke-width:0.5px;}.cls-2{fill:#65943f;}.cls-3{fill:#9c4b46;}.cls-4{font-size:26px;fill:#fff;font-family:NimbusSan-Reg, Nimbus Sans;}.cls-5{letter-spacing:0em;}.cls-6{letter-spacing:0em;}.cls-7{letter-spacing:-0.02em;}.cls-8{letter-spacing:0.01em;}.cls-9{letter-spacing:-0.01em;}.cls-10{letter-spacing:0.01em;}.cls-11{letter-spacing:0.01em;}.cls-12{letter-spacing:-0.05em;}.cls-13{letter-spacing:-0.06em;}</style>
+  </defs>
+  <title>taco-tuesday</title>
+  <path class="cls-1" d="M179,179l9.35,178.47A177.91,177.91,0,0,1,7.22,228.23Z"></path>
+  <path class="cls-2" d="M179,179,175.9.28a178.72,178.72,0,0,1,12.47,357.17Z"></path>
+  <path class="cls-3" d="M179,179,7.22,228.23A178.72,178.72,0,0,1,129.75,7.17,165.5,165.5,0,0,1,175.9.28Z"></path>
+  <text class="cls-4" transform="translate(46.31 114.19)">
+    <tspan class="cls-5">P</tspan>
+    <tspan class="cls-6" x="15.34" y="0">R</tspan>
+    <tspan class="cls-7" x="31.98" y="0">O</tspan>
+    <tspan class="cls-8" x="50.86" y="0">T</tspan>
+    <tspan x="64.82" y="0">EIN</tspan>
+  </text>
+  <text class="cls-4" transform="translate(76.31 137.19)">29%</text>
+  <text class="cls-4" transform="translate(214.31 164.94)">
+    <tspan class="cls-9">C</tspan>
+    <tspan x="17.5" y="0">A</tspan>
+    <tspan class="cls-10" x="33.44" y="0">R</tspan>
+    <tspan class="cls-11" x="50.31" y="0">B</tspan>
+    <tspan x="67.21" y="0">S</tspan>
+  </text>
+  <text class="cls-4" transform="translate(239.31 187.94)">49%</text>
+  <text class="cls-4" transform="translate(93.31 261.94)">
+    <tspan class="cls-12">F</tspan>
+    <tspan class="cls-13" x="13.08" y="0">A</tspan>
+    <tspan class="cls-6" x="27.38" y="0">T</tspan>
+    <tspan x="41.21" y="0">S</tspan>
+  </text>
+  <text class="cls-4" transform="translate(105.31 284.94)">21%</text>
+</svg>

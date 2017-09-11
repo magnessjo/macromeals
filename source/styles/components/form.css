@@ -19,7 +19,7 @@ form {
   }
 
   & input[type="email"],
-  & input[type="number"], 
+  & input[type="number"],
   & input[type="text"] {
     height: 44px;
     width: 44px;
@@ -43,6 +43,14 @@ form {
 
     &:disabled {
       opacity: .3;
+    }
+
+  }
+
+  & .checkbox-field {
+
+    & label {
+      display: inline-block;
     }
 
   }

@@ -51,7 +51,7 @@
 
                 {% for cat in craft.categories.group('protein') %}
 
-                  <div>
+                  <div class="checkbox-field">
                     <input type="checkbox" id="{{ cat }}" name="{{ cat }}" value="{{ cat }}">
                     <label for="{{ cat }}">{{ cat }}</label>
                   </div>

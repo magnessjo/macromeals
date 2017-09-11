@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" id="Layer_1" viewBox="0 0 362.34 358.3">
+  <defs>
+    <style>.cls-1{fill:#386189;}.cls-1,.cls-2,.cls-3{stroke:#f8f8f8;stroke-miterlimit:10;stroke-width:0.5px;}.cls-2{fill:#65943f;}.cls-3{fill:#9c4b46;}.cls-4{font-size:26px;fill:#fff;font-family:NimbusSan-Reg, Nimbus Sans;}.cls-5{letter-spacing:0em;}.cls-6{letter-spacing:0em;}.cls-7{letter-spacing:-0.02em;}.cls-8{letter-spacing:0.01em;}.cls-9{letter-spacing:-0.01em;}.cls-10{letter-spacing:0.01em;}.cls-11{letter-spacing:0.01em;}.cls-12{letter-spacing:-0.05em;}.cls-13{letter-spacing:-0.06em;}</style>
+  </defs>
+  <title>kabob-bowl-chicken</title>
+  <path class="cls-1" d="M179,179l99.94,148.16c-52.86,35.66-117.68,40.76-175.47,13.81Z"></path>
+  <path class="cls-2" d="M179,179,182.13.28A178.72,178.72,0,0,1,357.7,182.09c-1.06,60.79-28.35,111-78.75,145Z"></path>
+  <path class="cls-3" d="M179,179l-75.53,162A178.72,178.72,0,0,1,17,103.44C47.78,37.51,109.4-1,182.13.28Z"></path>
+  <text class="cls-4" transform="translate(36.34 152.19)">
+    <tspan class="cls-5">P</tspan>
+    <tspan class="cls-6" x="15.34" y="0">R</tspan>
+    <tspan class="cls-7" x="31.98" y="0">O</tspan>
+    <tspan class="cls-8" x="50.86" y="0">T</tspan>
+    <tspan x="64.82" y="0">EIN</tspan>
+  </text>
+  <text class="cls-4" transform="translate(66.34 175.19)">43%</text>
+  <text class="cls-4" transform="translate(224.34 149.94)">
+    <tspan class="cls-9">C</tspan>
+    <tspan x="17.5" y="0">A</tspan>
+    <tspan class="cls-10" x="33.44" y="0">R</tspan>
+    <tspan class="cls-11" x="50.31" y="0">B</tspan>
+    <tspan x="67.21" y="0">S</tspan>
+  </text>
+  <text class="cls-4" transform="translate(249.34 172.94)">40%</text>
+  <text class="cls-4" transform="translate(155.34 281.94)">
+    <tspan class="cls-12">F</tspan>
+    <tspan class="cls-13" x="13.08" y="0">A</tspan>
+    <tspan class="cls-6" x="27.38" y="0">T</tspan>
+    <tspan x="41.21" y="0">S</tspan>
+  </text>
+  <text class="cls-4" transform="translate(167.34 304.94)">16%</text>
+</svg>
