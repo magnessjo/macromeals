@@ -1,11 +1,12 @@
 
 // Variables
 
-const result = document.querySelector('.shipping-cost-result');
 const form = document.querySelector('.shipping-calculator');
-const textContainer = result.querySelector('.nimbus-large-bold');
 const input = form.querySelector('input[type="text"]');
 const submit = form.querySelector('input[type="submit"]');
+const result = document.querySelector('.shipping-cost-result');
+const loaderAnimation = result.querySelector('.loader');
+const textContainer = result.querySelector('.nimbus-large-bold');
 const regex = /^(\d{5})?$/;
 
 // Set Rate
@@ -28,15 +29,16 @@ function setRate(zip) {
 
         const text = JSON.parse(xhr.responseText);
 
+        loaderAnimation.style.display = 'none';
+
         if (text == 'failure') {
           result.innerHTML = `There was an error getting your estimate.  Please contact us directly at <a href="info@macromeals.life">info@macromeals.life</a> for an estimate.`;
         } else {
           textContainer.innerHTML = `<span>Your Estimate</span>$${text}`;
+          textContainer.style.display = 'block';
           input.value = '';
           submit.setAttribute('disabled', true);
         }
-
-        result.style.display = 'flex';
 
       }
 
@@ -47,6 +49,7 @@ function setRate(zip) {
   xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
   xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
   xhr.send(data);
+  result.style.display = 'flex';
 
 }
 
