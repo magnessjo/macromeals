@@ -43,7 +43,7 @@
 
       <div class="summary">
         <p class="nimbus-medium-bold">Macro Meals are created to give your body the nutrition that it needs!</p>
-        <p class="nimbus-medium-bold">Our mission is to transform the way you shop, eat and prep.</p>
+        <p class="nimbus-medium-bold">We will transform the way you shop, eat and prepare for the week.</p>
       </div>
 
       <div class="transform">
@@ -117,44 +117,34 @@
 
     <div class="lock">
 
-      <h1 class="nimbus-medium-bold">Where do you deliver or ship?</h1>
+      <h1 class="nimbus-medium-bold">Shipping Costs</h1>
 
-      <div>
+      <div class="columns">
 
         <div class="text">
-          <p>We currently deliver to the Harford County Area in Maryland on Sundays. We charge $10 for delivery.</p>
-          <p>We ship four days a week to any state.  Shipping costs are dependent on your location.  Shipping costs in the extended region can be expensive due to overnight shipping for fresh food.</p>
+          <p>We ship four days a week to any state.  Shipping costs are dependent on your location.</p>
           <p>Please enter your zip code for an estimated shipping cost.</p>
 
-          <div class="example-cost">
+          <form class="shipping-calculator">
 
-            <form class="shipping-calculator">
+            <script type="text/javascript">
+              window.csrfTokenName = "{{ craft.config.csrfTokenName|e('js') }}";
+              window.csrfTokenValue = "{{ craft.request.csrfToken|e('js') }}";
+            </script>
 
-              <script type="text/javascript">
-                window.csrfTokenName = "{{ craft.config.csrfTokenName|e('js') }}";
-                window.csrfTokenValue = "{{ craft.request.csrfToken|e('js') }}";
-              </script>
+            <input type="text" maxlength="5" placeholder="Example: 21014" />
+            <input type="submit" disabled />
 
-              <input type="text" maxlength="5" placeholder="Example: 21014" />
-              <input type="submit" disabled />
-
-            </form>
-
-            <div>
-              <div class="shipping-cost-result"></div>
-            </div>
-
-          </div>
+          </form>
 
         </div>
 
-        <div class="image">
-          <div class="key">
-            <p class="delivery"><span></span>Delivery</p>
-            <p class="shipping"><span></span>Shipping</p>
-            <p class="extended"><span></span>Extended Shipping Region</p>
+        <div class="shipping-cost-result">
+
           <div>
-          <img src="/images/homepage/map.svg" />
+            <p class="nimbus-large-bold"></p>
+          </div>
+
         </div>
 
       </div>

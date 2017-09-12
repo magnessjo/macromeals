@@ -3,6 +3,7 @@
 
 const result = document.querySelector('.shipping-cost-result');
 const form = document.querySelector('.shipping-calculator');
+const textContainer = result.querySelector('.nimbus-large-bold');
 const input = form.querySelector('input[type="text"]');
 const submit = form.querySelector('input[type="submit"]');
 const regex = /^(\d{5})?$/;
@@ -30,12 +31,12 @@ function setRate(zip) {
         if (text == 'failure') {
           result.innerHTML = `There was an error getting your estimate.  Please contact us directly at <a href="info@macromeals.life">info@macromeals.life</a> for an estimate.`;
         } else {
-          result.innerHTML = `<p class="nimbus-small-bold"><span>Your Estimate</span>$${text}</p>`;
+          textContainer.innerHTML = `<span>Your Estimate</span>$${text}`;
           input.value = '';
           submit.setAttribute('disabled', true);
         }
 
-        result.style.display = 'block';
+        result.style.display = 'flex';
 
       }
 

@@ -283,7 +283,7 @@
 
 #location {
 
-  & .lock > div {
+  & .columns {
 
     @media (--tablet-min) {
       display: flex;
@@ -300,126 +300,38 @@
 
   }
 
-  & .image {
+  & .shipping-cost-result  {
+    background-color: var(--light-yellow);
+    align-items: center;
+    justify-content: center;
+    display: none;
+
+    @media (--large-max) {
+      margin-top: 40px;
+    }
 
     @media (--tablet-min) {
       width: 40%;
-      padding-top: 20px;
-    }
-
-    & img {
-
-      @media (--tablet-min) {
-        max-width: 80%;
-        display: block;
-        margin: 0 auto;
-      }
-
-    }
-
-    & .key {
-
-      @media (--tablet-min) {
-        position: absolute;
-        top: 0;
-      }
-
-      & p {
-        display: inline-block;
-        margin-left: 20px;
-        font-size: 12px;
-
-        &:first-of-type {
-          margin-left: 0;
-        }
-
-        & span {
-          display: inline-block;
-          height: 10px;
-          width: 10px;
-          margin-right: 5px;
-        }
-
-      }
-
-      & .delivery span {
-        background-color: var(--green);
-      }
-
-      & .shipping span {
-        background-color: var(--auburn);
-      }
-
-      & .extended span {
-        background-color: var(--blue);
-      }
-
-    }
-
-  }
-
-  & .example-cost {
-
-    @media (--large-max) {
-      margin-bottom: 40px;
-    }
-
-    @media (--tablet-min) {
-      display: flex;
-      align-items: flex-start;
     }
 
     & > div {
+      padding: 40px;
 
-      @media (--tablet-min) {
-        margin-right: 40px;
-        width: calc(100% - 200px);
-        order: 1;
-      }
-
-      @media (--desktop-min) {
-        width: 50%;
-      }
-
-    }
-
-    & .shipping-cost-result {
-      background-color: var(--light-yellow);
-      display: none;
-      padding: 20px;
-
-      & p {
+      & .nimbus-large-bold {
         margin-bottom: 0;
         text-align: center;
         line-height: 1em;
 
         & span {
           font-family: var(--nimbus);
-          font-size: 12px;
-          font-weight: 700;
+          font-size: 14px;
+          font-weight: 300;
           display: block;
           line-height: 1em;
         }
 
       }
 
-    }
-
-  }
-
-  & form {
-
-    @media (--large-max) {
-      margin-bottom: 20px;
-    }
-
-    @media (--tablet-min) {
-      width: 200px;
-      order: 2;
-    }
-
-    @media (--desktop-min) {
-      width: 50%;
     }
 
   }
