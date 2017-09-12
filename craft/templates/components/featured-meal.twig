@@ -4,7 +4,7 @@
 {% for entry in craft.commerce.products.relatedTo(category).limit(1) %}
 
   {% if entry.productImage|length > 0 %}
-    {% set image = entry.productImage[0].url %}
+    {% set image = entry.productFeaturedImage[0].url %}
   {% else %}
     {% set image = '/images/products/placeholder.jpg' %}
   {% endif %}

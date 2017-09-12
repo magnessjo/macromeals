@@ -16,11 +16,7 @@
     }
 
     @media (--desktop-min) {
-      min-height: 35vh;
-    }
-
-    @media (--x-large) {
-      min-height: 40vh;
+      min-height: 45vh;
     }
 
     & .info {
@@ -67,6 +63,7 @@
       background-size: cover;
       background-position: center;
       position: relative;
+      background-color: var(--white);
 
       @media (--large-max) {
         height: 40vw;
