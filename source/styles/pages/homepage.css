@@ -317,6 +317,10 @@
 
     & .text-container {
 
+      @media (--large-max) {
+        padding: 40px 0;
+      }
+
       & .nimbus-large-bold {
         margin-bottom: 0;
         text-align: center;

@@ -7,7 +7,7 @@ import switchImages from './switch-images.js';
 
 // Load
 
-document.addEventListener('DOMContentLoaded', () => {
+window.addEventListener('load', () => {
 
   notice();
   switchImages();
