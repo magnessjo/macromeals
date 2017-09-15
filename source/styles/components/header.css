@@ -62,11 +62,6 @@ header {
 
   }
 
-  & .sign-up {
-    color: var(--black);
-    margin-right: 30px;
-  }
-
   & .register {
     padding: 0 20px;
     height: 100%;
@@ -75,9 +70,15 @@ header {
     color: var(--white);
 
     & img {
-      height: 30px;
-      width: 60px;
+      height: 20px;
+      width: 30px;
       align-self: center;
+
+      @media (--large-min) {
+        height: 30px;
+        width: 60px;
+      }
+
     }
 
   }
