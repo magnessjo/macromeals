@@ -21,14 +21,20 @@
 
     &:after {
 
-      @media (--large-max) {
+      @media (--tablet-max) {
         content: '';
         position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: rgba(255, 255, 255, .2);
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 250px;
+        background: radial-gradient(ellipse,
+          rgba(255, 255, 255, .8) 0%,
+          rgba(255, 255, 255, .4) 40%,
+          rgba(255, 255, 255, .1) 60%,
+          rgba(255, 255, 255, .05) 70%,
+          rgba(255, 255, 255, 0) 100%
+        );
       }
 
     }
@@ -66,7 +72,7 @@
       line-height: 1em;
       position: relative;
 
-      @media (--large-max) {
+      @media (--tablet-max) {
         text-shadow: 0.4px 0.7px #fff;
       }
 
