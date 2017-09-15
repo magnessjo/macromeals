@@ -19,6 +19,20 @@
       background-position: right center;
     }
 
+    &:after {
+
+      @media (--large-max) {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rgba(255, 255, 255, .2);
+      }
+
+    }
+
     @media (--large-min) {
       height: 100%;
       width: 100%;
@@ -50,6 +64,11 @@
       margin-bottom: 40px;
       font-size: 32px;
       line-height: 1em;
+      position: relative;
+
+      @media (--large-max) {
+        text-shadow: 0.4px 0.7px #fff;
+      }
 
       @media (--tablet-min) {
         font-size: 42px;
