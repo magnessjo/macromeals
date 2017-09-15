@@ -25,11 +25,10 @@ const config = {
     files: {
       homepage: 'source/styles/pages/homepage.css',
       macros: 'source/styles/pages/macros.css',
-      beta: 'source/styles/pages/beta.css',
-      register: 'source/styles/pages/register.css',
       generic: 'source/styles/pages/generic.css',
       faq: 'source/styles/pages/faq.css',
-      store: 'source/styles/pages/store.css',
+      store: 'source/styles/pages/shop.css',
+      cart: 'source/styles/pages/cart.css',
     },
   },
 
@@ -39,9 +38,8 @@ const config = {
     files: {
       app: `source/scripts/app.js`,
       homepage: `source/scripts/homepage`,
-      beta: `source/scripts/beta`,
       faq: `source/scripts/faq`,
-      store: `source/scripts/store`,
+      shop: `source/scripts/shop`,
     },
   },
 
