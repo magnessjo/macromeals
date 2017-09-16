@@ -1,26 +1,48 @@
 
 // Variables
 
-const openButton = document.querySelector('header .menu-toggle');
+const button = document.querySelector('header .menu-toggle');
 const menu = document.querySelector('menu');
-const closeButton = menu.querySelector('button');
-const showClass = 'show';
+const wrapper = menu.querySelector('.mobile-nav');
+const text = button.querySelector('.text');
 
 // Show
 
 function show() {
-  menu.classList.add(showClass);
+
+  const height = wrapper.offsetHeight;
+  menu.style.height = `${height}px`;
+  text.innerHTML = 'Close';
+
 }
 
 function close() {
-  menu.classList.remove(showClass);
+
+  menu.style.height = `0`;
+  text.innerHTML = 'Menu';
+
 }
 
 // Export
 
 export default function() {
 
-  openButton.addEventListener('click', show);
-  closeButton.addEventListener('click', close);
+  button.addEventListener('click', () => {
+
+    const isSet = button.getAttribute('data-showing');
+
+    if (isSet == 'false') {
+
+      button.setAttribute('data-showing', 'true');
+      show();
+
+    } else {
+
+      button.setAttribute('data-showing', 'false');
+      close();
+
+    }
+
+  });
 
 }
