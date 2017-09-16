@@ -4,11 +4,119 @@
 
 {% block main %}
 
-  <section id="stage" class="slim-stage">
-    <div class="image"></div>
+  <div class="cart-breadcrumb">
+
     <div class="lock">
-      <h1 class="trajan-large"><div>Cart</div></h1>
+
+      <h1 class="nimbus-large-bold"><span>Shopping</span>Cart</h1>
+
+      <div>
+        <a href="/shop/cart" class='active'>Shopping Cart</a>
+        <a href="/shop/customer">Customer Information</a>
+        <a href="/shop/customer">Shipping</a>
+        <a href="/shop/billing">Billing</a>
+        <a href="/shop/confirmation">Order Placed</a>
+      </div>
+
     </div>
+
+  </div>
+
+  <section id="no-items">
+
+    <div class="lock">
+
+      <p class="nimbus-medium">You currently do not have meals in your cart.</p>
+      <p class="nimbus-small">You can view all of our meals <a href="/meals">here</a>.
+      <p>Please contact us at <a href="mailto:help@macromeals.life">help@macromeals.life</a> if you are having any issues adding meals or if you would like to setup a phone call to help walk you through the website.</p>
+
+    </div>
+
+  </section>
+
+  <section id="cart">
+
+    <div class="lock">
+
+      <h1 class="sr-only">Cart Items</h1>
+
+      <div class="items">
+
+        <div class="order-item">
+
+          <div class="image" style="background-image: url(/uploads/products/kabob-with-chicken.jpg)"></div>
+
+          <div class="wrapper">
+            <h2>Kabob Meal with Chicken</h2>
+
+            <div class="item-actions">
+              <div class="increment">
+                <button class="icons minus"></button>
+                <span>1</span>
+                <button class="icons plus"></button>
+              </div>
+              <p class="cost">$8.99</p>
+              <button class="icons remove"></button>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="order-item">
+
+          <div class="image"  style="background-image: url(/uploads/products/chicken-squash.jpg)"></div>
+
+          <div class="wrapper">
+            <h2>Chicken with Squash</h2>
+
+            <div class="item-actions">
+              <div class="increment">
+                <button class="icons minus"></button>
+                <span>1</span>
+                <button class="icons plus"></button>
+              </div>
+              <p class="cost">$8.99</p>
+              <button class="icons remove"></button>
+            </div>
+          </div>
+
+
+        </div>
+
+        <div class="order-item">
+
+          <div class="image"  style="background-image: url(/uploads/products/chicke-with-salas.jpg)"></div>
+
+          <div class="wrapper">
+            <h2>Chicken With Salsa</h2>
+
+            <div class="item-actions">
+              <div class="increment">
+                <button class="icons minus"></button>
+                <span>1</span>
+                <button class="icons plus"></button>
+              </div>
+              <p class="cost">$8.99</p>
+              <button class="icons remove"></button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="cart-total">
+
+        <p class="nimbus-small-bold">Total<span class="amount">$59.99</span></p>
+
+      </div>
+
+      <div class="cart-actions">
+
+      </div>
+
+    </div>
+
   </section>
 
 {% endblock %}

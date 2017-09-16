@@ -172,7 +172,7 @@
       margin-bottom: 0;
     }
 
-    & .trajan-headline {
+    & .nimbus-medium-bold {
       text-transform: uppercase;
       color: var(--green);
     }

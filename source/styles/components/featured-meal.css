@@ -3,11 +3,6 @@
   background-color: var(--light-green);
   padding: 50px 0;
 
-  & .trajan-large  {
-    color: var(--white);
-    margin-bottom: 40px;
-  }
-
   & .product {
 
     @media (--tablet-min) {

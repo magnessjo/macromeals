@@ -1,0 +1,71 @@
+
+.cart-breadcrumb {
+  background-color: var(--green);
+  padding: 50px 0;
+  color: var(--white);
+
+  & a {
+    color: var(--white);
+    padding-right: 40px;
+    text-transform: uppercase;
+    font-weight: 300;
+    position: relative;
+    font-size: 14px;
+    letter-spacing: .4px;
+
+    &.active {
+      color: var(--yellow);
+    }
+
+    &:last-of-type {
+      padding-right: 0;
+    }
+
+    &:last-of-type:after {
+      display: none;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      background-image: url(/images/icons/right-arrow.svg);
+      background-position: center center;
+      background-size: contain;
+      background-repeat: no-repeat;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 15px;
+      height: 15px;
+    }
+
+  }
+
+  & .lock {
+
+    @media (--tablet-min) {
+      display: flex;
+    }
+
+  }
+
+  & .lock > div {
+
+    @media (--tablet-min) {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+    }
+
+  }
+
+  & h1 {
+    text-transform: uppercase;
+
+    @media (--tablet-min) {
+      margin-bottom: 0;
+    }
+
+  }
+
+}

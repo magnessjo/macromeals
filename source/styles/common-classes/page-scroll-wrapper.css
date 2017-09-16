@@ -56,7 +56,7 @@
       width: calc(100% - 300px);
     }
 
-    & .trajan-headline  {
+    & .nimbus-medium-bold  {
       margin-bottom: 30px;
       font-weight: 300;
       text-transform: uppercase;

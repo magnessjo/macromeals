@@ -20,7 +20,7 @@
       display: block;
     }
 
-    & .trajan-headline  span {
+    & .nimbus-medium-bold  span {
 
       @media (--large-max) {
         display: inline;

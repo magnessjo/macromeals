@@ -1,14 +1,16 @@
 
 .nimbus-stage {
-  font-family: var(--nimbus);
+  font-family: var(--acuminCondensed);
   font-size: 40px;
-  font-size: calc(30px + 1.25vw);
+  font-size: calc(30px + 4.25vw);
+  font-weight: 300;
+  text-transform: uppercase;
   margin-bottom: 20px;
   line-height: 1em;
 }
 
 .nimbus-large {
-  font-family: var(--nimbus);
+  font-family: var(--acumin);
   font-size: 30px;
   font-size: calc(26px + 1.25vw);
   margin-bottom: 20px;
@@ -16,23 +18,33 @@
 }
 
 .nimbus-large-bold {
-  font-family: var(--nimbus);
+  font-family: var(--acumin);
   font-size: 30px;
   font-size: calc(26px + 1.25vw);
   margin-bottom: 20px;
   line-height: 1em;
   font-weight: 700;
+
+  & span {
+    font-family: var(--acumin);
+    font-weight: 300;
+    font-size: 16px;
+    display: block;
+    line-height: 1em;
+    margin-left: 5px;
+  }
+
 }
 
 .nimbus-medium {
-  font-family: var(--nimbus);
+  font-family: var(--acumin);
   font-size: 22px;
   font-size: calc(18px + .8vw);
   margin-bottom: 20px;
 }
 
 .nimbus-medium-bold {
-  font-family: var(--nimbus);
+  font-family: var(--acumin);
   font-weight: 700;
   font-size: 22px;
   font-size: calc(18px + .8vw);
@@ -48,14 +60,14 @@
 }
 
 .nimbus-small {
-  font-family: var(--nimbus);
+  font-family: var(--acumin);
   font-size: 18px;
   font-size: calc(12px + .8vw);
   margin-bottom: 10px;
 }
 
 .nimbus-small-bold {
-  font-family: var(--nimbus);
+  font-family: var(--acumin);
   font-weight: 700;
   font-size: 18px;
   font-size: calc(12px + .8vw);
@@ -63,41 +75,14 @@
 }
 
 .nimbus-tiny {
-  font-family: var(--nimbus);
+  font-family: var(--acumin);
   font-size: calc(12px + .4vw);
   margin-bottom: 5px;
 }
 
 .nimbus-tiny-bold {
-  font-family: var(--nimbus);
+  font-family: var(--acumin);
   font-size: calc(12px + .4vw);
   margin-bottom: 5px;
   font-weight: 700;
-}
-
-
-
-
-.trajan-large {
-  font-family: var(--trajan);
-  font-size: calc(22px + 1.25vw);
-  margin-bottom: 30px;
-  text-transform: uppercase;
-  line-height: 1em;
-}
-
-.trajan-headline {
-  font-family: var(--trajan);
-  font-size: calc(18px + .6vw);
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  line-height: 1em;
-}
-
-.trajan-small {
-  font-family: var(--trajan);
-  font-size: 18px;
-  margin-bottom: 20px;
-  text-transform: uppercase;
-  line-height: 1em;
 }

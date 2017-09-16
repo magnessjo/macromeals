@@ -27,7 +27,7 @@ const config = {
       macros: 'source/styles/pages/macros.css',
       generic: 'source/styles/pages/generic.css',
       faq: 'source/styles/pages/faq.css',
-      store: 'source/styles/pages/shop.css',
+      shop: 'source/styles/pages/shop.css',
       cart: 'source/styles/pages/cart.css',
     },
   },
