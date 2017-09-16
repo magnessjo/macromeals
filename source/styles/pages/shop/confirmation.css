@@ -1,0 +1,105 @@
+
+@import "../../master.css";
+
+.cart-breadcrumb {
+  margin-bottom: 100px;
+}
+
+#order-details {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.nimbus-large {
+  margin-bottom: 80px;
+}
+
+.order-summary {
+  margin-bottom: 80px;
+
+  & .item {
+
+    @media (--large-min) {
+      display: flex;
+      margin-bottom: 40px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--light-gray);
+    }
+
+  }
+
+  & h2 {
+
+    @media (--large-min) {
+      width: 70%;
+    }
+
+  }
+
+  & .quantity {
+
+    @media (--large-min) {
+      width: 20%;
+    }
+
+  }
+
+  & .price {
+
+    @media (--large-min) {
+      width: 10%;
+    }
+
+  }
+
+  & .total {
+    overflow: hidden;
+
+    & h2 {
+      width: 80%;
+      float: left;
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 24px;
+    }
+
+    & p {
+      width: 10%;
+      float: right;
+    }
+
+  }
+
+}
+
+.customer-address {
+
+  @media (--tablet-min) {
+    display: flex;
+  }
+
+  & > div:first-of-type {
+
+    @media (--large-max) {
+      margin-bottom: 30px;
+    }
+
+    @media (--tablet-min) {
+      margin-right: 50px;
+    }
+
+    @media (--desktop-min) {
+      margin-right: 80px;
+    }
+
+  }
+
+  & address {
+
+    & p {
+      margin-bottom: 5px;
+    }
+
+  }
+
+}

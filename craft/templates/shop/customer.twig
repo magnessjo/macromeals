@@ -1,0 +1,238 @@
+
+{% extends "_layout" %}
+{% includeCssFile "/customer.css" %}
+
+{% block main %}
+
+  <div class="cart-breadcrumb">
+
+    <div class="lock">
+
+      <h1 class="nimbus-large-bold"><span>Customer</span>Information</h1>
+
+      <div>
+        <a href="/shop/cart">Shopping Cart</a>
+        <a href="/shop/customer" class='active'>Customer Information</a>
+        <a href="/shop/billing">Billing</a>
+        <a href="/shop/confirmation">Order Confirmation</a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <section id="register">
+
+    <div class="lock">
+
+
+
+      <div class="wrapper">
+
+        <div class="action-event member">
+
+          <p class="nimbus-large">Already Registered</p>
+
+          <form>
+
+            <div class="">
+              <label>Email Address</label>
+              <input type="text" />
+            </div>
+
+            <div class="">
+              <label>Password</label>
+              <input type="text" />
+            </div>
+
+            <input type="submit" value="Member Checkout" class="call-to-action" />
+
+          </form>
+
+        </div>
+
+        <div class="summary">
+
+          <p>Not yet Registered?</p>
+
+          <a href="" class="register-cta">
+            <span class="icons">Register</span>
+          </a>
+
+        </div>
+
+      </div>
+
+      <p class="nimbus-stage divider"><span>Or</span></p>
+
+      <div class="wrapper">
+
+        <div class="summary">
+
+          <p class="nimbus-large">Guest Checkout</p>
+          <div>
+            <p>Don’t have an account? Checkout as a guest and you can create an account during the checkout process if you choose.</p>
+            <p>Why do we ask for your email address?</p>
+            <p>No need to set up an account, but we need your email address to send you an order receipt and keep you updated on the status of your order.</p>
+          </div>
+
+        </div>
+
+        <div class="action-event guest">
+
+          <form>
+
+            <div class="">
+              <label>Email Address</label>
+              <input type="text" />
+            <div>
+
+            <div>
+
+            </div>
+
+            <input type="submit" value="Guest Checkout" class="call-to-action" />
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="customer-info">
+
+    <div class="lock">
+
+      <form>
+
+        <div class="form-group">
+
+          <p class="nimbus-medium-bold">Registration Details</p>
+
+          <div>
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" />
+          </div>
+
+          <div>
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email" />
+          </div>
+
+        </div>
+
+        <div class="form-group">
+
+          <p class="nimbus-medium-bold">Contact Details</p>
+
+          <div>
+            <label for="firstName">First Name</label>
+            <input type="text" name="firstName" id="firstName" />
+          </div>
+
+          <div>
+            <label for="lastName">Last Name</label>
+            <input type="text" name="lastName" id="lastName" />
+          </div>
+
+          <div>
+            <label for="phone">Phone Number</label>
+            <input type="text" name="phone" id="phone" />
+          </div>
+
+        </div>
+
+        <div class="form-group">
+
+          <p class="nimbus-medium-bold">Contact Details</p>
+
+          <div>
+            <label for="address">Address 1</label>
+            <input type="text" name="address" id="address" />
+          </div>
+
+          <div>
+            <label for="address-two">Address 2</label>
+            <input type="text" name="address-two" id="address-two" />
+          </div>
+
+          <div>
+            <label for="city">City</label>
+            <input type="text" name="city" id="city" />
+          </div>
+
+          <div>
+            <label for="zip">Zip</label>
+            <input type="text" name="zip" id="zip" />
+          </div>
+
+          <div>
+            <label for="state">State</label>
+            <select>
+             <option disabled selected value> please choose </option>
+             <option>Alabama</option>
+             <option>Alaska</option>
+             <option>Arizona</option>
+             <option>Arkansas</option>
+             <option>California</option>
+             <option>Colorado</option>
+             <option>Connecticut</option>
+             <option>Delaware</option>
+             <option>Florida</option>
+             <option>Georgia</option>
+             <option>Hawaii</option>
+             <option>Idaho</option>
+             <option>Illinois</option>
+             <option>Indiana</option>
+             <option>Iowa</option>
+             <option>Kansas</option>
+             <option>Kentucky</option>
+             <option>Louisiana</option>
+             <option>Maine</option>
+             <option>Maryland</option>
+             <option>Massachusetts</option>
+             <option>Michigan</option>
+             <option>Minnesota</option>
+             <option>Mississippi</option>
+             <option>Missouri</option>
+             <option>Montana</option>
+             <option>Nebraska</option>
+             <option>Nevada</option>
+             <option>New Hampshire</option>
+             <option>New Jersey</option>
+             <option>New Mexico</option>
+             <option>New York</option>
+             <option>North Carolina</option>
+             <option>North Dakota</option>
+             <option>Ohio</option>
+             <option>Oklahoma</option>
+             <option>Oregon</option>
+             <option>Pennsylvania</option>
+             <option>Rhode Island</option>
+             <option>South Carolina</option>
+             <option>South Dakota</option>
+             <option>Tennessee</option>
+             <option>Texas</option>
+             <option>Utah</option>
+             <option>Vermont</option>
+             <option>Virginia</option>
+             <option>Washington</option>
+             <option>West Virginia</option>
+             <option>Wisconsin</option>
+             <option>Wyoming</option>
+            </select>
+          </div>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </section>
+
+{% endblock %}

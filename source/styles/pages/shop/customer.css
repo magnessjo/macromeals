@@ -1,0 +1,154 @@
+
+@import "../../master.css";
+
+#register {
+  padding: 100px 0;
+
+  & a.register-cta {
+    color: var(--white);
+    font-size: 22px;
+    font-size: calc(18px + 1vw);
+    text-align: center;
+    text-transform: uppercase;
+    display: block;
+    padding: 30px;
+    background-color: var(--green);
+    color: var(--white);
+
+    & span {
+      padding-left: 40px;
+      position: relative;
+    }
+
+    & span:after {
+      content: "\f12c";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+  }
+
+  & .nimbus-large {
+    margin-bottom: 40px;
+  }
+
+  & .divider {
+    text-align: center;
+    padding: 40px 0;
+    color: var(--green);
+
+    @media (--tablet-min) {
+      padding: 60px 0;
+    }
+
+    @media (--desktop-min) {
+      padding: 80px 0;
+    }
+
+    & span {
+      position: relative;
+
+      &:before, &:after {
+        content: '';
+        position: absolute;
+        height: 2px;
+        width: 100px;
+        top: 50%;
+        transform: rotateY(-50%);
+
+        @media (--tablet-min) {
+          width: 200px;
+        }
+
+        @media (--desktop-min) {
+          width: 300px;
+        }
+
+      }
+
+      &:before {
+        right: 100px;
+        background: linear-gradient(90deg, transparent 0%, var(--green) 100%);
+      }
+
+      &:after {
+        left: 100px;
+        background: linear-gradient(90deg, var(--green) 0%, transparent 100%);
+      }
+
+    }
+
+  }
+
+  & .wrapper {
+
+    @media (--tablet-min) {
+      display: flex;
+      align-items: center;
+    }
+
+    & > div {
+
+
+      @media (--tablet-min) {
+        width: 50%;
+        padding: 0 40px;
+      }
+
+      @media (--desktop-min) {
+        padding: 0 80px;
+      }
+
+    }
+
+  }
+
+}
+
+#customer-info {
+
+  & form {
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  & .form-group {
+    margin-bottom: 40px;
+
+    @media (--tablet-min) {
+      margin-bottom: 60px;
+    }
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    & > p {
+
+      @media (--tablet-min) {
+        margin-bottom: 40px;
+      }
+
+    }
+
+  }
+
+  & input#zip {
+    max-width: 150px;
+  }
+
+  & input#phone {
+    max-width: 250px;
+  }
+
+  & input#city {
+    max-width: 250px;
+  }
+
+  & select {
+    max-width: 400px;
+  }
+
+}

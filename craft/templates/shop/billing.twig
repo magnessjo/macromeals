@@ -1,0 +1,41 @@
+
+{% extends "_layout" %}
+{% includeCssFile "/billing.css" %}
+
+{% block main %}
+
+  <div class="cart-breadcrumb">
+
+    <div class="lock">
+
+      <h1 class="nimbus-large-bold"><span>Customer</span>Billing</h1>
+
+      <div>
+        <a href="/shop/cart">Shopping Cart</a>
+        <a href="/shop/customer">Customer Information</a>
+        <a href="/shop/billing" class='active'>Billing</a>
+        <a href="/shop/confirmation">Order Confirmation</a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <section id="billing">
+
+    <div class="lock">
+
+      <form>
+
+        <div>
+          <label>Name as it appears on the card</label>
+          <input type="text" />
+        </div>
+
+      </form>
+
+    </div>
+
+  </section>
+
+{% endblock %}

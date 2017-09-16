@@ -1,0 +1,96 @@
+
+{% extends "_layout" %}
+{% includeCssFile "/confirmation.css" %}
+
+{% block main %}
+
+  <div class="cart-breadcrumb">
+
+    <div class="lock">
+
+      <h1 class="nimbus-large-bold"><span>Order</span>Confirmation</h1>
+
+      <div>
+        <a href="/shop/cart">Shopping Cart</a>
+        <a href="/shop/customer">Customer Information</a>
+        <a href="/shop/billing">Billing</a>
+        <a href="/shop/confirmation" class='active'>Order Confirmation</a>
+      </div>
+
+    </div>
+
+  </div>
+
+  <section id="order-details">
+
+    <div class="lock">
+
+      <h1 class="nimbus-large">Order Confirmation</h1>
+
+       {# Order Summary #}
+
+      <div class="order-summary">
+
+        <div class="item">
+          <h2>Kabob Meal with Chicken</h2>
+          <p class="quantity">1</p>
+          <p class="price">$8.99</p>
+        </div>
+
+        <div class="item">
+          <h2>Taco Tuesday</h2>
+          <p class="quantity">1</p>
+          <p class="price">$8.99</p>
+        </div>
+
+        <div class="total">
+          <h2>Total</h2>
+          <p>$16.99</p>
+        </div>
+
+      </div>
+
+      {# user summary #}
+
+      <div class="user-summary">
+
+        <div class="customer-address">
+
+          <div>
+            <h2 class="nimbus-small-bold">Shipping Address</h2>
+            <address>
+              <p>Josh Magness</p>
+              <p>3149 Hidden Ridge Ter</p>
+              <p>Abingdon, MD 21009</p>
+            </address>
+          </div>
+
+          <div>
+            <h2 class="nimbus-small-bold">Billing Address</h2>
+            <address>
+              <p>Josh Magness</p>
+              <p>3149 Hidden Ridge Ter</p>
+              <p>Abingdon, MD 21009</p>
+            </address>
+          </div>
+
+        </div>
+
+      </div>
+
+      {# Billing Summary #}
+
+      <div class="billing">
+
+        <form>
+
+        </form>
+
+      </div>
+
+
+    </div>
+
+  </section>
+
+{% endblock %}
