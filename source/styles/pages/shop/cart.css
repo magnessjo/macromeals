@@ -21,6 +21,7 @@
   }
 
   & .order-item {
+    position: relative;
 
     @media (--tablet-min) {
       display: flex;
@@ -48,8 +49,12 @@
     }
 
     & .wrapper {
-      padding-top: 40px;
       padding-bottom: 40px;
+
+      @media (--large-max) {
+        margin-bottom: 40px;
+        border-bottom: 1px solid var(--light-gray);
+      }
 
       @media (--tablet-min) {
         display: flex;
@@ -57,19 +62,34 @@
         border-bottom: 1px solid var(--light-gray);
         padding-left: 30px;
         padding-right: 30px;
+        padding-top: 40px;
         width: 100%;
       }
 
     }
 
     & h2 {
-      width: 300px;
+
+      @media (--large-max) {
+        margin-bottom: 40px;
+        width: calc(100% - 60px);
+      }
+
+      @media (--tablet-min) {
+        width: 300px;
+      }
+
     }
 
     & .item-actions {
       margin-left: auto;
       display: flex;
       align-items: center;
+
+      @media (--large-max) {
+        justify-content: space-between;
+      }
+
     }
 
     & .increment {
@@ -78,6 +98,10 @@
       height: 40px;
       display: flex;
       align-items: center;
+
+      @media (--large-max) {
+        order: 2;
+      }
 
       & span, & button {
         height: 100%;
@@ -116,11 +140,26 @@
     }
 
     & .cost {
-      margin-right: 40px;
       margin-bottom: 0;
+
+      @media (--large-max) {
+        order: 3;
+      }
+
+      @media (--tablet-min) {
+        margin-right: 40px;
+      }
+
     }
 
     & .remove {
+
+      @media (--large-max) {
+        position: absolute;
+        top: 0;
+        right: 0;
+        margin-top: -5px;
+      }
 
       &:after {
         content: "\f2d7";

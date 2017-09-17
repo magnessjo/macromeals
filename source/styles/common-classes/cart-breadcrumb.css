@@ -13,6 +13,11 @@
     font-size: 14px;
     letter-spacing: .4px;
 
+    @media (--large-max) {
+      display: block;
+      margin-top: 5px;
+    }
+
     &.active {
       color: var(--yellow);
     }
@@ -37,6 +42,11 @@
       transform: translateY(-50%);
       width: 15px;
       height: 15px;
+
+      @media (--large-max) {
+        display: none;
+      }
+
     }
 
   }
