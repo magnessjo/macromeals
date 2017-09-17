@@ -5,21 +5,7 @@
 
 {% block main %}
 
-  <div class="cart-breadcrumb">
-
-    <div class="lock">
-
-      <h1 class="nimbus-large-bold"><span>Customer</span>Information</h1>
-
-      <div>
-        <a href="/shop/cart">Shopping Cart</a>
-        <a href="/shop/customer" class='active'>Customer Information</a>
-        <a href="/shop/confirmation">Order Confirmation</a>
-      </div>
-
-    </div>
-
-  </div>
+  {% include "components/cart-breadcrumb.twig" %}
 
   <section id="register">
 
