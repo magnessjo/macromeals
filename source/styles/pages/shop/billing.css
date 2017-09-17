@@ -3,6 +3,7 @@
 
 #billing {
   max-width: 800px;
+  min-height: 50vh;
   margin: 0 auto;
   padding: 100px 0;
 }

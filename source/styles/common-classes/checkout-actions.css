@@ -1,0 +1,41 @@
+
+.checkout-actions {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  & a {
+    color: var(--black);
+    font-size: 14px;
+    padding-left: 12px;
+    font-family: var(--acumin);
+    position: relative;
+
+    &:after {
+      content: "\f108";
+      left: 0;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      margin-top: 1px;
+    }
+
+    & span {
+
+      @media (--large-max) {
+        display: none;
+      }
+
+    }
+
+  }
+
+  & input[type="submit"] {
+
+    @media (--medium-max) {
+      font-size: 14px;
+    }
+
+  }
+
+}

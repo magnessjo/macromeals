@@ -133,6 +133,7 @@
   }
 
   & .cart-total {
+    margin-bottom: 80px;
 
     & p {
       margin-bottom: 0;

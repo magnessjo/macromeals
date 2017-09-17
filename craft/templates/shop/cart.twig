@@ -1,6 +1,7 @@
 
 {% extends "_layout" %}
 {% includeCssFile "/cart.css" %}
+{% includeJsFile "/cart.js" %}
 
 {% block main %}
 
@@ -39,80 +40,87 @@
 
       <h1 class="sr-only">Cart Items</h1>
 
-      <div class="items">
+      <form>
 
-        <div class="order-item">
+        <div class="items">
 
-          <div class="image" style="background-image: url(/uploads/products/kabob-with-chicken.jpg)"></div>
+          <div class="order-item">
 
-          <div class="wrapper">
-            <h2>Kabob Meal with Chicken</h2>
+            <div class="image" style="background-image: url(/uploads/products/kabob-with-chicken.jpg)"></div>
 
-            <div class="item-actions">
-              <div class="increment">
-                <button class="icons minus"></button>
-                <span>1</span>
-                <button class="icons plus"></button>
+            <div class="wrapper">
+              <h2>Kabob Meal with Chicken</h2>
+
+              <div class="item-actions">
+                <div class="increment">
+                  <button class="icons minus"></button>
+                  <span>1</span>
+                  <button class="icons plus"></button>
+                </div>
+                <p class="cost">$8.99</p>
+                <button class="icons remove"></button>
               </div>
-              <p class="cost">$8.99</p>
-              <button class="icons remove"></button>
             </div>
+
+          </div>
+
+          <div class="order-item">
+
+            <div class="image"  style="background-image: url(/uploads/products/chicken-squash.jpg)"></div>
+
+            <div class="wrapper">
+              <h2>Chicken with Squash</h2>
+
+              <div class="item-actions">
+                <div class="increment">
+                  <button class="icons minus"></button>
+                  <span>1</span>
+                  <button class="icons plus"></button>
+                </div>
+                <p class="cost">$8.99</p>
+                <button class="icons remove"></button>
+              </div>
+            </div>
+
+
+          </div>
+
+          <div class="order-item">
+
+            <div class="image"  style="background-image: url(/uploads/products/chicke-with-salas.jpg)"></div>
+
+            <div class="wrapper">
+              <h2>Chicken With Salsa</h2>
+
+              <div class="item-actions">
+                <div class="increment">
+                  <button class="icons minus"></button>
+                  <span>1</span>
+                  <button class="icons plus"></button>
+                </div>
+                <p class="cost">$8.99</p>
+                <button class="icons remove"></button>
+              </div>
+            </div>
+
           </div>
 
         </div>
 
-        <div class="order-item">
+        <div class="cart-total">
 
-          <div class="image"  style="background-image: url(/uploads/products/chicken-squash.jpg)"></div>
-
-          <div class="wrapper">
-            <h2>Chicken with Squash</h2>
-
-            <div class="item-actions">
-              <div class="increment">
-                <button class="icons minus"></button>
-                <span>1</span>
-                <button class="icons plus"></button>
-              </div>
-              <p class="cost">$8.99</p>
-              <button class="icons remove"></button>
-            </div>
-          </div>
-
+          <p class="nimbus-small-bold">Total<span class="amount">$59.99</span></p>
 
         </div>
 
-        <div class="order-item">
+        <div class="checkout-actions">
 
-          <div class="image"  style="background-image: url(/uploads/products/chicke-with-salas.jpg)"></div>
-
-          <div class="wrapper">
-            <h2>Chicken With Salsa</h2>
-
-            <div class="item-actions">
-              <div class="increment">
-                <button class="icons minus"></button>
-                <span>1</span>
-                <button class="icons plus"></button>
-              </div>
-              <p class="cost">$8.99</p>
-              <button class="icons remove"></button>
-            </div>
-          </div>
+          <a href="" class="icons">Back <span>to Customer Information</span></a>
+          <input type="submit" value="Proceed to Customer Info" class="call-to-action">
 
         </div>
 
-      </div>
-
-      <div class="cart-total">
-
-        <p class="nimbus-small-bold">Total<span class="amount">$59.99</span></p>
-
-      </div>
-
-      <div class="cart-actions">
-
-      </div>
+      </form>
 
     </div>
 

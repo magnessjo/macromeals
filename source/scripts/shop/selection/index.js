@@ -1,7 +1,7 @@
 
 // Import
 
-import notice from '../components/notice.js';
+import notice from '../../components/notice.js';
 import filter from './filter.js';
 
 // Load

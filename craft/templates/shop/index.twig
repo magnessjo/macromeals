@@ -1,7 +1,7 @@
 
 {% extends "_layout" %}
 {% includeCssFile "/shop.css" %}
-{% includeJsFile "/shop.js" %}
+{% includeJsFile "/shopselection.js" %}
 
 {% block main %}
 
@@ -85,7 +85,7 @@
                   </div>
                 {% endif %}
 
-                <img src="{{ image }}" alt="image of {{ entry.title}} {{ entry.subTitle }}" />
+                <img src="/images/first-attempt.png" alt="image of {{ entry.title}} {{ entry.subTitle }}" />
               </div>
               <h2 class="nimbus-medium-bold">{{ entry.title}}<span>{{ entry.subTitle }}</span></h2>
               <div class="info">

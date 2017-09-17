@@ -1,6 +1,7 @@
 
 {% extends "_layout" %}
 {% includeCssFile "/customer.css" %}
+{% includeJsFile "/cart.js" %}
 
 {% block main %}
 
@@ -24,8 +25,6 @@
   <section id="register">
 
     <div class="lock">
-
-
 
       <div class="wrapper">
 
@@ -226,6 +225,13 @@
              <option>Wyoming</option>
             </select>
           </div>
+
+        </div>
+
+        <div class="checkout-actions">
+
+          <a href="" class="icons">Back <span>to Your Cart</span></a>
+          <input type="submit" value="Proceed to Billing" class="call-to-action">
 
         </div>
 
