@@ -2,49 +2,108 @@
 @import "../../master.css";
 
 #register {
-  padding: 100px 0;
+  padding: 40px 0;
 
-  & a.register-cta {
-    color: var(--white);
-    font-size: 22px;
-    font-size: calc(18px + 1vw);
-    text-align: center;
-    text-transform: uppercase;
-    display: block;
-    padding: 30px;
-    background-color: var(--green);
-    color: var(--white);
+  @media (--desktop-min) {
+    padding: 60px 0;
+  }
 
-    & span {
-      padding-left: 40px;
-      position: relative;
-    }
-
-    & span:after {
-      content: "\f12c";
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
+  @media (--desktop-min) {
+    padding: 100px 0;
   }
 
   & .nimbus-large {
     margin-bottom: 40px;
   }
 
+  & .already-registered {
+
+    @media (--tablet-min) {
+      display: flex;
+      align-items: center;
+    }
+
+    & > div {
+
+      @media (--tablet-min) {
+        width: 50%;
+        padding: 0 40px;
+      }
+
+      @media (--desktop-min) {
+        padding: 0 80px;
+      }
+
+    }
+
+  }
+
+  & .registered-form {
+
+    & .actions {
+
+      @media (--large-max) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      & button {
+
+        @media (--tablet-min) {
+          display: none;
+        }
+
+      }
+
+    }
+
+  }
+
+  & .summary {
+
+    @media (--large-max) {
+      display: none;
+    }
+
+    & .register-cta {
+      color: var(--white);
+      text-align: center;
+      text-transform: uppercase;
+      background-color: var(--green);
+      color: var(--white);
+      font-size: 22px;
+      font-size: calc(18px + 1vw);
+      width: 100%;
+      border-radius: 0;
+      padding: 30px;
+      display: block;
+
+      & span {
+        position: relative;
+        padding-left: 40px;
+      }
+
+      & span:after {
+        content: "\f12c";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
+    }
+
+  }
+
   & .divider {
     text-align: center;
     padding: 40px 0;
     color: var(--green);
-
-    @media (--tablet-min) {
-      padding: 60px 0;
-    }
+    margin-bottom: 0;
 
     @media (--desktop-min) {
-      padding: 80px 0;
+      padding: 60px 0;
     }
 
     & span {
@@ -82,23 +141,17 @@
 
   }
 
-  & .wrapper {
+  & .guest {
 
     @media (--tablet-min) {
-      display: flex;
-      align-items: center;
+      max-width: 600px;
+      margin: 0 auto;
     }
 
-    & > div {
-
+    & .nimbus-large {
 
       @media (--tablet-min) {
-        width: 50%;
-        padding: 0 40px;
-      }
-
-      @media (--desktop-min) {
-        padding: 0 80px;
+        text-align: center;
       }
 
     }
