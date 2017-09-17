@@ -161,7 +161,7 @@
 }
 
 #customer-info {
-  display: none;
+  
 
   & form {
     max-width: 700px;
