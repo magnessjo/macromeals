@@ -18,73 +18,76 @@
 
     <div class="lock">
 
-      <div class="meal-wrapper">
+      <div class="meal-controller">
 
-        <div class="meal-controller">
+        <div>
 
-          <div>
+          <div class="proteins">
+            <p class="nimbus-tiny label">Types of Protein</p>
 
-            <div class="proteins">
-              <p class="nimbus-tiny label">Types of Protein</p>
+            <form id="checkbox" class="checkbox-options">
 
-              <form id="checkbox" class="checkbox-options">
+              {% for cat in craft.categories.group('protein') %}
 
-                {% for cat in craft.categories.group('protein') %}
+                <div class="checkbox-field">
+                  <input type="checkbox" id="{{ cat }}" name="{{ cat }}" value="{{ cat }}">
+                  <label for="{{ cat }}">{{ cat }}</label>
+                </div>
 
-                  <div class="checkbox-field">
-                    <input type="checkbox" id="{{ cat }}" name="{{ cat }}" value="{{ cat }}">
-                    <label for="{{ cat }}">{{ cat }}</label>
-                  </div>
+              {% endfor %}
 
-                {% endfor %}
-
-              </form>
-
-            </div>
+            </form>
 
           </div>
 
         </div>
 
-        <div class="meal-list">
+      </div>
 
-          {% for entry in craft.commerce.products %}
+      <div class="meal-list">
 
-            {% if entry.productImage|length > 0 %}
-              {% set image = entry.productImage[0].url %}
-            {% else %}
-              {% set image = '/images/products/placeholder.jpg' %}
-            {% endif %}
+        {% for entry in craft.commerce.products %}
 
-            <div class="entry" data-protein="{% for cat in entry.protein %}{{ cat }}{% endfor %}">
-              <div class="image">
+          {% if entry.productImage|length > 0 %}
+            {% set image = entry.productImage[0].url %}
+          {% else %}
+            {% set image = '/images/products/placeholder.jpg' %}
+          {% endif %}
 
-                {% if entry.productPieChart|length > 0 %}
-                  <div class="pie-chart">
-                    <img src="{{ entry.productPieChart[0].url }}" alt="image of {{ entry.title }} macros" />
-                  </div>
-                {% endif %}
-
-                <img src="{{ image }}" alt="image of {{ entry.title}} {{ entry.subTitle }}" />
-              </div>
-              <h2 class="nimbus-medium-bold">{{ entry.title}}<span>{{ entry.subTitle }}</span></h2>
-              <div class="info">
-                <div class="facts">
-                  {% for row in entry.productMacros %}
-                    {% if row.calories %}<p class="nimbus-tiny-bold"><span>Calories:</span> {{ row.calories }}</p>{% endif %}
-                    {% if row.protein %}<p class="nimbus-tiny-bold"><span>Protein:</span> {{ row.protein }}</p>{% endif %}
-                    {% if row.carbs %}<p class="nimbus-tiny-bold"><span>Carbs:</span> {{ row.carbs }}</p>{% endif %}
-                    {% if row.fat %}<p class="nimbus-tiny-bold"><span>Fat:</span> {{ row.fat }}</p>{% endif %}
-                  {% endfor %}
+          <div class="entry" data-protein="{% for cat in entry.protein %}{{ cat }}{% endfor %}">
+            <div class="image">
+              <img src="{{ image }}" alt="image of {{ entry.title}} {{ entry.subTitle }}" />
+              {% if entry.productPieChart|length > 0 %}
+                <div class="pie-chart">
+                  <img src="{{ entry.productPieChart[0].url }}" alt="image of {{ entry.title }} macros" />
                 </div>
+              {% endif %}
+            </div>
+
+            <div class="product-details">
+              <h2 class="nimbus-small-bold">{{ entry.title}}<span> {{ entry.subTitle }}</span></h2>
+              {% for purchasable in entry.variants %}
+                <p class="nimbus-tiny-bold"> ${{ purchasable.salePrice }}</p>
+              {% endfor %}
+            </div>
+
+            <a href="/shop/details/{{ entry.slug }}" class="call-to-action details-button">View Details</a>
+
+            <div class="cart-additions">
+              <div class="add-small">
+                <button>Add 16oz</button>
+                <input type="text" value="1" />
+              </div>
+              <div class="add-large">
+                <button>Add 24oz</button>
+                <input type="text" value="1" />
               </div>
             </div>
 
-          {% endfor %}
 
-        </div>
+          </div>
 
-      </div>
+        {% endfor %}
 
       </div>
 

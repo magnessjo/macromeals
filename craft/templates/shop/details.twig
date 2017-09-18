@@ -1,0 +1,62 @@
+
+{% extends "_layout" %}
+{% includeCssFile "/shopdetails.css" %}
+
+{% block main %}
+
+  {% for product in craft.commerce.products.slug(craft.request().lastSegment()) %}
+
+    <section id="stage" class="slim-stage">
+      <div class="image"></div>
+      <div class="lock">
+        <h1 class="nimbus-stage"><div>{{ product.title }}</div></h1>
+      </div>
+    </section>
+
+    {% include "components/notice.twig" %}
+
+    <section>
+
+      <div class="lock">
+
+        <div class="meal-list">
+
+          {% if product.productImage|length > 0 %}
+            {% set image = product.productImage[0].url %}
+          {% else %}
+            {% set image = '/images/products/placeholder.jpg' %}
+          {% endif %}
+
+          <div class="entry" data-protein="{% for cat in product.protein %}{{ cat }}{% endfor %}">
+            <div class="image">
+
+              {% if product.productPieChart|length > 0 %}
+                <div class="pie-chart">
+                  <img src="{{ product.productPieChart[0].url }}" alt="image of {{ product.title }} macros" />
+                </div>
+              {% endif %}
+
+              <img src="{{ image }}" alt="image of {{ product.title}} {{ product.subTitle }}" />
+            </div>
+            <h2 class="nimbus-medium-bold">{{ product.title}}<span>{{ product.subTitle }}</span></h2>
+            <div class="info">
+              <div class="facts">
+                {% for row in product.productMacros %}
+                  {% if row.calories %}<p class="nimbus-tiny-bold"><span>Calories:</span> {{ row.calories }}</p>{% endif %}
+                  {% if row.protein %}<p class="nimbus-tiny-bold"><span>Protein:</span> {{ row.protein }}</p>{% endif %}
+                  {% if row.carbs %}<p class="nimbus-tiny-bold"><span>Carbs:</span> {{ row.carbs }}</p>{% endif %}
+                  {% if row.fat %}<p class="nimbus-tiny-bold"><span>Fat:</span> {{ row.fat }}</p>{% endif %}
+                {% endfor %}
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  {% endfor %}
+
+{% endblock %}
