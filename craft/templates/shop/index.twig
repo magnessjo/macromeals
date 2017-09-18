@@ -12,27 +12,7 @@
     </div>
   </section>
 
-  <section class="notice">
-
-    <div class="lock">
-
-      <div class="text">
-        <div class="toggle">
-          <h1 class="nimbus-small-bold"><span>NOTICE</span></h1>
-          <p class="nimbus-small">The store is only available for those enrolled in our beta program until January 1st, 2018.</p>
-        </div>
-        <div class="expand-content">
-          <div>
-            <p>Currently we are accepting applications for new beta members for our October 15th enrollment.  If your are interested please signup below.</p>
-            <p>We apologize for the inconvenience but we want to ensure the best product and ingredients for all of our members.</p>
-            <a href="/beta" class='call-to-action'>Sign Up</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-  </section>
+  {% include "components/notice.twig" %}
 
   <section>
 
@@ -85,7 +65,7 @@
                   </div>
                 {% endif %}
 
-                <img src="/images/first-attempt.png" alt="image of {{ entry.title}} {{ entry.subTitle }}" />
+                <img src="{{ image }}" alt="image of {{ entry.title}} {{ entry.subTitle }}" />
               </div>
               <h2 class="nimbus-medium-bold">{{ entry.title}}<span>{{ entry.subTitle }}</span></h2>
               <div class="info">
