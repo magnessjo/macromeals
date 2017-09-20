@@ -1,6 +1,86 @@
 
 @import "../../master.css";
 
-#stage {
-  margin-bottom: 0;
+.slim-stage h1:before {
+  left: -40%;
+  right: 0;
+}
+
+.info {
+
+  & .nimbus-tiny-bold {
+
+    & span {
+      width: 80px;
+      display: inline-block;
+    }
+
+  }
+
+}
+
+.assets {
+  display: flex;
+  justify-content: space-between;
+
+  & .product-image {
+    width: 70%;
+  }
+
+  & .category-images {
+    width: 30%;
+    padding: 0 5%;
+  }
+
+}
+
+.pie-chart {
+
+  & img {
+
+  }
+
+}
+
+.flex-wrapper {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  & .entry {
+    width: 75%;
+    padding-left: 5%;
+
+    & .image {
+      margin-bottom: 40px;
+    }
+
+    & img {
+      display: block;
+    }
+
+    & .nimbus-medium-bold {
+
+      & span {
+        display: inline-block;
+      }
+
+    }
+
+  }
+
+  & .checkout-summary {
+    background-color: var(--green);
+    width: 25%;
+    padding: 10px;
+
+    & > div {
+      background-color: var(--white);
+      height: 100%;
+      padding: 40px;
+    }
+
+  }
+
 }

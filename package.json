@@ -20,12 +20,15 @@
     "start": "babel-node watch.js"
   },
   "devDependencies": {
-    "babel-cli": "^6.18.0",
-    "builder": "git+ssh://git@bitbucket.org/magnessjo/builder.git",
+    "babel-cli": "^6.26.0",
     "deploy": "git+ssh://git@bitbucket.org/magnessjo/deployment.git",
     "gaze": "^1.1.1"
   },
   "babel": {
     "presets": "es2015"
+  },
+  "dependencies": {
+    "builder": "git+ssh://git@bitbucket.org/magnessjo/builder.git",
+    "chart.js": "^2.7.0"
   }
 }

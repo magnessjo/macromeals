@@ -44,6 +44,7 @@ const config = {
       homepage: `source/scripts/homepage`,
       faq: `source/scripts/faq`,
       shopselection: `source/scripts/shop/selection`,
+      shopdetails: `source/scripts/shop/details`,
       cart: `source/scripts/shop/cart`,
     },
   },

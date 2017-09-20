@@ -1,6 +1,7 @@
 
 {% extends "_layout" %}
 {% includeCssFile "/shopdetails.css" %}
+{% includeJsFile "/shopdetails.js" %}
 
 {% block main %}
 
@@ -9,38 +10,66 @@
     <section id="stage" class="slim-stage">
       <div class="image"></div>
       <div class="lock">
-        <h1 class="nimbus-stage"><div>{{ product.title }}</div></h1>
+        <h1 class="nimbus-stage"><div>{{ product.title }}<span> {{ product.subTitle }}</span></div></h1>
       </div>
     </section>
 
-    {% include "components/notice.twig" %}
+    {% if product.productImage|length > 0 %}
+      {% set image = product.productImage[0].url %}
+    {% else %}
+      {% set image = '/images/products/placeholder.jpg' %}
+    {% endif %}
 
     <section>
 
       <div class="lock">
 
-        <div class="meal-list">
+        <div class="flex-wrapper">
 
-          {% if product.productImage|length > 0 %}
-            {% set image = product.productImage[0].url %}
-          {% else %}
-            {% set image = '/images/products/placeholder.jpg' %}
-          {% endif %}
+          <div class="checkout-summary">
 
-          <div class="entry" data-protein="{% for cat in product.protein %}{{ cat }}{% endfor %}">
-            <div class="image">
+            <div>
 
-              {% if product.productPieChart|length > 0 %}
-                <div class="pie-chart">
-                  <img src="{{ product.productPieChart[0].url }}" alt="image of {{ product.title }} macros" />
-                </div>
-              {% endif %}
 
-              <img src="{{ image }}" alt="image of {{ product.title}} {{ product.subTitle }}" />
+              {% set protein = '' %}
+              {% set carbs = '' %}
+              {% set fat = '' %}
+
+              {% for row in product.productMacros %}
+
+                {% if row.protein %}
+                  {% set protein = row.protein %}
+                {% endif %}
+
+                {% if row.carbs %}
+                  {% set carbs = row.carbs %}
+                {% endif %}
+
+                {% if row.fat %}
+                  {% set fat = row.fat %}
+                {% endif %}
+
+              {% endfor %}
+
+             <canvas class="pie-chart" height="200" width="200" data-pie="{{protein}},{{carbs}},{{fat}}" />
+
             </div>
-            <h2 class="nimbus-medium-bold">{{ product.title}}<span>{{ product.subTitle }}</span></h2>
+
+          </div>
+
+          <div class="entry">
+
+            <div class="assets">
+              <div class="product-image">
+                <img src="{{ image }}" alt="image of {{ product.title}} {{ product.subTitle }}" />
+              </div>
+
+            </div>
+
             <div class="info">
+
               <div class="facts">
+
                 {% for row in product.productMacros %}
                   {% if row.calories %}<p class="nimbus-tiny-bold"><span>Calories:</span> {{ row.calories }}</p>{% endif %}
                   {% if row.protein %}<p class="nimbus-tiny-bold"><span>Protein:</span> {{ row.protein }}</p>{% endif %}
@@ -48,7 +77,9 @@
                   {% if row.fat %}<p class="nimbus-tiny-bold"><span>Fat:</span> {{ row.fat }}</p>{% endif %}
                 {% endfor %}
               </div>
+
             </div>
+
           </div>
 
         </div>

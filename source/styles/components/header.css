@@ -68,7 +68,7 @@ header {
     display: flex;
     background-color: var(--green);
     color: var(--white);
-    display: none;
+    /*display: none;*/
 
     & img {
       height: 20px;

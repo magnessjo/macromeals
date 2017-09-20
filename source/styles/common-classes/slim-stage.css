@@ -94,13 +94,6 @@
 
     & div {
       position: relative;
-
-      & span {
-        display: block;
-        line-height: 1em;
-        margin-top: 10px;
-      }
-
     }
 
   }

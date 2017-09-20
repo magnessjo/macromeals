@@ -5,8 +5,15 @@
   font-size: calc(30px + 4.25vw);
   font-weight: 300;
   text-transform: uppercase;
-  margin-bottom: 20px;
-  line-height: 1em;
+  line-height: .9em;
+
+  & span {
+    display: block;
+    line-height: 1em;
+    font-size: calc(12px + 1vw);
+    margin-top: 0;
+  }
+
 }
 
 .nimbus-large {
