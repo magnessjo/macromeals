@@ -6,15 +6,6 @@ import chartJs from 'chart.js';
 // Variables
 
 const pies = Array.from(document.querySelectorAll('[data-pie]'));
-let domData = [];
-
-// resize
-
-function resize(chartInstance, size) {
-
-
-
-}
 
 // Set Text
 
@@ -82,6 +73,7 @@ function create(element) {
   const parts = attributes.split(',');
   const height = element.height / 2;
   const width = element.width / 2;
+  let domData = [];
 
   parts.forEach((value, i) => {
     domData.push(parseInt(value));
@@ -90,7 +82,7 @@ function create(element) {
   chartJs.defaults.global.animation.duration = 0;
   chartJs.defaults.global.legend.display = false;
   chartJs.defaults.global.responsive = true;
-  chartJs.defaults.global.onResize = resize;
+  // chartJs.defaults.global.onResize = resize;
 
   chartJs.pluginService.register(drawItemsValuesPlugin);
 
@@ -122,6 +114,6 @@ function create(element) {
 
 export default function() {
 
-  pies.forEach((pie) => { create(pie) });
+  pies.forEach((chart) => { create(chart) });
 
 }

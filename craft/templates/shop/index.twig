@@ -46,32 +46,30 @@
 
       <div class="meal-list">
 
-        {% for entry in craft.commerce.products %}
+        {% for product in craft.commerce.products %}
 
-          {% if entry.productImage|length > 0 %}
-            {% set image = entry.productImage[0].url %}
+          {% if product.productImage|length > 0 %}
+            {% set image = product.productImage[0].url %}
           {% else %}
             {% set image = '/images/products/placeholder.jpg' %}
           {% endif %}
 
-          <div class="entry" data-protein="{% for cat in entry.protein %}{{ cat }}{% endfor %}">
+          <div class="entry" data-protein="{% for cat in product.protein %}{{ cat }}{% endfor %}">
             <div class="image">
-              <img src="{{ image }}" alt="image of {{ entry.title}} {{ entry.subTitle }}" />
-              {% if entry.productPieChart|length > 0 %}
-                <div class="pie-chart">
-                  <img src="{{ entry.productPieChart[0].url }}" alt="image of {{ entry.title }} macros" />
-                </div>
-              {% endif %}
+              <img src="{{ image }}" alt="image of {{ product.title}} {{ product.subTitle }}" />
+
+              {% include "components/pie-chart.twig" with { 'macros': product.productMacros } %}
+
             </div>
 
             <div class="product-details">
-              <h2 class="nimbus-small-bold">{{ entry.title}}<span> {{ entry.subTitle }}</span></h2>
-              {% for purchasable in entry.variants %}
+              <h2 class="nimbus-small-bold">{{ product.title}}<span> {{ product.subTitle }}</span></h2>
+              {% for purchasable in product.variants %}
                 <p class="nimbus-tiny-bold"> ${{ purchasable.salePrice }}</p>
               {% endfor %}
             </div>
 
-            <a href="/shop/details/{{ entry.slug }}" class="call-to-action details-button">View Details</a>
+            <a href="/shop/details/{{ product.slug }}" class="call-to-action details-button">View Details</a>
 
             <div class="cart-additions">
               <div class="add-small">

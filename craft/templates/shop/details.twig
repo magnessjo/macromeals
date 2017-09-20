@@ -30,29 +30,6 @@
 
             <div>
 
-
-              {% set protein = '' %}
-              {% set carbs = '' %}
-              {% set fat = '' %}
-
-              {% for row in product.productMacros %}
-
-                {% if row.protein %}
-                  {% set protein = row.protein %}
-                {% endif %}
-
-                {% if row.carbs %}
-                  {% set carbs = row.carbs %}
-                {% endif %}
-
-                {% if row.fat %}
-                  {% set fat = row.fat %}
-                {% endif %}
-
-              {% endfor %}
-
-             <canvas class="pie-chart" height="200" width="200" data-pie="{{protein}},{{carbs}},{{fat}}" />
-
             </div>
 
           </div>
@@ -60,8 +37,13 @@
           <div class="entry">
 
             <div class="assets">
+
               <div class="product-image">
                 <img src="{{ image }}" alt="image of {{ product.title}} {{ product.subTitle }}" />
+              </div>
+
+              <div>
+                {% include "components/pie-chart.twig" with { 'macros': product.productMacros } %}
               </div>
 
             </div>

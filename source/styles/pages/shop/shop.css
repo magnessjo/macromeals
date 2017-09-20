@@ -139,13 +139,13 @@ input[type='checkbox'] {
       background-color: rgba(255, 255, 255, .8);
       opacity: 0;
       transition: opacity .3s ease-out;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-      & img {
+      & canvas {
         max-width: 60%;
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
+        position: relative;
         opacity: 0;
         transition: opacity .5s ease-out;
       }
@@ -157,7 +157,7 @@ input[type='checkbox'] {
       transition: opacity .4s ease-in-out;
     }
 
-    &:hover .pie-chart img {
+    &:hover .pie-chart canvas {
       opacity: 1;
       transition: opacity .5s ease-in-out;
       transition-delay: .2s;
