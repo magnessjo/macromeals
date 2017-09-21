@@ -29,13 +29,17 @@ const drawItemsValuesPlugin = {
 
         const model = dataset._meta[Object.keys(dataset._meta)[0]].data[i]._model;
         const total = dataset._meta[Object.keys(dataset._meta)[0]].total;
-        const mid_radius = model.innerRadius + (1.2 * model.outerRadius - model.innerRadius) / 2.2;
+
+        let radiusPercent = 1.2;
+
+        if (Math.round(dataset.data[i] / total * 100) > 45) {
+          radiusPercent = 1;
+        }
+
+        const mid_radius = model.innerRadius + (radiusPercent * model.outerRadius - model.innerRadius) / 2.2;
         const start_angle = model.startAngle;
         const end_angle = model.endAngle;
         const mid_angle = start_angle + (end_angle - start_angle) / 2;
-
-        const label = chartInstance.config.data.labels[i];
-        const percent = String(Math.round(dataset.data[i] / total * 100)) + "%";
 
         const mid_radius2 = 0.92 * (model.innerRadius + (2.4 * model.outerRadius - model.innerRadius) / 2);
         const fact = i % 2 == 0 ? 1.00 : 1.15;
@@ -46,8 +50,29 @@ const drawItemsValuesPlugin = {
         const myX2 = 0.91 * mid_radius2 * 1 * Math.cos(mid_angle);
         const myY2 = 0.91 * mid_radius2 * 1 * Math.sin(mid_angle);
 
-        const labelSize = chartInstance.width * .10;
-        const percentSize = chartInstance.width * .20;
+        const label = chartInstance.config.data.labels[i];
+        const percent = String(Math.round(dataset.data[i] / total * 100));
+
+        let labelSize = chartInstance.width * .10;
+        let percentSize = chartInstance.width * .20;
+        let percentPosition = 18;
+        let textAxisModify = 1;
+
+        if (parseInt(percent) < 15) {
+
+          labelSize = 12;
+          percentSize = 14;
+          percentPosition = 12;
+
+        }
+
+        if (label.length == 3) {
+          textAxisModify = 3;
+        }
+
+        if (label.length == 4) {
+          textAxisModify = 5;
+        }
 
         // Set Text
 
@@ -55,7 +80,7 @@ const drawItemsValuesPlugin = {
         ctx.fillText(label, model.x + x, model.y + y);
 
         ctx.font = `bold ${labelSize}px acumin-pro`;
-        ctx.fillText(percent, model.x + x, model.y + y + 18);
+        ctx.fillText(`${percent}%`, model.x + x + textAxisModify, model.y + y + percentPosition);
 
       }
 
