@@ -33,6 +33,7 @@ const config = {
       customer: 'source/styles/pages/shop/customer.css',
       billing: 'source/styles/pages/shop/billing.css',
       confirmation: 'source/styles/pages/shop/confirmation.css',
+      labels: 'source/styles/pages/labels.css',
     },
   },
 
@@ -46,6 +47,7 @@ const config = {
       shopselection: `source/scripts/shop/selection`,
       shopdetails: `source/scripts/shop/details`,
       cart: `source/scripts/shop/cart`,
+      labels: `source/scripts/labels`,
     },
   },
 

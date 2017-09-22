@@ -1,4 +1,5 @@
 
+{% set url = craft.request.lastSegment() %}
 {% set protein = '' %}
 {% set carbs = '' %}
 {% set fat = '' %}
@@ -20,5 +21,11 @@
 {% endfor %}
 
 <div class="pie-chart">
-  <canvas height="200" width="200" data-pie="{{protein}},{{carbs}},{{fat}}" />
+
+  {% if url == 'labels' %}
+    <canvas height="170" width="170" data-print="true" data-pie="{{protein}},{{carbs}},{{fat}}" />
+  {% else %}
+    <canvas height="200" width="200" data-pie="{{protein}},{{carbs}},{{fat}}" />
+  {% endif %}
+
 </div>

@@ -53,15 +53,15 @@ const drawItemsValuesPlugin = {
         const label = chartInstance.config.data.labels[i];
         const percent = String(Math.round(dataset.data[i] / total * 100));
 
-        let labelSize = chartInstance.width * .10;
-        let percentSize = chartInstance.width * .20;
+        let labelSize = chartInstance.width * .08;
+        let percentSize = chartInstance.width * .14;
         let percentPosition = 18;
         let textAxisModify = 1;
 
         if (parseInt(percent) < 15) {
 
-          labelSize = 12;
-          percentSize = 14;
+          labelSize = 10;
+          percentSize = 12;
           percentPosition = 12;
 
         }
@@ -107,7 +107,12 @@ function create(element) {
   chartJs.defaults.global.animation.duration = 0;
   chartJs.defaults.global.legend.display = false;
   chartJs.defaults.global.responsive = true;
+  chartJs.defaults.global.tooltips.enabled = false;
   // chartJs.defaults.global.onResize = resize;
+
+  if (element.getAttribute('data-print') == 'true') {
+    chartJs.defaults.global.responsive = false;
+  }
 
   chartJs.pluginService.register(drawItemsValuesPlugin);
 
@@ -119,6 +124,11 @@ function create(element) {
         options: {
         },
         backgroundColor: [
+          'rgba(144, 66, 63, 1)',
+          'rgba(101, 147, 49, 1)',
+          'rgba(49, 87, 125, 1'
+        ],
+        hoverBackgroundColor: [
           'rgba(144, 66, 63, 1)',
           'rgba(101, 147, 49, 1)',
           'rgba(49, 87, 125, 1'

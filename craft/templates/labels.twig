@@ -1,0 +1,84 @@
+
+{% includeCssFile "/labels.css" %}
+{% includeJsFile "/labels.js" %}
+
+{% set count = [1, 2, 3, 4] %}
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  </head>
+
+  <body>
+
+    <main>
+
+      {% for item in count %}
+
+        {% for product in craft.commerce.products.slug('autumn-flavors') %}
+
+          <section>
+
+            <div class="info">
+
+              <img src="/images/logo/green.svg" class="logo" alt="image of the macro meals logo" />
+
+              <div class="description">
+
+                <h1>{{ product.title }} <span>{{ product.subTitle }}</span></h1>
+
+                <div class="ingredients">
+                  <h3>Ingredients</h3>
+                  <p>{{ product.ingredients }}
+                </div>
+
+                <div class="instructions">
+
+                </div>
+
+              </div>
+
+              <div class="connect">
+                <h4>Connect With Us</h4>
+                <p>http://macromeals.life</p>
+              </div>
+
+            </div>
+
+            <div class="facts">
+
+                <div class="list">
+
+                  <h2>NUTRITION FACTS</h2>
+                  <div>
+                    {% for row in product.productMacros %}
+                      {% if row.calories %}<p class="nimbus-tiny-bold"><span>Calories:</span> {{ row.calories }}</p>{% endif %}
+                      {% if row.protein %}<p class="nimbus-tiny-bold"><span>Protein:</span> {{ row.protein }}</p>{% endif %}
+                      {% if row.carbs %}<p class="nimbus-tiny-bold"><span>Carbs:</span> {{ row.carbs }}</p>{% endif %}
+                      {% if row.fat %}<p class="nimbus-tiny-bold"><span>Fat:</span> {{ row.fat }}</p>{% endif %}
+                    {% endfor %}
+
+                  </div>
+
+                  {% include "components/pie-chart.twig" with { 'macros': product.productMacros } %}
+
+                </div>
+
+            </div>
+
+          </section>
+
+        {% endfor %}
+
+      {% endfor %}
+
+    </main>
+
+  </body>
+
+</html>
