@@ -30,7 +30,8 @@
     overflow: hidden;
 
     &:first-of-type, &:nth-of-type(2) {
-      margin-bottom: .5in;
+      margin-bottom: .4in;
+      margin-top: .1in;
     }
 
   }
@@ -42,33 +43,69 @@
     overflow: hidden;
     padding-bottom: 40px;
     position: relative;
-    height: calc(100% - 60px);
+    height: calc(100% - 50px);
 
     & .logo {
-      max-width: 80%;
-      margin-bottom: 20px;
-      height: 120px;
+      margin-bottom: 15px;
+      height: 50px;
+      margin: 0 auto;
+      display: block;
     }
 
     & .description {
-      height: calc(100% - 120px);
+      height: calc(100% - 80px);
+
+      & > div {
+        margin-bottom: 15px;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+
+      }
+
     }
 
     & h1 {
       font-family: var(--acuminCondensed);
       font-size: 22px;
+      margin-bottom: 15px;
+      font-weight: 700;
 
       & span {
         display: block;
         font-size: 14px;
         font-family: var(--acumin);
+        font-weight: 300;
+      }
+
+    }
+
+    & h3 {
+      text-transform: uppercase;
+      margin-bottom: 3px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    & .alerts {
+      display: flex;
+      justify-content: space-between;
+
+      & > div {
+        width: 45%;
+      }
+
+      & .headline {
+        font-weight: 700;
+        text-transform: uppercase;
       }
 
     }
 
     & .connect {
       position: absolute;
-      bottom: 0;
+      bottom: 5px;
       height: 40px;
       width: 100%;
 
@@ -100,16 +137,32 @@
       position: relative;
     }
 
+    & h2 {
+      margin-bottom: 20px;
+    }
+
     & p {
-      margin-bottom: 5px;
+      margin-bottom: 10px;
       line-height: 1em;
       margin-top: 0;
-      font-weight: bold;
+      font-weight: 700;
 
       & span {
-        width: 60px;
+        width: 70px;
         display: inline-block;
         font-weight: normal;
+      }
+
+      &.protein {
+        color: var(--auburn);
+      }
+
+      &.carbs {
+        color: var(--green);
+      }
+
+      &.fat {
+        color: var(--blue);
       }
 
     }

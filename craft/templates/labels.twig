@@ -34,10 +34,25 @@
 
                 <div class="ingredients">
                   <h3>Ingredients</h3>
-                  <p>{{ product.ingredients }}
+                  <p>{{ product.ingredients }}</p>
                 </div>
 
                 <div class="instructions">
+                  <h3>Instructions</h3>
+                  <p>{{ product.instructions }}</p>
+                </div>
+
+                <div class="alerts">
+
+                  <div>
+                    <p class="headline">Enjoy By</p>
+                    <p>{{ product.expirationDate }}</p>
+                  </div>
+
+                  <div>
+                    <p class="headline">ALLERGEN ALERT</p>
+                    <p>{{ product.allergenAlert }}</p>
+                  </div>
 
                 </div>
 
@@ -57,10 +72,10 @@
                   <h2>NUTRITION FACTS</h2>
                   <div>
                     {% for row in product.productMacros %}
-                      {% if row.calories %}<p class="nimbus-tiny-bold"><span>Calories:</span> {{ row.calories }}</p>{% endif %}
-                      {% if row.protein %}<p class="nimbus-tiny-bold"><span>Protein:</span> {{ row.protein }}</p>{% endif %}
-                      {% if row.carbs %}<p class="nimbus-tiny-bold"><span>Carbs:</span> {{ row.carbs }}</p>{% endif %}
-                      {% if row.fat %}<p class="nimbus-tiny-bold"><span>Fat:</span> {{ row.fat }}</p>{% endif %}
+                      {% if row.calories %}<p class="nimbus-tiny-bold"><span>CALORIES:</span> {{ row.calories }}</p>{% endif %}
+                      {% if row.protein %}<p class="nimbus-tiny-bold protein"><span>PROTEIN:</span> {{ row.protein }}g</p>{% endif %}
+                      {% if row.carbs %}<p class="nimbus-tiny-bold carbs"><span>CARBS:</span> {{ row.carbs }}g</p>{% endif %}
+                      {% if row.fat %}<p class="nimbus-tiny-bold fat"><span>FAT:</span> {{ row.fat }}g</p>{% endif %}
                     {% endfor %}
 
                   </div>
