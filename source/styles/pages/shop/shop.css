@@ -78,105 +78,140 @@ input[type='checkbox'] {
 .meal-list {
   display: flex;
   flex-wrap: wrap;
+}
 
-  & > div {
-    margin-bottom: 80px;
+.meal-entry {
+  margin-bottom: 40px;
 
-    @media (--tablet-min) {
-      width: 50%;
-      padding: 0 25px;
-    }
-
-    @media (--desktop-min) {
-      width: 33.3%;
-      margin-bottom: 100px;
-    }
-
+  @media (--tablet-min) {
+    width: 50%;
+    padding: 0 25px;
   }
 
-  & .product-details {
-    display: flex;
-
-    @media (--large-max) {
-      margin-bottom: 10px;
-    }
-
-    @media (--tablet-min) {
-      height: 60px;
-    }
-
-    @media (--desktop-min) {
-      height: 80px;
-    }
-
-    & .acumin-small-bold {
-      line-height: 1em;
-      width: 70%;
-
-      & span {
-        display: block;
-        font-size: 14px;
-      }
-
-    }
-
-    & .acumin-tiny-bold {
-      text-align: right;
-      width: 30%;
-    }
-
+  @media (--desktop-min) {
+    width: 33.3%;
+    margin-bottom: 60px;
   }
 
-  & .image {
-    position: relative;
+  &:hover .meal-detail .overlay {
+    opacity: 1;
+    transition: opacity .8s;
+  }
 
-    & .pie-chart {
+}
+
+.meal-detail {
+  position: relative;
+  display: block;
+
+  & img {
+    display: block;
+  }
+
+  & .overlay {
+
+    @media (--desktop-min) {
       position: absolute;
-      top: 0;
-      bottom: 0;
       right: 0;
       left: 0;
-      background-color: rgba(255, 255, 255, .8);
-      opacity: 0;
-      transition: opacity .3s ease-out;
+      top: 0;
+      bottom: 0;
       display: flex;
       justify-content: center;
       align-items: center;
+      opacity: 0;
+      transition: opacity .4s;
+      background-color: rgba(255, 255, 255, .85);
+    }
 
-      & canvas {
-        max-width: 60%;
-        position: relative;
-        opacity: 0;
-        transition: opacity .5s ease-out;
+
+    & p {
+      margin-bottom: 0;
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 14px;
+
+      @media (--tablet-max) {
+        display: none;
       }
 
     }
 
-    &:hover .pie-chart {
-      opacity: 1;
-      transition: opacity .4s ease-in-out;
-    }
+    & .meal-title {
+      font-family: var(--acuminCondensed);
+      font-size: 22px;
+      display: block;
 
-    &:hover .pie-chart canvas {
-      opacity: 1;
-      transition: opacity .5s ease-in-out;
-      transition-delay: .2s;
+      & span {
+        position: relative;
+
+        @media (--tablet-max) {
+          display: block;
+          height: 50px;
+          line-height: 50px;
+        }
+
+        @media (--desktop-min) {
+          margin: 10px 0;
+          padding: 10px 0;
+          display: inline-block;
+        }
+
+        &:before, &:after {
+          content: "";
+          height: 1px;
+          background-color: var(--green);
+          position: absolute;
+
+          @media (--tablet-max) {
+            left: 10px;
+            right: 10px;
+          }
+
+          @media (--desktop-min) {
+            left: 10%;
+            right: 10%;
+          }
+
+        }
+
+        &:before {
+
+          @media (--tablet-max) {
+            display: none;
+          }
+
+          @media (--desktop-min) {
+            top: 0;
+          }
+
+        }
+
+        &:after {
+          bottom: 0;
+        }
+
+      }
+
     }
 
   }
 
-  & .details-button {
-    margin-bottom: 10px;
-    font-size: 12px;
-    padding: 10px 0;
-    display: block;
+  & .meal-more {
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 50px;
+    background-color: rgba(255, 255, 255, .85);
+    height: 40px;
+    margin-bottom: 0;
     text-align: center;
-    letter-spacing: 1px;
-  }
+    line-height: 40px;
 
-  & .image {
-    position: relative;
-    margin-bottom: 10px;
+    @media (--desktop-min) {
+      display: none;
+    }
+
   }
 
 }

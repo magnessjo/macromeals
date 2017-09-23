@@ -54,34 +54,32 @@
             {% set image = '/images/products/placeholder.jpg' %}
           {% endif %}
 
-          <div class="entry" data-protein="{% for cat in product.protein %}{{ cat }}{% endfor %}">
-            <div class="image">
+          <div class="meal-entry" data-protein="{% for cat in product.protein %}{{ cat }}{% endfor %}">
+
+            <a href="/shop/details/{{ product.slug }}" class="meal-detail">
               <img src="{{ image }}" alt="image of {{ product.title}} {{ product.subTitle }}" />
 
-              {% include "components/pie-chart.twig" with { 'macros': product.productMacros } %}
+              <div class="overlay">
+                <div>
+                  <p>View</p>
+                  <p class="meal-title"><span>{{ product.title }}</span> </p>
+                  <p>Details</p>
+                </div>
+              </div>
 
-            </div>
-
-            <div class="product-details">
-              <h2 class="acumin-small-bold">{{ product.title}}<span> {{ product.subTitle }}</span></h2>
-              {% for purchasable in product.variants %}
-                <p class="acumin-tiny-bold"> ${{ purchasable.salePrice }}</p>
-              {% endfor %}
-            </div>
-
-            <a href="/shop/details/{{ product.slug }}" class="call-to-action details-button">View Details</a>
+              <p class="meal-more">See More</p>
+            </a>
 
             <div class="cart-additions">
-              <div class="add-small">
-                <button>Add 16oz</button>
-                <input type="text" value="1" />
-              </div>
-              <div class="add-large">
-                <button>Add 24oz</button>
-                <input type="text" value="1" />
-              </div>
-            </div>
 
+              {% for purchasable in product.variants %}
+
+                <div class="add-{{ purchasable.description }}">
+                  <button><span class="size">Add {{ purchasable.description }}</span> <span class="price">${{ purchasable.salePrice }}</span></button>
+                </div>
+              {% endfor %}
+
+            </div>
 
           </div>
 

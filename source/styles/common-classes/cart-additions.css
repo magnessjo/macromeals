@@ -4,32 +4,90 @@
   justify-content: space-between;
 
   & > div {
-    width: 49%;
+    width: 50%;
     position: relative;
+
+    &:last-of-type button {
+      border-left: 1px solid var(--green);
+    }
+
   }
 
   & button {
-    height: 40px;
-    background-color: var(--green);
-    color: var(--white);
-    /*padding-left: 20px;*/
+    color: var(--green);
+    border-bottom: 1px solid var(--green);
     border-radius: 0;
     text-align: center;
     width: 100%;
-  }
+    overflow: hidden;
+    position: relative;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-family: var(--acuminCondensed);
 
-  & input[type="text"] {
-    position: absolute;
-    height: 20px;
-    width: 20px;
-    background-color: var(--white);
-    top: 50%;
-    left: 10px;
-    transform: translateY(-50%);
-    text-align: center;
-    line-height: 20px;
-    border: none;
-    display: none;
+    @media (--tablet-max) {
+      padding: 5px 0;
+      font-size: 14px;
+    }
+
+    @media (--desktop-min) {
+      height: 40px;
+      font-size: 16px;
+    }
+
+    & span {
+      display: block;
+
+      @media (--tablet-max) {
+        line-height: 1em;
+      }
+
+      @media (--desktop-min) {
+        transition: transform 1s;
+        height: 40px;
+        line-height: 40px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+      }
+
+    }
+
+    & span.price {
+
+      @media (--desktop-min) {
+        transform: translateY(40px);
+      }
+
+    }
+
+    &:hover {
+
+      @media (--desktop-min) {
+        color: var(--white);
+        background-color: var(--green);
+        transition: background-color .8s ease-in;
+      }
+
+      & span.size {
+
+        @media (--desktop-min) {
+          transform: translateY(-40px);
+        }
+
+      }
+
+      & span.price {
+
+        @media (--desktop-min) {
+          transform: translateY(0);
+        }
+
+      }
+
+    }
+
   }
 
 }
