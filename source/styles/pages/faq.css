@@ -1,6 +1,11 @@
 
 @import "../master.css";
 
+.slim-stage h1:before {
+  left: -40%;
+  right: 0;
+}
+
 .faq-entry {
   margin-bottom: 40px;
 }

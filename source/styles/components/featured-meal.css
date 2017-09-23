@@ -3,7 +3,7 @@
   background-color: var(--light-green);
   padding: 50px 0;
 
-  & .nimbus-stage {
+  & .acumin-large  {
     color: var(--white);
   }
 
@@ -41,16 +41,16 @@
         padding: 40px 180px 40px 40px;
       }
 
-      & .nimbus-medium-bold {
+      & .acumin-medium-bold  {
         line-height: 1em;
       }
 
-      & .nimbus-medium-bold span {
+      & .acumin-medium-bold  span {
         display: block;
         line-height: 1em;
       }
 
-      & .nimbus-tiny-bold span {
+      & .acumin-tiny-bold span {
         font-weight: 400;
         width: 70px;
         display: inline-block;

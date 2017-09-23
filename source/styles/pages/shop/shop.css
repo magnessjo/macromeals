@@ -61,7 +61,7 @@ input[type='checkbox'] {
 
   }
 
-  & .nimbus-tiny {
+  & .acumin-tiny {
     text-decoration: underline;
     margin-bottom: 10px;
     font-weight: 700;
@@ -109,7 +109,7 @@ input[type='checkbox'] {
       height: 80px;
     }
 
-    & .nimbus-small-bold {
+    & .acumin-small-bold {
       line-height: 1em;
       width: 70%;
 
@@ -120,7 +120,7 @@ input[type='checkbox'] {
 
     }
 
-    & .nimbus-tiny-bold {
+    & .acumin-tiny-bold {
       text-align: right;
       width: 30%;
     }

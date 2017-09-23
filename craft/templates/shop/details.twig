@@ -10,7 +10,7 @@
     <section id="stage" class="slim-stage">
       <div class="image"></div>
       <div class="lock">
-        <h1 class="nimbus-stage"><div>{{ product.title }}<span> {{ product.subTitle }}</span></div></h1>
+        <h1 class="acumin-stage"><div>{{ product.title }}<span> {{ product.subTitle }}</span></div></h1>
       </div>
     </section>
 
@@ -53,10 +53,10 @@
               <div class="facts">
 
                 {% for row in product.productMacros %}
-                  {% if row.calories %}<p class="nimbus-tiny-bold"><span>Calories:</span> {{ row.calories }}</p>{% endif %}
-                  {% if row.protein %}<p class="nimbus-tiny-bold"><span>Protein:</span> {{ row.protein }}</p>{% endif %}
-                  {% if row.carbs %}<p class="nimbus-tiny-bold"><span>Carbs:</span> {{ row.carbs }}</p>{% endif %}
-                  {% if row.fat %}<p class="nimbus-tiny-bold"><span>Fat:</span> {{ row.fat }}</p>{% endif %}
+                  {% if row.calories %}<p class="acumin-tiny-bold"><span>Calories:</span> {{ row.calories }}</p>{% endif %}
+                  {% if row.protein %}<p class="acumin-tiny-bold"><span>Protein:</span> {{ row.protein }}</p>{% endif %}
+                  {% if row.carbs %}<p class="acumin-tiny-bold"><span>Carbs:</span> {{ row.carbs }}</p>{% endif %}
+                  {% if row.fat %}<p class="acumin-tiny-bold"><span>Fat:</span> {{ row.fat }}</p>{% endif %}
                 {% endfor %}
               </div>
 

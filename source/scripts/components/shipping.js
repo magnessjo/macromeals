@@ -6,7 +6,7 @@ const input = form.querySelector('input[type="text"]');
 const submit = form.querySelector('input[type="submit"]');
 const result = document.querySelector('.shipping-cost-result');
 const loaderAnimation = result.querySelector('.loader');
-const textContainer = result.querySelector('.nimbus-large-bold');
+const textContainer = result.querySelector('.acumin-large -bold');
 const regex = /^(\d{5})?$/;
 
 // Set Rate

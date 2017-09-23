@@ -8,7 +8,7 @@
 
 .info {
 
-  & .nimbus-tiny-bold {
+  & .acumin-tiny-bold {
 
     & span {
       width: 80px;
@@ -60,7 +60,7 @@
       display: block;
     }
 
-    & .nimbus-medium-bold {
+    & .acumin-medium-bold  {
 
       & span {
         display: inline-block;

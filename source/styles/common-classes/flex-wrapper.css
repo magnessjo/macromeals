@@ -20,7 +20,7 @@
       display: block;
     }
 
-    & .nimbus-medium-bold  span {
+    & .acumin-medium-bold   span {
 
       @media (--large-max) {
         display: inline;

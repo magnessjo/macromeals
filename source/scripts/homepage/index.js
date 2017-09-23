@@ -2,6 +2,7 @@
 // Imports
 
 import notice from '../components/notice.js';
+import pieChart from '../components/pieChart.js';
 import shipping from '../components/shipping.js';
 import switchImages from './switch-images.js';
 
@@ -12,5 +13,6 @@ window.addEventListener('load', () => {
   notice();
   switchImages();
   shipping();
+  pieChart();
 
 });

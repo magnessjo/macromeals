@@ -1,6 +1,6 @@
 
 .with-underline {
-  font-family: var(--trajan);
+  font-family: var(--acuminCondensed);
   font-size: calc(18px + 1vw);
   margin-bottom: 50px;
   color: var(--green);
@@ -21,11 +21,6 @@
       left: 0;
       left: 50%;
       transform: translateX(-50%);
-    }
-
-    &:before {
-      /*top: 0;
-      width: 20%;*/
     }
 
     &:after {

@@ -19,7 +19,7 @@
       padding-right: 80px;
     }
 
-    & .nimbus-tiny-bold {
+    & .acumin-tiny-bold {
       margin-bottom: 30px;
     }
 
@@ -56,9 +56,8 @@
       width: calc(100% - 300px);
     }
 
-    & .nimbus-medium-bold  {
+    & .acumin-medium-bold   {
       margin-bottom: 30px;
-      font-weight: 300;
       text-transform: uppercase;
       color: var(--green);
     }

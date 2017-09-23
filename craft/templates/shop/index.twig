@@ -8,7 +8,7 @@
   <section id="stage" class="slim-stage">
     <div class="image"></div>
     <div class="lock">
-      <h1 class="nimbus-stage"><div>Meals</div></h1>
+      <h1 class="acumin-stage"><div>Meals</div></h1>
     </div>
   </section>
 
@@ -23,7 +23,7 @@
         <div>
 
           <div class="proteins">
-            <p class="nimbus-tiny label">Types of Protein</p>
+            <p class="acumin-tiny label">Types of Protein</p>
 
             <form id="checkbox" class="checkbox-options">
 
@@ -63,9 +63,9 @@
             </div>
 
             <div class="product-details">
-              <h2 class="nimbus-small-bold">{{ product.title}}<span> {{ product.subTitle }}</span></h2>
+              <h2 class="acumin-small-bold">{{ product.title}}<span> {{ product.subTitle }}</span></h2>
               {% for purchasable in product.variants %}
-                <p class="nimbus-tiny-bold"> ${{ purchasable.salePrice }}</p>
+                <p class="acumin-tiny-bold"> ${{ purchasable.salePrice }}</p>
               {% endfor %}
             </div>
 

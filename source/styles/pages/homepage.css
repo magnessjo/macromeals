@@ -132,7 +132,7 @@
 
 #why {
 
-  & .nimbus-large-bold {
+  & .acumin-large-bold {
     background-color: var(--green);
     color: var(--white);
     padding: 10px 50px 10px 20px;
@@ -143,14 +143,14 @@
   & .summary {
     margin-bottom: 60px;
 
-    & .nimbus-medium-bold {
+    & .acumin-medium-bold  {
       text-align: center;
       max-width: 600px;
       margin: 0 auto;
       line-height: 1em;
     }
 
-    & .nimbus-medium-bold:first-of-type {
+    & .acumin-medium-bold:first-of-type {
       margin-bottom: 20px;
     }
 
@@ -172,7 +172,7 @@
       margin-bottom: 0;
     }
 
-    & .nimbus-medium-bold {
+    & .acumin-medium-bold  {
       text-transform: uppercase;
       color: var(--green);
     }
@@ -346,7 +346,7 @@
         padding: 40px 0;
       }
 
-      & .nimbus-large-bold {
+      & .acumin-large-bold {
         margin-bottom: 0;
         text-align: center;
         line-height: 1em;
