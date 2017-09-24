@@ -51,7 +51,7 @@
           {% if product.productImage|length > 0 %}
             {% set image = product.productImage[0].url %}
           {% else %}
-            {% set image = '/images/products/placeholder.jpg' %}
+            {% set image = '/images/products/placeholder-circle.png' %}
           {% endif %}
 
           <div class="meal-entry" data-protein="{% for cat in product.protein %}{{ cat }}{% endfor %}">

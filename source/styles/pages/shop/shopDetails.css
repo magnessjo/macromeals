@@ -6,79 +6,144 @@
   right: 0;
 }
 
-.info {
-
-  & .acumin-tiny-bold {
-
-    & span {
-      width: 80px;
-      display: inline-block;
-    }
-
-  }
-
-}
-
-.assets {
-  display: flex;
-  justify-content: space-between;
-
-  & .product-image {
-    width: 70%;
-  }
-
-  & .category-images {
-    width: 30%;
-    padding: 0 5%;
-  }
-
-}
-
-.pie-chart {
-
-  & img {
-
-  }
-
-}
-
 .flex-wrapper {
   display: flex;
   justify-content: space-between;
   max-width: 1200px;
   margin: 0 auto;
 
-  & .entry {
-    width: 75%;
-    padding-left: 5%;
+  & > div {
 
-    & .image {
-      margin-bottom: 40px;
+    &:first-of-type {
+      width: 60%;
     }
 
-    & img {
-      display: block;
+  }
+
+  & .product-details {
+    padding-right: 50px;
+
+    & .product-image {
+
+       & img {
+         display: block;
+         margin-bottom: 40px;
+       }
+
     }
 
-    & .acumin-medium-bold  {
+    & .info {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 50px 0;
+      margin: 50px 0;
+      border-bottom: 1px solid var(--green);
+      border-top: 1px solid var(--green);
 
-      & span {
-        display: inline-block;
+      & .acumin-small {
+        margin-bottom: 10px;
+        font-weight: 700;
+
+        & span {
+          width: 50%;
+          min-width: 140px;
+          display: inline-block;
+          font-size: inherit;
+          font-weight: 400;
+        }
+
+        &.protein {
+          color: var(--auburn);
+        }
+
+        &.carbs {
+          color: var(--green);
+        }
+
+        &.fat {
+          color: var(--blue);
+        }
+
+      }
+
+      & .facts {
+        padding-right: 10%;
+      }
+
+      & .pie-chart {
+
+        & canvas {
+          max-height: 180px;
+        }
+
+      }
+
+    }
+
+    & table {
+      font-size: 14px;
+      width: 100%;
+      border-collapse: collapse;
+
+      & th {
+        text-align: left;
+        text-transform: uppercase;
+        padding: 10px;
+      }
+
+      & td {
+        padding: 10px;
+      }
+
+      & tr:nth-of-type(odd) td {
+        background-color: var(--light-gray);
       }
 
     }
 
   }
 
-  & .checkout-summary {
-    background-color: var(--green);
-    width: 25%;
-    padding: 10px;
+  & .actions {
+    width: 40%;
+    display: none;
 
     & > div {
-      background-color: var(--white);
-      height: 100%;
-      padding: 40px;
+      border: 1px solid var(--green);
+      padding: 50px;
+    }
+
+    & .acumin-medium-bold {
+      text-transform: uppercase;
+    }
+
+    & .list {
+      margin-bottom: 20px;
+
+      & > div {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+
+      & label {
+        margin-bottom: 0;
+      }
+
+      & input[type="number"] {
+        width: 60px;
+        margin-bottom: 0;
+      }
+
+    }
+
+    & .options {
+      border-bottom: 1px solid var(--green);
+      padding-bottom: 30px;
     }
 
   }

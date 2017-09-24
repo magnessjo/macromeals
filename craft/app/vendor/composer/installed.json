@@ -40,8 +40,8 @@
     },
     {
         "name": "symfony/event-dispatcher",
-        "version": "v2.8.24",
-        "version_normalized": "2.8.24.0",
+        "version": "v2.8.27",
+        "version_normalized": "2.8.27.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/event-dispatcher.git",
@@ -206,17 +206,17 @@
     },
     {
         "name": "lsolesen/pel",
-        "version": "0.9.4.2",
-        "version_normalized": "0.9.4.2",
+        "version": "0.9.4.3",
+        "version_normalized": "0.9.4.3",
         "source": {
             "type": "git",
             "url": "https://github.com/pixelandtonic/pel.git",
-            "reference": "997acac523a62753da50450d2d2944ccef12b083"
+            "reference": "ba75801103d43272feae21453ff4bda1cdf4198e"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/pixelandtonic/pel/zipball/997acac523a62753da50450d2d2944ccef12b083",
-            "reference": "997acac523a62753da50450d2d2944ccef12b083",
+            "url": "https://api.github.com/repos/pixelandtonic/pel/zipball/ba75801103d43272feae21453ff4bda1cdf4198e",
+            "reference": "ba75801103d43272feae21453ff4bda1cdf4198e",
             "shasum": ""
         },
         "require": {
@@ -226,7 +226,7 @@
             "lastcraft/simpletest": ">=1.1",
             "squizlabs/php_codesniffer": "2.*"
         },
-        "time": "2016-12-30 22:03:09",
+        "time": "2017-08-18 19:14:40",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -258,7 +258,7 @@
             "image"
         ],
         "support": {
-            "source": "https://github.com/pixelandtonic/pel/tree/0.9.4.2"
+            "source": "https://github.com/pixelandtonic/pel/tree/0.9.4.3"
         }
     },
     {
@@ -548,23 +548,23 @@
     },
     {
         "name": "yiisoft/yii",
-        "version": "1.1.19.3",
-        "version_normalized": "1.1.19.3",
+        "version": "1.1.19.4",
+        "version_normalized": "1.1.19.4",
         "source": {
             "type": "git",
             "url": "https://github.com/pixelandtonic/yii.git",
-            "reference": "6bfb5bf7b691fb418ffee90e262c2a9ff7d9294d"
+            "reference": "0d003db6f8a26f2a06c3e2a1f80bca19e1c10449"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/pixelandtonic/yii/zipball/6bfb5bf7b691fb418ffee90e262c2a9ff7d9294d",
-            "reference": "6bfb5bf7b691fb418ffee90e262c2a9ff7d9294d",
+            "url": "https://api.github.com/repos/pixelandtonic/yii/zipball/0d003db6f8a26f2a06c3e2a1f80bca19e1c10449",
+            "reference": "0d003db6f8a26f2a06c3e2a1f80bca19e1c10449",
             "shasum": ""
         },
         "require": {
             "php": ">=5.1.0"
         },
-        "time": "2017-07-13 18:05:47",
+        "time": "2017-09-05 18:42:51",
         "bin": [
             "framework/yiic"
         ],
