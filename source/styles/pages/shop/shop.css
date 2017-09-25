@@ -81,7 +81,7 @@ input[type='checkbox'] {
 }
 
 .meal-entry {
-  margin-bottom: 40px;
+  margin-bottom: 100px;
 
   @media (--tablet-min) {
     width: 50%;
@@ -109,11 +109,17 @@ input[type='checkbox'] {
   }
 
   & .overlay {
+    position: absolute;
+    background-color: rgba(255, 255, 255, .85);
+    right: 0;
+    left: 0;
+
+    @media (--tablet-max) {
+      bottom: -50px;
+      padding: 5px 0;
+    }
 
     @media (--desktop-min) {
-      position: absolute;
-      right: 0;
-      left: 0;
       top: 0;
       bottom: 0;
       display: flex;
@@ -121,7 +127,6 @@ input[type='checkbox'] {
       align-items: center;
       opacity: 0;
       transition: opacity .4s;
-      background-color: rgba(255, 255, 255, .85);
     }
 
 
@@ -130,11 +135,6 @@ input[type='checkbox'] {
       text-align: center;
       text-transform: uppercase;
       font-size: 14px;
-
-      @media (--tablet-max) {
-        display: none;
-      }
-
     }
 
     & .meal-title {
@@ -144,47 +144,21 @@ input[type='checkbox'] {
 
       & span {
         position: relative;
-
-        @media (--tablet-max) {
-          display: block;
-          height: 50px;
-          line-height: 50px;
-        }
-
-        @media (--desktop-min) {
-          margin: 10px 0;
-          padding: 10px 0;
-          display: inline-block;
-        }
+        margin: 10px 0;
+        padding: 10px 0;
+        display: inline-block;
 
         &:before, &:after {
           content: "";
           height: 1px;
           background-color: var(--green);
           position: absolute;
-
-          @media (--tablet-max) {
-            left: 20%;
-            right: 20%;
-          }
-
-          @media (--desktop-min) {
-            left: 10%;
-            right: 10%;
-          }
-
+          left: 10%;
+          right: 10%;
         }
 
         &:before {
-
-          @media (--tablet-max) {
-            display: none;
-          }
-
-          @media (--desktop-min) {
-            top: 0;
-          }
-
+          top: 0;
         }
 
         &:after {
@@ -193,27 +167,6 @@ input[type='checkbox'] {
 
       }
 
-    }
-
-  }
-
-  & .meal-more {
-    /*position: absolute;
-    right: 0;
-    left: 0;
-    bottom: 50px;
-    background-color: rgba(255, 255, 255, .85);
-    height: 40px;
-    margin-bottom: 0;
-    text-align: center;
-    line-height: 40px;*/
-    text-align: center;
-    height: 50px;
-    line-height: 50px;
-    margin-bottom: 0;
-
-    @media (--desktop-min) {
-      display: none;
     }
 
   }
