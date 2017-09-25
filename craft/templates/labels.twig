@@ -42,13 +42,22 @@
                     <div class="ingredients">
                       <h3>Ingredients</h3>
 
-                      {% for list in product.ingredients %}
+                      {% for purchasable in product.variants %}
 
-                        {% if not list.hide %}
-                          {{ list.item }}{% if not loop.last %},{% endif %}
+                        {% if purchasable.title == variantSlug %}
+
+                          {% for list in product.ingredients %}
+
+                            {% if not list.hide %}
+                              {{ list.item }}{% if not loop.last %},{% endif %}
+                            {% endif %}
+
+                          {% endfor %}
+
                         {% endif %}
 
                       {% endfor %}
+
                     </div>
 
                     <div class="instructions">
