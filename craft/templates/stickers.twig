@@ -42,7 +42,7 @@
 
           {% for purchasable in product.variants %}
 
-            <a href="/labels/{{ product.slug }}/{{ purchasable.title }}">{{ purchasable.title }}</a>
+            <a href="/labels/{{ product.slug }}/{{ purchasable.sku }}">{{ purchasable.title }}</a>
 
           {% endfor %}
 

@@ -44,9 +44,9 @@
 
                       {% for purchasable in product.variants %}
 
-                        {% if purchasable.title == variantSlug %}
+                        {% if purchasable.sku == variantSlug %}
 
-                          {% for list in product.ingredients %}
+                          {% for list in purchasable.ingredients %}
 
                             {% if not list.hide %}
                               {{ list.item }}{% if not loop.last %},{% endif %}
@@ -96,15 +96,32 @@
 
                       {% for purchasable in product.variants %}
 
-                        {% if purchasable.title == variantSlug %}
+                        {% if purchasable.sku == variantSlug %}
 
                           <div>
                             {% for row in purchasable.productMacros %}
-                              {% if row.calories %}<p class="nimbus-tiny-bold"><span>CALORIES:</span> {{ row.calories }}</p>{% endif %}
-                              {% if row.protein %}<p class="nimbus-tiny-bold protein"><span>PROTEIN:</span> {{ row.protein }}g</p>{% endif %}
-                              {% if row.carbs %}<p class="nimbus-tiny-bold carbs"><span>CARBS:</span> {{ row.carbs }}g</p>{% endif %}
-                              {% if row.fat %}<p class="nimbus-tiny-bold fat"><span>FAT:</span> {{ row.fat }}g</p>{% endif %}
+                              {% if row.calories %}
+                                <p class="nimbus-tiny-bold"><span>CALORIES:</span> {{ row.calories }}</p>
+                              {% else %}
+                                <p>The calories are not entered in the CMS</p>
+                              {% endif %}
+                              {% if row.protein %}
+                                <p class="nimbus-tiny-bold protein"><span>PROTEIN:</span> {{ row.protein }}g</p>
+                              {% else %}
+                                <p>The Protein are not entered in the CMS</p>
+                              {% endif %}
+                              {% if row.carbs %}
+                                <p class="nimbus-tiny-bold carbs"><span>CARBS:</span> {{ row.carbs }}g</p>
+                              {% else %}
+                                <p>The Carbs are not entered in the CMS</p>
+                              {% endif %}
+                              {% if row.fat %}
+                                <p class="nimbus-tiny-bold fat"><span>FAT:</span> {{ row.fat }}g</p>
+                              {% else %}
+                                <p>The Fat are not entered in the CMS</p>
+                              {% endif %}
                             {% endfor %}
+
 
                           </div>
 
