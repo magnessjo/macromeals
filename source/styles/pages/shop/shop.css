@@ -164,8 +164,8 @@ input[type='checkbox'] {
           position: absolute;
 
           @media (--tablet-max) {
-            left: 10px;
-            right: 10px;
+            left: 20%;
+            right: 20%;
           }
 
           @media (--desktop-min) {
@@ -198,7 +198,7 @@ input[type='checkbox'] {
   }
 
   & .meal-more {
-    position: absolute;
+    /*position: absolute;
     right: 0;
     left: 0;
     bottom: 50px;
@@ -206,7 +206,11 @@ input[type='checkbox'] {
     height: 40px;
     margin-bottom: 0;
     text-align: center;
-    line-height: 40px;
+    line-height: 40px;*/
+    text-align: center;
+    height: 50px;
+    line-height: 50px;
+    margin-bottom: 0;
 
     @media (--desktop-min) {
       display: none;
