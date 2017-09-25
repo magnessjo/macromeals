@@ -54,10 +54,20 @@
             {% set image = '/images/products/placeholder-circle.png' %}
           {% endif %}
 
+
+
           <div class="meal-entry" data-protein="{% for cat in product.protein %}{{ cat }}{% endfor %}">
 
             <a href="/shop/details/{{ product.slug }}" class="meal-detail">
               <img src="{{ image }}" alt="image of {{ product.title}} {{ product.subTitle }}" />
+
+              {% for protein in product.protein %}
+
+                {% if protein == 'Vegan' %}
+                  <img src="/images/products/vegan.svg" class="vegan-logo" alt="image of a vegan logo" />
+                {% endif %}
+
+              {% endfor %}
 
               <div class="overlay">
                 <div>
@@ -67,17 +77,6 @@
                 </div>
               </div>
             </a>
-
-            {# <div class="cart-additions">
-
-              {% for purchasable in product.variants %}
-
-                <div class="add-{{ purchasable.description }}">
-                  <button><span class="size">Add {{ purchasable.description }}</span> <span class="price">${{ purchasable.salePrice }}</span></button>
-                </div>
-              {% endfor %}
-
-            </div> #}
 
           </div>
 
