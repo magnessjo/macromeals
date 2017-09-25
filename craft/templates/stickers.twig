@@ -1,0 +1,57 @@
+
+{% extends "_layout" %}
+{% includeCssFile "/generic.css" %}
+
+{% block main %}
+
+  <style>
+
+    main {
+      padding: 100px 0;
+      max-width: 800px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    section {
+      padding: 40px;
+    }
+
+    section a {
+      display: block;
+      padding: 20px;
+    }
+
+    h1 {
+      text-transform: uppercase;
+    }
+
+  </style>
+
+  {% set admins = craft.users.admin('1') %}
+
+  {% if currentUser %}
+
+    {% if currentUser.can('accessCp') %}
+
+      {% for product in craft.commerce.products %}
+
+        <section>
+
+          <h1 class="acumin-medium">{{ product.title }} <span>{{ product.subTitle }}</span></h1>
+
+          {% for purchasable in product.variants %}
+
+            <a href="/labels/{{ product.slug }}/{{ purchasable.title }}">{{ purchasable.title }}</a>
+
+          {% endfor %}
+
+        </section>
+
+      {% endfor %}
+
+    {% endif %}
+
+  {% endif %}
+
+{% endblock %}
