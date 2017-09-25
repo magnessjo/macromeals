@@ -54,8 +54,6 @@
             {% set image = '/images/products/placeholder-circle.png' %}
           {% endif %}
 
-
-
           <div class="meal-entry" data-protein="{% for cat in product.protein %}{{ cat }}{% endfor %}">
 
             <a href="/shop/details/{{ product.slug }}" class="meal-detail">
@@ -71,9 +69,8 @@
 
               <div class="overlay">
                 <div>
-                  <p>View</p>
                   <p class="meal-title"><span>{{ product.title }}</span> </p>
-                  <p>Details</p>
+                  <p>See Details</p>
                 </div>
               </div>
             </a>
