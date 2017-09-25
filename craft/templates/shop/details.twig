@@ -32,7 +32,9 @@
               <img src="{{ image }}" alt="image of {{ product.title}} {{ product.subTitle }}" />
             </div>
 
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut id varius arcu. Nunc mollis, velit at tempus commodo, mauris lorem aliquet massa, in feugiat augue magna quis velit. In vestibulum nibh vitae dui lacinia lacinia. Donec nec est tincidunt, tempus lorem eget, viverra est..</p>
+            {% if product.productSummary %}
+              <p>{{ product.productSummary }}</p>
+            {% endif %}
 
             <div class="info">
 
