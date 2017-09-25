@@ -1,7 +1,7 @@
 
 @import "../dependencies/root.css";
 
-@media print {
+@media print, screen {
 
   * {
     font-size: 12px;

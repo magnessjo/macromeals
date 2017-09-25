@@ -3,8 +3,8 @@
 {% includeJsFile "/labels.js" %}
 
 {% set count = [1, 2, 3, 4] %}
-{% set slug = craft.request.getSegment(2) %}
-{% set variant = craft.commerce.variants.sku('00000017').first() %}
+{% set productSlug = craft.request.getSegment(2) %}
+{% set variantSlug = craft.request.getSegment(3) %}
 
 <!DOCTYPE html>
 <html>
@@ -22,7 +22,7 @@
 
       {% for item in count %}
 
-        {% for product in craft.commerce.products.slug(slug) %}
+        {% for product in craft.commerce.products.slug(productSlug) %}
 
           <section>
 
@@ -82,17 +82,21 @@
 
                   {% for purchasable in product.variants %}
 
-                    <div>
-                      {% for row in purchasable.productMacros %}
-                        {% if row.calories %}<p class="nimbus-tiny-bold"><span>CALORIES:</span> {{ row.calories }}</p>{% endif %}
-                        {% if row.protein %}<p class="nimbus-tiny-bold protein"><span>PROTEIN:</span> {{ row.protein }}g</p>{% endif %}
-                        {% if row.carbs %}<p class="nimbus-tiny-bold carbs"><span>CARBS:</span> {{ row.carbs }}g</p>{% endif %}
-                        {% if row.fat %}<p class="nimbus-tiny-bold fat"><span>FAT:</span> {{ row.fat }}g</p>{% endif %}
-                      {% endfor %}
+                    {% if purchasable.title == variantSlug %}
 
-                    </div>
+                      <div>
+                        {% for row in purchasable.productMacros %}
+                          {% if row.calories %}<p class="nimbus-tiny-bold"><span>CALORIES:</span> {{ row.calories }}</p>{% endif %}
+                          {% if row.protein %}<p class="nimbus-tiny-bold protein"><span>PROTEIN:</span> {{ row.protein }}g</p>{% endif %}
+                          {% if row.carbs %}<p class="nimbus-tiny-bold carbs"><span>CARBS:</span> {{ row.carbs }}g</p>{% endif %}
+                          {% if row.fat %}<p class="nimbus-tiny-bold fat"><span>FAT:</span> {{ row.fat }}g</p>{% endif %}
+                        {% endfor %}
 
-                    {% include "components/pie-chart.twig" with { 'macros': purchasable.productMacros } %}
+                      </div>
+
+                      {% include "components/pie-chart.twig" with { 'macros': purchasable.productMacros } %}
+
+                    {% endif %}
 
                   {% endfor %}
 
