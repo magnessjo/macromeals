@@ -45,6 +45,7 @@
 
     @media (--large-max) {
       position: relative !important;
+      width: 100% !important;
     }
 
   }
@@ -98,7 +99,36 @@
 
   }
 
-  & .info {
+  & .fact-tab {
+
+    & .controller {
+      overflow: hidden;
+
+      & button {
+        display: block;
+        width: 50%;
+        color: var(--green);
+        text-align: center;
+        height: 40px;
+        line-height: 40px;
+        float: left;
+        border-radius: 0;
+      }
+
+      &:last-of-type {
+        margin-left: -4px;
+      }
+
+      & .active-button {
+        background-color: var(--green);
+        color: var(--white);
+      }
+
+    }
+
+  }
+
+  & .fact-info {
     display: none;
 
     & .acumin-small {
@@ -128,12 +158,11 @@
     }
 
     & .facts {
-      padding-right: 10%;
       display: flex;
       align-items: center;
       justify-content: center;
       padding: 50px 0;
-      margin: 50px 0;
+      margin-bottom: 50px;
       border-bottom: 1px solid var(--green);
       border-top: 1px solid var(--green);
     }
