@@ -7,32 +7,128 @@
 }
 
 .flex-wrapper {
-  display: flex;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
+
+  @media (--tablet-min) {
+    display: flex;
+    justify-content: space-between;
+  }
+
+}
+
+.product-actions {
+
+  @media (--tablet-min) {
+    width: 25%;
+  }
 
   & > div {
 
-    &:first-of-type {
-      width: 60%;
+    @media (--large-max) {
+      margin-bottom: 40px;
+    }
+
+    @media (--tablet-min) {
+      height: 100%;
     }
 
   }
 
-  & .product-details {
-    padding-right: 50px;
+  & .acumin-medium-bold {
+    text-transform: uppercase;
+  }
 
-    & .product-image {
+  & form {
+    border: 1px solid var(--green);
+    padding: 50px;
+    top: 0;
+    background-color: var(--white);
 
-       & img {
-         display: block;
-         margin-bottom: 40px;
-       }
+    @media (--large-max) {
+      position: relative !important;
+    }
+
+  }
+
+  & .list {
+    margin-bottom: 20px;
+
+    & > div {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    & label {
+      margin-bottom: 0;
+    }
+
+    & input[type="number"] {
+      width: 60px;
+      margin-bottom: 0;
+    }
+
+  }
+
+  & .options {
+    border-bottom: 1px solid var(--green);
+    padding-bottom: 30px;
+  }
+
+}
+
+.product-details {
+
+  @media(--tablet-min) {
+    width: 75%;
+    padding-left: 100px;
+  }
+
+  & .product-image {
+
+     & img {
+       display: block;
+       margin-bottom: 40px;
+       max-height: 400px;
+       margin: 0 auto;
+     }
+
+  }
+
+  & .info {
+    display: none;
+
+    & .acumin-small {
+      margin-bottom: 10px;
+      font-weight: 700;
+
+      & span {
+        width: 50%;
+        min-width: 140px;
+        display: inline-block;
+        font-size: inherit;
+        font-weight: 400;
+      }
+
+      &.protein {
+        color: var(--auburn);
+      }
+
+      &.carbs {
+        color: var(--green);
+      }
+
+      &.fat {
+        color: var(--blue);
+      }
 
     }
 
-    & .info {
+    & .facts {
+      padding-right: 10%;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -40,110 +136,40 @@
       margin: 50px 0;
       border-bottom: 1px solid var(--green);
       border-top: 1px solid var(--green);
-
-      & .acumin-small {
-        margin-bottom: 10px;
-        font-weight: 700;
-
-        & span {
-          width: 50%;
-          min-width: 140px;
-          display: inline-block;
-          font-size: inherit;
-          font-weight: 400;
-        }
-
-        &.protein {
-          color: var(--auburn);
-        }
-
-        &.carbs {
-          color: var(--green);
-        }
-
-        &.fat {
-          color: var(--blue);
-        }
-
-      }
-
-      & .facts {
-        padding-right: 10%;
-      }
-
-      & .pie-chart {
-
-        & canvas {
-          max-height: 180px;
-        }
-
-      }
-
     }
 
-    & table {
-      font-size: 14px;
-      width: 100%;
-      border-collapse: collapse;
+    & .pie-chart {
+      margin-left: 50px;
 
-      & th {
-        text-align: left;
-        text-transform: uppercase;
-        padding: 10px;
-      }
-
-      & td {
-        padding: 10px;
-      }
-
-      & tr:nth-of-type(odd) td {
-        background-color: var(--light-gray);
+      & canvas {
+        max-height: 180px;
       }
 
     }
 
   }
 
-  & .actions {
-    width: 40%;
-    display: none;
+  & .active-info {
+    display: block;
+  }
 
-    & > div {
-      border: 1px solid var(--green);
-      padding: 50px;
-    }
+  & table {
+    font-size: 14px;
+    width: 100%;
+    border-collapse: collapse;
 
-    & .acumin-medium-bold {
+    & th {
+      text-align: left;
       text-transform: uppercase;
+      padding: 10px;
     }
 
-    & .list {
-      margin-bottom: 20px;
-
-      & > div {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      &:last-of-type {
-        margin-bottom: 0;
-      }
-
-      & label {
-        margin-bottom: 0;
-      }
-
-      & input[type="number"] {
-        width: 60px;
-        margin-bottom: 0;
-      }
-
+    & td {
+      padding: 10px;
     }
 
-    & .options {
-      border-bottom: 1px solid var(--green);
-      padding-bottom: 30px;
+    & tr:nth-of-type(odd) td {
+      background-color: var(--light-gray);
     }
 
   }

@@ -26,103 +26,125 @@
 
         <div class="flex-wrapper">
 
-          <div class="product-details">
-
-            <div class="product-image">
-              <img src="{{ image }}" alt="image of {{ product.title}} {{ product.subTitle }}" />
-            </div>
-
-            {% if product.productSummary %}
-              <p>{{ product.productSummary }}</p>
-            {% endif %}
-
-            <div class="info">
-
-              <div class="facts">
-
-                {% for row in product.productMacros %}
-                  {% if row.calories %}<p class="acumin-small"><span>CALORIES:</span> {{ row.calories }}</p>{% endif %}
-                  {% if row.protein %}<p class="acumin-small protein"><span>PROTEIN:</span> {{ row.protein }}g</p>{% endif %}
-                  {% if row.carbs %}<p class="acumin-small carbs"><span>CARBS:</span> {{ row.carbs }}g</p>{% endif %}
-                  {% if row.fat %}<p class="acumin-small fat"><span>FAT:</span> {{ row.fat }}g</p>{% endif %}
-                {% endfor %}
-              </div>
-
-              {% include "components/pie-chart.twig" with { 'macros': product.productMacros } %}
-
-            </div>
-
-            <div class="full-facts">
-
-              <h2 class="acumin-medium">Full Nutrition Totals</h2>
-
-              <table>
-
-                <thead>
-
-                  <th>Item</th>
-                  <th>Calories</th>
-                  <th>Protein</th>
-                  <th>Carbs</th>
-                  <th>Fat</th>
-
-                </thead>
-
-                <tbody>
-
-                  {% for row in product.ingredients %}
-                    <tr>
-                      <td>{{ row.item }}</td>
-                      <td>{{ row.calories }}</td>
-                      <td>{{ row.protein }}g</td>
-                      <td>{{ row.carbs }}g</td>
-                      <td>{{ row.fat }}g</td>
-                    </tr>
-
-                  {% endfor %}
-
-                </tbody>
-
-              </table>
-
-            </div>
-
-
-          </div>
-
-          <div class="actions">
+          <div class="product-actions">
 
             <div>
 
-              <h2 class="acumin-medium-bold">Add to Cart</h2>
+              <form id="fixed-form">
 
-              <form>
+                <div>
 
-                <div class="options">
+                  {# <h2 class="acumin-medium-bold">Add to Cart</h2> #}
 
-                  {% for purchasable in product.variants %}
+                  <div class="options">
 
-                    <div class="list">
+                    {% for purchasable in product.variants %}
 
-                      <div>
-                        <span class="size">{{ purchasable.description }}</span>
-                        <span class="price">${{ purchasable.salePrice }}</span>
+                      <div class="list">
+
+                        <div>
+                          <span class="size">{{ purchasable.description }}</span>
+                          <span class="price">${{ purchasable.salePrice }}</span>
+                        </div>
+
+                        {# <div>
+                          <label>Quanity</label>
+                          <input type="number" value="0" />
+                        </div> #}
+
                       </div>
 
-                      <div>
-                        <label>Quanity</label>
-                        <input type="number" value="0" />
-                      </div>
+                    {% endfor %}
 
-                    </div>
-
-                  {% endfor %}
+                  </div>
 
                 </div>
 
               </form>
 
             </div>
+
+          </div>
+
+
+          <div class="product-details">
+
+            {% if product.productSummary %}
+              <p>{{ product.productSummary }}</p>
+            {% endif %}
+
+            <div class="product-image">
+              <img src="{{ image }}" alt="image of {{ product.title}} {{ product.subTitle }}" />
+            </div>
+
+            <div class="tab-info">
+
+              <div class="controller">
+                {% for purchasable in product.variants %}
+                  <button>{{ purchasable.title }}</button>
+                {% endfor %}
+              </div>
+
+            </div>
+
+            {% for purchasable in product.variants %}
+
+              <div class="info {% if purchasable.isDefault %} active-info {% endif %}" data-type="{{ purchasable.title }}">
+
+                <div class="facts">
+
+                  <div>
+
+                    {% for row in purchasable.productMacros %}
+                      {% if row.calories %}<p class="acumin-small"><span>CALORIES:</span> {{ row.calories }}</p>{% endif %}
+                      {% if row.protein %}<p class="acumin-small protein"><span>PROTEIN:</span> {{ row.protein }}g</p>{% endif %}
+                      {% if row.carbs %}<p class="acumin-small carbs"><span>CARBS:</span> {{ row.carbs }}g</p>{% endif %}
+                      {% if row.fat %}<p class="acumin-small fat"><span>FAT:</span> {{ row.fat }}g</p>{% endif %}
+                    {% endfor %}
+                  </div>
+
+                  {% include "components/pie-chart.twig" with { 'macros': product.productMacros } %}
+
+                </div>
+
+                <div class="full-facts">
+
+                  <h2 class="acumin-medium">Full Nutrition Totals</h2>
+
+                  <table>
+
+                    <thead>
+
+                      <th>Item</th>
+                      <th>Calories</th>
+                      <th>Protein</th>
+                      <th>Carbs</th>
+                      <th>Fat</th>
+
+                    </thead>
+
+                    <tbody>
+
+                      {% for row in purchasable.ingredients %}
+                        <tr>
+                          <td>{{ row.item }}</td>
+                          <td>{{ row.calories }}</td>
+                          <td>{{ row.protein }}g</td>
+                          <td>{{ row.carbs }}g</td>
+                          <td>{{ row.fat }}g</td>
+                        </tr>
+
+                      {% endfor %}
+
+                    </tbody>
+
+                  </table>
+
+                </div>
+
+              </div>
+
+            {% endfor %}
 
           </div>
 
