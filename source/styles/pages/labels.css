@@ -170,12 +170,13 @@
     & .pie-chart {
       position: absolute;
       left: 50%;
-      transform: translateX(-50%);
       bottom: 0;
       margin-bottom: -60px;
+      width: 150px;
+      margin-left: -75px;
 
-      & img {
-        max-width: 90%;
+      & canvas {
+
       }
 
     }
