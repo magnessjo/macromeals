@@ -69,7 +69,9 @@
 
                       <div>
                         <p class="headline">Enjoy By</p>
-                        <p>{{ product.expirationDate.format('m/d/y') }}</p>
+                        {% if product.expirationDate %}
+                          <p>{{ product.expirationDate.format('m/d/y') }}</p>
+                        {% endif %}
                       </div>
 
                       <div>
