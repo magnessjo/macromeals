@@ -28,11 +28,9 @@
 
   </style>
 
-  {% set admins = craft.users.admin('1') %}
-
   {% if currentUser %}
 
-    {% if currentUser.can('accessCp') %}
+    {% if currentUser.admin %}
 
       {% for product in craft.commerce.products %}
 
