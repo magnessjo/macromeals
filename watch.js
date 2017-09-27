@@ -34,6 +34,7 @@ const config = {
       billing: 'source/styles/pages/shop/billing.css',
       confirmation: 'source/styles/pages/shop/confirmation.css',
       labels: 'source/styles/pages/labels.css',
+      quickorder: 'source/styles/pages/quick-order.css',
     },
   },
 
@@ -48,6 +49,7 @@ const config = {
       shopdetails: `source/scripts/shop/details`,
       cart: `source/scripts/shop/cart`,
       labels: `source/scripts/labels`,
+      quickOrder: `source/scripts/quickOrder`,
     },
   },
 

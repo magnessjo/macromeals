@@ -1,0 +1,54 @@
+
+{% extends "_layout" %}
+{% includeCssFile "/quickorder.css" %}
+{% includeJsFile "/quickorder.js" %}
+
+{% block main %}
+
+  <section id="stage" class="slim-stage">
+    <div class="image"></div>
+    <div class="lock">
+      <h1 class="acumin-stage"><div>Quick Order</div></h1>
+    </div>
+  </section>
+
+  {% include "components/notice.twig" %}
+
+  <section id="order-form">
+
+    <div class="lock narrow">
+
+      <h1 class="acumin-large-bold">Lunch & Dinner</h1>
+
+      <form>
+
+        {% for product in craft.commerce.products %}
+
+          <div class="product-entry">
+
+            <h2 class="with-underline"><span>{{ product.title }}</span></h2>
+
+            <div class='product-types'>
+
+              {% for variant in product.variants %}
+
+                <div>
+                  <label>{{ variant.title }}</label>
+                  <span>{{ variant.salePrice }}</span>
+                </div>
+
+              {% endfor %}
+
+            </div>
+
+          </div>
+
+        {% endfor %}
+
+      </form>
+
+    </div>
+
+  </section>
+
+{% endblock %}
