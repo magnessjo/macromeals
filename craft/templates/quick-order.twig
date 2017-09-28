@@ -18,34 +18,48 @@
 
     <div class="lock narrow">
 
-      <h1 class="acumin-large-bold">Lunch & Dinner</h1>
+      <div class="category-group">
 
-      <form>
+        <form>
 
-        {% for product in craft.commerce.products %}
+          <div class="group-header">
 
-          <div class="product-entry">
+            <h1 class="acumin-medium-bold">Lunch & Dinner</h1>
 
-            <h2 class="with-underline"><span>{{ product.title }}</span></h2>
-
-            <div class='product-types'>
-
-              {% for variant in product.variants %}
-
-                <div>
-                  <label>{{ variant.title }}</label>
-                  <span>{{ variant.salePrice }}</span>
-                </div>
-
-              {% endfor %}
-
+            <div>
+              <div class="type">Size</div>
+              <div class="price">Price</div>
+              <div class="quantity">Quantity</div>
             </div>
 
           </div>
 
-        {% endfor %}
+          <div class="group-body">
 
-      </form>
+            {% for product in craft.commerce.products %}
+
+              <div>
+
+                {% for variant in product.variants %}
+                  <div class="variant-row">
+                    {% if loop.first %}
+                      <div class="title"><span class="acumin-small-bold">{{ product.title }}</span><a href="/shop/details/{{ product.slug }}">See Details</a></div>
+                    {% endif %}
+                    <div class="type">{{ variant.title }}</div>
+                    <div class="price">{{ variant.salePrice }}</div>
+                    <div class="quantity"><input type="text" value="0" /></div>
+                  </div>
+                {% endfor %}
+
+              </div>
+
+            {% endfor %}
+
+          </div>
+
+        </form>
+
+      </div>
 
     </div>
 
