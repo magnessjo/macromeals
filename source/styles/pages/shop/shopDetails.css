@@ -158,20 +158,42 @@
     }
 
     & .facts {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 50px 0;
+      padding: 30px 0;
       margin-bottom: 50px;
       border-bottom: 1px solid var(--green);
       border-top: 1px solid var(--green);
+
+      @media (--large-min) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 50px 0;
+      }
+
+      & > div {
+
+        @media (--medium-max) {
+          margin: 0 auto;
+          width: 70%;
+        }
+
+      }
+
     }
 
     & .pie-chart {
-      margin-left: 50px;
+
+      @media (--medium-max) {
+        margin: 0 auto;
+      }
+
+      @media (--large-min) {
+        margin-left: 50px;
+      }
 
       & canvas {
         max-height: 180px;
+        max-width: 180px;
       }
 
     }
@@ -182,23 +204,96 @@
     display: block;
   }
 
-  & table {
+  & .table-head, & .table-row {
     font-size: 14px;
-    width: 100%;
-    border-collapse: collapse;
+    padding: 10px;
 
-    & th {
-      text-align: left;
+    @media (--large-min) {
+      display: flex;
+    }
+
+    & div {
+
+      @media (--large-min) {
+        width: 20%;
+      }
+
+    }
+
+  }
+
+  & .table-head {
+
+    @media (--medium-max) {
+      display: none;
+    }
+
+    & > div {
       text-transform: uppercase;
-      padding: 10px;
     }
 
-    & td {
-      padding: 10px;
+  }
+
+  & .table-row {
+
+    @media (--medium-max) {
+      margin-bottom: 30px;
     }
 
-    & tr:nth-of-type(odd) td {
-      background-color: var(--light-gray);
+    &:nth-of-type(odd) {
+
+      @media (--large-min) {
+        background-color: var(--light-gray);
+      }
+
+    }
+
+    & > div {
+      position: relative;
+
+      @media (--medium-max) {
+        padding-left: 50%;
+        margin-bottom: 5px;
+      }
+
+      &:before {
+
+        @media (--medium-max) {
+          content: attr(data-attr);
+          position: absolute;
+          width: calc(50% - 20px);
+          left: 0;
+          text-align: right;
+          text-transform: uppercase;
+        }
+
+      }
+
+    }
+
+    & > div:first-of-type {
+
+      @media (--medium-max) {
+        width: 100%;
+        text-align: center;
+        font-size: 18px;
+        padding-left: 0;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+      }
+
+      & span {
+
+        @media (--medium-max) {
+          border-bottom: 1px solid var(--green);
+        }
+
+      }
+
+      &:before {
+        display: none;
+      }
+
     }
 
   }

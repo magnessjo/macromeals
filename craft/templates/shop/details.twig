@@ -109,34 +109,25 @@
 
                   <div class="full-facts">
 
-                    <table>
+                    <div class="table-head">
+                      <div>Item</div>
+                      <div>Calories</div>
+                      <div>Protein</div>
+                      <div>Carbs</div>
+                      <div>Fat</div>
+                    </div>
 
-                      <thead>
+                    {% for row in purchasable.ingredients %}
+                      <div class="table-row">
+                        <div data-attr="Item"><span>{{ row.item }}</span></div>
+                        <div data-attr="Calories">{{ row.calories }}</div>
+                        <div data-attr="Protein">{{ row.protein }}g</div>
+                        <div data-attr="Carbs">{{ row.carbs }}g</div>
+                        <div data-attr="Fat">{{ row.fat }}g</div>
+                      </div>
+                    {% endfor %}
 
-                        <th>Item</th>
-                        <th>Calories</th>
-                        <th>Protein</th>
-                        <th>Carbs</th>
-                        <th>Fat</th>
-
-                      </thead>
-
-                      <tbody>
-
-                        {% for row in purchasable.ingredients %}
-                          <tr>
-                            <td>{{ row.item }}</td>
-                            <td>{{ row.calories }}</td>
-                            <td>{{ row.protein }}g</td>
-                            <td>{{ row.carbs }}g</td>
-                            <td>{{ row.fat }}g</td>
-                          </tr>
-
-                        {% endfor %}
-
-                      </tbody>
-
-                    </table>
+                    </div>
 
                   </div>
 
