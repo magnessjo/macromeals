@@ -20,7 +20,7 @@
       {% set image = '/images/products/placeholder.jpg' %}
     {% endif %}
 
-    <section>
+    <section id="details">
 
       <div class="lock">
 
@@ -34,27 +34,44 @@
 
                 <div>
 
-                  {# <h2 class="acumin-medium-bold">Add to Cart</h2> #}
-
                   <div class="options">
+
+                    <div class="row-columns">
+
+                      <div class="size">Size</div>
+                      <div class="price">Price</div>
+                      <div class="quantity">Quantity</div>
+
+                    </div>
 
                     {% for purchasable in product.variants %}
 
                       <div class="list">
 
-                        <div>
-                          <span class="size">{{ purchasable.description }}</span>
-                          <span class="price">${{ purchasable.salePrice }}</span>
-                        </div>
+                        <div class="row-columns">
 
-                        {# <div>
-                          <label>Quanity</label>
-                          <input type="number" value="0" />
-                        </div> #}
+                          <div class="size">{{ purchasable.description }}</div>
+                          <div class="price">${{ purchasable.salePrice }}</div>
+                          <div class="quantity">
+                            <input type="number" pattern="\d*" value="0" />
+                          </div>
+
+                        </div>
 
                       </div>
 
                     {% endfor %}
+
+                  </div>
+
+                  <div class="summary">
+
+                    <div>
+                      <p class="acumin-small-bold">Total</p>
+                      <p class="acumin-small-bold" data-total="price"></p>
+                    </div>
+
+                    <input type="submit" value="Add To Cart" />
 
                   </div>
 
