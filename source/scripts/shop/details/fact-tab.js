@@ -22,9 +22,9 @@ function updateTab(index) {
 
   });
 
-  content.forEach((item) => {
+  content.forEach((item, i) => {
 
-    if (item.classList.contains(activeInfo)) {
+    if (i != index) {
       item.classList.remove(activeInfo);
     } else {
       item.classList.add(activeInfo);
@@ -37,8 +37,6 @@ function updateTab(index) {
 // Export
 
 export default function() {
-
-  console.log(content);
 
   buttons.forEach((button) => {
     button.addEventListener('click', () => {
