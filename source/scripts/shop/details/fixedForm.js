@@ -20,7 +20,6 @@ function scroll() {
     form.style.width = `${containerWidth}px`;
   } else {
     form.style.position = 'relative';
-    form.style.width = 'inherit';
   }
 
 }
@@ -30,6 +29,12 @@ function scroll() {
 function resize() {
 
   containerWidth = container.offsetWidth;
+
+  if (window.innerWidth > 767) {
+    form.style.width = `${containerWidth}px`;
+  } else {
+    form.style.width = 'inherit';
+  }
 
 }
 
