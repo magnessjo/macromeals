@@ -182,6 +182,9 @@
     }
 
     & .pie-chart {
+      height: 180px;
+      width: 180px;
+      display: block;
 
       @media (--medium-max) {
         margin: 0 auto;
