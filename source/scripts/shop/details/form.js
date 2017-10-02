@@ -1,4 +1,8 @@
 
+// import
+
+import 'whatwg-fetch';
+
 // Variables
 
 const section = document.querySelector('#details');
@@ -59,12 +63,17 @@ function checkInputValues() {
     if (!isError) {
       const wrapper = input.parentNode;
       const parent = wrapper.parentNode;
+      const hiddenQuanity = parent.querySelector('input[name="qty"]');
       const priceString = parent.querySelector('.price').innerHTML;
       const price = priceString.slice(1, priceString.length);
       const itemTotal = input.value * price;
+
       total = total + itemTotal;
+      hiddenQuanity.value = input.value;
+
       showSubmit = true;
       caculateTotal(total);
+
     }
 
   });
@@ -82,6 +91,77 @@ function updateUI(e) {
   } else {
     submit.style.display = 'none';
   }
+
+}
+
+// Fetch
+
+function fetchData(data) {
+
+  const url = '/actions/commerce/cart/updateCart';
+
+  return new Promise((resolve, reject) => {
+
+    fetch(url, {
+      method: "POST",
+      body: data,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded",
+        'X-Requested-With': 'XMLHttpRequest'
+      },
+      credentials: "same-origin"
+    }).then(function(response) {
+      resolve(response.json());
+    }, function(error) {
+      console.log(`error : ${error.message }`);
+    });
+
+  });
+
+}
+
+
+// Submit
+
+function submitForm(e) {
+
+  let submittedCorrectly = true;
+
+  e.preventDefault();
+
+  inputs.forEach((input, i) => {
+
+    let data = '';
+
+    data += `${window.csrfTokenName}=${window.csrfTokenValue}&`;
+
+    if (input.value != 0) {
+
+      const id = input.getAttribute('data-id');
+
+      data += `purchasableId=${id}&`;
+      data += `qty=${input.value}`;
+      fetchData(data).then((response) => {
+
+        if (response.success) {
+          input.value = 0;
+        } else {
+          submittedCorrectly = false;
+        }
+
+      });
+
+    }
+
+    if (i == inputs.length - 1) {
+
+      if (submittedCorrectly) {
+        form.style.display = 'none';
+      }
+
+    }
+
+  });
 
 }
 
@@ -105,5 +185,7 @@ export default function() {
     });
 
   });
+
+  form.addEventListener('submit', (e) => { submitForm(e) });
 
 }

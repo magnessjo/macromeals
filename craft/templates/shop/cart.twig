@@ -2,10 +2,21 @@
 {% extends "_layout" %}
 {% includeCssFile "/cart.css" %}
 {% includeJsFile "/cart.js" %}
+{% set cart = craft.commerce.getCart() %}
 
 {% block main %}
 
   {% include "components/cart-breadcrumb.twig" %}
+
+  {% for item in cart %}
+
+    {% for entry in item %}
+
+      {{ entry.title }}
+
+    {% endfor %}
+
+  {% endfor %}
 
   <section id="no-items">
 

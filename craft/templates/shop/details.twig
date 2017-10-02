@@ -5,6 +5,11 @@
 
 {% block main %}
 
+  <script type="text/javascript">
+    window.csrfTokenName = "{{ craft.config.csrfTokenName|e('js') }}";
+    window.csrfTokenValue = "{{ craft.request.csrfToken|e('js') }}";
+  </script>
+
   {% for product in craft.commerce.products.slug(craft.request().lastSegment()) %}
 
     <section id="stage" class="slim-stage">
@@ -30,7 +35,7 @@
 
             <div>
 
-              <form id="fixed-form">
+              <form method="POST" id="fixed-form">
 
                 <div class="row-columns descriptions">
 
@@ -50,10 +55,12 @@
 
                         <div class="row-columns">
 
+                          <input type="hidden" name="qty" value="0">
+                          <input type="hidden" name="purchasableId" value="{{ purchasable.purchasableId }}">
                           <div class="size">{{ purchasable.description }}</div>
                           <div class="price">${{ purchasable.salePrice }}</div>
                           <div class="quantity">
-                            <input type="number" pattern="\d*" value="0" />
+                            <input type="number" pattern="\d*" value="0" data-id="{{ purchasable.purchasableId }}" />
                           </div>
 
                         </div>

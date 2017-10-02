@@ -8,6 +8,5 @@ import formValue from './formValue';
 document.addEventListener('DOMContentLoaded', () => {
 
   formValue();
-  pieChart();
 
 });

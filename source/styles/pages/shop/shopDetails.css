@@ -123,6 +123,8 @@ form {
   & .descriptions {
     padding-top: 15px;
     padding-bottom: 15px;
+    background-color: var(--green);
+    color: var(--white);
 
     & > div {
       text-transform: uppercase;

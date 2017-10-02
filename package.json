@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "builder": "git+ssh://git@bitbucket.org/magnessjo/builder.git",
-    "chart.js": "^2.7.0"
+    "chart.js": "^2.7.0",
+    "whatwg-fetch": "^2.0.3"
   }
 }

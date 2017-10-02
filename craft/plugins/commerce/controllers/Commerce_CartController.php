@@ -249,7 +249,7 @@ class Commerce_CartController extends Commerce_BaseFrontEndController
             {
                 $billingAddressId = craft()->request->getParam('billingAddressId');
                 $billingAddress = craft()->commerce_addresses->getAddressById($billingAddressId);
-                if (!$billingAddress)   
+                if (!$billingAddress)
                 {
                     $billingAddress = new Commerce_AddressModel();
                     $billingAddress->setAttributes(craft()->request->getParam('billingAddress'));
