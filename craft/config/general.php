@@ -16,17 +16,17 @@ return [
     ],
   ],
 
-  // 'macromeals.joshmagness.me' => [
-  //   'devMode' => true,
-  //   'overridePhpSessionLocation' => false,
-  //   'environmentVariables' => [
-  //     'siteUrl'  => 'http://macromeals.joshmagness.me/',
-  //     'basePath' => '/srv/http/macromeals/shared/uploads/',
-  //     'pluginPath' => '/srv/http/macromeals/craft/plugins'
-  //   ],
-  // ],
+  '.me' => [
+    'devMode' => true,
+    'overridePhpSessionLocation' => false,
+    'environmentVariables' => [
+      'siteUrl'  => 'http://macromeals.joshmagness.me/',
+      'basePath' => '/srv/http/macromeals/shared/uploads/',
+      'pluginPath' => '/srv/http/macromeals/craft/plugins'
+    ],
+  ],
 
-  'macromeals.localhost.dev' => [
+  '.dev' => [
     'devMode' => true,
     'overridePhpSessionLocation' => false,
     'enableCsrfProtection' => false,
@@ -37,7 +37,7 @@ return [
     ],
   ],
 
-  'www.macromeals.life/' => [
+  '.life' => [
     'devMode' => true,
     'overridePhpSessionLocation' => false,
     'environmentVariables' => [
