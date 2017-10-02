@@ -12,7 +12,7 @@ let showSubmit = false;
 
 function caculateTotal(total) {
 
-  totalPrice.innerHTML = `${total}`;
+  totalPrice.innerHTML = `$${total}`;
 
 }
 
@@ -93,6 +93,16 @@ export default function() {
 
     input.addEventListener('change', (e) => updateUI(e) );
     input.addEventListener('keyup', (e) => updateUI(e) );
+
+    input.addEventListener('blur', (e) => {
+
+      if (input.value == '') {
+        input.value = 0;
+      } else {
+        updateUI(e)
+      }
+
+    });
 
   });
 
