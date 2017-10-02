@@ -8,7 +8,6 @@
 
 form {
   border: 1px solid var(--green);
-  padding: 15px 20px;
   top: 0;
   background-color: var(--white);
 
@@ -17,16 +16,10 @@ form {
     width: 100% !important;
   }
 
-  @media (--tablet-min) {
-    padding: 20px 30px;
-  }
-
-  @media (--desktop-min) {
-    padding: 30px 50px;
-  }
-
   & input[type="submit"] {
     display: none;
+    margin-right: 10%;
+    margin-bottom: 20px;
   }
 
   & input[type="number"] {
@@ -70,8 +63,7 @@ form {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
+    padding: 20px 10%;
     position: relative;
 
     &:before {
@@ -80,7 +72,7 @@ form {
       bottom: 0;
       height: 1px;
       background-color: var(--green);
-      width: 140%;
+      width: 100%;
       left: 50%;
       transform: translateX(-50%);
     }
@@ -101,7 +93,6 @@ form {
   }
 
   & .list {
-    margin-bottom: 20px;
 
     & p {
       margin-bottom: 0;
@@ -110,7 +101,7 @@ form {
     & .row-columns {
 
       &:before {
-        width: 100%;
+        width: 80%;
       }
 
     }
@@ -124,15 +115,14 @@ form {
 
   }
 
-  /*& .options {
-    border-bottom: 1px solid var(--green);
-  }*/
-
   & .summary {
 
-    & > div {
-      display: flex;
-      justify-content: space-between;
+    & .row-columns {
+
+      &:before {
+        display: none;
+      }
+
     }
 
   }

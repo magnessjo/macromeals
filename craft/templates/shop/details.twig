@@ -32,17 +32,17 @@
 
               <form id="fixed-form">
 
+                <div class="row-columns descriptions">
+
+                  <div class="size">Size</div>
+                  <div class="price">Price</div>
+                  <div class="quantity">Quantity</div>
+
+                </div>
+
                 <div>
 
                   <div class="options">
-
-                    <div class="row-columns">
-
-                      <div class="size">Size</div>
-                      <div class="price">Price</div>
-                      <div class="quantity">Quantity</div>
-
-                    </div>
 
                     {% for purchasable in product.variants %}
 
@@ -66,7 +66,7 @@
 
                   <div class="summary">
 
-                    <div>
+                    <div class="row-columns">
                       <p class="acumin-small-bold">Total</p>
                       <p class="acumin-small-bold" data-total="price"></p>
                     </div>
