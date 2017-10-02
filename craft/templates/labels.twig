@@ -101,6 +101,7 @@
                         {% if purchasable.sku == variantSlug %}
 
                           <div>
+                            <p class="nimbus-tiny-bold"><span>SIZE:</span> {{ purchasable.title }}</p>
                             {% for row in purchasable.productMacros %}
                               {% if row.calories %}
                                 <p class="nimbus-tiny-bold"><span>CALORIES:</span> {{ row.calories }}</p>
@@ -123,7 +124,6 @@
                                 <p>The Fat are not entered in the CMS</p>
                               {% endif %}
                             {% endfor %}
-
 
                           </div>
 

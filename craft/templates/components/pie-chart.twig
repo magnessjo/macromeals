@@ -7,15 +7,15 @@
 {% for row in macros %}
 
   {% if row.protein %}
-    {% set protein = row.protein %}
+    {% set protein = row.proteinPercentage %}
   {% endif %}
 
   {% if row.carbs %}
-    {% set carbs = row.carbs %}
+    {% set carbs = row.carbsPercentage %}
   {% endif %}
 
   {% if row.fat %}
-    {% set fat = row.fat %}
+    {% set fat = row.fatPercentage %}
   {% endif %}
 
 {% endfor %}
