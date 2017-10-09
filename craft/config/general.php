@@ -38,7 +38,7 @@ return [
   ],
 
   '.life' => [
-    'devMode' => true,
+    'devMode' => false,
     'overridePhpSessionLocation' => false,
     'environmentVariables' => [
       'siteUrl'  => 'https://www.macromeals.life/',
