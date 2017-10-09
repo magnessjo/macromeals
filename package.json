@@ -14,9 +14,7 @@
     "config:staging": "babel-node deploy/config.js staging",
     "config:production": "babel-node deploy/config.js production",
     "uploads:staging": "babel-node deploy/uploads.js staging",
-    "uploads:production": "babel-node deploy/uploads.js production",
     "database:staging": "babel-node deploy/database.js staging",
-    "database:production": "babel-node deploy/database.js production",
     "start": "babel-node watch.js"
   },
   "devDependencies": {
