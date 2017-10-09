@@ -1,191 +1,195 @@
 
 @import "../../master.css";
 
-#no-items {
-  padding: 100px 0;
-  margin-bottom: 0;
+#cart-list {
 
-  & p {
-    margin-bottom: 40px;
-  }
+  & .no-items {
+    padding: 100px 0;
+    margin-bottom: 0;
 
-}
-
-#cart {
-  padding: 60px 0;
-  min-height: 50vh;
-
-  & .items {
-    margin-bottom: 40px;
-  }
-
-  & .order-item {
-    position: relative;
-
-    @media (--tablet-min) {
-      display: flex;
+    & p {
       margin-bottom: 40px;
     }
 
-    &:last-of-type {
+  }
 
-      @media (--tablet-min) {
-        margin-bottom: 0;
-      }
+  & .item-list {
+    padding: 60px 0;
+    min-height: 50vh;
 
+    & .items {
+      margin-bottom: 40px;
     }
 
-    & .image {
-      background-position: center;
-      background-size: cover;
-      width: 100px;
-      align-self: normal;
-
-      @media (--desktop-min) {
-        width: 140px;
-      }
-
-    }
-
-    & .wrapper {
-      padding-bottom: 40px;
-
-      @media (--large-max) {
-        margin-bottom: 40px;
-        border-bottom: 1px solid var(--light-gray);
-      }
+    & .order-item {
+      position: relative;
 
       @media (--tablet-min) {
         display: flex;
-        align-items: center;
-        border-bottom: 1px solid var(--light-gray);
-        padding-left: 30px;
-        padding-right: 30px;
-        padding-top: 40px;
-        width: 100%;
-      }
-
-    }
-
-    & h2 {
-
-      @media (--large-max) {
         margin-bottom: 40px;
-        width: calc(100% - 60px);
       }
 
-      @media (--tablet-min) {
-        width: 300px;
-      }
+      &:last-of-type {
 
-    }
-
-    & .item-actions {
-      margin-left: auto;
-      display: flex;
-      align-items: center;
-
-      @media (--large-max) {
-        justify-content: space-between;
-      }
-
-    }
-
-    & .increment {
-      margin-right: 40px;
-      border: 1px solid var(--light-gray);
-      height: 40px;
-      display: flex;
-      align-items: center;
-
-      @media (--large-max) {
-        order: 2;
-      }
-
-      & span, & button {
-        height: 100%;
-        width: 40px;
-        display: inline-block;
-      }
-
-      & button {
-        position: relative;
-      }
-
-      & span {
-        line-height: 40px;
-        text-align: center;
-        font-size: 14px;
-      }
-
-      & .minus {
-        border-right: 1px solid var(--light-gray);
-
-        &:after {
-          content: "\f2f4";
+        @media (--tablet-min) {
+          margin-bottom: 0;
         }
 
       }
 
-      & .plus {
-        border-left: 1px solid var(--light-gray);
+      & .image {
+        background-position: center;
+        background-size: cover;
+        width: 100px;
+        align-self: normal;
 
-        &:after {
-          content: "\f2c7";
+        @media (--desktop-min) {
+          width: 140px;
         }
 
       }
 
-    }
+      & .wrapper {
+        padding-bottom: 40px;
 
-    & .cost {
-      margin-bottom: 0;
+        @media (--large-max) {
+          margin-bottom: 40px;
+          border-bottom: 1px solid var(--light-gray);
+        }
 
-      @media (--large-max) {
-        order: 3;
+        @media (--tablet-min) {
+          display: flex;
+          align-items: center;
+          border-bottom: 1px solid var(--light-gray);
+          padding-left: 30px;
+          padding-right: 30px;
+          padding-top: 40px;
+          width: 100%;
+        }
+
       }
 
-      @media (--tablet-min) {
+      & h2 {
+
+        @media (--large-max) {
+          margin-bottom: 40px;
+          width: calc(100% - 60px);
+        }
+
+        @media (--tablet-min) {
+          width: 300px;
+        }
+
+      }
+
+      & .item-actions {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+
+        @media (--large-max) {
+          justify-content: space-between;
+        }
+
+      }
+
+      & .increment {
         margin-right: 40px;
+        border: 1px solid var(--light-gray);
+        height: 40px;
+        display: flex;
+        align-items: center;
+
+        @media (--large-max) {
+          order: 2;
+        }
+
+        & span, & button {
+          height: 100%;
+          width: 40px;
+          display: inline-block;
+        }
+
+        & button {
+          position: relative;
+        }
+
+        & span {
+          line-height: 40px;
+          text-align: center;
+          font-size: 14px;
+        }
+
+        & .minus {
+          border-right: 1px solid var(--light-gray);
+
+          &:after {
+            content: "\f2f4";
+          }
+
+        }
+
+        & .plus {
+          border-left: 1px solid var(--light-gray);
+
+          &:after {
+            content: "\f2c7";
+          }
+
+        }
+
+      }
+
+      & .cost {
+        margin-bottom: 0;
+
+        @media (--large-max) {
+          order: 3;
+        }
+
+        @media (--tablet-min) {
+          margin-right: 40px;
+        }
+
+      }
+
+      & .remove {
+
+        @media (--large-max) {
+          position: absolute;
+          top: 0;
+          right: 0;
+          margin-top: -5px;
+        }
+
+        &:after {
+          content: "\f2d7";
+          font-size: 35px;
+          color: var(--light-gray);
+        }
+
       }
 
     }
 
-    & .remove {
+    & .cart-total {
+      margin-bottom: 80px;
 
-      @media (--large-max) {
-        position: absolute;
-        top: 0;
-        right: 0;
-        margin-top: -5px;
-      }
+      & p {
+        margin-bottom: 0;
+        text-align: right;
 
-      &:after {
-        content: "\f2d7";
-        font-size: 35px;
-        color: var(--light-gray);
-      }
+        @media (--tablet-min) {
+          padding-right: 70px;
+        }
 
-    }
+        & span {
+          display: inline-block;
+          padding-left: 20px;
+          font-size: 30px;
+          font-size: calc(26px + 1.25vw);
+        }
 
-  }
-
-  & .cart-total {
-    margin-bottom: 80px;
-
-    & p {
-      margin-bottom: 0;
-      text-align: right;
-
-      @media (--tablet-min) {
-        padding-right: 70px;
-      }
-
-      & span {
-        display: inline-block;
-        padding-left: 20px;
-        font-size: 30px;
-        font-size: calc(26px + 1.25vw);
       }
 
     }

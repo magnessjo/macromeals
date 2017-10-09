@@ -1,0 +1,82 @@
+
+{% set cart = craft.commerce.getCart %}
+
+<section id="cart-list">
+
+  {% if cart.lineItems | length == 0 %}
+
+    <div class="no-items">
+
+      <div class="lock">
+
+        <p class="acumin-medium">You currently do not have meals in your cart.</p>
+        <p class="acumin-small">You can view all of our meals <a href="/meals">here</a>.
+        <p>Please contact us at <a href="mailto:help@macromeals.life">help@macromeals.life</a> if you are having any issues adding meals or if you would like to setup a phone call to help walk you through the website.</p>
+
+      </div>
+
+    </div>
+
+  {% else %}
+
+    <div class="item-list">
+
+      <div class="lock">
+
+        <h1 class="sr-only">Cart Items</h1>
+
+        <form>
+
+          <div class="items">
+
+            {% for item in cart.lineItems %}
+
+              {% set variant = item.purchasable %}
+              {% set product = variant.product %}
+
+              <div class="order-item">
+
+                <div class="image" style="background-image: url({{ product.productImage[0].url }})"></div>
+
+                <div class="wrapper">
+                  <h2>{{ product.title }}</h2>
+
+                  <div class="item-actions">
+                    <div class="increment">
+                      <button class="icons minus"></button>
+                      <span>{{ item.qty }}</span>
+                      <button class="icons plus"></button>
+                    </div>
+                    <p class="cost">${{ item.subtotal }}</p>
+                    <button class="icons remove"></button>
+                  </div>
+                </div>
+
+              </div>
+
+            {% endfor %}
+
+          </div>
+
+          <div class="cart-total">
+
+            <p class="acumin-small-bold">Total<span class="amount">{{ cart.totalPrice | commerceCurrency(cart.currency, stripZeros = true) }}</span></p>
+
+          </div>
+
+          <div class="checkout-actions">
+
+            <a href="" class="icons">Back <span>to Customer Information</span></a>
+            <input type="submit" value="Proceed to Customer Info" class="call-to-action">
+
+          </div>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  {% endif %}
+
+</section>
