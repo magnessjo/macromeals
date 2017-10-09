@@ -60,7 +60,7 @@
                           <div class="size">{{ purchasable.description }}</div>
                           <div class="price">${{ purchasable.salePrice }}</div>
                           <div class="quantity">
-                            <input type="number" pattern="\d*" value="0" data-id="{{ purchasable.purchasableId }}" />
+                            <input type="number" pattern="\d*" value="0" data-id="{{ purchasable.purchasableId }}" data-stock="{{ purchasable.stock}}" />
                           </div>
 
                         </div>

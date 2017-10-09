@@ -2,124 +2,86 @@
 {% extends "_layout" %}
 {% includeCssFile "/cart.css" %}
 {% includeJsFile "/cart.js" %}
-{% set cart = craft.commerce.getCart() %}
+{% set cart = craft.commerce.getCart %}
 
 {% block main %}
 
   {% include "components/cart-breadcrumb.twig" %}
 
-  {% for item in cart %}
+  {% if cart|length == 0 %}
 
-    {% for entry in item %}
+    <section id="no-items">
 
-      {{ entry.title }}
+      <div class="lock">
 
-    {% endfor %}
+        <p class="acumin-medium">You currently do not have meals in your cart.</p>
+        <p class="acumin-small">You can view all of our meals <a href="/meals">here</a>.
+        <p>Please contact us at <a href="mailto:help@macromeals.life">help@macromeals.life</a> if you are having any issues adding meals or if you would like to setup a phone call to help walk you through the website.</p>
 
-  {% endfor %}
+      </div>
 
-  <section id="no-items">
+    </section>
 
-    <div class="lock">
+  {% else %}
 
-      <p class="acumin-medium">You currently do not have meals in your cart.</p>
-      <p class="acumin-small">You can view all of our meals <a href="/meals">here</a>.
-      <p>Please contact us at <a href="mailto:help@macromeals.life">help@macromeals.life</a> if you are having any issues adding meals or if you would like to setup a phone call to help walk you through the website.</p>
+    <section id="cart">
 
-    </div>
+      <div class="lock">
 
-  </section>
+        <h1 class="sr-only">Cart Items</h1>
 
-  <section id="cart">
+        <form>
 
-    <div class="lock">
+          <div class="items">
 
-      <h1 class="sr-only">Cart Items</h1>
+            {% for item in cart.lineItems %}
 
-      <form>
+              {% set variant = item.purchasable %}
+              {% set product = variant.product %}
 
-        <div class="items">
+              <div class="order-item">
 
-          <div class="order-item">
+                <div class="image" style="background-image: url({{ product.productImage[0].url }})"></div>
 
-            <div class="image" style="background-image: url(/uploads/products/kabob-with-chicken.jpg)"></div>
+                <div class="wrapper">
+                  <h2>{{ product.title }}</h2>
 
-            <div class="wrapper">
-              <h2>Kabob Meal with Chicken</h2>
-
-              <div class="item-actions">
-                <div class="increment">
-                  <button class="icons minus"></button>
-                  <span>1</span>
-                  <button class="icons plus"></button>
+                  <div class="item-actions">
+                    <div class="increment">
+                      <button class="icons minus"></button>
+                      <span>{{ item.qty }}</span>
+                      <button class="icons plus"></button>
+                    </div>
+                    <p class="cost">${{ item.subtotal }}</p>
+                    <button class="icons remove"></button>
+                  </div>
                 </div>
-                <p class="cost">$8.99</p>
-                <button class="icons remove"></button>
+
               </div>
-            </div>
+
+            {% endfor %}
 
           </div>
 
-          <div class="order-item">
+          <div class="cart-total">
 
-            <div class="image"  style="background-image: url(/uploads/products/chicken-squash.jpg)"></div>
-
-            <div class="wrapper">
-              <h2>Chicken with Squash</h2>
-
-              <div class="item-actions">
-                <div class="increment">
-                  <button class="icons minus"></button>
-                  <span>1</span>
-                  <button class="icons plus"></button>
-                </div>
-                <p class="cost">$8.99</p>
-                <button class="icons remove"></button>
-              </div>
-            </div>
-
+            <p class="acumin-small-bold">Total<span class="amount">{{ cart.totalPrice | commerceCurrency(cart.currency, stripZeros = true) }}</span></p>
 
           </div>
 
-          <div class="order-item">
+          <div class="checkout-actions">
 
-            <div class="image"  style="background-image: url(/uploads/products/chicke-with-salas.jpg)"></div>
-
-            <div class="wrapper">
-              <h2>Chicken With Salsa</h2>
-
-              <div class="item-actions">
-                <div class="increment">
-                  <button class="icons minus"></button>
-                  <span>1</span>
-                  <button class="icons plus"></button>
-                </div>
-                <p class="cost">$8.99</p>
-                <button class="icons remove"></button>
-              </div>
-            </div>
+            <a href="" class="icons">Back <span>to Customer Information</span></a>
+            <input type="submit" value="Proceed to Customer Info" class="call-to-action">
 
           </div>
 
-        </div>
+        </form>
 
-        <div class="cart-total">
+      </div>
 
-          <p class="acumin-small-bold">Total<span class="amount">$59.99</span></p>
+    </section>
 
-        </div>
-
-        <div class="checkout-actions">
-
-          <a href="" class="icons">Back <span>to Customer Information</span></a>
-          <input type="submit" value="Proceed to Customer Info" class="call-to-action">
-
-        </div>
-
-      </form>
-
-    </div>
-
-  </section>
+  {% endif %}
 
 {% endblock %}
