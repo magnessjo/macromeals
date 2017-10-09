@@ -68,6 +68,7 @@ header {
     display: flex;
     background-color: var(--green);
     color: var(--white);
+    border-radius: 0;
 
     & img {
       height: 20px;
@@ -79,6 +80,76 @@ header {
         width: 60px;
       }
 
+    }
+
+  }
+
+  & .shop-actions {
+    position: absolute;
+    background-color: var(--white);
+    right: 0;
+    top: 70px;
+    padding: 20px 40px;
+    z-index: 9;
+    box-shadow: -3px 3px 5px -3px #616161;
+
+    &[aria-hidden="true"] {
+      display: none;
+    }
+
+    &[aria-hidden="false"] {
+      display: block;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      right: 40px;
+      top: -10px;
+      width: 0;
+    	height: 0;
+    	border-left: 8px solid transparent;
+    	border-right: 8px solid transparent;
+    	border-bottom: 10px solid var(--white);
+    }
+
+    & .order-item {
+      padding: 20px;
+      margin-bottom: 10px;
+      border-bottom: 1px solid var(--green);
+      display: flex;
+
+      &:last-of-type {
+        margin-bottom: 30px;
+      }
+
+      & h2 {
+        line-height: 1em;
+        padding-left: 10px;
+        position: relative;
+
+        &:before {
+          content: attr(data-attr);
+          position: absolute;
+          left: -20px;
+          font-size: 36px;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+
+      }
+
+      & span {
+        display: block;
+        font-size: 12px;
+        line-height: 1em;
+      }
+
+    }
+
+    & .call-to-action {
+      width: 100%;
+      text-align: center;
     }
 
   }
