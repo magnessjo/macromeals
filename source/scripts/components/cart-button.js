@@ -4,7 +4,8 @@
 const header = document.querySelector('header');
 const button = header.querySelector('.register');
 const shopActions = header.querySelector('.shop-actions');
-const wrapper = header.querySelector('.order-items');
+const wrapper = shopActions.querySelector('.order-items');
+const actionLink = shopActions.querySelector('.call-to-action');
 
 // Fetch
 
@@ -38,7 +39,8 @@ function updateDOM(data) {
   return new Promise((resolve, reject) => {
 
     if (data.length == 0) {
-      wrapper.innerHTML = `<p>Your Cart is empty</p>`;
+      wrapper.innerHTML = `<p>Your Cart is Empty</p>`;
+      actionLink.style.display = 'none';
       resolve();
     }
 
@@ -58,6 +60,7 @@ function updateDOM(data) {
       headline.appendChild(span);
       div.appendChild(headline);
       wrapper.appendChild(div);
+      actionLink.style.display = 'block';
 
       if (i == data.length - 1) {
         resolve();

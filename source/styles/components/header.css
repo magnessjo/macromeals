@@ -113,6 +113,10 @@ header {
     	border-bottom: 10px solid var(--white);
     }
 
+    & p {
+      margin-bottom: 0;
+    }
+
     & .order-item {
       padding: 20px;
       margin-bottom: 10px;
