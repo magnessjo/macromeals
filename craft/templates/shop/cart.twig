@@ -8,7 +8,7 @@
 
   {% include "components/cart-breadcrumb.twig" %}
 
-  {% if cart|length == 0 %}
+  {% if cart.lineItems | length == 0 %}
 
     <section id="no-items">
 

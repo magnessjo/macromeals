@@ -4,7 +4,6 @@
 #no-items {
   padding: 100px 0;
   margin-bottom: 0;
-  display: none;
 
   & p {
     margin-bottom: 40px;
