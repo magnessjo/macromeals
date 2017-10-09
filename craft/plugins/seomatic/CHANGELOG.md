@@ -1,5 +1,23 @@
 # SEOmatic Changelog
 
+## 1.1.53 - 2017.10.06
+### Changed
+* Fixed a regression with certain types of localized sites
+
+## 1.1.52 - 2017.10.02
+### Changed
+* Fixed breadcrumbs (and other URLs) for certain multi-locale setups
+* Fixed an issue with `hreflang='x-default'` with non-localized sites
+
+## 1.1.51 - 2017.09.21
+### Added
+* Added support for `hreflang="x-default"`
+* Added `availabilty` to the default `Offer` Product JSON-LD
+
+### Changed
+* Fixed an issue where you could not change the Open Graph or Twitter `title` from a Twig template
+* Handle localized elements for breadcrumbs
+
 ## 1.1.50 - 2017.08.10
 ### Added
 * Add the ability to override the canonicalUrl from an SEOmatic Meta FieldType

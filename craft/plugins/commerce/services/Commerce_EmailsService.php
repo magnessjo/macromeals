@@ -164,15 +164,8 @@ class Commerce_EmailsService extends BaseApplicationComponent
             // use the order's language for template rendering the email fields and body.
             $orderLanguage = $order->orderLocale ? $order->orderLocale : $originalLanguage;
             craft()->setLanguage($orderLanguage);
+            $newEmail->toEmail = $order->email;
 
-            if ($order->getCustomer())
-            {
-                $newEmail->toEmail = $order->getCustomer()->email;
-            }
-            else
-            {
-                $newEmail->toEmail = $order->email;
-            }
         }
 
         if ($email->recipientType == Commerce_EmailRecord::TYPE_CUSTOM)

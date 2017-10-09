@@ -41,11 +41,11 @@ class CommerceProductHelper
         }
         $product->expiryDate    = (($expiryDate = $data['expiryDate']) ? CraftDateTime::createFromString($expiryDate, \Craft\craft()->timezone) : null);
 
-        $product->promotable = $data['promotable'];
-        $product->freeShipping = $data['freeShipping'];
-        $product->taxCategoryId = $data['taxCategoryId'] ? $data['taxCategoryId'] : $product->taxCategoryId;
-        $product->shippingCategoryId = $data['shippingCategoryId'] ? $data['shippingCategoryId'] : $product->shippingCategoryId;
-        $product->slug = $data['slug'] ? $data['slug'] : $product->slug;
+        $product->promotable = isset($data['promotable']) ? $data['promotable'] : $product->promotable;
+        $product->freeShipping = isset($data['freeShipping']) ? $data['freeShipping'] : $product->freeShipping;
+        $product->taxCategoryId = isset($data['taxCategoryId']) ? $data['taxCategoryId'] : $product->taxCategoryId;
+        $product->shippingCategoryId = isset($data['shippingCategoryId']) ? $data['shippingCategoryId'] : $product->shippingCategoryId;
+        $product->slug = isset($data['slug']) ? $data['slug'] : $product->slug;
     }
 
     /**

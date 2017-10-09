@@ -25,14 +25,14 @@ class Commerce_CustomerModel extends BaseModel
 {
     private $_user;
 
-    /*
-     * Returns the email address of the customer as the string output.
-     *
+    /**
      * @return string
      */
     public function __toString()
     {
-        return (string)$this->getAttribute('email');
+        craft()->deprecator->log('Commerce_CustomerModel::__toString()', 'Commerce_CustomerModel::__toString() has been deprecated. Use Commerce_OrderModel::getEmail() instead.');
+
+        return '';
     }
 
     /**
@@ -42,11 +42,20 @@ class Commerce_CustomerModel extends BaseModel
      */
     public function getUser()
     {
-        if (!isset($this->_user)) {
+        if (null === $this->_user) {
             $this->_user = craft()->users->getUserById($this->userId);
         }
 
         return $this->_user;
+    }
+
+    /**
+     * @param UserModel $user
+     */
+    public function setUser(UserModel $user)
+    {
+        $this->_user = $user;
+        $this->userId = $user->id;
     }
 
     /**
@@ -90,6 +99,7 @@ class Commerce_CustomerModel extends BaseModel
      * Gets a single address of a customer by id
      *
      * @param null $id
+     *
      * @return mixed
      */
     public function getAddress($id = null)
@@ -122,6 +132,24 @@ class Commerce_CustomerModel extends BaseModel
     }
 
     /**
+     * @return string
+     * @deprecated
+     */
+    public function getEmail()
+    {
+        craft()->deprecator->log('Commerce_CustomerModel::getEmail()', 'Commerce_CustomerModel::getEmail() has been deprecated. Use Commerce_OrderModel::getEmail() instead.');
+
+        $user = $this->getUser();
+
+        if($user)
+        {
+            return $user->email;
+        }
+
+        return '';
+    }
+
+    /**
      * @return array
      */
     protected function defineAttributes()
@@ -129,7 +157,6 @@ class Commerce_CustomerModel extends BaseModel
         return array_merge(parent::defineAttributes(), [
             'id' => AttributeType::Number,
             'userId' => AttributeType::Number,
-            'email' => AttributeType::String,
             'lastUsedBillingAddressId' => AttributeType::Number,
             'lastUsedShippingAddressId' => AttributeType::Number
         ]);

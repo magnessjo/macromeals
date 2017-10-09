@@ -128,13 +128,14 @@ class Commerce_TaxAdjuster implements Commerce_AdjusterInterface
                     $amount = -($orderTaxableAmount - ($orderTaxableAmount / (1 + $taxRate->rate)));
                     $amount = CommerceCurrencyHelper::round($amount);
                     $allRemovedTax += $amount;
-                    $order->baseTax += $amount;
+                    $order->baseDiscount += $amount;
                     $affectedLineIds = [];
 
                     // We need to display the adjustment that removed the included tax
-                    $adjustment->name = $taxRate->name." ".\Craft\Craft::t('Removed');
+                    $adjustment->name = $taxRate->name." ".\Craft\Craft::t('Tax Removed');
                     $adjustment->amount = $allRemovedTax;
                     $adjustment->optionsJson = array_merge(['lineItemsAffected' => $affectedLineIds], $adjustment->optionsJson);
+                    $adjustment->type = Commerce_DiscountAdjuster::ADJUSTMENT_TYPE;
 
                     return $adjustment;
                 }
@@ -148,15 +149,16 @@ class Commerce_TaxAdjuster implements Commerce_AdjusterInterface
                         $amount = -($taxableAmount - ($taxableAmount / (1 + $taxRate->rate)));
                         $amount = CommerceCurrencyHelper::round($amount);
                         $allRemovedTax += $amount;
-                        $item->tax += $amount;
+                        $item->discount += $amount;
                         $affectedLineIds[] = $item->id;
                     }
                 }
 
                 // We need to display the adjustment that removed the included tax
-                $adjustment->name = $taxRate->name." ".\Craft\Craft::t('Removed');
+                $adjustment->name = $taxRate->name." ".\Craft\Craft::t('Tax Removed');
                 $adjustment->amount = $allRemovedTax;
                 $adjustment->optionsJson = array_merge(['lineItemsAffected' => $affectedLineIds], $adjustment->optionsJson);
+                $adjustment->type = Commerce_DiscountAdjuster::ADJUSTMENT_TYPE;
 
                 return $adjustment;
             }

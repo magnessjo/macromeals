@@ -117,6 +117,7 @@ class Commerce_VariantElementType extends Commerce_BaseElementType
         return [
             'sku' => AttributeType::Mixed,
             'product' => AttributeType::Mixed,
+            'price' => AttributeType::Mixed,
             'productId' => AttributeType::Mixed,
             'isDefault' => AttributeType::Mixed,
             'default' => AttributeType::Mixed,
@@ -170,6 +171,11 @@ class Commerce_VariantElementType extends Commerce_BaseElementType
 	    {
 		    $query->andWhere(DbHelper::parseParam('variants.stock', $criteria->stock, $query->params));
 	    }
+
+        if ($criteria->price)
+        {
+            $query->andWhere(DbHelper::parseParam('variants.price', $criteria->price, $query->params));
+        }
 
 	    if (isset($criteria->hasStock) && $criteria->hasStock === true)
 	    {
