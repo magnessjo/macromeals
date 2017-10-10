@@ -18,13 +18,24 @@ let showSubmit = false;
 
 // Total
 
-function caculateTotal(total) {
+function caculateTotal() {
+
+  let total = 0;
+
+  inputs.forEach((input) => {
+
+    const parent = findParentNode(input,'row-columns');;
+    const hiddenQuanity = parent.querySelector('input[name="qty"]');
+    const priceString = parent.querySelector('.price').innerHTML;
+    const price = priceString.slice(1, priceString.length);
+    const itemTotal = input.value * price;
+
+    total = total + itemTotal;
+    hiddenQuanity.value = input.value;
+
+  });
+
   totalPrice.innerHTML = `$${total}`;
-}
-
-// Reset Total
-
-function resetTotal() {
 
 }
 
@@ -33,7 +44,6 @@ function resetTotal() {
 function checkInputValues() {
 
   let isError = false;
-  let total = 0;
 
   inputs.forEach((input) => {
 
@@ -52,22 +62,11 @@ function checkInputValues() {
     // Check for a zero value
 
     isError = validation.checkForZeroValue(input.value);
+    if (isError) caculateTotal();
 
     if (!isError) {
-
-      const wrapper = input.parentNode;
-      const parent = wrapper.parentNode;
-      const hiddenQuanity = parent.querySelector('input[name="qty"]');
-      const priceString = parent.querySelector('.price').innerHTML;
-      const price = priceString.slice(1, priceString.length);
-      const itemTotal = input.value * price;
-
-      total = total + itemTotal;
-      hiddenQuanity.value = input.value;
-
       showSubmit = true;
-      caculateTotal(total);
-
+      caculateTotal();
     }
 
   });
