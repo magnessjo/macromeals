@@ -35,68 +35,81 @@
 
             <div>
 
-              <form method="POST" id="fixed-form">
+              <div class="fixed-wrapper">
 
-                <div class="row-columns descriptions">
+                <form method="POST" id="fixed-form">
 
-                  <div class="flex">
-                    <div class="size">Size</div>
-                    <div class="price">Price</div>
-                    <div class="quantity">Quantity</div>
+                  <div class="row-columns descriptions">
+
+                    <div class="flex">
+                      <div class="size">Size</div>
+                      <div class="price">Price</div>
+                      <div class="quantity">Quantity</div>
+                    </div>
+
                   </div>
 
-                </div>
+                  <div>
 
-                <div>
+                    <div class="options">
 
-                  <div class="options">
+                      {% for purchasable in product.variants %}
 
-                    {% for purchasable in product.variants %}
+                        <div class="list">
 
-                      <div class="list">
+                          <div class="row-columns">
 
-                        <div class="row-columns">
+                            <div class="flex">
 
-                          <div class="flex">
+                              <input type="hidden" name="qty" value="0">
+                              <input type="hidden" name="purchasableId" value="{{ purchasable.purchasableId }}">
+                              <div class="size">{{ purchasable.description }}</div>
+                              <div class="price">${{ purchasable.salePrice }}</div>
+                              <div class="quantity">
+                                <input type="number" pattern="\d*" value="0" data-id="{{ purchasable.purchasableId }}" />
+                              </div>
 
-                            <input type="hidden" name="qty" value="0">
-                            <input type="hidden" name="purchasableId" value="{{ purchasable.purchasableId }}">
-                            <div class="size">{{ purchasable.description }}</div>
-                            <div class="price">${{ purchasable.salePrice }}</div>
-                            <div class="quantity">
-                              <input type="number" pattern="\d*" value="0" data-id="{{ purchasable.purchasableId }}" />
+                            </div>
+
+                            <div class="errors">
+                              <p class="stock">The quantity that you have requested is not available.  The maximum number that you may purchase at this time is <span></span>.</p>
                             </div>
 
                           </div>
 
-                          <div class="errors">
-                            <p class="stock">The quantity that you have requested is not available.  The maximum number that you may purchase at this time is <span></span>.</p>
-                          </div>
-
                         </div>
 
-                      </div>
+                      {% endfor %}
 
-                    {% endfor %}
-
-                  </div>
-
-                  <div class="summary">
-
-                    <div class="row-columns">
-                      <div class="flex">
-                        <p class="acumin-small-bold">Total</p>
-                        <p class="acumin-small-bold quantity" data-total="price"></p>
-                      </div>
                     </div>
 
-                    <input type="submit" value="Add To Cart" />
+                    <div class="summary">
+
+                      <div class="row-columns">
+                        <div class="flex">
+                          <p class="acumin-small-bold">Total</p>
+                          <p class="acumin-small-bold quantity" data-total="price"></p>
+                        </div>
+                      </div>
+
+                      <input type="submit" value="Add To Cart" />
+
+                    </div>
 
                   </div>
+
+                </form>
+
+                <div class="post-submission">
+
+                  <p class="acumin-small-bold">Your items have been added to your cart</p>
+                  <a href="/shop/checkout" class="call-to-action">Checkout Now</a>
+                  <span class="acumin-medium">OR</span>
+                  <a href="/shop" class="call-to-action">View More Meals</a>
 
                 </div>
 
-              </form>
+              </div>
 
             </div>
 

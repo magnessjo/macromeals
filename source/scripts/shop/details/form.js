@@ -11,6 +11,7 @@ import postToCart from 'scripts/helpers/postToCart.js';
 
 const section = document.querySelector('#details');
 const form = section.querySelector('form');
+const submissionConfirmation = section.querySelector('.post-submission');
 const inputs = Array.from(form.querySelectorAll('input[type="number"]'));
 const submit = form.querySelector('input[type="submit"]');
 const totalPrice = form.querySelector('[data-total="price"]');
@@ -90,6 +91,7 @@ function updateUI(e) {
 function postSubmission() {
 
   form.style.display = 'none';
+  submissionConfirmation.style.display = 'block';
 
 }
 

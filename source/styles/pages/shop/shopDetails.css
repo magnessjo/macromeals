@@ -6,15 +6,20 @@
   right: 0;
 }
 
-form {
+.fixed-wrapper {
   border: 1px solid var(--green);
   top: 0;
   background-color: var(--white);
+  min-height: 100px;
 
   @media (--large-max) {
     position: relative !important;
     width: 100% !important;
   }
+
+}
+
+form {
 
   & input[type="submit"] {
     display: none;
@@ -38,6 +43,28 @@ form {
       font-size: 16px;
     }
 
+  }
+
+}
+
+.post-submission {
+  padding: 20px;
+  text-align: center;
+  display: none;
+
+  & a {
+    display: block;
+  }
+
+  & .acumin-small-bold {
+    line-height: 1.1em;
+    margin-bottom: 30px;
+  }
+
+  & .acumin-medium {
+    padding: 10px 0;
+    display: block;
+    margin-bottom: 0;
   }
 
 }
