@@ -6,16 +6,16 @@
 
 {% for row in macros %}
 
-  {% if row.protein %}
+  {% if row.proteinPercentage %}
     {% set protein = row.proteinPercentage %}
   {% endif %}
 
-  {% if row.carbs %}
+  {% if row.carbsPercentage %}
     {% set carbs = row.carbsPercentage %}
   {% endif %}
 
-  {% if row.fat %}
-    {% set fat = row.fatPercentage %}
+  {% if row.carbsPercentage %}
+    {% set fat = row.carbsPercentage %}
   {% endif %}
 
 {% endfor %}
