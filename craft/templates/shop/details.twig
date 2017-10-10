@@ -39,9 +39,11 @@
 
                 <div class="row-columns descriptions">
 
-                  <div class="size">Size</div>
-                  <div class="price">Price</div>
-                  <div class="quantity">Quantity</div>
+                  <div class="flex">
+                    <div class="size">Size</div>
+                    <div class="price">Price</div>
+                    <div class="quantity">Quantity</div>
+                  </div>
 
                 </div>
 
@@ -55,12 +57,20 @@
 
                         <div class="row-columns">
 
-                          <input type="hidden" name="qty" value="0">
-                          <input type="hidden" name="purchasableId" value="{{ purchasable.purchasableId }}">
-                          <div class="size">{{ purchasable.description }}</div>
-                          <div class="price">${{ purchasable.salePrice }}</div>
-                          <div class="quantity">
-                            <input type="number" pattern="\d*" value="0" data-id="{{ purchasable.purchasableId }}" data-stock="{{ purchasable.stock}}" />
+                          <div class="flex">
+
+                            <input type="hidden" name="qty" value="0">
+                            <input type="hidden" name="purchasableId" value="{{ purchasable.purchasableId }}">
+                            <div class="size">{{ purchasable.description }}</div>
+                            <div class="price">${{ purchasable.salePrice }}</div>
+                            <div class="quantity">
+                              <input type="number" pattern="\d*" value="0" data-id="{{ purchasable.purchasableId }}" />
+                            </div>
+
+                          </div>
+
+                          <div class="errors">
+                            <p class="stock">The quantity that you have requested is not available.  The maximum number that you may purchase at this time is <span></span>.</p>
                           </div>
 
                         </div>
@@ -74,8 +84,10 @@
                   <div class="summary">
 
                     <div class="row-columns">
-                      <p class="acumin-small-bold">Total</p>
-                      <p class="acumin-small-bold quantity" data-total="price"></p>
+                      <div class="flex">
+                        <p class="acumin-small-bold">Total</p>
+                        <p class="acumin-small-bold quantity" data-total="price"></p>
+                      </div>
                     </div>
 
                     <input type="submit" value="Add To Cart" />

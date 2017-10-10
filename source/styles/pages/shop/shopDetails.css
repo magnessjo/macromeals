@@ -78,9 +78,6 @@ form {
   }
 
   & .row-columns {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     padding: 20px 10%;
     position: relative;
 
@@ -93,6 +90,12 @@ form {
       width: 100%;
       left: 50%;
       transform: translateX(-50%);
+    }
+
+    & .flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     & .size {
@@ -118,6 +121,14 @@ form {
 
     }
 
+  }
+
+  & .errors p {
+    font-size: 13px;
+    color: red;
+    margin-bottom: 0;
+    padding: 10px 0;
+    display: none;
   }
 
   & .descriptions {

@@ -96,9 +96,7 @@ function updateUI(e) {
 
 // Fetch
 
-function fetchData(data) {
-
-  const url = '/actions/commerce/cart/updateCart';
+function fetchData(data, url) {
 
   return new Promise((resolve, reject) => {
 
@@ -120,6 +118,31 @@ function fetchData(data) {
 
 }
 
+// Check quantity
+
+function checkQuantity(element, errors) {
+
+  const stock = errors.querySelector('.stock');
+  const id = element.getAttribute('data-id');
+  const value = element.value;
+
+  return new Promise((resolve, reject) => {
+
+    fetchData(`id=${id}`, '/actions/MacroCommerce/Cart/getQuantity').then((response) => {
+      if (value > response) {
+        const span = errors.querySelector('span');
+        span.innerHTML = response;
+        stock.style.display = 'block';
+        element.value = response;
+      } else {
+        stock.style.display = 'none';
+      }
+      resolve();
+    });
+
+  });
+
+}
 
 // Submit
 
@@ -141,7 +164,7 @@ function submitForm(e) {
 
       data += `purchasableId=${id}&`;
       data += `qty=${input.value}`;
-      fetchData(data).then((response) => {
+      fetchData(data, '/actions/commerce/cart/updateCart').then((response) => {
 
         if (response.success) {
           input.value = 0;
@@ -171,15 +194,25 @@ export default function() {
 
   inputs.forEach((input) => {
 
-    input.addEventListener('change', (e) => updateUI(e) );
-    input.addEventListener('keyup', (e) => updateUI(e) );
+    const parent = input.parentNode;
+    const wrapper = parent.parentNode;
+    const container = wrapper.parentNode;
+    const errors = container.querySelector('.errors');
+
+    input.addEventListener('keyup', (e) => updateUI(e, input) );
+
+    input.addEventListener('change', (e) => {
+      checkQuantity(input, errors).then(() => {
+        updateUI(e, input);
+      });
+    });
 
     input.addEventListener('blur', (e) => {
 
       if (input.value == '') {
         input.value = 0;
       } else {
-        updateUI(e)
+        updateUI(e, input)
       }
 
     });
