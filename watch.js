@@ -29,7 +29,6 @@ const config = {
       faq: 'source/styles/pages/faq.css',
       shop: 'source/styles/pages/shop/shop.css',
       shopdetails: 'source/styles/pages/shop/shopDetails.css',
-      cart: 'source/styles/pages/checkout/cart.css',
       customer: 'source/styles/pages/checkout/customer.css',
       confirmation: 'source/styles/pages/checkout/confirmation.css',
       labels: 'source/styles/pages/labels.css',
