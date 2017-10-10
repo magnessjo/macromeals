@@ -161,7 +161,10 @@
 }
 
 #customer-info {
-  
+  display: none;
+  padding: 50px 0;
+  margin-bottom: 0;
+
   & form {
     max-width: 700px;
     margin: 0 auto;

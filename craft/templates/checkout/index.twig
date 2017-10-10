@@ -1,7 +1,7 @@
 
 {% extends "_layout" %}
 {% includeCssFile "/customer.css" %}
-{% includeJsFile "/cart.js" %}
+{% includeJsFile "/customer.js" %}
 
 {% block main %}
 
@@ -67,20 +67,16 @@
 
         <div class="action-event guest">
 
-          <form>
+          <div class="">
+            <label>Email Address</label>
+            <input type="text" />
+          <div>
 
-            <div class="">
-              <label>Email Address</label>
-              <input type="text" />
-            <div>
+          <div>
 
-            <div>
+          </div>
 
-            </div>
-
-            <input type="submit" value="Guest Checkout" class="call-to-action" />
-
-          </form>
+          <button class="call-to-action guest-cta">Guest Checkout</button>
 
         </div>
 
@@ -94,9 +90,9 @@
 
     <div class="lock">
 
-      <form>
+      <form id="register" >
 
-        <div class="form-group">
+        <div class="form-group registration-details">
 
           <p class="acumin-medium-bold">Registration Details</p>
 

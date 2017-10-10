@@ -45,9 +45,9 @@ const config = {
       faq: `source/scripts/faq`,
       shopselection: `source/scripts/shop/selection`,
       shopdetails: `source/scripts/shop/details`,
-      cart: `source/scripts/checkout/cart`,
       labels: `source/scripts/labels`,
       quickOrder: `source/scripts/quickOrder`,
+      customer: `source/scripts/checkout/customer`,
     },
   },
 
