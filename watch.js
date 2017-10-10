@@ -31,7 +31,6 @@ const config = {
       shopdetails: 'source/styles/pages/shop/shopDetails.css',
       cart: 'source/styles/pages/checkout/cart.css',
       customer: 'source/styles/pages/checkout/customer.css',
-      billing: 'source/styles/pages/checkout/billing.css',
       confirmation: 'source/styles/pages/checkout/confirmation.css',
       labels: 'source/styles/pages/labels.css',
       quickorder: 'source/styles/pages/quick-order.css',
