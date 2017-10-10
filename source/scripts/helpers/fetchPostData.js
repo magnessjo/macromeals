@@ -1,4 +1,8 @@
 
+// import
+
+import 'whatwg-fetch';
+
 // Export Post Fetch
 
 export default function fetchData(data, url) {

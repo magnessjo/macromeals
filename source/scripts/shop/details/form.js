@@ -5,7 +5,7 @@ import fetchData from 'scripts/helpers/fetchPostData.js';
 import validation from 'scripts/helpers/inputValidation.js';
 import findParentNode from 'scripts/helpers/findParentNode.js';
 import checkProductQuantity from 'scripts/helpers/checkProductQuantity.js';
-import 'whatwg-fetch';
+import postToCart from 'scripts/helpers/postToCart.js';
 
 // Variables
 
@@ -39,7 +39,7 @@ function caculateTotal() {
 
 }
 
-// check values
+// Check Values & Set Validation or Totals
 
 function checkInputValues() {
 
@@ -87,44 +87,41 @@ function updateUI(e) {
 
 }
 
+function postSubmission() {
+
+  form.style.display = 'none';
+
+}
+
 // Submit
 
 function submitForm(e) {
 
+  const totalInputs = inputs.length - 1;
   let submittedCorrectly = true;
 
   e.preventDefault();
 
   inputs.forEach((input, i) => {
 
-    let data = '';
+    const id = input.getAttribute('data-id');
+    let data = `${window.csrfTokenName}=${window.csrfTokenValue}&`;
 
-    data += `${window.csrfTokenName}=${window.csrfTokenValue}&`;
+    // Iterate over input to post to cart
 
     if (input.value != 0) {
 
-      const id = input.getAttribute('data-id');
-
-      data += `purchasableId=${id}&`;
-      data += `qty=${input.value}`;
-      fetchData(data, '/actions/commerce/cart/updateCart').then((response) => {
-
-        if (response.success) {
-          input.value = 0;
-        } else {
-          submittedCorrectly = false;
-        }
-
+      data += `purchasableId=${id}&qty=${input.value}`;
+      const response = postToCart(data).then(() => {
+        response.success ? input.value = 0 : submittedCorrectly = false
       });
 
     }
 
-    if (i == inputs.length - 1) {
+    // Remove the button upon Submission
 
-      if (submittedCorrectly) {
-        form.style.display = 'none';
-      }
-
+    if (i == totalInputs && submittedCorrectly) {
+      postSubmission();
     }
 
   });
