@@ -7,11 +7,7 @@
 
     <h1 class="acumin-large-bold">
 
-      {% if segment == 'cart' %}
-        <span>Shopping</span>Cart
-      {% endif %}
-
-      {% if segment == 'customer' %}
+      {% if segment == 'checkout' %}
         <span>Customer</span>Information
       {% endif %}
 
@@ -23,12 +19,8 @@
 
     <div>
 
-      <a href="/shop/cart"
-        class='{% if segment=="cart" %} active {% endif %} {% if segment=="customer" or segment=="confirmation" %} completed {% endif %}'>
-      <span>Shopping</span> Cart</a>
-
       <a href="/shop/customer"
-        class='{% if segment=="customer" %} active {% endif %} {% if segment=="confirmation" %} completed {% endif %}'>
+        class='{% if segment=="checkout" %} active {% endif %} {% if segment=="confirmation" %} completed {% endif %}'>
       Customer Information</a>
 
       <a href="/shop/confirmation"
