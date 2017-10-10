@@ -1,4 +1,7 @@
 
+{% includeCssFile "/cart.css" %}
+{% includeJsFile "/cart.js" %}
+
 {% set cart = craft.commerce.getCart %}
 
 <section id="cart-list">
@@ -61,13 +64,6 @@
           <div class="cart-total">
 
             <p class="acumin-small-bold">Total<span class="amount">{{ cart.totalPrice | commerceCurrency(cart.currency, stripZeros = true) }}</span></p>
-
-          </div>
-
-          <div class="checkout-actions">
-
-            <a href="" class="icons">Back <span>to Customer Information</span></a>
-            <input type="submit" value="Proceed to Customer Info" class="call-to-action">
 
           </div>
 
