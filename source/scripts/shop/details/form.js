@@ -2,6 +2,9 @@
 // import
 
 import fetchData from 'scripts/helpers/fetchPostData.js';
+import validation from 'scripts/helpers/inputValidation.js';
+import findParentNode from 'scripts/helpers/findParentNode.js';
+import checkProductQuantity from 'scripts/helpers/checkProductQuantity.js';
 import 'whatwg-fetch';
 
 // Variables
@@ -19,47 +22,39 @@ function caculateTotal(total) {
   totalPrice.innerHTML = `$${total}`;
 }
 
+// Reset Total
+
+function resetTotal() {
+
+}
+
 // check values
 
 function checkInputValues() {
 
-  const reg = new RegExp('^[0-9]+$');
   let isError = false;
   let total = 0;
 
   inputs.forEach((input) => {
 
-    if (isError) {
-      showSubmit = false;
-    }
+    if (isError) showSubmit = false;
 
     // Check for no entry
 
-    if(input.value.length == 0) {
-      isError = true;
-      return;
-    } else {
-      isError = false;
-    }
+    isError = validation.checkForLength(input.value);
+    if (isError) return;
 
     // Check for any digit other than a number
 
-    if(reg.test(input.value) == false) {
-      isError = true;
-      return;
-    } else {
-      isError = false;
-    }
+    isError = validation.checkForNumber(input.value);
+    if (isError) return;
 
     // Check for a zero value
 
-    if (input.value == 0) {
-      isError = true;
-    } else {
-      isError = false;
-    }
+    isError = validation.checkForZeroValue(input.value);
 
     if (!isError) {
+
       const wrapper = input.parentNode;
       const parent = wrapper.parentNode;
       const hiddenQuanity = parent.querySelector('input[name="qty"]');
@@ -90,39 +85,6 @@ function updateUI(e) {
   } else {
     submit.style.display = 'none';
   }
-
-}
-
-
-
-// Check quantity
-
-function checkQuantity(element, errors) {
-
-  const stock = errors.querySelector('.stock');
-  const id = element.getAttribute('data-id');
-  const value = element.value;
-
-  return new Promise((resolve, reject) => {
-
-    fetchData(`id=${id}`, '/actions/MacroCommerce/Cart/getQuantity').then((response) => {
-
-      const val = parseInt(value);
-
-      if ( val > response && !Number.isNaN(val) ) {
-        const span = errors.querySelector('span');
-        span.innerHTML = response;
-        stock.style.display = 'block';
-        element.value = response;
-      } else {
-        stock.style.display = 'none';
-      }
-
-      resolve();
-
-    });
-
-  });
 
 }
 
@@ -176,17 +138,18 @@ export default function() {
 
   inputs.forEach((input) => {
 
-    const parent = input.parentNode;
-    const wrapper = parent.parentNode;
-    const container = wrapper.parentNode;
+    const container = findParentNode(input,'row-columns');
     const errors = container.querySelector('.errors');
+    const stockText = errors.querySelector('.stock');
 
     input.addEventListener('keyup', (e) => updateUI(e, input) );
 
     input.addEventListener('change', (e) => {
-      checkQuantity(input, errors).then(() => {
+
+      checkProductQuantity(input, stockText).then(() => {
         updateUI(e, input);
       });
+
     });
 
     input.addEventListener('blur', (e) => {
