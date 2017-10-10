@@ -1,6 +1,7 @@
 
 // import
 
+import fetchData from 'scripts/helpers/fetchPostData.js';
 import 'whatwg-fetch';
 
 // Variables
@@ -15,9 +16,7 @@ let showSubmit = false;
 // Total
 
 function caculateTotal(total) {
-
   totalPrice.innerHTML = `$${total}`;
-
 }
 
 // check values
@@ -80,7 +79,7 @@ function checkInputValues() {
 
 }
 
-//
+// Update the interface based on conditions
 
 function updateUI(e) {
 
@@ -94,29 +93,7 @@ function updateUI(e) {
 
 }
 
-// Fetch
 
-function fetchData(data, url) {
-
-  return new Promise((resolve, reject) => {
-
-    fetch(url, {
-      method: "POST",
-      body: data,
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-        'X-Requested-With': 'XMLHttpRequest'
-      },
-      credentials: "same-origin"
-    }).then(function(response) {
-      resolve(response.json());
-    }, function(error) {
-      console.log(`error : ${error.message }`);
-    });
-
-  });
-
-}
 
 // Check quantity
 
@@ -129,7 +106,10 @@ function checkQuantity(element, errors) {
   return new Promise((resolve, reject) => {
 
     fetchData(`id=${id}`, '/actions/MacroCommerce/Cart/getQuantity').then((response) => {
-      if (value > response) {
+
+      const val = parseInt(value);
+
+      if ( val > response && !Number.isNaN(val) ) {
         const span = errors.querySelector('span');
         span.innerHTML = response;
         stock.style.display = 'block';
@@ -137,7 +117,9 @@ function checkQuantity(element, errors) {
       } else {
         stock.style.display = 'none';
       }
+
       resolve();
+
     });
 
   });
