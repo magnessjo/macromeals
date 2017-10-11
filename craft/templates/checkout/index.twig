@@ -108,16 +108,32 @@
 
   </section>
 
-  <form method="POST" id="register">
-
     <section id="customer-info">
 
       <div class="lock">
 
-        {# <input type="hidden" name="action" value="commerce/cart/updateCart">
+        <div class="slider">
+
+          <div class="slide" data-type="user">
+
+          </div>
+
+          <div class="slide" data-type="address">
+
+            <form method="POST" id="register">
+
+              <input type="submit" data-button="continue" value="Continue to Order Summary" class="call-to-action">
+
+            </form>
+
+          </div>
+
+        </div>
+
+        <input type="hidden" name="action" value="commerce/cart/updateCart">
         <input type="hidden" name="redirect" value="checkout/confirmation">
-        <input type="hidden" name="shippingAddressId" value="{% if address.id %} {{ address.id }} {% else %} new {% endif %}">
-        <input type="hidden" name="billingAddressId" value="{% if address.id %} {{ address.id }} {% else %} new {% endif %}"> #}
+        <input type="hidden" name="shippingAddressId" value="new">
+        <input type="hidden" name="billingAddressId" value="new">
 
         <div class="form-group registration-details">
 
@@ -187,16 +203,6 @@
 
         </div>
 
-      </div>
-
-    </section>
-
-    {# Checkout Actions #}
-
-    <section class="checkout-actions">
-
-      <div class="lock">
-        <input type="submit" value="Proceed to Summary" class="call-to-action">
       </div>
 
     </section>

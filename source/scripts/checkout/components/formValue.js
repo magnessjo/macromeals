@@ -1,7 +1,9 @@
 
-const form = document.querySelector('form');
-const button = form.querySelector('input[type="submit"]');
+const button = document.querySelector('input[data-button="continue"]');
 const value = button.value;
+const url = location.href;
+const segment = url.match(/([^\/]*)\/*$/)[1];
+let data = button.getAttribute('data-button');
 let isMobileValueSet = false;
 
 // Function
@@ -11,7 +13,7 @@ function modifyValue() {
   if (window.innerWidth < 480) {
 
     if (!isMobileValueSet) {
-      button.value = 'Proceed';
+      button.value = data;
       isMobileValueSet = true;
     }
 
@@ -28,6 +30,7 @@ function modifyValue() {
 
 export default function () {
 
+  if (segment == 'process') data = 'submit';
   window.addEventListener('resize', modifyValue);
   modifyValue();
 

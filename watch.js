@@ -47,6 +47,9 @@ const config = {
       labels: `source/scripts/labels`,
       quickOrder: `source/scripts/quickOrder`,
       customer: `source/scripts/checkout/customer`,
+      summary: `source/scripts/checkout/summary`,
+      billing: `source/scripts/checkout/billing`,
+      process: `source/scripts/checkout/process`,
     },
   },
 

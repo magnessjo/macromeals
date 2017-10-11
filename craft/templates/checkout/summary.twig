@@ -1,7 +1,7 @@
 
 {% extends "_layout" %}
 {% includeCssFile "/checkout.css" %}
-{% includeJsFile "/cart.js" %}
+{% includeJsFile "/summary.js" %}
 
 {% set cart = craft.commerce.getCart %}
 
@@ -89,7 +89,7 @@
       <div class="lock">
 
         <a href="" class="icons">Back <span>to Your Billing</span></a>
-        <input type="submit" value="Submit Your Order" class="call-to-action">
+        <input type="submit" data-button="continue" value="Continue to Billing" class="call-to-action">
 
       </div>
 
