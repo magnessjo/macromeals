@@ -1,9 +1,8 @@
 
 // Variables
 
-const section = document.querySelector('#register');
+const section = document.querySelector('#login-options');
 const button = section.querySelector('.guest-cta');
-const infoSection = document.querySelector('#customer-info');
 const form = document.querySelector('form#register');
 const registrationsSection = form.querySelector('.registration-details');
 
@@ -14,7 +13,7 @@ export default function() {
   button.addEventListener('click', () => {
 
     section.style.display = 'none';
-    infoSection.style.display = 'block';
+    form.style.display = 'block';
     registrationsSection.style.display = 'none';
 
   });

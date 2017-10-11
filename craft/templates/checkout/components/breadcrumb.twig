@@ -1,0 +1,50 @@
+
+{% set segment = craft.request().getLastSegment() %}
+
+<div class="cart-breadcrumb">
+
+  <div class="lock">
+
+    <h1 class="acumin-large-bold">
+
+      {% if segment == 'checkout' %}
+        <span>Customer</span>Information
+      {% endif %}
+
+      {% if segment == 'summary' %}
+        <span>Order</span>Summary
+      {% endif %}
+
+      {% if segment == 'billing' %}
+        <span>Order</span>Billing
+      {% endif %}
+
+      {% if segment == 'submit' %}
+        <span>Order</span>Submit
+      {% endif %}
+
+    </h1>
+
+    <div>
+
+      <a href="/checkout"
+        class='{% if segment=="checkout" %} active {% endif %} {% if segment=="confirmation" %} completed {% endif %}'>
+      Customer Information</a>
+
+      <a href="/checkout/summary"
+        class='{% if segment=="summary" %} active {% endif %}'>
+      <span>Order</span> Summary</a>
+
+      <a href="/checkout/billing"
+        class='{% if segment=="billing" %} active {% endif %}'>
+      <span>Order</span> Billing</a>
+
+      <a href="/checkout/submit"
+        class='{% if segment=="submit" %} active {% endif %}'>
+      <span>Order</span> Submit</a>
+
+    </div>
+
+  </div>
+
+</div>

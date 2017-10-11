@@ -1,0 +1,59 @@
+
+{% extends "_layout" %}
+{% includeCssFile "/customer.css" %}
+{% includeJsFile "/customer.js" %}
+
+{% block main %}
+
+  {% include "checkout/components/breadcrumb.twig" %}
+
+  <section id="customer-info">
+
+    <div class="lock">
+
+      <form method="POST" id="register">
+
+        <div class="form-group">
+
+          <p class="acumin-medium-bold">Billing</p>
+
+          <div>
+            <label>Cardholder's Name</label>
+            <input type="text" />
+          </div>
+
+          <div>
+            <label>Card Number</label>
+            <input type="text" />
+          </div>
+
+          <div class="two-column">
+
+            <div>
+              <label>Valid Thru</label>
+              <input type="text" />
+            </div>
+
+            <div>
+              <label>CVV/CVS</label>
+              <input type="text" />
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="checkout-actions">
+
+          <a href="" class="icons">Back <span>to Your Order Summary</span></a>
+          <input type="submit" value="Proceed to Confirmation" class="call-to-action">
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </section>
+
+{% endblock %}

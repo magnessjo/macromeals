@@ -1,7 +1,5 @@
 
-@import "../../master.css";
-
-#register {
+#login-options {
   padding: 40px 0;
 
   @media (--desktop-min) {
@@ -16,7 +14,7 @@
     margin-bottom: 40px;
   }
 
-  & .already-registered {
+  & .register-options{
 
     @media (--tablet-min) {
       display: flex;
@@ -38,32 +36,61 @@
 
   }
 
-  & .registered-form {
+  & .registered {
 
-    & .actions {
+    & p {
+      padding-top: 10px;
+      text-align: right;
 
-      @media (--large-max) {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+      & a {
+        color: var(--black);
+        font-size: 14px;
       }
 
-      & button {
+    }
 
-        @media (--tablet-min) {
-          display: none;
+    & .registered-form {
+
+      & .actions {
+
+        @media (--large-max) {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
         }
 
+        & button {
+
+          @media (--tablet-min) {
+            display: none;
+          }
+
+        }
+
+      }
+
+      & .checkbox {
+        text-align: right;
+        margin-bottom: 10px;
       }
 
     }
 
   }
 
-  & .summary {
+  & .register-signup {
 
     @media (--large-max) {
       display: none;
+    }
+
+    & p {
+      line-height: 1em;
+    }
+
+    & p span {
+      font-size: 14px;
+      line-height: 1em;
     }
 
     & .register-cta {
@@ -141,7 +168,7 @@
 
   }
 
-  & .guest {
+  & .guest-checkout {
 
     @media (--tablet-min) {
       max-width: 600px;
@@ -160,8 +187,11 @@
 
 }
 
-#customer-info {
+#register {
   display: none;
+}
+
+#customer-info {
   padding: 50px 0;
   margin-bottom: 0;
 

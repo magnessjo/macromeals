@@ -1,9 +1,9 @@
 
 // Variables
 
-const section = document.querySelector('#register');
+const section = document.querySelector('#login-options');
 const buttons = Array.from(section.querySelectorAll('.register-cta'));
-const infoSection = document.querySelector('#customer-info');
+const infoSection = document.querySelector('form#register');
 
 // Export
 
