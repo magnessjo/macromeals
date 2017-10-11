@@ -1,20 +1,11 @@
 
 #login-options {
-  padding: 40px 0;
-
-  @media (--desktop-min) {
-    padding: 60px 0;
-  }
-
-  @media (--desktop-min) {
-    padding: 100px 0;
-  }
 
   & .acumin-large  {
     margin-bottom: 40px;
   }
 
-  & .register-options{
+  & .register-options {
 
     @media (--tablet-min) {
       display: flex;
@@ -49,31 +40,27 @@
 
     }
 
-    & .registered-form {
+    & .actions {
 
-      & .actions {
+      @media (--large-max) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
 
-        @media (--large-max) {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
-        }
+      & button {
 
-        & button {
-
-          @media (--tablet-min) {
-            display: none;
-          }
-
+        @media (--tablet-min) {
+          display: none;
         }
 
       }
 
-      & .checkbox {
-        text-align: right;
-        margin-bottom: 10px;
-      }
+    }
 
+    & .checkbox {
+      text-align: right;
+      margin-bottom: 10px;
     }
 
   }
@@ -135,6 +122,12 @@
 
     & span {
       position: relative;
+      font-size: 40px;
+      font-size: calc(30px + 4.25vw);
+      display: inline-block;
+      text-transform: uppercase;
+      font-family: var(--acuminCondensed);
+      line-height: 1em;
 
       &:before, &:after {
         content: '';
@@ -155,13 +148,13 @@
       }
 
       &:before {
-        right: 100px;
         background: linear-gradient(90deg, transparent 0%, var(--green) 100%);
+        right: 100px;
       }
 
       &:after {
-        left: 100px;
         background: linear-gradient(90deg, var(--green) 0%, transparent 100%);
+        left: 100px;
       }
 
     }

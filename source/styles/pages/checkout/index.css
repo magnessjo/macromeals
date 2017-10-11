@@ -5,3 +5,7 @@
 @import "./summary.css";
 @import "./billing.css";
 @import "./process.css";
+
+.cart-breadcrumb {
+  margin-bottom: 80px;
+}
