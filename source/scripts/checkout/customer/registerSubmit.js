@@ -7,7 +7,7 @@ import fetchData from 'scripts/helpers/fetchPostData.js';
 // Variables
 
 const form = document.querySelector('form#user-info');
-const inputs = Array.from(form.querySelectorAll('input'));
+const inputs = Array.from(form.querySelectorAll('input[type="text"]'));
 
 // Function submit
 
@@ -15,7 +15,16 @@ function submitForm(e) {
 
   e.preventDefault();
 
-  const data = `user=test&email=test@test.com&password=test`;
+  let data = `${window.csrfTokenName}=${window.csrfTokenValue}&`;
+
+  inputs.forEach((input, i) => {
+    const value = input.value;
+    const name = input.getAttribute('name');
+    data += `${name}=${value}`;
+    if (inputs.length - 1 != i) data += '&';
+  });
+
+  // const data = `user=test&email=test@test.com&password=test1234`;
 
   fetchData(data, '/actions/users/saveUser').then((response) => {
 
