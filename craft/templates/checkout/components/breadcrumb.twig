@@ -19,8 +19,8 @@
         <span>Order</span>Billing
       {% endif %}
 
-      {% if segment == 'submit' %}
-        <span>Order</span>Submit
+      {% if segment == 'process' %}
+        <span>Process</span>Order
       {% endif %}
 
     </h1>
@@ -29,7 +29,7 @@
 
       <a href="/checkout"
         class='{% if segment=="checkout" %} active {% endif %} {% if segment=="confirmation" %} completed {% endif %}'>
-      Customer Information</a>
+      Customer <span>Information</span></a>
 
       <a href="/checkout/summary"
         class='{% if segment=="summary" %} active {% endif %}'>
@@ -39,9 +39,9 @@
         class='{% if segment=="billing" %} active {% endif %}'>
       <span>Order</span> Billing</a>
 
-      <a href="/checkout/submit"
-        class='{% if segment=="submit" %} active {% endif %}'>
-      <span>Order</span> Submit</a>
+      <a href="/checkout/process"
+        class='{% if segment=="process" %} active {% endif %}'>
+      <span>Process</span> Order</a>
 
     </div>
 

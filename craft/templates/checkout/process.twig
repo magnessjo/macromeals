@@ -1,0 +1,86 @@
+
+{% extends "_layout" %}
+{% includeCssFile "/checkout.css" %}
+{% includeJsFile "/cart.js" %}
+
+{% set cart = craft.commerce.getCart %}
+
+{% block main %}
+
+  {% include "checkout/components/breadcrumb.twig" %}
+
+  <form>
+
+    {# Order Summary #}
+
+    <section id="cart-list">
+
+      <div class="item-list">
+
+        <div class="lock">
+
+          <h1 class="acumin-large">Order Summary</h1>
+
+          <div class="items">
+
+            {% for item in cart.lineItems %}
+
+              {% set variant = item.purchasable %}
+              {% set product = variant.product %}
+
+              <div class="order-item">
+
+                <div class="image" style="background-image: url({{ product.productImage[0].url }})"></div>
+
+                <div class="wrapper">
+                  <h2>{{ product.title }}</h2>
+
+                  <div class="item-actions">
+                    <p class="cost">${{ item.subtotal }}</p>
+                  </div>
+                </div>
+
+              </div>
+
+            {% endfor %}
+
+          </div>
+
+          <div class="cart-total">
+
+            <p class="acumin-small-bold">Total<span class="amount">{{ cart.totalPrice | commerceCurrency(cart.currency, stripZeros = true) }}</span></p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    {# User Summary #}
+
+    <section id="user-summary">
+
+      <div class="lock">
+
+      </div>
+
+    </section>
+
+    {# Checkout Actions #}
+
+    <section class="checkout-actions">
+
+      <div class="lock">
+
+        <a href="" class="icons">Back <span>to Your Billing</span></a>
+        <input type="submit" value="Submit Your Order" class="call-to-action">
+
+      </div>
+
+    </section>
+
+  </form>
+
+{% endblock %}

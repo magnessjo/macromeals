@@ -1,4 +1,7 @@
 
 @import "../../master.css";
 
-@import "./customer.css"
+@import "./customer.css";
+@import "./summary.css";
+@import "./billing.css";
+@import "./process.css";
