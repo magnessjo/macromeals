@@ -65,6 +65,19 @@
 
 }
 
+.slider {
+  position: relative;
+  height: 300px;
+  overflow: hidden;
+
+  & .slide {
+    position: absolute;
+    left: 100%;
+    width: 100%;
+  }
+
+}
+
 .customer-address {
 
   @media (--tablet-min) {
@@ -291,5 +304,7 @@
     }
 
   }
+
+
 
 }

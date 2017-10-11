@@ -108,105 +108,115 @@
 
   </section>
 
-    <section id="customer-info">
+  <section id="customer-info">
 
-      <div class="lock">
+    <div class="lock">
 
-        <div class="slider">
+      <div class="slider">
 
-          <div class="slide" data-type="user">
+        <div class="slide" data-type="user">
 
-          </div>
+          <form method="POST" id="user-info">
 
-          <div class="slide" data-type="address">
+            <div class="form-group registration-details">
 
-            <form method="POST" id="register">
+              <span class="progress-bar">1 of 2</span>
+              <p class="acumin-medium-bold">Registration Details</p>
 
+              <div>
+                <label for="username">Username</label>
+                <input type="text" name="username" id="username" />
+              </div>
+
+              <div>
+                <label for="email">Email</label>
+                <input type="text" name="email" id="email" />
+              </div>
+
+              <div class="actions">
+                <input type="submit" value="Continue" class="call-to-action">
+              </div>
+
+            </div>
+
+          </form>
+
+        </div>
+
+        <div class="slide" data-type="address">
+
+          <form method="POST" id="address-info">
+
+            <input type="hidden" name="action" value="commerce/cart/updateCart">
+            <input type="hidden" name="redirect" value="checkout/confirmation">
+            <input type="hidden" name="shippingAddressId" value="new">
+            <input type="hidden" name="billingAddressId" value="new">
+
+            <div class="form-group">
+
+              <span class="progress-bar">2 of 2</span>
+              <p class="acumin-medium-bold">Contact Details</p>
+
+              <div>
+                <label for="firstName">First Name</label>
+                <input type="text" name="firstName" id="firstName" />
+              </div>
+
+              <div>
+                <label for="lastName">Last Name</label>
+                <input type="text" name="lastName" id="lastName" />
+              </div>
+
+              <div>
+                <label for="phone">Phone Number</label>
+                <input type="text" name="phone" id="phone" />
+              </div>
+
+            </div>
+
+            <div class="form-group">
+
+              <p class="acumin-medium-bold">Contact Address</p>
+
+              <div>
+                <label for="address">Address 1</label>
+                <input type="text" name="address" id="address" />
+              </div>
+
+              <div>
+                <label for="address-two">Address 2</label>
+                <input type="text" name="address-two" id="address-two" />
+              </div>
+
+              <div>
+                <label for="city">City</label>
+                <input type="text" name="city" id="city" />
+              </div>
+
+              <div>
+                <label for="zip">Zip</label>
+                <input type="text" name="zip" id="zip" />
+              </div>
+
+              <div>
+                <label for="state">State</label>
+                {% include "checkout/components/states.twig" %}
+              </div>
+
+            </div>
+
+            <div class="actions">
               <input type="submit" data-button="continue" value="Continue to Order Summary" class="call-to-action">
+            </div>
 
-            </form>
-
-          </div>
-
-        </div>
-
-        <input type="hidden" name="action" value="commerce/cart/updateCart">
-        <input type="hidden" name="redirect" value="checkout/confirmation">
-        <input type="hidden" name="shippingAddressId" value="new">
-        <input type="hidden" name="billingAddressId" value="new">
-
-        <div class="form-group registration-details">
-
-          <p class="acumin-medium-bold">Registration Details</p>
-
-          <div>
-            <label for="username">Username</label>
-            <input type="text" name="username" id="username" />
-          </div>
-
-          <div>
-            <label for="email">Email</label>
-            <input type="text" name="email" id="email" />
-          </div>
-
-        </div>
-
-        <div class="form-group">
-
-          <p class="acumin-medium-bold">Contact Details</p>
-
-          <div>
-            <label for="firstName">First Name</label>
-            <input type="text" name="firstName" id="firstName" />
-          </div>
-
-          <div>
-            <label for="lastName">Last Name</label>
-            <input type="text" name="lastName" id="lastName" />
-          </div>
-
-          <div>
-            <label for="phone">Phone Number</label>
-            <input type="text" name="phone" id="phone" />
-          </div>
-
-        </div>
-
-        <div class="form-group">
-
-          <p class="acumin-medium-bold">Contact Address</p>
-
-          <div>
-            <label for="address">Address 1</label>
-            <input type="text" name="address" id="address" />
-          </div>
-
-          <div>
-            <label for="address-two">Address 2</label>
-            <input type="text" name="address-two" id="address-two" />
-          </div>
-
-          <div>
-            <label for="city">City</label>
-            <input type="text" name="city" id="city" />
-          </div>
-
-          <div>
-            <label for="zip">Zip</label>
-            <input type="text" name="zip" id="zip" />
-          </div>
-
-          <div>
-            <label for="state">State</label>
-            {% include "checkout/components/states.twig" %}
-          </div>
+          </form>
 
         </div>
 
       </div>
 
-    </section>
+    </div>
 
-  </form>
+  </section>
 
 {% endblock %}
