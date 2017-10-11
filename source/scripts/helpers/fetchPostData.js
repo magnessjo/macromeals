@@ -21,6 +21,7 @@ export default function fetchData(data, url) {
       resolve(response.json());
     }, function(error) {
       console.log(`error : ${error.message }`);
+      reject(error);
     });
 
   });

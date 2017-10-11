@@ -14,7 +14,7 @@ export default function(index, animation = false) {
 
     const height = current.offsetHeight;
 
-    slider.style.height = `${height}px`;
+    slider.style.height = `${height + 40}px`;
     current.style.transform = `translateX(-100%)`;
 
     if (animation) {
