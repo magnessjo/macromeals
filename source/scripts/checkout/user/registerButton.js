@@ -1,7 +1,6 @@
 
 // Import
 
-import slider from './slider.js';
 import registerSubmit from './registerSubmit.js';
 
 // Variables
@@ -20,7 +19,6 @@ export default function() {
 
       section.style.display = 'none';
       infoSection.style.display = 'block';
-      slider(0);
       registerSubmit();
 
     });

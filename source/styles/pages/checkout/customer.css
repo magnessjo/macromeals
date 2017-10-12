@@ -122,8 +122,7 @@
 
     & span {
       position: relative;
-      font-size: 40px;
-      font-size: calc(30px + 4.25vw);
+      font-size: 60px;
       display: inline-block;
       text-transform: uppercase;
       font-family: var(--acuminCondensed);
@@ -180,11 +179,8 @@
 
 }
 
-#register {
-  display: none;
-}
-
 #customer-info {
+  display: none;
 
   & form {
     max-width: 700px;

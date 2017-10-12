@@ -1,7 +1,6 @@
 
 // Import
 
-import slider from './slider.js';
 import fetchData from 'scripts/helpers/fetchPostData.js';
 
 // Variables
@@ -24,15 +23,11 @@ function submitForm(e) {
     if (inputs.length - 1 != i) data += '&';
   });
 
-  // const data = `user=test&email=test@test.com&password=test1234`;
-
   fetchData(data, '/actions/users/saveUser').then((response) => {
 
     if (response.errors) {
 
       const value = response.errors;
-      const slide = form.parentNode;
-      const slider = slide.parentNode;
 
       for (const key in value) {
 
@@ -45,12 +40,10 @@ function submitForm(e) {
 
         parent.appendChild(errorElm);
 
-        slider.style.height = `${slide.offsetHeight}px`;
-
       }
 
     } else {
-      slider(1, true);
+      window.location.href = '/checkout';
     }
 
   });

@@ -5,6 +5,8 @@
 
 {% block main %}
 
+  {% requireLogin %}
+
   {% include "checkout/components/breadcrumb.twig" %}
 
   <section id="customer-info">

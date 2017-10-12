@@ -1,0 +1,155 @@
+
+{% extends "_layout" %}
+{% includeCssFile "/checkout.css" %}
+{% includeJsFile "/user.js" %}
+
+{% block main %}
+
+  <script type="text/javascript">
+    window.csrfTokenName = "{{ craft.config.csrfTokenName|e('js') }}";
+    window.csrfTokenValue = "{{ craft.request.csrfToken|e('js') }}";
+  </script>
+
+  {% include "checkout/components/breadcrumb.twig" %}
+
+  {{ currentUser }}
+
+  <section id="login-options">
+
+    <div class="lock">
+
+      <div class="register-options">
+
+        {# Login  #}
+
+        <div class="registered">
+
+          <p class="acumin-large">Already Registered?</p>
+
+          <form method="post" class="registered-form" accept-charset="UTF-8">
+
+              {{ getCsrfInput() }}
+
+              <input type="hidden" name="action" value="users/login">
+              <input type="hidden" name="redirect" value="/checkout">
+
+              <div>
+                <label for="loginName">Email Address</label>
+                <input id="loginName" type="text" name="loginName" placeholder="bob@site.com" value="{{ craft.session.rememberedUsername }}">
+              </div>
+
+              <div>
+                <label for="password">Password</label>
+                <input id="password" type="password" name="password">
+              </div>
+
+              <div class="checkbox">
+                <label>
+                  <input type="checkbox" name="rememberMe" value="1">
+                  Remember me
+                </label>
+              </div>
+
+              <div class="actions">
+                <button class="register-cta">Sign up?</button>
+                <input type="submit" value="Member Checkout" class="call-to-action" />
+              </div>
+
+          </form>
+
+          <p>
+            <a href="{{ url('forgotpassword') }}">Forget your password?</a>
+          </p>
+
+        </div>
+
+        {# Register #}
+
+        <div class="register-signup">
+
+          <p>Not yet Registered? <span>Register for quick checkouts in the future</span></p>
+
+          <button class="register-cta">
+            <span class="icons">Register</span>
+          </button>
+
+        </div>
+
+      </div>
+
+      <p class="divider"><span>Or</span></p>
+
+      {# Checkout As Guest #}
+
+      <div class="guest-checkout">
+
+        <div>
+
+          <p class="acumin-large">Guest Checkout</p>
+          <div>
+            <p>Don’t have an account? Checkout as a guest and you can create an account during the checkout process if you choose.</p>
+            <p>Why do we ask for your email address?</p>
+            <p>No need to set up an account, but we need your email address to send you an order receipt and keep you updated on the status of your order.</p>
+          </div>
+
+        </div>
+
+        <div class="action-event guest">
+
+          <div class="">
+            <label>Email Address</label>
+            <input type="text" />
+          <div>
+
+          <div>
+
+          </div>
+
+          <button class="call-to-action guest-cta">Guest Checkout</button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="customer-info">
+
+    <div class="lock">
+
+      <form method="POST" id="user-info">
+
+        <div class="form-group registration-details">
+
+          <p class="acumin-medium-bold">Registration Details</p>
+
+          <div>
+            <label for="username">Username</label>
+            <input type="text" name="username" id="username" placeholder="Example: macromealsfan" />
+          </div>
+
+          <div>
+            <label for="username">Password</label>
+            <input type="text" name="password" placeholder="Example: Password1234$" />
+          </div>
+
+          <div>
+            <label for="email">Email</label>
+            <input type="text" name="email" id="email" placeholder="Example: john.doe@gmail.com" />
+          </div>
+
+          <div class="actions">
+            <input type="submit" data-button="continue" value="Continue to Customer Information" class="call-to-action">
+          </div>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </section>
+
+{% endblock %}

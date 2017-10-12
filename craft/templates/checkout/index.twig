@@ -5,6 +5,8 @@
 
 {% block main %}
 
+  {% requireLogin %}
+
   <script type="text/javascript">
     window.csrfTokenName = "{{ craft.config.csrfTokenName|e('js') }}";
     window.csrfTokenValue = "{{ craft.request.csrfToken|e('js') }}";
@@ -12,218 +14,73 @@
 
   {% include "checkout/components/breadcrumb.twig" %}
 
-  <section id="login-options">
+  <section id="">
 
     <div class="lock">
 
-      <div class="register-options">
+      <form method="POST" id="address-info">
 
-        {# Login  #}
+        <input type="hidden" name="action" value="commerce/cart/updateCart">
+        <input type="hidden" name="redirect" value="checkout/summary">
+        <input type="hidden" name="shippingAddressId" value="new">
 
-        <div class="registered">
+        <div class="form-group">
 
-          <p class="acumin-large">Already Registered?</p>
+          <p class="acumin-medium-bold">Contact Details</p>
 
-          <form method="post" class="registered-form" accept-charset="UTF-8">
-
-              {{ getCsrfInput() }}
-
-              <input type="hidden" name="action" value="users/login">
-              <input type="hidden" name="redirect" value="checkout/confirmation">
-
-              <div>
-                <label for="loginName">Email Address</label>
-                <input id="loginName" type="text" name="loginName" placeholder="bob@site.com" value="{{ craft.session.rememberedUsername }}">
-              </div>
-
-              <div>
-                <label for="password">Password</label>
-                <input id="password" type="password" name="password">
-              </div>
-
-              <div class="checkbox">
-                <label>
-                  <input type="checkbox" name="rememberMe" value="1">
-                  Remember me
-                </label>
-              </div>
-
-              <div class="actions">
-                <button class="register-cta">Sign up?</button>
-                <input type="submit" value="Member Checkout" class="call-to-action" />
-              </div>
-
-          </form>
-
-          <p>
-            <a href="{{ url('forgotpassword') }}">Forget your password?</a>
-          </p>
-
-        </div>
-
-        {# Register #}
-
-        <div class="register-signup">
-
-          <p>Not yet Registered? <span>Register for quick checkouts in the future</span></p>
-
-          <button class="register-cta">
-            <span class="icons">Register</span>
-          </button>
-
-        </div>
-
-      </div>
-
-      <p class="divider"><span>Or</span></p>
-
-      {# Checkout As Guest #}
-
-      <div class="guest-checkout">
-
-        <div>
-
-          <p class="acumin-large">Guest Checkout</p>
           <div>
-            <p>Don’t have an account? Checkout as a guest and you can create an account during the checkout process if you choose.</p>
-            <p>Why do we ask for your email address?</p>
-            <p>No need to set up an account, but we need your email address to send you an order receipt and keep you updated on the status of your order.</p>
+            <label for="firstName">First Name</label>
+            <input type="text" name="shippingAddress[firstName]" id="firstName" />
+          </div>
+
+          <div>
+            <label for="lastName">Last Name</label>
+            <input type="text" name="address[lastName]" id="lastName" />
+          </div>
+
+          <div>
+            <label for="phone">Phone Number</label>
+            <input type="text" name="address[phone]" id="phone" />
           </div>
 
         </div>
 
-        <div class="action-event guest">
+        <div class="form-group">
 
-          <div class="">
-            <label>Email Address</label>
-            <input type="text" />
-          <div>
+          <p class="acumin-medium-bold">Contact Address</p>
 
           <div>
-
+            <label for="address">Address 1</label>
+            <input type="text" name="address[address1]" id="address1" />
           </div>
 
-          <button class="call-to-action guest-cta">Guest Checkout</button>
+          <div>
+            <label for="address-two">Address 2</label>
+            <input type="text" name="address[address2]" id="address2" />
+          </div>
+
+          <div>
+            <label for="city">City</label>
+            <input type="text" name="address[city]" id="city" />
+          </div>
+
+          <div>
+            <label for="zip">Zip</label>
+            <input type="text" name="address[zipCode]" id="zipCode" />
+          </div>
+
+          <div>
+            <label for="state">State</label>
+            {% include "checkout/components/states.twig" %}
+          </div>
 
         </div>
 
-      </div>
-
-    </div>
-
-  </section>
-
-  <section id="customer-info">
-
-    <div class="lock">
-
-      <div class="slider">
-
-        <div class="slide" data-type="user">
-
-          <form method="POST" id="user-info">
-
-            <div class="form-group registration-details">
-
-              <span class="progress-bar">1 of 2</span>
-              <p class="acumin-medium-bold">Registration Details</p>
-
-              <div>
-                <label for="username">Username</label>
-                <input type="text" name="username" id="username" placeholder="Example: macromealsfan" />
-              </div>
-
-              <div>
-                <label for="username">Password</label>
-                <input type="text" name="password" placeholder="Example: Password1234$" />
-              </div>
-
-              <div>
-                <label for="email">Email</label>
-                <input type="text" name="email" id="email" placeholder="Example: john.doe@gmail.com" />
-              </div>
-
-              <div class="actions">
-                <input type="submit" value="Continue" class="call-to-action">
-              </div>
-
-            </div>
-
-          </form>
-
+        <div class="actions">
+          <input type="submit" data-button="continue" value="Continue to Order Summary" class="call-to-action">
         </div>
 
-        <div class="slide" data-type="address">
-
-          <form method="POST" id="address-info">
-
-            <input type="hidden" name="action" value="commerce/cart/updateCart">
-            <input type="hidden" name="redirect" value="checkout/confirmation">
-            <input type="hidden" name="shippingAddressId" value="new">
-            <input type="hidden" name="billingAddressId" value="new">
-
-            <div class="form-group">
-
-              <span class="progress-bar">2 of 2</span>
-              <p class="acumin-medium-bold">Contact Details</p>
-
-              <div>
-                <label for="firstName">First Name</label>
-                <input type="text" name="firstName" id="firstName" />
-              </div>
-
-              <div>
-                <label for="lastName">Last Name</label>
-                <input type="text" name="lastName" id="lastName" />
-              </div>
-
-              <div>
-                <label for="phone">Phone Number</label>
-                <input type="text" name="phone" id="phone" />
-              </div>
-
-            </div>
-
-            <div class="form-group">
-
-              <p class="acumin-medium-bold">Contact Address</p>
-
-              <div>
-                <label for="address">Address 1</label>
-                <input type="text" name="address" id="address" />
-              </div>
-
-              <div>
-                <label for="address-two">Address 2</label>
-                <input type="text" name="address-two" id="address-two" />
-              </div>
-
-              <div>
-                <label for="city">City</label>
-                <input type="text" name="city" id="city" />
-              </div>
-
-              <div>
-                <label for="zip">Zip</label>
-                <input type="text" name="zip" id="zip" />
-              </div>
-
-              <div>
-                <label for="state">State</label>
-                {% include "checkout/components/states.twig" %}
-              </div>
-
-            </div>
-
-            <div class="actions">
-              <input type="submit" data-button="continue" value="Continue to Order Summary" class="call-to-action">
-            </div>
-
-          </form>
-
-        </div>
-
-      </div>
+      </form>
 
     </div>
 
