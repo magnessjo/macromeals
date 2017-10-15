@@ -3,6 +3,8 @@
 {% includeCssFile "/checkout.css" %}
 {% includeJsFile "/user.js" %}
 
+{% set cart = craft.commerce.getCart() %}
+
 {% block main %}
 
   <script type="text/javascript">
@@ -10,9 +12,9 @@
     window.csrfTokenValue = "{{ craft.request.csrfToken|e('js') }}";
   </script>
 
-  {% include "checkout/components/breadcrumb.twig" %}
+  {{ cart.email }}
 
-  {{ currentUser }}
+  {% include "checkout/components/breadcrumb.twig" %}
 
   <section id="login-options">
 
@@ -26,7 +28,7 @@
 
           <p class="acumin-large">Already Registered?</p>
 
-          <form method="post" class="registered-form" accept-charset="UTF-8">
+          <form method="POST" class="registered-form" accept-charset="UTF-8">
 
               {{ getCsrfInput() }}
 
@@ -96,16 +98,25 @@
 
         <div class="action-event guest">
 
-          <div class="">
-            <label>Email Address</label>
-            <input type="text" />
-          <div>
+          <form method="POST">
 
-          <div>
+            <input type="hidden" name="action" value="commerce/cart/updateCart" />
+            <input type="hidden" name="redirect" value="/checkout">
+            {{ getCsrfInput() }}
 
-          </div>
+            <div class="">
+              <label>Email Address</label>
+              <input type="text" name="email" id="guestEmail" value="{{ cart.email ?? '' }}" placeholder="email@site.com" />
 
-          <button class="call-to-action guest-cta">Guest Checkout</button>
+              {% if cart and cart.getErrors('email') %}
+                <p class="error">{{ cart.getErrors('email')|join }}</p>
+              {% endif %}
+
+            <div>
+
+            <button class="call-to-action guest-cta">Guest Checkout</button>
+
+          </form>
 
         </div>
 

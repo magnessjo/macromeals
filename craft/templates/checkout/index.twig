@@ -3,29 +3,26 @@
 {% includeCssFile "/checkout.css" %}
 {% includeJsFile "/customer.js" %}
 
-
-
 {% set cart = craft.commerce.getCart() %}
 
-{% set number = craft.request.param('number') %}
-{% set order = craft.commerce.orders.number(number).first() %}
+{% set shippingModel = cart.shippingAddress %}
+{% set billingModel = cart.billingAddress %}
 
-{% set model = cart.shippingAddress %}
+{% set addresses = craft.commerce.customer.addresses %}
+{% set addressModel = '' %}
+{% if addresses %}
+  {% set addressModel = addresses[addresses | length - 1] %}
+{% endif %}
+
+{% set states = craft.commerce.statesArray["233"] %}
 
 {% block main %}
 
-  {% requireLogin %}
+  {% if cart.email == '' %}
+    {% redirect "/checkout/user" 301 %}
+  {% endif %}
 
   {% include "checkout/components/breadcrumb.twig" %}
-
-  {% if currentUser %}
-      <a href="{{ logoutUrl }}">Logout</a>
-  {% endif %}
-
-
-  {% if order.shippingAddress %}
-    fuck
-  {% endif %}
 
   <form method="POST" id="address-info">
 
@@ -35,67 +32,53 @@
     <input type="hidden" name="redirect" value="checkout/summary">
     <input type="hidden" name="shippingAddressId" value="new">
 
-    {% if errors is defined %}
-        <ul class="errors">
-            {% for error in errors %}
-                <li>{{ error }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
+    <input type="hidden" name="shippingAddress[countryId]" value='233' />
 
-
-    {# {% if addresses and currentUser%}
-        {% for address in addresses %}
-            <div class="address-select" data-address-id="{{ address.id }}">
-                <div class="actions">
-                    <ul>
-                        <li><a class="edit" href="{{ url('shop/customer/addresses/edit?addressId='~ address.id ~'&redirect='~craft.request.path)}}">Edit</a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="radio">
-                    <input type="radio" name="{{ name }}Id"
-                        {% if attribute(cart,name~'Id') == address.id %}checked="checked"{% endif %} value="{{ address.id }}"/>
-                        {% include 'shop/_includes/addresses/address' %}
-                </div>
-            </div>
-        {% endfor %}
-    {% endif %} #}
-
-
-
-
-
-    <section id="details">
+    <section id="contact-details">
 
       <div class="lock">
 
+        <p class="required required-disclaimer"><span>Required Field</span></p>
+
         <p class="acumin-medium-bold">Contact Details</p>
 
-        <div>
-          <label for="firstName">First Name</label>
-          <input type="text" name="shippingAddress[firstName]" id="firstName" value="{{ model.firstName ?? '' }}" />
+        <div class="required-field" data-required>
+          <label for="firstName"><span>First Name</span></label>
+          <input type="text"
+                 name="shippingAddress[firstName]"
+                 id="firstName"
+                 validation="checkForLetter"
+                 value="{{ shippingModel.firstName ?? addressModel.firstName ?? '' }}" />
 
-          {% if model and model.getErrors('firstName') %}
-            <p class="error">{{ model.getErrors('firstName')|join }}</p>
-          {% endif %}
+          <div class="errors">
+            <p class="required">First Name is a required Field</p>
+            <p class="letters">First Name can only contain letters</p>
+          </div>
 
         </div>
 
-        <div>
-          <label for="lastName">Last Name</label>
-          <input type="text" name="shippingAddress[lastName]" id="lastName" value="{{ model.lastName ?? '' }}" />
-          {% if model and model.getErrors('lastName') %}
-            <p class="error">{{ model.getErrors('lastName')|join }}</p>
-          {% endif %}
+        <div class="required-field" data-required>
+          <label for="lastName"><span>Last Name</span></label>
+          <input type="text"
+                 name="shippingAddress[lastName]"
+                 id="lastName"
+                 validation="checkForLetter"
+                 value="{{ shippingModel.lastName ?? addressModel.lastName ?? '' }}" />
+
+          <div class="errors">
+            <p class="required">Last Name is a required Field</p>
+          </div>
+
         </div>
 
         <div>
           <label for="phone">Phone Number</label>
-          <input type="text" name="shippingAddress[phone]" id="phone" value="{{ model.phone ?? '' }}" />
-          {% if model and model.getErrors('phone') %}
-            <p class="error">{{ model.getErrors('phone')|join }}</p>
-          {% endif %}
+          <input type="text"
+                 name="shippingAddress[phone]"
+                 id="phone"
+                 value="{{ shippingModel.phone ?? addressModel.phone ?? '' }}" />
+          <div class="errors"></div>
+
         </div>
 
       </div>
@@ -106,56 +89,138 @@
 
       <div class="lock">
 
-        <p class="acumin-medium-bold">Contact Address</p>
+        <p class="acumin-medium-bold">Shipping Address</p>
 
-        <div>
-          <label for="address">Address 1</label>
-          <input type="text" name="shippingAddress[address1]" id="address1" value="{{ model.address1 ?? '' }}" />
-          {% if model and model.getErrors('address1') %}
-            <p class="error">{{ model.getErrors('address1')|join }}</p>
-          {% endif %}
+        <div class="required-field" data-required>
+          <label for="address"><span>Shipping Address 1</span></label>
+          <input type="text"
+                 name="shippingAddress[address1]"
+                 id="address1"
+                 value="{{ shippingModel.address1 ?? addressModel.address1 ?? '' }}" />
+
+          <div class="errors">
+            <p class="required">Shipping address is required</p>
+          </div>
+
         </div>
 
         <div>
-          <label for="address-two">Address 2</label>
-          <input type="text" name="shippingAddress[address2]" id="address2" value="{{ model.address2 ?? '' }}" />
-          {% if model and model.getErrors('address2') %}
-            <p class="error">{{ model.getErrors('address2')|join }}</p>
-          {% endif %}
+          <label for="address-two">Shipping Address 2</label>
+          <input type="text"
+                 name="shippingAddress[address2]"
+                 id="address2"
+                 value="{{ shippingModel.address2 ?? addressModel.address2 ?? '' }}" />
+
+          <div class="errors"></div>
+        </div>
+
+        <div class="required-field" data-required>
+          <label for="city"><span>Shipping City</span></label>
+          <input type="text"
+                 name="shippingAddress[city]"
+                 id="city"
+                 value="{{ shippingModel.city ?? addressModel.city ?? '' }}" />
+
+          <div class="errors">
+            <p class="required">City is required</p>
+          </div>
+        </div>
+
+        <div class="required-field" data-required>
+          <label for="zip"><span>Shipping Zip</span></label>
+          <input type="text"
+                 name="shippingAddress[zipCode]"
+                 id="zipCode"
+                 value="{{ shippingModel.zipCode ?? addressModel.zipCode ?? '' }}" />
+
+          <div class="errors">
+            <p class="required">City is required</p>
+          </div>
+
+        </div>
+
+        <div class="required-field" data-required>
+
+          <label for="state"><span>Shipping State</span></label>
+          <select name="shippingAddress[stateId]" >
+            <option disabled selected value> Please Choose </option>
+            {% for state in craft.commerce.states %}
+              <option value="{{ state.id }}">{{ state.name }}</option>
+            {% endfor %}
+          </select>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section id="billing-address">
+
+      <div class="lock">
+
+        <p class="acumin-medium-bold">Billing Address</p>
+
+        <div class="checkbox-field">
+          <input type="checkbox" name="sameAddress" id="sameAddress" value="0" />
+          <label for="sameAddress"><span>Same as Shipping Address</span></label>
+        </div>
+
+        <div class="required-field" data-required>
+          <label for="address"><span>Billing Address 1</span></label>
+          <input type="text"
+                 name="billingAddress[address1]"
+                 id="billingaddress1"
+                 value="{{ billingModel.address1 ?? addressModel.address1 ?? '' }}" />
+
+          <div class="errors">
+            <p class="required">Address is required</p>
+          </div>
         </div>
 
         <div>
-          <label for="city">City</label>
-          <input type="text" name="shippingAddress[city]" id="city" value="{{ model.city ?? '' }}" />
-          {% if model and model.getErrors('city') %}
-            <p class="error">{{ model.getErrors('city')|join }}</p>
-          {% endif %}
+          <label for="address-two">Billing Address 2</label>
+          <input type="text"
+                 name="billingAddress[address2]"
+                 id="address2"
+                 value="{{ billingModel.address2 ?? addressModel.address2 ?? '' }}" />
         </div>
 
-        <div>
-          <label for="zip">Zip</label>
-          <input type="text" name="shippingAddress[zipCode]" id="zipCode" value="{{ model.zipCode ?? '' }}" />
-          {% if model and model.getErrors('zipCode') %}
-            <p class="error">{{ model.getErrors('zipCode')|join }}</p>
-          {% endif %}
+        <div class="required-field" data-required>
+          <label for="city"><span>Billing City</span></label>
+          <input type="text"
+                 name="billingAddress[city]"
+                 id="city"
+                 value="{{ billingModel.city ?? addressModel.city ?? '' }}" />
+
+          <div class="errors">
+            <p class="required">City is required</p>
+          </div>
         </div>
 
-        <input type="text" name="shippingAddress[countryId]" value='233' />
-        {% if model and model.getErrors('countryId') %}
-          <p class="error">{{ model.getErrors('countryId')|join }}</p>
-        {% endif %}
+        <div class="required-field" data-required>
+          <label for="zip"><span>Billing Zip</span></label>
+          <input type="text"
+                 name="billingAddress[zipCode]"
+                 id="zipCode"
+                 value="{{ billingModel.zipCode ?? addressModel.zipCode ?? '' }}" />
 
-        {% set states = craft.commerce.statesArray["233"] %}
-        <input type="hidden" name="sameAddress" value="1">
+          <div class="errors">
+            <p class="required">Zip Code is required</p>
+          </div>
+        </div>
 
-        {# <select name="shippingAddress[stateId]">
-          {% for state in craft.commerce.states %}
-            <option value="{{ state.id }}">{{ state.name }}</option>
-          {% endfor %}
-          {% if model and model.getErrors('stateId') %}
-            <p class="error">{{ model.getErrors('stateId')|join }}</p>
-          {% endif %}
-        </select> #}
+        <div class="required-field" data-required>
+
+          <label for="state"><span>Billing State</span></label>
+          <select name="billingAddress[stateId]">
+            <option disabled selected value> Please Choose </option>
+            {% for state in craft.commerce.states %}
+              <option value="{{ state.id }}">{{ state.name }}</option>
+            {% endfor %}
+          </select>
+
+        </div>
 
       </div>
 

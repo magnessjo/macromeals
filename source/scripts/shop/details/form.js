@@ -1,8 +1,7 @@
 
 // import
 
-import fetchData from 'scripts/helpers/fetchPostData.js';
-import validation from 'scripts/helpers/inputValidation.js';
+import validation from 'scripts/helpers/inputValidationOld.js';
 import findParentNode from 'scripts/helpers/findParentNode.js';
 import checkProductQuantity from 'scripts/helpers/checkProductQuantity.js';
 import postToCart from 'scripts/helpers/postToCart.js';

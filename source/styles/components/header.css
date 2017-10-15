@@ -31,7 +31,7 @@ header {
       display: none;
     }
 
-    & a {
+    & a , & button{
       text-transform: uppercase;
       color: var(--green);
       line-height: 1em;
@@ -40,10 +40,53 @@ header {
       align-items: center;
       font-size: 16px;
       padding: 0 20px;
+      border-radius: 0;
 
       &:hover {
         background-color: var(--green);
         color: var(--white);
+      }
+
+    }
+
+    & .dropdown {
+      position: relative;
+      height: 100%;
+    }
+
+    & .dropdown[showing="true"] button {
+      background-color: var(--green);
+      color: var(--white);
+    }
+
+    & .options {
+
+      @media (--tablet-min) {
+        position: absolute;
+        width: 100%;
+        background-color: var(--white);
+
+      }
+
+      & a {
+        height: 44px;
+
+      }
+
+    }
+
+    & .options[aria-hidden = 'true'] {
+
+      @media (--tablet-min) {
+        left: -20000px;
+      }
+
+    }
+
+    & .options[aria-hidden = 'false'] {
+
+      @media (--tablet-min) {
+        left: 0;
       }
 
     }

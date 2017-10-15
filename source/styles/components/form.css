@@ -49,6 +49,7 @@ form {
   }
 
   & .checkbox-field {
+    margin-bottom: 20px;
 
     & label {
       display: inline-block;
@@ -87,7 +88,7 @@ form {
 
   }
 
-  & .required span {
+  & [data-required] span {
     position: relative;
 
     &:after {
@@ -98,12 +99,12 @@ form {
 
   }
 
-  & .required-feild {
+  & .required-field {
 
     & span:after {
-      right: -8px;
+      right: -10px;
       top: -5px;
-      font-size: 16px;
+      font-size: 14px;
     }
 
   }
@@ -114,7 +115,14 @@ form {
     font-size: 14px;
     text-align: right;
 
+    & span {
+      position: relative;
+    }
+
     & span:after {
+      content: "*";
+      color: red;
+      position: absolute;
       left: -10px;
       top: 0;
       right: inherit;
@@ -162,6 +170,19 @@ form {
     & input[type="email"], & input[type="text"] {
       border: 1px solid green;
     }
+
+  }
+
+  & .errors {
+
+    & p {
+      display: none;
+    }
+
+    & p[show-error='true'] {
+      display: block;
+    }
+
 
   }
 

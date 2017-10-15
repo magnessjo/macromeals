@@ -21,6 +21,14 @@
       <a href="/shop"><span>Meals</span></a>
       <a href="/quick-order"><span>Quick Order</span></a>
       <a href="/macros"><span>Why Macros</span></a>
+      {% if currentUser %}
+        <div class="dropdown">
+          <button>Your Account</button>
+          <div class="options" aria-hidden='true'>
+            <a href="{{ logoutUrl }}">Logout</a>
+          </div>
+        </div>
+      {% endif %}
     </nav>
 
     <div class="actions">

@@ -21,20 +21,73 @@ function checkForZeroValue(value) {
 
 }
 
+// Check for a Letter
+
+function checkForLetter(input, parent) {
+
+  const errors = parent.querySelector('.errors');
+  const requiredError = errors.querySelector('.required');
+  const reg = new RegExp('^[a-zA-Z]+$');
+
+  function checkValue(type) {
+
+    const value = input.value;
+
+    if (reg.test(value) == false) {
+      requiredError.setAttribute('show-error', false);
+    } else {
+
+      if (type == 'blur') {
+        requiredError.setAttribute('show-error', true);
+      }
+
+    }
+
+  }
+
+  input.addEventListener('blur', () => checkValue('blur'));
+  input.addEventListener('focus', () => checkValue('focus'));
+
+}
+
 // Check for Length
 
-function checkForLength(value) {
+function required(input, parent) {
 
-  if (value.length == 0) return true;
+  const isRequired = parent.getAttribute('data-required');
+  const errors = parent.querySelector('.errors');
+  const requiredError = errors.querySelector('.required');
 
-  return false;
+  function checkValue(type) {
+
+    const length = input.value.length;
+
+    if (isRequired != null) {
+
+      if (length > 0) {
+        requiredError.setAttribute('show-error', false);
+      } else {
+
+        if (type == 'blur') {
+          requiredError.setAttribute('show-error', true);
+        }
+
+      }
+
+    }
+
+  }
+
+  input.addEventListener('blur', () => checkValue('blur'));
+  input.addEventListener('focus', () => checkValue('focus'));
 
 }
 
 const obj = {
   checkForNumber,
   checkForZeroValue,
-  checkForLength,
+  checkForLetter,
+  required,
 }
 
 export default obj;

@@ -10,7 +10,6 @@ return [
     'overridePhpSessionLocation' => true,
     'requireMatchingUserAgentForSession' => false,
     'autoLoginAfterAccountActivation' => true,
-    'loginPath' => '/checkout/user',
     'environmentVariables' => [
       'siteUrl'  => 'https://www.macromeals.life/',
       'basePath' => '/srv/http/macromeals/shared/uploads/',
