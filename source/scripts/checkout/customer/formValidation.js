@@ -11,7 +11,7 @@ const inputs = Array.from(form.querySelectorAll('input[type="text"]'));
 
 // Export
 
-export default function() {
+export default function(showError) {
 
   inputs.forEach((input) => {
 
@@ -19,14 +19,14 @@ export default function() {
     const attString = input.getAttribute('validation');
     const validation = attString ? attString.split(',') : [];
 
-    inputValidation.required(input, parent);
+    inputValidation.required(input, parent, showError);
 
     if (validation.length > 0) {
 
       validation.forEach((fun, i) => {
 
         const name = fun;
-        inputValidation[`${name}`](input, parent);
+        inputValidation[`${name}`](input, parent, showError);
 
       });
 

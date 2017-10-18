@@ -177,6 +177,11 @@ form {
 
     & p {
       display: none;
+      color: red;
+    }
+
+    & p[show-error='false'] {
+      display: none;
     }
 
     & p[show-error='true'] {

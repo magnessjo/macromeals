@@ -42,7 +42,7 @@
 
         <p class="acumin-medium-bold">Contact Details</p>
 
-        <div class="required-field" data-required>
+        <div class="required-field" data-required valid="false">
           <label for="firstName"><span>First Name</span></label>
           <input type="text"
                  name="shippingAddress[firstName]"
@@ -57,7 +57,7 @@
 
         </div>
 
-        <div class="required-field" data-required>
+        <div class="required-field" data-required valid="false">
           <label for="lastName"><span>Last Name</span></label>
           <input type="text"
                  name="shippingAddress[lastName]"
@@ -91,7 +91,7 @@
 
         <p class="acumin-medium-bold">Shipping Address</p>
 
-        <div class="required-field" data-required>
+        <div class="required-field" data-required valid="false">
           <label for="address"><span>Shipping Address 1</span></label>
           <input type="text"
                  name="shippingAddress[address1]"
@@ -114,7 +114,7 @@
           <div class="errors"></div>
         </div>
 
-        <div class="required-field" data-required>
+        <div class="required-field" data-required valid="false">
           <label for="city"><span>Shipping City</span></label>
           <input type="text"
                  name="shippingAddress[city]"
@@ -126,7 +126,7 @@
           </div>
         </div>
 
-        <div class="required-field" data-required>
+        <div class="required-field" data-required valid="false">
           <label for="zip"><span>Shipping Zip</span></label>
           <input type="text"
                  name="shippingAddress[zipCode]"
@@ -134,18 +134,24 @@
                  value="{{ shippingModel.zipCode ?? addressModel.zipCode ?? '' }}" />
 
           <div class="errors">
-            <p class="required">City is required</p>
+            <p class="required">Zip Code is required</p>
           </div>
 
         </div>
 
-        <div class="required-field" data-required>
+        <div class="required-field" data-required valid="false">
 
           <label for="state"><span>Shipping State</span></label>
           <select name="shippingAddress[stateId]" >
             <option disabled selected value> Please Choose </option>
             {% for state in craft.commerce.states %}
-              <option value="{{ state.id }}">{{ state.name }}</option>
+              {% if addressModel %}
+                {% if addressModel.state == state %}
+                  <option value="{{ addressModel.stateId }}" selected> {{ addressModel.state }}</option>
+                {% else %}
+                  <option value="{{ state.id }}">{{ state.name }}</option>
+                {% endif %}
+              {% endif %}
             {% endfor %}
           </select>
 
@@ -162,63 +168,76 @@
         <p class="acumin-medium-bold">Billing Address</p>
 
         <div class="checkbox-field">
-          <input type="checkbox" name="sameAddress" id="sameAddress" value="0" />
+          <input type="checkbox" name="billingAddressSame" id="sameAddress" />
+          <input type='hidden' name="sameAddress" value="0" />
           <label for="sameAddress"><span>Same as Shipping Address</span></label>
         </div>
 
-        <div class="required-field" data-required>
-          <label for="address"><span>Billing Address 1</span></label>
-          <input type="text"
-                 name="billingAddress[address1]"
-                 id="billingaddress1"
-                 value="{{ billingModel.address1 ?? addressModel.address1 ?? '' }}" />
+        <div class="billing-fields">
 
-          <div class="errors">
-            <p class="required">Address is required</p>
+          <div class="required-field" data-required valid="false">
+            <label for="address"><span>Billing Address 1</span></label>
+            <input type="text"
+                   name="billingAddress[address1]"
+                   id="billingaddress1"
+                   value="{{ billingModel.address1 ?? addressModel.address1 ?? '' }}" />
+
+            <div class="errors">
+              <p class="required">Address is required</p>
+            </div>
           </div>
-        </div>
 
-        <div>
-          <label for="address-two">Billing Address 2</label>
-          <input type="text"
-                 name="billingAddress[address2]"
-                 id="address2"
-                 value="{{ billingModel.address2 ?? addressModel.address2 ?? '' }}" />
-        </div>
+          <div>
+            <label for="address-two">Billing Address 2</label>
+            <input type="text"
+                   name="billingAddress[address2]"
+                   id="address2"
+                   value="{{ billingModel.address2 ?? addressModel.address2 ?? '' }}" />
 
-        <div class="required-field" data-required>
-          <label for="city"><span>Billing City</span></label>
-          <input type="text"
-                 name="billingAddress[city]"
-                 id="city"
-                 value="{{ billingModel.city ?? addressModel.city ?? '' }}" />
-
-          <div class="errors">
-            <p class="required">City is required</p>
+            <div class="errors"></div>
           </div>
-        </div>
 
-        <div class="required-field" data-required>
-          <label for="zip"><span>Billing Zip</span></label>
-          <input type="text"
-                 name="billingAddress[zipCode]"
-                 id="zipCode"
-                 value="{{ billingModel.zipCode ?? addressModel.zipCode ?? '' }}" />
+          <div class="required-field" data-required valid="false">
+            <label for="city"><span>Billing City</span></label>
+            <input type="text"
+                   name="billingAddress[city]"
+                   id="city"
+                   value="{{ billingModel.city ?? addressModel.city ?? '' }}" />
 
-          <div class="errors">
-            <p class="required">Zip Code is required</p>
+            <div class="errors">
+              <p class="required">City is required</p>
+            </div>
           </div>
-        </div>
 
-        <div class="required-field" data-required>
+          <div class="required-field" data-required valid="false">
+            <label for="zip"><span>Billing Zip</span></label>
+            <input type="text"
+                   name="billingAddress[zipCode]"
+                   id="zipCode"
+                   value="{{ billingModel.zipCode ?? addressModel.zipCode ?? '' }}" />
 
-          <label for="state"><span>Billing State</span></label>
-          <select name="billingAddress[stateId]">
-            <option disabled selected value> Please Choose </option>
-            {% for state in craft.commerce.states %}
-              <option value="{{ state.id }}">{{ state.name }}</option>
-            {% endfor %}
-          </select>
+            <div class="errors">
+              <p class="required">Zip Code is required</p>
+            </div>
+          </div>
+
+          <div class="required-field" data-required valid="false">
+
+            <label for="state"><span>Billing State</span></label>
+            <select name="billingAddress[stateId]">
+              <option disabled selected value> Please Choose </option>
+              {% for state in craft.commerce.states %}
+                {% if addressModel %}
+                  {% if addressModel.state == state %}
+                    <option value="{{ addressModel.stateId }}" selected> {{ addressModel.state }}</option>
+                  {% else %}
+                    <option value="{{ state.id }}">{{ state.name }}</option>
+                  {% endif %}
+                {% endif %}
+              {% endfor %}
+            </select>
+
+          </div>
 
         </div>
 

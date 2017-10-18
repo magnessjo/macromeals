@@ -23,27 +23,32 @@ function checkForZeroValue(value) {
 
 // Check for a Letter
 
-function checkForLetter(input, parent) {
+function checkForLetter(input, parent, showError) {
 
+  const hasErrors = parent.getAttribute('valid');
   const errors = parent.querySelector('.errors');
-  const requiredError = errors.querySelector('.required');
+  const letterError = errors.querySelector('.letters');
   const reg = new RegExp('^[a-zA-Z]+$');
+
+  if (hasErrors) return;
 
   function checkValue(type) {
 
     const value = input.value;
 
     if (reg.test(value) == false) {
-      requiredError.setAttribute('show-error', false);
+      letterError.setAttribute('show-error', false);
     } else {
 
-      if (type == 'blur') {
-        requiredError.setAttribute('show-error', true);
+      if (type != 'focus') {
+        letterError.setAttribute('show-error', true);
       }
 
     }
 
   }
+
+  if (showError) checkValue();
 
   input.addEventListener('blur', () => checkValue('blur'));
   input.addEventListener('focus', () => checkValue('focus'));
@@ -52,7 +57,7 @@ function checkForLetter(input, parent) {
 
 // Check for Length
 
-function required(input, parent) {
+function required(input, parent, showError) {
 
   const isRequired = parent.getAttribute('data-required');
   const errors = parent.querySelector('.errors');
@@ -66,10 +71,12 @@ function required(input, parent) {
 
       if (length > 0) {
         requiredError.setAttribute('show-error', false);
+        parent.setAttribute('valid', false);
       } else {
 
-        if (type == 'blur') {
+        if (type != 'focus') {
           requiredError.setAttribute('show-error', true);
+          parent.setAttribute('valid', true);
         }
 
       }
@@ -78,8 +85,11 @@ function required(input, parent) {
 
   }
 
+  if (showError) checkValue();
+
   input.addEventListener('blur', () => checkValue('blur'));
   input.addEventListener('focus', () => checkValue('focus'));
+  input.addEventListener('change', () => checkValue('change'));
 
 }
 
