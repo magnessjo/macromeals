@@ -40,7 +40,7 @@ const config = {
     paths: [`source/scripts/**/*.js`],
     task: builder.scripts,
     files: {
-      app: `source/scripts/app.js`,
+      common: `source/scripts/common/`,
       homepage: `source/scripts/pages/homepage`,
       faq: `source/scripts/pages/faq`,
       shopselection: `source/scripts/shop/selection`,

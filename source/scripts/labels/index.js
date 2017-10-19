@@ -1,5 +1,5 @@
 
-import pieChart from '../components/pieChart.js';
+import pieChart from 'scripts/components/pieChart.js';
 
 // Load
 
