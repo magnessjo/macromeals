@@ -1,7 +1,7 @@
 
 // Imports
 
-import interiorPageScroll from '../components/interior-page-scroll.js';
+import interiorPageScroll from 'scripts/components/interior-page-scroll.js';
 
 // Load
 

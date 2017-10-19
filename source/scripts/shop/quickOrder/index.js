@@ -1,7 +1,7 @@
 
 // Import
 
-import notice from '../components/notice.js';
+import notice from 'scripts/components/notice.js';
 
 // Load
 

@@ -1,9 +1,9 @@
 
 // Imports
 
-import notice from '../components/notice.js';
-import pieChart from '../components/pieChart.js';
-import shipping from '../components/shipping.js';
+import notice from 'scripts/components/notice.js';
+import pieChart from 'scripts/components/pieChart.js';
+import shipping from 'scripts/components/shipping.js';
 import switchImages from './switch-images.js';
 
 // Load
