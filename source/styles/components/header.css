@@ -41,6 +41,7 @@ header {
       font-size: 16px;
       padding: 0 20px;
       border-radius: 0;
+
       &:hover {
         background-color: var(--green);
         color: var(--white);
@@ -66,7 +67,7 @@ header {
 
     & .options {
 
-      @media (--tablet-min) {
+      @media (--large-min) {
         position: absolute;
         width: 100%;
         background-color: var(--white);
@@ -86,7 +87,7 @@ header {
 
     & .options[aria-hidden = 'true'] {
 
-      @media (--tablet-min) {
+      @media (--large-min) {
         transition: top .5s;
       }
 
@@ -94,7 +95,7 @@ header {
 
     & .options[aria-hidden = 'false'] {
 
-      @media (--tablet-min) {
+      @media (--large-min) {
         top: 60px;
         transition: top 1s;
       }

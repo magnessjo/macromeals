@@ -7,6 +7,13 @@
       <a href="/shop"><div>Meals</div></a>
       <a href="/shop/quick-order"><div>Quick Order</div></a>
       <a href="/pages/macros"><div><span>What are</span>Macros</div></a>
+
+      {% if not currentUser %}
+        <a href="/account/login"><div>Login</div></a>
+      {% else %}
+        <a href="/account/orders"><div>Orders</div></a>
+      {% endif %}
+
     </div>
 
   </menu>
@@ -23,7 +30,7 @@
       <a href="/pages/macros"><span>Why Macros</span></a>
       {% if currentUser %}
         <div class="dropdown">
-          <button>Your Account</button>
+          <button>Account</button>
           <div class="options" aria-hidden='true'>
             <a href="/account/orders">Orders</a>
             <a href="{{ logoutUrl }}">Logout</a>
