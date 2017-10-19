@@ -22,6 +22,7 @@ export default function() {
     e.preventDefault();
 
     let validForm = false;
+    let shouldScroll = true;
     let fields = requiredFields;
 
     if (checkbox.checked) {
@@ -40,9 +41,13 @@ export default function() {
       const isValid = elm.getAttribute('valid');
 
       if (isValid == 'false') {
+
         formValidation(true);
-        scrollToLocation(elm);
-        return;
+
+        if (shouldScroll) {
+          scrollToLocation(elm, 120);
+          shouldScroll = false;
+        }
 
         if (i == fields.length - 1) validForm = true;
 

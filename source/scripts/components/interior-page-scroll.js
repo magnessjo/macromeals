@@ -1,44 +1,15 @@
 
+// Import
+
+import scrollTo from 'scripts/helpers/scrollToLocation.js';
+
 // Variables
 
 const wrapper = document.querySelector('.page-scroll-wrapper');
-const documentBody = document.documentElement.scrollTop || document.body.scrollTop;
 let nav;
 let positionTop;
 
-// Sroll Function
-
-function scrollTo(position) {
-
-  let from = 0;
-  const elm = document.body;
-  const currentPosition = window.pageYOffset;
-  const to = document.querySelector(`section[data-location="${position}"]`).getBoundingClientRect();
-  const toPosition = documentBody == 0 ? ((to.top - from) - 30) : ((to.top) - 30);
-  let frames = 60;
-  const jump = (toPosition - from) / frames;
-  from = currentPosition;
-
-  function scroll() {
-
-    if (frames > 0) {
-
-      const position = from + jump;
-
-      from = position;
-      elm.scrollTop = from;
-      document.documentElement.scrollTop = from;
-
-      frames--;
-      window.requestAnimationFrame(scroll);
-
-    }
-
-  }
-
-  window.requestAnimationFrame(scroll);
-
-}
+// Window Scroll
 
 function windowSroll() {
 
@@ -73,7 +44,8 @@ export default function() {
       button.addEventListener('click', e => {
 
         const positionAttr = button.getAttribute('data-id');
-        scrollTo(positionAttr);
+        const element = document.querySelector(`section[data-location="${positionAttr}"]`);
+        scrollTo(element);
 
       });
 
