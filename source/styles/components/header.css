@@ -41,12 +41,17 @@ header {
       font-size: 16px;
       padding: 0 20px;
       border-radius: 0;
-
       &:hover {
         background-color: var(--green);
         color: var(--white);
       }
 
+    }
+
+    & button {
+      z-index: 99;
+      position: relative;
+      background-color: var(--white);
     }
 
     & .dropdown {
@@ -65,12 +70,16 @@ header {
         position: absolute;
         width: 100%;
         background-color: var(--white);
-
+        left: 0;
+        top: -30px;
+        z-index: 1;
       }
 
       & a {
         height: 44px;
-
+        border-bottom: 1px solid var(--green);
+        border-left: 1px solid var(--green);
+        border-right: 1px solid var(--green);
       }
 
     }
@@ -78,7 +87,7 @@ header {
     & .options[aria-hidden = 'true'] {
 
       @media (--tablet-min) {
-        left: -20000px;
+        transition: top .5s;
       }
 
     }
@@ -86,7 +95,8 @@ header {
     & .options[aria-hidden = 'false'] {
 
       @media (--tablet-min) {
-        left: 0;
+        top: 60px;
+        transition: top 1s;
       }
 
     }
@@ -98,9 +108,15 @@ header {
     height: 100%;
     display: flex;
     align-items: center;
+  }
 
-    & a {
-      text-transform: uppercase;
+  & .login {
+    margin-right: 18px;
+    font-size: 15px;
+    text-transform: none;
+
+    @media (--medium-max) {
+      display: none;
     }
 
   }

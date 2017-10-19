@@ -25,6 +25,7 @@
         <div class="dropdown">
           <button>Your Account</button>
           <div class="options" aria-hidden='true'>
+            <a href="/account/orders">Orders</a>
             <a href="{{ logoutUrl }}">Logout</a>
           </div>
         </div>
@@ -32,6 +33,10 @@
     </nav>
 
     <div class="actions">
+
+      {% if not currentUser %}
+        <a href="/account/login" class="login">Login</a>
+      {% endif %}
 
       <div class="menu-toggle" data-showing='false'>
         <div class="menu-button">

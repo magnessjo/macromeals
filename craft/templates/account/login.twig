@@ -12,7 +12,7 @@
     window.csrfTokenValue = "{{ craft.request.csrfToken|e('js') }}";
   </script>
 
-  <section id="login-options" class="margin-from-header">
+  <section id="login-options">
 
     <div class="lock">
 
@@ -29,7 +29,12 @@
               {{ getCsrfInput() }}
 
               <input type="hidden" name="action" value="users/login">
-              <input type="hidden" name="redirect" value="/checkout">
+
+              {% if craft.request.lastSegment() == 'checkout' %}
+                <input type="hidden" name="redirect" value="/checkout">
+              {% else %}
+                <input type="hidden" name="redirect" value="/account/orders">
+              {% endif %}
 
               <div>
                 <label for="loginName">Email Address</label>
