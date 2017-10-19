@@ -2,6 +2,7 @@
 // Import
 
 import formValidation from './formValidation.js';
+import scrollToLocation from 'scripts/helpers/scrollToLocation.js';
 
 // Variables
 
@@ -11,40 +12,6 @@ const checkbox = billingContainer.querySelector('input[type="checkbox"]');
 const requiredFields = Array.from(form.querySelectorAll('[data-required]'));
 const billingRequiredFields = Array.from(billingContainer.querySelectorAll('[data-required]'));
 const inputs = Array.from(form.querySelectorAll('inputs[type="text"]'));
-
-// Set Window to location of first error
-
-function setWindowLocationToError(element) {
-
-  const elm = document.body;
-  let from = document.documentElement.scrollTop || document.body.scrollTop;
-  const to = element.getBoundingClientRect();
-  const toPosition = to.top - from;
-  const currentPosition = window.pageYOffset;
-  let frames = 60;
-  const jump = (toPosition - from) / frames;
-  from = currentPosition;
-
-  function scroll() {
-
-    if (frames > 0) {
-
-      const position = from + jump;
-
-      from = position;
-      elm.scrollTop = from;
-      document.documentElement.scrollTop = from;
-
-      frames--;
-      window.requestAnimationFrame(scroll);
-
-    }
-
-  }
-
-  window.requestAnimationFrame(scroll);
-
-}
 
 // Export
 
@@ -74,7 +41,7 @@ export default function() {
 
       if (isValid == 'false') {
         formValidation(true);
-        setWindowLocationToError(elm);
+        scrollToLocation(elm);
         return;
 
         if (i == fields.length - 1) validForm = true;
