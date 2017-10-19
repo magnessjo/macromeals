@@ -149,6 +149,7 @@ footer {
 
       @media (--tablet-min) {
         padding-left: 10px;
+        margin-left: 10px;
       }
 
       @media (--large-max) {
@@ -161,7 +162,7 @@ footer {
         @media (--tablet-min) {
           content: "";
           position: absolute;
-          left: 5px;
+          left: 10px;
           top: 50%;
           transform: translateY(-50%);
           height: 12px;
