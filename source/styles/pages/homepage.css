@@ -13,6 +13,9 @@
   & .image {
     background-image: url(/images/stage/main.jpg);
     background-size: cover;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
 
     @media (--medium-max) {
       height: 200px;
@@ -21,13 +24,18 @@
 
     &:after {
 
+      @media (--large-max) {
+        padding: 250px;
+        left: 50%;
+      }
+
       @media (--tablet-max) {
         content: '';
         position: absolute;
         top: 50%;
-        left: 50%;
+        left: 30%;
         transform: translate(-50%, -50%);
-        padding: 250px;
+        padding: 450px;
         background: radial-gradient(ellipse,
           rgba(255, 255, 255, .8) 0%,
           rgba(255, 255, 255, .4) 40%,
