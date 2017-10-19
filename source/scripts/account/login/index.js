@@ -1,14 +1,14 @@
 
 // Imports
 
-import formValue from '../components/formValue';
+import modifyFormValueForResize from 'scripts/helpers/form/modifyFormValueForResize.js';
 import registerCTA from './registerButton.js';
 
 // Load
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  formValue();
+  modifyFormValueForResize();
   registerCTA();
 
 });

@@ -7,9 +7,11 @@
 
 {% block main %}
 
-  {% requireLogin %}
+  {% if cart.email == '' %}
+    {% redirect "/account/login/checkout" 301 %}
+  {% endif %}
 
-  {% include "checkout/components/breadcrumb.twig" %}
+  {% include "components/breadcrumb.twig" %}
 
   <form>
 

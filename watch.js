@@ -32,6 +32,7 @@ const config = {
       checkout: 'source/styles/pages/checkout/index.css',
       labels: 'source/styles/pages/labels.css',
       quickorder: 'source/styles/pages/quick-order.css',
+      account: 'source/styles/pages/account/index.css',
     },
   },
 
@@ -50,7 +51,7 @@ const config = {
       summary: `source/scripts/checkout/summary`,
       billing: `source/scripts/checkout/billing`,
       process: `source/scripts/checkout/process`,
-      user: `source/scripts/checkout/user`,
+      login: `source/scripts/account/login`,
     },
   },
 

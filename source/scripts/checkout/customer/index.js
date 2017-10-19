@@ -1,7 +1,7 @@
 
 // Imports
 
-import formValue from '../components/formValue';
+import modifyFormValueForResize from 'scripts/helpers/form/modifyFormValueForResize.js';
 import formValidation from './formValidation.js';
 import billingForm from './billingForm.js';
 import formSubmit from './formSubmit.js';
@@ -10,7 +10,7 @@ import formSubmit from './formSubmit.js';
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  formValue();
+  modifyFormValueForResize();
   formValidation();
   billingForm();
   formSubmit();

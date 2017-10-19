@@ -19,10 +19,10 @@
 {% block main %}
 
   {% if cart.email == '' %}
-    {% redirect "/checkout/user" 301 %}
+    {% redirect "/account/login/checkout" 301 %}
   {% endif %}
 
-  {% include "checkout/components/breadcrumb.twig" %}
+  {% include "components/breadcrumb.twig" %}
 
   <form method="POST" id="address-info">
 

@@ -1,12 +1,12 @@
 
 // Imports
 
-import formValue from '../components/formValue';
+import modifyFormValueForResize from 'scripts/helpers/form/modifyFormValueForResize.js';
 
 // Load
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  formValue();
+  modifyFormValueForResize();
 
 });

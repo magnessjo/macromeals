@@ -3,11 +3,15 @@
 {% includeCssFile "/checkout.css" %}
 {% includeJsFile "/billing.js" %}
 
+{% set cart = craft.commerce.getCart() %}
+
 {% block main %}
 
-  {% requireLogin %}
+  {% if cart.email == '' %}
+    {% redirect "/account/login/checkout" 301 %}
+  {% endif %}
 
-  {% include "checkout/components/breadcrumb.twig" %}
+  {% include "components/breadcrumb.twig" %}
 
   <section id="customer-info">
 
