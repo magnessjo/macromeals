@@ -15,22 +15,22 @@
 
 /* Common Classes Layout */
 
-@import "/common-classes/layout/lock.css";
-@import "/common-classes/layout/narrow.css";
+@import "/common/layout/lock.css";
+@import "/common/layout/narrow.css";
 
 /* Common Classes */
 
-@import "/common-classes/notice.css";
-@import "/common-classes/fonts.css";
-@import "/common-classes/call-to-action.css";
-@import "/common-classes/flex-wrapper.css";
-@import "/common-classes/faq-wrapper.css";
-@import "/common-classes/callout.css";
-@import "/common-classes/sr-only.css";
-@import "/common-classes/with-underline.css";
-@import "/common-classes/slim-stage.css";
-@import "/common-classes/page-scroll-wrapper.css";
-@import "/common-classes/cart-breadcrumb.css";
-@import "/common-classes/icons.css";
-@import "/common-classes/checkout-actions.css";
-@import "/common-classes/cart-additions.css";
+@import "/common/notice.css";
+@import "/common/fonts.css";
+@import "/common/call-to-action.css";
+@import "/common/flex-wrapper.css";
+@import "/common/faq-wrapper.css";
+@import "/common/callout.css";
+@import "/common/sr-only.css";
+@import "/common/with-underline.css";
+@import "/common/slim-stage.css";
+@import "/common/page-scroll-wrapper.css";
+@import "/common/cart-breadcrumb.css";
+@import "/common/icons.css";
+@import "/common/checkout-actions.css";
+@import "/common/cart-additions.css";

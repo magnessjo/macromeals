@@ -1,5 +1,5 @@
 
-@import "../../master.css";
+@import "../master.css";
 
 .slim-stage h1:before {
   left: -40%;
