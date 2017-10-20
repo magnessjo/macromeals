@@ -1,8 +1,4 @@
 
-// Import
-
-import formValidation from './formValidation.js';
-
 // Variables
 
 const container = document.querySelector('#billing-address');
@@ -23,7 +19,6 @@ export default function() {
     } else {
       hiddenInput.value = 0;
       fieldsWrapper.style.display = 'block';
-      formValidation();
     }
 
   });

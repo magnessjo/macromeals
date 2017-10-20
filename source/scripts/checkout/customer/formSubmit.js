@@ -1,7 +1,6 @@
 
 // Import
 
-import formValidation from './formValidation.js';
 import scrollToLocation from 'scripts/helpers/scrollToLocation.js';
 
 // Variables
@@ -42,7 +41,7 @@ export default function() {
 
       if (isValid == 'false') {
 
-        formValidation(true);
+        // formValidation(true);
 
         if (shouldScroll) {
           scrollToLocation(elm, 120);

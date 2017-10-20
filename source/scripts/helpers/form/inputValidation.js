@@ -1,103 +1,50 @@
 
-// Check for a Number
+// import
 
-function checkForNumber(value) {
+import validation from './validation';
 
-  const reg = new RegExp('^[0-9]+$');
+// Check Values At Once
 
-  if (reg.test(value) == false) return true;
-
-  return false;
+function checkValue() {
 
 }
 
-// Check for Zero value
+// Attach Event Listeners
 
-function checkForZeroValue(value) {
+function attachEventHandlers(input, parent, checks) {
 
-  if (value == 0) return true;
+  const errors = Array.from(parent.querySelectorAll('.errors p'));
 
-  return false;
+  input.addEventListener('keyup', () => {
 
-}
+    checks.forEach((check) => {
+      validation[check](input, parent, 'keydown');
+    });
 
-// Check for a Letter
+  });
 
-function checkForLetter(input, parent, showError) {
+  input.addEventListener('blur', () => {
 
-  const hasErrors = parent.getAttribute('valid');
-  const errors = parent.querySelector('.errors');
-  const letterError = errors.querySelector('.letters');
-  const reg = new RegExp('^[a-zA-Z]+$');
+    checks.forEach((check) => {
+      validation[check](input, parent, 'blur');
+    });
 
-  if (hasErrors) return;
+  });
 
-  function checkValue(type) {
+  input.addEventListener('focus', () => {
 
-    const value = input.value;
+    parent.setAttribute('has-error', false);
 
-    if (reg.test(value) == false) {
-      letterError.setAttribute('show-error', false);
-    } else {
+    errors.forEach((error) => {
+      error.setAttribute('show-error', false);
+    });
 
-      if (type != 'focus') {
-        letterError.setAttribute('show-error', true);
-      }
-
-    }
-
-  }
-
-  if (showError) checkValue();
-
-  input.addEventListener('blur', () => checkValue('blur'));
-  input.addEventListener('focus', () => checkValue('focus'));
-
-}
-
-// Check for Length
-
-function required(input, parent, showError) {
-
-  const isRequired = parent.getAttribute('data-required');
-  const errors = parent.querySelector('.errors');
-  const requiredError = errors.querySelector('.required');
-
-  function checkValue(type) {
-
-    const length = input.value.length;
-
-    if (isRequired != null) {
-
-      if (length > 0) {
-        requiredError.setAttribute('show-error', false);
-        parent.setAttribute('valid', false);
-      } else {
-
-        if (type != 'focus') {
-          requiredError.setAttribute('show-error', true);
-          parent.setAttribute('valid', true);
-        }
-
-      }
-
-    }
-
-  }
-
-  if (showError) checkValue();
-
-  input.addEventListener('blur', () => checkValue('blur'));
-  input.addEventListener('focus', () => checkValue('focus'));
-  input.addEventListener('change', () => checkValue('change'));
+  });
 
 }
 
 const obj = {
-  checkForNumber,
-  checkForZeroValue,
-  checkForLetter,
-  required,
+  attachEventHandlers,
 }
 
 export default obj;
