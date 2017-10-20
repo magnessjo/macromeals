@@ -1,10 +1,10 @@
 
 // import
 
-import validation from 'scripts/helpers/inputValidationOld.js';
+import validation from 'scripts/helpers/form/inputValidationOld.js';
 import findParentNode from 'scripts/helpers/findParentNode.js';
-import checkProductQuantity from 'scripts/helpers/checkProductQuantity.js';
-import postToCart from 'scripts/helpers/postToCart.js';
+import checkProductQuantity from 'scripts/helpers/cart/checkProductQuantity.js';
+import postToCart from 'scripts/helpers/cart/postToCart.js';
 
 // Variables
 

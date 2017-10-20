@@ -1,7 +1,7 @@
 
 // Import
 
-import inputValidation from 'scripts/helpers/inputValidation.js';
+import inputValidation from 'scripts/helpers/form/inputValidation.js';
 
 // Variables
 
