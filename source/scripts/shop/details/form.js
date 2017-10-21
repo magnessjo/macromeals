@@ -35,7 +35,13 @@ function caculateTotal() {
 
   });
 
-  totalPrice.innerHTML = `$${total}`;
+  console.log(total);
+
+  if (total > 0 ) {
+    totalPrice.innerHTML = `$${total}`;
+  } else {
+    totalPrice.innerHTML = ``;
+  }
 
 }
 
@@ -62,11 +68,9 @@ function checkInputValues() {
     // Check for a zero value
 
     isError = validation.checkForZeroValue(input.value);
-    if (isError) caculateTotal();
 
     if (!isError) {
       showSubmit = true;
-      caculateTotal();
     }
 
   });
@@ -139,7 +143,10 @@ export default function() {
     const errors = container.querySelector('.errors');
     const stockText = errors.querySelector('.stock');
 
-    input.addEventListener('keyup', (e) => updateUI(e, input) );
+    input.addEventListener('keyup', (e) => {
+      caculateTotal();
+      updateUI(e, input);
+    });
 
     input.addEventListener('change', (e) => {
 
