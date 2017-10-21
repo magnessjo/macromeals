@@ -16,7 +16,7 @@ const submit = form.querySelector('input[type="submit"]');
 const totalPrice = form.querySelector('[data-total="price"]');
 let showSubmit = false;
 
-// Total
+// Caculate Total for User
 
 function caculateTotal() {
 
@@ -34,8 +34,6 @@ function caculateTotal() {
     hiddenQuanity.value = input.value;
 
   });
-
-  console.log(total);
 
   if (total > 0 ) {
     totalPrice.innerHTML = `$${total}`;
@@ -161,7 +159,7 @@ export default function() {
       if (input.value == '') {
         input.value = 0;
       } else {
-        updateUI(e, input)
+        updateUI(e, input);
       }
 
     });
