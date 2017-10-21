@@ -9,7 +9,11 @@ form {
     font-size: 12px;
     font-weight: 700;
     letter-spacing: .2px;
-    width: 50%;
+
+    @media (--tablet-min) {
+      width: 50%;
+    }
+
   }
 
   & select {
@@ -112,14 +116,17 @@ form {
     & p {
       display: none;
       color: red;
-      position: absolute;
-      top: 0;
-      right: 0;
-      padding-right: 10px;
-      width: 50%;
       font-size: 14px;
-      text-align: right;
       font-weight: 700;
+
+      @media (--tablet-min) {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding-right: 10px;
+        width: 50%;
+        text-align: right;
+      }
 
       & .required {
         z-index: 1;
