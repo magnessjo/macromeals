@@ -5,7 +5,11 @@ import validation from './validation';
 
 // Check Values At Once
 
-function checkValue() {
+function checkFormValues(input, parent, checks) {
+
+  checks.forEach((check) => {
+    validation[check](input, parent, 'blur');
+  });
 
 }
 
@@ -45,6 +49,7 @@ function attachEventHandlers(input, parent, checks) {
 
 const obj = {
   attachEventHandlers,
+  checkFormValues,
 }
 
 export default obj;

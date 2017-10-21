@@ -2,6 +2,7 @@
 // Import
 
 import scrollToLocation from 'scripts/helpers/scrollToLocation.js';
+import inputQuery from 'scripts/helpers/form/inputQuery.js';
 
 // Variables
 
@@ -41,7 +42,7 @@ export default function() {
 
       if (isValid == 'false') {
 
-        // formValidation(true);
+        inputQuery(form, false);
 
         if (shouldScroll) {
           scrollToLocation(elm, 120);

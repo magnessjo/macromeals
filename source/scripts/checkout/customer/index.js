@@ -2,7 +2,7 @@
 // Imports
 
 import modifyFormValueForResize from 'scripts/helpers/form/modifyFormValueForResize.js';
-import inputListenerEvents from 'scripts/helpers/form/inputListenerEvents.js';
+import inputQuery from 'scripts/helpers/form/inputQuery.js';
 import displayBillingForm from './displayBillingForm.js';
 import formSubmit from './formSubmit.js';
 
@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   modifyFormValueForResize();
   displayBillingForm();
-  inputListenerEvents(form);
+  inputQuery(form);
   formSubmit();
 
 });
