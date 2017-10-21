@@ -222,3 +222,20 @@ form {
   }
 
 }
+
+form#product-addition {
+
+  & .errors {
+
+    & p {
+      display: none;
+      width: 100%;
+      text-align: left;
+      position: relative;
+      padding-top: 10px;
+      margin-bottom: 0;
+    }
+
+  }
+
+}

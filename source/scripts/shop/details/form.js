@@ -37,53 +37,9 @@ function caculateTotal() {
 
   if (total > 0 ) {
     totalPrice.innerHTML = `$${total}`;
-  } else {
-    totalPrice.innerHTML = ``;
-  }
-
-}
-
-// Check Values & Set Validation or Totals
-
-function checkInputValues() {
-
-  let isError = false;
-
-  inputs.forEach((input) => {
-
-    if (isError) showSubmit = false;
-
-    // Check for no entry
-
-    isError = validation.checkForLength(input.value);
-    if (isError) return;
-
-    // Check for any digit other than a number
-
-    isError = validation.checkForNumber(input.value);
-    if (isError) return;
-
-    // Check for a zero value
-
-    isError = validation.checkForZeroValue(input.value);
-
-    if (!isError) {
-      showSubmit = true;
-    }
-
-  });
-
-}
-
-// Update the interface based on conditions
-
-function updateUI(e) {
-
-  checkInputValues();
-
-  if (showSubmit) {
     submit.style.display = 'block';
   } else {
+    totalPrice.innerHTML = ``;
     submit.style.display = 'none';
   }
 
@@ -143,15 +99,10 @@ export default function() {
 
     input.addEventListener('keyup', (e) => {
       caculateTotal();
-      updateUI(e, input);
     });
 
     input.addEventListener('change', (e) => {
-
-      checkProductQuantity(input, stockText).then(() => {
-        updateUI(e, input);
-      });
-
+      checkProductQuantity(input, stockText);
     });
 
     input.addEventListener('blur', (e) => {
@@ -159,7 +110,7 @@ export default function() {
       if (input.value == '') {
         input.value = 0;
       } else {
-        updateUI(e, input);
+        caculateTotal();
       }
 
     });

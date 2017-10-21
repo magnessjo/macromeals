@@ -37,7 +37,7 @@
 
               <div class="fixed-wrapper">
 
-                <form method="POST" id="fixed-form">
+                <form method="POST" id="product-addition" class="fixed-form">
 
                   <div class="row-columns descriptions">
 
@@ -65,8 +65,17 @@
                               <input type="hidden" name="purchasableId" value="{{ purchasable.purchasableId }}">
                               <div class="size">{{ purchasable.description }}</div>
                               <div class="price">${{ purchasable.salePrice }}</div>
-                              <div class="quantity">
-                                <input type="number" pattern="\d*" value="0" data-id="{{ purchasable.purchasableId }}" />
+
+                              <div class="quantity field" valid="true">
+                                <div class="input">
+                                  <input type="number"
+                                         pattern="\d*"
+                                         value="0"
+                                         data-id="{{ purchasable.purchasableId }}"
+                                         name="shippingAddress[firstName]"
+                                         id="firstName"
+                                         validation="checkForNumber" />
+                                </div>
                               </div>
 
                             </div>

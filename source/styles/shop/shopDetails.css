@@ -150,14 +150,6 @@ form {
 
   }
 
-  & .errors p {
-    font-size: 13px;
-    color: red;
-    margin-bottom: 0;
-    padding: 10px 0;
-    display: none;
-  }
-
   & .descriptions {
     padding-top: 15px;
     padding-bottom: 15px;
