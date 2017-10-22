@@ -44,6 +44,10 @@ function updateDOM(data) {
       resolve();
     }
 
+    data.sort( (a, b) => {
+       return a.title.localeCompare(b.title);
+    });
+
     data.forEach((content, i) => {
 
       const div = document.createElement('div');
