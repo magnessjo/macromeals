@@ -20,14 +20,14 @@
 
       <div class="category-group">
 
-        <form>
+        <form id="product-addition">
 
           <div class="group-header">
 
             <h1 class="acumin-medium-bold">Lunch & Dinner</h1>
 
             <div>
-              <div class="type">Size</div>
+              <div class="option">Option</div>
               <div class="price">Price</div>
               <div class="quantity">Quantity</div>
             </div>
@@ -38,18 +38,36 @@
 
             {% for product in craft.commerce.products %}
 
-              <div>
+              <div class="entry input-container">
 
-                {% for variant in product.variants %}
-                  <div class="variant-row">
-                    {% if loop.first %}
-                      <div class="title"><span class="acumin-small-bold">{{ product.title }}</span><a href="/shop/details/{{ product.slug }}">See Details</a></div>
-                    {% endif %}
-                    <div class="type">{{ variant.title }}</div>
-                    <div class="price">{{ variant.salePrice }}</div>
-                    <div class="quantity"><input type="text" value="0" /></div>
-                  </div>
-                {% endfor %}
+                <div class="product">
+
+                  {% for variant in product.variants %}
+                    <div class="variant-row">
+                      {% if loop.first %}
+                        <div class="title"><span class="acumin-small-bold">{{ product.title }}</span><a href="/shop/details/{{ product.slug }}">See Details</a></div>
+                      {% endif %}
+                      <input type="hidden" name="qty" value="0">
+                      <input type="hidden" name="purchasableId" value="{{ variant.purchasableId }}">
+                      <div class="option">{{ variant.description }}</div>
+                      <div class="price">${{ variant.salePrice }}</div>
+
+                      <div class="quantity field" valid="true">
+                        <div class="input">
+                          <input type="number"
+                                 pattern="\d*"
+                                 value="0"
+                                 data-id="{{ variant.purchasableId }}"
+                                 id="firstName"
+                                 validation="checkForNumber" />
+                        </div>
+                      </div>
+                    </div>
+                  {% endfor %}
+
+                </div>
+
+               {% include "components/stock-error.twig" %}
 
               </div>
 
@@ -57,7 +75,29 @@
 
           </div>
 
+          <div class="summary">
+
+            <div class="row-columns">
+              <div class="flex">
+                <p class="acumin-small-bold">Total</p>
+                <p class="acumin-small-bold quantity" data-total="price"></p>
+              </div>
+            </div>
+
+            <input type="submit" value="Add To Cart" />
+
+          </div>
+
         </form>
+
+      </div>
+
+      <div class="product-post-submission">
+
+        <p class="acumin-small-bold">Your items have been added to your cart</p>
+        <a href="/checkout" class="call-to-action">Checkout Now</a>
+        <span class="acumin-medium">OR</span>
+        <a href="/shop" class="call-to-action">View More Meals</a>
 
       </div>
 

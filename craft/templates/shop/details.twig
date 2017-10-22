@@ -57,7 +57,7 @@
 
                         <div class="list">
 
-                          <div class="row-columns">
+                          <div class="row-columns input-container">
 
                             <div class="flex">
 
@@ -72,7 +72,6 @@
                                          pattern="\d*"
                                          value="0"
                                          data-id="{{ purchasable.purchasableId }}"
-                                         name="shippingAddress[firstName]"
                                          id="firstName"
                                          validation="checkForNumber" />
                                 </div>
@@ -80,9 +79,7 @@
 
                             </div>
 
-                            <div class="errors">
-                              <p class="stock">The quantity that you have requested is not available.  The maximum number that you may purchase at this time is <span></span>.</p>
-                            </div>
+                            {% include "components/stock-error.twig" %}
 
                           </div>
 
@@ -109,7 +106,7 @@
 
                 </form>
 
-                <div class="post-submission">
+                <div class="product-post-submission">
 
                   <p class="acumin-small-bold">Your items have been added to your cart</p>
                   <a href="/checkout" class="call-to-action">Checkout Now</a>

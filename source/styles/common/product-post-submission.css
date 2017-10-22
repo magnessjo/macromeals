@@ -1,0 +1,22 @@
+
+.product-post-submission {
+  padding: 20px;
+  text-align: center;
+  display: none;
+
+  & a {
+    display: block;
+  }
+
+  & .acumin-small-bold {
+    line-height: 1.1em;
+    margin-bottom: 30px;
+  }
+
+  & .acumin-medium {
+    padding: 10px 0;
+    display: block;
+    margin-bottom: 0;
+  }
+
+}

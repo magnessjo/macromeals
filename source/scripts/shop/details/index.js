@@ -1,14 +1,14 @@
 
-import pieChart from '../../components/pieChart.js';
+import productCalculation from 'scripts/helpers/form/productCalculation.js';
+import pieChart from 'scripts/components/pieChart.js';
 import fixedForm from './fixedForm.js';
 import factTab from './fact-tab.js';
-import form from './form.js';
 
 // Load
 
 window.addEventListener('load', () => {
 
-  form();
+  productCalculation();
   pieChart();
   fixedForm();
   factTab();

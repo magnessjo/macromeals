@@ -37,7 +37,7 @@
 
   }
 
-  & .type, & .price {
+  & .option, & .price {
 
     @media (--medium-max) {
       width: 33.3%;
@@ -107,7 +107,7 @@
 
     }
 
-    & .type {
+    & .option {
 
       @media (--large-min) {
         margin-left: 60%;
@@ -125,13 +125,13 @@
       background-color: var(--light-gray);
     }
 
-    & .variant-row:first-of-type input[type='text'] {
+    & .variant-row:first-of-type input[type='number'] {
       border-bottom: none;
     }
 
     & .variant-row:last-of-type {
 
-      & .type {
+      & .option {
 
         @media (--large-min) {
           margin-left: 60%;
@@ -140,10 +140,6 @@
       }
 
     }
-
-  }
-
-  & .variant-row {
 
   }
 
@@ -157,6 +153,10 @@ form {
     margin-bottom: 0;
     width: 50px;
     text-align: center;
+  }
+
+  & .summary {
+    padding: 20px;
   }
 
 }

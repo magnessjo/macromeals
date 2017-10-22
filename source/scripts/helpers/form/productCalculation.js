@@ -7,9 +7,8 @@ import postToCart from 'scripts/helpers/cart/postToCart.js';
 
 // Variables
 
-const section = document.querySelector('#details');
-const form = section.querySelector('form');
-const submissionConfirmation = section.querySelector('.post-submission');
+const form = document.querySelector('form#product-addition');
+const submissionConfirmation = document.querySelector('.product-post-submission');
 const inputs = Array.from(form.querySelectorAll('input[type="number"]'));
 const submit = form.querySelector('input[type="submit"]');
 const totalPrice = form.querySelector('[data-total="price"]');
@@ -23,7 +22,7 @@ function caculateTotal() {
 
   inputs.forEach((input) => {
 
-    const parent = findParentNode(input,'row-columns');;
+    const parent = findParentNode(input,'input-container');;
     const hiddenQuanity = parent.querySelector('input[name="qty"]');
     const priceString = parent.querySelector('.price').innerHTML;
     const price = priceString.slice(1, priceString.length);
@@ -92,7 +91,7 @@ export default function() {
 
   inputs.forEach((input) => {
 
-    const container = findParentNode(input,'row-columns');
+    const container = findParentNode(input,'input-container');
     const errors = container.querySelector('.errors');
     const stockText = errors.querySelector('.stock');
 

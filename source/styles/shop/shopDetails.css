@@ -22,49 +22,8 @@
 form {
 
   & input[type="submit"] {
-    display: none;
     margin-right: 10%;
     margin-bottom: 20px;
-  }
-
-  & input[type="number"] {
-    margin-bottom: 0;
-    text-align: center;
-    margin-right: 10px;
-    width: 36px;
-    height: 36px;
-    margin: 0 auto;
-    font-size: 14px;
-
-    @media (--large-min) {
-      width: 44px;
-      height: 44px;
-      margin-right: 10px;
-      font-size: 16px;
-    }
-
-  }
-
-}
-
-.post-submission {
-  padding: 20px;
-  text-align: center;
-  display: none;
-
-  & a {
-    display: block;
-  }
-
-  & .acumin-small-bold {
-    line-height: 1.1em;
-    margin-bottom: 30px;
-  }
-
-  & .acumin-medium {
-    padding: 10px 0;
-    display: block;
-    margin-bottom: 0;
   }
 
 }
