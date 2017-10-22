@@ -156,7 +156,31 @@ form {
   }
 
   & .summary {
-    padding: 20px;
+    margin-bottom: 30px;
+
+    & p {
+      margin-bottom: 0;
+    }
+
+    & .fixed-wrapper {
+      top: 0;
+      background-color: var(--white);
+      padding: 10px 20px;
+      border: 1px solid var(--green);
+      z-index: 99;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    & .flex {
+      display: flex;
+
+      & input {
+        margin-left: auto;
+      }
+
+    }
+
   }
 
 }

@@ -22,6 +22,20 @@
 
         <form id="product-addition">
 
+          <div class="summary">
+
+            <div class="fixed-wrapper">
+              <div class="flex">
+                <div>
+                  <p class="acumin-small-bold">Cart Total</p>
+                  <p class="acumin-small-bold quantity" data-total="price"></p>
+                </div>
+                <input type="submit" value="Add To Cart" />
+              </div>
+            </div>
+
+          </div>
+
           <div class="group-header">
 
             <h1 class="acumin-medium-bold">Lunch & Dinner</h1>
@@ -72,19 +86,6 @@
               </div>
 
             {% endfor %}
-
-          </div>
-
-          <div class="summary">
-
-            <div class="row-columns">
-              <div class="flex">
-                <p class="acumin-small-bold">Total</p>
-                <p class="acumin-small-bold quantity" data-total="price"></p>
-              </div>
-            </div>
-
-            <input type="submit" value="Add To Cart" />
 
           </div>
 
