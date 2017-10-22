@@ -18,7 +18,7 @@ window.addEventListener('load', () => {
 
   productCalculation();
   pieChart();
-  fixedElement(container, element, true);
+  fixedElement(container, element);
   factTab();
 
 });

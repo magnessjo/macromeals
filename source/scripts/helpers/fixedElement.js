@@ -14,8 +14,8 @@ function scroll() {
 
   if (window.pageYOffset >= Math.abs(containerPosition)) {
     wrapper.style.position = 'fixed';
-    wrapper.style.width = `${containerWidth}px`;
     container.style.height = `${wrapper.offsetHeight}px`;
+    wrapper.style.width = `${containerWidth}px`;
   } else {
     wrapper.style.position = 'relative';
     container.style.height = 'inherit';
@@ -27,7 +27,10 @@ function scroll() {
 
 function resize() {
 
+  const containerBox = container.getBoundingClientRect();
+
   containerWidth = container.offsetWidth;
+  containerPosition = containerBox.top + window.scrollY;
 
   if (window.innerWidth > 767) {
     wrapper.style.width = `${containerWidth}px`;
@@ -39,19 +42,14 @@ function resize() {
 
 // Export Function
 
-export default function(parent, child, includeResize = false) {
-
-  let containerBox = parent.getBoundingClientRect();
+export default function(parent, child) {
 
   container = parent;
   wrapper = child;
-  containerPosition = containerBox.top + window.scrollY;
-  containerWidth = container.offsetWidth;
 
   window.addEventListener('scroll', scroll);
+  window.addEventListener('resize', resize);
 
-  if (includeResize) {
-    window.addEventListener('resize', resize);
-  }
+  resize();
 
 }
