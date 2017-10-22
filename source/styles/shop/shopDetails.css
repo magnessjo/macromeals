@@ -39,6 +39,10 @@ form {
 
 .product-actions {
 
+  @media (--large-max) {
+    margin-bottom: 40px;
+  }
+
   @media (--tablet-min) {
     width: 40%;
   }
@@ -52,10 +56,6 @@ form {
   }
 
   & > div {
-
-    @media (--large-max) {
-      margin-bottom: 40px;
-    }
 
     @media (--tablet-min) {
       height: 100%;
