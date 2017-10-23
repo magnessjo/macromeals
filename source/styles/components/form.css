@@ -246,15 +246,12 @@ form#product-addition {
     margin-bottom: 0;
     text-align: center;
     margin-right: 10px;
-    width: 36px;
-    height: 36px;
+    width: 70px;
+    height: 30px;
     margin: 0 auto;
     font-size: 14px;
 
     @media (--large-min) {
-      width: 44px;
-      height: 44px;
-      margin-right: 10px;
       font-size: 16px;
     }
 

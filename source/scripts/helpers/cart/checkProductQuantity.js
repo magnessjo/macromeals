@@ -18,9 +18,11 @@ export default function(element, errorText) {
 
       if ( val > response && !Number.isNaN(val) ) {
         const span = errorText.querySelector('span');
+        const event = new Event('keyup');
         span.innerHTML = response;
         errorText.style.display = 'block';
         element.value = response;
+        element.dispatchEvent(event);
       } else {
         errorText.style.display = 'none';
       }

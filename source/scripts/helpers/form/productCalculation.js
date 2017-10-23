@@ -34,7 +34,7 @@ function caculateTotal() {
   });
 
   if (total > 0 ) {
-    if(totalPrice) totalPrice.innerHTML = `$${total}`;
+    if(totalPrice) totalPrice.innerHTML = `$${total.toFixed(2)}`;
     submit.style.display = 'block';
   } else {
     if(totalPrice) totalPrice.innerHTML = ``;
@@ -100,7 +100,9 @@ export default function() {
     });
 
     input.addEventListener('change', (e) => {
-      checkProductQuantity(input, stockText);
+      checkProductQuantity(input, stockText).then(() => {
+        caculateTotal();
+      });
     });
 
     input.addEventListener('blur', (e) => {

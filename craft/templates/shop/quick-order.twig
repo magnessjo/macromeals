@@ -22,18 +22,18 @@
 
         <div class="flex-wrapper">
 
-          <div class="product-actions flex-actions">
+          <div class="flex-actions">
 
             <div class="summary">
 
               <div class="fixed-wrapper">
 
-                <div class="flex">
-                  <div>
-                    <p class="acumin-small-bold">Cart Total</p>
-                    <p class="acumin-small-bold quantity" data-total="price"></p>
-                  </div>
-                  <input type="submit" value="Add To Cart" />
+                <h1><span>Add to Cart</span></h1>
+                <p class="no-items">No items have been added</p>
+                <div class="items"></div>
+                <div class="actions">
+                  <p class="acumin-small-bold" data-total="price"></p>
+                  <input type="submit" value="Add to Cart" />
                 </div>
 
               </div>
@@ -42,52 +42,43 @@
 
           </div>
 
-          <div class="category-group flex-descriptions">
+          <div id="category-group" class="flex-descriptions">
 
-            <div class="group-header">
-
-              <h1 class="acumin-medium-bold">Lunch & Dinner</h1>
-
-              <div>
-                <div class="option">Option</div>
-                <div class="price">Price</div>
-                <div class="quantity">Quantity</div>
-              </div>
-
-            </div>
+            <h2 class="category-headline">
+              <span>Lunch & Dinner</span>
+            </h2>
 
             <div class="group-body">
 
-              {% for product in craft.commerce.products %}
+              {% for product in craft.commerce.products.order('title') %}
 
-                <div class="entry input-container">
+                  <div class="product input-container">
 
-                  <div class="product">
+                  <h3 class="title">
+                    <span class="acumin-small-bold">{{ product.title }}</span>
+                    <a href="/shop/details/{{ product.slug }}">See Details</a>
+                  </h3>
 
-                    {% for variant in product.variants %}
-                      <div class="variant-row">
-                        {% if loop.first %}
-                          <div class="title"><span class="acumin-small-bold">{{ product.title }}</span><a href="/shop/details/{{ product.slug }}">See Details</a></div>
-                        {% endif %}
-                        <input type="hidden" name="qty" value="0">
-                        <input type="hidden" name="purchasableId" value="{{ variant.purchasableId }}">
-                        <div class="option">{{ variant.description }}</div>
-                        <div class="price">${{ variant.salePrice }}</div>
+                  {% for variant in product.variants %}
+                    <div class="variant-row">
+                      <input type="hidden" name="qty" value="0">
+                      <input type="hidden" name="purchasableId" value="{{ variant.purchasableId }}">
+                      <div class="option">{{ variant.description }}</div>
+                      <div class="price">${{ variant.salePrice }}</div>
 
-                        <div class="quantity field" valid="true">
-                          <div class="input">
-                            <input type="number"
-                                   pattern="\d*"
-                                   value="0"
-                                   data-id="{{ variant.purchasableId }}"
-                                   id="firstName"
-                                   validation="checkForNumber" />
-                          </div>
+                      <div class="quantity field" valid="true">
+                        <div class="input">
+                          <input type="number"
+                                 pattern="\d*"
+                                 value="0"
+                                 data-id="{{ variant.purchasableId }}"
+                                 data-title="{{ product.title }}"
+                                 data-size="{{ variant.description }}"
+                                 validation="checkForNumber" />
                         </div>
                       </div>
-                    {% endfor %}
-
-                  </div>
+                    </div>
+                  {% endfor %}
 
                  {% include "components/stock-error.twig" %}
 
