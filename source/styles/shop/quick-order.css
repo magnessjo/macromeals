@@ -146,8 +146,8 @@
 }
 
 form {
-  max-width: 800px;
   margin: 0 auto;
+  max-width: 1200px;
 
   & input[type='text'] {
     margin-bottom: 0;

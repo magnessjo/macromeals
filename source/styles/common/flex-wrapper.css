@@ -3,6 +3,7 @@
 
   @media (--tablet-min) {
     display: flex;
+    justify-content: space-between;
   }
 
   & .flex-headline {
@@ -35,6 +36,36 @@
     @media (--tablet-min) {
       width: calc(100% - 300px);
       padding-left: 40px;
+    }
+
+  }
+
+  & .flex-actions {
+
+    @media (--large-max) {
+      margin-bottom: 40px;
+    }
+
+    @media (--tablet-min) {
+      width: 40%;
+    }
+
+    @media (--desktop-min) {
+      width: 30%;
+    }
+
+  }
+
+  & .flex-descriptions {
+
+    @media(--tablet-min) {
+      width: 60%;
+      padding-left: 40px;
+    }
+
+    @media(--desktop-min) {
+      width: 70%;
+      padding-left: 60px;
     }
 
   }

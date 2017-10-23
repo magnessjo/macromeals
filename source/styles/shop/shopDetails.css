@@ -28,28 +28,7 @@ form {
 
 }
 
-.flex-wrapper {
-
-  @media (--tablet-min) {
-    display: flex;
-    justify-content: space-between;
-  }
-
-}
-
 .product-actions {
-
-  @media (--large-max) {
-    margin-bottom: 40px;
-  }
-
-  @media (--tablet-min) {
-    width: 40%;
-  }
-
-  @media (--desktop-min) {
-    width: 30%;
-  }
 
   & .acumin-small {
     margin-bottom: 0;
@@ -161,16 +140,6 @@ form {
 }
 
 .product-details {
-
-  @media(--tablet-min) {
-    width: 60%;
-    padding-left: 40px;
-  }
-
-  @media(--desktop-min) {
-    width: 70%;
-    padding-left: 60px;
-  }
 
   & .product-image {
 

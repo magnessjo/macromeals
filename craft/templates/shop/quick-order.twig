@@ -16,82 +16,92 @@
 
   <section id="order-form">
 
-    <div class="lock narrow">
+    <div class="lock">
 
-      <div class="category-group">
+      <form method="POST" id="product-addition">
 
-        <form id="product-addition">
+        <div class="flex-wrapper">
 
-          <div class="summary">
+          <div class="product-actions flex-actions">
 
-            <div class="fixed-wrapper">
-              <div class="flex">
-                <div>
-                  <p class="acumin-small-bold">Cart Total</p>
-                  <p class="acumin-small-bold quantity" data-total="price"></p>
+            <div class="summary">
+
+              <div class="fixed-wrapper">
+
+                <div class="flex">
+                  <div>
+                    <p class="acumin-small-bold">Cart Total</p>
+                    <p class="acumin-small-bold quantity" data-total="price"></p>
+                  </div>
+                  <input type="submit" value="Add To Cart" />
                 </div>
-                <input type="submit" value="Add To Cart" />
+
               </div>
+
             </div>
 
           </div>
 
-          <div class="group-header">
+          <div class="category-group flex-descriptions">
 
-            <h1 class="acumin-medium-bold">Lunch & Dinner</h1>
+            <div class="group-header">
 
-            <div>
-              <div class="option">Option</div>
-              <div class="price">Price</div>
-              <div class="quantity">Quantity</div>
+              <h1 class="acumin-medium-bold">Lunch & Dinner</h1>
+
+              <div>
+                <div class="option">Option</div>
+                <div class="price">Price</div>
+                <div class="quantity">Quantity</div>
+              </div>
+
             </div>
 
-          </div>
+            <div class="group-body">
 
-          <div class="group-body">
+              {% for product in craft.commerce.products %}
 
-            {% for product in craft.commerce.products %}
+                <div class="entry input-container">
 
-              <div class="entry input-container">
+                  <div class="product">
 
-                <div class="product">
+                    {% for variant in product.variants %}
+                      <div class="variant-row">
+                        {% if loop.first %}
+                          <div class="title"><span class="acumin-small-bold">{{ product.title }}</span><a href="/shop/details/{{ product.slug }}">See Details</a></div>
+                        {% endif %}
+                        <input type="hidden" name="qty" value="0">
+                        <input type="hidden" name="purchasableId" value="{{ variant.purchasableId }}">
+                        <div class="option">{{ variant.description }}</div>
+                        <div class="price">${{ variant.salePrice }}</div>
 
-                  {% for variant in product.variants %}
-                    <div class="variant-row">
-                      {% if loop.first %}
-                        <div class="title"><span class="acumin-small-bold">{{ product.title }}</span><a href="/shop/details/{{ product.slug }}">See Details</a></div>
-                      {% endif %}
-                      <input type="hidden" name="qty" value="0">
-                      <input type="hidden" name="purchasableId" value="{{ variant.purchasableId }}">
-                      <div class="option">{{ variant.description }}</div>
-                      <div class="price">${{ variant.salePrice }}</div>
-
-                      <div class="quantity field" valid="true">
-                        <div class="input">
-                          <input type="number"
-                                 pattern="\d*"
-                                 value="0"
-                                 data-id="{{ variant.purchasableId }}"
-                                 id="firstName"
-                                 validation="checkForNumber" />
+                        <div class="quantity field" valid="true">
+                          <div class="input">
+                            <input type="number"
+                                   pattern="\d*"
+                                   value="0"
+                                   data-id="{{ variant.purchasableId }}"
+                                   id="firstName"
+                                   validation="checkForNumber" />
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  {% endfor %}
+                    {% endfor %}
+
+                  </div>
+
+                 {% include "components/stock-error.twig" %}
 
                 </div>
 
-               {% include "components/stock-error.twig" %}
+              {% endfor %}
 
-              </div>
-
-            {% endfor %}
+            </div>
 
           </div>
 
-        </form>
+        </div>
 
-      </div>
+     </form>
 
       <div class="product-post-submission">
 
