@@ -34,10 +34,10 @@ function caculateTotal() {
   });
 
   if (total > 0 ) {
-    totalPrice.innerHTML = `$${total}`;
+    if(totalPrice) totalPrice.innerHTML = `$${total}`;
     submit.style.display = 'block';
   } else {
-    totalPrice.innerHTML = ``;
+    if(totalPrice) totalPrice.innerHTML = ``;
     submit.style.display = 'none';
   }
 
@@ -66,7 +66,7 @@ function submitForm(e) {
 
     // Iterate over input to post to cart
 
-    if (input.value != 0) {
+    if (input.value > 0) {
 
       data += `purchasableId=${id}&qty=${input.value}`;
       const response = postToCart(data).then(() => {
@@ -89,7 +89,7 @@ function submitForm(e) {
 
 export default function() {
 
-  inputs.forEach((input) => {
+  inputs.forEach( (input) => {
 
     const container = findParentNode(input,'input-container');
     const errors = container.querySelector('.errors');
