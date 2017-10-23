@@ -144,14 +144,21 @@ header {
 
   }
 
-  & .shop-actions {
+  & .cart-summary {
     position: absolute;
     background-color: var(--white);
     right: 0;
-    top: 70px;
-    padding: 20px 40px;
+    top: 60px;
     z-index: 9;
     box-shadow: -3px 3px 5px -3px #616161;
+
+    @media (--medium-max) {
+      width: 100%;
+    }
+
+    @media (--large-min) {
+      padding: 20px 40px;
+    }
 
     &[aria-hidden="true"] {
       display: none;
@@ -164,13 +171,18 @@ header {
     &:before {
       content: "";
       position: absolute;
-      right: 40px;
-      top: -10px;
+      right: 25px;
+      top: -9px;
       width: 0;
     	height: 0;
     	border-left: 8px solid transparent;
     	border-right: 8px solid transparent;
     	border-bottom: 10px solid var(--white);
+
+      @media (--large-min) {
+        right: 40px;
+      }
+
     }
 
     & p {
@@ -178,19 +190,27 @@ header {
     }
 
     & .order-item {
-      padding: 20px;
-      margin-bottom: 10px;
+      padding: 20px 40px;
       border-bottom: 1px solid var(--green);
       display: flex;
 
-      &:last-of-type {
-        margin-bottom: 30px;
+      @media (--large-min) {
+        padding: 20px;
+      }
+
+      &:first-of-type {
+
+        @media (--medium-max) {
+          border-top: 1px solid var(--green);
+        }
+
       }
 
       & h2 {
         line-height: 1em;
-        padding-left: 10px;
+        padding-left: 30px;
         position: relative;
+        font-size: 16px;
 
         &:before {
           content: attr(data-attr);
@@ -199,6 +219,8 @@ header {
           font-size: 36px;
           top: 50%;
           transform: translateY(-50%);
+          text-align: right;
+          width: 30px;
         }
 
       }

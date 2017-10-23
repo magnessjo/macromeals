@@ -3,9 +3,9 @@
 
 const header = document.querySelector('header');
 const button = header.querySelector('.register');
-const shopActions = header.querySelector('.shop-actions');
-const wrapper = shopActions.querySelector('.order-items');
-const actionLink = shopActions.querySelector('.call-to-action');
+const cartSummary = header.querySelector('.cart-summary');
+const wrapper = cartSummary.querySelector('.order-items');
+const actionLink = cartSummary.querySelector('.call-to-action');
 
 // Fetch
 
@@ -95,20 +95,20 @@ export default function() {
 
   button.addEventListener('click', () => {
 
-    const isShown = shopActions.getAttribute('aria-hidden');
+    const isShown = cartSummary.getAttribute('aria-hidden');
 
     if (isShown == 'true') {
 
       fetchData().then((data) => {
         updateDOM(data).then(() => {
-          shopActions.setAttribute('aria-hidden', 'false');
+          cartSummary.setAttribute('aria-hidden', 'false');
         });
       });
 
     } else {
 
       removeContent().then(() => {
-        shopActions.setAttribute('aria-hidden', 'true');
+        cartSummary.setAttribute('aria-hidden', 'true');
       });
 
     }
