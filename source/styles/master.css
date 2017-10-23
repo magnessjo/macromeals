@@ -24,8 +24,6 @@
 @import "/common/fonts.css";
 @import "/common/call-to-action.css";
 @import "/common/flex-wrapper.css";
-@import "/common/faq-wrapper.css";
-@import "/common/callout.css";
 @import "/common/sr-only.css";
 @import "/common/with-underline.css";
 @import "/common/slim-stage.css";
@@ -33,5 +31,4 @@
 @import "/common/cart-breadcrumb.css";
 @import "/common/icons.css";
 @import "/common/checkout-actions.css";
-@import "/common/cart-additions.css";
 @import "/common/product-post-submission.css";
