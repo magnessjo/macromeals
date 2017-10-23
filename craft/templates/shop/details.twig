@@ -19,12 +19,6 @@
       </div>
     </section>
 
-    {% if product.productImage|length > 0 %}
-      {% set image = product.productImage[0].url %}
-    {% else %}
-      {% set image = '/images/products/placeholder.jpg' %}
-    {% endif %}
-
     <section id="details">
 
       <div class="lock">
@@ -100,6 +94,12 @@
 
             {% if product.productSummary %}
               <p>{{ product.productSummary }}</p>
+            {% endif %}
+
+            {% if product.productImage|length > 0 %}
+              {% set image = product.productImage[0].url %}
+            {% else %}
+              {% set image = '/images/products/placeholder.jpg' %}
             {% endif %}
 
             <div class="product-image">

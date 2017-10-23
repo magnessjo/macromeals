@@ -50,7 +50,13 @@
 
                 <div class="order-item">
 
-                  <div class="image" style="background-image: url({{ product.productImage[0].url }})"></div>
+                  {% if product.productImage|length > 0 %}
+                    {% set image = product.productImage[0].url %}
+                  {% else %}
+                    {% set image = '/images/products/placeholder.jpg' %}
+                  {% endif %}
+
+                   <div class="image" style="background-image: url({{ image }})"></div>
 
                   <div class="wrapper">
                     <h2>{{ product.title }}</h2>
