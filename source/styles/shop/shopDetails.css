@@ -286,6 +286,7 @@ form {
 
     & > div {
       text-transform: uppercase;
+      text-align: center;
     }
 
   }
@@ -306,6 +307,8 @@ form {
 
     & > div {
       position: relative;
+      padding: 0 5px;
+      text-align: center;
 
       @media (--medium-max) {
         padding-left: 50%;
@@ -329,6 +332,7 @@ form {
     }
 
     & > div:first-of-type {
+      text-align: left;
 
       @media (--medium-max) {
         width: 100%;
