@@ -31,98 +31,72 @@
 
         <div class="flex-wrapper">
 
-          <div class="product-actions flex-actions">
+          <div id="product-actions" class="flex-actions">
 
-            <div>
+            <div class="fixed-wrapper">
 
-              <div class="fixed-wrapper">
+              <form method="POST" id="product-addition" class="fixed-form">
 
-                <form method="POST" id="product-addition" class="fixed-form">
-
-                  <div class="row-columns descriptions">
-
-                    <div class="flex">
-                      <div class="size">Size</div>
-                      <div class="price">Price</div>
-                      <div class="quantity">Quantity</div>
-                    </div>
-
+                <div class="row-columns descriptions">
+                  <div class="flex">
+                    <div class="size">Size</div>
+                    <div class="price">Price</div>
+                    <div class="quantity">Quantity</div>
                   </div>
+                </div>
 
-                  <div>
+                {% for purchasable in product.variants %}
 
-                    <div class="options">
+                  <div class="row-columns input-container">
+                    <div class="flex">
 
-                      {% for purchasable in product.variants %}
+                      <input type="hidden" name="qty" value="0">
+                      <input type="hidden" name="purchasableId" value="{{ purchasable.purchasableId }}">
+                      <div class="size">{{ purchasable.description }}</div>
+                      <div class="price">${{ purchasable.salePrice }}</div>
 
-                        <div class="list">
-
-                          <div class="row-columns input-container">
-
-                            <div class="flex">
-
-                              <input type="hidden" name="qty" value="0">
-                              <input type="hidden" name="purchasableId" value="{{ purchasable.purchasableId }}">
-                              <div class="size">{{ purchasable.description }}</div>
-                              <div class="price">${{ purchasable.salePrice }}</div>
-
-                              <div class="quantity field" valid="true">
-                                <div class="input">
-                                  <input type="number"
-                                         pattern="\d*"
-                                         value="0"
-                                         data-id="{{ purchasable.purchasableId }}"
-                                         id="firstName"
-                                         validation="checkForNumber" />
-                                </div>
-                              </div>
-
-                            </div>
-
-                            {% include "components/stock-error.twig" %}
-
-                          </div>
-
-                        </div>
-
-                      {% endfor %}
-
-                    </div>
-
-                    <div class="summary">
-
-                      <div class="row-columns">
-                        <div class="flex">
-                          <p class="acumin-small-bold">Total</p>
-                          <p class="acumin-small-bold quantity" data-total="price"></p>
+                      <div class="quantity field" valid="true">
+                        <div class="input">
+                          <input type="number"
+                                 pattern="\d*"
+                                 value="0"
+                                 data-id="{{ purchasable.purchasableId }}"
+                                 id="firstName"
+                                 validation="checkForNumber" />
                         </div>
                       </div>
-
-                      <input type="submit" value="Add To Cart" />
-
                     </div>
+
+                    {% include "components/stock-error.twig" %}
 
                   </div>
 
-                </form>
+                {% endfor %}
 
-                <div class="product-post-submission">
-
-                  <p class="acumin-small-bold">Your items have been added to your cart</p>
-                  <a href="/checkout" class="call-to-action">Checkout Now</a>
-                  <span class="acumin-medium">OR</span>
-                  <a href="/shop" class="call-to-action">View More Meals</a>
-
+                <div class="summary">
+                  <div class="row-columns">
+                    <div class="flex">
+                      <p class="acumin-small-bold">Total</p>
+                      <p class="acumin-small-bold quantity" data-total="price"></p>
+                    </div>
+                  </div>
+                  <input type="submit" value="Add To Cart" />
                 </div>
 
               </div>
 
+            </form>
+
+            <div class="product-post-submission">
+              <p class="acumin-small-bold">Your items have been added to your cart</p>
+              <a href="/checkout" class="call-to-action">Checkout Now</a>
+              <span class="acumin-medium">OR</span>
+              <a href="/shop" class="call-to-action">View More Meals</a>
             </div>
 
           </div>
 
-
-          <div class="product-details flex-descriptions">
+          <div id="product-details" class=" flex-descriptions">
 
             {% if product.productSummary %}
               <p>{{ product.productSummary }}</p>
