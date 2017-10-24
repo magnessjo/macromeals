@@ -16,6 +16,7 @@ export default function() {
   getCartItems().then((data) => {
 
     let total = 0;
+
     data.forEach((item) => {
       total += parseInt(item.quantity);
     });

@@ -55,33 +55,35 @@ function postSubmission() {
 
 function submitForm(e) {
 
-  const totalInputs = inputs.length - 1;
-  let submittedCorrectly = true;
-
   e.preventDefault();
 
-  inputs.forEach((input, i) => {
+  let inputWithValues = inputs.filter( (input) => {
+    return input.value > 0;
+  });
+
+  inputWithValues.forEach( (input, i) => {
 
     const id = input.getAttribute('data-id');
     let data = `${window.csrfTokenName}=${window.csrfTokenValue}&`;
 
     // Iterate over input to post to cart
 
-    if (input.value > 0) {
+    data += `purchasableId=${id}&qty=${input.value}`;
 
-      data += `purchasableId=${id}&qty=${input.value}`;
-      const response = postToCart(data).then(() => {
-        response.success ? input.value = 0 : submittedCorrectly = false
-      });
+    const response = postToCart(data).then( (response) => {
 
-    }
+      if (response.success) {
 
-    // Remove the button upon Submission
+        input.value = 0;
 
-    if (i == totalInputs && submittedCorrectly) {
-      postSubmission();
-      displayCartTotalInHeader();
-    }
+        if (i == inputWithValues.length - 1) {
+          displayCartTotalInHeader();
+          postSubmission();
+        }
+
+      }
+
+    });
 
   });
 
