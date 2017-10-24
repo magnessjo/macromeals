@@ -1,112 +1,5 @@
 
-.acumin-large  {
-  margin-bottom: 80px;
-}
-
-.order-summary {
-  margin-bottom: 80px;
-
-  & .item {
-
-    @media (--large-min) {
-      display: flex;
-      margin-bottom: 40px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid var(--light-gray);
-    }
-
-  }
-
-  & h2 {
-
-    @media (--large-min) {
-      width: 70%;
-    }
-
-  }
-
-  & .quantity {
-
-    @media (--large-min) {
-      width: 20%;
-    }
-
-  }
-
-  & .price {
-
-    @media (--large-min) {
-      width: 10%;
-    }
-
-  }
-
-  & .total {
-    overflow: hidden;
-
-    & h2 {
-      width: 80%;
-      float: left;
-      text-transform: uppercase;
-      font-weight: 700;
-      font-size: 24px;
-    }
-
-    & p {
-      width: 10%;
-      float: right;
-    }
-
-  }
-
-}
-
-.slider {
-  position: relative;
-  height: 300px;
-  overflow: hidden;
-
-  & .slide {
-    position: absolute;
-    left: 100%;
-    width: 100%;
-  }
-
-}
-
-.customer-address {
-
-  @media (--tablet-min) {
-    display: flex;
-  }
-
-  & > div:first-of-type {
-
-    @media (--large-max) {
-      margin-bottom: 30px;
-    }
-
-    @media (--tablet-min) {
-      margin-right: 50px;
-    }
-
-    @media (--desktop-min) {
-      margin-right: 80px;
-    }
-
-  }
-
-  & address {
-
-    & p {
-      margin-bottom: 5px;
-    }
-
-  }
-
-}
-
-#cart-list {
+#order-summary {
 
   & .no-items {
     padding: 100px 0;
@@ -119,8 +12,6 @@
   }
 
   & .item-list {
-    padding: 60px 0;
-    min-height: 50vh;
 
     & .items {
       margin-bottom: 40px;
@@ -175,6 +66,9 @@
       }
 
       & h2 {
+        font-size: calc(14px + 1vw);
+        text-transform: uppercase;
+        line-height: 1em;
 
         @media (--large-max) {
           margin-bottom: 40px;
@@ -183,6 +77,15 @@
 
         @media (--tablet-min) {
           width: 300px;
+        }
+
+        & span {
+          font-size: 14px;
+          display: block;
+          text-transform: capitalize;
+          line-height: 1em;
+          padding-left: 2px;
+          padding-top: 2px;
         }
 
       }
@@ -300,7 +203,5 @@
     }
 
   }
-
-
 
 }

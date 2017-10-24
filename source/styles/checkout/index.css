@@ -14,3 +14,61 @@ form#address-info {
   max-width: 700px;
   margin: 0 auto;
 }
+
+form#product-list {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.modal {
+  width: 50vw;
+  height: 50vw;
+  max-width: 400px;
+  max-height: 400px;
+  box-shadow: 0 0 100000px 10000px rgba(0, 0, 0, .5);
+  background-color: var(--white);
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate();
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-wrap: wrap;
+
+  & p {
+    order: 1;
+    padding: 40px;
+    margin-bottom: 0;
+    font-size: 22px;
+    align-self: center;
+  }
+
+  & .button-wrapper {
+    align-self: flex-end;
+    height: 30%;
+    padding: 5%;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    order: 2;
+
+    & > button {
+      width: 45%;
+      height: 100%;
+      color: var(--white);
+      text-transform: uppercase;
+    }
+
+    & .cancel {
+      background-color: var(--auburn);
+    }
+
+    & .confirm {
+      background-color: var(--green);
+    }
+
+  }
+
+
+
+}
