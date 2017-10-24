@@ -27,21 +27,33 @@
 
     <div>
 
-      <a href="/checkout"
-        class='{% if segment=="checkout" %} active {% endif %} {% if segment=="confirmation" %} completed {% endif %}'>
-      Customer <span>Information</span></a>
+      {% if segment=="checkout" %}
+        <p class='active'>Customer <span>Information</span></p>
+        <p><span>Order</span> Summary</p>
+        <p><span>Order</span> Billing</p>
+        <p><span>Process</span> Order</p>
+      {% endif %}
 
-      <a href="/checkout/summary"
-        class='{% if segment=="summary" %} active {% endif %}'>
-      <span>Order</span> Summary</a>
+      {% if segment=="summary" %}
+        <a href="/checkout" class='completed'>Customer <span>Information</span></a>
+        <p class="active"><span>Order</span> Summary</p>
+        <p><span>Order</span> Billing</p>
+        <p><span>Process</span> Order</p>
+      {% endif %}
 
-      <a href="/checkout/billing"
-        class='{% if segment=="billing" %} active {% endif %}'>
-      <span>Order</span> Billing</a>
+      {% if segment=="billing" %}
+        <a href="/checkout" class='completed'>Customer <span>Information</span></a>
+        <a href="/checkout/summary" class='completed'><span>Order</span> Summary</a>
+        <p class="active"><span>Order</span> Billing</p>
+        <p><span>Process</span> Order</p>
+      {% endif %}
 
-      <a href="/checkout/process"
-        class='{% if segment=="process" %} active {% endif %}'>
-      <span>Process</span> Order</a>
+      {% if segment=="process" %}
+        <a href="/checkout" class='completed'>Customer <span>Information</span></a>
+        <a href="/checkout/summary" class='completed'><span>Order</span> Summary</a>
+        <a href="/checkout/billing" class='completed'><span>Order</span> Billing</a>
+        <p class="active"><span>Process</span> Order</p>
+      {% endif %}
 
     </div>
 

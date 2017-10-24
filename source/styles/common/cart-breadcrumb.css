@@ -4,7 +4,7 @@
   padding: 50px 0;
   color: var(--white);
 
-  & a {
+  & a, & p {
     color: var(--white);
     padding-right: 40px;
     text-transform: uppercase;
@@ -13,6 +13,7 @@
     font-size: 14px;
     letter-spacing: .4px;
     white-space: nowrap;
+    margin-bottom: 0;
 
     @media (--large-max) {
       display: block;
@@ -23,11 +24,11 @@
       color: var(--yellow);
     }
 
-    &:last-of-type {
+    &:last-child {
       padding-right: 0;
     }
 
-    &:last-of-type:after {
+    &:last-child:after {
       display: none;
     }
 
