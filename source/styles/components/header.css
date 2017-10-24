@@ -132,12 +132,12 @@ header {
     position: relative;
 
     & img {
-      height: 20px;
-      width: 30px;
+      height: 40px;
+      width: 40px;
       align-self: center;
 
       @media (--large-min) {
-        height: 40px;
+        height: 45px;
         width: 60px;
       }
 
@@ -148,13 +148,22 @@ header {
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
-      height: 14px;
-      width: 14px;
+      height: 12px;
+      width: 12px;
       margin-left: 4px;
       margin-top: -4px;
       border-radius: 50%;
-      font-size: 11px;
+      font-size: 10px;
       color: var(--white);
+
+      @media (--large-min) {
+        height: 15px;
+        width: 15px;
+        margin-left: 4px;
+        margin-top: -5px;
+        font-size: 13px;
+      }
+
     }
 
   }

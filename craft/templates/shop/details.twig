@@ -77,15 +77,15 @@
                   <input type="submit" value="Add To Cart" />
                 </div>
 
+              </form>
+
+              <div class="product-post-submission">
+                <p class="acumin-small-bold">Your items have been added to your cart</p>
+                <a href="/checkout" class="call-to-action">Checkout Now</a>
+                <span class="acumin-medium">OR</span>
+                <a href="/shop" class="call-to-action">View More Meals</a>
               </div>
 
-            </form>
-
-            <div class="product-post-submission">
-              <p class="acumin-small-bold">Your items have been added to your cart</p>
-              <a href="/checkout" class="call-to-action">Checkout Now</a>
-              <span class="acumin-medium">OR</span>
-              <a href="/shop" class="call-to-action">View More Meals</a>
             </div>
 
           </div>
@@ -122,39 +122,39 @@
 
                   <div class="facts">
 
-                    <div>
+                  <div>
 
-                      {% for row in purchasable.productMacros %}
-                        {% if row.calories %}<p class="acumin-small"><span>CALORIES:</span> {{ row.calories }}</p>{% endif %}
-                        {% if row.protein %}<p class="acumin-small protein"><span>PROTEIN:</span> {{ row.protein }}g</p>{% endif %}
-                        {% if row.carbs %}<p class="acumin-small carbs"><span>CARBS:</span> {{ row.carbs }}g</p>{% endif %}
-                        {% if row.fat %}<p class="acumin-small fat"><span>FAT:</span> {{ row.fat }}g</p>{% endif %}
-                      {% endfor %}
-                    </div>
+                    {% for row in purchasable.productMacros %}
+                      {% if row.calories %}<p class="acumin-small"><span>CALORIES:</span> {{ row.calories }}</p>{% endif %}
+                      {% if row.protein %}<p class="acumin-small protein"><span>PROTEIN:</span> {{ row.protein }}g</p>{% endif %}
+                      {% if row.carbs %}<p class="acumin-small carbs"><span>CARBS:</span> {{ row.carbs }}g</p>{% endif %}
+                      {% if row.fat %}<p class="acumin-small fat"><span>FAT:</span> {{ row.fat }}g</p>{% endif %}
+                    {% endfor %}
+                  </div>
 
-                    {% include "components/pie-chart.twig" with { 'macros': purchasable.productMacros } %}
+                  {% include "components/pie-chart.twig" with { 'macros': purchasable.productMacros } %}
 
                   </div>
 
                   <div class="full-facts">
 
-                    <div class="table-head">
-                      <div>Item</div>
-                      <div>Calories</div>
-                      <div>Protein</div>
-                      <div>Carbs</div>
-                      <div>Fat</div>
-                    </div>
+                  <div class="table-head">
+                    <div>Item</div>
+                    <div>Calories</div>
+                    <div>Protein</div>
+                    <div>Carbs</div>
+                    <div>Fat</div>
+                  </div>
 
-                    {% for row in purchasable.ingredients %}
-                      <div class="table-row">
-                        <div data-attr="Item"><span>{{ row.item }}</span></div>
-                        <div data-attr="Calories">{{ row.calories }}</div>
-                        <div data-attr="Protein">{{ row.protein }}g</div>
-                        <div data-attr="Carbs">{{ row.carbs }}g</div>
-                        <div data-attr="Fat">{{ row.fat }}g</div>
-                      </div>
-                    {% endfor %}
+                  {% for row in purchasable.ingredients %}
+                    <div class="table-row">
+                      <div data-attr="Item"><span>{{ row.item }}</span></div>
+                      <div data-attr="Calories">{{ row.calories }}</div>
+                      <div data-attr="Protein">{{ row.protein }}g</div>
+                      <div data-attr="Carbs">{{ row.carbs }}g</div>
+                      <div data-attr="Fat">{{ row.fat }}g</div>
+                    </div>
+                  {% endfor %}
 
                   </div>
 
