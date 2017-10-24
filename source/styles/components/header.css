@@ -122,13 +122,14 @@ header {
 
   }
 
-  & .register {
+  & .cart {
     padding: 0 20px;
     height: 100%;
     display: flex;
     background-color: var(--green);
     color: var(--white);
     border-radius: 0;
+    position: relative;
 
     & img {
       height: 20px;
@@ -136,10 +137,24 @@ header {
       align-self: center;
 
       @media (--large-min) {
-        height: 30px;
+        height: 40px;
         width: 60px;
       }
 
+    }
+
+    & .number {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      height: 14px;
+      width: 14px;
+      margin-left: 4px;
+      margin-top: -4px;
+      border-radius: 50%;
+      font-size: 11px;
+      color: var(--white);
     }
 
   }

@@ -1,4 +1,9 @@
 
+{% set cartItemsTotal = 0 %}
+{% for item in cart.lineItems %}
+  {% set cartItemsTotal = cartItemsTotal + item.qty %}
+{% endfor %}
+
 <header>
 
   <menu>
@@ -54,7 +59,8 @@
         <p class="text">Menu</p>
       </div>
 
-      <button class="register">
+      <button class="cart">
+        <div class="number">{{ cartItemsTotal }}</div>
         <img src="/images/icons/cart.svg" />
       </button>
 

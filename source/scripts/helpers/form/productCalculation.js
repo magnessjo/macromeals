@@ -4,6 +4,7 @@
 import findParentNode from 'scripts/helpers/findParentNode.js';
 import checkProductQuantity from 'scripts/helpers/cart/checkProductQuantity.js';
 import postToCart from 'scripts/helpers/cart/postToCart.js';
+import displayCartTotalInHeader from 'scripts/helpers/cart/displayCartTotalInHeader.js';
 
 // Variables
 
@@ -79,6 +80,7 @@ function submitForm(e) {
 
     if (i == totalInputs && submittedCorrectly) {
       postSubmission();
+      displayCartTotalInHeader();
     }
 
   });

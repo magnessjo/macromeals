@@ -1,36 +1,15 @@
 
+// Import
+
+import getCartItems from 'scripts/helpers/cart/getCartItems.js';
+
 // Variables
 
 const header = document.querySelector('header');
-const button = header.querySelector('.register');
+const button = header.querySelector('.cart');
 const cartSummary = header.querySelector('.cart-summary');
 const wrapper = cartSummary.querySelector('.order-items');
 const actionLink = cartSummary.querySelector('.call-to-action');
-
-// Fetch
-
-function fetchData() {
-
-  const url = '/actions/MacroCommerce/Cart/getLines';
-
-  return new Promise((resolve, reject) => {
-
-    fetch(url, {
-      method: "GET",
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest'
-      },
-      credentials: "same-origin"
-    }).then(function(response) {
-      resolve(response.json());
-    }, function(error) {
-      console.log(`error : ${error.message }`);
-    });
-
-  });
-
-}
 
 // Update DOM
 
@@ -99,7 +78,7 @@ export default function() {
 
     if (isShown == 'true') {
 
-      fetchData().then((data) => {
+      getCartItems().then((data) => {
         updateDOM(data).then(() => {
           cartSummary.setAttribute('aria-hidden', 'false');
         });
