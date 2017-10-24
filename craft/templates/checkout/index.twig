@@ -3,8 +3,7 @@
 {% includeCssFile "/checkout.css" %}
 {% includeJsFile "/customer.js" %}
 
-{% set cart = craft.commerce.getCart() %}
-
+{% set cart = craft.commerce.getCart %}
 {% set shippingModel = cart.shippingAddress %}
 {% set billingModel = cart.billingAddress %}
 
@@ -30,7 +29,9 @@
 
     <input type="hidden" name="action" value="commerce/cart/updateCart">
     <input type="hidden" name="redirect" value="checkout/summary">
-    <input type="hidden" name="shippingAddressId" value="new">
+    <input type='hidden' name="sameAddress" value="1" />
+    <input type="hidden" name="shippingAddressId" value="{{ shippingModel is not null ? shippingModel.id : 'new' }}">
+    {# <input type="hidden" name="billingAddressId" value="{{ billingModel is not null ? billingModel.id : 'new' }}"> #}
 
     <input type="hidden" name="shippingAddress[countryId]" value='233' />
 
@@ -49,7 +50,7 @@
                    name="shippingAddress[firstName]"
                    id="firstName"
                    validation="checkForLetter"
-                   value="{{ shippingModel.firstName ?? addressModel.firstName ?? '' }}" />
+                   value="{{ addressModel.firstName ?? '' }}" />
 
             <div class="errors">
               <p class="required">First name is a required field</p>
@@ -65,7 +66,7 @@
                    name="shippingAddress[lastName]"
                    id="lastName"
                    validation="checkForLetter"
-                   value="{{ shippingModel.lastName ?? addressModel.lastName ?? '' }}" />
+                   value="{{ addressModel.lastName ?? '' }}" />
 
             <div class="errors">
               <p class="required">Last name is a required field</p>
@@ -80,7 +81,7 @@
             <input type="text"
                    name="shippingAddress[phone]"
                    id="phone"
-                   value="{{ shippingModel.phone ?? addressModel.phone ?? '' }}" />
+                   value="{{ addressModel.phone ?? '' }}" />
             <div class="errors"></div>
           </div>
         </div>
@@ -101,7 +102,7 @@
             <input type="text"
                    name="shippingAddress[address1]"
                    id="address1"
-                   value="{{ shippingModel.address1 ?? addressModel.address1 ?? '' }}" />
+                   value="{{ addressModel.address1 ?? '' }}" />
 
             <div class="errors">
               <p class="required">Shipping address is a required field</p>
@@ -115,7 +116,7 @@
             <input type="text"
                    name="shippingAddress[address2]"
                    id="address2"
-                   value="{{ shippingModel.address2 ?? addressModel.address2 ?? '' }}" />
+                   value="{{ addressModel.address2 ?? '' }}" />
 
             <div class="errors"></div>
           </div>
@@ -127,7 +128,7 @@
             <input type="text"
                    name="shippingAddress[city]"
                    id="city"
-                   value="{{ shippingModel.city ?? addressModel.city ?? '' }}" />
+                   value="{{ addressModel.city ?? '' }}" />
 
             <div class="errors">
               <p class="required">Shipping city is a required field</p>
@@ -141,7 +142,7 @@
             <input type="text"
                    name="shippingAddress[zipCode]"
                    id="zipCode"
-                   value="{{ shippingModel.zipCode ?? addressModel.zipCode ?? '' }}" />
+                   value="{{ addressModel.zipCode ?? '' }}" />
 
             <div class="errors">
               <p class="required">Shipping zip code is a required field</p>
@@ -155,13 +156,19 @@
             <select name="shippingAddress[stateId]" >
               <option disabled selected value> Please Choose </option>
               {% for state in craft.commerce.states %}
+
                 {% if addressModel %}
+
                   {% if addressModel.state == state %}
                     <option value="{{ addressModel.stateId }}" selected> {{ addressModel.state }}</option>
                   {% else %}
                     <option value="{{ state.id }}">{{ state.name }}</option>
                   {% endif %}
+
+                {% else %}
+                  <option value="{{ state.id }}">{{ state.name }}</option>
                 {% endif %}
+
               {% endfor %}
             </select>
           </div>
@@ -172,7 +179,16 @@
 
     </section>
 
-    <section id="billing-address">
+
+
+
+
+
+
+
+
+
+    {# <section id="billing-address">
 
       <div class="lock">
 
@@ -192,7 +208,7 @@
               <input type="text"
                      name="billingAddress[address1]"
                      id="billingaddress1"
-                     value="{{ billingModel.address1 ?? addressModel.address1 ?? '' }}" />
+                     value="{{ addressModel.address1 ?? '' }}" />
 
               <div class="errors">
                 <p class="required">Billing address is a required field</p>
@@ -206,7 +222,7 @@
               <input type="text"
                      name="billingAddress[address2]"
                      id="address2"
-                     value="{{ billingModel.address2 ?? addressModel.address2 ?? '' }}" />
+                     value="{{ addressModel.address2 ?? '' }}" />
 
               <div class="errors"></div>
             </div>
@@ -218,7 +234,7 @@
               <input type="text"
                      name="billingAddress[city]"
                      id="city"
-                     value="{{ billingModel.city ?? addressModel.city ?? '' }}" />
+                     value="{{ addressModel.city ?? '' }}" />
 
               <div class="errors">
                 <p class="required">Billing city is a required field</p>
@@ -232,7 +248,7 @@
               <input type="text"
                      name="billingAddress[zipCode]"
                      id="zipCode"
-                     value="{{ billingModel.zipCode ?? addressModel.zipCode ?? '' }}" />
+                     value="{{ addressModel.zipCode ?? '' }}" />
 
               <div class="errors">
                 <p class="required">Billing zip code is a required field</p>
@@ -248,11 +264,15 @@
                 <option disabled selected value> Please Choose </option>
                 {% for state in craft.commerce.states %}
                   {% if addressModel %}
+
                     {% if addressModel.state == state %}
                       <option value="{{ addressModel.stateId }}" selected> {{ addressModel.state }}</option>
                     {% else %}
                       <option value="{{ state.id }}">{{ state.name }}</option>
                     {% endif %}
+
+                  {% else %}
+                    <option value="{{ state.id }}">{{ state.name }}</option>
                   {% endif %}
                 {% endfor %}
               </select>
@@ -264,7 +284,13 @@
 
       </div>
 
-    </section>
+    </section> #}
+
+
+
+
+
+
 
     <section class="action">
 

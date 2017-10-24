@@ -7,10 +7,10 @@ import inputQuery from 'scripts/helpers/form/inputQuery.js';
 // Variables
 
 const form = document.querySelector('form');
-const billingContainer = document.querySelector('#billing-address');
-const checkbox = billingContainer.querySelector('input[type="checkbox"]');
+// const billingContainer = document.querySelector('#billing-address');
+// const checkbox = billingContainer.querySelector('input[type="checkbox"]');
 const requiredFields = Array.from(form.querySelectorAll('[data-required]'));
-const billingRequiredFields = Array.from(billingContainer.querySelectorAll('[data-required]'));
+// const billingRequiredFields = Array.from(billingContainer.querySelectorAll('[data-required]'));
 const inputs = Array.from(form.querySelectorAll('inputs[type="text"]'));
 
 // Export
@@ -21,47 +21,45 @@ export default function() {
 
     e.preventDefault();
 
-    let validForm = false;
     let shouldScroll = true;
     let fields = requiredFields;
 
-    if (checkbox.checked) {
+    // if (checkbox.checked) {
+    //
+    //   billingRequiredFields.forEach((field) => {
+    //
+    //     const index = requiredFields.indexOf(field);
+    //     fields.splice(index, 1);
+    //
+    //   });
+    //
+    // }
 
-      billingRequiredFields.forEach((field) => {
+    inputQuery(form, false);
 
-        const index = requiredFields.indexOf(field);
-        fields.splice(index, 1);
+    for (let i = 0; i < fields.length; i++) {
 
-      });
-
-    }
-
-    fields.forEach((elm, i) => {
-
+      const elm = fields[i];
       const isValid = elm.getAttribute('valid');
 
       if (isValid == 'false') {
-
-        inputQuery(form, false);
 
         if (shouldScroll) {
           scrollToLocation(elm, 120);
           shouldScroll = false;
         }
 
-        if (i == fields.length - 1) validForm = true;
+        return;
 
       } else {
 
-        if (validForm) {
+        if (i == fields.length - 1) {
           form.submit();
         }
 
       }
 
-    });
-
-
+    }
 
   });
 

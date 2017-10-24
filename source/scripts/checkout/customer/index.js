@@ -3,7 +3,6 @@
 
 import modifyFormValueForResize from 'scripts/helpers/form/modifyFormValueForResize.js';
 import inputQuery from 'scripts/helpers/form/inputQuery.js';
-import displayBillingForm from './displayBillingForm.js';
 import formSubmit from './formSubmit.js';
 
 // Variables
@@ -15,7 +14,7 @@ const form = document.querySelector('form');
 document.addEventListener('DOMContentLoaded', () => {
 
   modifyFormValueForResize();
-  displayBillingForm();
+  // displayBillingForm();
   inputQuery(form);
   formSubmit();
 
