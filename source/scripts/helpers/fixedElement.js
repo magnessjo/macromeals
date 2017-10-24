@@ -16,9 +16,11 @@ function scroll() {
     wrapper.style.position = 'fixed';
     container.style.height = `${wrapper.offsetHeight}px`;
     wrapper.style.width = `${containerWidth}px`;
+    wrapper.setAttribute('scrolling', true);
   } else {
     wrapper.style.position = 'relative';
     container.style.height = 'inherit';
+    wrapper.setAttribute('scrolling', false);
   }
 
 }

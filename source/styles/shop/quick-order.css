@@ -24,6 +24,8 @@
 
   @media (--large-max) {
     margin-bottom: 30px;
+    margin-left: -20px;
+    margin-right: -20px;
   }
 
   & p {
@@ -44,6 +46,19 @@
     max-width: 100%;
     background-color: var(--white);
     padding: 10px 0;
+
+    @media (--large-max) {
+      padding: 10px 20px;
+    }
+
+    &[scrolling="true"] {
+
+      @media (--large-max) {
+        box-shadow: 0 2px 5px -2px #616161;
+      }
+
+    }
+
   }
 
   & h1 {
@@ -203,7 +218,7 @@
     padding-bottom: 5px;
 
     & a {
-      font-size: 13px;
+      font-size: 10px;
       line-height: 1em;
       margin-left: 5px;
     }
