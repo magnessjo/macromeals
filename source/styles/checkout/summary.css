@@ -183,21 +183,22 @@
     & .cart-total {
       margin-bottom: 80px;
 
+      & .title {
+        text-transform: uppercase;
+      }
+
+      & .cost {
+       width: 80px;
+       font-weight: 700;
+      }
+
+      & span {
+       display: inline-block;
+      }
+
       & p {
         margin-bottom: 0;
         text-align: right;
-
-        @media (--tablet-min) {
-          padding-right: 70px;
-        }
-
-        & span {
-          display: inline-block;
-          padding-left: 20px;
-          font-size: 30px;
-          font-size: calc(26px + 1.25vw);
-        }
-
       }
 
     }

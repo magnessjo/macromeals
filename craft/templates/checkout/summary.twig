@@ -52,6 +52,7 @@
 
                 {% set variant = item.purchasable %}
                 {% set product = variant.product %}
+                {% set quantityMoreThanStock = item.qty > variant.stock  %}
 
                 <div class="order-item" data-id="{{ item.id }}">
 
@@ -85,7 +86,20 @@
 
             <div class="cart-total">
 
-              <p class="acumin-small-bold">Total<span class="items-amount">{{ cart.totalPrice | commerceCurrency(cart.currency, stripZeros = true) }}</span></p>
+              <p class="acumin-tiny">
+                <span class="title">SubTotal</span>
+                <span class="cost" data-type="items-amount">{{ cart.itemSubtotal | currency(cart.currency) }}</span>
+              </p>
+
+              <p class="acumin-tiny">
+                <span class="title">Tax</span>
+                <span class="cost" data-type="tax-amount">{{ cart.totalTax | commerceCurrency(cart.currency) }}</span>
+              </p>
+
+              <p class="acumin-medium-bold">
+                <span class="title">Total</span>
+                <span class="cost" data-type="total-amount">{{ cart.totalPrice | commerceCurrency(cart.currency, stripZeros = true) }}</span>
+              </p>
 
             </div>
 

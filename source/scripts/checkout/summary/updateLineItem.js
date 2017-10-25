@@ -12,7 +12,6 @@ const form = document.querySelector('form');
 const items = Array.from(form.querySelectorAll('.item-actions'));
 const buttons = Array.from(form.querySelectorAll('.increment button'));
 const cartTotal = form.querySelector('.cart-total');
-const itemsAmount = cartTotal.querySelector('.items-amount');
 
 // Disable Buttons
 
@@ -24,6 +23,15 @@ function enableButttons(buttons) {
 
 function disableButttons(buttons) {
   buttons.forEach( (button) => { button.disabled = true });
+}
+
+// Update Total Cost
+
+function updateTotalCost(displayNumber) {
+
+  const itemsAmount = cartTotal.querySelector('[data-type="items-amount"]');
+  itemsAmount.innerHTML = displayNumber;
+
 }
 
 // Update DOM
@@ -60,11 +68,11 @@ function update(button, increase) {
 
     currentQtyElement.innerHTML = qty;
     displayCartTotalInHeader();
-    getCartTotal().then( (number) => {
+    getCartTotal.allItemsWithAdjustments().then( (number) => {
       const displayNumber = `$${parseFloat(number).toFixed(2)}`;
-      itemsAmount.innerHTML = displayNumber;
       costElement.innerHTML = displayNumber;
-      enableButttons(buttons)
+      updateTotalCost(displayNumber);
+      enableButttons(buttons);
     });
 
   });
