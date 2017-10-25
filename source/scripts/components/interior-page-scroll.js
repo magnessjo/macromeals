@@ -15,7 +15,7 @@ function windowSroll() {
 
   if (window.innerWidth > 768) {
 
-    if (positionTop.top + documentBody < window.pageYOffset) {
+    if (positionTop.top < window.pageYOffset) {
       nav.style.position = 'fixed';
     } else {
       nav.style.position = 'relative';
