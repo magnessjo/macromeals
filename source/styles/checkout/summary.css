@@ -35,14 +35,9 @@
 
       & .image {
         background-position: center;
-        background-size: cover;
-        width: 100px;
+        background-size: contain;
+        width: 140px;
         align-self: normal;
-
-        @media (--desktop-min) {
-          width: 140px;
-        }
-
       }
 
       & .wrapper {
@@ -60,7 +55,7 @@
           padding-left: 30px;
           padding-right: 30px;
           padding-top: 40px;
-          width: 100%;
+          width: calc(100% - 140px);
         }
 
       }
