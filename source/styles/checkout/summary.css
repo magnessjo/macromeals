@@ -115,6 +115,11 @@
 
         & button {
           position: relative;
+
+          &:disabled {
+            opacity: .2;
+          }
+
         }
 
         & span {

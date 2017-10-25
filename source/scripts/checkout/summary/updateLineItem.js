@@ -14,23 +14,57 @@ const buttons = Array.from(form.querySelectorAll('.increment button'));
 const cartTotal = form.querySelector('.cart-total');
 const itemsAmount = cartTotal.querySelector('.items-amount');
 
+// Disable Buttons
+
+function enableButttons(buttons) {
+  buttons.forEach( (button) => { button.disabled = false });
+}
+
+// Disable Buttons
+
+function disableButttons(buttons) {
+  buttons.forEach( (button) => { button.disabled = true });
+}
+
+// Update DOM
+
 function update(button, increase) {
+
+  // Dom Elements
 
   const parent = findParentNode(button, 'order-item');
   const actions = parent.querySelector('.item-actions');
-  const currentElement = actions.querySelector('span');
-  const currentQuantity = parseInt(currentElement.innerHTML);
+  const incrementOptions = parent.querySelector('.increment');
+
+  const currentQtyElement = incrementOptions.querySelector('span');
+  const costElement = actions.querySelector('.cost');
+  const buttons = Array.from(incrementOptions.querySelectorAll('button'));
+
+  // Get Attributes
+
   const id = parent.getAttribute('data-id');
+
+  // Set Quantity
+
+  const currentQuantity = parseInt(currentQtyElement.innerHTML);
   const qty = increase ? currentQuantity + 1 : currentQuantity - 1;
   let data = `${window.csrfTokenName}=${window.csrfTokenValue}&lineItemId=${id}&qty=${qty}`;
 
+  // Pre Process
+
+  disableButttons(buttons);
+
+  // Process Request
+
   updateCartItem(data).then(() => {
 
-    currentElement.innerHTML = qty;
+    currentQtyElement.innerHTML = qty;
     displayCartTotalInHeader();
     getCartTotal().then( (number) => {
-      console.log(number);
-      itemsAmount.innerHTML = `$${parseFloat(number).toFixed(2)}`;
+      const displayNumber = `$${parseFloat(number).toFixed(2)}`;
+      itemsAmount.innerHTML = displayNumber;
+      costElement.innerHTML = displayNumber;
+      enableButttons(buttons)
     });
 
   });
