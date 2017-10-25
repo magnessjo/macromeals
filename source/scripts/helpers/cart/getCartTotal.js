@@ -3,22 +3,16 @@
 
 import fetchData from 'scripts/helpers/fetchPostData.js';
 
-// All Items and Adjustments
+// Export
 
-function allItemsWithAdjustments() {
+export default function() {
 
   return new Promise((resolve, reject) => {
 
-    fetchData(``, '/actions/MacroCommerce/Cart/getCartTotal').then( (response) => {
+    fetchData(``, '/actions/MacroCommerce/Cart/getCartTotals').then( (response) => {
       resolve(response);
     });
 
   });
 
 }
-
-const obj = {
-  allItemsWithAdjustments,
-}
-
-export default obj;

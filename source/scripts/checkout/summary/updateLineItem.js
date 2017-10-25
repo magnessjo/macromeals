@@ -5,13 +5,14 @@ import findParentNode from 'scripts/helpers/findParentNode.js';
 import updateCartItem from 'scripts/helpers/cart/updateCartItem.js';
 import displayCartTotalInHeader from 'scripts/helpers/cart/displayCartTotalInHeader.js';
 import getCartTotal from 'scripts/helpers/cart/getCartTotal.js';
+import formatStringForDollar from 'scripts/helpers/formatStringForDollar.js';
+import updateCartTotals from './updateCartTotals.js';
 
 // Variables
 
 const form = document.querySelector('form');
 const items = Array.from(form.querySelectorAll('.item-actions'));
 const buttons = Array.from(form.querySelectorAll('.increment button'));
-const cartTotal = form.querySelector('.cart-total');
 
 // Disable Buttons
 
@@ -25,14 +26,6 @@ function disableButttons(buttons) {
   buttons.forEach( (button) => { button.disabled = true });
 }
 
-// Update Total Cost
-
-function updateTotalCost(displayNumber) {
-
-  const itemsAmount = cartTotal.querySelector('[data-type="items-amount"]');
-  itemsAmount.innerHTML = displayNumber;
-
-}
 
 // Update DOM
 
@@ -50,13 +43,13 @@ function update(button, increase) {
 
   // Get Attributes
 
-  const id = parent.getAttribute('data-id');
+  const itemId = parent.getAttribute('data-id');
 
   // Set Quantity
 
   const currentQuantity = parseInt(currentQtyElement.innerHTML);
   const qty = increase ? currentQuantity + 1 : currentQuantity - 1;
-  let data = `${window.csrfTokenName}=${window.csrfTokenValue}&lineItemId=${id}&qty=${qty}`;
+  let postData = `${window.csrfTokenName}=${window.csrfTokenValue}&lineItemId=${itemId}&qty=${qty}`;
 
   // Pre Process
 
@@ -64,21 +57,31 @@ function update(button, increase) {
 
   // Process Request
 
-  updateCartItem(data).then(() => {
+  updateCartItem(postData).then( (data) => {
+
+    const cart = data.cart;
+    const lineItems = cart.lineItems;
+
+    for (const key in lineItems) {
+
+      const item = lineItems[key];
+
+      if (item.id == itemId) {
+        const displayNumber = formatStringForDollar(item.total);
+        costElement.innerHTML = displayNumber;
+      }
+
+    }
 
     currentQtyElement.innerHTML = qty;
+
     displayCartTotalInHeader();
-    getCartTotal.allItemsWithAdjustments().then( (number) => {
-      const displayNumber = `$${parseFloat(number).toFixed(2)}`;
-      costElement.innerHTML = displayNumber;
-      updateTotalCost(displayNumber);
-      enableButttons(buttons);
-    });
+    updateCartTotals(cart);
+    enableButttons(buttons);
 
   });
 
 }
-
 
 // Export
 

@@ -4,6 +4,7 @@
 import findParentNode from 'scripts/helpers/findParentNode.js';
 import removeCartItem from 'scripts/helpers/cart/removeCartItem.js';
 import displayCartTotalInHeader from 'scripts/helpers/cart/displayCartTotalInHeader.js';
+import updateCartTotals from './updateCartTotals.js';
 
 // Variables
 
@@ -49,12 +50,13 @@ function showModal(button) {
     const id = parent.getAttribute('data-id');
     let data = `${window.csrfTokenName}=${window.csrfTokenValue}&lineItemId=${id}`;
 
-    removeCartItem(data).then(() => {
+    removeCartItem(data).then( (data) => {
 
       parent.remove();
       removeCartItem();
       removeModal();
       displayCartTotalInHeader();
+      updateCartTotals(data.cart);
 
     });
 
