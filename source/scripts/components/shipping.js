@@ -14,7 +14,7 @@ const regex = /^(\d{5})?$/;
 function setRate(zip) {
 
   const xhr = new XMLHttpRequest();
-  const url = '/actions/shippingRates';
+  const url = '/actions/MacroCommerce/ShippingRates';
   let data = `zip=${zip}&`;
 
   data += `${window.csrfTokenName}=${window.csrfTokenValue}`;

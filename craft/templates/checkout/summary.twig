@@ -73,7 +73,7 @@
                         <span>{{ item.qty }}</span>
                         <button class="icons plus"></button>
                       </div>
-                      <p class="cost">${{ item.subtotal }}</p>
+                      <p class="cost">{{ item.subtotal | currency(cart.currency) }}</p>
                       <button class="icons remove"></button>
                     </div>
                   </div>
@@ -85,6 +85,16 @@
             </div>
 
             <div class="cart-total">
+
+              <div class="promo">
+
+              </div>
+
+
+              <p class="acumin-tiny">
+                <span class="title">Shipping</span>
+                <span class="cost" data-type="">{{ cart.totalShippingCost | currency(cart.currency) }}</span>
+              </p>
 
               <p class="acumin-tiny">
                 <span class="title">SubTotal</span>
