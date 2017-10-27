@@ -10,7 +10,6 @@ export default function(data) {
   return new Promise((resolve, reject) => {
 
     fetchData(data, '/actions/commerce/cart/updateLineItem').then( (response) => {
-      console.log(response);
       resolve(response);
     });
 

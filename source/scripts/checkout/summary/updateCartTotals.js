@@ -7,6 +7,8 @@ import formatStringForDollar from 'scripts/helpers/formatStringForDollar.js';
 
 export default function(cart) {
 
+  console.log(cart);
+
   const cartTotal = document.querySelector('.cart-total');
 
   if (cartTotal) {
