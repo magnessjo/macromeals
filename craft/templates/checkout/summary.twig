@@ -31,7 +31,7 @@
           <div class="lock">
 
             <p class="acumin-medium">You currently do not have meals in your cart.</p>
-            <p class="acumin-small">You can view all of our meals <a href="/shop">here</a>.
+            <p class="acumin-small">You can view all of our meals <a href="/shop">here</a>.</p>
             <p>Please contact us at <a href="mailto:help@macromeals.life">help@macromeals.life</a> if you are having any issues adding meals or if you would like to setup a phone call to help walk you through the website.</p>
 
           </div>
@@ -65,7 +65,7 @@
                   <div class="image" style="background-image: url({{ image }})"></div>
 
                   <div class="wrapper">
-                    <h2>{{ product.title }} <span>{{ variant.title }}</h2>
+                    <h2>{{ product.title }} <span>{{ variant.title }}</span></h2>
 
                     <div class="item-actions">
                       <div class="increment">
@@ -84,35 +84,6 @@
 
             </div>
 
-            <div class="cart-total">
-
-              <div class="promo">
-
-              </div>
-
-
-              <p class="acumin-tiny">
-                <span class="title">Shipping</span>
-                <span class="cost" data-type="shipping-amount">{{ cart.totalShippingCost | currency(cart.currency) }}</span>
-              </p>
-
-              <p class="acumin-tiny">
-                <span class="title">SubTotal</span>
-                <span class="cost" data-type="items-amount">{{ cart.itemSubtotal | currency(cart.currency) }}</span>
-              </p>
-
-              <p class="acumin-tiny">
-                <span class="title">Tax</span>
-                <span class="cost" data-type="tax-amount">{{ cart.totalTax | commerceCurrency(cart.currency) }}</span>
-              </p>
-
-              <p class="acumin-medium-bold">
-                <span class="title">Total</span>
-                <span class="cost" data-type="total-amount">{{ cart.totalPrice | commerceCurrency(cart.currency, stripZeros = true) }}</span>
-              </p>
-
-            </div>
-
           </div>
 
         </div>
@@ -120,6 +91,59 @@
       {% endif %}
 
     </section>
+
+    {% if cart.lineItems | length != 0 %}
+
+      <section id="cart-total">
+
+        <div class="lock">
+
+          <div class="promo">
+
+            <label>Promotional Code</label>
+            <div>
+              <input type="text" name="couponCode" value="{{ cart.couponCode }}" placeholder="Code" />
+              <button class="call-to-action">{% if cart.couponCode %}Change{% else %}Apply{% endif %}</button>
+            </div>
+
+            <p class="text">If you have a promotional code, please add it for your order.</p>
+
+          </div>
+
+          <div class='totals'>
+
+            <p class="acumin-tiny">
+              <span class="title">Shipping</span>
+              <span class="cost" data-type="shipping-amount">{{ cart.totalShippingCost | currency(cart.currency) }}</span>
+            </p>
+
+            <p class="acumin-tiny discount" {% if cart.baseDiscount %} style="display:block;" {% endif %}>
+              <span class="title">Discount</span>
+              <span class="cost" data-type="discount-amount">{{ cart.baseDiscount | currency(cart.currency) }}</span>
+            </p>
+
+            <p class="acumin-tiny">
+              <span class="title">SubTotal</span>
+              <span class="cost" data-type="items-amount">{{ cart.itemSubtotal | currency(cart.currency) }}</span>
+            </p>
+
+            <p class="acumin-tiny">
+              <span class="title">Tax</span>
+              <span class="cost" data-type="tax-amount">{{ cart.totalTax | commerceCurrency(cart.currency) }}</span>
+            </p>
+
+            <p class="acumin-medium-bold">
+              <span class="title">Total</span>
+              <span class="cost" data-type="total-amount">{{ cart.totalPrice | commerceCurrency(cart.currency, stripZeros = true) }}</span>
+            </p>
+
+          </div>
+
+        </div>
+
+      </section>
+
+    {% endif %}
 
     {# Checkout Actions #}
 

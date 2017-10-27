@@ -30,6 +30,7 @@ form#product-list {
   transform: translate(-50%, -50%);
   display: flex;
   flex-wrap: wrap;
+  z-index: 999;
 
   @media (--large-max) {
     padding: 40px;

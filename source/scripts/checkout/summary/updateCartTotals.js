@@ -7,14 +7,14 @@ import formatStringForDollar from 'scripts/helpers/formatStringForDollar.js';
 
 export default function(cart) {
 
-  const cartTotal = document.querySelector('.cart-total');
+  const cartTotal = document.querySelector('#cart-total');
 
   if (cartTotal) {
 
     const totalElement = cartTotal.querySelector('[data-type="total-amount"]');
     const subTotalElement = cartTotal.querySelector('[data-type="items-amount"]');
-    const taxAmount = cartTotal.querySelector('[data-type="tax-amount"]');
-    const shippingAmount = cartTotal.querySelector('[data-type="shipping-amount"]');
+    const taxElement = cartTotal.querySelector('[data-type="tax-amount"]');
+    const shippingElement = cartTotal.querySelector('[data-type="shipping-amount"]');
 
     const totalNumber = formatStringForDollar(cart.totalPrice);
     const subTotalNumber = formatStringForDollar(cart.itemSubtotal);
@@ -23,8 +23,8 @@ export default function(cart) {
 
     totalElement.innerHTML = totalNumber;
     subTotalElement.innerHTML = subTotalNumber;
-    taxAmount.innerHTML = taxNumber;
-    shippingAmount.innerHTML = shippingNumber;
+    taxElement.innerHTML = taxNumber;
+    shippingElement.innerHTML = shippingNumber;
 
   }
 
