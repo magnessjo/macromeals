@@ -179,12 +179,36 @@
 
     </section>
 
+    <section id="shipping-method">
 
+      <div class="lock">
 
+        <h1 class="acumin-medium-bold">Shipping Method</h1>
 
+        <div class="types">
 
+          {% for handle, method in craft.commerce.availableShippingMethods %}
 
+            {% if loop.first %}
+              <input type="hidden" name="shippingMethod" value="overnight" />
+            {% endif %}
 
+            <div class="shpping-type" data-handle="{{ handle }}" {% if loop.first %}data-active="true"{% endif %}>
+
+              <div>
+                <h2 class="acumin-small">{{ method.name }}</h2>
+                <p>{{ method.description }}</p>
+              </div>
+
+            </div>
+
+          {% endfor %}
+
+        </div>
+
+      </div>
+
+    </section>
 
 
 

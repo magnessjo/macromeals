@@ -6,3 +6,51 @@
 #customer-address {
 
 }
+
+#shipping-method {
+
+  & .types {
+
+    @media (--large-min) {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    & > div {
+
+      @media (--large-min) {
+        width: 48%;
+      }
+
+    }
+
+  }
+
+  & .shpping-type {
+    border: 1px solid var(--light-gray);
+    display: flex;
+    padding: 40px;
+    align-items: center;
+    min-height: 200px;
+    height: 10vh;
+    cursor: pointer;
+
+    @media (--large-min) {
+
+    }
+
+    &:first-of-type {
+
+      @media (--medium-max) {
+        margin-bottom: 20px;
+      }
+
+    }
+
+    &[data-active="true"] {
+      border: 1px solid var(--green);
+    }
+
+  }
+
+}
