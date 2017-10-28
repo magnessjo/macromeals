@@ -4,16 +4,48 @@
 import inputValidation from './inputValidation.js';
 import findParentNode from 'scripts/helpers/findParentNode.js';
 
+// Remove Each Input from Validation if Shipping Method is Pickup
+
+function checkInputAganistList(inputs) {
+
+  const remove = [];
+
+  inputs.forEach( (input) => {
+
+    const id = input.getAttribute('id');
+    if (id == 'address1' || id == 'city' || id == 'zipCode') {
+      const parent = findParentNode(input, 'field');
+      parent.setAttribute('valid', true);
+      remove.push(input);
+    }
+
+  });
+
+  inputs = inputs.filter( (item) => {
+    return !remove.includes(item);
+  });
+
+  return inputs;
+
+}
+
 // Export
 
 export default function(form, attachEvents = true) {
 
-  const inputs = Array.from(form.querySelectorAll('input'));
+  const isFormWithShippingMethod = form.getAttribute('data-method');
+  let inputs = Array.from(form.querySelectorAll('input[type="text"]'));
+
+  if (attachEvents == false && isFormWithShippingMethod == 'pickup') {
+    inputs = checkInputAganistList(inputs);
+  }
 
   inputs.forEach( (input) => {
 
     const type = input.getAttribute('type');
+
     if (type == 'submit' || type == 'hidden' || type == 'checkbox') return;
+
     const parent = findParentNode(input, 'field');
     const isRequired = parent.getAttribute('data-required');
 
@@ -40,9 +72,6 @@ export default function(form, attachEvents = true) {
       }
 
     }
-
-
-
 
   });
 

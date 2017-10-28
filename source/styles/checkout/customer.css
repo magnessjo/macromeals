@@ -4,7 +4,11 @@
 }
 
 #customer-address {
+  height: inherit;
+}
 
+form[data-method="pickup"] #customer-address {
+  height: 0;
 }
 
 #shipping-method {

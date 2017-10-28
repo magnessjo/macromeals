@@ -1,6 +1,7 @@
 
 // Variables
 
+const form = document.querySelector('form');
 const container = document.querySelector('#shipping-method');
 const buttons = Array.from(container.querySelectorAll('.shpping-type'));
 const input = container.querySelector('input[name="shippingMethod"]');
@@ -31,6 +32,11 @@ export default function() {
       });
 
       input.value = handle;
+      if (handle == 'pickup') {
+        form.setAttribute('data-method', 'pickup');
+      } else {
+        form.setAttribute('data-method', '');
+      }
 
     });
 
