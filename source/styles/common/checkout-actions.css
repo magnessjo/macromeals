@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
 
-  & a {
+  & .icons {
     color: var(--black);
     font-size: 14px;
     padding-left: 12px;
@@ -30,7 +30,16 @@
 
   }
 
-  & input[type="submit"] {
+  & .call-to-action {
+    float: right;
+
+    @media (--small-max) {
+      font-size: 14px;
+    }
+
+  }
+
+  & input[type="submit"], a {
 
     @media (--medium-max) {
       font-size: 14px;
