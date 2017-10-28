@@ -1,42 +1,21 @@
 
+// Import
+
+import parentNode from 'scripts/helpers/findParentNode.js';
+
 // Variables
 
 const form = document.querySelector('form');
 const errors = form.querySelector('.errors');
+const inputs = Array.from(form.querySelectorAll('input[type="text"]'));
 
-function expirationInput() {
+// Add Overlay
 
-  const container = form.querySelector('.expiration');
-  const input = container.querySelector('input');
-  const overlay = container.querySelector('.overlay');
-  const hiddenMonth = form.querySelector('[data-stripe="exp_month"]');
-  const hiddenYear = form.querySelector('[data-stripe="exp_year"]');
-  const expiredError = errors.querySelector('.expired');
+function checkOverlay(input) {
+
+  const parent = parentNode(input, 'field');
+  const overlay = parent.querySelector('.overlay');
   let overlayShowing = false;
-
-  function showError() {
-    container.setAttribute('valid', false);
-    container.setAttribute('has-error', true);
-    expiredError.setAttribute('show-error', true);
-  }
-
-  function hideError(month, year) {
-    container.setAttribute('valid', true);
-    container.setAttribute('has-error', false);
-    expiredError.setAttribute('show-error', false);
-    hiddenMonth.value = month;
-    hiddenYear.value = year;
-  }
-
-  input.addEventListener('keypress', (e) => {
-
-    if (input.value.length == 2 && e.keyCode == 47) return;
-
-    if (input.value.length == 2) {
-      input.value = input.value + '/';
-    }
-
-  });
 
   input.addEventListener('keyup', (e) => {
 
@@ -52,12 +31,48 @@ function expirationInput() {
 
   });
 
+}
+
+// Show Error
+
+function showError(container, error) {
+  console.log(container);
+  container.setAttribute('valid', false);
+  container.setAttribute('has-error', true);
+  error.setAttribute('show-error', true);
+}
+
+function hideError(container, error) {
+  container.setAttribute('valid', true);
+  container.setAttribute('has-error', false);
+  error.setAttribute('show-error', false);
+}
+
+function expirationInput() {
+
+  const container = form.querySelector('.expiration');
+  const input = container.querySelector('input');
+  const hiddenMonth = form.querySelector('[data-stripe="exp_month"]');
+  const hiddenYear = form.querySelector('[data-stripe="exp_year"]');
+  const expiredError = errors.querySelector('.expired');
+
+
+  input.addEventListener('keypress', (e) => {
+
+    if (input.value.length == 2 && e.keyCode == 47) return;
+
+    if (input.value.length == 2) {
+      input.value = input.value + '/';
+    }
+
+  });
+
   input.addEventListener('blur', () => {
 
     const isLength = input.value.length == 5;
 
     if (!isLength) {
-      showError();
+      showError(container, expiredError);
       return;
     }
 
@@ -67,7 +82,18 @@ function expirationInput() {
     const today = new Date();
     const expirationDate = new Date(`20${year}`, month, 1);
 
-    today > expirationDate ? showError() : hideError(month, year)
+    if (month > 12) {
+      showError(container, expiredError);
+      return;
+    }
+
+    if (today > expirationDate) {
+      showError(container, expiredError);
+    } else {
+      hideError(container, expiredError);
+      hiddenMonth.value = month;
+      hiddenYear.value = year;
+    }
 
   });
 
@@ -78,5 +104,6 @@ function expirationInput() {
 export default function() {
 
   expirationInput();
+  inputs.forEach((input) => { checkOverlay(input) });
 
 }
