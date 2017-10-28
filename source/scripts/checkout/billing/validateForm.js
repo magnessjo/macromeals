@@ -20,10 +20,12 @@ function expirationInput() {
     expiredError.setAttribute('show-error', true);
   }
 
-  function hideError() {
+  function hideError(month, year) {
     container.setAttribute('valid', true);
     container.setAttribute('has-error', false);
     expiredError.setAttribute('show-error', false);
+    hiddenMonth.value = month;
+    hiddenYear.value = year;
   }
 
   input.addEventListener('keypress', (e) => {
@@ -65,7 +67,7 @@ function expirationInput() {
     const today = new Date();
     const expirationDate = new Date(`20${year}`, month, 1);
 
-    today > expirationDate ? showError() : hideError()
+    today > expirationDate ? showError() : hideError(month, year)
 
   });
 
