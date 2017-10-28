@@ -11,42 +11,64 @@
     {% redirect "/account/login/checkout" 301 %}
   {% endif %}
 
+  <script src="https://js.stripe.com/v3/"></script>
+
   {% include "components/breadcrumb.twig" %}
 
   <section id="customer-info">
 
     <div class="lock">
 
-      <form method="POST" id="register">
+      <form method="POST" id="payment">
+
+        <input type="hidden" data-stripe="exp_month" />
+        <input type="hidden" data-stripe="exp_year" />
 
         <div class="form-group">
 
           <p class="acumin-medium-bold">Billing</p>
 
-          <div>
-            <label>Cardholder's Name</label>
-            <input type="text" />
-          </div>
+          <div class="card-number-expiration">
 
-          <div>
-            <label>Card Number</label>
-            <input type="text" />
+            <div class="number">
+              <label>Card Number</label>
+              <input type="text" maxlength="20" data-stripe="number" />
+            </div>
+
+            <div class="field expiration" valid="false">
+              <label for="expiration"><span>Valid Thru</span></label>
+              <div class="input">
+                <input type="text"
+                       id="expiration"
+                       maxlength="5"
+                       placeholder="MM/YY" />
+                <div class="overlay">
+                  <span>MM/YY</span>
+                  <img src="/images/icons/checkmark-green.svg" />
+                </div>
+              </div>
+            </div>
+
           </div>
 
           <div class="two-column">
 
             <div>
-              <label>Valid Thru</label>
-              <input type="text" />
+              <label>CVV/CVS</label>
+              <input type="text" data-stripe="cvc" />
             </div>
 
             <div>
-              <label>CVV/CVS</label>
-              <input type="text" />
+              <label>Billing Zip Code</label>
+              <input type="text" data-stripe="address_zip" />
             </div>
 
           </div>
 
+        </div>
+
+        <div class="errors">
+          <p class="expired">The date entered has expired</p>
         </div>
 
         <div class="checkout-actions">
