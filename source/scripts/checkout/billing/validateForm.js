@@ -99,11 +99,27 @@ function expirationInput() {
 
 }
 
+function billingZipCode() {
+
+  const container = form.querySelector('.zip');
+  const input = container.querySelector('input');
+  const invalidError = errors.querySelector('.zip');
+
+  input.addEventListener('blur', () => {
+
+    const isLength = input.value.length == 5;
+    !isLength ? showError(container, invalidError) : hideError(container, invalidError)
+
+  });
+
+}
+
 // Export
 
 export default function() {
 
   expirationInput();
+  billingZipCode();
   inputs.forEach((input) => { checkOverlay(input) });
 
 }

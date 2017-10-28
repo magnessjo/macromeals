@@ -64,13 +64,16 @@
           <div class="two-column">
 
             <div class="field" valid="false">
-              <label for="cvc"><span>CVV/CVS</span></label>
+              <label for="cvc">
+                <span>CVV/CVS</span>
+                {# <span class='info'>What's this</span> #}
+              </label>
               <div class="input">
                 <input type="text"
                        id="cvc"
                        maxlength="5"
                        data-stripe="cvc"
-                       placeholder="Example: 21201" />
+                       placeholder="cvc" />
                 <div class="overlay">
                   <span>21201</span>
                   <img src="/images/icons/checkmark-green.svg" />
@@ -78,7 +81,7 @@
               </div>
             </div>
 
-            <div class="field" valid="false">
+            <div class="field zip" valid="false">
               <label for="zipCode"><span>Billing Zip Code</span></label>
               <div class="input">
                 <input type="text"
@@ -99,6 +102,7 @@
 
         <div class="errors">
           <p class="expired">The date entered has invalid</p>
+          <p class="zip">The zip code entered has invalid</p>
         </div>
 
         <div class="checkout-actions">
