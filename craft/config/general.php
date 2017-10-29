@@ -19,7 +19,6 @@ return [
 
   '.me' => [
     'devMode' => true,
-    'overridePhpSessionLocation' => false,
     'environmentVariables' => [
       'siteUrl'  => 'http://macromeals.joshmagness.me/',
       'basePath' => '/srv/http/macromeals/shared/uploads/',
@@ -29,7 +28,6 @@ return [
 
   '.dev' => [
     'devMode' => true,
-    'overridePhpSessionLocation' => false,
     'enableCsrfProtection' => false,
     'environmentVariables' => [
       'siteUrl'  => 'https://macromeals.localhost.dev/',
@@ -40,7 +38,6 @@ return [
 
   '.life' => [
     'devMode' => false,
-    'overridePhpSessionLocation' => false,
     'environmentVariables' => [
       'siteUrl'  => 'https://www.macromeals.life/',
       'basePath' => '/srv/http/macromeals/shared/uploads/',
