@@ -45,6 +45,15 @@
       display: none;
     }
 
+    & .card {
+      height: 30px;
+      width: inherit;
+    }
+
+  }
+
+  & .input {
+    position: relative;
   }
 
   & [valid="true"] {
@@ -55,12 +64,28 @@
         display: none;
       }
 
-      & img {
+      & img[src*="checkmark"] {
         display: block;
       }
 
     }
 
+  }
+
+  & [card-type="amex"] .overlay img[src*="amex"]  {
+    display: block;
+  }
+
+  & [card-type="visa"] .overlay img[src*="visa"]  {
+    display: block;
+  }
+
+  & [card-type="discover"] .overlay img[src*="discover"]  {
+    display: block;
+  }
+
+  & [card-type="master"] .overlay img[src*="mastercard"]  {
+    display: block;
   }
 
   & .card-number-expiration {
@@ -88,4 +113,21 @@
 
   }
 
+  & .two-column, & .form-group {
+    margin-bottom: 40px;
+    overflow: hidden;
+  }
+
+  & .two-column input {
+
+    @media (--large-min) {
+      margin-bottom: 0;
+    }
+
+  }
+
+}
+
+.digital-payments {
+  display: none;
 }

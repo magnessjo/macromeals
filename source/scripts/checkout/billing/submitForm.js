@@ -1,18 +1,32 @@
 
 // Variables
 
+const stripe = Stripe('pk_test_UrlLqyCEbnu4hXNhRRFaA16n');
 const form = document.querySelector('form#payment');
-const button = form.querySelector('button');
+const submitButton = form.querySelector('input[type="submit"]');
+const costString = form.getAttribute('data-cost');
+const totalCostInCents = costString * 100;
+const paymentRequest = stripe.paymentRequest({
+  country: 'US',
+  currency: 'usd',
+  total: {
+    label: 'Macro Meals Purchase',
+    amount: totalCostInCents,
+  },
+});
 
 // Stripe Callback
 
 function stripeCallback(status, response) {
 
+  console.log(status);
+  console.log(response);
+
   if (response.error) {
 
     console.log(response.error);
 
-    button.disabled = false;
+    submitButton.disabled = false;
 
   } else {
 
@@ -29,16 +43,32 @@ function stripeCallback(status, response) {
 
 }
 
+// Add digital payment
+
+function digitalPayment() {
+
+  const container = document.querySelector('.digital-payments');
+  const wrapper = container.querySelector('.types');
+
+  // paymentRequest.canMakePayment().then( (result) => {
+  //
+  //   console.log(result);
+  //
+  // });
+
+
+}
+
 // Export
 
 export default function() {
 
-  Stripe.setPublishableKey('YOUR_PUBLISHABLE_KEY');
+  digitalPayment();
 
   form.addEventListener('submit', (e) => {
 
     e.preventDefault();
-    button.disabled = true;
+    submitButton.disabled = true;
     Stripe.card.createToken(form, stripeCallback);
 
     return false;
