@@ -392,3 +392,8 @@ menu {
   }
 
 }
+
+.with-border header {
+  border-bottom: 1px solid var(--green);
+  margin-bottom: 100px;
+}

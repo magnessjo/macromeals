@@ -2,89 +2,66 @@
 {% extends "_layout" %}
 {% includeCssFile "/checkout.css" %}
 {% includeJsFile "/process.js" %}
+{% set bodyClass = 'with-border' %}
 
 {% set cart = craft.commerce.getCart %}
 
 {% block main %}
 
-  {% if cart.email == '' %}
-    {% redirect "/account/login/checkout" 301 %}
-  {% endif %}
+  <section id="complete">
 
-  {% include "components/breadcrumb.twig" %}
+    <div class="item-list">
 
-  <form>
+      <div class="lock">
 
-    {# Order Summary #}
+        <h1 class="acumin-large">Order Summary</h1>
 
-    <section id="cart-list">
+        <div class="items">
 
-      <div class="item-list">
+          {% for item in cart.lineItems %}
 
-        <div class="lock">
+            {% set variant = item.purchasable %}
+            {% set product = variant.product %}
 
-          <h1 class="acumin-large">Order Summary</h1>
+            <div class="order-item">
 
-          <div class="items">
+              <div class="image" style="background-image: url({{ product.productImage[0].url }})"></div>
 
-            {% for item in cart.lineItems %}
+              <div class="wrapper">
+                <h2>{{ product.title }}</h2>
 
-              {% set variant = item.purchasable %}
-              {% set product = variant.product %}
-
-              <div class="order-item">
-
-                <div class="image" style="background-image: url({{ product.productImage[0].url }})"></div>
-
-                <div class="wrapper">
-                  <h2>{{ product.title }}</h2>
-
-                  <div class="item-actions">
-                    <p class="cost">${{ item.subtotal }}</p>
-                  </div>
+                <div class="item-actions">
+                  <p class="cost">${{ item.subtotal }}</p>
                 </div>
-
               </div>
 
-            {% endfor %}
+            </div>
 
-          </div>
+          {% endfor %}
 
-          <div class="cart-total">
+        </div>
 
-            <p class="acumin-small-bold">Total<span class="amount">{{ cart.totalPrice | commerceCurrency(cart.currency, stripZeros = true) }}</span></p>
+        <div class="cart-total">
 
-          </div>
+          <p class="acumin-small-bold">Total<span class="amount">{{ cart.totalPrice | commerceCurrency(cart.currency, stripZeros = true) }}</span></p>
 
         </div>
 
       </div>
 
-    </section>
+    </div>
 
-    {# User Summary #}
+  </section>
 
-    <section id="user-summary">
+  {# User Summary #}
 
-      <div class="lock">
+  <section id="user-summary">
 
-      </div>
+    <div class="lock">
 
-    </section>
+    </div>
 
-    {# Checkout Actions #}
+  </section>
 
-    <section class="checkout-actions">
-
-      <div class="lock">
-
-        <a href="" class="icons">Back <span>to Your Billing</span></a>
-        <input type="submit" data-button="continue" value="Submit Your Order" class="call-to-action">
-
-      </div>
-
-    </section>
-
-  </form>
 
 {% endblock %}

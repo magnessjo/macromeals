@@ -1,9 +1,4 @@
 
-header {
-  border-bottom: 1px solid var(--green);
-  margin-bottom: 100px;
-}
-
 #login-options {
 
   & .acumin-large  {

@@ -28,7 +28,7 @@
 
   </head>
 
-  <body>
+  <body {% if bodyClass is defined %} class="{{ bodyClass }}"{% endif %}>
 
     {% include "components/header.twig" %}
 
