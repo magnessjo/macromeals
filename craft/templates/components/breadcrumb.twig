@@ -19,10 +19,6 @@
         <span>Order</span>Billing
       {% endif %}
 
-      {% if segment == 'process' %}
-        <span>Process</span>Order
-      {% endif %}
-
     </h1>
 
     <div>
@@ -31,28 +27,18 @@
         <p class='active'>Customer <span>Information</span></p>
         <p><span>Order</span> Summary</p>
         <p><span>Order</span> Billing</p>
-        <p><span>Process</span> Order</p>
       {% endif %}
 
       {% if segment=="summary" %}
         <a href="/checkout" class='completed'>Customer <span>Information</span></a>
         <p class="active"><span>Order</span> Summary</p>
         <p><span>Order</span> Billing</p>
-        <p><span>Process</span> Order</p>
       {% endif %}
 
       {% if segment=="billing" %}
         <a href="/checkout" class='completed'>Customer <span>Information</span></a>
         <a href="/checkout/summary" class='completed'><span>Order</span> Summary</a>
         <p class="active"><span>Order</span> Billing</p>
-        <p><span>Process</span> Order</p>
-      {% endif %}
-
-      {% if segment=="process" %}
-        <a href="/checkout" class='completed'>Customer <span>Information</span></a>
-        <a href="/checkout/summary" class='completed'><span>Order</span> Summary</a>
-        <a href="/checkout/billing" class='completed'><span>Order</span> Billing</a>
-        <p class="active"><span>Process</span> Order</p>
       {% endif %}
 
     </div>

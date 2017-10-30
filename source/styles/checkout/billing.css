@@ -3,131 +3,86 @@
   max-width: 600px;
   margin: 0 auto;
 
-  & label {
-    width: 100%;
-    position: relative;
-
-    & .info {
-      position: absolute;
-      right: 0;
-      bottom: 0;
-      font-size: 10px;
-      text-transform: capitalize;
-    }
-
-  }
-
-  & .errors {
-    margin-top: -40px;
+  & .form-group {
     margin-bottom: 40px;
 
-    & p {
+    & > div {
+      background: var(--white);
+      margin-bottom: 20px;
+      border: 1px solid var(--light-gray);
+    }
+
+    & > div[valid="true"] {
+      border: 1px solid var(--green);
+
+      & label {
+        color: var(--green);
+      }
+
+    }
+
+    & > div[valid="false"] {
+      border: 1px solid var(--red);
+
+      & label {
+        color: var(--red);
+      }
+
+    }
+
+    & label {
       position: relative;
-      text-align: left;
-      width: 100%;
-    }
-
-  }
-
-  & .overlay {
-    position: absolute;
-    right: 10px;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 99;
-    font-size: 12px;
-    color: var(--gray);
-    display: none;
-
-    & img {
-      height: 15px;
-      width: 15px;
-      display: none;
-    }
-
-    & .card {
-      height: 30px;
-      width: inherit;
-    }
-
-  }
-
-  & .input {
-    position: relative;
-  }
-
-  & [valid="true"] {
-
-    & .overlay {
-
-      & span {
-        display: none;
-      }
-
-      & img[src*="checkmark"] {
-        display: block;
-      }
-
-    }
-
-  }
-
-  & [card-type="amex"] .overlay img[src*="amex"]  {
-    display: block;
-  }
-
-  & [card-type="visa"] .overlay img[src*="visa"]  {
-    display: block;
-  }
-
-  & [card-type="discover"] .overlay img[src*="discover"]  {
-    display: block;
-  }
-
-  & [card-type="master"] .overlay img[src*="mastercard"]  {
-    display: block;
-  }
-
-  & .card-number-expiration {
-
-    @media (--large-min) {
-      display: flex;
-    }
-
-  }
-
-  & .number {
-
-    @media (--large-min) {
-      width: 70%;
-    }
-
-  }
-
-  & .expiration {
-
-    @media (--large-min) {
-      width: 30%;
-      padding-left: 10px;
-    }
-
-  }
-
-  & .two-column, & .form-group {
-    margin-bottom: 40px;
-    overflow: hidden;
-  }
-
-  & .two-column input {
-
-    @media (--large-min) {
+      color: var(--black);
+      font-weight: 300;
+      height: 44px;
+      line-height: 44px;
       margin-bottom: 0;
     }
 
+    & span {
+      width: 120px;
+      text-align: right;
+      margin-left: 20px;
+      display: block;
+      font-weight: 700;
+    }
+
+    & input {
+      height: inherit;
+      width: inherit;
+      margin: inherit;
+      border: none;
+      font-weight: 400;
+    }
+
+    & .input {
+      background: transparent;
+      color: var(--black);
+      cursor: text;
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 160px;
+      right: 10px;
+
+      &::-webkit-input-placeholder {
+        color: #333333;
+      }
+
+      &::-moz-placeholder {
+        color: #333333;
+      }
+
+    }
+
   }
 
-}
+  & #card-errors {
+    padding: 20px 0;
+    margin-bottom: 40px;
+    text-transform: uppercase;
+    color: red;
+    display: none;
+  }
 
-.digital-payments {
-  display: none;
 }

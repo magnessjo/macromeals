@@ -1,11 +1,19 @@
 
+// Imports
+
+import findParentNode from 'scripts/helpers/findParentNode.js';
+
 // Variables
 
 const stripe = Stripe('pk_test_UrlLqyCEbnu4hXNhRRFaA16n');
+const elements = stripe.elements();
+let card;
+
 const form = document.querySelector('form#payment');
+const errorElement = document.getElementById('card-errors');
 const submitButton = form.querySelector('input[type="submit"]');
 const costString = form.getAttribute('data-cost');
-const totalCostInCents = costString * 100;
+const totalCostInCents = parseInt(costString * 100);
 const paymentRequest = stripe.paymentRequest({
   country: 'US',
   currency: 'usd',
@@ -15,64 +23,101 @@ const paymentRequest = stripe.paymentRequest({
   },
 });
 
-// Stripe Callback
+// Load
 
-function stripeCallback(status, response) {
+function load() {
 
-  console.log(status);
-  console.log(response);
+  const style = {
+    base: {
+      iconColor: '#000',
+      color: '#000',
+      fontFamily: 'acumin-pro, arial, sans-serif',
+      fontWeight: 400,
+    },
+  };
 
-  if (response.error) {
+  const cardNumberElement = elements.create('cardNumber', { style: style });
+  const cardExpiryElement = elements.create('cardExpiry', { style: style });
+  const cardCvcElement = elements.create('cardCvc', { style: style });
+  const postalCodeElement = elements.create('postalCode', { style: style });
+  const inputs = [ cardNumberElement, cardExpiryElement, cardCvcElement, postalCodeElement ];
 
-    console.log(response.error);
+  // Set card for token
 
-    submitButton.disabled = false;
+  card = cardNumberElement;
 
-  } else {
+  cardNumberElement.mount('#card-number-element');
+  cardExpiryElement.mount('#card-expiry-element');
+  cardCvcElement.mount('#card-cvc-element');
+  postalCodeElement.mount('#postal-code-element');
 
-    const token = response.id;
-    const input = document.createElement('input');
+  inputs.forEach( (input) => {
 
-    input.setAttribute('type', 'hidden');
-    input.setAttribute('name', 'stripeToken');
-    input.value = token;
+    const element = input._parent;
+    const parent = findParentNode(element, 'field');
 
-    form.submit();
+    input.addEventListener('blur', () => {
 
-  }
+      if (input._complete) {
+        parent.setAttribute('valid', true);
+      }
+
+      if (input._invalid) {
+        parent.setAttribute('valid', false);
+      }
+
+    });
+
+    input.addEventListener('focus', () => {
+
+      parent.removeAttribute('valid');
+      errorElement.style.display = 'none';
+
+    });
+
+  });
 
 }
 
-// Add digital payment
+// submit
 
-function digitalPayment() {
-
-  const container = document.querySelector('.digital-payments');
-  const wrapper = container.querySelector('.types');
-
-  // paymentRequest.canMakePayment().then( (result) => {
-  //
-  //   console.log(result);
-  //
-  // });
-
-
-}
-
-// Export
-
-export default function() {
-
-  digitalPayment();
+function submitForm() {
 
   form.addEventListener('submit', (e) => {
 
     e.preventDefault();
     submitButton.disabled = true;
-    Stripe.card.createToken(form, stripeCallback);
 
-    return false;
+    stripe.createToken(card).then((result) => {
+
+      if (result.error) {
+        errorElement.textContent = result.error.message;
+        errorElement.style.display = 'block';
+        submitButton.disabled = false;
+      } else {
+
+        const token = result.token.id;
+
+        const hiddenInput = document.createElement('input');
+        hiddenInput.setAttribute('type', 'hidden');
+        hiddenInput.setAttribute('name', 'stripeToken');
+        hiddenInput.setAttribute('value', token);
+        form.appendChild(hiddenInput);
+        form.submit();
+      }
+
+    });
 
   });
+
+}
+
+
+// Export
+
+export default function() {
+
+  load();
+  submitForm();
 
 }
