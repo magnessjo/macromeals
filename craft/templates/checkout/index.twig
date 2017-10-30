@@ -87,20 +87,34 @@
 
         <div class="types">
 
-          {% for handle, method in craft.commerce.availableShippingMethods %}
+          {% set overnight = 'overnight' %}
 
-            {% if loop.first %}
+          {% for handle, method in craft.commerce.availableShippingMethods  %}
+
+            {% if handle == overnight %}
               <input type="hidden" name="shippingMethod" value="overnight" />
+              <div class="shpping-type" data-handle="{{ handle }}" data-active="true">
+                <div>
+                  <h2 class="acumin-small">{{ method.name }}</h2>
+                  <p>{{ method.description }}</p>
+                </div>
+              </div>
             {% endif %}
 
-            <div class="shpping-type" data-handle="{{ handle }}" {% if loop.first %}data-active="true"{% endif %}>
+          {% endfor %}
 
-              <div>
-                <h2 class="acumin-small">{{ method.name }}</h2>
-                <p>{{ method.description }}</p>
+          {% for handle, method in craft.commerce.availableShippingMethods %}
+
+            {% if handle != overnight %}
+
+              <div class="shpping-type" data-handle="{{ handle }}">
+                <div>
+                  <h2 class="acumin-small">{{ method.name }}</h2>
+                  <p>{{ method.description }}</p>
+                </div>
               </div>
 
-            </div>
+            {% endif %}
 
           {% endfor %}
 
