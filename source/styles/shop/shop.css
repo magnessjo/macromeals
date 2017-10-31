@@ -76,8 +76,40 @@ input[type='checkbox'] {
 }
 
 .meal-list {
-  display: flex;
-  flex-wrap: wrap;
+
+  & > div {
+    overflow: hidden;
+
+    @media (--tablet-min) {
+      display: flex;
+      justify-content: space-between;
+    }
+
+  }
+
+}
+
+.category-headline {
+  font-size: calc(22px + 1vw);
+  text-transform: uppercase;
+  color: var(--green);
+
+  @media (--large-max) {
+    margin-bottom: 40px;
+  }
+
+  @media (--tablet-min) {
+    width: 200px;
+  }
+
+}
+
+.enteries-group {
+
+  @media (--tablet-min) {
+    width: calc(100% - 250px);
+  }
+
 }
 
 .meal-entry {
@@ -86,6 +118,7 @@ input[type='checkbox'] {
   @media (--tablet-min) {
     width: 50%;
     padding: 0 25px;
+    float: left;
   }
 
   @media (--desktop-min) {

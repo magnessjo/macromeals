@@ -2,6 +2,7 @@
 {% extends "_layout" %}
 {% includeCssFile "/shop.css" %}
 {% includeJsFile "/shopselection.js" %}
+{% set categories = craft.categories.group('protein') %}
 
 {% block main %}
 
@@ -46,36 +47,52 @@
 
       <div class="meal-list">
 
-        {% for product in craft.commerce.products %}
+        {% for category in categories %}
 
-          {% if product.productImage|length > 0 %}
-            {% set image = product.productImage[0].url %}
-          {% else %}
-            {% set image = '/images/products/placeholder-circle.png' %}
-          {% endif %}
+          {% set entries = craft.commerce.products.relatedTo(category) %}
 
-          <div class="meal-entry" data-protein="{% for cat in product.protein %}{{ cat }}{% endfor %}">
+          {% if entries|length > 0 %}
 
-            <a href="/shop/details/{{ product.slug }}" class="meal-detail">
-              <img src="{{ image }}" alt="image of {{ product.title}} {{ product.subTitle }}" />
+            <div>
 
-              {% for protein in product.protein %}
+              <h2 class="category-headline">{{ category.title }}</h2>
 
-                {% if protein == 'Vegan' %}
-                  <img src="/images/products/vegan.svg" class="vegan-logo" alt="image of a vegan logo" />
-                {% endif %}
+              <div class="enteries-group">
 
-              {% endfor %}
+                {% for product in entries %}
 
-              <div class="overlay">
-                <div>
-                  <p class="meal-title"><span>{{ product.title }}</span> </p>
-                  <p>See Details</p>
-                </div>
+                  {% if product.productImage|length > 0 %}
+                    {% set image = product.productImage[0].url %}
+                  {% else %}
+                    {% set image = '/images/products/placeholder-circle.png' %}
+                  {% endif %}
+
+                  <div class="meal-entry" data-protein="{% for cat in product.protein %}{{ cat }}{% endfor %}">
+
+                    <a href="/shop/details/{{ product.slug }}" class="meal-detail">
+                      <img src="{{ image }}" alt="image of {{ product.title}} {{ product.subTitle }}" />
+
+                      {% if category.title == 'Vegan' %}
+                        <img src="/images/products/vegan.svg" class="vegan-logo" alt="image of a vegan logo" />
+                      {% endif %}
+
+                      <div class="overlay">
+                        <div>
+                          <p class="meal-title"><span>{{ product.title }}</span> </p>
+                          <p>See Details</p>
+                        </div>
+                      </div>
+                    </a>
+
+                  </div>
+
+                {% endfor %}
+
               </div>
-            </a>
 
-          </div>
+            </div>
+
+          {% endif %}
 
         {% endfor %}
 
