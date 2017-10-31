@@ -2,14 +2,59 @@
 {% extends "_layout" %}
 {% includeCssFile "/account.css" %}
 {% set bodyClass = 'with-border' %}
-
-{% set cart = craft.commerce.getCart() %}
+{% set pastOrders = craft.commerce.orders.customer(craft.commerce.customer).find() %}
 
 {% block main %}
 
-  <section>
+  <section id="orders">
 
-    <h1>Orders</h1>
+    <div class="lock">
+
+      <h1 class="acumin-large-bold">Previous Orders</h1>
+
+      {% if pastOrders|length > 0 %}
+
+        {% for order in pastOrders %}
+
+          <div class="order-entry">
+
+            <div class="date">
+              <p>{{ order.dateOrdered.format('F d, Y') }}</p>
+            </div>
+
+            <div class="details">
+
+              {% for item in order.lineItems %}
+
+                <div class="item">
+                  {% set variant = item.purchasable %}
+                  {% set product = variant.product %}
+                  <div class="title">{{product.title}} {{ variant.title }}</div>
+                  <div class="price">Qanitity {{ item.qty }}</div>
+                  <div class="cost">{{ item.subtotal }}</div>
+                </div>
+
+              {% endfor %}
+
+              <div class="total">
+                <div class="cost">{{ order.totalPrice }}</div>
+              </div>
+
+            </div>
+
+          </div>
+
+        {% endfor %}
+
+      {% else %}
+
+        <p>You have no previous orders</p>
+
+      {% endif %}
+
+
+
+    </div>
 
   </section>
 

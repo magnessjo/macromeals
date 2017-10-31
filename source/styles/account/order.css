@@ -1,0 +1,31 @@
+
+#orders {
+  min-height: 60vh;
+
+  & .lock {
+    max-width: 800px;
+  }
+
+  & h1 {
+    margin-bottom: 60px;
+  }
+
+  & .order-entry {
+    border-bottom: 1px solid var(--gray);
+
+    &:last-of-type {
+      border-bottom: 0;
+    }
+
+    & .date {
+
+      & p {
+        font-weight: bold;
+        font-size: 22px;
+      }
+
+    }
+
+  }
+
+}
