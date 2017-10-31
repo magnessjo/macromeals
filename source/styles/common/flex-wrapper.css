@@ -48,6 +48,7 @@
 
     @media (--tablet-min) {
       width: 40%;
+      order: 2;
     }
 
     @media (--desktop-min) {
@@ -60,7 +61,8 @@
 
     @media(--tablet-min) {
       width: 60%;
-      padding-left: 40px;
+      padding-right: 40px;
+      order: 1;
     }
 
     @media(--desktop-min) {
