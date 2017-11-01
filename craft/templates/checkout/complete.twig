@@ -1,10 +1,9 @@
 
 {% extends "_layout" %}
 {% includeCssFile "/checkout.css" %}
-{% includeJsFile "/process.js" %}
 {% set bodyClass = 'with-border' %}
-
-{% set cart = craft.commerce.getCart %}
+{% set queryString = craft.request.getQuery('order') %}
+{% set lastOrder = craft.commerce.orders.number(queryString) %}
 
 {% block main %}
 
@@ -14,38 +13,12 @@
 
       <div class="lock">
 
-        <h1 class="acumin-large">Order Summary</h1>
+        <h1 class="acumin-large-bold">Thank you!</h1>
+        <h2 class="acumin-medium">Your order is being processed</h2>
+        <p>Your will receive an email with your details.</p>
+        <p>Your order number is {{ queryString }}</p>
 
-        <div class="items">
-
-          {% for item in cart.lineItems %}
-
-            {% set variant = item.purchasable %}
-            {% set product = variant.product %}
-
-            <div class="order-item">
-
-              <div class="image" style="background-image: url({{ product.productImage[0].url }})"></div>
-
-              <div class="wrapper">
-                <h2>{{ product.title }}</h2>
-
-                <div class="item-actions">
-                  <p class="cost">${{ item.subtotal }}</p>
-                </div>
-              </div>
-
-            </div>
-
-          {% endfor %}
-
-        </div>
-
-        <div class="cart-total">
-
-          <p class="acumin-small-bold">Total<span class="amount">{{ cart.totalPrice | commerceCurrency(cart.currency, stripZeros = true) }}</span></p>
-
-        </div>
+        <a href="/account/orders" class="call-to-action">View Previous Orders</a>
 
       </div>
 
