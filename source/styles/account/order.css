@@ -12,20 +12,70 @@
 
   & .order-entry {
     border-bottom: 1px solid var(--gray);
+    padding-bottom: 30px;
+    margin-bottom: 30px;
 
     &:last-of-type {
       border-bottom: 0;
+      padding-bottom: 0;
+      margin-bottom: 0;
     }
 
     & .date {
+      margin-bottom: 20px;
 
-      & p {
+      & p:not(.acumin-tiny) {
         font-weight: bold;
         font-size: 22px;
+        margin-bottom: 5px;
+      }
+
+      & .acumin-tiny {
+        margin-bottom: 0;
       }
 
     }
 
+  }
+
+  & .flex {
+    display: flex;
+  }
+
+  & .total {
+
+    & .cost {
+      margin-top: 10px;
+      padding-top: 10px;
+      position: relative;
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        height: 1px;
+        left: -50px;
+        right: 0;
+        background-color: var(--black);
+      }
+
+    }
+
+  }
+
+  & .title {
+    font-size: 14px;
+
+    & span {
+      text-transform: uppercase;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+  }
+
+  & .cost {
+    margin-left: auto;
   }
 
 }

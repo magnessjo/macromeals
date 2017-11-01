@@ -20,24 +20,24 @@
 
             <div class="date">
               <p>{{ order.dateOrdered.format('F d, Y') }}</p>
+              <p class="acumin-tiny">Order Number: {{ order.number }}</p>
             </div>
 
             <div class="details">
 
               {% for item in order.lineItems %}
 
-                <div class="item">
+                <div class="flex item">
                   {% set variant = item.purchasable %}
                   {% set product = variant.product %}
-                  <div class="title">{{product.title}} {{ variant.title }}</div>
-                  <div class="price">Qanitity {{ item.qty }}</div>
-                  <div class="cost">{{ item.subtotal }}</div>
+                  <div class="title"><span>{{ item.qty }}</span> {{product.title}} {{ variant.title }}</div>
+                  <div class="cost">{{ item.subtotal | currency(cart.currency) }}</div>
                 </div>
 
               {% endfor %}
 
-              <div class="total">
-                <div class="cost">{{ order.totalPrice }}</div>
+              <div class="flex total">
+                <div class="cost">{{ order.totalPrice | currency(cart.currency)  }}</div>
               </div>
 
             </div>

@@ -22,7 +22,7 @@
       <form method="POST" id="payment" data-cost="{{ cart.totalPrice | commerceCurrency(cart.currency, convert = true, format = false, stripZeros = true) }}" >
 
         <input type="hidden" name="action" value="commerce/payments/pay" />
-        <input type="hidden" name="redirect" value="/checkout/complete" />
+        <input type="hidden" name="redirect" value="/checkout/complete?order={{cart.number}}" />
 
           <h1 class="acumin-medium-bold">Billing</h1>
 
