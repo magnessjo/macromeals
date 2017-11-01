@@ -11,6 +11,7 @@ let card;
 
 const form = document.querySelector('form#payment');
 const errorElement = document.getElementById('card-errors');
+const cardNameElement = form.querySelector('#card-name-element');
 const submitButton = form.querySelector('input[type="submit"]');
 const costString = form.getAttribute('data-cost');
 const totalCostInCents = parseInt(costString * 100);
@@ -21,6 +22,9 @@ const paymentRequest = stripe.paymentRequest({
     label: 'Macro Meals Purchase',
     amount: totalCostInCents,
   },
+});
+const paymentRequestbutton = elements.create('paymentRequestButton', {
+  paymentRequest: paymentRequest,
 });
 
 // Load
@@ -87,8 +91,12 @@ function submitForm() {
 
     e.preventDefault();
     submitButton.disabled = true;
+    const nameInput = cardNameElement.querySelector('input');
 
-    stripe.createToken(card).then((result) => {
+    stripe.createToken(card, {
+      name : nameInput.value,
+      address_country: 'US',
+    }).then((result) => {
 
       if (result.error) {
         errorElement.textContent = result.error.message;
@@ -96,14 +104,13 @@ function submitForm() {
         submitButton.disabled = false;
       } else {
 
-        const token = result.token.id;
-
         const hiddenInput = document.createElement('input');
         hiddenInput.setAttribute('type', 'hidden');
         hiddenInput.setAttribute('name', 'stripeToken');
-        hiddenInput.setAttribute('value', token);
+        hiddenInput.setAttribute('value', result.token.id);
         form.appendChild(hiddenInput);
         form.submit();
+
       }
 
     });
@@ -112,6 +119,9 @@ function submitForm() {
 
 }
 
+function addTokenAndSubmit(token) {
+
+}
 
 // Export
 
@@ -119,5 +129,18 @@ export default function() {
 
   load();
   submitForm();
+
+  // paymentRequest.canMakePayment().then((result) => {
+  //   if (result) {
+  //     paymentRequestbutton.mount('#payment-request-button');
+  //   } else {
+  //     document.getElementById('payment-request-button').style.display = 'none';
+  //   }
+  // });
+  //
+  // paymentRequest.on('token', function(ev) {
+  //   console.log(en.token.id);
+  //   // addTokenAndSubmit(ev.token.id);
+  // });
 
 }

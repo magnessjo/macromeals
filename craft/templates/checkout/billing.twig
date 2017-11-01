@@ -26,10 +26,9 @@
 
           <h1 class="acumin-medium-bold">Billing</h1>
 
-          <div class="form-group">
+          <div id="payment-request-button"></div>
 
-           <input type="text" name="firstName" value="Josh">
-           <input type="text" name="lastName" value="Magness">
+          <div class="form-group">
 
             <div class="field card-name">
               <label>
@@ -79,6 +78,10 @@
 
             Notice: [{{  noticeFlash }}]
             Error: [{{  errorFlash }}]
+
+            {% for test in errorFlash %}
+              {{ test }}
+            {% endfor %}
 
             {% endif %}
 

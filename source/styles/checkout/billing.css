@@ -85,4 +85,19 @@
     display: none;
   }
 
+  & #payment-request-button {
+    max-width: 300px;
+    margin: 0 auto 80px auto;
+    position: relative;
+
+    &:after {
+      content: "OR";
+      position: absolute;
+      left: 50%;
+      bottom: 40px;
+      transform: translateY(-50%);
+    }
+
+  }
+
 }
