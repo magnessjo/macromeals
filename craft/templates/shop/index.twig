@@ -15,7 +15,7 @@
 
   {% include "components/notice.twig" %}
 
-  <section>
+  <section id="meals-by-category">
 
     <div class="lock">
 
@@ -55,7 +55,7 @@
 
             <div>
 
-              <h2 class="category-headline">{{ category.title }}</h2>
+              <h2 class="category-headline {{ category.slug }}">{{ category.title }}</h2>
 
               <div class="enteries-group">
 
@@ -73,7 +73,7 @@
                       <img src="{{ image }}" alt="image of {{ product.title}} {{ product.subTitle }}" />
 
                       {% if category.title == 'Vegan' %}
-                        <img src="/images/products/vegan.svg" class="vegan-logo" alt="image of a vegan logo" />
+                        <img src="/images/products/vegan-leaf.svg" class="vegan-logo" alt="image of a vegan logo" />
                       {% endif %}
 
                       <div class="overlay">

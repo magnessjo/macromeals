@@ -17,6 +17,10 @@ input[type='checkbox'] {
   cursor: pointer;
 }
 
+#meals-by-category {
+  overflow: visible;
+}
+
 .meal-wrapper {
 
   @media (--large-min) {
@@ -78,7 +82,6 @@ input[type='checkbox'] {
 .meal-list {
 
   & > div {
-    overflow: hidden;
 
     @media (--tablet-min) {
       display: flex;
@@ -100,6 +103,21 @@ input[type='checkbox'] {
 
   @media (--tablet-min) {
     width: 200px;
+  }
+
+}
+
+h2.vegan {
+  position: relative;
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: 18px;
+    height: 20px;
+    width: 20px;
+    background-image: url(/images/products/vegan-leaf.svg);
   }
 
 }
@@ -143,8 +161,8 @@ input[type='checkbox'] {
 
   & .vegan-logo {
     position: absolute;
-    width: 60px;
-    left: 0;
+    width: 30px;
+    right: 0;
     top: 0;
     z-index: 99;
   }
