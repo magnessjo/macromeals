@@ -36,6 +36,24 @@
 
               {% endfor %}
 
+              {% if order.totalShippingCost > 0 %}
+
+              <div class="flex item">
+                <div class="title">Shipping Cost</div>
+                <div class="cost">{{ order.totalShippingCost | currency(cart.currency) }}</div>
+              </div>
+
+              {% endif %}
+
+              {% if order.baseDiscount != 0 %}
+
+              <div class="flex item">
+                <div class="title">Discount</div>
+                <div class="cost">{{ order.baseDiscount | currency(cart.currency) }}</div>
+              </div>
+
+              {% endif %}
+
               <div class="flex total">
                 <div class="cost">{{ order.totalPrice | currency(cart.currency)  }}</div>
               </div>
