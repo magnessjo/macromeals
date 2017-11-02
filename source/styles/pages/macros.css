@@ -47,14 +47,16 @@
 
     & .image {
       background-position: center;
+      background-size: contain;
+      height: 20vh;
 
-      @media (--tablet-max) {
+      @media (--large-min) {
         height: 50vh;
-        background-size: contain;
       }
 
       @media (--desktop-min) {
         background-size: cover;
+        height: inherit;
       }
 
     }
