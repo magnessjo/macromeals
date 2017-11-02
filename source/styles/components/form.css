@@ -38,6 +38,14 @@ form {
     z-index: 2;
   }
 
+  & input[type="email"]::placeholder,
+  & input[type="number"]::placeholder,
+  & input[type="password"]::placeholder,
+  & input[type="text"]::placeholder {
+    color: #333333;
+    font-size: 12px;
+  }
+
   & input[type="submit"] {
     height: 44px;
     padding: 0 20px;
@@ -144,6 +152,11 @@ form {
 
   }
 
+  & .craft-error {
+    display: none;
+    color: var(--red);
+  }
+
   /* Form Layout */
 
   & .one-column, & .two-column {
@@ -221,6 +234,11 @@ form {
 
   }
 
+}
+
+form#user-info {
+  max-width: 760px;
+  margin: 0 auto;
 }
 
 form#product-addition {
