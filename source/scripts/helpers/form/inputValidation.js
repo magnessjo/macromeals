@@ -8,7 +8,7 @@ import validation from './validation';
 function checkFormValues(input, parent, checks) {
 
   checks.forEach((check) => {
-    validation[check](input, parent, 'blur');
+    validation[check](input, parent);
   });
 
 }
@@ -22,7 +22,7 @@ function attachEventHandlers(input, parent, checks) {
   input.addEventListener('keyup', () => {
 
     checks.forEach((check) => {
-      validation[check](input, parent, 'keydown');
+      validation[check](input, parent);
     });
 
   });
@@ -30,7 +30,7 @@ function attachEventHandlers(input, parent, checks) {
   input.addEventListener('blur', () => {
 
     checks.forEach((check) => {
-      validation[check](input, parent, 'blur');
+      validation[check](input, parent);
     });
 
   });

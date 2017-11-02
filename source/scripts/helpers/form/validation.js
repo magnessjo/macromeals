@@ -19,9 +19,28 @@ function hideError(errorElement, parent) {
 
 }
 
+// Check for a Password
+
+function checkForPassword(input, parent) {
+
+  const hasErrors = parent.getAttribute('has-error');
+  const errors = parent.querySelector('.errors');
+  const passwordError = errors.querySelector('.password');
+  const value = input.value;
+
+  if (hasErrors == 'true') return;
+
+  if (value.length > 7) {
+    hideError(passwordError, parent);
+  } else {
+    displayError(passwordError, parent);
+  }
+
+}
+
 // Check for a Letter
 
-function checkForLetter(input, parent, type) {
+function checkForLetter(input, parent) {
 
   const hasErrors = parent.getAttribute('has-error');
   const errors = parent.querySelector('.errors');
@@ -41,7 +60,7 @@ function checkForLetter(input, parent, type) {
 
 // Check for Required
 
-function required(input, parent, type) {
+function required(input, parent) {
 
   const errors = parent.querySelector('.errors');
   const allErrors = Array.from(errors.querySelectorAll('p'));
@@ -61,6 +80,7 @@ function required(input, parent, type) {
 }
 
 const obj = {
+  checkForPassword,
   checkForLetter,
   required,
 }
