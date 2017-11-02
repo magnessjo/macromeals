@@ -397,3 +397,11 @@ menu {
   border-bottom: 1px solid var(--green);
   margin-bottom: 100px;
 }
+
+body[logged-in='true'] {
+
+  & .actions .login {
+    display: none;
+  }
+
+}

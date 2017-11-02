@@ -64,7 +64,7 @@
 
                   <div class="errors">
                     <p class="required">Password is a required field</p>
-                    <p class="password">Password must be 8 characters</p>
+                    <p class="password">Password must be 6 characters</p>
                   </div>
                 </div>
               </div>
@@ -168,20 +168,56 @@
 
           <p class="acumin-medium-bold">Registration Details</p>
 
-          <div>
-            <label for="username">Username</label>
-            <input type="text" name="username" id="username" placeholder="Example: macromealsfan" />
+          <div class="field" data-required="true" valid="false">
+            <label for="username"><span>Username</span></label>
+            <div class="input">
+              <input type="text"
+                     name="username"
+                     id="username"
+                     placeholder="johndoe"
+                     value="" />
+
+              <div class="errors">
+                <p class="required">Username is a required field</p>
+              </div>
+            </div>
           </div>
 
-          <div>
-            <label for="username">Password</label>
-            <input type="password" name="password" placeholder="Example: Password1234$" />
+          <div class="field" data-required="true" valid="false">
+            <label for="password"><span>Password</span></label>
+            <div class="input">
+              <input type="password"
+                     name="password"
+                     id="register-password"
+                     placeholder="dontUseMe1234$"
+                     validation="checkForPassword"
+                     value="{{ craft.session.rememberedPassword ?? '' }}" />
+
+              <div class="errors">
+                <p class="required">Password is a required field</p>
+                <p class="password">Password must be 6 characters</p>
+              </div>
+            </div>
           </div>
 
-          <div>
-            <label for="email">Email</label>
-            <input type="text" name="email" id="email" placeholder="Example: john.doe@gmail.com" />
+          <div class="field" data-required="true" valid="false">
+            <label for="password"><span>Email Address</span></label>
+            <div class="input">
+              <input type="email"
+                     name="email"
+                     id="email"
+                     validation="checkForEmail"
+                     placeholder="dont.use@gmail.com"
+                     value="" />
+
+              <div class="errors">
+                <p class="required">Email is a required field</p>
+                <p class="email">Email Address is invalid</p>
+              </div>
+            </div>
           </div>
+
+          <div class="craft-errors"></div>
 
           <div class="actions">
             <input type="submit" value="Submit" class="call-to-action">
@@ -190,6 +226,14 @@
         </div>
 
       </form>
+
+      <div class="regiseration-confirmation">
+
+        <p>Thank you</p>
+        <p>You have successful be registered and logged in</p>
+        <a href="/shop">View Meals</a>
+
+      </div>
 
     </div>
 

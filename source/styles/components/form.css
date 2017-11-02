@@ -152,8 +152,9 @@ form {
 
   }
 
-  & .craft-error {
+  & .craft-errors {
     color: var(--red);
+    display: none;
   }
 
   /* Form Layout */

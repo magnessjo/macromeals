@@ -21,6 +21,26 @@ function hideError(errorElement, parent) {
 
 // Check for a Password
 
+function checkForEmail(input, parent) {
+
+  const hasErrors = parent.getAttribute('has-error');
+  const errors = parent.querySelector('.errors');
+  const passwordError = errors.querySelector('.email');
+  const reg = new RegExp('@');
+  const value = input.value;
+
+  if (hasErrors == 'true') return;
+
+  if (reg.test(value) == true) {
+    hideError(passwordError, parent);
+  } else {
+    displayError(passwordError, parent);
+  }
+
+}
+
+// Check for a Password
+
 function checkForPassword(input, parent) {
 
   const hasErrors = parent.getAttribute('has-error');
@@ -80,6 +100,7 @@ function required(input, parent) {
 }
 
 const obj = {
+  checkForEmail,
   checkForPassword,
   checkForLetter,
   required,
