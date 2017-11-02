@@ -30,6 +30,11 @@ export default function() {
     validation.checkForPassword(passwordInput, passwordParent);
   });
 
+  rememberUser.addEventListener('change', () => {
+    const isChecked = rememberUser.checked;
+    isChecked ? rememberUser.value = 1 : rememberUser.value = 0;
+  });
+
   // Submit Form
 
   loginForm.addEventListener('submit', (e) => {
