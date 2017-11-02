@@ -34,35 +34,39 @@ export default function() {
 
   loginForm.addEventListener('submit', (e) => {
 
-  //   const userValid = userNameParent.getAttribute('valid');
-  //   const passwordValid = passwordParent.getAttribute('valid');
-  //   let userdata;
-  //
-  //   e.preventDefault();
-  //
-  //   if (userValid != 'true' || passwordValid != 'true') {
-  //     validation.required(userNameInput, userNameParent);
-  //     validation.required(passwordInput, passwordParent);
-  //     validation.checkForPassword(passwordInput, passwordParent);
-  //     return;
-  //   }
-  //
-  //   userdata = `
-  //     ${window.csrfTokenName}=${window.csrfTokenValue}&
-  //     loginName=${userNameInput.value}&
-  //     password=${passwordInput.value}
-  //   `;
-  //
-  //   postLogin(userdata).then((response) => {
-  //     if (response.error) {
-  //       craftError.innerHTML = `${response.error}`;
-  //       console.log(response);
-  //     } else {
-  //
-  //     }
-  //
-  //   })
-  //
-  // });
+    e.preventDefault();
+    validation.required(userNameInput, userNameParent);
+    validation.required(passwordInput, passwordParent);
+    validation.checkForPassword(passwordInput, passwordParent);
+
+    const userValid = userNameParent.getAttribute('valid');
+    const passwordValid = passwordParent.getAttribute('valid');
+
+    if (userValid != 'true' || passwordValid != 'true') {
+      validation.required(userNameInput, userNameParent);
+      validation.required(passwordInput, passwordParent);
+      validation.checkForPassword(passwordInput, passwordParent);
+      return;
+    } else {
+      loginForm.submit();
+    }
+
+    // userdata = `
+    //   ${window.csrfTokenName}=${window.csrfTokenValue}&
+    //   loginName=${userNameInput.value}&
+    //   password=${passwordInput.value}
+    // `;
+    //
+    // postLogin(userdata).then((response) => {
+    //   if (response.error) {
+    //     craftError.innerHTML = `${response.error}`;
+    //     console.log(response);
+    //   } else {
+    //
+    //   }
+    //
+    // });
+
+  });
 
 }

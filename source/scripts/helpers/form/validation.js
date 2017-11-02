@@ -30,7 +30,7 @@ function checkForPassword(input, parent) {
 
   if (hasErrors == 'true') return;
 
-  if (value.length > 7) {
+  if (value.length > 5) {
     hideError(passwordError, parent);
   } else {
     displayError(passwordError, parent);

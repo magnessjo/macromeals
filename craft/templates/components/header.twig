@@ -14,7 +14,7 @@
       <a href="/pages/macros"><div><span>What are</span>Macros</div></a>
 
       {% if not currentUser %}
-        <a href="/account/login"><div>Login</div></a>
+        <a href="/account/login?p={{ craft.request.path }}"><div>Login</div></a>
       {% else %}
         <a href="/account/orders"><div>Orders</div></a>
       {% endif %}
@@ -47,7 +47,7 @@
     <div class="actions">
 
       {% if not currentUser %}
-        <a href="/account/login" class="login">Login</a>
+        <a href="/account/login?p={{ craft.request.path }}" class="login">Login</a>
       {% endif %}
 
       <div class="menu-toggle" data-showing='false'>
