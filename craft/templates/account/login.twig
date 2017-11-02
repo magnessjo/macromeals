@@ -34,7 +34,7 @@
               {% if craft.request.lastSegment() == 'checkout' %}
                 <input type="hidden" name="redirect" value="/checkout">
               {% else %}
-                <input type="hidden" name="redirect" value="{{ craft.request.getQuery('p')|default('/') }}">
+                <input type="hidden" name="redirect" value="/">
               {% endif %}
 
               <div class="field" data-required="true" valid="false">
