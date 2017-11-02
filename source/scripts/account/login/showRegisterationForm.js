@@ -1,8 +1,4 @@
 
-// Import
-
-import registerSubmit from './registerSubmit.js';
-
 // Variables
 
 const section = document.querySelector('#login-options');
@@ -15,11 +11,11 @@ export default function() {
 
   buttons.forEach((button) => {
 
-    button.addEventListener('click', () => {
+    button.addEventListener('click', (e) => {
 
+      e.preventDefault();
       section.style.display = 'none';
       infoSection.style.display = 'block';
-      registerSubmit();
 
     });
 

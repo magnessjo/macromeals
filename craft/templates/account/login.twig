@@ -25,7 +25,7 @@
 
           <p class="acumin-large">Already Registered?</p>
 
-          <form method="POST" class="registered-form" accept-charset="UTF-8">
+          <form method="POST" id="login-form" class="registered-form" accept-charset="UTF-8">
 
               {{ getCsrfInput() }}
 
@@ -37,14 +37,36 @@
                 <input type="hidden" name="redirect" value="/account/orders">
               {% endif %}
 
-              <div>
-                <label for="loginName">Email Address</label>
-                <input id="loginName" type="text" name="loginName" placeholder="bob@site.com" value="{{ craft.session.rememberedUsername }}">
+              <div class="field" data-required="true" valid="false">
+                <label for="loginName"><span>Username</span></label>
+                <div class="input">
+                  <input type="text"
+                         name="loginName"
+                         id="loginName"
+                         placeholder="johndoe"
+                         value="{{ craft.session.rememberedUsername ?? '' }}" />
+
+                  <div class="errors">
+                    <p class="required">Username is a required field</p>
+                    <p class="duplicate"><span></span> is not available.  Please select another username</p>
+                  </div>
+                </div>
               </div>
 
-              <div>
-                <label for="password">Password</label>
-                <input id="password" type="password" name="password">
+              <div class="field" data-required="true" valid="false">
+                <label for="password"><span>Password</span></label>
+                <div class="input">
+                  <input type="password"
+                         name="password"
+                         id="password"
+                         placeholder="dontUseMe1234$"
+                         value="{{ craft.session.rememberedPassword ?? '' }}" />
+
+                  <div class="errors">
+                    <p class="required">Password is a required field</p>
+                    <p class="password">Password must be 8 characters</p>
+                  </div>
+                </div>
               </div>
 
               <div class="checkbox">
@@ -54,6 +76,8 @@
                 </label>
               </div>
 
+              <p class="craft-error"></p>
+
               <div class="actions">
                 <button class="register-cta">Sign up?</button>
                 <input type="submit" value="Member Checkout" class="call-to-action" />
@@ -61,7 +85,7 @@
 
           </form>
 
-          <p>
+          <p class="forgot-password">
             <a href="{{ url('forgotpassword') }}">Forget your password?</a>
           </p>
 
@@ -102,7 +126,7 @@
 
           <div class="action-event guest">
 
-            <form method="POST">
+            <form method="POST" id="guest-form">
 
               <input type="hidden" name="action" value="commerce/cart/updateCart" />
               <input type="hidden" name="redirect" value="/checkout">
@@ -149,7 +173,7 @@
 
           <div>
             <label for="username">Password</label>
-            <input type="text" name="password" placeholder="Example: Password1234$" />
+            <input type="password" name="password" placeholder="Example: Password1234$" />
           </div>
 
           <div>
@@ -158,7 +182,7 @@
           </div>
 
           <div class="actions">
-            <input type="submit" data-button="continue" value="Continue to Customer Information" class="call-to-action">
+            <input type="submit" value="Submit" class="call-to-action">
           </div>
 
         </div>
