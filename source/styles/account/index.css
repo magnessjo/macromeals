@@ -2,3 +2,24 @@
 @import "../master.css";
 @import "./login.css";
 @import "./order.css";
+
+#password-reset {
+  display: flex;
+  align-items: center;
+  min-height: 60vh;
+  justify-content: center;
+
+  & .lock {
+    max-width: 700px;
+  }
+
+  & p {
+    margin-bottom: 60px;
+  }
+
+  & form {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+
+}
