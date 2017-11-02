@@ -31,7 +31,6 @@
     <input type="hidden" name="redirect" value="checkout/summary">
     <input type='hidden' name="sameAddress" value="1" />
     <input type="hidden" name="shippingAddressId" value="{{ shippingModel is not null ? shippingModel.id : 'new' }}">
-    {# <input type="hidden" name="billingAddressId" value="{{ billingModel is not null ? billingModel.id : 'new' }}"> #}
 
     <input type="hidden" name="shippingAddress[countryId]" value='233' />
 
@@ -212,112 +211,6 @@
       </div>
 
     </section>
-
-
-
-    {# <section id="billing-address">
-
-      <div class="lock">
-
-        <p class="acumin-medium-bold">Billing Address</p>
-
-        <div class="checkbox-field">
-          <input type="checkbox" name="billingAddressSame" id="sameAddress" />
-          <input type='hidden' name="sameAddress" value="0" />
-          <label for="sameAddress"><span>Same as Shipping Address</span></label>
-        </div>
-
-        <div class="billing-fields">
-
-          <div class="field" data-required="true" valid="false">
-            <label for="address"><span>Billing Address 1</span></label>
-            <div class="input">
-              <input type="text"
-                     name="billingAddress[address1]"
-                     id="billingaddress1"
-                     value="{{ addressModel.address1 ?? '' }}" />
-
-              <div class="errors">
-                <p class="required">Billing address is a required field</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="field" valid="true">
-            <label for="address-two">Billing Address 2</label>
-            <div class="input">
-              <input type="text"
-                     name="billingAddress[address2]"
-                     id="address2"
-                     value="{{ addressModel.address2 ?? '' }}" />
-
-              <div class="errors"></div>
-            </div>
-          </div>
-
-          <div class="field" data-required="true" valid="false">
-            <label for="city"><span>Billing City</span></label>
-            <div class="input">
-              <input type="text"
-                     name="billingAddress[city]"
-                     id="city"
-                     value="{{ addressModel.city ?? '' }}" />
-
-              <div class="errors">
-                <p class="required">Billing city is a required field</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="field" data-required="true" valid="false">
-            <label for="zip"><span>Billing Zip</span></label>
-            <div class="input">
-              <input type="text"
-                     name="billingAddress[zipCode]"
-                     id="zipCode"
-                     value="{{ addressModel.zipCode ?? '' }}" />
-
-              <div class="errors">
-                <p class="required">Billing zip code is a required field</p>
-              </div>
-            </div>
-          </div>
-
-          <div class="field" data-required="true" valid="true">
-
-            <label for="state"><span>Billing State</span></label>
-            <div class="input">
-              <select name="billingAddress[stateId]">
-                <option disabled selected value> Please Choose </option>
-                {% for state in craft.commerce.states %}
-                  {% if addressModel %}
-
-                    {% if addressModel.state == state %}
-                      <option value="{{ addressModel.stateId }}" selected> {{ addressModel.state }}</option>
-                    {% else %}
-                      <option value="{{ state.id }}">{{ state.name }}</option>
-                    {% endif %}
-
-                  {% else %}
-                    <option value="{{ state.id }}">{{ state.name }}</option>
-                  {% endif %}
-                {% endfor %}
-              </select>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section> #}
-
-
-
-
-
-
 
     <section class="action">
 
