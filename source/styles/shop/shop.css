@@ -93,9 +93,9 @@ input[type='checkbox'] {
 }
 
 .category-headline {
-  font-size: calc(22px + 1vw);
   text-transform: uppercase;
   color: var(--green);
+  font-size: 36px;
 
   @media (--large-max) {
     margin-bottom: 40px;
@@ -113,11 +113,13 @@ h2.vegan {
   &:before {
     content: "";
     position: absolute;
-    top: -8px;
-    left: 18px;
+    top: -6px;
+    left: 19px;
     height: 20px;
     width: 20px;
     background-image: url(/images/products/vegan-leaf.svg);
+    top: -6px;
+    left: 19px;
   }
 
 }

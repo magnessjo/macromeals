@@ -15,11 +15,6 @@
   text-align: center;
 }
 
-.flex-wrapper {
-  max-width: 850px;
-  margin: 0 auto;
-}
-
 .summary {
 
   @media (--large-max) {
