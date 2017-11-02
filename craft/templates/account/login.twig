@@ -76,7 +76,9 @@
                 </label>
               </div>
 
-              <p class="craft-error"></p>
+              {% if errorMessage is defined %}
+                <p class="craft-error">{{ errorMessage }}</p>
+              {% endif %}
 
               <div class="actions">
                 <button class="register-cta">Sign up?</button>
