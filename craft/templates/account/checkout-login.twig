@@ -1,0 +1,65 @@
+
+{% extends "_layout" %}
+{% includeCssFile "/account.css" %}
+{% includeJsFile "/login.js" %}
+{% set bodyClass = 'with-border' %}
+
+{% set cart = craft.commerce.getCart() %}
+
+{% block main %}
+
+  <section id="checkout-login">
+
+    <div class="lock">
+
+      <div class="register-signup">
+        <p>Not yet Registered? <span>Register for quick checkouts in the future</span></p>
+        <a href="/account/register" class="register-cta"><span class="icons">Register</span></a>
+      </div>
+
+      <p class="divider"><span>Or</span></p>
+
+      <div class="guest-checkout">
+
+        <div>
+
+          <p class="acumin-large">Guest Checkout</p>
+          <div>
+            <p>Don’t have an account? Checkout as a guest and you can create an account during the checkout process if you choose.</p>
+            <p>Why do we ask for your email address?</p>
+            <p>No need to set up an account, but we need your email address to send you an order receipt and keep you updated on the status of your order.</p>
+          </div>
+
+        </div>
+
+        <div class="action-event guest">
+
+          <form method="POST" id="guest-form">
+
+            <input type="hidden" name="action" value="commerce/cart/updateCart" />
+            <input type="hidden" name="redirect" value="/checkout">
+            {{ getCsrfInput() }}
+
+            <div class="">
+              <label>Email Address</label>
+              <input type="text" name="email" id="guestEmail" value="{{ cart.email ?? '' }}" placeholder="email@site.com" />
+
+              {% if cart and cart.getErrors('email') %}
+                <p class="error">{{ cart.getErrors('email')|join }}</p>
+              {% endif %}
+
+            <div>
+
+            <button class="call-to-action guest-cta">Guest Checkout</button>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+{% endblock %}

@@ -50,7 +50,7 @@ const config = {
       customer: `source/scripts/checkout/customer`,
       summary: `source/scripts/checkout/summary`,
       billing: `source/scripts/checkout/billing`,
-      login: `source/scripts/account/login`,
+      register: `source/scripts/account/register`,
     },
   },
 

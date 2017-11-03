@@ -8,7 +8,7 @@
 {% block main %}
 
   {% if cart.email == '' %}
-    {% redirect "/account/login/checkout" 301 %}
+    {% redirect "/account/checkout-login" 301 %}
   {% endif %}
 
   <script type="text/javascript">

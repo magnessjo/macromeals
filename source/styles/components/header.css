@@ -305,6 +305,10 @@ header {
       margin-top: -15px;
     }
 
+    & .register-cta {
+      color: var(--black);
+    }
+
   }
 
   & .menu-toggle {

@@ -1,108 +1,48 @@
 
-#login-options {
+#checkout-login {
 
   & .acumin-large  {
     margin-bottom: 40px;
   }
 
-  & .register-options {
-
-    @media (--tablet-min) {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    & > div {
-
-      @media (--tablet-min) {
-        width: 45%;
-      }
-
-    }
-
-  }
-
-  & .registered {
-
-    & p {
-
-      & a {
-        color: var(--black);
-        font-size: 14px;
-      }
-
-    }
-
-    & .actions {
-
-      @media (--large-max) {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      & button {
-
-        @media (--tablet-min) {
-          display: none;
-        }
-
-      }
-
-    }
-
-    & .checkbox {
-      margin-bottom: 20px;
-    }
-
-    & .forgot-password {
-      text-align: right;
-    }
-
-  }
-
   & .register-signup {
-
-    @media (--large-max) {
-      display: none;
-    }
+    max-width: 500px;
+    margin: 0 auto;
 
     & p {
-      line-height: 1em;
+      text-align: center;
     }
 
     & p span {
-      font-size: 14px;
-      line-height: 1em;
+      display: block;
     }
 
-    & .register-cta {
-      color: var(--white);
-      text-align: center;
-      text-transform: uppercase;
-      background-color: var(--green);
-      color: var(--white);
-      font-size: 22px;
-      font-size: calc(18px + 1vw);
-      width: 100%;
-      border-radius: 0;
-      padding: 30px;
-      display: block;
+  }
 
-      & span {
-        position: relative;
-        padding-left: 40px;
-      }
+  & .register-cta {
+    color: var(--white);
+    text-align: center;
+    text-transform: uppercase;
+    background-color: var(--green);
+    color: var(--white);
+    font-size: 22px;
+    font-size: calc(18px + 1vw);
+    width: 100%;
+    border-radius: 0;
+    padding: 30px;
+    display: block;
 
-      & span:after {
-        content: "\f12c";
-        position: absolute;
-        left: 0;
-        top: 50%;
-        transform: translateY(-50%);
-      }
+    & span {
+      position: relative;
+      padding-left: 40px;
+    }
 
+    & span:after {
+      content: "\f12c";
+      position: absolute;
+      left: 0;
+      top: 50%;
+      transform: translateY(-50%);
     }
 
   }
