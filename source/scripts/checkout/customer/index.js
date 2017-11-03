@@ -8,7 +8,7 @@ import shippingMethod from './shippingMethod.js';
 
 // Variables
 
-const form = document.querySelector('form');
+const form = document.querySelector('form#address-info');
 
 // Load
 

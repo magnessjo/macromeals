@@ -6,7 +6,7 @@ import inputQuery from 'scripts/helpers/form/inputQuery.js';
 
 // Variables
 
-const form = document.querySelector('form');
+const form = document.querySelector('form#address-info');
 const requiredFields = Array.from(form.querySelectorAll('[data-required]'));
 const inputs = Array.from(form.querySelectorAll('inputs[type="text"]'));
 

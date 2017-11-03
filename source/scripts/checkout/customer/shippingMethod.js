@@ -1,7 +1,7 @@
 
 // Variables
 
-const form = document.querySelector('#address-info');
+const form = document.querySelector('form#address-info');
 const container = document.querySelector('#shipping-method');
 const buttons = Array.from(container.querySelectorAll('.shpping-type'));
 const input = container.querySelector('input[name="shippingMethod"]');
