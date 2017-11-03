@@ -8,6 +8,7 @@ import getCartItems from 'scripts/helpers/cart/getCartItems.js';
 const header = document.querySelector('header');
 const button = header.querySelector('.cart');
 const cartSummary = header.querySelector('.cart-summary');
+const loginForm = header.querySelector('.login-form');
 const wrapper = cartSummary.querySelector('.order-items');
 const actionLink = cartSummary.querySelector('.call-to-action');
 
@@ -81,6 +82,7 @@ export default function() {
       getCartItems().then((data) => {
         updateDOM(data).then(() => {
           cartSummary.setAttribute('aria-hidden', 'false');
+          loginForm.setAttribute('aria-hidden', 'true')
         });
       });
 

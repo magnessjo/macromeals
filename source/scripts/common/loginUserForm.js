@@ -7,13 +7,14 @@ import findParentNode from 'scripts/helpers/findParentNode.js';
 
 // Variables
 
-const loginForm = document.querySelector('#login-form');
+const header = document.querySelector('header');
+const loginForm = header.querySelector('#login-form');
 const userNameInput = loginForm.querySelector('input[name="loginName"]');
 const passwordInput = loginForm.querySelector('input[name="password"]');
-const rememberUser = loginForm.querySelector('input[type="checkbox"]');
+const rememberUser = loginForm.querySelector('input[name="rememberMe"]');
 const userNameParent = findParentNode(userNameInput, 'field');
 const passwordParent = findParentNode(passwordInput, 'field');
-const craftError = loginForm.querySelector('.craft-error');
+const craftErrors = loginForm.querySelector('.craft-errors');
 
 // Export
 
@@ -35,6 +36,14 @@ export default function() {
     isChecked ? rememberUser.value = 1 : rememberUser.value = 0;
   });
 
+  userNameInput.addEventListener('focus', () => {
+    craftErrors.innerHTML = '';
+  });
+
+  passwordInput.addEventListener('focus', () => {
+    craftErrors.innerHTML = '';
+  });
+
   // Submit Form
 
   loginForm.addEventListener('submit', (e) => {
@@ -53,24 +62,31 @@ export default function() {
       validation.checkForPassword(passwordInput, passwordParent);
       return;
     } else {
-      loginForm.submit();
-    }
 
-    // userdata = `
-    //   ${window.csrfTokenName}=${window.csrfTokenValue}&
-    //   loginName=${userNameInput.value}&
-    //   password=${passwordInput.value}
-    // `;
-    //
-    // postLogin(userdata).then((response) => {
-    //   if (response.error) {
-    //     craftError.innerHTML = `${response.error}`;
-    //     console.log(response);
-    //   } else {
-    //
-    //   }
-    //
-    // });
+      const userdata = `
+        ${window.csrfTokenName}=${window.csrfTokenValue}&loginName=${userNameInput.value}&password=${passwordInput.value}&rememberMe=${rememberUser.value}
+      `;
+
+      postLogin(userdata).then( (response) => {
+
+        if (response.error) {
+
+          const element = document.createElement('p');
+          element.innerHTML = response.error;
+          element.style.display = 'block';
+          craftErrors.style.display = 'block';
+          craftErrors.appendChild(element);
+
+        } else {
+          const body = document.querySelector('body');
+          const parent = loginForm.parentNode;
+          body.setAttribute('logged-in', true);
+          parent.setAttribute('aria-hidden', true);
+        }
+
+      });
+
+    }
 
   });
 

@@ -108,7 +108,7 @@ header {
 
   }
 
-  & .actions {
+  & .overlay-actions {
     margin-left: auto;
     height: 100%;
     display: flex;
@@ -119,11 +119,6 @@ header {
     margin-right: 18px;
     font-size: 15px;
     text-transform: none;
-
-    @media (--medium-max) {
-      display: none;
-    }
-
   }
 
   & .cart {
@@ -172,7 +167,7 @@ header {
 
   }
 
-  & .cart-summary {
+  & .header-overlay {
     position: absolute;
     background-color: var(--white);
     right: 0;
@@ -182,6 +177,7 @@ header {
 
     @media (--medium-max) {
       width: 100%;
+      padding: 10px;
     }
 
     @media (--large-min) {
@@ -199,8 +195,8 @@ header {
     &:before {
       content: "";
       position: absolute;
-      right: 25px;
       top: -9px;
+      right: 25px;
       width: 0;
     	height: 0;
     	border-left: 8px solid transparent;
@@ -212,6 +208,10 @@ header {
       }
 
     }
+
+  }
+
+  & .cart-summary {
 
     & p {
       margin-bottom: 0;
@@ -268,9 +268,52 @@ header {
 
   }
 
+  & .login-form {
+    border-top: 1px solid var(--green);
+    width: 320px;
+
+    @media (--medium-max) {
+      padding: 20px;
+    }
+
+    @media (--tablet-min) {
+      right: 100px;
+    }
+
+    &:before {
+      display: none;
+    }
+
+    & .login-form-actions {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    & .forgot-password {
+      margin-bottom: 0;
+      font-size: 12px;
+      text-align: right;
+    }
+
+    & .errors p[show-error=true] {
+      display: block;
+      position: relative;
+      width: 100%;
+      text-align: left;
+      margin-bottom: 10px;
+      margin-top: -15px;
+    }
+
+  }
+
   & .menu-toggle {
     cursor: pointer;
-    margin-right: 20px;
+    border-top: 1px solid var(--green);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 0;
 
     @media (--large-min) {
       display: none;
@@ -280,6 +323,7 @@ header {
       text-transform: uppercase;
       font-size: 12px;
       margin-bottom: 0;
+      margin-left: 10px;
     }
 
   }
@@ -288,7 +332,6 @@ header {
     position: relative;
     height: 20px;
     width: 20px;
-    margin: 0 auto 5px auto;
 
     & > div {
       position: absolute;
@@ -395,6 +438,10 @@ menu {
 
   }
 
+  & .current-user-nav {
+    display: none;
+  }
+
 }
 
 .with-border header {
@@ -410,6 +457,10 @@ body[logged-in='true'] {
 
   & .account-dropdown {
     display: block;
+  }
+
+  & menu .current-user-nav {
+    display: flex;
   }
 
 }
