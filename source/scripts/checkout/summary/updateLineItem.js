@@ -9,7 +9,7 @@ import updateCartTotals from './updateCartTotals.js';
 
 // Variables
 
-const form = document.querySelector('form');
+const form = document.querySelector('form#product-list');
 const items = Array.from(form.querySelectorAll('.item-actions'));
 const buttons = Array.from(form.querySelectorAll('.increment button'));
 

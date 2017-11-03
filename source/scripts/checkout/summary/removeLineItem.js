@@ -9,7 +9,7 @@ import updateCartTotals from './updateCartTotals.js';
 // Variables
 
 const body = document.querySelector('body');
-const form = document.querySelector('form');
+const form = document.querySelector('form#product-list');
 const buttons = Array.from(form.querySelectorAll('.remove'));
 
 // Show modal
