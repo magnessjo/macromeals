@@ -40,11 +40,16 @@ function submitForm(e) {
       for (let key in errors) {
 
         const error = errors[key];
+        const element = registerForm.querySelector(`input[name="${key}"]`);
+        const parent = findParentNode(element, 'field');
+        const errorElement = parent.querySelector('.errors');
+        parent.setAttribute('has-error', true);
 
         error.forEach((text) => {
           const element = document.createElement('p');
           element.innerHTML = text;
-          craftError.appendChild(element);
+          element.style.display = 'block';
+          errorElement.appendChild(element);
         });
 
         craftError.style.display = 'block';
@@ -83,6 +88,14 @@ export default function() {
   emailInput.addEventListener('blur', () => {
     validation.required(emailInput, emailParent);
     validation.checkForEmail(emailInput, emailParent);
+  });
+
+  inputs.forEach((input) => {
+    input.addEventListener('focus', () => {
+      const parent = findParentNode(input, 'field');
+      const elements = Array.from(parent.querySelectorAll('.errors p'));
+      elements.forEach( (elm) => { elm.style.display = 'none'} );
+    });
   });
 
   // Form Submit Action

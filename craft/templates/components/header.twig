@@ -12,10 +12,8 @@
       <a href="/shop"><div>Meals</div></a>
       <a href="/shop/quick-order"><div>Quick Order</div></a>
       <a href="/pages/macros"><div><span>What are</span>Macros</div></a>
-
-      {% if not currentUser %}
-        <a href="/account/login"><div>Login</div></a>
-      {% else %}
+      <a href="/account/login" class="login"><div>Login</div></a>
+      {% if currentUser %}
         <a href="/account/orders"><div>Orders</div></a>
       {% endif %}
 
@@ -33,22 +31,17 @@
       <a href="/shop"><span>Meals</span></a>
       <a href="/shop/quick-order"><span>Quick Order</span></a>
       <a href="/pages/macros"><span>Why Macros</span></a>
-      {% if currentUser %}
-        <div class="dropdown">
-          <button>Account</button>
-          <div class="options" aria-hidden='true'>
-            <a href="/account/orders">Orders</a>
-            <a href="{{ logoutUrl }}">Logout</a>
-          </div>
+      <div class="dropdown account-dropdown">
+        <button>Account</button>
+        <div class="options" aria-hidden='true'>
+          <a href="/account/orders">Orders</a>
+          <a href="{{ logoutUrl }}">Logout</a>
         </div>
-      {% endif %}
+      </div>
     </nav>
 
     <div class="actions">
-
-      {% if not currentUser %}
-        <a href="/account/login" class="login">Login</a>
-      {% endif %}
+      <a href="/account/login" class="login">Login</a>
 
       <div class="menu-toggle" data-showing='false'>
         <div class="menu-button">

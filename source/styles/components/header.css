@@ -65,6 +65,10 @@ header {
       color: var(--white);
     }
 
+    & .account-dropdown {
+      display: none;
+    }
+
     & .options {
 
       @media (--large-min) {
@@ -400,8 +404,12 @@ menu {
 
 body[logged-in='true'] {
 
-  & .actions .login {
+  & .login {
     display: none;
+  }
+
+  & .account-dropdown {
+    display: block;
   }
 
 }
