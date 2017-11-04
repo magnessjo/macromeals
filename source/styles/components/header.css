@@ -171,17 +171,18 @@ header {
     position: absolute;
     background-color: var(--white);
     right: 0;
-    top: 60px;
     z-index: 9;
     box-shadow: -3px 3px 5px -3px #616161;
 
     @media (--medium-max) {
       width: 100%;
       padding: 10px;
+      top: 100px;
     }
 
     @media (--large-min) {
       padding: 20px 40px;
+      top: 60px;
     }
 
     &[aria-hidden="true"] {
@@ -270,18 +271,27 @@ header {
 
   & .login-form {
     border-top: 1px solid var(--green);
-    width: 320px;
 
     @media (--medium-max) {
       padding: 20px;
     }
 
-    @media (--tablet-min) {
+    @media (--large-min) {
       right: 100px;
+      width: 320px;
     }
 
     &:before {
       display: none;
+    }
+
+    & #login-form {
+
+      @media (--medium-max) {
+        max-width: 320px;
+        margin: 0 auto;
+      }
+
     }
 
     & .login-form-actions {
@@ -313,11 +323,11 @@ header {
 
   & .menu-toggle {
     cursor: pointer;
-    border-top: 1px solid var(--green);
+    border-bottom: 1px solid var(--green);
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 10px 0;
+    height: 40px;
 
     @media (--large-min) {
       display: none;
@@ -422,7 +432,6 @@ menu {
   }
 
   & a {
-    padding: 25px 10px;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -431,6 +440,7 @@ menu {
     color: var(--gray);
     border-bottom: 1px solid var(--mid-gray);
     letter-spacing: 1px;
+    height: 60px;
 
     & span {
       display: block;
@@ -438,6 +448,20 @@ menu {
       width: 100%;
       line-height: .7em;
       text-align: center;
+    }
+
+  }
+
+  & .mobile-nav > div {
+    overflow: hidden;
+
+    & a {
+      width: 50%;
+      float: left;
+    }
+
+    & a:last-of-type {
+      border-left: 1px solid var(--mid-gray);
     }
 
   }
