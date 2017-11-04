@@ -11,6 +11,11 @@
     {% redirect "/account/checkout-login" 301 %}
   {% endif %}
 
+  <script type="text/javascript">
+    window.csrfTokenName = "{{ craft.config.csrfTokenName|e('js') }}";
+    window.csrfTokenValue = "{{ craft.request.csrfToken|e('js') }}";
+  </script>
+
   <script src="https://js.stripe.com/v3/"></script>
 
   {% include "components/breadcrumb.twig" %}
@@ -20,6 +25,9 @@
     <div class="lock">
 
       <form method="POST" id="payment" >
+
+        <input type="hidden" name="action" value="commerce/payments/pay" />
+        <input type="hidden" name="redirect" value="/checkout/complete?order={{cart.number}}" />
 
         <h1 class="acumin-medium-bold">Billing</h1>
 

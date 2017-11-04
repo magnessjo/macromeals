@@ -99,15 +99,15 @@ function submitForm() {
       address_country: 'US',
     }).then((result) => {
 
+      console.log(result);
+
       if (result.error) {
         errorElement.textContent = result.error.message;
         errorElement.style.display = 'block';
         submitButton.disabled = false;
       } else {
 
-        fetchPostData(`stripeToken=${result.token.id}`, '/actions/commerce/payments/pay').then( (response) => {
-
-          console.log(response);
+        fetchPostData(`${window.csrfTokenName}=${window.csrfTokenValue}&stripeToken=${result.token.id}`, '/actions/commerce/payments/pay').then( (response) => {
 
           if (response.success) {
 
