@@ -2,6 +2,7 @@
 // Imports
 
 import findParentNode from 'scripts/helpers/findParentNode.js';
+import fetchPostData from 'scripts/helpers/fetchPostData.js';
 
 // Variables
 
@@ -104,12 +105,23 @@ function submitForm() {
         submitButton.disabled = false;
       } else {
 
-        const hiddenInput = document.createElement('input');
-        hiddenInput.setAttribute('type', 'hidden');
-        hiddenInput.setAttribute('name', 'stripeToken');
-        hiddenInput.setAttribute('value', result.token.id);
-        form.appendChild(hiddenInput);
-        form.submit();
+        fetchPostData(`stripeToken=${result.token.id}`, '/actions/commerce/payments/pay').then( (response) => {
+
+          console.log(response);
+
+          if (response.success) {
+
+            window.location.href = '/checkout/complete';
+
+          } else {
+            console.log(response);
+            const text = document.createElement('p');
+            text.innerHTML = 'There was an error submitting your payment.  Your cart has been saved.  Please contact our support team at <a href="help@macromeals.life">help@macromeals.life</a> to process your payment.'
+            errorElement.appendChild(text);
+            errorElement.style.display = 'block';
+          }
+
+        });
 
       }
 

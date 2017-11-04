@@ -16,7 +16,7 @@
         <h1 class="acumin-large-bold">Thank you!</h1>
         <h2 class="acumin-medium">Your order is being processed</h2>
         <p>Your will receive an email with your details.</p>
-        <p>Your order number is {{ queryString }}</p>
+        <p>Your order number is {{ lastOrder[0].shortNumber }}</p>
 
         <a href="/account/orders" class="call-to-action">View Previous Orders</a>
 

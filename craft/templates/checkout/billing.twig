@@ -19,71 +19,52 @@
 
     <div class="lock">
 
-      <form method="POST" id="payment" data-cost="{{ cart.totalPrice | commerceCurrency(cart.currency, convert = true, format = false, stripZeros = true) }}" >
+      <form method="POST" id="payment" >
 
-        <input type="hidden" name="action" value="commerce/payments/pay" />
-        <input type="hidden" name="redirect" value="/checkout/complete?order={{cart.number}}" />
+        <h1 class="acumin-medium-bold">Billing</h1>
 
-          <h1 class="acumin-medium-bold">Billing</h1>
+        <div class="form-group">
 
-          <div id="payment-request-button"></div>
-
-          <div class="form-group">
-
-            <div class="field card-name">
-              <label>
-                <span>Name</span>
-                <div id="card-name-element" class="input">
-                  <input type="text" placeholder="John Doe" />
-                </div>
-              </label>
-            </div>
-
-            <div class="field card-number">
-              <label>
-                <span>Card number</span>
-                <div id="card-number-element" class="input"></div>
-              </label>
-            </div>
-
-            <div class="field expiration">
-              <label>
-                <span>Expiration date</span>
-                <div id="card-expiry-element" class="input"></div>
-              </label>
-            </div>
-
-            <div class="field card-number">
-              <label>
-                <span>CVC</span>
-                <div id="card-cvc-element" class="input"></div>
-              </label>
-            </div>
-
-            <div class="field card-number">
-              <label>
-                <span>Zip Code</span>
-                <div id="postal-code-element" class="input"></div>
-              </label>
-            </div>
-
+          <div class="field card-name">
+            <label>
+              <span>Name</span>
+              <div id="card-name-element" class="input">
+                <input type="text" placeholder="John Doe" />
+              </div>
+            </label>
           </div>
 
-          <div id="card-errors" role="alert"></div>
+          <div class="field card-number">
+            <label>
+              <span>Card number</span>
+              <div id="card-number-element" class="input"></div>
+            </label>
+          </div>
 
-          {% if craft.config.devMode and (craft.session.hasFlash('notice') or craft.session.hasFlash('error')) %}
+          <div class="field expiration">
+            <label>
+              <span>Expiration date</span>
+              <div id="card-expiry-element" class="input"></div>
+            </label>
+          </div>
 
-            {% set noticeFlash = craft.session.getFlash('notice')|join('|') %}
-            {% set errorFlash = craft.session.getFlash('error')|join('|') %}
+          <div class="field card-number">
+            <label>
+              <span>CVC</span>
+              <div id="card-cvc-element" class="input"></div>
+            </label>
+          </div>
 
-            Notice: [{{  noticeFlash }}]
-            Error: [{{  errorFlash }}]
+          <div class="field card-number">
+            <label>
+              <span>Zip Code</span>
+              <div id="postal-code-element" class="input"></div>
+            </label>
+          </div>
 
-            {% for test in errorFlash %}
-              {{ test }}
-            {% endfor %}
+        </div>
 
-            {% endif %}
+        <div id="card-errors" role="alert"></div>
 
         <div class="checkout-actions">
 
