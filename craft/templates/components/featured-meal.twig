@@ -25,9 +25,9 @@
             {% if purchasable.isDefault %}
 
              {% for row in purchasable.productMacros %}
-               <p class="acumin-tiny-bold"><span>Protein:</span> {{ row.protein }}</p>
-               <p class="acumin-tiny-bold"><span>Carbs:</span> {{ row.carbs }}</p>
-               <p class="acumin-tiny-bold"><span>Fat:</span> {{ row.fat }}</p>
+               <p class="acumin-tiny-bold"><span>Protein:</span> {{ row.protein }}g</p>
+               <p class="acumin-tiny-bold"><span>Carbs:</span> {{ row.carbs }}g</p>
+               <p class="acumin-tiny-bold"><span>Fat:</span> {{ row.fat }}g</p>
              {% endfor %}
 
              <p>
@@ -49,7 +49,7 @@
 
           {% for purchasable in product.variants %}
             {% if purchasable.isDefault %}
-              {% include "components/pie-chart.twig" with { 'macros': product.productMacros } %}
+              {% include "components/pie-chart.twig" with { 'macros': purchasable.productMacros } %}
             {% endif %}
           {% endfor %}
 
