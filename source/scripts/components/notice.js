@@ -2,10 +2,10 @@
 // Variables
 
 const container = document.querySelector('.notice');
-const text = container.querySelector('.text');
-const button = container.querySelector('.toggle');
-const wrapper = container.querySelector('.expand-content');
-const padding = parseInt(window.getComputedStyle(text).getPropertyValue('padding-top'));
+let text;
+let button;
+let wrapper;
+let padding;
 
 // Resize
 
@@ -23,22 +23,31 @@ function resize() {
 
 export default function() {
 
-  button.addEventListener('click', () => {
+  if (container) {
 
-    const height = wrapper.querySelector('div').offsetHeight + padding * 2;
+    text = container.querySelector('.text');
+    button = container.querySelector('.toggle');
+    wrapper = container.querySelector('.expand-content');
+    padding = parseInt(window.getComputedStyle(text).getPropertyValue('padding-top'));
 
-    wrapper.style.transition = 'height 1s';
+    button.addEventListener('click', () => {
 
-    if  (wrapper.offsetHeight == 0) {
-      wrapper.style.height = `${height}px`;
-      button.classList.add('expanded');
-    } else {
-      wrapper.style.height = `0`;
-      button.classList.remove('expanded');
-    }
+      const height = wrapper.querySelector('div').offsetHeight + padding * 2;
 
-  });
+      wrapper.style.transition = 'height 1s';
 
-  window.addEventListener('resize', resize);
+      if  (wrapper.offsetHeight == 0) {
+        wrapper.style.height = `${height}px`;
+        button.classList.add('expanded');
+      } else {
+        wrapper.style.height = `0`;
+        button.classList.remove('expanded');
+      }
+
+    });
+
+    window.addEventListener('resize', resize);
+
+  }
 
 }
