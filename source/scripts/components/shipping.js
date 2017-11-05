@@ -1,69 +1,49 @@
 
+// import
+
+import fetchPostData from 'scripts/helpers/fetchPostData.js';
+import inputQuery from 'scripts/helpers/form/inputQuery.js';
+import checkFormFieldsForValidAttribute from 'scripts/helpers/form/checkFormFieldsForValidAttribute.js';
+
 // Variables
 
-const form = document.querySelector('.shipping-calculator');
-const input = form.querySelector('input[type="text"]');
-const submit = form.querySelector('input[type="submit"]');
-const result = document.querySelector('.shipping-cost-result');
-const loaderAnimation = result.querySelector('.loader');
-const textContainer = result.querySelector('.acumin-large-bold');
-const regex = /^(\d{5})?$/;
+const shippingForm = document.querySelector('#shipping-calculator');
+const inputs = shippingForm.querySelectorAll('input:not([type="submit"])')
+const submit = shippingForm.querySelector('input[type="submit"]');
+
+const modal = document.querySelector('.shipping-cost-modal');
+const loaderAnimation = modal.querySelector('.loader');
+const textContainer = modal.querySelector('.text-container');
+const resultText = textContainer.querySelector('.acumin-large-bold');
+const modalButton = modal.querySelector('button');
 
 // Set Rate
 
-function setRate(zip) {
+function setRate() {
 
-  const xhr = new XMLHttpRequest();
   const url = '/actions/MacroCommerce/ShippingRates';
-  let data = `zip=${zip}&`;
+  const zip = shippingForm.querySelector('input[name="zipCode"]').value;
+  const quantity = shippingForm.querySelector('input[name="quantity"]').value;
+  let data = `${window.csrfTokenName}=${window.csrfTokenValue}&zip=${zip}&quantity=${quantity}`;
 
-  data += `${window.csrfTokenName}=${window.csrfTokenValue}`;
+  modal.style.display = 'block';
 
-  xhr.open('POST', url);
+  fetchPostData(data,url).then( (response) => {
 
-  xhr.onreadystatechange = () => {
+    const text = document.createElement('p');
+    loaderAnimation.style.display = 'none';
 
-    if (xhr.readyState === xhr.DONE) {
-
-      if (xhr.status === 200) {
-
-        const text = JSON.parse(xhr.responseText);
-
-        loaderAnimation.style.display = 'none';
-
-        if (text == 'failure') {
-          result.innerHTML = `There was an error getting your estimate.  Please contact us directly at <a href="info@macromeals.life">info@macromeals.life</a> for an estimate.`;
-        } else {
-          textContainer.innerHTML = `<span>Your Estimate</span>$${text}`;
-          textContainer.style.display = 'block';
-          input.value = '';
-          submit.setAttribute('disabled', true);
-        }
-
-      }
-
+    if (response.success) {
+      text.innerHTML = `<span>Your Estimate</span>$${response.amount}`;
+      text.classList.add('result');
+      inputs.forEach( (input) => input.value = '');
+    } else {
+      text.innerHTML = `There was an error getting your estimate.  Please contact us directly at <a href="info@macromeals.life">info@macromeals.life</a> for an estimate.`;
     }
 
-  }
+    textContainer.appendChild(text);
 
-  xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-  xhr.send(data);
-  result.style.display = 'flex';
-
-}
-
-// Check Value
-
-function checkValue() {
-
-  const value = input.value;
-
-  if (regex.test(value) && value.length == 5) {
-    submit.removeAttribute('disabled');
-  }  else {
-    submit.setAttribute('disabled', true);
-  }
+  });
 
 }
 
@@ -71,16 +51,24 @@ function checkValue() {
 
 export default function() {
 
-  input.addEventListener('keyup', checkValue);
-  input.addEventListener('keydown', checkValue);
-
-  submit.addEventListener('click', (e) => {
+  shippingForm.addEventListener('submit', (e) => {
 
     e.preventDefault();
 
-    const value = input.value;
-    console.log(value);
-    setRate(value);
+    inputQuery(shippingForm, false);
+
+    const isValid = checkFormFieldsForValidAttribute(inputs);
+    if (isValid) setRate();
+
+  });
+
+  modalButton.addEventListener('click', () => {
+
+    const text = textContainer.querySelector('p');
+
+    modal.style.display = 'none';
+    loaderAnimation.style.display = 'block';
+    text.remove();
 
   });
 

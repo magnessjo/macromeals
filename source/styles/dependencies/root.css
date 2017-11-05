@@ -16,6 +16,7 @@
   --light-blue:   rgba(49, 87, 125, .5);
   --yellow:       rgba(255, 252, 143, 1);
   --light-yellow: rgba(255, 252, 143, .4);
+  --opacity-yellow: rgba(255, 252, 143, .7);
 
   --light-gray:   rgba(232, 232, 232, 1);
   --gray:         #7f7f7f;

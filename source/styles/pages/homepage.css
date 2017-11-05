@@ -314,73 +314,85 @@
 }
 
 #location {
+  overflow: visible;
 
-  & .columns {
-
-    @media (--tablet-min) {
-      display: flex;
-    }
-
-  }
-
-  & .text {
-
-    @media (--tablet-min) {
-      width: 60%;
-      padding-right: 40px;
-    }
-
-  }
-
-  & .shipping-cost-result  {
-    background-color: var(--light-yellow);
-    align-items: center;
-    justify-content: center;
-    display: none;
+  & .lock {
+    max-width: 700px;
+    margin: 0 auto;
     position: relative;
+  }
 
-    @media (--large-max) {
-      margin-top: 40px;
-    }
+  & .errors p {
+    position: relative;
+    width: 100%;
+    text-align: left;
+  }
+
+  & .shipping-cost-modal  {
+    background-color: rgba(232, 232, 232, .95);
+    display: block;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 9;
+    display: none;
 
     @media (--tablet-min) {
-      width: 40%;
-    }
-
-    & .text-container {
-
-      @media (--large-max) {
-        padding: 40px 0;
-      }
-
-      & .acumin-large-bold {
-        margin-bottom: 0;
-        text-align: center;
-        line-height: 1em;
-        display: none;
-
-        & span {
-          font-family: var(--nimbus);
-          font-size: 14px;
-          font-weight: 300;
-          display: block;
-          line-height: 1em;
-        }
-
-      }
-
+      top: -10%;
+      bottom: -10%;
+      left: -10%;
+      right: -10%;
     }
 
     & .loader {
-      margin: 100px auto;
       font-size: 15px;
       width: 20px;
       height: 20px;
       border-radius: 50%;
-      position: relative;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       text-indent: -9999em;
       animation: spinner 1.1s infinite ease;
       transform: translateZ(0);
+    }
+
+    & button {
+      position: absolute;
+      top: 5%;
+      right: 5%;
+      font-size: 26px;
+    }
+
+    & .text-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      text-align: center;
+
+      & p {
+        margin-bottom: 0;
+        line-height: 1em;
+        max-width: 60%;
+        margin: 0 auto;
+      }
+
+      & .result {
+        font-size: 35px;
+        font-weight: 700;
+
+        & span {
+          font-size: 25px;
+          font-weight: 400;
+          display: block;
+        }
+
+      }
+
     }
 
   }

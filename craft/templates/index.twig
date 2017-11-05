@@ -95,37 +95,60 @@
 
     <div class="lock">
 
-      <h1 class="acumin-medium-bold">Shipping Costs</h1>
+      <h1 class="acumin-medium-bold">Estimate Shipping Costs</h1>
 
-      <div class="columns">
+      <div class="text">
+        <p>We ship four days a week to any state.  Shipping costs are dependent on your location and the number of meals.</p>
+        <p>Please enter your estimated quantity of meals and your shipping zip code for an estimated shipping cost.</p>
 
-        <div class="text">
-          <p>We ship four days a week to any state.  Shipping costs are dependent on your location.</p>
-          <p>Please enter your zip code for an estimated shipping cost.</p>
+        <form id="shipping-calculator">
 
-          <form class="shipping-calculator">
+          <div class="two-column">
 
-            <script type="text/javascript">
-              window.csrfTokenName = "{{ craft.config.csrfTokenName|e('js') }}";
-              window.csrfTokenValue = "{{ craft.request.csrfToken|e('js') }}";
-            </script>
+            <div class="field" data-required="true" valid="false">
+              <label for="quantity"><span>Quantity</span></label>
+              <div class="input">
+                <input type="text"
+                       name="quantity"
+                       placeholder="Example: 12"
+                       maxlength="3"
+                       id="quantity" />
 
-            <input type="text" maxlength="5" placeholder="Example: 21014" />
-            <input type="submit" disabled />
+                <div class="errors">
+                  <p class="required">Quantity is a required field</p>
+                </div>
+              </div>
+            </div>
 
-          </form>
+            <div class="field" data-required="true" valid="false">
+              <label for="zipCode"><span>Zip Code</span></label>
+              <div class="input">
+                <input type="number"
+                       name="zipCode"
+                       id="zipCode"
+                       placeholder="Example: 21014"
+                       maxlength="5" />
 
-        </div>
+                <div class="errors">
+                  <p class="required">Zip Code is a required field</p>
+                </div>
+              </div>
+            </div>
 
-        <div class="shipping-cost-result">
-
-          <div class="loader"></div>
-
-          <div class="text-container">
-            <p class="acumin-large-bold"></p>
           </div>
 
-        </div>
+          <input type="submit" value="Get Estimate" />
+
+        </form>
+
+      </div>
+
+      <div class="shipping-cost-modal">
+
+        <div class="loader"></div>
+        <button>Close</button>
+
+        <div class="text-container"></div>
 
       </div>
 
