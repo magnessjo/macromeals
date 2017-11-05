@@ -24,6 +24,9 @@
       ga('create', 'UA-103552680-1', 'auto');
       ga('send', 'pageview');
 
+      window.csrfTokenName = "{{ craft.config.csrfTokenName|e('js') }}";
+      window.csrfTokenValue = "{{ craft.request.csrfToken|e('js') }}";
+
     </script>
 
   </head>
