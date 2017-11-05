@@ -57,7 +57,7 @@
 
         & > * {
 
-          @media (--large-min) {
+          @media (--tablet-min) {
             width: 50%;
           }
 
@@ -65,7 +65,7 @@
 
         & > div {
 
-          @media (--medium-max) {
+          @media (--large-max) {
             order: 2;
           }
 
@@ -75,7 +75,7 @@
           max-width: 250px;
           max-height: 250px;
 
-          @media (--medium-max) {
+          @media (--large-max) {
             order: 1;
             margin: 0 auto 20px auto;
           }
