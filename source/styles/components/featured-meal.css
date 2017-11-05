@@ -8,102 +8,90 @@
   }
 
   & .product {
+    position: relative;
+    padding: 20px;
 
     @media (--tablet-min) {
       display: flex;
-      min-height: 30vh;
+      align-items: center;
     }
 
     @media (--desktop-min) {
-      min-height: 45vh;
+      overflow: hidden;
+      padding: 40px;
+    }
+
+    @media (--large-max) {
+      background-color: var(--white);
+    }
+
+    &:before {
+
+      @media (--tablet-min) {
+        content: '';
+        background-color: var(--white);
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 20%;
+      }
+
     }
 
     & .info {
-      background-color: var(--white);
-
-      @media (--large-max) {
-        padding: 20px 20px 50px 20px;
-        border-radius: 20px 20px 0 0;
-      }
-
-      @media (--tablet-min) {
-        padding: 20px 50px 20px 20px;
-        border-radius: 20px 0 0 20px;
-        padding-right: 100px;
-        width: 35%;
-      }
-
-      @media (--desktop-min) {
-        padding: 30px 150px 30px 30px;
-      }
-
-      @media (--x-large) {
-        padding: 40px 180px 40px 40px;
-      }
+      position: relative;
 
       & .acumin-medium-bold  {
         line-height: 1em;
       }
 
       & .acumin-medium-bold  span {
-        display: block;
         line-height: 1em;
-      }
-
-      & .acumin-tiny-bold span {
-        font-weight: 400;
-        width: 70px;
         display: inline-block;
       }
 
+      & .text {
+        display: flex;
+        flex-wrap: wrap;
+
+        & > * {
+
+          @media (--large-min) {
+            width: 50%;
+          }
+
+        }
+
+        & > div {
+
+          @media (--medium-max) {
+            order: 2;
+          }
+
+        }
+
+        & .pie-chart {
+          max-width: 250px;
+          max-height: 250px;
+
+          @media (--medium-max) {
+            order: 1;
+            margin: 0 auto 20px auto;
+          }
+
+        }
+
+      }
+
     }
 
-    & .image {
-      background-size: cover;
-      background-position: center;
-      position: relative;
-      background-color: var(--white);
-
-      @media (--large-max) {
-        height: 40vw;
-        min-height: 200px;
-        width: 100%;
-        border-radius: 0 0 20px 20px;
-      }
+    & img {
 
       @media (--tablet-min) {
-        width: 65%;
-        border-radius: 0 20px 20px 0;
-      }
-
-    }
-
-    & .pie-chart {
-      background-size: contain;
-      background-position: center;
-      position: absolute;
-
-      @media (--large-max) {
-        left: 50%;
-        height: 100px;
-        width: 100px;
-        top: -50px;
-        transform: translateX(-50%);
-      }
-
-      @media (--tablet-min) {
-        left: -70px;
-        height: 140px;
-        width: 140px;
-        top: 50%;
-        left: -50px;
-        transform: translateY(-50%);
-      }
-
-      @media (--desktop-min) {
-        left: -100px;
-        height: 200px;
-        width: 200px;
+        width: 40%;
+        height: 100%;
+        position: relative;
       }
 
     }

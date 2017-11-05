@@ -4,7 +4,7 @@
 {% for product in craft.commerce.products.relatedTo(category).limit(1) %}
 
   {% if product.productImage|length > 0 %}
-    {% set image = product.productFeaturedImage[0].url %}
+    {% set image = product.productImage[0].url %}
   {% else %}
     {% set image = '/images/products/placeholder.jpg' %}
   {% endif %}
@@ -18,26 +18,39 @@
       <div class="product">
 
         <div class="info">
+
           <h2 class="acumin-medium-bold">{{ product.title}} <span>{{ product.subTitle }}</span></h2>
 
           {% for purchasable in product.variants %}
 
             {% if purchasable.isDefault %}
 
-             {% for row in purchasable.productMacros %}
-               <p class="acumin-tiny-bold"><span>Protein:</span> {{ row.protein }}g</p>
-               <p class="acumin-tiny-bold"><span>Carbs:</span> {{ row.carbs }}g</p>
-               <p class="acumin-tiny-bold"><span>Fat:</span> {{ row.fat }}g</p>
-             {% endfor %}
+              <p>{{ product.productSummary }}</p>
 
-             <p>
-               <span class="acumin-tiny-bold">Ingredients:</span>
-               {% for list in purchasable.ingredients %}
-                {% if not list.hide %}
-                  {{ list.item }}{% if not loop.last %},{% endif %}
-                {% endif %}
-               {% endfor %}
-              </p>
+              <div class="text">
+
+                <div>
+
+                  <p>
+                    <span class="acumin-tiny-bold">Ingredients:</span>
+                    {% for list in purchasable.ingredients %}
+                     {% if not list.hide %}
+                       {{ list.item }}{% if not loop.last %},{% endif %}
+                     {% endif %}
+                    {% endfor %}
+                   </p>
+
+                   {% for row in purchasable.productMacros %}
+                     <p class="acumin-tiny-bold"><span>Protein:</span> {{ row.protein }}g</p>
+                     <p class="acumin-tiny-bold"><span>Carbs:</span> {{ row.carbs }}g</p>
+                     <p class="acumin-tiny-bold"><span>Fat:</span> {{ row.fat }}g</p>
+                   {% endfor %}
+
+                </div>
+
+                {% include "components/pie-chart.twig" with { 'macros': purchasable.productMacros } %}
+
+              </div>
 
             {% endif %}
 
@@ -45,15 +58,8 @@
 
         </div>
 
-        <div class="image" style="background-image: url({{ image }})">
+        <img src="{{ image }}" alt="name of {{ product.title }}" />
 
-          {% for purchasable in product.variants %}
-            {% if purchasable.isDefault %}
-              {% include "components/pie-chart.twig" with { 'macros': purchasable.productMacros } %}
-            {% endif %}
-          {% endfor %}
-
-        </div>
       </div>
 
     </div>
