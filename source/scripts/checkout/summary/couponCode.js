@@ -2,7 +2,7 @@
 // Import
 
 import postToCart from 'scripts/helpers/cart/postToCart.js';
-import updateCartTotals from './updateCartTotals.js';
+import updateCartTotals from 'scripts/helpers/cart/updateCartTotals.js';
 
 // Variables
 

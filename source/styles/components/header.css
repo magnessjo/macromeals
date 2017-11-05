@@ -218,6 +218,10 @@ header {
       margin-bottom: 0;
     }
 
+    & .order-items {
+      margin-bottom: 20px;
+    }
+
     & .order-item {
       padding: 20px 40px;
       border-bottom: 1px solid var(--green);
@@ -262,9 +266,26 @@ header {
 
     }
 
-    & .call-to-action {
-      width: 100%;
+    & .header-cart-actions {
       text-align: center;
+
+      & a {
+        display: block;
+        text-transform: uppercase;
+      }
+
+      & span {
+        display: block;
+        text-transform: uppercase;
+        padding: 5px 0;
+        font-size: 12px;
+      }
+
+      & .call-to-action {
+        width: 100%;
+        text-align: center;
+      }
+
     }
 
   }

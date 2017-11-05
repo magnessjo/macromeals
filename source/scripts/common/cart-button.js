@@ -10,7 +10,7 @@ const button = header.querySelector('.cart');
 const cartSummary = header.querySelector('.cart-summary');
 const loginForm = header.querySelector('.login-form');
 const wrapper = cartSummary.querySelector('.order-items');
-const actionLink = cartSummary.querySelector('.call-to-action');
+const headerCartActions = cartSummary.querySelector('.header-cart-actions');
 
 // Update DOM
 
@@ -20,7 +20,7 @@ function updateDOM(data) {
 
     if (data.length == 0) {
       wrapper.innerHTML = `<p>Your Cart is Empty</p>`;
-      actionLink.style.display = 'none';
+      headerCartActions.style.display = 'none';
       resolve();
     }
 
@@ -44,7 +44,7 @@ function updateDOM(data) {
       headline.appendChild(span);
       div.appendChild(headline);
       wrapper.appendChild(div);
-      actionLink.style.display = 'block';
+      headerCartActions.style.display = 'block';
 
       if (i == data.length - 1) {
         resolve();

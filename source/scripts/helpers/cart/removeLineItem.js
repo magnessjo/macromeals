@@ -4,7 +4,7 @@
 import findParentNode from 'scripts/helpers/findParentNode.js';
 import removeCartItem from 'scripts/helpers/cart/removeCartItem.js';
 import displayCartTotalInHeader from 'scripts/helpers/cart/displayCartTotalInHeader.js';
-import updateCartTotals from './updateCartTotals.js';
+import updateCartTotals from 'scripts/helpers/cart/updateCartTotals.js';
 
 // Variables
 

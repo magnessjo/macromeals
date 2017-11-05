@@ -1,0 +1,29 @@
+
+{% extends "_layout" %}
+{% includeCssFile "/checkout.css" %}
+{% includeJsFile "/cart.js" %}
+{% set bodyClass = 'with-border' %}
+
+{% block main %}
+
+  <form id="product-list">
+
+    {% include "components/order-summary.twig" %}
+
+    {# Checkout Actions #}
+
+    {% if cart.lineItems | length != 0 %}
+
+      <section class="checkout-actions">
+
+        <div class="lock">
+          <a href="/checkout" class="call-to-action">Checkout</a>
+        </div>
+
+      </section>
+
+    {% endif %}
+
+  </form>
+
+{% endblock %}

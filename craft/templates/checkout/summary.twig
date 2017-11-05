@@ -11,86 +11,11 @@
     {% redirect "/account/checkout-login" 301 %}
   {% endif %}
 
-  <script type="text/javascript">
-    window.csrfTokenName = "{{ craft.config.csrfTokenName|e('js') }}";
-    window.csrfTokenValue = "{{ craft.request.csrfToken|e('js') }}";
-  </script>
-
   {% include "components/breadcrumb.twig" %}
 
   <form id="product-list">
 
-    {# Order Summary #}
-
-    <section id="order-summary">
-
-      {% if cart.lineItems | length == 0 %}
-
-        <div class="no-items">
-
-          <div class="lock">
-
-            <p class="acumin-medium">You currently do not have meals in your cart.</p>
-            <p class="acumin-small">You can view all of our meals <a href="/shop">here</a>.</p>
-            <p>Please contact us at <a href="mailto:help@macromeals.life">help@macromeals.life</a> if you are having any issues adding meals or if you would like to setup a phone call to help walk you through the website.</p>
-
-          </div>
-
-        </div>
-
-      {% else %}
-
-        <div class="item-list">
-
-          <div class="lock">
-
-            <h1 class="acumin-medium-bold">Order Summary</h1>
-
-            <div class="items">
-
-              {% for item in cart.lineItems %}
-
-                {% set variant = item.purchasable %}
-                {% set product = variant.product %}
-                {% set quantityMoreThanStock = item.qty > variant.stock  %}
-
-                <div class="order-item" data-id="{{ item.id }}">
-
-                  {% if product.productImage|length > 0 %}
-                    {% set image = product.productImage[0].url %}
-                  {% else %}
-                    {% set image = '/images/products/placeholder.jpg' %}
-                  {% endif %}
-
-                  <div class="image" style="background-image: url({{ image }})"></div>
-
-                  <div class="wrapper">
-                    <h2>{{ product.title }} <span>{{ variant.title }}</span></h2>
-
-                    <div class="item-actions">
-                      <div class="increment">
-                        <button class="icons minus"></button>
-                        <span>{{ item.qty }}</span>
-                        <button class="icons plus"></button>
-                      </div>
-                      <p class="cost">{{ item.subtotal | currency(cart.currency) }}</p>
-                      <button class="icons remove"></button>
-                    </div>
-                  </div>
-
-                </div>
-
-              {% endfor %}
-
-            </div>
-
-          </div>
-
-        </div>
-
-      {% endif %}
-
-    </section>
+    {% include "components/order-summary.twig" %}
 
     {% if cart.lineItems | length != 0 %}
 
