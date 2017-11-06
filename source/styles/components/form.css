@@ -36,6 +36,7 @@ form {
     font-weight: 300;
     position: relative;
     z-index: 2;
+    font-size: 16px;
   }
 
   & input[type="email"]::placeholder,
@@ -268,7 +269,6 @@ form#product-addition {
     width: 50px;
     height: 30px;
     margin: 0 auto;
-    font-size: 14px;
 
     @media (--large-min) {
       font-size: 16px;
