@@ -61,11 +61,14 @@
     padding-bottom: 5px;
     line-height: 1em;
     font-size: 22px;
+  }
 
-    @media (--tablet-min) {
-      font-size: 36px;
-    }
+  & .with-items {
+    display: none;
+  }
 
+  & .without-items {
+    display: block;
   }
 
   & .items {
@@ -136,6 +139,14 @@
 [has-items="true"] {
 
   & .no-items {
+    display: none;
+  }
+
+  & .with-items {
+    display: block;
+  }
+
+  & .without-items {
     display: none;
   }
 
