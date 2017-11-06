@@ -48,6 +48,8 @@ function postSubmission() {
 
   form.style.display = 'none';
   submissionConfirmation.style.display = 'block';
+  document.body.scrollTop = 0;
+  document.documentElement.scrollTop = 0;
 
 }
 
