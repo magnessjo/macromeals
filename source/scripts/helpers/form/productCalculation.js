@@ -99,6 +99,12 @@ export default function() {
     const errors = container.querySelector('.errors');
     const stockText = errors.querySelector('.stock');
 
+    input.addEventListener('focus', () => {
+
+      if (input.value == 0) input.value = '';
+
+    });
+
     input.addEventListener('keyup', (e) => {
       caculateTotal();
     });
