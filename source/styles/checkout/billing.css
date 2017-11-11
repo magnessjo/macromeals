@@ -1,6 +1,6 @@
 
 #payment {
-  max-width: 600px;
+  max-width: 640px;
   margin: 0 auto;
 
   & .form-group {
@@ -86,17 +86,60 @@
     display: none;
   }
 
-  & #payment-request-button {
-    max-width: 300px;
-    margin: 0 auto 80px auto;
-    position: relative;
+}
 
-    &:after {
-      content: "OR";
-      position: absolute;
-      left: 50%;
-      bottom: 40px;
-      transform: translateY(-50%);
+form[payment-request="true"] {
+
+  & .request-button {
+    display: none;
+
+    & .divider {
+      text-align: center;
+      padding: 40px 0;
+      color: var(--green);
+      margin-bottom: 0;
+
+      & span {
+        position: relative;
+        font-size: 30px;
+        display: inline-block;
+        text-transform: uppercase;
+        font-family: var(--acuminCondensed);
+        line-height: 1em;
+
+        &:before, &:after {
+          content: '';
+          position: absolute;
+          height: 2px;
+          width: 100px;
+          top: 50%;
+          transform: rotateY(-50%);
+
+          @media (--tablet-min) {
+            width: 100px;
+          }
+
+          @media (--desktop-min) {
+            width: 150px;
+          }
+
+        }
+
+        &:before {
+          background: linear-gradient(90deg, transparent 0%, var(--green) 100%);
+          right: 60px;
+        }
+
+        &:after {
+          background: linear-gradient(90deg, var(--green) 0%, transparent 100%);
+          left: 60px;
+        }
+
+      }
+
+    }
+
+    & #payment-request-button {
     }
 
   }

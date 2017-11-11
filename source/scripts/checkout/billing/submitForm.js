@@ -14,6 +14,8 @@ const form = document.querySelector('form#payment');
 const errorElement = document.getElementById('card-errors');
 const cardNameElement = form.querySelector('#card-name-element');
 const submitButton = form.querySelector('input[type="submit"]');
+const paymentRequestWrapper = form.querySelector('.request-button');
+
 const costString = form.getAttribute('data-cost');
 const totalCostInCents = parseInt(costString * 100);
 const paymentRequest = stripe.paymentRequest({
@@ -99,30 +101,12 @@ function submitForm() {
       address_country: 'US',
     }).then((result) => {
 
-      console.log(result);
-
       if (result.error) {
         errorElement.textContent = result.error.message;
         errorElement.style.display = 'block';
         submitButton.disabled = false;
       } else {
-
-        fetchPostData(`${window.csrfTokenName}=${window.csrfTokenValue}&stripeToken=${result.token.id}`, '/actions/commerce/payments/pay').then( (response) => {
-
-          if (response.success) {
-
-            window.location.href = '/checkout/complete';
-
-          } else {
-            console.log(response);
-            const text = document.createElement('p');
-            text.innerHTML = 'There was an error submitting your payment.  Your cart has been saved.  Please contact our support team at <a href="help@macromeals.life">help@macromeals.life</a> to process your payment.'
-            errorElement.appendChild(text);
-            errorElement.style.display = 'block';
-          }
-
-        });
-
+        addTokenAndSubmit(result.token.id);
       }
 
     });
@@ -133,6 +117,21 @@ function submitForm() {
 
 function addTokenAndSubmit(token) {
 
+  fetchPostData(`${window.csrfTokenName}=${window.csrfTokenValue}&stripeToken=${token}`, '/actions/commerce/payments/pay').then( (response) => {
+
+    if (response.success) {
+
+      window.location.href = '/checkout/complete';
+
+    } else {
+      const text = document.createElement('p');
+      text.innerHTML = 'There was an error submitting your payment.  Your cart has been saved.  Please contact our support team at <a href="help@macromeals.life">help@macromeals.life</a> to process your payment.'
+      errorElement.appendChild(text);
+      errorElement.style.display = 'block';
+    }
+
+  });
+
 }
 
 // Export
@@ -142,17 +141,18 @@ export default function() {
   load();
   submitForm();
 
-  // paymentRequest.canMakePayment().then((result) => {
-  //   if (result) {
-  //     paymentRequestbutton.mount('#payment-request-button');
-  //   } else {
-  //     document.getElementById('payment-request-button').style.display = 'none';
-  //   }
-  // });
-  //
-  // paymentRequest.on('token', function(ev) {
-  //   console.log(en.token.id);
-  //   // addTokenAndSubmit(ev.token.id);
-  // });
+  paymentRequest.canMakePayment().then((result) => {
+
+    if (result) {
+      paymentRequestbutton.mount('#payment-request-button');
+      paymentRequestWrapper.style.display = 'block';
+    }
+
+  });
+
+  paymentRequest.on('token', function(ev) {
+    console.log(ev.token.id);
+    addTokenAndSubmit(ev.token.id);
+  });
 
 }

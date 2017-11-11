@@ -24,12 +24,21 @@
 
     <div class="lock">
 
-      <form method="POST" id="payment" >
+      <form method="POST" id="payment" data-cost="{{ cart.totalPrice | commerceCurrency(cart.currency, convert = true, format = false, stripZeros = true) }}" payment-request="true">
 
         <input type="hidden" name="action" value="commerce/payments/pay" />
         <input type="hidden" name="redirect" value="/checkout/complete?order={{cart.number}}" />
 
         <h1 class="acumin-medium-bold">Billing</h1>
+
+        <div class="request-button">
+
+          <div id="payment-request-button"></div>
+          <p class="divider"><span>OR</span></p>
+
+          <p>Enter Credit Card Information</p>
+
+        </div>
 
         <div class="form-group">
 
