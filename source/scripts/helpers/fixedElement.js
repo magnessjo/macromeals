@@ -1,6 +1,4 @@
 
-
-
 // Variables
 
 let container;

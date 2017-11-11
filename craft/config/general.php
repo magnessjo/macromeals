@@ -18,9 +18,9 @@ return [
   ],
 
   '.me' => [
-    'devMode' => true,
+    'devMode' => false,
     'environmentVariables' => [
-      'siteUrl'  => 'http://macromeals.joshmagness.me/',
+      'siteUrl'  => 'https://macromeals.joshmagness.me/',
       'basePath' => '/srv/http/macromeals/shared/uploads/',
       'pluginPath' => '/srv/http/macromeals/craft/plugins'
     ],

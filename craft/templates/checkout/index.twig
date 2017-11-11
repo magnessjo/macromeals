@@ -33,6 +33,7 @@
     <input type="hidden" name="shippingAddressId" value="{{ shippingModel is not null ? shippingModel.id : 'new' }}">
 
     <input type="hidden" name="shippingAddress[countryId]" value='233' />
+    <input type="hidden" name="quantity" value='{{ cart.totalQty }}' />
 
     <section id="contact-details">
 
@@ -190,6 +191,9 @@
 
             <div class="errors">
               <p class="required">Shipping zip code is a required field</p>
+            </div>
+            <div class="shipping-cost">
+              <p></p>
             </div>
           </div>
         </div>

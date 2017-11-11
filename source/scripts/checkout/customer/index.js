@@ -5,6 +5,7 @@ import modifyFormValueForResize from 'scripts/helpers/form/modifyFormValueForRes
 import inputQuery from 'scripts/helpers/form/inputQuery.js';
 import formSubmit from './formSubmit.js';
 import shippingMethod from './shippingMethod.js';
+import zipCode from './zipCode.js';
 
 // Variables
 
@@ -18,5 +19,6 @@ document.addEventListener('DOMContentLoaded', () => {
   inputQuery(form);
   formSubmit();
   shippingMethod();
+  zipCode();
 
 });

@@ -71,4 +71,8 @@ form[data-method="pickup"] #customer-address {
 
   }
 
+  & .shipping-cost {
+    display: none;
+  }
+
 }
