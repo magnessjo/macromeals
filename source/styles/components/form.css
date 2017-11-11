@@ -37,13 +37,14 @@ form {
     position: relative;
     z-index: 2;
     font-size: 16px;
+    color: var(--black);
   }
 
   & input[type="email"]::placeholder,
   & input[type="number"]::placeholder,
   & input[type="password"]::placeholder,
   & input[type="text"]::placeholder {
-    color: #333333;
+    color: #B8B8B8;
     font-size: 12px;
   }
 

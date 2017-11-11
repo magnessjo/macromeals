@@ -94,8 +94,11 @@
               <input type="hidden" name="shippingMethod" value="overnight" />
               <div class="shpping-type" data-handle="{{ handle }}" data-active="true">
                 <div>
+                  <img src="/images/checkout/fedex-logo.png" alt="image of the fedex logo" />
                   <h2 class="acumin-small">{{ method.name }}</h2>
-                  <p>{{ method.description }}</p>
+                  <p>FedEx Overnight Ground Delivery.</p>
+                  <p>We ship on Monday, Tuesday, Wednesday and Thursday.</p>
+                  <p>Delivery cost are determined by your location.</p>
                 </div>
               </div>
             {% endif %}
@@ -108,8 +111,16 @@
 
               <div class="shpping-type" data-handle="{{ handle }}" data-active="false">
                 <div>
+                  {% if handle == 'pickup' %}<img src="/images/checkout/ymca-logo.png" alt="image of the YMCA logo" />{% endif %}
                   <h2 class="acumin-small">{{ method.name }}</h2>
-                  <p>{{ method.description }}</p>
+                  <p>Pickup are scheduled for every Tuesday Morning at 8am at the YMCA in Abingdon Maryland</p>
+                  {% if handle == 'pickup' %}
+                    <address>
+                      101 Walter Ward Blvd,<br>
+                      Abingdon, MD 21009
+                    </address>
+                    <a target="_blank" href="https://www.google.com/maps/place/The+Ward+Y+in+Abingdon/@39.4651901,-76.30869,17z/data=!3m1!4b1!4m5!3m4!1s0x89c7e7aff9cdd5c3:0xd8d4b8d7898c3704!8m2!3d39.4651901!4d-76.3065013">View on Map</a>
+                  {% endif %}
                 </div>
               </div>
 

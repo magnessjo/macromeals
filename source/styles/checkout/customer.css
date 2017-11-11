@@ -30,13 +30,27 @@ form[data-method="pickup"] #customer-address {
 
   }
 
+  & img {
+    max-width: 100px;
+    margin: 0 auto 20px auto;
+    display: block;
+  }
+
+  & img[src*="ymca"] {
+    max-width: 60px;
+  }
+
+  & h2 {
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 20px;
+  }
+
   & .shpping-type {
     border: 1px solid var(--light-gray);
     display: flex;
     padding: 40px;
-    align-items: center;
     min-height: 200px;
-    height: 10vh;
     cursor: pointer;
 
     @media (--large-min) {
