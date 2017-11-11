@@ -11,6 +11,7 @@ let containerWidth;
 function scroll() {
 
   if (window.pageYOffset >= Math.abs(containerPosition)) {
+    wrapper.style.transform = 'translate3d(0px,0px,0px)';
     wrapper.style.position = 'fixed';
     container.style.height = `${wrapper.offsetHeight}px`;
 
