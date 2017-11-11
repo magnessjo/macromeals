@@ -38,6 +38,7 @@ function load() {
       color: '#000',
       fontFamily: 'acumin-pro, arial, sans-serif',
       fontWeight: 400,
+      width: '100%'
     },
   };
 

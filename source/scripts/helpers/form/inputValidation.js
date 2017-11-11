@@ -19,13 +19,13 @@ function attachEventHandlers(input, parent, checks) {
 
   const errors = Array.from(parent.querySelectorAll('.errors p'));
 
-  input.addEventListener('keyup', () => {
-
-    checks.forEach((check) => {
-      validation[check](input, parent);
-    });
-
-  });
+  // input.addEventListener('keyup', () => {
+  //
+  //   checks.forEach((check) => {
+  //     validation[check](input, parent);
+  //   });
+  //
+  // });
 
   input.addEventListener('blur', () => {
 
@@ -37,7 +37,9 @@ function attachEventHandlers(input, parent, checks) {
 
   input.addEventListener('focus', () => {
 
-    parent.setAttribute('has-error', false);
+    if (input.value > 0) {
+      parent.setAttribute('has-error', false);
+    }
 
     errors.forEach((error) => {
       error.setAttribute('show-error', false);
