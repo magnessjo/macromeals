@@ -19,14 +19,16 @@
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "builder": "git+ssh://git@bitbucket.org/magnessjo/builder.git",
     "deploy": "git+ssh://git@bitbucket.org/magnessjo/deployment.git",
-    "gaze": "^1.1.1"
+    "gaze": "^1.1.2"
   },
   "babel": {
     "presets": "es2015"
   },
   "dependencies": {
-    "builder": "git+ssh://git@bitbucket.org/magnessjo/builder.git",
+    "babel-polyfill": "^6.26.0",
     "chart.js": "^2.7.0",
     "whatwg-fetch": "^2.0.3"
   }

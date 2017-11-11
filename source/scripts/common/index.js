@@ -1,6 +1,7 @@
 
 // Imports
 
+import "babel-polyfill";
 import menu from './menu.js';
 import cartButton from './cart-button.js';
 import loginButton from './login-button.js';
