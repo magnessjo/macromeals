@@ -41,7 +41,6 @@
   }
 
   & .flex-actions {
-    transform: translate3d(0, 0, 0);
 
     @media (--large-max) {
       margin-bottom: 40px;
