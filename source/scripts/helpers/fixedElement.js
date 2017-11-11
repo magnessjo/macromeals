@@ -13,7 +13,13 @@ function scroll() {
   if (window.pageYOffset >= Math.abs(containerPosition)) {
     wrapper.style.position = 'fixed';
     container.style.height = `${wrapper.offsetHeight}px`;
-    wrapper.style.width = `${containerWidth}px`;
+
+    if (window.innerWidth > 767) {
+      wrapper.style.width = `${containerWidth}px`;
+    } else {
+      wrapper.style.width = `${window.innerWidth}px`;
+    }
+
     wrapper.setAttribute('scrolling', true);
   } else {
     wrapper.style.position = 'relative';
@@ -35,7 +41,7 @@ function resize() {
   if (window.innerWidth > 767) {
     wrapper.style.width = `${containerWidth}px`;
   } else {
-    wrapper.style.width = 'inherit';
+    wrapper.style.width = `${window.innerWidth}px`;
   }
 
 }
