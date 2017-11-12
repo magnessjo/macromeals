@@ -103,6 +103,10 @@
         padding-top: 10px;
       }
 
+      & p:last-of-type {
+        margin-bottom: 0;
+      }
+
     }
 
   }

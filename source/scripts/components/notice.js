@@ -12,7 +12,7 @@ let padding;
 function resize() {
 
   if (button.classList.contains('expanded')) {
-    const height = wrapper.querySelector('div').offsetHeight + padding * 2;
+    const height = wrapper.querySelector('div').offsetHeight;
     wrapper.style.height = `${height}px`;
     wrapper.style.transition = 'none';
   }
@@ -32,7 +32,7 @@ export default function() {
 
     button.addEventListener('click', () => {
 
-      const height = wrapper.querySelector('div').offsetHeight + padding * 2;
+      const height = wrapper.querySelector('div').offsetHeight;
 
       wrapper.style.transition = 'height 1s';
 

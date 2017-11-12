@@ -6,6 +6,7 @@ import inputQuery from 'scripts/helpers/form/inputQuery.js';
 import formSubmit from './formSubmit.js';
 import shippingMethod from './shippingMethod.js';
 import zipCode from './zipCode.js';
+import notice from 'scripts/components/notice.js';
 
 // Variables
 
@@ -20,5 +21,6 @@ document.addEventListener('DOMContentLoaded', () => {
   formSubmit();
   shippingMethod();
   zipCode();
+  notice();
 
 });

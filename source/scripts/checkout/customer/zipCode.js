@@ -21,11 +21,7 @@ function setRate() {
   const quantity = form.querySelector('input[name="quantity"]').value;
   let data = `${window.csrfTokenName}=${window.csrfTokenValue}&zip=${input.value}&quantity=${quantity}`;
 
-  console.log(data);
-
   fetchPostData(data,url).then( (response) => {
-
-    console.log(response);
 
     if (response.success) {
       text.innerHTML = `The shipping costs for ${input.value} are $${response.amount}`;
