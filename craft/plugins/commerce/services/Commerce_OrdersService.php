@@ -410,24 +410,24 @@ class Commerce_OrdersService extends BaseApplicationComponent
         // Additional adjuster can be returned by the plugins.
         $additional = craft()->plugins->call('commerce_registerOrderAdjusters', [&$adjusters, $order]);
 
-        $orderIndex = 800;
+        $defaultIndex = 800;
         foreach ($additional as $additionalAdjusters)
         {
             foreach ($additionalAdjusters as $key => $additionalAdjuster)
             {
-                $orderIndex += 1;
+                $defaultIndex += 1;
 
                 // Not expecting more than 100 adjusters per plugin.
                 if ($key < 100 || $key > 800)
                 {
-                    $additionalAdjusters[$orderIndex] = $additionalAdjusters[$key];
+                    $additionalAdjusters[$defaultIndex] = $additionalAdjusters[$key];
                     unset($additionalAdjusters[$key]);
                 }
             }
 
-            foreach ($additionalAdjusters as $additionalAdjuster)
+            foreach ($additionalAdjusters as $key => $additionalAdjuster)
             {
-                $adjusters[] = $additionalAdjuster;
+                $adjusters[$key] = $additionalAdjuster;
             }
         }
 

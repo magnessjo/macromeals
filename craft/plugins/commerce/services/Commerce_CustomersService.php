@@ -418,14 +418,7 @@ class Commerce_CustomersService extends BaseApplicationComponent
                 }
             }
 
-            // This customer will always have an email address since it will be related to a user, but just in case.
-            if (!$toCustomer->email)
-            {
-                return false;
-            }
-
-            // Grab all the orders for the customer.
-            $orders = craft()->commerce_orders->getOrdersByEmail($toCustomer->email);
+            $orders = craft()->commerce_orders->getOrdersByEmail($user->email);
 
             // Assign each completed order to the users' customer and update the email.
             foreach ($orders as $order)

@@ -351,70 +351,48 @@ class Commerce_VariantModel extends BasePurchasable
      */
     public function validateLineItem(Commerce_LineItemModel $lineItem)
     {
-        if (!$lineItem->qty)
-        {
+        if (!$lineItem->qty) {
             return;
         }
 
-        if ($lineItem->purchasable->getStatus() != BaseElementModel::ENABLED)
-        {
-            $lineItem->addError('purchasableId',Craft::t('Not enabled for sale.'));
+        if ($lineItem->purchasable->getStatus() != BaseElementModel::ENABLED) {
+            $lineItem->addError('purchasableId', Craft::t('Not enabled for sale.'));
         }
 
-        $order = craft()->commerce_orders->getOrderById($lineItem->orderId);
+        $order = $lineItem->order;
 
-        if ($order)
-        {
-            $qty = [];
-            foreach ($order->getLineItems() as $item)
-            {
-                if (!isset($qty[$item->purchasableId]))
-                {
-                    $qty[$item->purchasableId] = 0;
-                }
+        $qty = [];
 
-                // count new line items
-                if($lineItem->id === null)
-                {
-                    $qty[$item->purchasableId] += $lineItem->qty;
-                }
+        $qty[$lineItem->purchasableId] = $lineItem->qty;
 
-                // count updated line items
-                if ($item->id == $lineItem->id)
-                {
-                    $qty[$item->purchasableId] += $lineItem->qty;
-                }
-                else
-                {
-                    // count other line items with same purchasableId
-                    $qty[$item->purchasableId] += $item->qty;
-                }
+        foreach ($order->getLineItems() as $item) {
+            if (!isset($qty[$item->purchasableId])) {
+                $qty[$item->purchasableId] = 0;
             }
-
-            if (!isset($qty[$lineItem->purchasableId]))
-            {
-                $qty[$lineItem->purchasableId] = $lineItem->qty;
+            // count other line items with same purchasableId
+            if($lineItem->id != $item->id){
+                $qty[$item->purchasableId] += $item->qty;
             }
+        }
 
-            if (!$this->unlimitedStock && $qty[$lineItem->purchasableId] > $this->stock)
-            {
-                $error = Craft::t('There are only {num} "{description}" items left in stock', ['num' => $this->stock, 'description' => $lineItem->purchasable->getDescription()]);
+        if (!isset($qty[$lineItem->purchasableId])) {
+            $qty[$lineItem->purchasableId] = $lineItem->qty;
+        }
+
+        if (!$this->unlimitedStock && $qty[$lineItem->purchasableId] > $this->stock) {
+            $error = Craft::t('There are only {num} "{description}" items left in stock', ['num' => $this->stock, 'description' => $lineItem->purchasable->getDescription()]);
+            $lineItem->addError('qty', $error);
+        }
+
+        if ($lineItem->qty < $this->minQty) {
+            $error = Craft::t('Minimum order quantity for this item is {num}', ['num' => $this->minQty]);
+            $lineItem->addError('qty', $error);
+        }
+
+        if ($this->maxQty != 0) {
+            if ($lineItem->qty > $this->maxQty) {
+                $error = Craft::t('Maximum order quantity for this item is {num}', ['num' => $this->maxQty]);
                 $lineItem->addError('qty', $error);
-            }
-
-            if ($lineItem->qty < $this->minQty)
-            {
-                $error = Craft::t('Minimum order quantity for this item is {num}', ['num' => $this->minQty]);
-                $lineItem->addError('qty', $error);
-            }
-
-            if ($this->maxQty != 0)
-            {
-                if ($lineItem->qty > $this->maxQty)
-                {
-                    $error = Craft::t('Maximum order quantity for this item is {num}', ['num' => $this->maxQty]);
-                    $lineItem->addError('qty', $error);
-                }
             }
         }
     }

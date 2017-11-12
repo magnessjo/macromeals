@@ -249,7 +249,7 @@ class Commerce_CartController extends Commerce_BaseFrontEndController
             {
                 $billingAddressId = craft()->request->getParam('billingAddressId');
                 $billingAddress = craft()->commerce_addresses->getAddressById($billingAddressId);
-                if (!$billingAddress)
+                if (!$billingAddress)   
                 {
                     $billingAddress = new Commerce_AddressModel();
                     $billingAddress->setAttributes(craft()->request->getParam('billingAddress'));
@@ -272,6 +272,11 @@ class Commerce_CartController extends Commerce_BaseFrontEndController
                 }
                 else
                 {
+                    if ($shippingAddress->hasErrors())
+                    {
+                        $updateErrors['shippingAddress'] = Craft::t('Could not save the shipping address.');
+                    }
+
                     if ($billingAddress->hasErrors())
                     {
                         $updateErrors['billingAddress'] = Craft::t('Could not save the billing address.');

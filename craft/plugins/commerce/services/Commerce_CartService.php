@@ -431,10 +431,16 @@ class Commerce_CartService extends BaseApplicationComponent
 
             // Update the cart if the customer has changed and recalculate the cart.
             $customer = craft()->commerce_customers->getCustomer();
-            if ($this->_cart->customerId != $customer->id)
+            if ($this->_cart->customerId && $this->_cart->customerId != $customer->id)
             {
                 $this->_cart->customerId = $customer->id;
-                $this->_cart->email = $customer->email;
+                if($customer->getUser())
+                {
+                    $this->_cart->setEmail($customer->getUser()->email);
+                }else{
+                    $this->_cart->setEmail('');
+                }
+
                 $this->_cart->billingAddressId = null;
                 $this->_cart->shippingAddressId = null;
                 craft()->commerce_orders->saveOrder($this->_cart);

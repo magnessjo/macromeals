@@ -208,6 +208,7 @@ class Commerce_ProductElementType extends Commerce_BaseElementType
             'shippingCategory' => ['label' => Craft::t('Shipping Category')],
             'freeShipping' => ['label' => Craft::t('Free Shipping?')],
             'promotable' => ['label' => Craft::t('Promotable?')],
+            'stock' => ['label' => Craft::t('Stock')],
             'link' => ['label' => Craft::t('Link'), 'icon' => 'world'],
             'dateCreated' => ['label' => Craft::t('Date Created')],
             'dateUpdated' => ['label' => Craft::t('Date Updated')],
@@ -279,49 +280,64 @@ class Commerce_ProductElementType extends Commerce_BaseElementType
         /* @var $productType Commerce_ProductTypeModel */
         $productType = $element->getType();
 
+        /** @var Commerce_ProductModel $product */
+        $product = $element;
+
         switch ($attribute) {
             case 'type': {
                 return ($productType ? Craft::t($productType->name) : '');
             }
 
             case 'taxCategory': {
-                $taxCategory = $element->getTaxCategory();
+                $taxCategory = $product->getTaxCategory();
 
                 return ($taxCategory ? Craft::t($taxCategory->name) : '');
             }
             case 'shippingCategory': {
-                $shippingCategory = $element->getShippingCategory();
+                $shippingCategory = $product->getShippingCategory();
 
                 return ($shippingCategory ? Craft::t($shippingCategory->name) : '');
             }
             case 'defaultPrice': {
                 $code = craft()->commerce_paymentCurrencies->getPrimaryPaymentCurrencyIso();
 
-                return craft()->numberFormatter->formatCurrency($element->$attribute, strtoupper($code));
+                return craft()->numberFormatter->formatCurrency($product->$attribute, strtoupper($code));
             }
             case 'defaultWeight': {
                 if($productType->hasDimensions){
-                    return craft()->numberFormatter->formatDecimal($element->$attribute) . " " . craft()->commerce_settings->getOption('weightUnits');;
+                    return craft()->numberFormatter->formatDecimal($product->$attribute) . " " . craft()->commerce_settings->getOption('weightUnits');;
                 }else{
-                    return "";
+                    return '';
                 }
+            }
+            case 'stock': {
+                $stock = 0;
+                $hasUnlimited = false;
+                /** @var Commerce_VariantModel $variant */
+                foreach ($product->getVariants() as $variant) {
+                    $stock += $variant->stock;
+                    if ($variant->unlimitedStock) {
+                        $hasUnlimited = true;
+                    }
+                }
+                return $hasUnlimited ? '∞'.($stock ? ' & '.$stock : '') : ($stock ?: '');
             }
             case 'defaultLength':
             case 'defaultWidth':
             case 'defaultHeight': {
                 if($productType->hasDimensions){
-                    return craft()->numberFormatter->formatDecimal($element->$attribute) . " " . craft()->commerce_settings->getOption('dimensionUnits');;
+                    return craft()->numberFormatter->formatDecimal($product->$attribute) . " " . craft()->commerce_settings->getOption('dimensionUnits');;
                 }else{
-                    return "";
+                    return '';
                 }
             }
             case 'promotable':
             case 'freeShipping': {
-                return ($element->$attribute ? '<span data-icon="check" title="' . Craft::t('Yes') . '"></span>' : '');
+                return ($product->$attribute ? '<span data-icon="check" title="' . Craft::t('Yes') . '"></span>' : '');
             }
 
             default: {
-                return parent::getTableAttributeHtml($element, $attribute);
+                return parent::getTableAttributeHtml($product, $attribute);
             }
         }
     }
@@ -382,6 +398,7 @@ class Commerce_ProductElementType extends Commerce_BaseElementType
             'withVariant' => AttributeType::Mixed,
             'hasVariant' => AttributeType::Mixed,
             'hasSales' => AttributeType::Mixed,
+            'defaultSku' => AttributeType::Mixed,
             'defaultHeight' => AttributeType::Mixed,
             'defaultLength' => AttributeType::Mixed,
             'defaultWidth' => AttributeType::Mixed,
@@ -491,6 +508,10 @@ class Commerce_ProductElementType extends Commerce_BaseElementType
 
         if ($criteria->defaultWeight) {
             $query->andWhere(DbHelper::parseParam('products.defaultWeight', $criteria->defaultWeight, $query->params));
+        }
+
+        if ($criteria->defaultSku) {
+            $query->andWhere(DbHelper::parseParam('products.defaultSku', $criteria->defaultSku, $query->params));
         }
 
         if ($criteria->withVariant) {
