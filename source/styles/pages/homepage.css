@@ -167,12 +167,8 @@
     position: relative;
     overflow: hidden;
 
-    @media (--large-max) {
+    @media (--tablet-max) {
       margin-bottom: 50px;
-    }
-
-    @media (--tablet-min) {
-
     }
 
     &:last-of-type {
@@ -186,11 +182,11 @@
 
     & .text {
 
-      @media (--large-max) {
+      @media (--tablet-max) {
         margin-bottom: 20px;
       }
 
-      @media (--tablet-min) {
+      @media (--desktop-min) {
         padding-top: 80px;
         padding-bottom: 80px;
         padding-right: 40px;
@@ -222,13 +218,13 @@
 
     & .images {
 
-      @media (--large-max) {
+      @media (--tablet-max) {
         height: 30vh;
         min-height: 200px;
         position: relative;
       }
 
-      @media (--tablet-min) {
+      @media (--desktop-min) {
         width: 50%;
         float: left;
       }
@@ -244,11 +240,11 @@
       background-size: cover;
       background-position: center;
 
-      @media (--large-max) {
+      @media (--tablet-max) {
         width: 100%;
       }
 
-      @media (--tablet-min) {
+      @media (--desktop-min) {
         width: 50%;
         left: 50%;
       }
@@ -269,7 +265,7 @@
 
     & .text {
 
-      @media (--tablet-min) {
+      @media (--desktop-min) {
         float: right;
         padding-right: 0;
         padding-left: 40px;
