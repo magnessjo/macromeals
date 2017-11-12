@@ -6,8 +6,8 @@ import fetchPostData from 'scripts/helpers/fetchPostData.js';
 
 // Variables
 
-const stripe = Stripe('pk_test_UrlLqyCEbnu4hXNhRRFaA16n');
-const elements = stripe.elements();
+let stripe;
+let elements;
 let card;
 
 const form = document.querySelector('form#payment');
@@ -18,17 +18,7 @@ const paymentRequestWrapper = form.querySelector('.request-button');
 
 const costString = form.getAttribute('data-cost');
 const totalCostInCents = parseInt(costString * 100);
-const paymentRequest = stripe.paymentRequest({
-  country: 'US',
-  currency: 'usd',
-  total: {
-    label: 'Macro Meals Purchase',
-    amount: totalCostInCents,
-  },
-});
-const paymentRequestbutton = elements.create('paymentRequestButton', {
-  paymentRequest: paymentRequest,
-});
+
 
 // Load
 
@@ -124,6 +114,7 @@ function addTokenAndSubmit(token) {
       window.location.href = '/checkout/complete';
 
     } else {
+      console.log(response);
       const text = document.createElement('p');
       text.innerHTML = 'There was an error submitting your payment.  Your cart has been saved.  Please contact our support team at <a href="help@macromeals.life">help@macromeals.life</a> to process your payment.'
       errorElement.appendChild(text);
@@ -134,12 +125,19 @@ function addTokenAndSubmit(token) {
 
 }
 
-// Export
+function paymentRequest() {
 
-export default function() {
-
-  load();
-  submitForm();
+  const paymentRequest = stripe.paymentRequest({
+    country: 'US',
+    currency: 'usd',
+    total: {
+      label: 'Macro Meals Purchase',
+      amount: totalCostInCents,
+    },
+  });
+  const paymentRequestbutton = elements.create('paymentRequestButton', {
+    paymentRequest: paymentRequest,
+  });
 
   paymentRequest.canMakePayment().then((result) => {
 
@@ -151,8 +149,25 @@ export default function() {
   });
 
   paymentRequest.on('token', function(ev) {
-    console.log(ev.token.id);
     addTokenAndSubmit(ev.token.id);
   });
+
+}
+
+// Export
+
+export default function() {
+
+  if (window.location.origin == 'https://www.macromeals.life') {
+    stripe = Stripe('pk_live_5eXACjQVrzeUQpCpF0ydV15h');
+  } else {
+    stripe = Stripe('pk_test_UrlLqyCEbnu4hXNhRRFaA16n');
+  }
+
+  elements = stripe.elements();
+
+  load();
+  submitForm();
+  paymentRequest();
 
 }

@@ -14,7 +14,7 @@ return [
       'siteUrl'  => 'https://www.macromeals.life/',
       'basePath' => '/srv/http/macromeals/shared/uploads/',
       'pluginPath' => '/srv/http/macromeals/craft/plugins'
-    ],
+    ]
   ],
 
   '.me' => [
