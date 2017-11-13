@@ -4,6 +4,7 @@
 import fetchPostData from 'scripts/helpers/fetchPostData.js';
 import inputQuery from 'scripts/helpers/form/inputQuery.js';
 import checkFormFieldsForValidAttribute from 'scripts/helpers/form/checkFormFieldsForValidAttribute.js';
+import findParentNode from 'scripts/helpers/findParentNode.js';
 
 // Variables
 
@@ -34,7 +35,7 @@ function setRate() {
     loaderAnimation.style.display = 'none';
 
     if (response.success) {
-      text.innerHTML = `<span>Your Estimate</span>$${response.amount}`;
+      text.innerHTML = `<span>Your Estimate</span>$${response.amount.toFixed(2)}`;
       text.classList.add('result');
       inputs.forEach( (input) => input.value = '');
     } else {
@@ -69,6 +70,14 @@ export default function() {
     modal.style.display = 'none';
     loaderAnimation.style.display = 'block';
     text.remove();
+
+    inputs.forEach( (input) => {
+
+      const parent = findParentNode(input, 'field');
+      parent.setAttribute('valid', false);
+      parent.removeAttribute('has-error');
+
+    });
 
   });
 
