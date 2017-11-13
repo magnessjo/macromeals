@@ -10,6 +10,7 @@ return [
     'overridePhpSessionLocation' => true,
     'requireMatchingUserAgentForSession' => false,
     'autoLoginAfterAccountActivation' => true,
+    'enableCsrfProtection' => true,
     'environmentVariables' => [
       'siteUrl'  => 'https://www.macromeals.life/',
       'basePath' => '/srv/http/macromeals/shared/uploads/',

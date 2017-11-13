@@ -12,7 +12,7 @@ export default function(element, errorText) {
 
   return new Promise((resolve, reject) => {
 
-    fetchData(`id=${id}`, '/actions/MacroCommerce/Cart/getQuantity').then((response) => {
+    fetchData(`${window.csrfTokenName}=${window.csrfTokenValue}&id=${id}`, '/actions/MacroCommerce/Cart/getQuantity').then((response) => {
 
       const val = parseInt(value);
 
