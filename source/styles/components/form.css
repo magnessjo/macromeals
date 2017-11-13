@@ -137,6 +137,7 @@ form {
         padding-right: 10px;
         width: 50%;
         text-align: right;
+        white-space: nowrap;
       }
 
       & .required {

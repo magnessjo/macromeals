@@ -49,12 +49,12 @@
             <input type="text"
                    name="shippingAddress[firstName]"
                    id="firstName"
-                   validation="checkForLetter"
+                   validation="checkForLetterWithSpaceDash"
                    value="{{ addressModel.firstName ?? '' }}" />
 
             <div class="errors">
               <p class="required">First name is a required field</p>
-              <p class="letters">First name can only contain letters</p>
+              <p class="letters">First name can only contain letters, dashes and spaces</p>
             </div>
           </div>
         </div>
@@ -65,12 +65,12 @@
             <input type="text"
                    name="shippingAddress[lastName]"
                    id="lastName"
-                   validation="checkForLetter"
+                   validation="checkForLetterWithSpaceDash"
                    value="{{ addressModel.lastName ?? '' }}" />
 
             <div class="errors">
               <p class="required">Last name is a required field</p>
-              <p class="letters">Last name can only contain letters</p>
+              <p class="letters">Last name can only contain letters and spaces</p>
             </div>
           </div>
         </div>

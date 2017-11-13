@@ -78,6 +78,26 @@ function checkForLetter(input, parent) {
 
 }
 
+// Check for a Letter
+
+function checkForLetterWithSpaceDash(input, parent) {
+
+  const hasErrors = parent.getAttribute('has-error');
+  const errors = parent.querySelector('.errors');
+  const letterError = errors.querySelector('.letters');
+  const reg = new RegExp('^[a-zA-Z-_ ]+$');
+  const value = input.value;
+
+  if (hasErrors == 'true') return;
+
+  if (reg.test(value) == true) {
+    hideError(letterError, parent);
+  } else {
+    displayError(letterError, parent);
+  }
+
+}
+
 // Check for Required
 
 function required(input, parent) {
@@ -104,6 +124,7 @@ const obj = {
   checkForPassword,
   checkForLetter,
   required,
+  checkForLetterWithSpaceDash,
 }
 
 export default obj;

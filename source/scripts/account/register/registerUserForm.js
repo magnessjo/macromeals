@@ -25,13 +25,17 @@ function submitForm(e) {
   let data = `${window.csrfTokenName}=${window.csrfTokenValue}&`;
 
   inputs.forEach((input, i) => {
-    const value = input.value;
     const name = input.getAttribute('name');
+    const value = encodeURIComponent(input.value);
     data += `${name}=${value}`;
     if (inputs.length - 1 != i) data += '&';
   });
 
+  console.log(data);
+
   fetchData(data, '/actions/users/saveUser').then((response) => {
+
+    console.log(response);
 
     if (response.errors) {
 
