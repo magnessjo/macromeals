@@ -15,6 +15,7 @@ const errorElement = document.getElementById('card-errors');
 const cardNameElement = form.querySelector('#card-name-element');
 const submitButton = form.querySelector('input[type="submit"]');
 const paymentRequestWrapper = form.querySelector('.request-button');
+const loader = form.querySelector('.loader');
 
 const costString = form.getAttribute('data-cost');
 const totalCostInCents = parseInt(costString * 100);
@@ -82,23 +83,17 @@ function submitForm() {
 
   form.addEventListener('submit', (e) => {
 
+    const nameInput = cardNameElement.querySelector('input');
+
     e.preventDefault();
     submitButton.disabled = true;
-    const nameInput = cardNameElement.querySelector('input');
+    loader.style.display = 'block';
 
     stripe.createToken(card, {
       name : nameInput.value,
       address_country: 'US',
     }).then((result) => {
-
-      if (result.error) {
-        errorElement.textContent = result.error.message;
-        errorElement.style.display = 'block';
-        submitButton.disabled = false;
-      } else {
-        addTokenAndSubmit(result.token.id);
-      }
-
+      addTokenAndSubmit(result.token.id);
     });
 
   });
@@ -115,9 +110,15 @@ function addTokenAndSubmit(token) {
 
     } else {
       console.log(response);
-      const text = document.createElement('p');
-      text.innerHTML = 'There was an error submitting your payment.  Your cart has been saved.  Please contact our support team at <a href="help@macromeals.life">help@macromeals.life</a> to process your payment.'
-      errorElement.appendChild(text);
+
+      submitButton.disabled = false;
+      loader.style.display = 'none';
+
+      errorElement.innerHTML = `
+        <p>${response.error}</p>
+        <p>Your cart has been saved.  Please contact our support team at <a href="help@macromeals.life">help@macromeals.life</a> to process your payment.</p>
+      `;
+
       errorElement.style.display = 'block';
     }
 

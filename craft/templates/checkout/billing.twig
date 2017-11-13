@@ -4,6 +4,7 @@
 {% includeJsFile "/billing.js" %}
 
 {% set cart = craft.commerce.getCart() %}
+{% set shippingModel = cart.shippingAddress %}
 
 {% block main %}
 
@@ -42,11 +43,13 @@
 
         <div class="form-group">
 
+          <div class="loader"></div>
+
           <div class="field card-name">
             <label>
               <span>Name</span>
               <div id="card-name-element" class="input">
-                <input type="text" placeholder="John Doe" />
+                <input type="text" placeholder="John Doe" value="{{ shippingModel.firstName ?? '' }} {{ shippingModel.lastName ?? '' }}" />
               </div>
             </label>
           </div>
