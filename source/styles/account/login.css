@@ -8,9 +8,9 @@
   & .register-signup {
     max-width: 500px;
     margin: 0 auto;
+    text-align: center;
 
     & p {
-      text-align: center;
     }
 
     & p span {
@@ -26,11 +26,11 @@
     background-color: var(--green);
     color: var(--white);
     font-size: 22px;
-    font-size: calc(18px + 1vw);
-    width: 100%;
+    font-size: calc(18px + .5vw);
     border-radius: 0;
-    padding: 30px;
-    display: block;
+    padding: 10px 40px;
+    display: inline-block;
+    margin-bottom: 30px;
 
     & span {
       position: relative;
@@ -43,6 +43,20 @@
       left: 0;
       top: 50%;
       transform: translateY(-50%);
+    }
+
+  }
+
+  & .already-register {
+    text-align: center;
+
+    & p {
+      margin-bottom: 5px;
+    }
+
+    & button {
+      text-transform: uppercase;
+      font-size: 22px;
     }
 
   }

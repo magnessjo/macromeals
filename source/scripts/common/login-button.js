@@ -2,7 +2,7 @@
 // Variables
 
 const header = document.querySelector('header');
-const button = header.querySelector('.login');
+const buttons = Array.from(document.querySelectorAll('button.login'));
 const loginForm = header.querySelector('.login-form');
 const cartSummary = header.querySelector('.cart-summary');
 
@@ -10,16 +10,20 @@ const cartSummary = header.querySelector('.cart-summary');
 
 export default function() {
 
-  button.addEventListener('click', () => {
+  buttons.forEach( (button) => {
 
-    const isShown = loginForm.getAttribute('aria-hidden');
+    button.addEventListener('click', () => {
 
-    if (isShown == 'true') {
-      loginForm.setAttribute('aria-hidden', 'false');
-      cartSummary.setAttribute('aria-hidden', 'true')
-    } else {
-      loginForm.setAttribute('aria-hidden', 'true');
-    }
+      const isShown = loginForm.getAttribute('aria-hidden');
+
+      if (isShown == 'true') {
+        loginForm.setAttribute('aria-hidden', 'false');
+        cartSummary.setAttribute('aria-hidden', 'true')
+      } else {
+        loginForm.setAttribute('aria-hidden', 'true');
+      }
+
+    });
 
   });
 

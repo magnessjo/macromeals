@@ -82,6 +82,11 @@ export default function() {
           const parent = loginForm.parentNode;
           body.setAttribute('logged-in', true);
           parent.setAttribute('aria-hidden', true);
+
+          if (window.location.pathname = "account/checkout-login") {
+            window.location.pathname = 'checkout';
+          }
+
         }
 
       });
