@@ -9,6 +9,7 @@
 
 form[data-method="pickup"] #customer-address {
   height: 0;
+  margin-bottom: 0;
 }
 
 #shipping-method {
