@@ -118,15 +118,15 @@ h2.vegan span {
   margin-bottom: 100px;
 
   @media (--medium-min) {
-    width: 50%;
+    width: 45%;
   }
 
   @media (--tablet-min) {
-    width: 33%;
+    width: 30%;
   }
 
   @media (--desktop-min) {
-    width: 24%;
+    width: 22%;
   }
 
   &:hover .meal-detail .overlay {

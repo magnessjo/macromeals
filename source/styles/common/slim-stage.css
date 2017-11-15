@@ -2,15 +2,15 @@
 .slim-stage {
   margin-bottom: 80px;
   position: relative;
+  min-height: 120px;
 
   @media (--large-min) {
-    height: 20vh;
-    min-height: 180px;
+    height: 15vh;
+    min-height: 150px;
   }
 
   @media (--tablet-min) {
-    height: 30vwh;
-    min-height: 300px;
+    min-height: 200px;
   }
 
   & .image {
@@ -71,13 +71,13 @@
         top: 50%;
         bottom: 0;
         left: -40%;
-        right: 40%;
+        right: -10%;
         transform: translateY(-50%);
         background: radial-gradient(ellipse,
           rgba(255, 255, 255, 1) 0%,
-          rgba(255, 255, 255, .9) 40%,
-          rgba(255, 255, 255, .1) 60%,
-          rgba(255, 255, 255, .05) 70%,
+          rgba(255, 255, 255, .85) 40%,
+          rgba(255, 255, 255, .2) 60%,
+          rgba(255, 255, 255, .1) 70%,
           rgba(255, 255, 255, 0) 100%
         );
       }

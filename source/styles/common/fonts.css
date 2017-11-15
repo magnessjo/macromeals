@@ -1,10 +1,10 @@
 
 .acumin-stage  {
-  font-family: var(--acuminThin);
+  font-family: var(--acuminExtraLightItalic);
   font-size: 40px;
-  font-size: calc(30px + 4.25vw);
+  font-size: calc(30px + 3.25vw);
   font-weight: 300;
-  text-transform: uppercase;
+  text-transform: capitalize;
   line-height: .9em;
 
   & span {

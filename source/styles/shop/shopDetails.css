@@ -1,11 +1,6 @@
 
 @import "../master.css";
 
-.slim-stage h1:before {
-  left: -40%;
-  right: 0;
-}
-
 .fixed-wrapper {
   border: 1px solid var(--green);
   top: 0;
