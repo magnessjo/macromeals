@@ -1,8 +1,126 @@
 
+@font-face {
+  font-family: "acumin-pro-wide-thin";
+  font-weight: 100;
+  font-style: normal;
+  src: url("/fonts/AcuminProWide-Thin.woff2") format("woff2"),
+       url("/fonts/AcuminProWide-Thin.woff") format("woff");
+}
+
+@font-face {
+  font-family: "acumin-pro-wide-thin-italic";
+  font-weight: 100;
+  font-style: normal;
+  src: url("/fonts/AcuminProWide-ThinItalic.woff2") format("woff2"),
+       url("/fonts/AcuminProWide-ThinItalic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "acumin-pro-wide-extra-light";
+  font-weight: 200;
+  font-style: normal;
+  src: url("/fonts/AcuminProWide-ExtraLight.woff2") format("woff2"),
+       url("/fonts/AcuminProWide-ExtraLight.woff") format("woff");
+}
+
+@font-face {
+  font-family: "acumin-pro-wide-extra-light-italic";
+  font-weight: 200;
+  font-style: normal;
+  src: url("/fonts/AcuminProWide-ExtraLightItalic.woff2") format("woff2"),
+       url("/fonts/AcuminProWide-ExtraLightItalic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "acumin-pro-wide-light";
+  font-weight: 300;
+  font-style: normal;
+  src: url("/fonts/AcuminProWide-Light.woff2") format("woff2"),
+       url("/fonts/AcuminProWide-Light.woff") format("woff");
+}
+
+@font-face {
+  font-family: "acumin-pro-wide-light-italic";
+  font-weight: 300;
+  font-style: normal;
+  src: url("/fonts/AcuminProWide-LightItalic.woff2") format("woff2"),
+       url("/fonts/AcuminProWide-LightItalic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "acumin-pro-wide-regular";
+  font-weight: 400;
+  font-style: normal;
+  src: url("/fonts/AcuminProWide-Regular.woff2") format("woff2"),
+       url("/fonts/AcuminProWide-Regular.woff") format("woff");
+}
+
+@font-face {
+  font-family: "acumin-pro-wide-medium";
+  font-weight: 500;
+  font-style: normal;
+  src: url("/fonts/AcuminProWide-Medium.woff2") format("woff2"),
+       url("/fonts/AcuminProWide-Medium.woff") format("woff");
+}
+
+@font-face {
+  font-family: "acumin-pro-wide-medium-italic";
+  font-weight: 500;
+  font-style: normal;
+  src: url("/fonts/AcuminProWide-MediumItalic.woff2") format("woff2"),
+       url("/fonts/AcuminProWide-MediumItalic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "acumin-pro-wide-semi-bold";
+  font-weight: 600;
+  font-style: normal;
+  src: url("/fonts/AcuminProWide-Semibold.woff2") format("woff2"),
+       url("/fonts/AcuminProWide-Semibold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "acumin-pro-wide-semi-bold-italic";
+  font-weight: 600;
+  font-style: normal;
+  src: url("/fonts/AcuminProWide-SemiboldItalic.woff2") format("woff2"),
+       url("/fonts/AcuminProWide-SemiboldItalic.woff") format("woff");
+}
+
+@font-face {
+  font-family: "acumin-pro-wide-bold";
+  font-weight: 700;
+  font-style: normal;
+  src: url("/fonts/AcuminProWide-Bold.woff2") format("woff2"),
+       url("/fonts/AcuminProWide-Bold.woff") format("woff");
+}
+
+@font-face {
+  font-family: "calvert-bold";
+  font-weight: 700;
+  font-style: normal;
+  src: url("/fonts/Calvert-Bold.woff2") format("woff2"),
+       url("/fonts/Calvert-Bold.woff") format("woff");
+}
+
+
 :root {
 
-  --acumin: 'acumin-pro', 'arial', sans-serif;
-  --acuminCondensed: 'acumin-pro-condensed', 'arial', sans-serif;
+  --acuminThin: 'acumin-pro-wide-thin','arial', sans-serif;
+  --acuminExtraLight: 'acumin-pro-wide-extra-light','arial', sans-serif;
+  --acuminLight: 'acumin-pro-wide-light','arial', sans-serif;
+  --acuminRegular: 'acumin-pro-wide-regular','arial', sans-serif;
+  --acuminMedium: 'acumin-pro-wide-medium','arial', sans-serif;
+  --acuminSemiBold: 'acumin-pro-wide-semi-bold','arial', sans-serif;
+  --acuminBold: 'acumin-pro-wide-bold','arial', sans-serif;
+
+  --acuminThinItalic: 'acumin-pro-wide-thin-italic','arial', sans-serif;
+  --acuminExtraLightItalic: 'acumin-pro-wide-extra-light-italic','arial', sans-serif;
+  --acuminLightItalic: 'acumin-pro-wide-light-italic','arial', sans-serif;
+  --acuminMediumItalic: 'acumin-pro-wide-medium-italic','arial', sans-serif;
+  --acuminSemiBoldItalic: 'acumin-pro-wide-semi-bold','arial', sans-serif;
+
+  --calvertBold: 'calvert-bold', Serif;
 
   --white:        #ffffff;
   --black:        #171717;
@@ -24,7 +142,7 @@
 
   --red:          #eb1c26;
 
-  font-family: var(--acumin);
+  font-family: var(--acuminLight);
   font-size: 17px;
   font-weight: 400;
 

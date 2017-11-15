@@ -1,6 +1,6 @@
 
 .acumin-stage  {
-  font-family: var(--acuminCondensed);
+  font-family: var(--acuminThin);
   font-size: 40px;
   font-size: calc(30px + 4.25vw);
   font-weight: 300;
@@ -17,41 +17,22 @@
 }
 
 .acumin-large  {
-  font-family: var(--acumin);
+  font-family: var(--acuminThin);
   font-size: 30px;
   font-size: calc(26px + 1.25vw);
   margin-bottom: 20px;
   line-height: 1em;
-}
-
-.acumin-large-bold {
-  font-family: var(--acumin);
-  font-size: 30px;
-  font-size: calc(26px + 1.25vw);
-  margin-bottom: 20px;
-  line-height: 1em;
-  font-weight: 700;
-
-  & span {
-    font-family: var(--acumin);
-    font-weight: 300;
-    font-size: 16px;
-    display: block;
-    line-height: 1em;
-    margin-left: 5px;
-  }
-
 }
 
 .acumin-medium {
-  font-family: var(--acumin);
+  font-family: var(--acuminRegular);
   font-size: 22px;
   font-size: calc(18px + .8vw);
   margin-bottom: 20px;
 }
 
 .acumin-medium-bold  {
-  font-family: var(--acumin);
+  font-family: var(--acuminBold);
   font-weight: 700;
   font-size: 22px;
   font-size: calc(18px + .8vw);
@@ -67,14 +48,14 @@
 }
 
 .acumin-small {
-  font-family: var(--acumin);
+  font-family: var(--acuminRegular);
   font-size: 18px;
   font-size: calc(12px + .8vw);
   margin-bottom: 10px;
 }
 
 .acumin-small-bold {
-  font-family: var(--acumin);
+  font-family: var(--acuminBold);
   font-weight: 700;
   font-size: 18px;
   font-size: calc(12px + .8vw);
@@ -82,13 +63,13 @@
 }
 
 .acumin-tiny {
-  font-family: var(--acumin);
+  font-family: var(--acuminRegular);
   font-size: calc(12px + .4vw);
   margin-bottom: 5px;
 }
 
 .acumin-tiny-bold {
-  font-family: var(--acumin);
+  font-family: var(--acuminBold);
   font-size: calc(12px + .4vw);
   margin-bottom: 5px;
   font-weight: 700;
