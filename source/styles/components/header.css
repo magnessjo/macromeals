@@ -461,21 +461,13 @@ menu {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
     text-transform: uppercase;
-    color: var(--gray);
-    border-bottom: 1px solid var(--mid-gray);
+    border-bottom: 1px solid var(--light-gray);
     letter-spacing: 1px;
     height: 60px;
-
-    & span {
-      display: block;
-      font-size: 12px;
-      width: 100%;
-      line-height: .7em;
-      text-align: center;
-    }
-
+    color: var(--black);
+    font-size: 16px;
+    padding-left: 20px;
   }
 
   & .mobile-nav > div {
