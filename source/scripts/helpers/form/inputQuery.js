@@ -33,7 +33,7 @@ function checkInputAganistList(inputs) {
 
 export default function(form, attachEvents = true) {
 
-  const isFormWithShippingMethod = form.getAttribute('data-method');
+  const isFormWithShippingMethod = form.getAttribute('shipping-method');
   let inputs = Array.from(form.querySelectorAll('input:not([type="submit"])'));
 
   if (attachEvents == false && isFormWithShippingMethod == 'pickup') {

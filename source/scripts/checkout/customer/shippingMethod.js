@@ -1,11 +1,17 @@
 
+// Imports
+
+import postToCart from 'scripts/helpers/cart/postToCart.js';
+
 // Variables
 
 const form = document.querySelector('form#address-info');
 const container = document.querySelector('#shipping-method');
+const submitButton = form.querySelector('input[type="submit"]');
 const buttons = Array.from(container.querySelectorAll('.shpping-type'));
 const input = container.querySelector('input[name="shippingMethod"]');
 const activeState = 'data-active';
+let postData = `${window.csrfTokenName}=${window.csrfTokenValue}`;
 let handle = '';
 
 // Export
@@ -32,11 +38,7 @@ export default function() {
       });
 
       input.value = handle;
-      if (handle == 'pickup') {
-        form.setAttribute('data-method', 'pickup');
-      } else {
-        form.setAttribute('data-method', '');
-      }
+      form.setAttribute('shipping-method', handle);
 
     });
 

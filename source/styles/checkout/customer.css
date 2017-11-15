@@ -4,12 +4,14 @@
 }
 
 #customer-address {
-  height: inherit;
+  height: 0;
+  overflow: hidden;
+  margin-bottom: 0;
 }
 
-form[data-method="pickup"] #customer-address {
-  height: 0;
-  margin-bottom: 0;
+form[shipping-method="overnight"] #customer-address {
+  height: inherit;
+  margin-bottom: 80px;
 }
 
 #shipping-method {
@@ -67,7 +69,8 @@ form[data-method="pickup"] #customer-address {
     }
 
     &[data-active="true"] {
-      border: 1px solid var(--green);
+      background-color: var(--green);
+      color: var(--white);
     }
 
   }

@@ -15,19 +15,20 @@ const submitButton = form.querySelector('input[type="submit"]');
 
 // Set Rate
 
-function setRate() {
+function setRate(showSubmitButton = false) {
 
   const url = '/actions/MacroCommerce/ShippingRates';
   const quantity = form.querySelector('input[name="quantity"]').value;
+  const shippingMethod = form.getAttribute('shipping-method');
   let data = `${window.csrfTokenName}=${window.csrfTokenValue}&zip=${input.value}&quantity=${quantity}`;
 
   fetchPostData(data,url).then( (response) => {
 
     if (response.success) {
       text.innerHTML = `The shipping costs for ${input.value} are $${response.amount}`;
-      submitButton.disabled = false;
+      if (shippingMethod == 'overnight' && showSubmitButton) submitButton.disabled = false;
     } else {
-      submitButton.disabled = true;
+      if (shippingMethod == 'overnight' && showSubmitButton) submitButton.disabled = true;
       text.innerHTML = `
         ${response.error.Message}</br>
         Please contact us at <a href="info@macromeals.life">info@macromeals.life</a> for help resolving the issue.
@@ -44,7 +45,7 @@ function setRate() {
 
 export default function() {
 
-  if (input.value) setRate();
+  if (input.value) setRate(true);
 
   input.addEventListener('blur', () => {
 
