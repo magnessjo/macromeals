@@ -1,9 +1,81 @@
 
 @import "../master.css";
 
-.slim-stage .image {
-  background-image: url(/images/stage/meals.jpg);
-  background-position: top center;
+#stage {
+
+  & .image {
+    background-image: url(/images/stage/meals.jpg);
+    background-position: top center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+
+  & .lock {
+    color: var(--green);
+    position: relative;
+    flex-wrap: wrap;
+    height: 100%;
+    max-width: inherit;
+    padding: 0;
+
+    & > div {
+      background-color: var(--white);
+      display: flex;
+      align-items: center;
+      background-color: rgba(255, 255, 255, .9);
+      padding: 20px;
+
+      @media (--tablet-min) {
+        padding: 40px;
+        padding-right: 300px;
+        background: linear-gradient(90deg,
+                    rgba(255, 255, 255, 1) 0%,
+                    rgba(255, 255, 255, .8) 60%,
+                    rgba(255, 255, 255, .6) 70%,
+                    rgba(255, 255, 255, 0) 90%
+        );
+      }
+
+    }
+
+
+    & p, & span {
+      color: var(--green);
+      position: relative;
+      z-index: 9;
+    }
+
+  }
+
+  & h1 {
+    margin-bottom: 20px;
+
+    & > div {
+
+      @media (--large-min) {
+        margin-left: -5px;
+      }
+
+    }
+
+    & span {
+      padding-left: 5px;
+
+      @media (--large-min) {
+        padding-left: 10px;
+      }
+
+    }
+
+  }
+
+  & p {
+    max-width: 550px;
+  }
+
 }
 
 input[type='checkbox'] {
@@ -78,9 +150,10 @@ input[type='checkbox'] {
 .category-headline {
   text-transform: uppercase;
   color: var(--green);
-  font-size: 36px;
+  font-size: calc(22px + 2vw);
   text-align: center;
-  margin-bottom: 40px;
+  margin-bottom: 60px;
+  font-family: var(--acuminThin);
 
   @media (--tablet-min) {
     letter-spacing: 2px;
@@ -94,7 +167,7 @@ input[type='checkbox'] {
 
 h2.vegan span {
 
-  &:before {
+  /*&:before {
     content: "";
     position: absolute;
     top: -3px;
@@ -102,7 +175,7 @@ h2.vegan span {
     height: 20px;
     width: 20px;
     background-image: url(/images/products/vegan-leaf.svg);
-  }
+  }*/
 
 }
 
@@ -112,6 +185,7 @@ h2.vegan span {
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+  margin-bottom: 80px;
 }
 
 .meal-entry {
@@ -159,8 +233,8 @@ h2.vegan span {
     }
 
     & .meal-title {
-      font-family: var(--acuminCondensed);
-      font-size: 22px;
+      font-family: var(--acuminExtraLight);
+      font-size: calc(12px + .75vw);
       display: block;
 
       & span {
