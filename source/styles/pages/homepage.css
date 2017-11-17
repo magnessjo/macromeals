@@ -29,7 +29,7 @@
       padding: 20px;
 
       @media (--tablet-min) {
-        padding: 40px;
+        padding: 80px 40px;
         padding-right: 300px;
         background: linear-gradient(90deg,
                     rgba(255, 255, 255, 1) 0%,

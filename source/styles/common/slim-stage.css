@@ -10,7 +10,7 @@
   }
 
   @media (--tablet-min) {
-    min-height: 200px;
+    min-height: 300px;
   }
 
   & .image {
@@ -70,12 +70,12 @@
         padding: 250px;
         top: 50%;
         bottom: 0;
-        left: -40%;
+        left: -60%;
         right: -20%;
         transform: translateY(-50%);
         background: radial-gradient(ellipse,
           rgba(255, 255, 255, 1) 0%,
-          rgba(255, 255, 255, .85) 40%,
+          rgba(255, 255, 255, .7) 40%,
           rgba(255, 255, 255, .2) 60%,
           rgba(255, 255, 255, .1) 70%,
           rgba(255, 255, 255, 0) 100%
