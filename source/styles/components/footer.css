@@ -186,6 +186,7 @@ footer {
     margin-left: auto;
     padding-right: 60px;
     text-transform: uppercase;
+    font-family: var(--acuminThinItalic);
 
     & span {
 
