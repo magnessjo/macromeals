@@ -5,58 +5,58 @@
     margin-bottom: 40px;
   }
 
-  & .register-signup {
-    max-width: 500px;
-    margin: 0 auto;
-    text-align: center;
-
-    & p {
-    }
-
-    & p span {
-      display: block;
-    }
-
-  }
-
-  & .register-cta {
-    color: var(--white);
-    text-align: center;
-    text-transform: uppercase;
-    background-color: var(--green);
-    color: var(--white);
-    font-size: 22px;
-    font-size: calc(18px + .5vw);
-    border-radius: 0;
-    padding: 10px 40px;
-    display: inline-block;
-    margin-bottom: 30px;
-
-    & span {
-      position: relative;
-      padding-left: 40px;
-    }
-
-    & span:after {
-      content: "\f12c";
-      position: absolute;
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-  }
-
   & .already-register {
     text-align: center;
+    margin-bottom: 10px;
 
-    & p {
-      margin-bottom: 5px;
+    & .call-to-action {
+      position: relative;
+      padding-right: 50px;
+
+      & span:after {
+        content: "\f29e";
+        position: absolute;
+        right: 15px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-weight: 700;
+        font-size: 26px;
+      }
+
     }
 
-    & button {
-      text-transform: uppercase;
+  }
+
+  & .register-signup {
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & p {
+      margin-right: 10px;
+      margin-bottom: 0;
+    }
+
+    & .register-cta {
+      text-align: center;
       font-size: 22px;
+      font-size: calc(18px + .5vw);
+      display: inline-block;
+
+      & span {
+        position: relative;
+        padding-left: 25px;
+      }
+
+      & span:after {
+        content: "\f12c";
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+
     }
 
   }
@@ -66,9 +66,10 @@
     padding: 40px 0;
     color: var(--green);
     margin-bottom: 0;
+    font-family: var(--acuminThinItalic);
 
     @media (--desktop-min) {
-      padding: 60px 0;
+      padding: 50px 0;
     }
 
     & span {
@@ -76,7 +77,6 @@
       font-size: 60px;
       display: inline-block;
       text-transform: uppercase;
-      font-family: var(--acuminCondensed);
       line-height: 1em;
 
       &:before, &:after {
@@ -118,12 +118,9 @@
       margin: 0 auto;
     }
 
-    & .acumin-large  {
-
-      @media (--tablet-min) {
-        text-align: center;
-      }
-
+    & > div > p  {
+      font-family: var(--acuminSemiBold);
+      font-size: 22px;
     }
 
   }
