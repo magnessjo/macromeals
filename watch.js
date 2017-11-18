@@ -31,6 +31,7 @@ const config = {
       quickorder: 'source/styles/shop/quick-order.css',
       checkout: 'source/styles/checkout/index.css',
       labels: 'source/styles/automation/labels.css',
+      automation: 'source/styles/automation/index.css',
       account: 'source/styles/account/index.css',
     },
   },

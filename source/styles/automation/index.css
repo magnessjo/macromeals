@@ -1,0 +1,77 @@
+
+@import "../master.css";
+
+@media print {
+
+  header,
+  footer {
+    display: none;
+  }
+
+}
+
+#orders-automation {
+
+  & .order {
+    border-bottom: 1px solid var(--black);
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    margin-bottom: 40px;
+
+    &:first-of-type {
+      padding-top: 0;
+    }
+
+  }
+
+  & h1 {
+    font-size: 22px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  & .person {
+    margin-bottom: 40px;
+    margin-right: 0;
+    width: 280px;
+
+    & p {
+      margin-bottom: 0;
+    }
+
+    & .method {
+      text-transform: capitalize;
+    }
+
+    & address {
+      padding-top: 10px;
+      font-style: normal;
+    }
+
+  }
+
+  & .food {
+     margin-bottom: 20px;
+
+    & p {
+      margin-bottom: 5px;
+    }
+
+  }
+
+  & .total {
+    padding: 20px;
+    padding-bottom: 0;
+
+    & h1 {
+      margin-bottom: 20px;
+    }
+
+    & p {
+      margin-bottom: 5px;
+    }
+
+  }
+
+}
