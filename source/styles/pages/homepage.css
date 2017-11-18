@@ -2,6 +2,37 @@
 @import "../master.css";
 
 #stage {
+  position: relative;
+
+  @media (--tablet-min) {
+    padding: 50px 0;
+  }
+
+  &:before {
+    content: '';
+
+    @media (--tablet-min) {
+      padding: 80px 40px;
+      padding-right: 350px;
+      position: absolute;
+      left: 0;
+      right: 10%;
+      top: 0;
+      bottom: 0;
+      z-index: 9;
+      background: linear-gradient(90deg,
+                  rgba(255, 255, 255, 1) 0%,
+                  rgba(255, 255, 255, .8) 60%,
+                  rgba(255, 255, 255, .6) 70%,
+                  rgba(255, 255, 255, 0) 90%
+      );
+    }
+
+    @media (--desktop-min) {
+      right: 20%;
+    }
+
+  }
 
   & .image {
     background-image: url(/images/stage/meals.jpg);
@@ -18,25 +49,21 @@
     position: relative;
     flex-wrap: wrap;
     height: 100%;
-    max-width: inherit;
     padding: 0;
+    z-index: 99;
 
     & > div {
-      background-color: var(--white);
       display: flex;
       align-items: center;
-      background-color: rgba(255, 255, 255, .9);
-      padding: 20px;
+
+      @media (--large-max) {
+        padding: 30px 20px;
+        background-color: rgba(255, 255, 255, .85);
+        justify-content: center;
+      }
 
       @media (--tablet-min) {
-        padding: 80px 40px;
-        padding-right: 300px;
-        background: linear-gradient(90deg,
-                    rgba(255, 255, 255, 1) 0%,
-                    rgba(255, 255, 255, .8) 60%,
-                    rgba(255, 255, 255, .6) 70%,
-                    rgba(255, 255, 255, 0) 90%
-        );
+        padding: 0 30px;
       }
 
     }
@@ -51,29 +78,62 @@
   }
 
   & h1 {
-    margin-bottom: 20px;
+    text-align: center;
+    line-height: 1em;
 
-    & > div {
+    & > p {
+      position: relative;
+      padding: 12px 0;
+      margin: 10px 0;
+      line-height: .8em;
+      text-transform: uppercase;
+      font-family: var(--acuminLight);
+      white-space: nowrap;
 
-      @media (--large-min) {
-        margin-left: -5px;
+      @media (--small-max) {
+        font-size: 26px;
+      }
+
+      @media (--medium-min) {
+        font-size: 40px;
+        font-size: calc(30px + 3.25vw);
+      }
+
+      &:before, &:after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        height: 1px;
+        background-color: var(--green);
+        width: 60%;
+        transform: translateX(-50%);
+      }
+
+      &:before {
+        top: 0;
+      }
+
+      &:after {
+        bottom: 0;
       }
 
     }
 
     & span {
-      padding-left: 5px;
+      text-transform: capitalize;
+      font-family: var(--acuminExtraLight);
 
-      @media (--large-min) {
-        padding-left: 10px;
+      @media (--small-max) {
+        font-size: 18px;
+      }
+
+      @media (--medium-min) {
+        font-size: 26px;
+        font-size: calc(20px + 1.75vw);
       }
 
     }
 
-  }
-
-  & p {
-    max-width: 550px;
   }
 
 }
@@ -148,36 +208,69 @@ input[type='checkbox'] {
 }
 
 .category-headline {
-  text-transform: uppercase;
-  color: var(--green);
-  font-size: calc(22px + 2vw);
+  margin-bottom: 50px;
   text-align: center;
-  margin-bottom: 60px;
-  font-family: var(--acuminThin);
-
-  @media (--tablet-min) {
-    letter-spacing: 2px;
-  }
 
   & span {
+    display: block;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  & .headline {
     position: relative;
+    display: inline-block;
+    text-transform: uppercase;
+    color: var(--green);
+    font-size: calc(22px + 2vw);
+    text-align: center;
+    font-family: var(--acuminThinItalic);
+    padding-bottom: 35px;
+
+    @media (--tablet-min) {
+      letter-spacing: 2px;
+    }
+
+    &:before {
+      content: "";
+      position: absolute;
+      height: 1px;
+      background-color: var(--green);
+      left: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 10px;
+      width: 70%;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      right: -30px;
+      transform: translateY(-50%);
+      height: 40px;
+      width: 40px;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
   }
 
 }
 
-h2.vegan span {
-
-  /*&:before {
-    content: "";
-    position: absolute;
-    top: -3px;
-    left: 19px;
-    height: 20px;
-    width: 20px;
-    background-image: url(/images/products/vegan-leaf.svg);
-  }*/
-
+/*h2.vegan span:after {
+  background-image: url(/images/products/vegan-leaf.svg);
 }
+
+h2.chicken span:after {
+  background-image: url(/images/products/chicken.svg);
+}
+
+h2.turkey span:after {
+  background-image: url(/images/products/turkey.svg);
+}*/
+
 
 .enteries-group {
   overflow: hidden;
@@ -186,21 +279,18 @@ h2.vegan span {
   align-items: center;
   flex-wrap: wrap;
   margin-bottom: 80px;
+  padding: 0 50px;
 }
 
 .meal-entry {
   margin-bottom: 100px;
 
-  @media (--medium-min) {
+  @media (--large-min) {
     width: 45%;
   }
 
-  @media (--tablet-min) {
-    width: 30%;
-  }
-
   @media (--desktop-min) {
-    width: 22%;
+    width: 30%;
   }
 
   &:hover .meal-detail .overlay {
@@ -223,7 +313,7 @@ h2.vegan span {
     background-color: rgba(255, 255, 255, .88);
     right: 0;
     left: 0;
-    bottom: -30px;
+    top: 85%;
 
     & p {
       margin-bottom: 0;
@@ -236,12 +326,16 @@ h2.vegan span {
       font-family: var(--acuminExtraLight);
       font-size: calc(12px + .75vw);
       display: block;
+      height: 55px;
 
       & span {
-        position: relative;
-        margin: 10px 0;
-        padding: 10px 0;
-        display: inline-block;
+        display: block;
+        white-space: nowrap;
+        position: absolute;
+        height: 20px;
+        left: 50%;
+        top: 10px;
+        transform: translateX(-50%);
 
         &:after {
           content: "";
@@ -250,10 +344,7 @@ h2.vegan span {
           position: absolute;
           left: 10%;
           right: 10%;
-        }
-
-        &:after {
-          bottom: 0;
+          top: 35px;
         }
 
       }

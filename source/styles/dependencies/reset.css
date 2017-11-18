@@ -27,7 +27,6 @@ a {
 p, h1, h2, h3, h4, h5, h6, li {
   line-height: 1.3em;
   font-size: 16px;
-  font-weight: 400;
 
   @media (--tablet-min) {
     font-size: 18px;

@@ -11,9 +11,10 @@
     <div class="lock">
       <div>
         <div>
-          <h1 class="acumin-stage"><span>Homemade & Delivered</span><div>Healthy Meals</div></h1>
-          <p>Macro Meals prepares every meal from scratch using the best ingredients.</p>
-          <p>We deliver four days a week to from New York to Florida.</p>
+          <h1 class="acumin-stage">
+            <span>Freshly Prepared</span>
+            <p>Healthy Meals</p>
+            <span>Delivered to you</span></h1>
         </div>
       </div>
     </div>
@@ -59,7 +60,10 @@
 
             <div>
 
-              <h2 class="category-headline {{ category.slug }}"><span>{{ category.title }}</span></h2>
+              <h2 class="category-headline {{ category.slug }}">
+                <span class="headline">{{ category.title }}</span>
+                <span>{{ category.plainText }}</span>
+              </h2>
 
               <div class="enteries-group">
 
@@ -77,10 +81,8 @@
                       <img src="{{ image }}" alt="image of {{ product.title}} {{ product.subTitle }}" />
 
                       <div class="overlay">
-                        <div>
-                          <p class="meal-title"><span>{{ product.title }}</span> </p>
-                          <p>See Details</p>
-                        </div>
+                        <p class="meal-title"><span>{{ product.title }}</span> </p>
+                        <p>See Details</p>
                       </div>
                     </a>
 
