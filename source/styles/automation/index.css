@@ -14,10 +14,13 @@
 
   & .order {
     border-bottom: 1px solid var(--black);
-    display: flex;
-    justify-content: space-between;
     padding: 20px;
     margin-bottom: 40px;
+
+    @media (--large-min) {
+      display: flex;
+      justify-content: space-between;
+    }
 
     &:first-of-type {
       padding-top: 0;
@@ -33,7 +36,6 @@
 
   & .person {
     margin-bottom: 40px;
-    margin-right: 0;
     width: 280px;
 
     & p {
@@ -53,6 +55,7 @@
 
   & .food {
      margin-bottom: 20px;
+     width: 280px;
 
     & p {
       margin-bottom: 5px;

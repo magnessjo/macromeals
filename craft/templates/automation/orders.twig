@@ -21,14 +21,6 @@
 
           <div class="order">
 
-            <div class="food">
-              {% for item in order.lineItems %}
-                {% set variant = item.purchasable %}
-                {% set product = variant.product %}
-                <p class="food-item" food-total="{{ item.qty }}" food-type="{{ product.title }} {{ variant.title }}">{{ item.qty }} {{ product.title }} {{ variant.title }}</p>
-              {% endfor %}
-            </div>
-
             <div class="person">
               <h1>Order Number: {{ loop.index }}</h1>
               <p>{{ customer.firstName }} {{ customer.lastName }}</p>
@@ -40,6 +32,15 @@
                 </address>
               {% endif %}
             </div>
+
+            <div class="food">
+              {% for item in order.lineItems %}
+                {% set variant = item.purchasable %}
+                {% set product = variant.product %}
+                <p class="food-item" food-total="{{ item.qty }}" food-type="{{ product.title }} {{ variant.title }}">{{ item.qty }} {{ product.title }} {{ variant.title }}</p>
+              {% endfor %}
+            </div>
+
           </div>
 
           {% endfor %}
