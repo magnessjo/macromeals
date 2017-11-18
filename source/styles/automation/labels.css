@@ -4,9 +4,12 @@
 @media print, screen {
 
   * {
-    font-size: 12px;
+    font-size: 10px;
     padding: 0;
     margin: 0;
+    font-family: var(--acuminExtaLight);
+    font-weight: 400;
+    line-height: 1.2em;
   }
 
   html {
@@ -23,17 +26,12 @@
 
   section {
     background-color: white;
-    height: calc(50% - .25in);
+    height: calc(50% - .28in);
     width: 50%;
     float: left;
     display: flex;
     overflow: hidden;
-
-    &:first-of-type, &:nth-of-type(2) {
-      margin-bottom: .4in;
-      margin-top: .1in;
-    }
-
+    padding: .17in 0;
   }
 
   .info {
@@ -67,16 +65,14 @@
     }
 
     & h1 {
-      font-family: var(--acuminCondensed);
-      font-size: 22px;
+      font-family: var(--acuminLight);
+      font-size: 18px;
       margin-bottom: 15px;
-      font-weight: 700;
 
       & span {
         display: block;
         font-size: 14px;
-        font-family: var(--acumin);
-        font-weight: 300;
+        font-family: var(--acuminLight);
       }
 
     }
@@ -85,7 +81,6 @@
       text-transform: uppercase;
       margin-bottom: 3px;
       font-size: 12px;
-      font-weight: 700;
     }
 
     & .alerts {
@@ -97,7 +92,6 @@
       }
 
       & .headline {
-        font-weight: 700;
         text-transform: uppercase;
       }
 
@@ -112,12 +106,11 @@
       & h4 {
         font-size: 12px;
         text-transform: uppercase;
-        font-family: var(--acuminCondensed);
-        font-weight: 700;
+        font-family: var(--acuminLight);
       }
 
       & p {
-        font-size: 22px;
+        font-size: 18px;
       }
 
     }
@@ -145,12 +138,10 @@
       margin-bottom: 10px;
       line-height: 1em;
       margin-top: 0;
-      font-weight: 700;
 
       & span {
         width: 70px;
         display: inline-block;
-        font-weight: normal;
       }
 
       &.protein {
@@ -174,11 +165,6 @@
       margin-bottom: -60px;
       width: 150px;
       margin-left: -75px;
-
-      & canvas {
-
-      }
-
     }
 
   }

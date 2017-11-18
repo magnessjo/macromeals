@@ -1,11 +1,7 @@
 
 {% includeCssFile "/labels.css" %}
 {% includeJsFile "/automation.js" %}
-
-{% set count = [1, 2, 3, 4] %}
-{% set productSlug = craft.request.getSegment(3) %}
-{% set variantSlug = craft.request.getSegment(4) %}
-{% set admins = craft.users.admin('1') %}
+{% set orders = craft.commerce.orders.orderStatusId(4) %}
 
 <!DOCTYPE html>
 <html>
@@ -19,125 +15,118 @@
 
   <body>
 
+
     {% if currentUser %}
 
       {% if currentUser.admin %}
 
         <main>
 
-          {% for item in count %}
+          {% for order in orders | reverse %}
 
-            {% for product in craft.commerce.products.slug(productSlug) %}
+            {% for item in order.lineItems %}
 
-              <section>
+              {% set variant = item.purchasable %}
+              {% set product = variant.product %}
+              {% set quantity = item.qty | number_format %}
 
-                <div class="info">
+              {% for i in 1..quantity %}
 
-                  <img src="/images/logo/green.svg" class="logo" alt="image of the macro meals logo" />
+                <section>
 
-                  <div class="description">
+                  <div class="info">
 
-                    <h1>{{ product.title }} <span>{{ product.subTitle }}</span></h1>
+                    <img src="/images/logo/green.svg" class="logo" alt="image of the macro meals logo" />
 
-                    <div class="ingredients">
-                      <h3>Ingredients</h3>
+                    <div class="description">
 
-                      {% for purchasable in product.variants %}
+                      <h1>{{ product.title }} <span>{{ product.subTitle }}</span></h1>
 
-                        {% if purchasable.sku == variantSlug %}
+                      <div class="ingredients">
+                        <h3>Ingredients</h3>
 
-                          {% for list in purchasable.ingredients %}
+                        {% for list in variant.ingredients %}
 
-                            {% if not list.hide %}
-                              {{ list.item }}{% if not loop.last %},{% endif %}
+                          {% if not list.hide %}
+                            {{ list.item }}{% if not loop.last %},{% endif %}
+                          {% endif %}
+
+                        {% endfor %}
+
+                      </div>
+
+                      <div class="instructions">
+                        <h3>Instructions</h3>
+                        <p>{{ product.instructions }}</p>
+                      </div>
+
+                      <div class="alerts">
+
+                        <div>
+                          <p class="headline">Enjoy By</p>
+                          {% if product.expirationDate %}
+                            <p>{{ product.expirationDate.format('m/d/y') }}</p>
+                          {% endif %}
+                        </div>
+
+                        <div>
+                          <p class="headline">ALLERGEN ALERT</p>
+                          <p>{{ product.allergenAlert }}</p>
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                    <div class="connect">
+                      <h4>Connect With Us</h4>
+                      <p>http://www.macromeals.life</p>
+                    </div>
+
+                  </div>
+
+                  <div class="facts">
+
+                      <div class="list">
+
+                        <h2>NUTRITION FACTS</h2>
+
+                        <div>
+                          <p class="nimbus-tiny-bold"><span>SIZE:</span> {{ variant.title }}</p>
+                          {% for row in variant.productMacros %}
+                            {% if row.calories %}
+                              <p class="nimbus-tiny-bold"><span>CALORIES:</span> {{ row.calories }}</p>
+                            {% else %}
+                              <p>The calories are not entered in the CMS</p>
                             {% endif %}
-
+                            {% if row.protein %}
+                              <p class="nimbus-tiny-bold protein"><span>PROTEIN:</span> {{ row.protein }}g</p>
+                            {% else %}
+                              <p>The Protein are not entered in the CMS</p>
+                            {% endif %}
+                            {% if row.carbs %}
+                              <p class="nimbus-tiny-bold carbs"><span>CARBS:</span> {{ row.carbs }}g</p>
+                            {% else %}
+                              <p>The Carbs are not entered in the CMS</p>
+                            {% endif %}
+                            {% if row.fat %}
+                              <p class="nimbus-tiny-bold fat"><span>FAT:</span> {{ row.fat }}g</p>
+                            {% else %}
+                              <p>The Fat are not entered in the CMS</p>
+                            {% endif %}
                           {% endfor %}
 
-                        {% endif %}
+                        </div>
 
-                      {% endfor %}
+                        {% include "components/pie-chart.twig" with { 'macros': variant.productMacros } %}
 
-                    </div>
-
-                    <div class="instructions">
-                      <h3>Instructions</h3>
-                      <p>{{ product.instructions }}</p>
-                    </div>
-
-                    <div class="alerts">
-
-                      <div>
-                        <p class="headline">Enjoy By</p>
-                        {% if product.expirationDate %}
-                          <p>{{ product.expirationDate.format('m/d/y') }}</p>
-                        {% endif %}
                       </div>
-
-                      <div>
-                        <p class="headline">ALLERGEN ALERT</p>
-                        <p>{{ product.allergenAlert }}</p>
-                      </div>
-
-                    </div>
 
                   </div>
 
-                  <div class="connect">
-                    <h4>Connect With Us</h4>
-                    <p>http://macromeals.life</p>
-                  </div>
+                </section>
 
-                </div>
-
-                <div class="facts">
-
-                    <div class="list">
-
-                      <h2>NUTRITION FACTS</h2>
-
-                      {% for purchasable in product.variants %}
-
-                        {% if purchasable.sku == variantSlug %}
-
-                          <div>
-                            <p class="nimbus-tiny-bold"><span>SIZE:</span> {{ purchasable.title }}</p>
-                            {% for row in purchasable.productMacros %}
-                              {% if row.calories %}
-                                <p class="nimbus-tiny-bold"><span>CALORIES:</span> {{ row.calories }}</p>
-                              {% else %}
-                                <p>The calories are not entered in the CMS</p>
-                              {% endif %}
-                              {% if row.protein %}
-                                <p class="nimbus-tiny-bold protein"><span>PROTEIN:</span> {{ row.protein }}g</p>
-                              {% else %}
-                                <p>The Protein are not entered in the CMS</p>
-                              {% endif %}
-                              {% if row.carbs %}
-                                <p class="nimbus-tiny-bold carbs"><span>CARBS:</span> {{ row.carbs }}g</p>
-                              {% else %}
-                                <p>The Carbs are not entered in the CMS</p>
-                              {% endif %}
-                              {% if row.fat %}
-                                <p class="nimbus-tiny-bold fat"><span>FAT:</span> {{ row.fat }}g</p>
-                              {% else %}
-                                <p>The Fat are not entered in the CMS</p>
-                              {% endif %}
-                            {% endfor %}
-
-                          </div>
-
-                          {% include "components/pie-chart.twig" with { 'macros': purchasable.productMacros } %}
-
-                        {% endif %}
-
-                      {% endfor %}
-
-                    </div>
-
-                </div>
-
-              </section>
+              {% endfor %}
 
             {% endfor %}
 
