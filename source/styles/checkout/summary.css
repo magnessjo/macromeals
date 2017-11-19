@@ -223,6 +223,11 @@
       clear: both;
     }
 
+    & .promo-error {
+      color: var(--red);
+      display: none;
+    }
+
   }
 
   & .totals {

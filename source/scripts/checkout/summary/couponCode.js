@@ -8,6 +8,7 @@ import updateCartTotals from 'scripts/helpers/cart/updateCartTotals.js';
 
 const section = document.querySelector('#cart-total');
 const container = section.querySelector('.promo');
+const error = container.querySelector('.promo-error');
 const button = container.querySelector('button');
 const input = container.querySelector('input[type="text"]');
 const text = container.querySelector('.text');
@@ -33,18 +34,23 @@ export default function() {
       postData += `&${name}=${value}`;
     }
 
-    console.log(postData);
-
     postToCart(postData).then( (data) => {
 
-      const cart = data.cart;
-      const discount = cart.baseDiscount;
+      if (data.error) {
+        error.style.display = 'block';
+      } else {
 
-      discountElement.innerHTML = `($${discount})`;
+        const cart = data.cart;
+        const discount = cart.baseDiscount;
+        error.style.display = 'none';
 
-      updateCartTotals(cart);
-      parent.style.display = 'block';
-      button.innerHTML = 'change';
+        discountElement.innerHTML = `($${discount.toFixed(2)})`;
+
+        updateCartTotals(cart);
+        parent.style.display = 'block';
+        button.innerHTML = 'change';
+
+      }
 
     });
 

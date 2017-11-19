@@ -29,6 +29,7 @@
             <div>
               <input type="text" name="couponCode" value="{{ cart.couponCode }}" placeholder="Code" />
               <button class="call-to-action">{% if cart.couponCode %}Change{% else %}Apply{% endif %}</button>
+              <p class="promo-error">The promotional code that you have entered code not be found</p>
             </div>
 
             <p class="text">If you have a promotional code, please add it for your order.</p>
