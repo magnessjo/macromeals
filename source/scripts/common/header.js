@@ -20,9 +20,11 @@ export default function() {
       if (isHidden == 'true') {
         overlay.setAttribute('aria-hidden', 'false');
         parent.setAttribute('showing', 'true');
+        overlay.style.visibility = 'visible';
       } else {
         overlay.setAttribute('aria-hidden', 'true');
         parent.setAttribute('showing', 'false');
+        setTimeout(() => { overlay.style.visibility = 'hidden' }, 1000);
       }
 
     });

@@ -98,6 +98,7 @@ header {
     }
 
     & .options[aria-hidden = 'false'] {
+      visibility: visible;
 
       @media (--large-min) {
         top: 60px;
