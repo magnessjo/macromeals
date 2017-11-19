@@ -80,3 +80,24 @@ form[shipping-method="overnight"] #customer-address {
   }
 
 }
+
+#notice {
+  background-color: var(--light-yellow);
+  padding: 50px 0;
+  font-size: 16px;
+
+  & h1 {
+    font-family: var(--acuminSemiBoldItalic);
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+
+  & .lock > p {
+    font-size: 24px;
+  }
+
+  & .lock div p {
+
+  }
+
+}
