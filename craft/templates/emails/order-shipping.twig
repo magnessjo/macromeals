@@ -8,25 +8,12 @@
     <tr>
       <td>
 
-        <!-- Order Statement -->
-        <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#65943f">
-          <tr>
-            <td>
-              <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                <tr>
-                  <td>
-                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="15" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
-                    <div class="h2" style="color:#ffffff; font-family: Helvetica, Helvetica, Helvetica, Arial, sans-serif; min-width:auto !important; font-size:60px; line-height:64px; text-align:center">Your order</div>
-                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="15" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
-                    <div class="h3-2-center" style="color:#fff; font-family: Helvetica, Helvetica, Helvetica, Arial, sans-serif; min-width:auto !important; font-size:40px; line-height:6px; text-align:center; letter-spacing:5px">is on the way!</div>
-                    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="35" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
-                  </td>
-                </tr>
-              </table>
-            </td>
-          </tr>
-        </table>
-       <!-- END Order Statement -->
+        {% if order.shippingMethodHandle == 'overnight' %}
+          {% include "emails/components/email-statement.twig" with {'small' : 'Your Order', 'big': 'HAS SHIPPED'} %}
+        {% else %}
+          {% include "emails/components/email-statement.twig" with {'small' : 'Your Pickup', 'big': 'IS CONFIRMED'} %}
+        {% endif %}
+
 
         <!-- Body -->
         <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#ffffff">
@@ -39,68 +26,18 @@
                 </tr>
               </table>
 
+              {% if order.shippingMethodHandle == 'overnight' %}
+                {% set text = 'Your Tracking Number is '~order.message  %}
+                {% set link = 'https://www.fedex.com/apps/fedextrack/?action=track&trackingnumber='~order.message~'&cntry_code=us' %}
+                {% include "emails/components/email-text-cta.twig" with {'text' : text, 'link': link, 'linkText': 'Track Order'} %}
+              {% else %}
+                {% include "emails/components/email-text-cta.twig" with {'text' : 'Your order has been completed and will be ready for you to pickup on Tuesday at the YMCA in Abingdon' } %}
+              {% endif %}
+
               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                   <th class="column-top" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top; Margin:0" valign="top" width="270">
-                    <table width="100%" border="0" cellspacing="0" cellpadding="0">
-                      <tr>
-                        <td>
-                         <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#f4f4f4">
-                          <tr>
-                            <td class="content-spacing" style="font-size:0pt; line-height:0pt; text-align:left" width="20"></td>
-                            <td>
-                              <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">
-                                <tr>
-                                  <td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td>
-                                </tr>
-                              </table>
-                              <div class="text-1" style="color:#000; font-family: Helvetica, Arial, sans-serif; min-width:auto !important; font-size:14px; line-height:20px; text-align:left">
-                                <strong>SHIPPING METHOD: <span style="text-transform: uppercase;">{{ order.shippingMethodHandle }}</span></strong>
-                              </div>
-                              <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">
-                                <tr>
-                                  <td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td>
-                                </tr>
-                              </table>
-                            </td>
-                            <td class="content-spacing" style="font-size:0pt; line-height:0pt; text-align:left" width="20"></td>
-                          </tr>
-                         </table>
-                         <table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#fafafa">
-                          <tr>
-                             <td class="content-spacing" style="font-size:0pt; line-height:0pt; text-align:left" width="20"></td>
-                             <td>
-                              <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">
-                                <tr>
-                                  <td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td>
-                                </tr>
-                              </table>
-                              <div class="text" style="color:#1e1e1e; font-family: Helvetica, Arial, sans-serif; min-width:auto !important; font-size:14px; line-height:20px; text-align:left">
-                                {% set address = order.shippingAddress %}
-                                <strong>{{ address.firstName }} {{ address.lastName }}</strong>
-                                {% if order.shippingMethodHandle != 'pickup' %}
-                                  <br />
-                                  {{ order.shippingAddress.address1 }}
-                                  <br />
-                                  {{ order.shippingAddress.city }}, {{ order.shippingAddress.zipCode }}
-                                {% else %}
-                                  <br />
-                                  Pickup at the YMCA in Abingdon
-                                {% endif %}
-
-                              </div>
-                              <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">
-                                <tr>
-                                  <td height="15" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td>
-                                </tr>
-                              </table>
-                             </td>
-                             <td class="content-spacing" style="font-size:0pt; line-height:0pt; text-align:left" width="20"></td>
-                          </tr>
-                         </table>
-                       </td>
-                     </tr>
-                    </table>
+                    {% include "emails/components/email-shipping-method.twig" %}
                   </th>
                   <th class="column-top" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top; Margin:0" valign="top" width="20">
                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
