@@ -243,7 +243,7 @@
       <div class="lock">
 
         <div class="actions">
-          <input type="submit" data-button="continue" value="Continue to Order Summary" class="call-to-action" {{ cart.shippingMethod ? cart.shippingMethod.handle != 'pickup' ? 'disabled' }}>
+          <input type="submit" data-button="continue" value="Continue to Order Summary" class="call-to-action" {% if cart.shippingMethod %}{% if cart.shippingMethod.handle != 'pickup' %} 'disabled'{% endif %} {% else %}disabled{% endif %}>
         </div>
 
       </div>

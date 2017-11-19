@@ -39,6 +39,15 @@ export default function() {
 
       input.value = handle;
       form.setAttribute('shipping-method', handle);
+      if (handle == 'pickup') submitButton.disabled = false;
+      if (handle == 'overnight') {
+        const isShippingZipValid = form.getAttribute('shipping-code-valid');
+        if (isShippingZipValid == 'true') {
+          submitButton.disabled = false;
+        } else {
+          submitButton.disabled = true;
+        }
+      }
 
     });
 

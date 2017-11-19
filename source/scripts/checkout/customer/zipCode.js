@@ -26,13 +26,15 @@ function setRate(showSubmitButton = false) {
 
     if (response.success) {
       text.innerHTML = `The shipping costs for ${input.value} are $${response.amount}`;
-      if (shippingMethod == 'overnight' && showSubmitButton) submitButton.disabled = false;
+      if (showSubmitButton) submitButton.disabled = false;
+      form.setAttribute('shipping-code-valid', true);
     } else {
-      if (shippingMethod == 'overnight' && showSubmitButton) submitButton.disabled = true;
+      if (showSubmitButton) submitButton.disabled = true;
       text.innerHTML = `
         ${response.error.Message}</br>
         Please contact us at <a href="info@macromeals.life">info@macromeals.life</a> for help resolving the issue.
       `;
+      form.setAttribute('shipping-code-valid', false);
     }
 
     textContainer.style.display = 'block';
@@ -45,13 +47,13 @@ function setRate(showSubmitButton = false) {
 
 export default function() {
 
-  if (input.value) setRate(true);
+  if (input.value) setRate();
 
   input.addEventListener('blur', () => {
 
     const isParentValid = parent.getAttribute('valid');
 
-    if (isParentValid == 'true') setRate();
+    if (isParentValid == 'true') setRate(true);
 
   });
 
