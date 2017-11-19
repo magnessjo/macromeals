@@ -70,6 +70,7 @@ header {
     }
 
     & .options {
+      visibility: hidden;
 
       @media (--large-min) {
         position: absolute;
