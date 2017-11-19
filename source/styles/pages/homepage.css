@@ -28,8 +28,8 @@
       );
     }
 
-    @media (--desktop-min) {
-      right: 20%;
+    @media (--tablet-min) {
+      right: -20%;
     }
 
   }
@@ -55,11 +55,11 @@
     & > div {
       display: flex;
       align-items: center;
+      justify-content: center;
 
       @media (--large-max) {
         padding: 30px 20px;
         background-color: rgba(255, 255, 255, .85);
-        justify-content: center;
       }
 
       @media (--tablet-min) {
