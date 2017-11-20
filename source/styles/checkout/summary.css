@@ -207,7 +207,7 @@
     & input[type="text"] {
 
       @media (--large-min) {
-        width: calc(100% - 130px);
+        width: calc(100% - 180px);
         display: block;
         float: left;
       }
@@ -215,7 +215,6 @@
     }
 
     & button {
-      width: 120px;
       height: 44px;
     }
 
