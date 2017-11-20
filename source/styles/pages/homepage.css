@@ -209,12 +209,14 @@ input[type='checkbox'] {
 
 .category-headline {
   margin-bottom: 50px;
-  text-align: center;
+  padding-left: 50px;
 
   & span {
     display: block;
-    max-width: 700px;
-    margin: 0 auto;
+    max-width: 70%;
+    font-size: calc(18px + .5vw);
+    line-height: 1.4em;
+    font-family: var(--acuminExtraLight);
   }
 
   & .headline {
@@ -222,10 +224,11 @@ input[type='checkbox'] {
     display: inline-block;
     text-transform: uppercase;
     color: var(--green);
-    font-size: calc(22px + 2vw);
-    text-align: center;
+    font-size: calc(22px + 2.5vw);
     font-family: var(--acuminThinItalic);
-    padding-bottom: 35px;
+    line-height: 1em;
+    padding-bottom: 40px;
+    padding-left: 30px;
 
     @media (--tablet-min) {
       letter-spacing: 2px;
@@ -237,10 +240,8 @@ input[type='checkbox'] {
       height: 1px;
       background-color: var(--green);
       left: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 10px;
-      width: 70%;
+      bottom: 20px;
+      width: calc(100% + 60px);
     }
 
     &:after {
