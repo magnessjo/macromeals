@@ -1,6 +1,7 @@
 
 {% extends "_layout" %}
 {% includeCssFile "/homepage.css" %}
+{% includeJsFile "/homepage.js" %}
 {% set categories = craft.categories.group('protein') %}
 
 {% block main %}
@@ -33,7 +34,7 @@
       <div class="lock">
         <img src="/images/icons/delivery-truck-green.svg" />
         <p>We deliver from Monday to Friday to the continental United States.</p>
-        <button>Get a quote for your zip code</button>
+        <button class="show-shipping-modal">Get a quote for your zip code</button>
       </div>
     </section>
 
@@ -120,6 +121,56 @@
       </div>
 
     </section>
+
+  </div>
+
+  <div class="shipping-modal" aria-hidden="true">
+
+    <form id="shipping-calculator">
+
+      <button class="ion-close"></button>
+      <div class="loader"></div>
+
+      <p>Please enter your estimated quantity of meals and your shipping zip code for an estimated shipping cost.</p>
+
+      <div class="two-column">
+
+        <div class="field" data-required="true" valid="false">
+          <label for="quantity"><span>Quantity</span></label>
+          <div class="input">
+            <input type="text"
+                   name="quantity"
+                   placeholder=""
+                   maxlength="3"
+                   id="quantity" />
+
+            <div class="errors">
+              <p class="required">Quantity is a required field</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="field" data-required="true" valid="false">
+          <label for="zipCode"><span>Zip Code</span></label>
+          <div class="input">
+            <input type="number"
+                   name="zipCode"
+                   id="zipCode"
+                   placeholder=""
+                   maxlength="5" />
+
+            <div class="errors">
+              <p class="required">Zip Code is a required field</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <input type="submit" value="Get Estimate" />
+      <div class="result"></div>
+
+    </form>
 
   </div>
 
