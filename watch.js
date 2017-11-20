@@ -25,6 +25,7 @@ const config = {
     files: {
       homepage: 'source/styles/pages/homepage.css',
       macros: 'source/styles/pages/macros.css',
+      about: 'source/styles/pages/about.css',
       generic: 'source/styles/pages/generic.css',
       faq: 'source/styles/pages/faq.css',
       shopdetails: 'source/styles/shop/shopDetails.css',
