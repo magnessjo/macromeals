@@ -138,85 +138,23 @@
 
 }
 
-input[type='checkbox'] {
-  height: 15px;
-  width: 15px;
-  border: 1px solid var(--black);
-  cursor: pointer;
-}
-
-#meals-by-category {
-  overflow: visible;
-}
-
-.meal-wrapper {
-
-  @media (--large-min) {
-    display: flex;
-    min-height: 60vh;
-  }
-
-}
-
-.checkbox-options {
-
-  & > div {
-    margin-bottom: 10px;
-    overflow: hidden;
-    padding-left: 10px;
-  }
-
-}
-
-.meal-controller {
-  margin-bottom: 40px;
-  padding: 10px;
-  background-color: var(--light-green);
-  display: none;
-
-  @media (--large-max) {
-    display: none;
-  }
-
-  @media (--tablet-min) {
-    margin-left: 40px;
-    margin-right: 40px;
-  }
-
-  & > div {
-
-    @media (--large-min) {
-      background-color: var(--white);
-      padding: 20px;
-      height: 100%;
-    }
-
-  }
-
-  & .acumin-tiny {
-    text-decoration: underline;
-    margin-bottom: 10px;
-    font-weight: 700;
-  }
-
-  & label {
-    font-size: 14px;
-    font-family: var(--nimbus);
-    text-transform: uppercase;
-  }
-
-}
-
 .category-headline {
   margin-bottom: 50px;
-  padding-left: 50px;
+
+  @media (--tablet-min) {
+    padding-left: 50px;
+  }
 
   & span {
     display: block;
-    max-width: 70%;
     font-size: calc(18px + .5vw);
     line-height: 1.4em;
     font-family: var(--acuminExtraLight);
+
+    @media (--tablet-min) {
+      max-width: 70%;
+    }
+
   }
 
   & .headline {
