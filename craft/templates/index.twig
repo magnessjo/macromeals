@@ -1,7 +1,6 @@
 
 {% extends "_layout" %}
 {% includeCssFile "/homepage.css" %}
-{% includeJsFile "/shopselection.js" %}
 {% set categories = craft.categories.group('protein') %}
 
 {% block main %}
@@ -20,88 +19,108 @@
     </div>
   </section>
 
-  <section id="meals-by-category">
+  <div class="top-layer-wrapper">
 
-    <div class="lock">
+    <section id="page-navigation">
+      <div>
+        <a href="/shop/quick-order"><div><span>Quick Order</span></div></a>
+        <a href="/pages/macros"><div>What Are <span>Macronutrients</span></div></a>
+        <a href="/pages/about"><div>About <span>Macro Meals</span></div></a>
+      </div>
+    </section>
 
-      {# <div class="meal-controller">
+    <section id="delivery">
+      <div class="lock">
+        <img src="/images/icons/delivery-truck-green.svg" />
+        <p>We deliver from Monday to Friday to the continental United States.</p>
+        <button>Get a quote for your zip code</button>
+      </div>
+    </section>
 
-        <div>
+    <section id="meals-by-category">
 
-          <div class="proteins">
-            <p class="acumin-tiny label">Types of Protein</p>
+      <div class="lock">
 
-            <form id="checkbox" class="checkbox-options">
+        {# <div class="meal-controller">
 
-              {% for cat in craft.categories.group('protein') %}
+          <div>
 
-                <div class="checkbox-field">
-                  <input type="checkbox" id="{{ cat }}" name="{{ cat }}" value="{{ cat }}">
-                  <label for="{{ cat }}">{{ cat }}</label>
-                </div>
+            <div class="proteins">
+              <p class="acumin-tiny label">Types of Protein</p>
 
-              {% endfor %}
+              <form id="checkbox" class="checkbox-options">
 
-            </form>
+                {% for cat in craft.categories.group('protein') %}
 
-          </div>
-
-        </div>
-
-      </div> #}
-
-      <div class="meal-list">
-
-        {% for category in categories %}
-
-          {% set entries = craft.commerce.products.relatedTo(category) %}
-
-          {% if entries|length > 0 %}
-
-            <div>
-
-              <h2 class="category-headline {{ category.slug }}">
-                <span class="headline">{{ category.title }}</span>
-                <span>{{ category.plainText }}</span>
-              </h2>
-
-              <div class="enteries-group">
-
-                {% for product in entries %}
-
-                  {% if product.productImage|length > 0 %}
-                    {% set image = product.productImage[0].url %}
-                  {% else %}
-                    {% set image = '/images/products/placeholder-circle.png' %}
-                  {% endif %}
-
-                  <div class="meal-entry" data-protein="{% for cat in product.protein %}{{ cat }}{% endfor %}">
-
-                    <a href="/shop/details/{{ product.slug }}" class="meal-detail">
-                      <img src="{{ image }}" alt="image of {{ product.title}} {{ product.subTitle }}" />
-
-                      <div class="overlay">
-                        <p class="meal-title"><span>{{ product.title }}</span> </p>
-                        <p>See Details</p>
-                      </div>
-                    </a>
-
+                  <div class="checkbox-field">
+                    <input type="checkbox" id="{{ cat }}" name="{{ cat }}" value="{{ cat }}">
+                    <label for="{{ cat }}">{{ cat }}</label>
                   </div>
 
                 {% endfor %}
 
-              </div>
+              </form>
 
             </div>
 
-          {% endif %}
+          </div>
 
-        {% endfor %}
+        </div> #}
+
+        <div class="meal-list">
+
+          {% for category in categories %}
+
+            {% set entries = craft.commerce.products.relatedTo(category) %}
+
+            {% if entries|length > 0 %}
+
+              <div>
+
+                <h2 class="category-headline {{ category.slug }}">
+                  <span class="headline">{{ category.title }}</span>
+                  <span>{{ category.plainText }}</span>
+                </h2>
+
+                <div class="enteries-group">
+
+                  {% for product in entries %}
+
+                    {% if product.productImage|length > 0 %}
+                      {% set image = product.productImage[0].url %}
+                    {% else %}
+                      {% set image = '/images/products/placeholder-circle.png' %}
+                    {% endif %}
+
+                    <div class="meal-entry" data-protein="{% for cat in product.protein %}{{ cat }}{% endfor %}">
+
+                      <a href="/shop/details/{{ product.slug }}" class="meal-detail">
+                        <img src="{{ image }}" alt="image of {{ product.title}} {{ product.subTitle }}" />
+
+                        <div class="overlay">
+                          <p class="meal-title"><span>{{ product.title }}</span> </p>
+                          <p>See Details</p>
+                        </div>
+                      </a>
+
+                    </div>
+
+                  {% endfor %}
+
+                </div>
+
+              </div>
+
+            {% endif %}
+
+          {% endfor %}
+
+        </div>
 
       </div>
 
-    </div>
+    </section>
 
-  </section>
+  </div>
 
 {% endblock %}
