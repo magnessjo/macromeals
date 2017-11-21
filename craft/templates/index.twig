@@ -40,35 +40,42 @@
 
     <section id="meals-by-category">
 
-      <div class="lock">
+      <div class="meals-controller">
 
-        {# <div class="meal-controller">
+        <div class="lock">
 
-          <div>
+          <form id="checkbox" class="checkbox-options">
 
-            <div class="proteins">
-              <p class="acumin-tiny label">Types of Protein</p>
+            <p>Filter Meals by the Type of Protein</p>
 
-              <form id="checkbox" class="checkbox-options">
+            <div>
 
-                {% for cat in craft.categories.group('protein') %}
+              {% for cat in craft.categories.group('protein') %}
 
-                  <div class="checkbox-field">
+                {% set entries = craft.commerce.products.relatedTo(cat) %}
+
+                {% if entries | length > 0 %}
+
+                  <label for="{{ cat }}">
                     <input type="checkbox" id="{{ cat }}" name="{{ cat }}" value="{{ cat }}">
-                    <label for="{{ cat }}">{{ cat }}</label>
-                  </div>
+                    <span>{{ cat }}</span>
+                  </label>
 
-                {% endfor %}
+                {% endif %}
 
-              </form>
+              {% endfor %}
 
             </div>
 
-          </div>
+          </form>
 
-        </div> #}
+        </div>
 
-        <div class="meal-list">
+      </div>
+
+      <div class="meal-list">
+
+        <div class="lock">
 
           {% for category in categories %}
 

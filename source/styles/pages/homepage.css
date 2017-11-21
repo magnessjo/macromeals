@@ -266,6 +266,40 @@
 #meals-by-category {
   margin-bottom: 0;
 
+  & .meals-controller {
+    background-color: var(--light-yellow);
+    margin-bottom: 30px;
+    padding: 20px 0;
+    text-align: center;
+    display: none;
+
+    & form {
+
+      & > div {
+        display: flex;
+        justify-content: center;
+      }
+
+    }
+
+    & form p {
+      margin-bottom: 10px;
+      font-family: var(--acuminMediumItalic);
+    }
+
+    & label {
+      margin-bottom: 0;
+      margin-left: 30px;
+      width: inherit;
+
+      &:first-of-type {
+        margin-left: 0;
+      }
+
+    }
+
+  }
+
   & .category-headline {
     margin-bottom: 50px;
 
