@@ -33,7 +33,7 @@ function setRate() {
     loaderAnimation.style.display = 'none';
 
     if (response.success) {
-      result.innerHTML = `<p><span>Your Estimate</span>$${response.amount.toFixed(2)}</p>`;
+      result.innerHTML = `<p>Your Estimate<span>$${response.amount.toFixed(2)}</span></p>`;
       inputs.forEach( (input) => input.value = '');
     } else {
       result.innerHTML = `There was an error getting your estimate.  Please contact us directly at <a href="info@macromeals.life">info@macromeals.life</a> for an estimate.`;
