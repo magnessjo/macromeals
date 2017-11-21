@@ -41,7 +41,8 @@ export default function() {
       } else {
 
         const cart = data.cart;
-        const discount = cart.baseDiscount;
+        const discount = cart.adjustments.Discount[0].amount;
+
         error.style.display = 'none';
 
         discountElement.innerHTML = `($${discount.toFixed(2)})`;
