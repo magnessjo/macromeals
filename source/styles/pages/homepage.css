@@ -294,7 +294,6 @@
       font-family: var(--acuminThinItalic);
       line-height: 1em;
       padding-bottom: 40px;
-      padding-left: 30px;
 
       @media (--medium-max) {
         width: 100%;
