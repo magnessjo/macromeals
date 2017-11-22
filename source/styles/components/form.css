@@ -65,6 +65,14 @@ form {
 
   }
 
+  & h1 {
+    font-family: var(--acuminExtraLightItalic);
+    font-size: calc(18px + 1vw);
+    width: 100%;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
   & .checkbox-field {
     margin-bottom: 20px;
 

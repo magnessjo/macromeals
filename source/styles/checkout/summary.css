@@ -1,5 +1,6 @@
 
 #order-summary {
+  margin-bottom: 40px;
 
   & .no-items {
     padding: 100px 0;
@@ -13,10 +14,6 @@
 
   & .item-list {
 
-    & .items {
-      margin-bottom: 40px;
-    }
-
     & .order-item {
       position: relative;
 
@@ -26,8 +23,9 @@
       }
 
       &:last-of-type {
+        margin-bottom: 0;
 
-        @media (--tablet-min) {
+        & .wrapper {
           margin-bottom: 0;
         }
 
@@ -185,74 +183,104 @@
 }
 
 #cart-total {
+  margin-bottom: 40px;
 
   & .lock {
+    display: flex;
+  }
 
-    @media (--tablet-min) {
-      display: flex;
-    }
-
-    & > div {
-
-      @media (--tablet-min) {
-        width: 48%;
-      }
-
-    }
-
+  & .lock > div {
+    max-width: 500px;
+    margin-left: auto;
+    width: 100%;
   }
 
   & .promo {
+    overflow: hidden;
+    margin-bottom: 40px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--light-gray);
 
     & input[type="text"] {
+      width: 100%;
+      display: block;
+      max-width: 300px;
+      float: right;
+      margin-bottom: 10px;
+    }
 
-      @media (--large-min) {
-        width: calc(100% - 180px);
-        display: block;
-        float: left;
-      }
-
+    & label {
+      font-family: var(--acuminExtraLightItalic);
+      font-size: calc(18px + .2vw);
+      width: 100%;
+      text-align: right;
+      margin-bottom: 10px;
+      text-transform: capitalize;
     }
 
     & button {
       height: 44px;
-    }
-
-    & p {
+      float: right;
       clear: both;
     }
 
     & .promo-error {
       color: var(--red);
       display: none;
+      clear: both;
     }
 
   }
 
   & .totals {
 
+    & span {
+     display: inline-block;
+     font-family: var(--acuminLightItalic);
+     font-size: 18px;
+    }
+
     & .title {
       text-transform: uppercase;
     }
 
     & .cost {
-     width: 80px;
-     font-weight: 700;
-    }
-
-    & span {
-     display: inline-block;
+     padding-left: 20px;
+     width: 110px;
+     text-align: left;
+     font-family: var(--acuminSemiBold);
+     white-space: nowrap;
     }
 
     & p {
-      margin-bottom: 0;
+      margin-bottom: 5px;
       text-align: right;
     }
 
-    & .discount {
-      display: none;
+    & p.total {
+      margin-top: 5px;
+      padding-top: 10px;
+      border-top: 2px solid var(--light-gray);
+      display: inline;
+      float: right;
+
+      & .title {
+       font-family: var(--acuminSemiBold);
+       font-size: 22px;
+      }
+
+      & .cost {
+       font-family: var(--acuminBold);
+       font: 20px;
+      }
+
     }
 
   }
 
+}
+
+.checkout-actions {
+  border-top: 1px solid var(--light-gray);
+  padding-top: 40px;
 }
