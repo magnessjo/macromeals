@@ -45,7 +45,7 @@ export default function() {
 
         error.style.display = 'none';
 
-        discountElement.innerHTML = `($${discount.toFixed(2)})`;
+        discountElement.innerHTML = `(${discount.toFixed(2)})`;
 
         updateCartTotals(cart);
         parent.style.display = 'block';
