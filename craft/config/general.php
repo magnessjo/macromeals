@@ -39,6 +39,7 @@ return [
 
   '.life' => [
     'devMode' => false,
+    'enableCsrfProtection' => false,
     'environmentVariables' => [
       'siteUrl'  => 'https://www.macromeals.life/',
       'basePath' => '/srv/http/macromeals/shared/uploads/',
