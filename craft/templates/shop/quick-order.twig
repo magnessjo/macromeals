@@ -65,7 +65,12 @@
                       <input type="hidden" name="qty" value="0">
                       <input type="hidden" name="purchasableId" value="{{ variant.purchasableId }}">
                       <div class="option">{{ variant.description }}</div>
-                      <div class="price">${{ variant.salePrice }}</div>
+                      <div class="price">
+                        {% if variant.salesApplied | length > 0 %}
+                          <div class="sale-price">{{ variant.price | commerceCurrency(cart.currency) }}</div>
+                        {% endif %}
+                        <span>{{ variant.salePrice | commerceCurrency(cart.currency) }}</span>
+                      </div>
 
                       <div class="quantity field" valid="true">
                         <div class="input">

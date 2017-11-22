@@ -235,6 +235,28 @@
       width: 40%;
     }
 
+    & .price {
+      text-align: center;
+
+      & .sale-price {
+        position: relative;
+        font-size: 14px;
+
+        &:before {
+          content: "";
+          position: absolute;
+          height: 1px;
+          top: 54%;
+          transform: translateY(-50%);
+          background-color: red;
+          left: 0;
+          right: 0;
+        }
+
+      }
+
+    }
+
   }
 
 }

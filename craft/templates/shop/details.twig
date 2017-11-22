@@ -47,7 +47,12 @@
                       <input type="hidden" name="qty" value="0">
                       <input type="hidden" name="purchasableId" value="{{ purchasable.purchasableId }}">
                       <div class="size">{{ purchasable.description }}</div>
-                      <div class="price">${{ purchasable.salePrice }}</div>
+                      <div class="price">
+                        {% if purchasable.salesApplied | length > 0 %}
+                          <div class="sale-price"><span>{{ purchasable.price | commerceCurrency(cart.currency) }}</span></div>
+                        {% endif %}
+                        <span>{{ purchasable.salePrice | commerceCurrency(cart.currency) }}</span>
+                      </div>
 
                       <div class="quantity field" valid="true">
                         <div class="input">

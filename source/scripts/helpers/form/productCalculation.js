@@ -25,7 +25,7 @@ function caculateTotal() {
 
     const parent = findParentNode(input,'input-container');;
     const hiddenQuanity = parent.querySelector('input[name="qty"]');
-    const priceString = parent.querySelector('.price').innerHTML;
+    const priceString = parent.querySelector('.price > span').innerHTML;
     const price = priceString.slice(1, priceString.length);
     const itemTotal = input.value * price;
 
