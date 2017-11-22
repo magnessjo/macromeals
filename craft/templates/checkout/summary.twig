@@ -31,7 +31,7 @@
               <div>
                 <input type="text" name="couponCode" value="{{ cart.couponCode }}" placeholder="Code" />
                 <button class="call-to-action">{% if cart.couponCode %}Change{% else %}Apply{% endif %}</button>
-                <p class="promo-error">The promotional code that you have entered code not be found</p>
+                <p class="promo-error">The promotional code that you have entered could not be found</p>
               </div>
 
             </div>
@@ -40,22 +40,22 @@
 
               <p>
                 <span class="title">SubTotal</span>
-                <span class="cost" data-type="items-amount">{{ cart.itemSubtotal | currency(cart.currency) }}</span>
+                <span class="cost" data-type="items-amount">{{ cart.itemSubtotal | number_format(2, '.', ',')}}</span>
               </p>
 
               <p>
                 <span class="title">Shipping & Handling</span>
-                <span class="cost" data-type="shipping-amount">{{ cart.totalShippingCost | currency(cart.currency) }}</span>
+                <span class="cost" data-type="shipping-amount">{{ cart.totalShippingCost | number_format(2, '.', ',') }}</span>
               </p>
 
               <p class="discount" {% if cart.baseDiscount %} style="display:block;" {% endif %}>
                 <span class="title">Discount</span>
-                <span class="cost" data-type="discount-amount">{{ cart.totalDiscount | currency(cart.currency) }}</span>
+                <span class="cost" data-type="discount-amount">({{ cart.totalDiscount | number_format(2, '.', ',') }})</span>
               </p>
 
               <p>
                 <span class="title">Tax</span>
-                <span class="cost" data-type="tax-amount">{{ cart.totalTax | commerceCurrency(cart.currency) }}</span>
+                <span class="cost" data-type="tax-amount">{{ cart.totalTax | number_format(2, '.', ',') }}</span>
               </p>
 
               <p class="total">
