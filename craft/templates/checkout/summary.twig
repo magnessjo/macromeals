@@ -39,18 +39,18 @@
             <div class='totals'>
 
               <p>
+                <span class="title">SubTotal</span>
+                <span class="cost" data-type="items-amount">{{ cart.itemSubtotal | currency(cart.currency) }}</span>
+              </p>
+
+              <p>
                 <span class="title">Shipping & Handling</span>
                 <span class="cost" data-type="shipping-amount">{{ cart.totalShippingCost | currency(cart.currency) }}</span>
               </p>
 
               <p class="discount" {% if cart.baseDiscount %} style="display:block;" {% endif %}>
                 <span class="title">Discount</span>
-                <span class="cost" data-type="discount-amount">{{ cart.baseDiscount | currency(cart.currency) }}</span>
-              </p>
-
-              <p>
-                <span class="title">SubTotal</span>
-                <span class="cost" data-type="items-amount">{{ cart.itemSubtotal | currency(cart.currency) }}</span>
+                <span class="cost" data-type="discount-amount">{{ cart.totalDiscount | currency(cart.currency) }}</span>
               </p>
 
               <p>
