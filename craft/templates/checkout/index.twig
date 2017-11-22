@@ -109,6 +109,7 @@
                   <p>101 Walter Ward Blvd,<br> Abingdon, MD 21009</p>
                   <a target="_blank" href="https://www.google.com/maps/place/The+Ward+Y+in+Abingdon/@39.4651901,-76.30869,17z/data=!3m1!4b1!4m5!3m4!1s0x89c7e7aff9cdd5c3:0xd8d4b8d7898c3704!8m2!3d39.4651901!4d-76.3065013">View on Map</a>
                 </address>
+                <p class="costs">Pickup costs are $10</p>
               {% endif %}
             </div>
 
@@ -123,8 +124,8 @@
             <div class="shpping-type" data-handle="{{ handle }}" {{ cart.shippingMethod ? cart.shippingMethod.handle == handle ? 'data-active="true"' }} >
               <h2>{{ method.name }}</h2>
               <p>FedEx Overnight Ground Delivery.</p>
-              <p>We ship on Monday, Tuesday, Wednesday and Thursday.</p>
-              <p>Delivery cost are determined by your location.</p>
+              <p>We ship on Monday through Thursday.</p>
+              <p class="costs">Delivery cost are determined by your location.</p>
             </div>
           {% endif %}
 

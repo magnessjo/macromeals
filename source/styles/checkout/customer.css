@@ -33,14 +33,6 @@ form[shipping-method="overnight"] #customer-address {
       align-items: center;
     }
 
-    & p {
-
-      @media (--large-min) {
-        margin-bottom: 0;
-      }
-
-    }
-
     & a {
       display: flex;
 
@@ -52,11 +44,17 @@ form[shipping-method="overnight"] #customer-address {
 
   }
 
+  & .costs {
+    font-family: var(--acuminSemiBoldItalic);
+    font-size: 18px;
+  }
+
   & .shpping-type {
     border: 1px solid var(--light-gray);
     padding: 20px;
     cursor: pointer;
     position: relative;
+    transition: background-color .5s, color .5s;
 
     @media (--medium-max) {
       padding-bottom: 40px;
@@ -69,6 +67,23 @@ form[shipping-method="overnight"] #customer-address {
 
     @media (--tablet-min) {
       padding-left: 150px;
+    }
+
+    &:hover {
+      background-color: var(--green);
+      color: var(--white);
+      transition: background-color 1s, color 1s;
+
+      & a {
+        color: var(--white);
+        transition: color 1s;
+      }
+
+    }
+
+    &:hover:before {
+      filter: grayscale(0);
+      transition: filter 1s;
     }
 
     &:before, &:after {
@@ -85,6 +100,7 @@ form[shipping-method="overnight"] #customer-address {
       height: 34px;
       right: 20px;
       top: 10px;
+      transition: filter .5s;
 
       @media (--large-min) {
         right: 30px;
@@ -143,14 +159,21 @@ form[shipping-method="overnight"] #customer-address {
 
       & a {
         color: var(--white);
+        transition: color .5s;
       }
 
       &:before {
         filter: grayscale(0);
+        transition: filter 1s;
       }
 
       &:after {
-        display: none;
+        content: '';
+        background-image: url(/images/icons/checkmark.svg);
+        background-repeat: no-repeat;
+        height: 40px;
+        width: 40px;
+        left: 55px;
       }
 
     }
