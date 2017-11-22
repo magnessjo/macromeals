@@ -237,7 +237,12 @@
     & span {
      display: inline-block;
      font-family: var(--acuminLightItalic);
-     font-size: 18px;
+     font-size: 15px;
+
+     @media (--large-min) {
+       font-size: 18px;
+     }
+
     }
 
     & .title {
@@ -246,7 +251,7 @@
 
     & .cost {
      padding-left: 20px;
-     width: 110px;
+     width: 90px;
      text-align: left;
      font-family: var(--acuminSemiBold);
      white-space: nowrap;
