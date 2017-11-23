@@ -20,6 +20,7 @@ return [
 
   '.me' => [
     'devMode' => false,
+    'enableCsrfProtection' => false,
     'environmentVariables' => [
       'siteUrl'  => 'https://macromeals.joshmagness.me/',
       'basePath' => '/srv/http/macromeals/shared/uploads/',
