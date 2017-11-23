@@ -157,6 +157,14 @@ form[shipping-method="overnight"] #customer-address {
       background-color: var(--green);
       color: var(--white);
 
+      & h2 {
+
+        @media (--medium-max) {
+          padding-left: 30px;
+        }
+
+      }
+
       & a {
         color: var(--white);
         transition: color .5s;
@@ -171,9 +179,24 @@ form[shipping-method="overnight"] #customer-address {
         content: '';
         background-image: url(/images/icons/checkmark.svg);
         background-repeat: no-repeat;
-        height: 40px;
-        width: 40px;
-        left: 55px;
+
+        @media (--medium-max) {
+          height: 20px;
+          width: 20px;
+          left: 20px;
+          top: 22px;
+        }
+
+        @media (--large-min) {
+          height: 40px;
+          width: 40px;
+          left: 32px;
+        }
+
+        @media (--tablet-min) {
+          left: 55px;
+        }
+
       }
 
     }

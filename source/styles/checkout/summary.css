@@ -227,6 +227,9 @@
       color: var(--red);
       display: none;
       clear: both;
+      padding-top: 20px;
+      max-width: 300px;
+      float: right;
     }
 
   }
