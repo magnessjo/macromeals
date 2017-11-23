@@ -25,7 +25,7 @@ export default function(cart) {
     const shippingNumber = formatStringForDollar(cart.baseShippingCost);
     const discountNumber = typeof discounts !== 'undefined' ? formatStringForDollar(adjustments.Discount[0].amount) : '0.00'
 
-    totalElement.innerHTML = totalNumber;
+    totalElement.innerHTML = `$${totalNumber}`;
     subTotalElement.innerHTML = subTotalNumber;
     taxElement.innerHTML = taxNumber;
     shippingElement.innerHTML = shippingNumber;
