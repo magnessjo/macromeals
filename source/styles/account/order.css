@@ -3,18 +3,18 @@
   min-height: 60vh;
 
   & h1 {
-    margin-bottom: 60px;
+    margin-bottom: 30px;
+    font-family: var(--acuminThin);
+    font-size: calc(26px + 1.25vw);
   }
 
   & .order-entry {
-    border-bottom: 1px solid var(--gray);
-    padding-bottom: 30px;
+    border-top: 1px solid var(--gray);
+    padding-top: 30px;
     margin-bottom: 30px;
     max-width: 650px;
 
     &:last-of-type {
-      border-bottom: 0;
-      padding-bottom: 0;
       margin-bottom: 0;
     }
 
