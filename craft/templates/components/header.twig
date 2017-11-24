@@ -31,18 +31,12 @@
 
     <nav>
       <a href="/shop/quick-order"><span>Quick Order</span></a>
-      <div class="dropdown account-dropdown">
-        <button>Account</button>
-        <div class="options" aria-hidden='true'>
-          <a href="/account/orders">Orders</a>
-          <a href="{{ logoutUrl }}">Logout</a>
-        </div>
-      </div>
     </nav>
 
     <div class="overlay-actions">
 
-      <button class="login" data-overlay="login-form">Login</button>
+      <button class="login account" data-overlay="login-form">Login</button>
+      <a href="/account" class="account">Account</a>
 
       <button class="cart" data-overlay="cart-summary">
         <div class="number">{{ cartItemsTotal }}</div>

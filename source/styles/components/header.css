@@ -115,12 +115,18 @@ header {
     height: 100%;
     display: flex;
     align-items: center;
+
+    & > a {
+      display: none;
+    }
+
   }
 
-  & .login {
+  & .account {
     margin-right: 18px;
     font-size: 15px;
     text-transform: none;
+    color: var(--black);
   }
 
   & .cart {
@@ -509,6 +515,18 @@ body[logged-in='true'] {
 
   & menu .current-user-nav {
     display: flex;
+  }
+
+  & .overlay-actions {
+
+    & .login {
+      display: none;
+    }
+
+    & > a {
+      display: block;
+    }
+
   }
 
 }
