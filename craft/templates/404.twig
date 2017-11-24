@@ -1,15 +1,34 @@
 
 {% extends "_layout" %}
 {% set title = "404" %}
-{% includeCssFile "/homepage.css" %}
+{% includeCssFile "/generic.css" %}
 
 {% block main %}
 
-<section id="stage">
+<section id="stage" class="slim-stage">
 
 	<div class="image"></div>
-	<div class="text">
-		<h1>Page not found</h1>
+	<div class="lock">
+    <h1 class="acumin-stage"><div>Page Not Found</div></h1>
+	</div>
+
+</section>
+
+<section id="error-summary">
+
+	<div class="lock">
+
+		<div>
+      <h1>Oops!</h1>
+			<h2>The option that you have selected is out of reach</h2>
+			<h3>Error Code: 404</h3>
+			<p>Here are some pages to help you find what you were looking for:</p>
+			<a href="/">Home</a>
+			<a href="/shop/quick-order">Quick Order</a>
+		</div>
+
+		<img src="/images/generic/404-image.jpg" />
+
 	</div>
 
 </section>

@@ -8,3 +8,62 @@
   }
 
 }
+
+#error-summary {
+
+  & .lock {
+
+    @media (--large-min) {
+      display: flex;
+      align-items: center;
+    }
+
+    & > div {
+
+      @media (--large-min) {
+        padding-right: 40px;
+        width: 70%;
+      }
+
+    }
+
+    & img {
+
+      @media (--large-min) {
+        width: 30%;
+      }
+
+    }
+
+  }
+
+  & h1 {
+    font-family: var(--acuminBold);
+    font-size: 60px;
+    margin-bottom: 40px;
+    color: var(--gray);
+  }
+
+  & h2 {
+    font-family: var(--acuminRegular);
+    font-size: 30px;
+    margin-bottom: 20px;
+  }
+
+  & h3 {
+    font-family: var(--acuminExtraLightItalic);
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  & a {
+    display: block;
+    margin-bottom: 10px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+  }
+
+}
