@@ -3,6 +3,60 @@
 @import "./login.css";
 @import "./order.css";
 
+.account-two-column .lock {
+
+  @media (--tablet-min) {
+    display: flex;
+  }
+
+}
+
+.account-navigation {
+
+  @media (--tablet-min) {
+    width: 240px;
+  }
+
+  & p {
+    margin-bottom: 10px;
+  }
+
+  & a {
+    display: block;
+    margin-bottom: 10px;
+    padding-top: 10px;
+    padding-left: 10px;
+    border-top: 1px solid var(--green);
+    font-size: 16px;
+    font-family: var(--acuminExtraLight);
+  }
+
+}
+
+.account-content {
+
+  @media (--tablet-min) {
+    width: calc(100% - 240px);
+    padding-left: 40px;
+  }
+
+}
+
+.account-info {
+  display: flex;
+  justify-content: center;
+
+  & p {
+    display: flex;
+  }
+
+  & span {
+    width: 150px;
+    display: block;
+  }
+
+}
+
 #password-reset {
   display: flex;
   align-items: center;

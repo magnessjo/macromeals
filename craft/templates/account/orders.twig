@@ -6,71 +6,79 @@
 
 {% block main %}
 
-  <section id="orders">
+  <section id="orders" class="account-two-column">
 
     <div class="lock">
 
-      <h1 class="acumin-large-bold">Previous Orders</h1>
+      <div class="account-navigation">
+        <a href="/account">Account Details</a>
+        <a href="/account/orders">Previous Orders</a>
+        <a href="{{ logoutUrl }}">Logout</a>
+      </div>
 
-      {% if pastOrders|length > 0 %}
+      <div class="account-content">
 
-        {% for order in pastOrders %}
+        <h1 class="acumin-large-bold">Previous Orders</h1>
 
-          <div class="order-entry">
+        {% if pastOrders|length > 0 %}
 
-            <div class="date">
-              <p>{{ order.dateOrdered.format('F d, Y') }}</p>
-              <p class="acumin-tiny">Order Number: {{ order.number }}</p>
-            </div>
+          {% for order in pastOrders %}
 
-            <div class="details">
+            <div class="order-entry">
 
-              {% for item in order.lineItems %}
+              <div class="date">
+                <p>{{ order.dateOrdered.format('F d, Y') }}</p>
+                <p class="acumin-tiny">Order Number: {{ order.shortNumber }}</p>
+              </div>
+
+              <div class="details">
+
+                {% for item in order.lineItems %}
+
+                  <div class="flex item">
+                    {% set variant = item.purchasable %}
+                    {% set product = variant.product %}
+                    <div class="title"><span>{{ item.qty }}</span> {{product.title}} {{ variant.title }}</div>
+                    <div class="cost">{{ item.subtotal | currency(cart.currency) }}</div>
+                  </div>
+
+                {% endfor %}
+
+                {% if order.totalShippingCost > 0 %}
 
                 <div class="flex item">
-                  {% set variant = item.purchasable %}
-                  {% set product = variant.product %}
-                  <div class="title"><span>{{ item.qty }}</span> {{product.title}} {{ variant.title }}</div>
-                  <div class="cost">{{ item.subtotal | currency(cart.currency) }}</div>
+                  <div class="title">Shipping Cost</div>
+                  <div class="cost">{{ order.totalShippingCost | currency(cart.currency) }}</div>
                 </div>
 
-              {% endfor %}
+                {% endif %}
 
-              {% if order.totalShippingCost > 0 %}
+                {% if order.baseDiscount != 0 %}
 
-              <div class="flex item">
-                <div class="title">Shipping Cost</div>
-                <div class="cost">{{ order.totalShippingCost | currency(cart.currency) }}</div>
-              </div>
+                <div class="flex item">
+                  <div class="title">Discount</div>
+                  <div class="cost">{{ order.baseDiscount | currency(cart.currency) }}</div>
+                </div>
 
-              {% endif %}
+                {% endif %}
 
-              {% if order.baseDiscount != 0 %}
+                <div class="flex total">
+                  <div class="cost">{{ order.totalPrice | currency(cart.currency)  }}</div>
+                </div>
 
-              <div class="flex item">
-                <div class="title">Discount</div>
-                <div class="cost">{{ order.baseDiscount | currency(cart.currency) }}</div>
-              </div>
-
-              {% endif %}
-
-              <div class="flex total">
-                <div class="cost">{{ order.totalPrice | currency(cart.currency)  }}</div>
               </div>
 
             </div>
 
-          </div>
+          {% endfor %}
 
-        {% endfor %}
+        {% else %}
 
-      {% else %}
+          <p>You have no previous orders</p>
 
-        <p>You have no previous orders</p>
+        {% endif %}
 
-      {% endif %}
-
-
+      </div>
 
     </div>
 
