@@ -195,19 +195,11 @@
     width: 100%;
   }
 
-  & .promo {
+  & .adjustment-section {
     overflow: hidden;
     margin-bottom: 40px;
     padding-bottom: 40px;
     border-bottom: 1px solid var(--light-gray);
-
-    & input[type="text"] {
-      width: 100%;
-      display: block;
-      max-width: 300px;
-      float: right;
-      margin-bottom: 10px;
-    }
 
     & label {
       font-family: var(--acuminExtraLightItalic);
@@ -218,9 +210,25 @@
       text-transform: capitalize;
     }
 
+    & p {
+      text-align: right;
+    }
+
     & button {
       float: right;
       clear: both;
+    }
+
+  }
+
+  & .promo {
+
+    & input[type="text"] {
+      width: 100%;
+      display: block;
+      max-width: 300px;
+      float: right;
+      margin-bottom: 10px;
     }
 
     & .promo-error {

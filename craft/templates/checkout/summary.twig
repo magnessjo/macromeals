@@ -25,7 +25,19 @@
 
           <div>
 
-            <div class="promo">
+            {% if currentUser.isInGroup('coolerclub') %}
+
+              <div class="adjustment-section cooler-club">
+                <label>Cooler Club</label>
+                <p>You are part of the Cooler Club.  If you are picking up with a cooler this week, please click the apply button.</p>
+                <div>
+                  <button class="call-to-action">{% if cart.couponCode %}Change{% else %}Apply{% endif %}</button>
+                </div>
+              </div>
+
+            {% endif %}
+
+            <div class="adjustment-section promo">
 
               <label>Promotional Code</label>
               <div>
