@@ -285,6 +285,7 @@ header {
 
     & .header-cart-actions {
       text-align: center;
+      margin-top: 10px;
 
       & a {
         display: block;
