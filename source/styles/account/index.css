@@ -13,6 +13,10 @@
 
 .account-navigation {
 
+  @media (--large-max) {
+    margin-bottom: 60px;
+  }
+
   @media (--tablet-min) {
     width: 240px;
   }
@@ -25,13 +29,20 @@
     display: block;
     margin-bottom: 10px;
     padding-top: 10px;
-    padding-left: 10px;
     border-top: 1px solid var(--green);
     font-size: 16px;
     font-family: var(--acuminExtraLight);
 
+    @media (--tablet-min) {
+      padding-left: 10px;
+    }
+
     &:first-of-type {
       border-top: 0;
+    }
+
+    &:last-of-type {
+      margin-bottom: 0;
     }
 
   }
@@ -49,7 +60,10 @@
 
 .account-info {
   display: flex;
-  justify-content: center;
+
+  @media (--tablet-min) {
+    justify-content: center;
+  }
 
   & p {
     display: flex;

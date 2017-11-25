@@ -5,6 +5,10 @@
 
 {% block main %}
 
+  {% if currentUser is null %}
+    {% redirect "/account/login" 301 %}
+  {% endif %}
+
   <section class="account-two-column">
 
     <div class="lock">

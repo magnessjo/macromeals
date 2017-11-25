@@ -99,6 +99,10 @@ export default function() {
             window.location.pathname = `${redirectPath}`;
           }
 
+          if (window.location.pathname == '/account/login') {
+            window.location.pathname = `/`;
+          }
+
         }
 
       });

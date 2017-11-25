@@ -27,7 +27,7 @@ header {
     margin-left: 40px;
     height: 100%;
 
-    @media (--medium-max) {
+    @media (--large-max) {
       display: none;
     }
 
@@ -499,7 +499,11 @@ body[logged-in='true'] {
     }
 
     & > a {
-      display: block;
+
+      @media (--tablet-min) {
+        display: block;
+      }
+
     }
 
   }
