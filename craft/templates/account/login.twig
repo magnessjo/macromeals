@@ -1,7 +1,8 @@
 
 {% extends "_layout" %}
 {% includeCssFile "/account.css" %}
-{% set bodyClass = 'with-border' %}
+{% set bodyClass = 'with-border remove-login' %}
+{% set bodyLoginForm = true %}
 
 {% set cart = craft.commerce.getCart() %}
 
@@ -11,14 +12,7 @@
 
     <div class="lock">
 
-      <div class="already-register">
-        <button class="login call-to-action" data-overlay="login-form"><span class="icons">Login to your account</span></button>
-      </div>
-
-      <div class="register-signup">
-        <p>Not registered yet?</p>
-        <a href="/account/register" class="register-cta"><span class="icons">Register</span></a>
-      </div>
+      {% include "components/login-form.twig" %}
 
       <p class="divider"><span>Or</span></p>
 

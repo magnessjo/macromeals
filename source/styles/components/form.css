@@ -292,3 +292,37 @@ form#product-addition {
   }
 
 }
+
+#login-form {
+
+  @media (--medium-max) {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  & .login-form-actions {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+
+  & .forgot-password {
+    margin-bottom: 0;
+    font-size: 12px;
+    text-align: right;
+  }
+
+  & .errors p[show-error=true] {
+    display: block;
+    position: relative;
+    width: 100%;
+    text-align: left;
+    margin-bottom: 10px;
+    margin-top: -15px;
+  }
+
+  & .register-cta {
+    color: var(--black);
+  }
+
+}

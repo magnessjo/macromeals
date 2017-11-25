@@ -12,7 +12,7 @@
 {% block main %}
 
   {% if cart.email == '' %}
-    {% redirect "/account/checkout-login" 301 %}
+    {% redirect "/account/login" 301 %}
   {% endif %}
 
   {% include "components/breadcrumb.twig" %}

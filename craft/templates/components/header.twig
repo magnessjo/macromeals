@@ -6,23 +6,6 @@
 
 <header>
 
-  {# <div class="menu-toggle" data-showing='false'>
-    <div class="menu-button">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-    <p class="text">Menu</p>
-  </div> #}
-
-  {# <menu>
-
-    <div class='mobile-nav'>
-      <a href="/shop/quick-order"><div>Quick Order</div></a>
-    </div>
-
-  </menu> #}
-
   <div class="lock">
 
     <a href="/" class="logo">
@@ -37,6 +20,14 @@
 
       <button class="login account" data-overlay="login-form">Login</button>
       <a href="/account" class="account">Account</a>
+
+      <div class="menu-toggle" data-showing='false'>
+        <div class="menu-button">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
 
       <button class="cart" data-overlay="cart-summary">
         <div class="number">{{ cartItemsTotal }}</div>
@@ -59,62 +50,23 @@
 
   </div>
 
-  <div class="header-overlay login-form" aria-hidden="true">
+  {% if bodyLoginForm is not defined %}
+    <div class="header-overlay login-form" aria-hidden="true">
+      {% include "components/login-form.twig" %}
+    </div>
+  {% endif %}
 
-    <form method="POST" id="login-form" class="registered-form" accept-charset="UTF-8">
+  <menu>
 
-      <div class="field" data-required="true" valid="false">
-        <label for="loginName"><span>Username</span></label>
-        <div class="input">
-          <input type="text"
-                 name="loginName"
-                 id="loginName"
-                 placeholder="johndoe"
-                 value="{{ craft.session.rememberedUsername ?? '' }}" />
+    <div class='mobile-nav'>
+      <a href="/shop/quick-order"><div>Quick Order</div></a>
+      {% if currentUser %}
+        <a href="/account"><div>Account</div></a>
+      {% else %}
+        <a href="/account/Login"><div>Login</div></a>
+      {% endif %}
+    </div>
 
-          <div class="errors">
-            <p class="required">Username is a required field</p>
-            <p class="duplicate"><span></span> is not available.  Please select another username</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="field" data-required="true" valid="false">
-        <label for="password"><span>Password</span></label>
-        <div class="input">
-          <input type="password"
-                 name="password"
-                 id="password"
-                 placeholder="dontUseMe1234$"
-                 value="{{ craft.session.rememberedPassword ?? '' }}" />
-
-          <div class="errors">
-            <p class="required">Password is a required field</p>
-            <p class="password">Password must be 6 characters</p>
-          </div>
-        </div>
-      </div>
-
-      <div class="checkbox-field">
-        <label>
-          <input type="checkbox" name="rememberMe" value="0">
-          Remember me
-        </label>
-      </div>
-
-      <div class="craft-errors"></div>
-
-      <div class="login-form-actions">
-        <a href="/account/register" class="register-cta">Sign up?</a>
-        <input type="submit" value="Sign In" class="call-to-action" />
-      </div>
-
-      <p class="forgot-password">
-        <a href="/account/forgot-password">Forget your password?</a>
-      </p>
-
-    </form>
-
-  </div>
+  </menu>
 
 </header>

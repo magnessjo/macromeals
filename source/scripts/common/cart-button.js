@@ -19,7 +19,7 @@ function updateDOM(data) {
   return new Promise((resolve, reject) => {
 
     if (data.length == 0) {
-      wrapper.innerHTML = `<p>Your Cart is Empty</p>`;
+      wrapper.innerHTML = `<p class="cart-alert">Your Cart is Empty</p>`;
       headerCartActions.style.display = 'none';
       resolve();
     }

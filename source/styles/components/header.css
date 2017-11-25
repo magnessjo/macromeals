@@ -120,6 +120,15 @@ header {
       display: none;
     }
 
+    & > a,
+    & .login {
+
+      @media (--large-max) {
+        display: none;
+      }
+
+    }
+
   }
 
   & .account {
@@ -181,16 +190,15 @@ header {
     right: 0;
     z-index: 99;
     box-shadow: -3px 3px 5px -3px #616161;
+    top: 60px;
 
     @media (--medium-max) {
       width: 100%;
       padding: 10px;
-      top: 100px;
     }
 
     @media (--large-min) {
       padding: 20px 40px;
-      top: 60px;
     }
 
     &[aria-hidden="true"] {
@@ -226,8 +234,9 @@ header {
       margin-bottom: 0;
     }
 
-    & .order-items {
-      margin-bottom: 20px;
+    & .cart-alert {
+      font-size: calc(22px + 1vw);
+      font-family: var(--acuminLight);
     }
 
     & .order-item {
@@ -318,51 +327,17 @@ header {
       display: none;
     }
 
-    & #login-form {
-
-      @media (--medium-max) {
-        max-width: 320px;
-        margin: 0 auto;
-      }
-
-    }
-
-    & .login-form-actions {
-      display: flex;
-      align-items: center;
-      margin-bottom: 10px;
-    }
-
-    & .forgot-password {
-      margin-bottom: 0;
-      font-size: 12px;
-      text-align: right;
-    }
-
-    & .errors p[show-error=true] {
-      display: block;
-      position: relative;
-      width: 100%;
-      text-align: left;
-      margin-bottom: 10px;
-      margin-top: -15px;
-    }
-
-    & .register-cta {
-      color: var(--black);
-    }
-
   }
 
   & .menu-toggle {
     cursor: pointer;
-    border-bottom: 1px solid var(--green);
     display: flex;
     justify-content: center;
     align-items: center;
     height: 40px;
+    margin-right: 20px;
 
-    @media (--large-min) {
+    @media (--tablet-min) {
       display: none;
     }
 
@@ -470,12 +445,12 @@ menu {
     flex-wrap: wrap;
     align-items: center;
     text-transform: uppercase;
-    border-bottom: 1px solid var(--light-gray);
     letter-spacing: 1px;
     height: 60px;
     color: var(--black);
     font-size: 16px;
     padding-left: 20px;
+    border-top: 1px solid var(--green);
   }
 
   & .mobile-nav > div {
@@ -527,6 +502,14 @@ body[logged-in='true'] {
       display: block;
     }
 
+  }
+
+}
+
+.remove-login {
+
+  & .overlay-actions .login {
+    display: none;
   }
 
 }
