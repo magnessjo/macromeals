@@ -31,11 +31,7 @@ function submitForm(e) {
     if (inputs.length - 1 != i) data += '&';
   });
 
-  console.log(data);
-
   fetchData(data, '/actions/users/saveUser').then((response) => {
-
-    console.log(response);
 
     if (response.errors) {
 
