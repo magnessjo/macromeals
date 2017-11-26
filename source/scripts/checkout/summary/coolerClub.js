@@ -2,7 +2,7 @@
 // Import
 
 import fetchPostData from 'scripts/helpers/fetchPostData.js';
-import postToCart from 'scripts/helpers/cart/postToCart.js';
+import updateCartItem from 'scripts/helpers/cart/updateCartItem.js';
 import updateCartTotals from 'scripts/helpers/cart/updateCartTotals.js';
 
 // Variables
@@ -28,15 +28,22 @@ export default function() {
 
         if (response.success) {
 
-          const shippingElement = cartTotal.querySelector('[data-type="shipping-amount"]');
-          const totalElement = cartTotal.querySelector('[data-type="total-amount"]');
-          const totalCost = totalElement.innerHTML;
-          const costString = totalCost.replace(/[^0-9.]/g, '');
-          const cost = costString - 10.00;
+          const firstItem = document.querySelectorAll('.order-item')[0];
+          const itemId = firstItem.getAttribute('data-id');
+          const qty = document.querySelector('.item-actions span').innerHTML;
 
-          shippingElement.innerHTML = '0.00';
-          totalElement.innerHTML = `$${cost}`;
-          button.disabled = true;
+          data += `&lineItemId=${itemId}&qty=${qty}`;
+
+          updateCartItem(data).then((response) => {
+
+            if (response.success) {
+              button.disabled = true;
+              updateCartTotals(response.cart);
+            } else {
+              console.log(response);
+            }
+
+          });
 
         } else {
           console.log(response);
