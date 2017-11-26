@@ -65,6 +65,14 @@ form {
 
   }
 
+  & button {
+
+    &:disabled {
+      opacity: .3;
+    }
+
+  }
+
   & h1 {
     font-family: var(--acuminExtraLightItalic);
     font-size: calc(18px + 1vw);
