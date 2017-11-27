@@ -4,6 +4,8 @@
 #stage {
   position: relative;
   margin-bottom: 0;
+  height: 100%;
+  width: 100%;
 
   @media (--tablet-min) {
     padding: 70px 0;
@@ -34,15 +36,27 @@
 
   }
 
+  & .bg-wrap {
+    clip: rect(0, auto, auto, 0);
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
   & .image {
     background-image: url(/images/stage/meals.jpg);
     background-position: center;
     background-size: cover;
-    position: absolute;
+    position: fixed;
+    display: block;
     top: 0;
-    bottom: 0;
     left: 0;
-    right: 0;
+    width: 100%;
+    height: 100%;
+    transform: translateZ(0);
+    will-change: transform;
   }
 
   & .lock {
