@@ -39,13 +39,11 @@
 
   <body {% if bodyClass is defined %} class="{{ bodyClass }}"{% endif %} {% if currentUser %} logged-in="true" {% endif %}>
 
-
     {% if bodyLoginForm is defined %}
       {% include "components/header.twig" with { 'bodyLoginForm' : bodyLoginForm } %}
     {% else %}
       {% include "components/header.twig" %}
     {% endif %}
-
 
     <main role="main">
       {% block main %}{% endblock %}

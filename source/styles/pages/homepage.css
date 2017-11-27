@@ -37,7 +37,8 @@
   & .image {
     background-image: url(/images/stage/meals.jpg);
     background-position: center;
-    position: fixed;
+    background-size: cover;
+    position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
@@ -59,7 +60,7 @@
 
       @media (--large-max) {
         padding: 30px 20px;
-        background-color: rgba(255, 255, 255, .85);
+        background-color: rgba(255, 255, 255, .9);
       }
 
       @media (--tablet-min) {
