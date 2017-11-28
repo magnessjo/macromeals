@@ -140,6 +140,7 @@
     & span {
       text-transform: capitalize;
       font-family: var(--acuminExtraLight);
+      line-height: 1em;
 
       @media (--small-max) {
         font-size: 18px;
@@ -236,7 +237,6 @@
 }
 
 #delivery {
-  display: none;
 
   & > .lock {
     color: var(--green);
