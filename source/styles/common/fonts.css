@@ -9,9 +9,14 @@
 
   & span {
     display: block;
-    line-height: 1em;
+    line-height: 1.8em;
     font-size: calc(12px + 1vw);
     margin-top: 0;
+
+    @media (--medium-max) {
+      line-height: 2em;
+    }
+
   }
 
 }
