@@ -23,7 +23,7 @@ function caculateTotal() {
 
   inputs.forEach((input) => {
 
-    const parent = findParentNode(input,'input-container');;
+    const parent = findParentNode(input,'variant-row');;
     const hiddenQuanity = parent.querySelector('input[name="qty"]');
     const priceString = parent.querySelector('.price > span').innerHTML;
     const price = priceString.slice(1, priceString.length);
