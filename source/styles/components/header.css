@@ -47,6 +47,14 @@ header {
         color: var(--white);
       }
 
+      &[href="/"] {
+        font-size: 22px;
+      }
+
+      &[href="/"] span {
+        text-indent: -9999px;
+      }
+
     }
 
     & button {
