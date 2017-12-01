@@ -3,11 +3,11 @@
 
 }
 
-#customer-address {
+/*#customer-address {
   height: 0;
   overflow: hidden;
   margin-bottom: 0;
-}
+}*/
 
 form[shipping-method="overnight"] #customer-address {
   height: inherit;

@@ -97,7 +97,7 @@
 
   & .summary {
 
-    & .row-columns:before {
+    & .variant-row:before {
       display: none;
     }
 
