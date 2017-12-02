@@ -36,7 +36,15 @@ function setRate() {
       const isGround = response.type == 'ground';
 
       if (isGround) {
-        result.innerHTML = `<p>Your Estimate<span>$${cost.toFixed(2)}</span></p><p class="">Orders over $50 ship for $10.00</p>`;
+        if (response.itemSubtotal > 50) {
+          result.innerHTML = `<p>Your Estimate<span>$${cost.toFixed(2)}</span></p>`;
+        } else {
+          result.innerHTML = `
+            <p>Your Estimate<span>$${cost.toFixed(2)}</span></p>
+            <p class="">Orders over $50 ship for $10.00</p>
+          `;
+        }
+
       } else {
         result.innerHTML = `<p>Your Estimate<span>$${cost.toFixed(2)}</span></p>`;
       }
