@@ -92,30 +92,7 @@
                   <span>{{ category.plainText }}</span>
                 </h2>
 
-                <div class="enteries-group">
-
-                  {% for product in entries %}
-
-                    {% if product.productImage|length > 0 %}
-                      {% set image = product.productImage[0].url %}
-                    {% else %}
-                      {% set image = '/images/products/placeholder-circle.png' %}
-                    {% endif %}
-
-                    <div class="meal-entry" data-protein="{% for cat in product.protein %}{{ cat }}{% endfor %}">
-
-                      <a href="/shop/details/{{ product.slug }}" class="meal-detail">
-                        <img src="{{ image }}" alt="image of {{ product.title}} {{ product.subTitle }}" />
-
-                        <div class="overlay">
-                          <p class="meal-title"><span>{{ product.title }}</span> </p>
-                          <p>See Details</p>
-                        </div>
-                      </a>
-
-                    </div>
-
-                  {% endfor %}
+                <div class="enteries-group" data-category-id="{{ category.id }}">
 
                 </div>
 
