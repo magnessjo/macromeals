@@ -97,10 +97,12 @@ export default function() {
 
           if (redirectPath) {
             window.location.pathname = `${redirectPath}`;
-          }
+          } else {
 
-          if (window.location.pathname == '/account/login') {
-            window.location.pathname = `/`;
+            if (window.location.pathname == '/account/login') {
+              window.location.pathname = `/`;
+            }
+
           }
 
         }
