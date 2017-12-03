@@ -40,7 +40,7 @@
 
         {% if segment=="shipping-method" %}
           <a href="/checkout" class='completed'>Customer <span>Information</span></a>
-          <p class='active'>Shipping</p>
+          <p class='active'>Shipping <span>Method</span></p>
           <p><span>Order</span> Summary</p>
           <p><span>Order</span> Billing</p>
         {% endif %}
@@ -50,7 +50,7 @@
       {% if segment=="summary" %}
         <a href="/checkout" class='completed'>Customer <span>Information</span></a>
         {% if currentUser.isInGroup('marylandLocal') %}
-          <a href="/checkout/shipping-method" class='completed'><span>Shipping</span></a>
+          <a href="/checkout/shipping-method" class='completed'>Shipping <span>Method</span></a>
         {% endif %}
         <p class="active"><span>Order</span> Summary</p>
         <p><span>Order</span> Billing</p>
@@ -59,7 +59,7 @@
       {% if segment=="billing" %}
         <a href="/checkout" class='completed'>Customer <span>Information</span></a>
         {% if currentUser.isInGroup('marylandLocal') %}
-          <a href="/checkout/shipping-method" class='completed'><span>Shipping</span></a>
+          <a href="/checkout/shipping-method" class='completed'>Shipping <span>Method</span></a>
         {% endif %}
         <a href="/checkout/summary" class='completed'><span>Order</span> Summary</a>
         <p class="active"><span>Order</span> Billing</p>

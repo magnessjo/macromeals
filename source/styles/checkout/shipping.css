@@ -1,0 +1,154 @@
+
+#shipping-method {
+
+  & .lock > div {
+    margin-bottom: 40px;
+
+    & p {
+      margin-bottom: 5px;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+
+    }
+
+  }
+
+  & .description-cost {
+    font-size: 24px;
+
+    & span {
+      font-family: var(--acuminSemiBold);
+    }
+
+  }
+
+}
+
+#pickup-list {
+
+  & .lock > p {
+
+    & span {
+      font-size: 14px;
+      display: block;
+    }
+
+  }
+
+  & .shipping-type {
+    border-bottom: 1px solid var(--light-gray);
+    padding: 20px;
+    position: relative;
+    transition: background-color .5s;
+    margin-bottom: 0;
+
+    @media (--large-min) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &:first-of-type {
+      border-top: 1px solid var(--light-gray);
+    }
+
+    &:hover {
+      background-color: #FEF6ED;
+      transition: background-color 1s;
+    }
+
+    &[data-handle="overnight"] {
+      padding: 40px 20px;
+
+      & h2 {
+        margin-bottom: 0;
+      }
+
+    }
+
+    & .shop-details {
+
+      @media (--tablet-min) {
+        width: 250px;
+      }
+
+    }
+
+    & h2 {
+      margin-bottom: 20px;
+      font-family: var(--acuminLightItalic);
+      font-size: calc(22px + 1px);
+    }
+
+    & button {
+      font-size: 22px;
+      text-transform: uppercase;
+
+      @media (--medium-max) {
+        margin-top: 20px;
+      }
+
+    }
+
+    & .map {
+
+      @media(--large-max) {
+        display: none;
+      }
+
+    }
+
+    & .map > div {
+      height: 300px;
+      width: 300px;
+    }
+
+  }
+
+  & address {
+
+    @media (--large-min) {
+      display: flex;
+      align-items: center;
+    }
+
+    & a {
+      display: flex;
+
+      @media (--large-min) {
+        margin-left: 20px;;
+      }
+
+    }
+
+  }
+
+}
+
+#shipping-summary {
+
+  & .lock {
+
+    @media (--large-min) {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    & p:last-of-type {
+      margin-left: auto;
+    }
+
+    & p span {
+      display: block;
+      text-align: center;
+      font-family: var(--acuminSemiBold);
+      text-transform: uppercase;
+      font-size: 22px;
+    }
+
+  }
+
+}
