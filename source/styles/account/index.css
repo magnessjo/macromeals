@@ -101,3 +101,21 @@
   text-align: center;
   display: none;
 }
+
+.local-disclaimer {
+  margin-bottom: 20px;
+
+  & label {
+    width: 100%;
+    display: flex;
+    text-transform: none;
+    font-size: 14px;
+  }
+
+  & input {
+    width: 20px;
+    margin-top: 7px;
+    margin-right: 5px;
+  }
+
+}

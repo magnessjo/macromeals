@@ -11,18 +11,25 @@ const registerForm = document.querySelector('form#user-info');
 const userNameInput = registerForm.querySelector('input[name="username"]');
 const passwordInput = registerForm.querySelector('input[name="password"]');
 const emailInput = registerForm.querySelector('input[name="email"]');
+const firstNameInput = registerForm.querySelector('input[name="firstName"]');
+const lastNameInput = registerForm.querySelector('input[name="lastName"]');
+const localCheckBox =  registerForm.querySelector('input[type="checkbox"]');
 const userNameParent = findParentNode(userNameInput, 'field');
 const passwordParent = findParentNode(passwordInput, 'field');
 const emailParent = findParentNode(emailInput, 'field');
 const craftError = registerForm.querySelector('.craft-errors');
 const confirmation = document.querySelector('.regiseration-confirmation');
-const inputs = [userNameInput, passwordInput, emailInput];
+const inputs = [userNameInput, passwordInput, emailInput, firstNameInput, lastNameInput];
 
 // Function submit
 
 function submitForm(e) {
 
   let data = `${window.csrfTokenName}=${window.csrfTokenValue}&`;
+
+  if (localCheckBox.checked) {
+    data += 'userGroup=marylandLocal&';
+  }
 
   inputs.forEach((input, i) => {
     const name = input.getAttribute('name');

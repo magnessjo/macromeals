@@ -23,13 +23,40 @@
 
           <p class="acumin-medium-bold">Registration Details</p>
 
+          <div class="two-column">
+
+            <div class="field" valid="true">
+              <label for="firstName"><span>First Name</span></label>
+              <div class="input">
+                <input type="text"
+                       name="firstName"
+                       id="firstName"
+                       placeholder="Bob"
+                       value="" />
+              </div>
+            </div>
+
+            <div class="field" valid="true">
+              <label for="lastName"><span>Last Name</span></label>
+              <div class="input">
+                <input type="text"
+                       name="lastName"
+                       id="lastName"
+                       placeholder="Handsome"
+                       value="" />
+
+              </div>
+            </div>
+
+          </div>
+
           <div class="field" data-required="true" valid="false">
             <label for="username"><span>Username</span></label>
             <div class="input">
               <input type="text"
                      name="username"
                      id="username"
-                     placeholder="johndoe"
+                     placeholder="bobhandsome"
                      value="" />
 
               <div class="errors">
@@ -62,7 +89,7 @@
                      name="email"
                      id="email"
                      validation="checkForEmail"
-                     placeholder="dont.use@gmail.com"
+                     placeholder="macro-meals-are-great@gmail.com"
                      value="" />
 
               <div class="errors">
@@ -70,6 +97,13 @@
                 <p class="email">Email Address is invalid</p>
               </div>
             </div>
+          </div>
+
+          <div class="field local-disclaimer" valid="true">
+            <label>
+              <input type="checkbox" />
+              <span>Would you like to see pickup locations in Baltimore and Harford (Maryland) at checkout to reduce shipping costs?</span>
+            </label>
           </div>
 
           <div class="craft-errors"></div>
