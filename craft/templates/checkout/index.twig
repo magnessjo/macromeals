@@ -22,7 +22,12 @@
     {{ getCsrfInput() }}
 
     <input type="hidden" name="action" value="commerce/cart/updateCart">
-    <input type="hidden" name="redirect" value="checkout/summary">
+
+    {% if currentUser.isInGroup('marylandLocal') %}
+      <input type="hidden" name="redirect" value="checkout/shipping-method">
+    {% else %}
+      <input type="hidden" name="redirect" value="checkout/summary">
+    {% endif %}
     <input type='hidden' name="sameAddress" value="1" />
     <input type="hidden" name="shippingAddressId" value="new">
 
@@ -181,60 +186,16 @@
 
     </section>
 
-    {# <section id="shipping-method">
-
-      <div class="lock">
-
-        <h1 class="acumin-medium-bold">Please select your shipping method</h1>
-
-        {% set overnight = 'overnight' %}
-        <input type="hidden" name="shippingMethod" value="{% if cart.shippingMethod %}{{cart.shippingMethod.handle}}{% endif %}" />
-
-        {% for handle, method in craft.commerce.availableShippingMethods %}
-
-          {% if handle != overnight %}
-
-            <div class="shpping-type" data-handle="{{ handle }}" {{ cart.shippingMethod ? cart.shippingMethod.handle == handle ? 'data-active="true"' }}>
-              <h2>{{ method.name }}</h2>
-              {% if handle == 'pickup' %}
-                <p>Pickups are scheduled for every Tuesday Morning at 8am at the YMCA in Abingdon Maryland (Canton, Maryland coming soon!)</p>
-                <address>
-                  <p>101 Walter Ward Blvd,<br> Abingdon, MD 21009</p>
-                  <a target="_blank" href="https://www.google.com/maps/place/The+Ward+Y+in+Abingdon/@39.4651901,-76.30869,17z/data=!3m1!4b1!4m5!3m4!1s0x89c7e7aff9cdd5c3:0xd8d4b8d7898c3704!8m2!3d39.4651901!4d-76.3065013">View on Map</a>
-                </address>
-                <p class="costs">Pickup costs are $10</p>
-              {% endif %}
-            </div>
-
-          {% endif %}
-
-        {% endfor %}
-
-        {% for handle, method in craft.commerce.availableShippingMethods  %}
-
-          {% if handle == overnight %}
-
-            <div class="shpping-type" data-handle="{{ handle }}" {{ cart.shippingMethod ? cart.shippingMethod.handle == handle ? 'data-active="true"' }} >
-              <h2>{{ method.name }}</h2>
-              <p>FedEx Overnight Ground Delivery.</p>
-              <p>We ship on Monday through Thursday.</p>
-              <p class="costs">Delivery cost are determined by your location.</p>
-            </div>
-          {% endif %}
-
-        {% endfor %}
-
-      </div>
-
-    </section> #}
-
     <section class="action">
 
       <div class="lock">
 
         <div class="actions">
-          <input type="submit" data-button="continue" value="Continue to Order Summary" class="call-to-action">
-          {# <input type="submit" data-button="continue" value="Continue to Order Summary" class="call-to-action" {% if cart.shippingMethod %}{% if cart.shippingMethod.handle != 'pickup' %} 'disabled'{% endif %} {% else %}disabled{% endif %}> #}
+          {% if currentUser.isInGroup('marylandLocal') %}
+            <input type="submit" data-button="continue" value="Continue to Shipping Method" class="call-to-action">
+          {% else %}
+            <input type="submit" data-button="continue" value="Continue to Order Summary" class="call-to-action">
+          {% endif %}
         </div>
 
       </div>

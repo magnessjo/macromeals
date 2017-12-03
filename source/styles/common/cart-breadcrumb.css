@@ -80,7 +80,7 @@
 
     & span {
 
-      @media (--tablet-min) and (--tablet-max) {
+      @media (--tablet-min) and (--desktop-max) {
         display: none;
       }
 
