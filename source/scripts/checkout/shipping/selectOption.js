@@ -2,6 +2,7 @@
 // Imports
 
 import findParentNode from 'scripts/helpers/findParentNode.js';
+import fetchPostData from 'scripts/helpers/fetchPostData.js';
 
 // Variables
 
@@ -31,10 +32,23 @@ export default function() {
       const parent = findParentNode(button, 'shipping-type');
       const handle = parent.getAttribute('data-handle');
       const name = parent.getAttribute('data-name');
-      const cost = parent.getAttribute('data-cost');
+      let cost = parent.getAttribute('data-cost');
 
       hiddenInput.value = handle;
-      setSummaryCost(name, cost);
+
+      if (handle == 'overnight') {
+
+        const url = '/actions/MacroCommerce/ShippingRates';
+        const zip = button.getAttribute('data-zip');
+        const data = `${window.csrfTokenName}=${window.csrfTokenValue}&zip=${zip}&quantity=1`;
+
+        fetchPostData(data,url).then( (response) => {
+          setSummaryCost(name, response.amount);
+        });
+
+      } else {
+        setSummaryCost(name, cost);
+      }
 
       buttons.forEach((btn) => {
         if (btn == button) {

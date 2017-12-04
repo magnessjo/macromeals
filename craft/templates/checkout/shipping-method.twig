@@ -4,6 +4,7 @@
 {% includeJsFile "/shipping.js" %}
 
 {% set cart = craft.commerce.getCart %}
+{% set shippingModel = cart.shippingAddress %}
 {% set currentShippingMethod = cart.getShippingmethod %}
 
 {% block main %}
@@ -53,7 +54,7 @@
           <div class="shop-details">
             <h2>Delivery</h2>
           </div>
-          <button {% if currentShippingMethod.handle == 'overnight' %} disabled {% endif %}>Select</button>
+          <button data-zip="{{ shippingModel.zipCode ?? addresses.zipCode ?? '' }}" {% if currentShippingMethod.handle == 'overnight' %} disabled {% endif %}>Select</button>
        </div>
 
         {% for handle, method in craft.commerce.availableShippingMethods  %}
@@ -71,7 +72,7 @@
              <div class="map">
                <div id="postManPlusMap"></div>
              </div>
-             <button>Select</button>
+            <button {% if currentShippingMethod.handle == handle %} disabled {% endif %}>Select</button>
           </div>
 
           {% endif %}
