@@ -6,6 +6,7 @@
 {% set cart = craft.commerce.getCart %}
 {% set shippingModel = cart.shippingAddress %}
 {% set addresses = craft.commerce.customer.addresses|last %}
+{% set isCurrentUserLocal = currentUser is not null and currentUser.isInGroup('marylandLocal') %}
 
 {% set states = craft.commerce.statesArray["233"] %}
 
@@ -23,7 +24,7 @@
 
     <input type="hidden" name="action" value="commerce/cart/updateCart">
 
-    {% if currentUser.isInGroup('marylandLocal') %}
+    {% if isCurrentUserLocal %}
       <input type="hidden" name="redirect" value="checkout/shipping-method">
     {% else %}
       <input type="hidden" name="redirect" value="checkout/summary">
@@ -192,7 +193,7 @@
       <div class="lock">
 
         <div class="actions">
-          {% if currentUser.isInGroup('marylandLocal') %}
+          {% if isCurrentUserLocal %}
             <input type="submit" data-button="continue" value="Continue to Shipping Method" class="call-to-action">
           {% else %}
             <input type="submit" data-button="continue" value="Continue to Order Summary" class="call-to-action">
