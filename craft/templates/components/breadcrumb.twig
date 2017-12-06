@@ -1,5 +1,6 @@
 
 {% set segment = craft.request().getLastSegment() %}
+{% set isCurrentUserLocal = currentUser is not null and currentUser.isInGroup('marylandLocal') %}
 
 <div class="cart-breadcrumb">
 
