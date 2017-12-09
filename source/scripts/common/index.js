@@ -18,4 +18,6 @@ document.addEventListener('DOMContentLoaded', () => {
   loginButton();
   loginUser();
 
+  ga('require', 'ec');
+
 });

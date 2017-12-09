@@ -65,6 +65,14 @@ export default function() {
   showButton.addEventListener('click', () => {
     modal.setAttribute('aria-hidden', false);
     result.innerHTML = '';
+
+    ga('send', {
+      hitType: 'event',
+      eventCategory: 'Shipping Modal',
+      eventAction: 'Show',
+      eventLabel: 'Show Shipping Modal'
+    });
+
   });
 
   closeButton.addEventListener('click', (e) => {
