@@ -9,9 +9,8 @@
 {% block main %}
 
 {% for adjuster in cart.adjustments %}
-  {{ adjuster.name }}<br/>
-  {{ adjuster.amount }}<br />
-  {% if adjuster.name == 'Cooler Club Item Discount' and adjuster.amount > 0  %}
+  {% if adjuster.name == 'Cooler Club Item Discount' and adjuster.amount < 0  %}
+  fuck colc shit
     {% set coolerClubAdjustment = true %}
   {% endif %}
 {% endfor %}
@@ -39,13 +38,12 @@
               {% if currentUser.isInGroup('coolerclub') %}
 
                 <div class="adjustment-section cooler-club">
-                  {{ coolerClubAdjustment }}
                   <label>Cooler Club</label>
                   <p>You are part of the Cooler Club.</p>
                   <p>The cooler club is for family/friends who would rather pick a cooler from us than pay for the normal packaging.</p>
                   <p>We don't advertise this service so don't tell anyone 🤫</p>
                   <div>
-                    <button class="call-to-action" {% if coolerClubAdjustment != true %}data-adjustment="false"{% else %}data-adjustment="true"{% endif %}>{% if coolerClubAdjustment != true %}Remove{% else %}Apply{% endif %}</button>
+                    <button class="call-to-action" {% if coolerClubAdjustment == false %}data-adjustment="true"{% else %}data-adjustment="false"{% endif %}>{% if coolerClubAdjustment == false %}Apply{% else %}Remove{% endif %}</button>
                   </div>
                 </div>
 
