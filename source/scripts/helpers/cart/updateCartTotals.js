@@ -10,6 +10,17 @@ export default function(cart) {
   const cartTotal = document.querySelector('#cart-total');
   const adjustments = cart.adjustments;
   const discounts = typeof adjustments !== 'undefined' ? adjustments.Discount : 'undefined';
+  let discountCalcNumber = 0;
+
+  if (typeof discounts !== 'undefined' && discounts.length > 0) {
+
+    discounts.forEach( (discount) => {
+      discountCalcNumber += discount.amount;
+    });
+
+  }
+
+  console.log(cart);
 
   if (cartTotal) {
 
@@ -23,7 +34,7 @@ export default function(cart) {
     const subTotalNumber = formatStringForDollar(cart.itemSubtotal);
     const taxNumber = formatStringForDollar(cart.totalTax);
     const shippingNumber = formatStringForDollar(cart.baseShippingCost);
-    const discountNumber = typeof discounts !== 'undefined' ? formatStringForDollar(adjustments.Discount[0].amount) : '0.00'
+    const discountNumber = formatStringForDollar(discountCalcNumber);
 
     totalElement.innerHTML = `$${totalNumber}`;
     subTotalElement.innerHTML = subTotalNumber;

@@ -20,11 +20,24 @@ export default function() {
 
     button.addEventListener('click', (e) => {
 
-      e.preventDefault();
+      const isAdjusted = button.getAttribute('data-adjustment');
 
-      let data = `${window.csrfTokenName}=${window.csrfTokenValue}`;
+      e.preventDefault();
+      button.disabled = true;
+
+      if (isAdjusted != 'true') {
+        button.innerHTML = 'Apply';
+        button.setAttribute('data-adjustment', true);
+      } else {
+        button.innerHTML = 'Remove';
+        button.setAttribute('data-adjustment', false);
+      }
+
+      let data = `${window.csrfTokenName}=${window.csrfTokenValue}&apply=${isAdjusted}`;
 
       fetchPostData(data, '/actions/MacroCommerce/Cart/setCoolerClub').then((response) => {
+
+        button.disabled = false;
 
         if (response.success) {
 
@@ -36,8 +49,9 @@ export default function() {
 
           updateCartItem(data).then((response) => {
 
+            console.log(response);
+
             if (response.success) {
-              button.disabled = true;
               updateCartTotals(response.cart);
             } else {
               console.log(response);
