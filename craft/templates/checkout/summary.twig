@@ -6,14 +6,13 @@
 {% set cart = craft.commerce.getCart %}
 {% set coolerClubAdjustment = false %}
 
-{% block main %}
-
 {% for adjuster in cart.adjustments %}
   {% if adjuster.name == 'Cooler Club Item Discount' and adjuster.amount < 0  %}
-  fuck colc shit
     {% set coolerClubAdjustment = true %}
   {% endif %}
 {% endfor %}
+
+{% block main %}
 
   {% if cart.email == '' %}
     {% redirect "/account/login" 301 %}
@@ -39,8 +38,8 @@
 
                 <div class="adjustment-section cooler-club">
                   <label>Cooler Club</label>
-                  <p>You are part of the Cooler Club.</p>
                   <p>The cooler club is for family/friends who would rather pick a cooler from us than pay for the normal packaging.</p>
+                  <p>Each item is reduced $1 and shipping and handling is $0</p>
                   <p>We don't advertise this service so don't tell anyone 🤫</p>
                   <div>
                     <button class="call-to-action" {% if coolerClubAdjustment == false %}data-adjustment="true"{% else %}data-adjustment="false"{% endif %}>{% if coolerClubAdjustment == false %}Apply{% else %}Remove{% endif %}</button>
