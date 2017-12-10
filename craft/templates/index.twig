@@ -2,7 +2,6 @@
 {% extends "_layout" %}
 {% includeCssFile "/homepage.css" %}
 {% includeJsFile "/homepage.js" %}
-{% set categories = craft.categories.group('protein') %}
 
 {% block main %}
 
@@ -35,72 +34,27 @@
     <section id="delivery">
       <div class="lock">
         <img src="/images/icons/delivery-truck-green.svg" />
-        <p>$10 shipping for $50 orders for most for most of north east.</p>
-        <button class="show-shipping-modal">Get a quote for your zip code</button>
+        <p>Interested in delivery cost or pickup options?</p>
+        <button class="shipping-information">Learn More</button>
       </div>
     </section>
 
-    <section id="meals-by-category">
+    <section class="meals-by-category">
 
-      <div class="meals-controller">
-
-        <div class="lock">
-
-          <form id="checkbox" class="checkbox-options">
-
-            <p>Filter Meals by the Type of Protein</p>
-
-            <div>
-
-              {% for cat in craft.categories.group('protein') %}
-
-                {% set entries = craft.commerce.products.relatedTo(cat) %}
-
-                {% if entries | length > 0 %}
-
-                  <label for="{{ cat }}">
-                    <input type="checkbox" id="{{ cat }}" name="{{ cat }}" value="{{ cat }}">
-                    <span>{{ cat }}</span>
-                  </label>
-
-                {% endif %}
-
-              {% endfor %}
-
-            </div>
-
-          </form>
-
-        </div>
-
-      </div>
+      {% set featuredCategory = craft.categories.group('mealType').slug('featured').first() %}
 
       <div class="meal-list">
 
         <div class="lock">
 
-          {% for category in categories %}
+          <div class="featured">
+            <h2 class="headline-with-underline">Featured Meals</h2>
+          </div>
+          <div>
+            <div class="enteries-group" data-category-id="{{ featuredCategory.id }}"></div>
+          </div>
 
-            {% set entries = craft.commerce.products.relatedTo(category) %}
-
-            {% if entries|length > 0 %}
-
-              <div>
-
-                <h2 class="category-headline {{ category.slug }}">
-                  <span class="headline">{{ category.title }}</span>
-                  <span>{{ category.plainText }}</span>
-                </h2>
-
-                <div class="enteries-group" data-category-id="{{ category.id }}">
-
-                </div>
-
-              </div>
-
-            {% endif %}
-
-          {% endfor %}
+          <a href="/shop" class="call-to-action">See all Meals</a>
 
         </div>
 
@@ -108,36 +62,109 @@
 
     </section>
 
-  </div>
+    <section id="shipping-info">
 
-  <div class="shipping-modal" aria-hidden="true">
+      <div class="lock">
 
-    <form id="shipping-calculator">
+        <div class="shipping">
 
-      <button class="ion-close"></button>
-      <div class="loader"></div>
+            <div class="text">
+              <h1 class="headline-with-underline">Shipping & Pickups</h1>
+              <p>We ship using FedEx overnight to every state in the United States.</p>
+              <p>We ship using FedEx ground overnight the area indicated below to reduce your shipping cost.  We offer <span>$10</span> shipping for orders over $50 for the areas listed.</p>
 
-      <p>Please enter your shipping zip code for an estimated shipping cost.</p>
+              <div class="columns">
 
-      <div class="field" data-required="true" valid="false">
-        <label for="zipCode"><span>Zip Code</span></label>
-        <div class="input">
-          <input type="number"
-                 name="zipCode"
-                 id="zipCode"
-                 placeholder=""
-                 maxlength="5" />
+                <div class="state-summary">
 
-          <div class="errors">
-            <p class="required">Zip Code is a required field</p>
+                  <div class="">
+                    <h2>All of</h2>
+                    <p>Maryland</p>
+                    <p>Delaware</p>
+                    <p>New Jersey</p>
+                  </div>
+                  <div class="">
+                    <h2>Most of</h2>
+                    <p>Virginia</p>
+                    <p>Pennsylvania</p>
+                    <p>New York</p>
+                    <p>Rhode Island</p>
+                  </div>
+                  <div>
+                    <h2>Some of</h2>
+                    <p>North Carolina</p>
+                    <p>West Virginia</p>
+                    <p>Massachusetts</p>
+                  </div>
+
+                </div>
+
+                <div class="map">
+                  <img src="/images/homepage/zone-two.svg">
+                </div>
+
+                <form id="shipping-calculator">
+
+                  <div class="loader"></div>
+
+                  <p>Get a quote</p>
+
+                  <div class="field" data-required="true" valid="false">
+                    <label for="zipCode"><span>Zip Code</span></label>
+                    <div class="input">
+                      <input type="number"
+                             name="zipCode"
+                             id="zipCode"
+                             placeholder=""
+                             maxlength="5" />
+
+                      <div class="errors">
+                        <p class="required">Zip Code is a required field</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  <input type="submit" value="Get Estimate" />
+                  <div class="result"></div>
+
+                </form>
+
+              </div>
+
+              <p>We have several pickup locations in the Maryland area.  Picking shipping cost is <span>$0</span>.  Please visit are <a href="pages/faq/#pickups">faq section on pickups</a> for complete details.</p>
+
+            </div>
+
           </div>
+
         </div>
+
       </div>
 
-      <input type="submit" value="Get Estimate" />
-      <div class="result"></div>
+    </section>
 
-    </form>
+    <section class="meals-by-category">
+
+      {% set seasonalCategory = craft.categories.group('mealType').slug('seasonal').first() %}
+
+      <div class="meal-list">
+
+        <div class="lock">
+
+          <div class="seasonal">
+            <h2 class="headline-with-underline">Seasonal Meals</h2>
+          </div>
+          <div>
+            <div class="enteries-group" data-category-id="{{ seasonalCategory.id }}"></div>
+          </div>
+
+          <a href="/shop" class="call-to-action">See all Meals</a>
+
+        </div>
+
+      </div>
+
+    </section>
 
   </div>
 

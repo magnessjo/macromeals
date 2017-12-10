@@ -45,7 +45,7 @@ export default function() {
       button.addEventListener('click', e => {
 
         const positionAttr = button.getAttribute('data-id');
-        const element = document.querySelector(`section[data-location="${positionAttr}"]`);
+        const element = document.querySelector(`section[id="${positionAttr}"]`);
         scrollTo(element);
 
       });

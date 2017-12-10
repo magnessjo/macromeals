@@ -3,8 +3,7 @@ import fetchPostData from 'scripts/helpers/fetchPostData.js';
 
 // Variables
 
-const container = document.querySelector('.meal-list');
-const groups = Array.from(container.querySelectorAll('.enteries-group'));
+const groups = Array.from(document.querySelectorAll('.enteries-group'));
 
 // Create Meal
 
