@@ -31,6 +31,7 @@
 
     <nav>
       <a href="/shop/quick-order"><span>Quick Order</span></a>
+<<<<<<< Updated upstream
       <div class="dropdown account-dropdown">
         <button>Account</button>
         <div class="options" aria-hidden='true'>
@@ -38,6 +39,9 @@
           <a href="{{ logoutUrl }}">Logout</a>
         </div>
       </div>
+=======
+      <a href="/shop/"><span>Meals</span></a>
+>>>>>>> Stashed changes
     </nav>
 
     <div class="overlay-actions">
@@ -69,6 +73,7 @@
 
     <form method="POST" id="login-form" class="registered-form" accept-charset="UTF-8">
 
+<<<<<<< Updated upstream
       <div class="field" data-required="true" valid="false">
         <label for="loginName"><span>Username</span></label>
         <div class="input">
@@ -84,6 +89,17 @@
           </div>
         </div>
       </div>
+=======
+    <div class='mobile-nav'>
+      <a href="/shop/quick-order"><div>Quick Order</div></a>
+      <a href="/shop/"><span>Meals</span></a>
+      {% if currentUser %}
+        <a href="/account"><div>Account</div></a>
+      {% else %}
+        <a href="/account/Login"><div>Login</div></a>
+      {% endif %}
+    </div>
+>>>>>>> Stashed changes
 
       <div class="field" data-required="true" valid="false">
         <label for="password"><span>Password</span></label>

@@ -146,7 +146,7 @@
 #page-navigation {
   background-color: var(--green);
   position: relative;
-  margin-bottom: 80px;
+  margin-bottom: 40px;
   color: var(--white);
 
   & > div {
@@ -256,35 +256,46 @@
   }
 
   & button {
-    margin-left: 20px;
     text-decoration: underline;
     color: var(--green);
+<<<<<<< Updated upstream
+=======
+
+    @media (--tablet-min) {
+      margin-left: 20px;
+    }
+
+>>>>>>> Stashed changes
   }
 
 }
 
+<<<<<<< Updated upstream
 #meals-by-category {
   margin-bottom: 0;
 
   & .category-headline {
     margin-bottom: 50px;
+=======
+.meals-by-category {
+  margin-bottom: 80px;
 
-    @media (--tablet-min) {
-      padding-left: 50px;
+  & .enteries-group {
+>>>>>>> Stashed changes
+
+    @media (--desktop-min) {
+      padding: 0 50px;
     }
 
-    & span {
-      display: block;
-      font-size: calc(18px + .2vw);
-      line-height: 1.4em;
-      font-family: var(--acuminExtraLight);
+    & .overlay {
 
       @media (--tablet-min) {
-        max-width: 70%;
+        top: 75%;
       }
 
     }
 
+<<<<<<< Updated upstream
     & .headline {
       position: relative;
       display: inline-block;
@@ -303,147 +314,126 @@
       @media (--tablet-min) {
         letter-spacing: 2px;
       }
+=======
+  }
+>>>>>>> Stashed changes
 
-      &:before {
-        content: "";
-        position: absolute;
-        height: 1px;
-        background-color: var(--green);
-        left: 0;
-        bottom: 20px;
+  & .call-to-action {
+    float: right;
+    margin-right: 50px;
+  }
 
-        @media (--medium-max) {
-          width: 100%;
+}
+
+#shipping-info {
+  background-color: var(--light-green);
+  overflow: hidden;
+  padding: 40px 0;
+  box-shadow: inset 0 0 4px 1px #333;
+
+  & a {
+    color: white;
+    text-decoration: underline;
+  }
+
+  & .headline-with-underline {
+    color: white;
+
+    &:before {
+      background-color: white;
+    }
+
+  }
+
+  & .shipping {
+
+    & ul {
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+
+    & li {
+      list-style: none;
+      margin-bottom: 5px;
+    }
+
+    & .text {
+
+      & span {
+        font-family: var(--acuminBold);
+      }
+
+    }
+
+    & .columns {
+      padding: 30px;
+      background-color: white;
+      display: flex;
+      margin-bottom: 40px;
+      align-items: center;
+
+      @supports (display: grid) {
+        display: grid;
+      }
+
+      & .state-summary {
+        width: 280px;
+
+        & h2 {
+          text-transform: uppercase;
+          margin-bottom: 10px;
         }
 
-        @media (--large-min) {
-          width: calc(100% + 60px);
+        & p {
+          margin-bottom: 5px;
+          padding-left: 10px;
         }
 
-      }
+        & > div {
+          margin-bottom: 20px;
 
-      &:after {
-        content: "";
-        position: absolute;
-        top: 50%;
-        right: -30px;
-        transform: translateY(-50%);
-        height: 40px;
-        width: 40px;
-        background-repeat: no-repeat;
-        background-position: center;
-      }
+          &:last-of-type {
+            margin-bottom: 0;
+          }
 
-    }
-
-  }
-
-  & .enteries-group {
-    overflow: hidden;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    margin-bottom: 80px;
-    padding: 0 50px;
-
-    @supports (display: grid) {
-      display: grid;
-      grid-template-columns: 1fr;
-      padding: 0;
-
-      @media (--large-min) {
-        grid-template-columns: 1fr 1fr;
-        grid-gap: 50px;
-      }
-
-      @media (--desktop-min) {
-        grid-template-columns: 1fr 1fr 1fr;
-      }
-
-    }
-
-  }
-
-  & .meal-entry {
-    margin-bottom: 100px;
-
-    @media (--large-min) {
-      width: 45%;
-    }
-
-    @media (--desktop-min) {
-      width: 30%;
-    }
-
-    @supports (display: grid) {
-      width: 100%;
-      margin-bottom: 0;
-      padding-bottom: 40px;
-
-      @media (--medium-max) {
-        margin-bottom: 20px;
-      }
-
-    }
-
-    &:hover .meal-detail .overlay {
-      opacity: 1;
-      transition: opacity .8s;
-    }
-
-  }
-
-  & .meal-detail {
-    position: relative;
-    display: block;
-
-    & img {
-      display: block;
-    }
-
+<<<<<<< Updated upstream
     & .overlay {
       position: absolute;
       background-color: rgba(255, 255, 255, .88);
       right: 0;
       left: 0;
       top: 85%;
+=======
+        }
+>>>>>>> Stashed changes
 
-      & p {
-        margin-bottom: 0;
-        text-align: center;
-        text-transform: uppercase;
-        font-size: 12px;
       }
 
-      & .meal-title {
-        font-family: var(--acuminExtraLight);
-        font-size: calc(12px + .75vw);
-        display: block;
-        height: 55px;
+      & .map {
+        width: calc(100% - 600px);
+        display: none;
 
-        & span {
+        @supports (display: grid) {
           display: block;
-          white-space: nowrap;
-          position: absolute;
-          height: 20px;
-          left: 50%;
-          top: 10px;
-          transform: translateX(-50%);
-
-          &:after {
-            content: "";
-            height: 1px;
-            background-color: var(--green);
-            position: absolute;
-            left: 10%;
-            right: 10%;
-            top: 35px;
-          }
-
         }
 
       }
+
+      & .map img {
+        height: 100%;
+        width: 100%;
+      }
+
+    }
+
+    & form {
+      width: 280px;
+      margin-left: auto;
+
+      /*& input[type="submit"] {
+        background-color: white;
+        color: green;
+      }*/
 
     }
 

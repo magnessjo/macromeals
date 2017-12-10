@@ -12,6 +12,7 @@
 @import "/components/footer.css";
 @import "/components/form.css";
 @import "/components/featured-meal.css";
+@import "/components/meals-by-category.css";
 
 /* Common Classes Layout */
 
@@ -33,3 +34,8 @@
 @import "/common/checkout-actions.css";
 @import "/common/product-post-submission.css";
 @import "/common/loader.css";
+<<<<<<< Updated upstream
+=======
+@import "/common/submit-animation-wrapper.css";
+@import "/common/headline-with-underline.css";
+>>>>>>> Stashed changes

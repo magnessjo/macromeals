@@ -1,7 +1,7 @@
 
 {% extends "_layout" %}
-{% includeCssFile "/shop.css" %}
-{% includeJsFile "/shopselection.js" %}
+{% includeCssFile "/meals.css" %}
+{% includeJsFile "/meals.js" %}
 {% set categories = craft.categories.group('protein') %}
 
 {% block main %}
@@ -13,31 +13,38 @@
     </div>
   </section>
 
-  <section id="meals-by-category">
+  <div class="top-layer-wrapper">
 
-    <div class="lock">
+    <section class="meals-by-category">
 
-      <div class="meal-controller">
+      <div class="meals-controller">
 
-        <div>
+        <div class="lock">
 
-          <div class="proteins">
-            <p class="acumin-tiny label">Types of Protein</p>
+          <form id="checkbox" class="checkbox-options">
 
-            <form id="checkbox" class="checkbox-options">
+            <p>Filter Meals by the Type of Protein</p>
+
+            <div>
 
               {% for cat in craft.categories.group('protein') %}
 
-                <div class="checkbox-field">
-                  <input type="checkbox" id="{{ cat }}" name="{{ cat }}" value="{{ cat }}">
-                  <label for="{{ cat }}">{{ cat }}</label>
-                </div>
+                {% set entries = craft.commerce.products.relatedTo(cat) %}
+
+                {% if entries | length > 0 %}
+
+                  <label for="{{ cat }}">
+                    <input type="checkbox" id="{{ cat }}" name="{{ cat }}" value="{{ cat }}">
+                    <span>{{ cat }}</span>
+                  </label>
+
+                {% endif %}
 
               {% endfor %}
 
-            </form>
+            </div>
 
-          </div>
+          </form>
 
         </div>
 
@@ -45,55 +52,35 @@
 
       <div class="meal-list">
 
-        {% for category in categories %}
+        <div class="lock">
 
-          {% set entries = craft.commerce.products.relatedTo(category) %}
+          {% for category in categories %}
 
-          {% if entries|length > 0 %}
+            {% set entries = craft.commerce.products.relatedTo(category) %}
 
-            <div>
+            {% if entries|length > 0 %}
 
-              <h2 class="category-headline {{ category.slug }}"><span>{{ category.title }}</span></h2>
+              <div>
 
-              <div class="enteries-group">
+                <h2 class="headline-with-underline {{ category.slug }}">{{ category.title }}</h2>
+                <p>{{ category.plainText }}</p>
 
-                {% for product in entries %}
+                <div class="enteries-group" data-category-id="{{ category.id }}">
 
-                  {% if product.productImage|length > 0 %}
-                    {% set image = product.productImage[0].url %}
-                  {% else %}
-                    {% set image = '/images/products/placeholder-circle.png' %}
-                  {% endif %}
-
-                  <div class="meal-entry" data-protein="{% for cat in product.protein %}{{ cat }}{% endfor %}">
-
-                    <a href="/shop/details/{{ product.slug }}" class="meal-detail">
-                      <img src="{{ image }}" alt="image of {{ product.title}} {{ product.subTitle }}" />
-
-                      <div class="overlay">
-                        <div>
-                          <p class="meal-title"><span>{{ product.title }}</span> </p>
-                          <p>See Details</p>
-                        </div>
-                      </div>
-                    </a>
-
-                  </div>
-
-                {% endfor %}
+                </div>
 
               </div>
 
-            </div>
+            {% endif %}
 
-          {% endif %}
+          {% endfor %}
 
-        {% endfor %}
+        </div>
 
       </div>
 
-    </div>
+    </section>
 
-  </section>
+  </div>
 
 {% endblock %}

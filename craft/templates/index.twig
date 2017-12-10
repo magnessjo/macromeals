@@ -2,7 +2,6 @@
 {% extends "_layout" %}
 {% includeCssFile "/homepage.css" %}
 {% includeJsFile "/homepage.js" %}
-{% set categories = craft.categories.group('protein') %}
 
 {% block main %}
 
@@ -33,13 +32,19 @@
     <section id="delivery">
       <div class="lock">
         <img src="/images/icons/delivery-truck-green.svg" />
+<<<<<<< Updated upstream
         <p>We deliver from Monday to Friday to the continental United States.</p>
         <button class="show-shipping-modal">Get a quote for your zip code</button>
+=======
+        <p>Interested in delivery cost or pickup options?</p>
+        <button class="shipping-information">Learn More</button>
+>>>>>>> Stashed changes
       </div>
     </section>
 
-    <section id="meals-by-category">
+    <section class="meals-by-category">
 
+<<<<<<< Updated upstream
       <div class="lock">
 
         {# <div class="meal-controller">
@@ -61,28 +66,100 @@
                 {% endfor %}
 
               </form>
+=======
+      {% set featuredCategory = craft.categories.group('mealType').slug('featured').first() %}
 
-            </div>
+      <div class="meal-list">
 
+        <div class="lock">
+
+          <div class="featured">
+            <h2 class="headline-with-underline">Featured Meals</h2>
+          </div>
+          <div>
+            <div class="enteries-group" data-category-id="{{ featuredCategory.id }}"></div>
+          </div>
+
+          <a href="/shop" class="call-to-action">See all Meals</a>
+
+        </div>
+
+      </div>
+>>>>>>> Stashed changes
+
+    </section>
+
+<<<<<<< Updated upstream
           </div>
 
         </div> #}
 
         <div class="meal-list">
+=======
+    <section id="shipping-info">
 
-          {% for category in categories %}
+      <div class="lock">
 
-            {% set entries = craft.commerce.products.relatedTo(category) %}
+        <div class="shipping">
 
-            {% if entries|length > 0 %}
+            <div class="text">
+              <h1 class="headline-with-underline">Shipping & Pickups</h1>
+              <p>We ship using FedEx overnight to every state in the United States.</p>
+              <p>We ship using FedEx ground overnight the area indicated below to reduce your shipping cost.  We offer <span>$10</span> shipping for orders over $50 for the areas listed.</p>
 
-              <div>
+              <div class="columns">
 
-                <h2 class="category-headline {{ category.slug }}">
-                  <span class="headline">{{ category.title }}</span>
-                  <span>{{ category.plainText }}</span>
-                </h2>
+                <div class="state-summary">
 
+                  <div class="">
+                    <h2>All of</h2>
+                    <p>Maryland</p>
+                    <p>Delaware</p>
+                    <p>New Jersey</p>
+                  </div>
+                  <div class="">
+                    <h2>Most of</h2>
+                    <p>Virginia</p>
+                    <p>Pennsylvania</p>
+                    <p>New York</p>
+                    <p>Rhode Island</p>
+                  </div>
+                  <div>
+                    <h2>Some of</h2>
+                    <p>North Carolina</p>
+                    <p>West Virginia</p>
+                    <p>Massachusetts</p>
+                  </div>
+
+                </div>
+
+                <div class="map">
+                  <img src="/images/homepage/zone-two.svg">
+                </div>
+>>>>>>> Stashed changes
+
+                <form id="shipping-calculator">
+
+                  <div class="loader"></div>
+
+                  <p>Get a quote</p>
+
+                  <div class="field" data-required="true" valid="false">
+                    <label for="zipCode"><span>Zip Code</span></label>
+                    <div class="input">
+                      <input type="number"
+                             name="zipCode"
+                             id="zipCode"
+                             placeholder=""
+                             maxlength="5" />
+
+                      <div class="errors">
+                        <p class="required">Zip Code is a required field</p>
+                      </div>
+                    </div>
+                  </div>
+
+<<<<<<< Updated upstream
                 <div class="enteries-group">
 
                   {% for product in entries %}
@@ -107,14 +184,20 @@
                     </div>
 
                   {% endfor %}
+=======
+                  <input type="submit" value="Get Estimate" />
+                  <div class="result"></div>
+>>>>>>> Stashed changes
 
-                </div>
+                </form>
 
               </div>
 
-            {% endif %}
+              <p>We have several pickup locations in the Maryland area.  Picking shipping cost is <span>$0</span>.  Please visit are <a href="pages/faq/#pickups">faq section on pickups</a> for complete details.</p>
 
-          {% endfor %}
+            </div>
+
+          </div>
 
         </div>
 
@@ -122,15 +205,15 @@
 
     </section>
 
-  </div>
+    <section class="meals-by-category">
 
-  <div class="shipping-modal" aria-hidden="true">
+      {% set seasonalCategory = craft.categories.group('mealType').slug('seasonal').first() %}
 
-    <form id="shipping-calculator">
+      <div class="meal-list">
 
-      <button class="ion-close"></button>
-      <div class="loader"></div>
+        <div class="lock">
 
+<<<<<<< Updated upstream
       <p>Please enter your estimated quantity of meals and your shipping zip code for an estimated shipping cost.</p>
 
       <div class="two-column">
@@ -166,11 +249,22 @@
         </div>
 
       </div>
+=======
+          <div class="seasonal">
+            <h2 class="headline-with-underline">Seasonal Meals</h2>
+          </div>
+          <div>
+            <div class="enteries-group" data-category-id="{{ seasonalCategory.id }}"></div>
+          </div>
 
-      <input type="submit" value="Get Estimate" />
-      <div class="result"></div>
+          <a href="/shop" class="call-to-action">See all Meals</a>
 
-    </form>
+        </div>
+>>>>>>> Stashed changes
+
+      </div>
+
+    </section>
 
   </div>
 

@@ -1,0 +1,167 @@
+
+.meals-by-category {
+  margin-bottom: 0;
+
+  & .meals-controller {
+    background-color: var(--light-yellow);
+    margin-bottom: 30px;
+    padding: 20px 0;
+    text-align: center;
+    display: none;
+
+    & form {
+
+      & > div {
+        display: flex;
+        justify-content: center;
+      }
+
+    }
+
+    & form p {
+      margin-bottom: 10px;
+      font-family: var(--acuminMediumItalic);
+    }
+
+    & label {
+      margin-bottom: 0;
+      margin-left: 30px;
+      width: inherit;
+
+      &:first-of-type {
+        margin-left: 0;
+      }
+
+    }
+
+  }
+
+  & .category-headline {
+    margin-bottom: 0;
+    display: block;
+    font-size: calc(22px + 1vw);
+    line-height: 1.4em;
+    font-family: var(--acuminExtraLight);
+
+    @media (--tablet-min) {
+      max-width: 70%;
+    }
+
+    @media (--tablet-min) {
+      padding-left: 50px;
+    }
+
+  }
+
+  & .enteries-group {
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 80px;
+    padding: 0 50px;
+
+    @supports (display: grid) {
+      display: grid;
+      grid-template-columns: 1fr;
+      padding: 0;
+
+      @media (--large-min) {
+        grid-template-columns: 1fr 1fr;
+        grid-gap: 50px;
+      }
+
+      @media (--desktop-min) {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+
+    }
+
+  }
+
+  & .meal-entry {
+    margin-bottom: 100px;
+
+    @media (--large-min) {
+      width: 45%;
+    }
+
+    @media (--desktop-min) {
+      width: 30%;
+    }
+
+    @supports (display: grid) {
+      width: 100%;
+      margin-bottom: 0;
+      padding-bottom: 40px;
+
+      @media (--medium-max) {
+        margin-bottom: 20px;
+      }
+
+    }
+
+    &:hover .meal-detail .overlay {
+      opacity: 1;
+      transition: opacity .8s;
+    }
+
+  }
+
+  & .meal-detail {
+    position: relative;
+    display: block;
+
+    & img {
+      display: block;
+    }
+
+    & .overlay {
+      position: absolute;
+      background-color: rgba(255, 255, 255, .88);
+      right: 0;
+      left: 0;
+      top: 80%;
+
+      & p {
+        margin-bottom: 0;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 12px;
+      }
+
+      & .meal-title {
+        font-family: var(--acuminExtraLight);
+        font-size: calc(12px + .75vw);
+        display: block;
+        height: 55px;
+
+        & span {
+          display: block;
+          white-space: nowrap;
+          position: absolute;
+          height: 20px;
+          left: 50%;
+          top: 10px;
+          transform: translateX(-50%);
+
+          &:after {
+            content: "";
+            height: 1px;
+            background-color: var(--green);
+            position: absolute;
+            left: 10%;
+            right: 10%;
+            top: 35px;
+          }
+
+        }
+
+      }
+
+    }
+
+  }
+
+}
