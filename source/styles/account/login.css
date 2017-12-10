@@ -1,6 +1,11 @@
 
 #checkout-login {
 
+  & #login-form {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
   & .acumin-large  {
     margin-bottom: 40px;
   }

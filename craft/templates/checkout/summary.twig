@@ -4,11 +4,18 @@
 {% includeJsFile "/summary.js" %}
 
 {% set cart = craft.commerce.getCart %}
+{% set coolerClubAdjustment = false %}
+
+{% for adjuster in cart.adjustments %}
+  {% if adjuster.name == 'Cooler Club Item Discount' and adjuster.amount < 0  %}
+    {% set coolerClubAdjustment = true %}
+  {% endif %}
+{% endfor %}
 
 {% block main %}
 
   {% if cart.email == '' %}
-    {% redirect "/account/checkout-login" 301 %}
+    {% redirect "/account/login" 301 %}
   {% endif %}
 
   {% include "components/breadcrumb.twig" %}
@@ -23,45 +30,65 @@
 
         <div class="lock">
 
-          <div class="promo">
+          <div>
 
-            <label>Promotional Code</label>
-            <div>
-              <input type="text" name="couponCode" value="{{ cart.couponCode }}" placeholder="Code" />
-              <button class="call-to-action">{% if cart.couponCode %}Change{% else %}Apply{% endif %}</button>
-              <p class="promo-error">The promotional code that you have entered code not be found</p>
+            {% if currentUser %}
+
+              {% if currentUser.isInGroup('coolerclub') %}
+
+                <div class="adjustment-section cooler-club">
+                  <label>Cooler Club</label>
+                  <p>The cooler club is for family/friends who would rather pick a cooler from us than pay for the normal packaging.</p>
+                  <p>Each item is reduced $1 and shipping and handling is $0</p>
+                  <p>We don't advertise this service so don't tell anyone 🤫</p>
+                  <div>
+                    <button class="call-to-action" {% if coolerClubAdjustment == false %}data-adjustment="true"{% else %}data-adjustment="false"{% endif %}>{% if coolerClubAdjustment == false %}Apply{% else %}Remove{% endif %}</button>
+                  </div>
+                </div>
+
+              {% endif %}
+
+            {% endif %}
+
+            <div class="adjustment-section promo">
+
+              <label>Promotional Code</label>
+              <div>
+                <input type="text" name="couponCode" value="{{ cart.couponCode }}" placeholder="Code" />
+                <button class="call-to-action">{% if cart.couponCode %}Change{% else %}Apply{% endif %}</button>
+                <p class="promo-error">The promotional code that you have entered could not be found</p>
+              </div>
+
             </div>
 
-            <p class="text">If you have a promotional code, please add it for your order.</p>
+            <div class='totals'>
 
-          </div>
+              <p>
+                <span class="title">SubTotal</span>
+                <span class="cost" data-type="items-amount">{{ cart.itemSubtotal | number_format(2, '.', ',')}}</span>
+              </p>
 
-          <div class='totals'>
+              <p>
+                <span class="title">Shipping & Handling</span>
+                <span class="cost" data-type="shipping-amount">{{ cart.totalShippingCost | number_format(2, '.', ',') }}</span>
+              </p>
 
-            <p class="acumin-tiny">
-              <span class="title">Shipping</span>
-              <span class="cost" data-type="shipping-amount">{{ cart.totalShippingCost | currency(cart.currency) }}</span>
-            </p>
+              <p class="discount" {% if cart.baseDiscount %} style="display:block;" {% endif %}>
+                <span class="title">Discount</span>
+                <span class="cost" data-type="discount-amount">({{ cart.totalDiscount | number_format(2, '.', ',') }})</span>
+              </p>
 
-            <p class="acumin-tiny discount" {% if cart.baseDiscount %} style="display:block;" {% endif %}>
-              <span class="title">Discount</span>
-              <span class="cost" data-type="discount-amount">{{ cart.baseDiscount | currency(cart.currency) }}</span>
-            </p>
+              <p>
+                <span class="title">Tax</span>
+                <span class="cost" data-type="tax-amount">{{ cart.totalTax | number_format(2, '.', ',') }}</span>
+              </p>
 
-            <p class="acumin-tiny">
-              <span class="title">SubTotal</span>
-              <span class="cost" data-type="items-amount">{{ cart.itemSubtotal | currency(cart.currency) }}</span>
-            </p>
+              <p class="total">
+                <span class="title">Total</span>
+                <span class="cost" data-type="total-amount">{{ cart.totalPrice | commerceCurrency(cart.currency, stripZeros = true) }}</span>
+              </p>
 
-            <p class="acumin-tiny">
-              <span class="title">Tax</span>
-              <span class="cost" data-type="tax-amount">{{ cart.totalTax | commerceCurrency(cart.currency) }}</span>
-            </p>
-
-            <p class="acumin-medium-bold">
-              <span class="title">Total</span>
-              <span class="cost" data-type="total-amount">{{ cart.totalPrice | commerceCurrency(cart.currency, stripZeros = true) }}</span>
-            </p>
+            </div>
 
           </div>
 

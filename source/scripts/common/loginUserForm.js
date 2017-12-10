@@ -7,18 +7,23 @@ import findParentNode from 'scripts/helpers/findParentNode.js';
 
 // Variables
 
-const header = document.querySelector('header');
-const loginForm = header.querySelector('#login-form');
-const userNameInput = loginForm.querySelector('input[name="loginName"]');
-const passwordInput = loginForm.querySelector('input[name="password"]');
-const rememberUser = loginForm.querySelector('input[name="rememberMe"]');
-const userNameParent = findParentNode(userNameInput, 'field');
-const passwordParent = findParentNode(passwordInput, 'field');
-const craftErrors = loginForm.querySelector('.craft-errors');
+const loginForm = document.querySelector('#login-form');
+
 
 // Export
 
 export default function() {
+
+  if (!loginForm) return;
+
+  const userNameInput = loginForm.querySelector('input[name="loginName"]');
+  const passwordInput = loginForm.querySelector('input[name="password"]');
+  const rememberUser = loginForm.querySelector('input[name="rememberMe"]');
+  const submitButton = loginForm.querySelector('input[type="submit"]');
+  const userNameParent = findParentNode(userNameInput, 'field');
+  const passwordParent = findParentNode(passwordInput, 'field');
+  const craftErrors = loginForm.querySelector('.craft-errors');
+  const loaderAnimation = loginForm.querySelector('.button-loader');
 
   // Add Event Listeners
 
@@ -49,6 +54,8 @@ export default function() {
   loginForm.addEventListener('submit', (e) => {
 
     e.preventDefault();
+    submitButton.disabled = true;
+    loaderAnimation.style.display = 'block';
     validation.required(userNameInput, userNameParent);
     validation.required(passwordInput, passwordParent);
     validation.checkForPassword(passwordInput, passwordParent);
@@ -60,6 +67,8 @@ export default function() {
       validation.required(userNameInput, userNameParent);
       validation.required(passwordInput, passwordParent);
       validation.checkForPassword(passwordInput, passwordParent);
+      submitButton.disabled = false;
+      loaderAnimation.style.display = 'none';
       return;
     } else {
 
@@ -76,15 +85,24 @@ export default function() {
           element.style.display = 'block';
           craftErrors.style.display = 'block';
           craftErrors.appendChild(element);
+          submitButton.disabled = false;
+          loaderAnimation.style.display = 'none';
 
         } else {
           const body = document.querySelector('body');
           const parent = loginForm.parentNode;
+          const redirectPath = loginForm.getAttribute('data-redirect');
           body.setAttribute('logged-in', true);
           parent.setAttribute('aria-hidden', true);
 
-          if (window.location.pathname = "account/checkout-login") {
-            window.location.pathname = 'checkout';
+          if (redirectPath) {
+            window.location.pathname = `${redirectPath}`;
+          } else {
+
+            if (window.location.pathname == '/account/login') {
+              window.location.pathname = `/`;
+            }
+
           }
 
         }

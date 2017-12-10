@@ -41,14 +41,18 @@ export default function() {
       } else {
 
         const cart = data.cart;
-        const discount = cart.baseDiscount;
+        const adjustments = cart.adjustments;
+        const discounts = typeof adjustments !== 'undefined' ? adjustments.Discount : 'undefined';
+
         error.style.display = 'none';
 
-        discountElement.innerHTML = `($${discount.toFixed(2)})`;
-
-        updateCartTotals(cart);
-        parent.style.display = 'block';
-        button.innerHTML = 'change';
+        if (typeof discounts !== 'undefined') {
+          const discount = adjustments.Discount[0].amount;
+          discountElement.innerHTML = `(${discount.toFixed(2)})`;
+          updateCartTotals(cart);
+          parent.style.display = 'block';
+          button.innerHTML = 'change';
+        }
 
       }
 

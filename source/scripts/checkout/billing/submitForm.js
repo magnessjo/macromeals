@@ -32,7 +32,7 @@ function load() {
       fontFamily: 'acumin-pro, arial, sans-serif',
       fontWeight: 400,
     },
-  };
+  }
 
   const cardNumberElement = elements.create('cardNumber', { style: style });
   const cardExpiryElement = elements.create('cardExpiry', { style: style });

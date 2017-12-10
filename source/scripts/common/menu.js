@@ -5,7 +5,6 @@ const header = document.querySelector('header');
 const button = header.querySelector('.menu-toggle');
 const menu = document.querySelector('menu');
 const wrapper = menu.querySelector('.mobile-nav');
-const text = button.querySelector('.text');
 const overlays = Array.from(header.querySelectorAll('.header-overlay'));
 
 // Show
@@ -14,7 +13,6 @@ function show() {
 
   const height = wrapper.offsetHeight;
   menu.style.height = `${height}px`;
-  text.innerHTML = 'Close';
 
   overlays.forEach((elm) => {
     elm.setAttribute('aria-hidden', true);
@@ -25,7 +23,6 @@ function show() {
 function close() {
 
   menu.style.height = `0`;
-  text.innerHTML = 'Menu';
 
 }
 

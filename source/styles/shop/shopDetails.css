@@ -21,7 +21,7 @@
     margin-bottom: 20px;
   }
 
-  & .row-columns {
+  & .variant-row {
     padding: 20px 10%;
     position: relative;
 
@@ -44,13 +44,32 @@
 
     & .size {
       width: 50%;
+      text-transform: capitalize;
     }
 
     & .price {
+      text-align: center;
       width: 20%;
 
       @media (--large-min) {
         width: 30%;
+      }
+
+      & .sale-price span {
+        position: relative;
+        font-size: 14px;
+
+        &:before {
+          content: "";
+          position: absolute;
+          height: 1px;
+          top: 54%;
+          transform: translateY(-50%);
+          background-color: red;
+          left: 0;
+          right: 0;
+        }
+
       }
 
     }
@@ -78,7 +97,7 @@
 
   & .summary {
 
-    & .row-columns:before {
+    & .variant-row:before {
       display: none;
     }
 
@@ -117,6 +136,7 @@
         line-height: 40px;
         float: left;
         border-radius: 0;
+        text-transform: capitalize;
       }
 
       &:last-of-type {

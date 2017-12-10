@@ -9,7 +9,7 @@
 {% block main %}
 
   {% if cart.email == '' %}
-    {% redirect "/account/checkout-login" 301 %}
+    {% redirect "/account/login" 301 %}
   {% endif %}
 
   <script type="text/javascript">
@@ -46,40 +46,30 @@
           <div class="loader"></div>
 
           <div class="field card-name">
-            <label>
-              <span>Name</span>
-              <div id="card-name-element" class="input">
-                <input type="text" placeholder="John Doe" value="{{ shippingModel.firstName ?? '' }} {{ shippingModel.lastName ?? '' }}" />
-              </div>
-            </label>
+            <label><span>Name</span></label>
+            <div id="card-name-element" class="input">
+              <input type="text" placeholder="John Doe" value="{{ shippingModel.firstName ?? '' }} {{ shippingModel.lastName ?? '' }}" />
+            </div>
           </div>
 
           <div class="field card-number">
-            <label>
-              <span>Card number</span>
-              <div id="card-number-element" class="input"></div>
-            </label>
+            <label><span>Card number</span></label>
+            <div id="card-number-element" class="input"></div>
           </div>
 
           <div class="field expiration">
-            <label>
-              <span>Expiration date</span>
-              <div id="card-expiry-element" class="input"></div>
-            </label>
+            <label><span>Expiration date</span></label>
+            <div id="card-expiry-element" class="input"></div>
           </div>
 
           <div class="field card-number">
-            <label>
-              <span>CVC</span>
-              <div id="card-cvc-element" class="input"></div>
-            </label>
+            <label><span>CVC</span></label>
+            <div id="card-cvc-element" class="input"></div>
           </div>
 
           <div class="field card-number">
-            <label>
-              <span>Zip Code</span>
-              <div id="postal-code-element" class="input"></div>
-            </label>
+            <label><span>Zip Code</span></label>
+            <div id="postal-code-element" class="input"></div>
           </div>
 
         </div>

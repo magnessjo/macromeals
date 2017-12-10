@@ -80,7 +80,7 @@
 
     & span {
 
-      @media (--tablet-min) and (--tablet-max) {
+      @media (--tablet-min) and (--desktop-max) {
         display: none;
       }
 
@@ -108,10 +108,24 @@
 
   & h1 {
     text-transform: uppercase;
+    font-family: var(--acuminSemiBold);
+    line-height: 1em;
+    font-size: calc(26px + 1vw);
+
+    @media (--large-max) {
+      margin-bottom: 20px;
+    }
 
     @media (--tablet-min) {
       margin-bottom: 0;
       margin-right: 40px;
+    }
+
+    & span {
+      display: block;
+      font-family: var(--acuminThinItalic);
+      font-size: calc(18px + 1vw);
+      line-height: 1em;
     }
 
   }

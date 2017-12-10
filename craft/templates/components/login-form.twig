@@ -1,0 +1,57 @@
+
+<form method="POST" id="login-form" class="registered-form" {% if bodyLoginForm is defined %}data-redirect="/checkout"{% endif %} accept-charset="UTF-8">
+
+  <div class="field" data-required="true" valid="false">
+    <label for="loginName"><span>Username</span></label>
+    <div class="input">
+      <input type="text"
+             name="loginName"
+             id="loginName"
+             placeholder="johndoe"
+             value="{{ craft.session.rememberedUsername ?? '' }}" />
+
+      <div class="errors">
+        <p class="required">Username is a required field</p>
+        <p class="duplicate"><span></span> is not available.  Please select another username</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="field" data-required="true" valid="false">
+    <label for="password"><span>Password</span></label>
+    <div class="input">
+      <input type="password"
+             name="password"
+             id="password"
+             placeholder="dontUseMe1234$"
+             value="{{ craft.session.rememberedPassword ?? '' }}" />
+
+      <div class="errors">
+        <p class="required">Password is a required field</p>
+        <p class="password">Password must be 6 characters</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="checkbox-field">
+    <label>
+      <input type="checkbox" name="rememberMe" value="0">
+      Remember me
+    </label>
+  </div>
+
+  <div class="craft-errors"></div>
+
+  <div class="login-form-actions">
+    <a href="/account/register" class="register-cta">Sign up?</a>
+    <div class="submit-animation-wrapper">
+      <div class="button-loader"></div>
+      <input type="submit" value="Sign In" class="call-to-action" />
+    </div>
+  </div>
+
+  <p class="forgot-password">
+    <a href="/account/forgot-password">Forget your password?</a>
+  </p>
+
+</form>

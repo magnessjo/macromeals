@@ -51,7 +51,7 @@
                       <tr>
                         <td>
 
-                          {% include "emails/components/email-order-date.twig" with {'date' : order.dateOrdered.format('F d, Y') } %}
+                          {% include "emails/components/email-order-delivery.twig" with {'shippingMethod' : order.shippingMethodHandle } %}
                           {% include "emails/components/email-order-number.twig" with {'number' : order.shortNumber } %}
 
                        </td>

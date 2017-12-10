@@ -1,0 +1,61 @@
+
+{% extends "_layout" %}
+{% includeCssFile "/account.css" %}
+{% set bodyClass = 'with-border remove-login' %}
+{% set bodyLoginForm = true %}
+
+{% set cart = craft.commerce.getCart() %}
+
+{% block main %}
+
+  <section id="checkout-login">
+
+    <div class="lock">
+
+      {% include "components/login-form.twig" %}
+
+      <p class="divider"><span>Or</span></p>
+
+      <div class="guest-checkout">
+
+        <div>
+
+          <p>Guest Checkout</p>
+          <div>
+            <p>Why do we ask for your email address?</p>
+            <p>No need to set up an account, but we need your email address to send you an order receipt and keep you updated on the status of your order.</p>
+          </div>
+
+        </div>
+
+        <div class="action-event guest">
+
+          <form method="POST" id="guest-form">
+
+            <input type="hidden" name="action" value="commerce/cart/updateCart" />
+            <input type="hidden" name="redirect" value="/checkout">
+            {{ getCsrfInput() }}
+
+            <div class="">
+              <label>Email Address</label>
+              <input type="text" name="email" id="guestEmail" value="{{ cart.email ?? '' }}" placeholder="email@site.com" />
+
+              {% if cart and cart.getErrors('email') %}
+                <p class="error">{{ cart.getErrors('email')|join }}</p>
+              {% endif %}
+
+            <div>
+
+            <button class="call-to-action guest-cta">Guest Checkout</button>
+
+          </form>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+{% endblock %}

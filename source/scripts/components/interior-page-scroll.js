@@ -5,6 +5,7 @@ import scrollTo from 'scripts/helpers/scrollToLocation.js';
 
 // Variables
 
+const documentBody = document.documentElement.scrollTop || document.body.scrollTop;
 const wrapper = document.querySelector('.page-scroll-wrapper');
 let nav;
 let positionTop;
@@ -15,7 +16,7 @@ function windowSroll() {
 
   if (window.innerWidth > 768) {
 
-    if (positionTop.top < window.pageYOffset) {
+    if (positionTop.top + documentBody < window.pageYOffset ) {
       nav.style.position = 'fixed';
     } else {
       nav.style.position = 'relative';

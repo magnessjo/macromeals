@@ -1,0 +1,125 @@
+
+{% extends "_layout" %}
+{% includeCssFile "/checkout.css" %}
+{% includeJsFile "/shipping.js" %}
+
+{% set cart = craft.commerce.getCart %}
+{% set shippingModel = cart.shippingAddress %}
+{% set currentShippingMethod = cart.getShippingmethod %}
+
+{% block main %}
+
+  {% if cart.email == '' %}
+    {% redirect "/account/login" 301 %}
+  {% endif %}
+
+  {% include "components/breadcrumb.twig" %}
+
+  <form method="POST" id="pickup-options">
+
+    {{ getCsrfInput() }}
+
+    <input type="hidden" name="action" value="commerce/cart/updateCart">
+    <input type="hidden" name="redirect" value="checkout/summary">
+    <input type="hidden" name="shippingMethod" value="{% if cart.shippingMethod %}{{cart.shippingMethod.handle}}{% endif %}" />
+
+    <section id="shipping-method">
+
+      <div class="lock">
+
+        <h1 class="acumin-medium-bold">Shipping methods</h1>
+
+        <div>
+          <p>Our default shipping method is to ship FedEx Ground.  FexEx Ground delivers in one business day to most of the North East. Rates are determined by your location and total of cart.</p>
+          <p class="description-cost">Your current total is <span>${{ cart.totalShippingCost | number_format(2, '.', ',') }}</span></p>
+        </div>
+        <div>
+          <p>We also offer local pickup options for our customers in the Harford County or Baltimore County area.</p>
+          <p class="description-cost">The shipping cost for a local pickup option is <span>$0.</span></p>
+        </div>
+        <p>Users are responsible for pickup the day that is schedule.  Orders that are not picked up in 24 hours are not eligible for a refund.</p>
+        <p>Please contact us at <a href="mailto:help@macromeals.life">help@macromeals.life</a> for questions or if you need to reschedule your pickup date.</p>
+
+      </div>
+
+    </section>
+
+    <section id="pickup-list">
+
+      <div class="lock">
+
+        <p>Shipping Options <span>Options for Baltimore County and North Harford county are coming soon!</span></p>
+
+        <div class="shipping-type" data-handle="overnight" data-name="Overnight" data-cost="{{ cart.totalShippingCost | number_format(2, '.', ',') }}">
+          <div class="shop-details">
+            <h2>Delivery</h2>
+          </div>
+          <button data-zip="{{ shippingModel.zipCode ?? addresses.zipCode ?? '' }}" {% if currentShippingMethod.handle == 'overnight' %} disabled {% endif %}>Select</button>
+       </div>
+
+        {% for handle, method in craft.commerce.availableShippingMethods  %}
+
+          {% if handle == 'abingdonPostManPlus' %}
+
+           <div class="shipping-type" data-handle="{{ handle }}" data-name="{{ method.name }}" data-cost="0">
+             <div class="shop-details">
+               <h2>Post Man Plus</h2>
+               <address>
+                 <p>3438 Emmorton Rd<br> Abingdon, MD 21009</p>
+               </address>
+               <a target="_blank" href="https://www.google.com/maps/place/Postman+Plus/@39.4674016,-76.3152994,17z/data=!3m1!4b1!4m7!3m6!1s0x0:0xf0f6718230cd08b7!8m2!3d39.4674016!4d-76.3131107!9m1!1b1">View on Map</a>
+             </div>
+             <div class="map">
+               <div id="postManPlusMap"></div>
+             </div>
+            <button {% if currentShippingMethod.handle == handle %} disabled {% endif %}>Select</button>
+          </div>
+
+          {% endif %}
+
+        {% endfor %}
+
+        {# <div class="shipping-type" data-handle="betterHandle" data-name="Better Name" data-cost="0">
+          <div class="shop-details">
+            <h2>Harford Pack & Ship</h2>
+            <address>
+              <p>15 E Churchville Rd<br>Bel Air, MD 21014</p>
+            </address>
+            <a target="_blank" href="https://www.google.com/maps/place/Harford+Pack+%26+Ship/@39.5368548,-76.3499856,17.19z/data=!4m12!1m6!3m5!1s0x0:0x4c98b3c65231cd99!2sUnited+States+Postal+Service!8m2!3d39.5288131!4d-76.3614044!3m4!1s0x0:0xbfee7307036b8e3!8m2!3d39.534975!4d-76.3466113">View on Map</a>
+          </div>
+          <div class="map">
+            <div id="harfordPackMap"></div>
+          </div>
+          <button>Select</button>
+       </div> #}
+
+      </div>
+
+    </section>
+
+    <section id="shipping-summary">
+
+      <div class="lock">
+
+        <p class="summary-method">Your current shipping method <span>{{ currentShippingMethod.name }}</span></p>
+        <p class="summary-cost">Your current shipping cost <span>${{ cart.totalShippingCost | number_format(2, '.', ',') }}</span></p>
+
+      </div>
+
+    </section>
+
+    <section class="action">
+
+      <div class="lock">
+
+        <div class="actions">
+          <input type="submit" data-button="continue" value="Continue to Order Summary" class="call-to-action">
+        </div>
+
+      </div>
+
+    </section>
+
+  </form>
+
+{% endblock %}

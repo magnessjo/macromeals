@@ -39,6 +39,12 @@ function appendItemsForDisplay() {
 
     items.appendChild(tag);
 
+    ga('ec:addProduct', {
+      'name': title,
+      'variant': size,
+      'quantity': quantity
+    });
+
   });
 
 }

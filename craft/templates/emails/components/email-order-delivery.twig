@@ -1,0 +1,48 @@
+
+{% set oneDay = now|date_modify("+1 day") %}
+{% set twoDay = now|date_modify("+2 day") %}
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#f4f4f4">
+  <tr>
+    <td class="content-spacing" style="font-size:0pt; line-height:0pt; text-align:left" width="20"></td>
+     <td>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">
+        <tr>
+          <td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td>
+        </tr>
+      </table>
+      <div class="text-1" style="color:#000; font-family:Helvetica, Helvetica, Arial, sans-serif; min-width:auto !important; font-size:14px; line-height:20px; text-align:left">
+        <strong>Delivery Date:</strong>
+      </div>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">
+        <tr>
+          <td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td>
+        </tr>
+      </table>
+
+      </td>
+    <td class="content-spacing" style="font-size:0pt; line-height:0pt; text-align:left" width="20"></td>
+  </tr>
+</table>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#fafafa">
+  <tr>
+    <td class="content-spacing" style="font-size:0pt; line-height:0pt; text-align:left" width="20"></td>
+    <td>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">
+        <tr>
+          <td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td>
+        </tr>
+      </table>
+      <div class="text" style="color:#1e1e1e; font-family:Helvetica, Helvetica, Arial, sans-serif; min-width:auto !important; font-size:14px; line-height:20px; text-align:left">
+        {% if shippingMethod == 'overnight' %} {{ twoDay | date("M d, Y")}}{% else %}{{ oneDay | date("M d, Y")}}{% endif %}
+      </div>
+      <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">
+        <tr>
+          <td height="15" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td>
+        </tr>
+      </table>
+    </td>
+    <td class="content-spacing" style="font-size:0pt; line-height:0pt; text-align:left" width="20"></td>
+  </tr>
+</table>

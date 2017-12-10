@@ -1,3 +1,6 @@
+
+{% set currentShippingMethod = order.getShippingmethod %}
+
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
     <td>
@@ -11,7 +14,11 @@
             </tr>
           </table>
           <div class="text-1" style="color:#000; font-family: Helvetica, Arial, sans-serif; min-width:auto !important; font-size:14px; line-height:20px; text-align:left">
-            <strong>SHIPPING METHOD: <span style="text-transform: uppercase;">{{ order.shippingMethodHandle }}</span></strong>
+            <strong>SHIPPING METHOD
+              <span style="text-transform: uppercase;">
+              <br />{{ currentShippingMethod.name }}
+              </span>
+            </strong>
           </div>
           <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">
             <tr>
@@ -32,17 +39,21 @@
             </tr>
           </table>
           <div class="text" style="color:#1e1e1e; font-family: Helvetica, Arial, sans-serif; min-width:auto !important; font-size:14px; line-height:20px; text-align:left">
+
             {% set address = order.shippingAddress %}
-            <strong>{{ address.firstName }} {{ address.lastName }}</strong>
-            {% if order.shippingMethodHandle != 'pickup' %}
-              <br />
+
+            <strong>{{ address.firstName }} {{ address.lastName }}</strong><br />
+
+            {% if order.shippingMethodHandle == 'overnight' %}
               {{ order.shippingAddress.address1 }}
               <br />
               {{ order.shippingAddress.city }}, {{ order.shippingAddress.zipCode }}
-            {% else %}
               <br />
-              Pickup at the YMCA in Abingdon
-              <a target="_blank" href="https://www.google.com/maps/place/The+Ward+Y+in+Abingdon/@39.4651901,-76.30869,17z/data=!3m1!4b1!4m5!3m4!1s0x89c7e7aff9cdd5c3:0xd8d4b8d7898c3704!8m2!3d39.4651901!4d-76.3065013">View on Map</a>
+            {% endif %}
+
+            {% if order.shippingMethodHandle == 'abingdonPostManPlus' %}
+              Pickup at Post Man Plus in Abingdon<br/>
+              <a target="_blank" href="https://www.google.com/maps/place/Postman+Plus/@39.4674016,-76.3152994,17z/data=!3m1!4b1!4m7!3m6!1s0x0:0xf0f6718230cd08b7!8m2!3d39.4674016!4d-76.3131107!9m1!1b1">View on Map</a>
             {% endif %}
 
           </div>

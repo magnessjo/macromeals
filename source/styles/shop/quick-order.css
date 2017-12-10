@@ -175,13 +175,19 @@
 #category-group {
 
   & .category-headline {
-    margin-bottom: 60px;
+    margin-bottom: 30px;
+
+    @media (--tablet-min) {
+      margin-bottom: 60px;
+    }
+
 
     & span {
-      font-family: var(--acuminCondensed);
-      font-size: 36px;
+      font-family: var(--acumin);
+      font-size: calc(20px + 1vw);
       display: inline-block;
       text-transform: uppercase;
+      line-height: 1.1em;
     }
 
   }
@@ -227,6 +233,28 @@
 
     & > div:first-of-type {
       width: 40%;
+    }
+
+    & .price {
+      text-align: center;
+
+      & .sale-price {
+        position: relative;
+        font-size: 14px;
+
+        &:before {
+          content: "";
+          position: absolute;
+          height: 1px;
+          top: 54%;
+          transform: translateY(-50%);
+          background-color: red;
+          left: 0;
+          right: 0;
+        }
+
+      }
+
     }
 
   }

@@ -51,6 +51,7 @@ const config = {
       meals: `source/scripts/shop/meals`,
       automation: `source/scripts/automation`,
       customer: `source/scripts/checkout/customer`,
+      shipping: `source/scripts/checkout/shipping`,
       summary: `source/scripts/checkout/summary`,
       billing: `source/scripts/checkout/billing`,
       cart: `source/scripts/checkout/cart`,

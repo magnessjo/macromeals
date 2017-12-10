@@ -1,0 +1,41 @@
+
+{% extends "_layout" %}
+{% includeCssFile "/account.css" %}
+{% set bodyClass = 'with-border' %}
+
+{% block main %}
+
+  {% if currentUser is null %}
+    {% redirect "/account/login" 301 %}
+  {% endif %}
+
+  <section class="account-two-column">
+
+    <div class="lock">
+
+      <div class="account-navigation">
+        <a href="/account">Account Details</a>
+        <a href="/account/orders">Previous Orders</a>
+        <a href="{{ logoutUrl }}">Logout</a>
+      </div>
+
+      <div class="account-content">
+
+        <div class="account-info">
+
+          <div>
+            <p><span>Name:</span> {{ currentUser.getFullName() }}</p>
+            <p><span>Username:</span> {{ currentUser.username }}</p>
+            <p><span>Email:</span> {{ currentUser.email }}</p>
+            <p><span>Date Joined:</span> {{ currentUser.dateCreated.format('F m, Y') }}</p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+{% endblock %}

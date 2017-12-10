@@ -8,69 +8,88 @@
 
     & > div {
       background: var(--white);
-      margin-bottom: 20px;
-      border: 1px solid var(--light-gray);
     }
 
     & > div[valid="true"] {
-      border: 1px solid var(--green);
 
       & label {
         color: var(--green);
       }
 
+      & > div {
+        border: 1px solid var(--green);
+      }
+
     }
 
     & > div[valid="false"] {
-      border: 1px solid var(--red);
 
       & label {
         color: var(--red);
+      }
+
+      & > div {
+        border: 1px solid var(--red);
       }
 
     }
 
     & label {
       position: relative;
-      color: var(--black);
-      font-weight: 300;
-      height: 44px;
-      line-height: 44px;
       margin-bottom: 0;
       width: 100%;
-    }
+      margin-bottom: 5px;
+      font-family: var(--acuminSemiBold);
+      font-size: 14px;
 
-    & span {
-      width: 130px;
-      text-align: right;
-      margin-left: 20px;
-      display: block;
-      font-weight: 700;
-    }
+      & span {
+        display: block;
+        font-weight: 700;
+        padding-left: 5px;
+      }
 
-    & input {
-      height: inherit;
-      width: inherit;
-      margin: inherit;
-      border: none;
-      font-weight: 400;
     }
 
     & .input {
       background: transparent;
       color: var(--black);
       cursor: text;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      left: 160px;
-      right: 10px;
+      font-weight: 300;
+      margin-bottom: 30px;
+      border: 1px solid #999;
+      padding: 14px 20px;
 
       &::-webkit-input-placeholder {
         color: #333333;
       }
 
       &::-moz-placeholder {
+        color: #333333;
+      }
+
+      & > div {
+        margin-top: 13px !important;
+      }
+
+    }
+
+    & input {
+      height: 18px;
+      margin: inherit;
+      border: none;
+      font-weight: 400;
+      margin-bottom: 0;
+      background-color: transparent;
+      padding: 0;
+      width: 100%;
+      display: block;
+      font-weight: 400;
+
+      &::-webkit-input-placeholder {
+        color: #333333;
+      }
+
+      &::placeholder {
         color: #333333;
       }
 
