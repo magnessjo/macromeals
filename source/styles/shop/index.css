@@ -1,2 +1,6 @@
 
 @import "../master.css";
+
+.slim-stage .image {
+  background-image: url(/images/stage/featured-meal.jpg);
+}
