@@ -6,6 +6,23 @@
   right: 0;
 }
 
+.page-scroll-wrapper section {
+  margin-bottom: 60px;
+}
+
 .faq-entry {
   margin-bottom: 40px;
+
+  &:last-of-type {
+    margin-bottom: 0;
+  }
+
+  & p:last-of-type {
+    margin-bottom: 0;
+  }
+
+  & li {
+    list-style: none;
+  }
+
 }
