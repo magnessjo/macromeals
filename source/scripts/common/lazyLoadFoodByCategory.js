@@ -3,7 +3,7 @@ import fetchPostData from 'scripts/helpers/fetchPostData.js';
 
 // Variables
 
-const groups = Array.from(document.querySelectorAll('.enteries-group'));
+const groups = Array.from(document.querySelectorAll('.entries-group'));
 
 // Create Meal
 
@@ -63,7 +63,7 @@ function createMeal(data, parent) {
 
     container.appendChild(link);
 
-    parent.appendChild(container);
+    parent.insertBefore(container, parent.childNodes[0]);
 
   });
 
@@ -77,7 +77,8 @@ function getMeals(categoryId, group) {
 
   fetchPostData(postData, '/actions/MacroCommerce/Food/productByCategory').then( (response) => {
 
-    createMeal(response.entries, group);
+    const entries = Array.reverse(response.entries);
+    createMeal(entries, group);
 
   });
 

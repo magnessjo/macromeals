@@ -237,6 +237,10 @@
 
 #delivery {
 
+  @media (--large-max) {
+    display: none;
+  }
+
   & > .lock {
     color: var(--green);
 
@@ -287,7 +291,11 @@
 .meals-by-category {
   margin-bottom: 80px;
 
-  & .enteries-group {
+  & .entries {
+    text-align: center;
+  }
+
+  & .entries-group {
 
     @media (--desktop-min) {
       padding: 0 50px;
@@ -305,7 +313,20 @@
 
   & .call-to-action {
     float: right;
-    margin-right: 50px;
+
+    @supports (display:grid) {
+      margin-left: 0;
+
+      @media (--tablet-min) {
+        margin: inherit;
+      }
+
+      @media (--desktop-min) {
+        grid-column-start: 3;
+      }
+
+    }
+
   }
 
 }
