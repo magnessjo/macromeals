@@ -8,13 +8,10 @@ import findParentNode from 'scripts/helpers/findParentNode.js';
 
 // Variables
 
-const modal = document.querySelector('.shipping-modal');
-const showButton = document.querySelector('.show-shipping-modal');
-const closeButton = modal.querySelector('button');
-const loaderAnimation = modal.querySelector('.loader');
-const result = modal.querySelector('.result');
-
 const shippingForm = document.querySelector('#shipping-calculator');
+const loaderAnimation = shippingForm.querySelector('.loader');
+const result = shippingForm.querySelector('.result');
+
 const inputs = shippingForm.querySelectorAll('input:not([type="submit"])')
 const submit = shippingForm.querySelector('input[type="submit"]');
 
@@ -62,24 +59,6 @@ function setRate() {
 
 export default function() {
 
-  showButton.addEventListener('click', () => {
-    modal.setAttribute('aria-hidden', false);
-    result.innerHTML = '';
-
-    ga('send', {
-      hitType: 'event',
-      eventCategory: 'Shipping Modal',
-      eventAction: 'Show',
-      eventLabel: 'Show Shipping Modal'
-    });
-
-  });
-
-  closeButton.addEventListener('click', (e) => {
-    e.preventDefault();
-    modal.setAttribute('aria-hidden', true);
-  });
-
   shippingForm.addEventListener('submit', (e) => {
 
     e.preventDefault();
@@ -89,6 +68,13 @@ export default function() {
 
     const isValid = checkFormFieldsForValidAttribute(inputs);
     if (isValid) setRate();
+
+    ga('send', {
+      hitType: 'event',
+      eventCategory: 'Shipping quote',
+      eventAction: 'Show',
+      eventLabel: 'Get Shipping Quote'
+    });
 
   });
 

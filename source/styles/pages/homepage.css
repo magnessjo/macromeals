@@ -333,13 +333,30 @@
   & .shipping {
 
     & ul {
-      margin-bottom: 20px;
       overflow: hidden;
+      margin-bottom: 40px;
+      display: grid;
+      grid-template-columns: 1fr;
+      padding-left: 20px;
+
+      @media (--large-min) {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      @media (--desktop-min) {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+
     }
 
     & li {
       list-style: none;
       margin-bottom: 5px;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+
     }
 
     & .text {
@@ -352,139 +369,43 @@
 
     & .columns {
       padding: 30px;
-      background-color: white;
-      display: flex;
+      background-color: var(--white);
+      padding: 40px;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
       margin-bottom: 40px;
-      align-items: center;
-
-      @supports (display: grid) {
-        display: grid;
-      }
-
-      & .state-summary {
-        width: 280px;
-
-        & h2 {
-          text-transform: uppercase;
-          margin-bottom: 10px;
-        }
-
-        & p {
-          margin-bottom: 5px;
-          padding-left: 10px;
-        }
-
-        & > div {
-          margin-bottom: 20px;
-
-          &:last-of-type {
-            margin-bottom: 0;
-          }
-
-        }
-
-      }
-
-      & .map {
-        width: calc(100% - 600px);
-        display: none;
-
-        @supports (display: grid) {
-          display: block;
-        }
-
-      }
-
-      & .map img {
-        height: 100%;
-        width: 100%;
-      }
-
     }
 
     & form {
-      width: 280px;
-      margin-left: auto;
+      position: relative;
 
-      /*& input[type="submit"] {
-        background-color: white;
-        color: green;
-      }*/
+      & .result {
+        clear: both;
+
+        & p {
+          padding-top: 20px;
+          margin-bottom: 0;
+          text-align: center;
+        }
+
+        & span {
+          display: block;
+          font-family: var(--acuminSemiBold);
+          font-size: 22px;
+        }
+
+      }
 
     }
 
   }
 
-}
+  & .pickups {
 
-.shipping-modal {
-  z-index: 999;
-  position: fixed;
-  background-color: rgba(0, 0, 0, .5);
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-
-  &[aria-hidden="true"] {
-    display: none;
-  }
-
-  &[aria-hidden="false"] {
-    display: block;
-  }
-
-  & form {
-    padding: 50px;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    background-color: var(--white);
-    position: fixed;
-
-    @media (--medium-max) {
-      width: calc(100% - 20px);
-    }
-
-    @media (--large-min) {
-      min-width: 500px;
-      width: 30vw;
-    }
-
-  }
-
-  & button {
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    font-size: 22px;
-  }
-
-  & input {
-    min-width: 150px;
-  }
-
-  & .two-column {
-
-    @media (--tablet-min) {
+    & ul {
       margin-bottom: 0;
-    }
-
-  }
-
-  & .result {
-    clear: both;
-
-    & p {
-      padding-top: 20px;
-      margin-bottom: 0;
-      text-align: center;
-    }
-
-    & span {
       display: block;
-      font-family: var(--acuminSemiBold);
-      font-size: 22px;
     }
 
   }
