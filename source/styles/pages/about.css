@@ -1,71 +1,29 @@
 
 @import "../master.css";
 
-#stage {
-  overflow: visible;
+.slim-stage .image {
+  background-image: url(/images/stage/running.jpg);
+}
 
-  @media (--large-min) {
-    height: 15vh;
-    min-height: 250px;
-  }
+.beginning {
+  margin: 0 auto;
+  display: block;
+  background-image: url(/images/about/test.jpg);
+  background-position: center;
+  height: 60vh;
+  width: 100vw;
+  background-attachment: fixed;
+  background-size: cover;
+  position: relative;
+  box-shadow: inset 0 0 7px 1px #000;
 
-  & .image {
-    background-image: url(/images/stage/chopping.jpg);
-    background-position: top right;
-    background-size: cover;
-    overflow: hidden;
-    position: relative;
-    width: 100%;
-
-    @media (--medium-max) {
-      height: 150px;
-      background-position: right center;
-    }
-
-    &:before {
-      content: "";
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background-color: rgba(255, 255, 255, .7);
-    }
-
-    @media (--large-min) {
-      height: 100%;
-      width: 100%;
-      background-position: center;
-    }
-
-  }
-
-  & .text {
-    color: var(--black);
-    z-index: 9;
-    text-transform: uppercase;
+  & > div {
     position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    text-align: center;
-    width: 100%;
-
-    & h1 {
-      line-height: 1em;
-      position: relative;
-      font-family: var(--acuminLightItalic);
-      font-size: calc(22px + 2.5vw);
-
-      & span {
-        display: block;
-        margin-bottom: 0;
-        line-height: 1em;
-        font-family: var(--acuminExtraLight);
-        font-size: calc(14px + 1.5vw);
-      }
-
-    }
-
+    top: -5vh;
+    bottom: -5vh;
+    background-color: rgba(0, 0, 0, .5);
+    left: 10vw;
+    right: 10vw;
   }
 
 }
