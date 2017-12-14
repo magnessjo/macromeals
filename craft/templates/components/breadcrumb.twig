@@ -1,6 +1,5 @@
 
 {% set segment = craft.request().getLastSegment() %}
-{% set isCurrentUserLocal = currentUser is not null and currentUser.isInGroup('marylandLocal') %}
 
 <div class="cart-breadcrumb">
 
@@ -30,38 +29,29 @@
 
       {% if segment=="checkout" %}
         <p class='active'>Customer <span>Information</span></p>
-        {% if isCurrentUserLocal %}
-          <p>Shipping <span>Method</span></p>
-        {% endif %}
+        <p>Shipping <span>Method</span></p>
         <p><span>Order</span> Summary</p>
         <p><span>Order</span> Billing</p>
       {% endif %}
 
-      {% if isCurrentUserLocal %}
 
-        {% if segment=="shipping-method" %}
-          <a href="/checkout" class='completed'>Customer <span>Information</span></a>
-          <p class='active'>Shipping <span>Method</span></p>
-          <p><span>Order</span> Summary</p>
-          <p><span>Order</span> Billing</p>
-        {% endif %}
-
+      {% if segment=="shipping-method" %}
+        <a href="/checkout" class='completed'>Customer <span>Information</span></a>
+        <p class='active'>Shipping <span>Method</span></p>
+        <p><span>Order</span> Summary</p>
+        <p><span>Order</span> Billing</p>
       {% endif %}
 
       {% if segment=="summary" %}
         <a href="/checkout" class='completed'>Customer <span>Information</span></a>
-        {% if isCurrentUserLocal %}
-          <a href="/checkout/shipping-method" class='completed'>Shipping <span>Method</span></a>
-        {% endif %}
+        <a href="/checkout/shipping-method" class='completed'>Shipping <span>Method</span></a>
         <p class="active"><span>Order</span> Summary</p>
         <p><span>Order</span> Billing</p>
       {% endif %}
 
       {% if segment=="billing" %}
         <a href="/checkout" class='completed'>Customer <span>Information</span></a>
-        {% if isCurrentUserLocal %}
-          <a href="/checkout/shipping-method" class='completed'>Shipping <span>Method</span></a>
-        {% endif %}
+        <a href="/checkout/shipping-method" class='completed'>Shipping <span>Method</span></a>
         <a href="/checkout/summary" class='completed'><span>Order</span> Summary</a>
         <p class="active"><span>Order</span> Billing</p>
       {% endif %}
