@@ -33,55 +33,66 @@
           <div class="shop-details">
             <h2>Delivery</h2>
           </div>
-          <button data-zip="{{ shippingModel.zipCode ?? addresses.zipCode ?? '' }}" {% if currentShippingMethod.handle == 'overnight' %} disabled {% endif %}>Select</button>
+          {% if currentShippingMethod.handle == 'overnight' %}
+            <button data-zip="{{ shippingModel.zipCode ?? addresses.zipCode ?? '' }}" disabled>Selected</button>
+          {% else %}
+            <button data-zip="{{ shippingModel.zipCode ?? addresses.zipCode ?? '' }}">Select</button>
+          {% endif %}
        </div>
 
        <div class="pickup-options">
-         <button>Show Pickup Options for Maryland Customers</button>
+         <button class="show-pickups">Pickup Options for Maryland Customers</button>
 
          <div class="pickup-list">
 
-           <p>Shipping Options <span>Options for Baltimore County and North Harford county are coming soon!</span></p>
+           <div class="wrapper">
 
-             {% for handle, method in craft.commerce.availableShippingMethods  %}
+              <p>Shipping Options <span>Options for Baltimore County and North Harford county are coming soon!</span></p>
 
-               {% if handle == 'abingdonPostManPlus' %}
+              {% for handle, method in craft.commerce.availableShippingMethods  %}
 
-                <div class="shipping-type" data-handle="{{ handle }}" data-name="{{ method.name }}" data-cost="0">
-                  <div class="shop-details">
-                    <h2>Post Man Plus</h2>
-                    <address>
-                      <p>3438 Emmorton Rd<br> Abingdon, MD 21009</p>
-                    </address>
-                    <a target="_blank" href="https://www.google.com/maps/place/Postman+Plus/@39.4674016,-76.3152994,17z/data=!3m1!4b1!4m7!3m6!1s0x0:0xf0f6718230cd08b7!8m2!3d39.4674016!4d-76.3131107!9m1!1b1">View on Map</a>
-                  </div>
-                  <div class="map">
-                    <div id="postManPlusMap"></div>
-                  </div>
-                 <button {% if currentShippingMethod.handle == handle %} disabled {% endif %}>Select</button>
-               </div>
+                {% if handle == 'abingdonPostManPlus' %}
 
-               {% endif %}
+                 <div class="shipping-type" data-handle="{{ handle }}" data-name="{{ method.name }}" data-cost="0">
+                   <div class="shop-details">
+                     <h2>Post Man Plus</h2>
+                     <address>
+                       <p>3438 Emmorton Rd<br> Abingdon, MD 21009</p>
+                     </address>
+                     <a target="_blank" href="https://www.google.com/maps/place/Postman+Plus/@39.4674016,-76.3152994,17z/data=!3m1!4b1!4m7!3m6!1s0x0:0xf0f6718230cd08b7!8m2!3d39.4674016!4d-76.3131107!9m1!1b1">View on Map</a>
+                   </div>
+                   <div class="map">
+                     <div id="postManPlusMap"></div>
+                   </div>
+                   {% if currentShippingMethod.handle == handle %}
+                    <button disabled>Selected</button>
+                   {% else %}
+                    <button disabled>Select</button>
+                   {% endif %}
 
-             {% endfor %}
+                </div>
 
-             {# <div class="shipping-type" data-handle="betterHandle" data-name="Better Name" data-cost="0">
-               <div class="shop-details">
-                 <h2>Harford Pack & Ship</h2>
-                 <address>
-                   <p>15 E Churchville Rd<br>Bel Air, MD 21014</p>
-                 </address>
-                 <a target="_blank" href="https://www.google.com/maps/place/Harford+Pack+%26+Ship/@39.5368548,-76.3499856,17.19z/data=!4m12!1m6!3m5!1s0x0:0x4c98b3c65231cd99!2sUnited+States+Postal+Service!8m2!3d39.5288131!4d-76.3614044!3m4!1s0x0:0xbfee7307036b8e3!8m2!3d39.534975!4d-76.3466113">View on Map</a>
-               </div>
-               <div class="map">
-                 <div id="harfordPackMap"></div>
-               </div>
-               <button>Select</button>
-            </div> #}
+                {% endif %}
 
-           </div>
+              {% endfor %}
 
-         </div>
+                  {# <div class="shipping-type" data-handle="betterHandle" data-name="Better Name" data-cost="0">
+                    <div class="shop-details">
+                      <h2>Harford Pack & Ship</h2>
+                      <address>
+                        <p>15 E Churchville Rd<br>Bel Air, MD 21014</p>
+                      </address>
+                      <a target="_blank" href="https://www.google.com/maps/place/Harford+Pack+%26+Ship/@39.5368548,-76.3499856,17.19z/data=!4m12!1m6!3m5!1s0x0:0x4c98b3c65231cd99!2sUnited+States+Postal+Service!8m2!3d39.5288131!4d-76.3614044!3m4!1s0x0:0xbfee7307036b8e3!8m2!3d39.534975!4d-76.3466113">View on Map</a>
+                    </div>
+                    <div class="map">
+                      <div id="harfordPackMap"></div>
+                    </div>
+                    <button>Select</button>
+                 </div> #}
+
+          </div>
+
+        </div>
 
        </div>
 

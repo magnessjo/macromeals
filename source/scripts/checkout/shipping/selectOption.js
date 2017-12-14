@@ -53,8 +53,10 @@ export default function() {
       buttons.forEach((btn) => {
         if (btn == button) {
           btn.disabled = true;
+          btn.innerHTML = 'Selected';
         } else {
           btn.disabled = false;
+          btn.innerHTML = 'Select';
         }
       });
 
