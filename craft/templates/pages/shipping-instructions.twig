@@ -1,0 +1,92 @@
+
+{% extends "_layout" %}
+{% includeCssFile "/shippingInstructions.css" %}
+{% includeJsFile "/shippingInstructions.js" %}
+
+{% block main %}
+
+  <section id="stage" class="slim-stage">
+    <div class="image"></div>
+    <div class="lock">
+      <h1 class="acumin-stage"><div>Shipping & Pickups</div></h1>
+    </div>
+  </section>
+
+  <section id="shipping-info">
+
+    <div class="lock">
+
+      <div class="shipping">
+
+          <div class="text">
+            <p>We ship FedEx priority overnight to every state in the United States.</p>
+            <p>We ship FedEx ground overnight to the areas indicated below to reduce your shipping cost.  We offer <span>$10</span> shipping for orders over $50 for the areas listed.</p>
+            <div class="columns">
+
+              <div class="states">
+                <p>Most areas in states:</p>
+                <ul>
+                  <li>Maryland</li>
+                  <li>Delaware</li>
+                  <li>New Jersey</li>
+                  <li>Virginia</li>
+                  <li>Pennsylvania</li>
+                  <li>New York</li>
+                  <li>Rhode Island</li>
+                  <li>North Carolina</li>
+                  <li>West Virginia</li>
+                  <li>Massachusetts</li>
+                </ul>
+              </div>
+
+              <form id="shipping-calculator">
+
+                <div class="loader"></div>
+
+                <p>Get a quote for your zip code:</p>
+
+                <div class="field" data-required="true" valid="false">
+                  <label for="zipCode"><span>Zip Code</span></label>
+                  <div class="input">
+                    <input type="number"
+                           name="zipCode"
+                           id="zipCode"
+                           placeholder=""
+                           maxlength="5" />
+
+                    <div class="errors">
+                      <p class="required">Zip Code is a required field</p>
+                    </div>
+                  </div>
+                </div>
+
+                <input type="submit" value="Get Estimate" />
+                <div class="result"></div>
+
+              </form>
+
+            </div>
+
+            <div class="pickups">
+
+              <p>We have several pickup locations in the Maryland area.  Pickup shipping cost is <span>$0</span>.</p>
+              <p>Pickup locations include:</p>
+              <ul>
+                <li>Post Man Plus: Abingdon, Maryland</li>
+                <li>Canton, Maryland (coming soon)</li>
+                <li>Bel Air, Maryland (coming soon)</li>
+              </ul>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+{% endblock %}

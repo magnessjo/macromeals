@@ -237,10 +237,6 @@
 
 #delivery {
 
-  @media (--large-max) {
-    display: none;
-  }
-
   & > .lock {
     color: var(--green);
 
@@ -276,7 +272,7 @@
 
   }
 
-  & button {
+  & a {
     text-decoration: underline;
     color: var(--green);
 
