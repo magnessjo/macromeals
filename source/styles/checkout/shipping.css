@@ -71,11 +71,6 @@
       border-top: 1px solid var(--light-gray);
     }
 
-    &:hover {
-      background-color: #FEF6ED;
-      transition: background-color 1s;
-    }
-
     &[data-handle="overnight"] {
       padding: 40px 20px;
 

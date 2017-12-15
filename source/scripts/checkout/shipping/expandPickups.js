@@ -26,9 +26,11 @@ function collapleElement() {
 
 export default function() {
 
-  button.addEventListener('click', () => {
+  button.addEventListener('click', e => {
 
     const isShowing = button.getAttribute('showing');
+
+    e.preventDefault();
 
     if (isShowing) {
       collapleElement();

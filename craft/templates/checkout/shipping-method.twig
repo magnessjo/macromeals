@@ -47,8 +47,6 @@
 
            <div class="wrapper">
 
-              <p>Shipping Options <span>Options for Baltimore County and North Harford county are coming soon!</span></p>
-
               {% for handle, method in craft.commerce.availableShippingMethods  %}
 
                 {% if handle == 'abingdonPostManPlus' %}
@@ -67,7 +65,7 @@
                    {% if currentShippingMethod.handle == handle %}
                     <button disabled>Selected</button>
                    {% else %}
-                    <button disabled>Select</button>
+                    <button>Select</button>
                    {% endif %}
 
                 </div>
@@ -75,6 +73,8 @@
                 {% endif %}
 
               {% endfor %}
+
+              <p>Shipping Options <span>Options for Baltimore County and North Harford county are coming soon!</span></p>
 
                   {# <div class="shipping-type" data-handle="betterHandle" data-name="Better Name" data-cost="0">
                     <div class="shop-details">

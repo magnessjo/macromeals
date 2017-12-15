@@ -8,7 +8,7 @@ import fetchPostData from 'scripts/helpers/fetchPostData.js';
 
 const form = document.querySelector('form#pickup-options');
 const shippingList = form.querySelector('#pickup-list');
-const buttons = Array.from(shippingList.querySelectorAll('button'));
+const buttons = Array.from(shippingList.querySelectorAll('button:not(.show-pickups)'));
 const hiddenInput = form.querySelector('input[name="shippingMethod"]');
 const shippingSummary = document.querySelector('#shipping-summary');
 const shippingSummaryMethod = shippingSummary.querySelector('.summary-method span');
