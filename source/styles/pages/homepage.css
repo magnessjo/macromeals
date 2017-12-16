@@ -330,16 +330,12 @@
 
 }
 
-#shipping-info {
+#macros {
   background-color: var(--light-green);
   overflow: hidden;
   padding: 40px 0;
-  box-shadow: inset 0 0 4px 1px #333;
-
-  & a {
-    color: white;
-    text-decoration: underline;
-  }
+  /* box-shadow: inset 0 0 4px 1px #333; */
+  color: black;
 
   & .headline-with-underline {
     color: white;
@@ -350,84 +346,57 @@
 
   }
 
-  & .shipping {
+  & h2 {
+    font-size: calc(18px + .7vw);
+    line-height: 1.4em;
+    font-family: var(--acuminThinItalic);
+    text-transform: uppercase;
+  }
 
-    & ul {
-      overflow: hidden;
-      margin-bottom: 40px;
-      display: grid;
-      grid-template-columns: 1fr;
-      padding-left: 20px;
+  & .columns {
 
-      @media (--large-min) {
-        grid-template-columns: 1fr 1fr;
-      }
-
-      @media (--desktop-min) {
-        grid-template-columns: 1fr 1fr 1fr;
-      }
-
-    }
-
-    & li {
-      list-style: none;
-      margin-bottom: 5px;
-
-      &:last-of-type {
-        margin-bottom: 0;
-      }
-
-    }
-
-    & .text {
-
-      & span {
-        font-family: var(--acuminBold);
-      }
-
-    }
-
-    & .columns {
-      padding: 30px;
-      background-color: var(--white);
-      padding: 40px;
-      width: 100%;
-      max-width: 800px;
-      margin: 0 auto;
-      margin-bottom: 40px;
-    }
-
-    & form {
-      position: relative;
-
-      & .result {
-        clear: both;
-
-        & p {
-          padding-top: 20px;
-          margin-bottom: 0;
-          text-align: center;
-        }
-
-        & span {
-          display: block;
-          font-family: var(--acuminSemiBold);
-          font-size: 22px;
-        }
-
-      }
-
+    @media (--tablet-min) {
+      display: flex;
+      justify-content: space-between;
     }
 
   }
 
-  & .pickups {
+  & .text {
 
-    & ul {
-      margin-bottom: 0;
-      display: block;
+    @media (--tablet-min) {
+      width: 70%;
+    }
+
+    & p {
+      line-height: 1.7em;
+      font-size: 18px;
     }
 
   }
+
+  & .pie {
+    box-shadow: inset 0 0 4px 1px #333;
+    background-color: var(--white);
+    padding: 10px;
+    border-radius: 50%;
+
+    @media (--tablet-min) {
+      width: 30%;
+      margin-left: 40px;
+    }
+
+  }
+
+  & img {
+    margin: 0 auto;
+    height: auto;
+  }
+
+  & .call-to-action {
+    background-color: var(--white);
+    color: var(--green);
+  }
+
 
 }
