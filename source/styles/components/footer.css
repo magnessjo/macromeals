@@ -125,7 +125,7 @@ footer {
     padding: 20px 0;
     color: var(--white);
     position: relative;
-    background-color: #7c6650;
+    background-color: var(--brown);
 
     & p, & a {
       display: inline-block;
