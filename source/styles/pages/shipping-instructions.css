@@ -1,0 +1,105 @@
+
+@import "../master.css";
+
+.slim-stage .image {
+  background-image: url(/images/stage/shipping.jpg);
+}
+
+#shipping-info {
+  overflow: hidden;
+
+  & a {
+    color: white;
+    text-decoration: underline;
+  }
+
+  & .headline-with-underline {
+    color: white;
+
+    &:before {
+      background-color: white;
+    }
+
+  }
+
+  & .shipping {
+
+    & ul {
+      overflow: hidden;
+      margin-bottom: 40px;
+      display: grid;
+      grid-template-columns: 1fr;
+      padding-left: 20px;
+
+      @media (--large-min) {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      @media (--desktop-min) {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+
+    }
+
+    & li {
+      list-style: none;
+      margin-bottom: 5px;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+
+    }
+
+    & .text {
+
+      & span {
+        font-family: var(--acuminBold);
+      }
+
+    }
+
+    & .columns {
+      padding: 30px;
+      background-color: var(--white);
+      padding: 40px;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+      margin-bottom: 40px;
+    }
+
+    & form {
+      position: relative;
+
+      & .result {
+        clear: both;
+
+        & p {
+          padding-top: 20px;
+          margin-bottom: 0;
+          text-align: center;
+        }
+
+        & span {
+          display: block;
+          font-family: var(--acuminSemiBold);
+          font-size: 22px;
+        }
+
+      }
+
+    }
+
+  }
+
+  & .pickups {
+
+    & ul {
+      margin-bottom: 0;
+      display: block;
+    }
+
+  }
+
+}

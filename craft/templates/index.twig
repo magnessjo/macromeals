@@ -25,17 +25,8 @@
 
     <section id="page-navigation">
       <div>
-        <a href="/shop/quick-order"><div>Quick <span>Order Form</span></div></a>
         <a href="/pages/macros"><div>What Are <span>Macronutrients</span></div></a>
         <a href="/pages/about"><div>About <span>Macro Meals</span></div></a>
-      </div>
-    </section>
-
-    <section id="delivery">
-      <div class="lock">
-        <img src="/images/icons/delivery-truck-green.svg" />
-        <p>Interested in delivery or pickup options?</p>
-        <button class="shipping-information">Learn More</button>
       </div>
     </section>
 
@@ -62,81 +53,25 @@
 
     </section>
 
-    <section id="shipping-info">
+    <section id="macros" class="callout">
 
       <div class="lock">
 
-        <div class="shipping">
+        <div class="columns">
 
-            <div class="text">
-              <h1 class="headline-with-underline">Shipping & Pickups</h1>
-              <p>We ship FedEx priority overnight to every state in the United States.</p>
-              <p>We ship FedEx ground overnight to the areas indicated below to reduce your shipping cost.  We offer <span>$10</span> shipping for orders over $50 for the areas listed.</p>
-              <div class="columns">
+          <div class="text">
+            <h1 class="headline-with-underline">Macronutrients</h1>
+            <p>There are three macronutrients; carbohydrates, protein, and fats. These are what comprise the entire calorie content of all foods. Eating a healthy well balanced diet includes all of these nutrient. The ratio may differ based upon a number of different factors including size and age.  </p>
+            <p>Research shows that tracking your macronutrient intake has far better health benefits than simply calorie counting. Meals based on counting macronutrients ensure a well balanced diet, which can be tailored to meet any individual’s particular goals.</p>
+            <p>Macro Meals labels each meals with a pie chart of the macronutrient profile. There is also a modified version of the traditional nutrition facts. Giving you the tools to aid you in selecting the correct meal for your activity level or fitness goals.</p>
+            <a href="/pages/macros" class="call-to-action">Learn More</a>
+          </div>
 
-                <div class="states">
-                  <p>Most areas in states:</p>
-                  <ul>
-                    <li>Maryland</li>
-                    <li>Delaware</li>
-                    <li>New Jersey</li>
-                    <li>Virginia</li>
-                    <li>Pennsylvania</li>
-                    <li>New York</li>
-                    <li>Rhode Island</li>
-                    <li>North Carolina</li>
-                    <li>West Virginia</li>
-                    <li>Massachusetts</li>
-                  </ul>
-                </div>
-
-                <form id="shipping-calculator">
-
-                  <div class="loader"></div>
-
-                  <p>Get a quote for your zip code:</p>
-
-                  <div class="field" data-required="true" valid="false">
-                    <label for="zipCode"><span>Zip Code</span></label>
-                    <div class="input">
-                      <input type="number"
-                             name="zipCode"
-                             id="zipCode"
-                             placeholder=""
-                             maxlength="5" />
-
-                      <div class="errors">
-                        <p class="required">Zip Code is a required field</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <input type="submit" value="Get Estimate" />
-                  <div class="result"></div>
-
-                </form>
-
-              </div>
-
-              <div class="pickups">
-
-                <p>We have several pickup locations in the Maryland area.  Pickup shipping cost is <span>$0</span>. Please visit are <a href="pages/faq/#pickups">faq section on pickups</a> for complete details.</p>
-                <p>Pickup locations include:</p>
-                <ul>
-                  <li>Post Man Plus: Abingdon, Maryland</li>
-                  <li>Canton, Maryland (coming soon)</li>
-                  <li>Bel Air, Maryland (coming soon)</li>
-                </ul>
-
-              </div>
-
-            </div>
-
+          <div class="pie">
+            <img src="/images/homepage/pie-chart.png" alt="pie chart example" />
           </div>
 
         </div>
-
-
 
       </div>
 
@@ -157,6 +92,57 @@
             <div class="entries-group" data-category-id="{{ seasonalCategory.id }}">
               <a href="/shop" class="call-to-action">See all Meals</a>
             </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section id="shipping" class="callout">
+
+      <div class="lock">
+
+        <div class="columns">
+
+          <div class="text">
+            <h1 class="headline-with-underline">Shipping & Pickups</h1>
+            <p>A successful diet or workout program requires nutrient dense meals.  Every meal that we prepare is delivered to you as fresh as possible due to frozen food having a reduction in the amount of nutrients compared to fresh food.  Plus, fresh food tastes better!</p>
+            <p>We provide shipping options based on your zip code to reduce your shipping cost as much as possible.  We also have pickup locations in Maryland and can schedule pickups at local farmer markets that we attend.</p>
+            <a href="/pages/shipping-instructions" class="call-to-action">Learn More</a>
+          </div>
+
+          <div class="image">
+            <img src="/images/homepage/shipping.jpg" alt="image of a delivery" />
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section id="help" class="callout">
+
+      <div class="lock">
+
+        <h1 class="headline-with-underline">Need Help</h1>
+
+        <div class="columns">
+
+          <div class="image">
+            <img src="/images/homepage/confused.png" alt="image of a confused kitten" />
+          </div>
+
+          <div class="text">
+            <p>Not sure what meals are right for your activity level?</p>
+            <p>Not sure if you should be eating more protein or carbs?</p>
+            <p>Need workout recommendations?</p>
+            <p>Need a friend to watch your dog while your away? (our potato peeler Josh will)</p>
+            <p>Let us know any questions that you have!</p>
+            <p class="here">We are here to help!</p>
+            <a href="mailto:info@macromeals.life" class="call-to-action">Contact Us</a>
           </div>
 
         </div>
