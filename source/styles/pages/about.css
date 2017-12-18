@@ -280,94 +280,6 @@
 
   }
 
-  & .lifting {
-    grid-column-start: 1;
-    grid-column-end: 5;
-    grid-row-start: 1;
-    grid-row-end: span 2;
-
-    &:before {
-      background-image: url(/images/about/example-lifting.jpg);
-    }
-
-    &:after {
-      background-color: rgba(144, 66, 63, .8);
-    }
-
-  }
-
-  & .hiking {
-    grid-column-start: 1;
-    grid-column-end: 5;
-    grid-row-start: 3;
-    grid-row-end: span 2;
-
-    & > p {
-      color: var(--green);
-    }
-
-    &:before {
-      background-image: url(/images/about/example-hiking.jpg);
-      background-position: bottom;
-    }
-
-    &:after {
-      background-color: rgba(255, 255, 255, .8);
-    }
-
-  }
-
-  & .marathon {
-    grid-column-start: 1;
-    grid-column-end: 5;
-    grid-row-start: 5;
-    grid-row-end: span 2;
-
-    &:before {
-      background-image: url(/images/about/example-marathon.jpg);
-    }
-
-    &:after {
-      background-color: rgba(49, 87, 125, .8);
-    }
-
-  }
-
-  & .happy {
-    grid-column-start: 5;
-    grid-row-start: 1;
-    grid-row-end: span 6;
-
-    &:before {
-      background-image: url(/images/about/example-happy.jpg);
-    }
-
-    &:after {
-      background-color: rgba(101, 147, 49, .8);
-    }
-
-    & .text {
-      justify-content: center;
-    }
-
-  }
-
-  & .logo {
-
-    &:before {
-      background-size: 80%;
-      background-repeat: no-repeat;
-      transform: rotate(90deg);
-      background-position: center;
-      transition: transform .5s;
-    }
-
-    &:after {
-      display: none;
-    }
-
-  }
-
 }
 
 .scroll-animation {
@@ -386,24 +298,6 @@
 
   & .two-column-text .summary p span:last-of-type:before {
     left: 0;
-  }
-
-  & .image-grid {
-    grid-template-columns: 10vw repeat(3, 1fr) 20vw;
-    grid-template-rows: repeat(6, 10vh);
-
-    & > div:not(.logo):before {
-      transform: scale(1.20);
-    }
-
-    & > div:hover:before {
-      transform: scale(1);
-    }
-
-    & > div:hover:after {
-      background-color: rgba(255, 255, 255, 0);
-    }
-
   }
 
 }
