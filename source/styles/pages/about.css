@@ -135,15 +135,6 @@
   grid-template-columns: repeat(4, 1fr) 10vw;
   grid-template-rows: repeat(4, 15vh);
 
-  &:hover {
-
-    & .logo:before {
-      transform: rotate(0);
-      transition: transform 1s;
-    }
-
-  }
-
   & > div {
     overflow: hidden;
     position: relative;
@@ -218,7 +209,7 @@
 
   }
 
-  & > div:hover:before {
+  & > div:not(.logo):hover:before {
     transform: scale(1.05);
     transition: transform 1s;
   }
@@ -392,13 +383,23 @@
 
 }
 
+.scroll-animation {
 
+  & .logo:before,
+  & .white-logo:before,
+  & .green-logo:before {
+    transform: rotate(0);
+    transition: transform 1s;
+  }
+
+}
 
 #mission {
 
 }
 
 #story {
+  padding-bottom: 200px;
 
   & .two-column-text .summary p {
     text-align: left;

@@ -1,12 +1,16 @@
 
 // Imports
 
-import switchImages from './switch-images.js';
+import pageScroll from './pageScroll';
+
+// Variables
+
+const logos = Array.from(document.querySelectorAll('.image-grid .logo'));
 
 // Load
 
-window.addEventListener('load', () => {
+document.addEventListener('DOMContentLoaded', () => {
 
-  switchImages();
+  pageScroll(logos);
 
 });
