@@ -83,6 +83,7 @@
     & > * {
       line-height: 1.6em;
       font-size: calc(18px + .5vw);
+      font-weight: 300;
     }
 
     & p {
@@ -180,17 +181,27 @@
 
     & .text {
       position: absolute;
-      width: 50%;
-      top: 0;
+      width: 100%;
       left: 0;
-      bottom: 0;
       padding: 10px;
-      overflow-y: scroll;
-      display: flex;
-      align-items: center;
-      background-color: var(--white);
+      background-color: rgba(255, 255, 255, .93);
       transform: translateX(-100%);
       transition: transform .5s;
+      display: flex;
+      align-items: center;
+      height: 100%;
+      z-index: 999;
+
+      & > div {
+        overflow-y: scroll;
+        max-height: 100%;
+        position: relative;
+      }
+
+      & p {
+        margin-bottom: 10px;
+      }
+
     }
 
   }
@@ -237,7 +248,7 @@
 
   & .vegan {
     grid-column-start: 3;
-    grid-column-end: 5;
+    grid-column-end: 6;
     grid-row-start: 1;
     grid-row-end: span 2;
 
@@ -254,7 +265,7 @@
 
   & .chicken {
     grid-column-start: 3;
-    grid-column-end: 5;
+    grid-column-end: 6;
     grid-row-start: 3;
     grid-row-end: span 4;
 
@@ -270,7 +281,7 @@
   }
 
   & .lifting {
-    grid-column-start: 2;
+    grid-column-start: 1;
     grid-column-end: 5;
     grid-row-start: 1;
     grid-row-end: span 2;
@@ -286,7 +297,7 @@
   }
 
   & .hiking {
-    grid-column-start: 2;
+    grid-column-start: 1;
     grid-column-end: 5;
     grid-row-start: 3;
     grid-row-end: span 2;
@@ -307,7 +318,7 @@
   }
 
   & .marathon {
-    grid-column-start: 2;
+    grid-column-start: 1;
     grid-column-end: 5;
     grid-row-start: 5;
     grid-row-end: span 2;
@@ -336,7 +347,7 @@
     }
 
     & .text {
-      width: 100%;
+      justify-content: center;
     }
 
   }
@@ -357,40 +368,9 @@
 
   }
 
-  & .green-logo {
-    background-color: var(--green);
-    grid-column-start: 5;
-    grid-row-start: 1;
-    grid-row-end: span 4;
-
-    &:before {
-      background-image: url(/images/logo/white.svg);
-    }
-
-  }
-
-  & .white-logo {
-    grid-column-start: 1;
-    grid-row-start: 1;
-    grid-row-end: span 6;
-
-    &:before {
-      background-image: url(/images/logo/green.svg);
-      transform: rotate(-90deg);
-    }
-
-  }
-
 }
 
 .scroll-animation {
-
-  & .logo:before,
-  & .white-logo:before,
-  & .green-logo:before {
-    transform: rotate(0);
-    transition: transform 1s;
-  }
 
 }
 
@@ -399,7 +379,6 @@
 }
 
 #story {
-  padding-bottom: 200px;
 
   & .two-column-text .summary p {
     text-align: left;
