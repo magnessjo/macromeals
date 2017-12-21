@@ -46,10 +46,18 @@ function caculateTotal() {
 
 function postSubmission() {
 
-  form.style.display = 'none';
-  submissionConfirmation.style.display = 'block';
-  document.body.scrollTop = 0;
-  document.documentElement.scrollTop = 0;
+  const formRediect = form.getAttribute('data-redirect');
+
+  if (formRediect == 'checkout') {
+    window.location.href = '/checkout';
+  } else {
+
+    form.style.display = 'none';
+    submissionConfirmation.style.display = 'block';
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+
+  }
 
 }
 
