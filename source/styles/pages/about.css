@@ -2,25 +2,43 @@
 @import "../master.css";
 
 #stage {
-  height: calc(80vh - 60px);
-  min-height: 300px;
+  height: inherit;
+
+  @media (--tablet-min) {
+    height: calc(80vh - 60px);
+    min-height: 300px;
+  }
 
   & .image {
+    background-size: cover;
     background-image: url(/images/stage/basket.jpg);
     background-position: left center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
   }
 
   & .white-clip {
-    position: absolute;
     background-color: rgba(255, 255, 255, .91);
-    top: 0;
-    bottom: 0;
-    left: 40%;
-    right: 0;
-    padding: 50px;
+    padding: 20px;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @media (--large-max) {
+      position: relative;
+    }
+
+    @media (--tablet-min) {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 40%;
+      padding: 50px;
+    }
 
     & > div {
       width: 100%;
@@ -76,9 +94,13 @@
   display: flex;
   margin-bottom: 50px;
   align-items: center;
+  flex-wrap: wrap;
 
   & .statement {
-    width: 70%;
+
+    @media (--large-min) {
+      width: 70%;
+    }
 
     & > * {
       line-height: 1.6em;
@@ -93,14 +115,20 @@
   }
 
   & .summary {
-    width: 30%;
+
+    @media (--large-min) {
+      width: 30%;
+    }
 
     & p {
-      text-align: right;
       text-transform: uppercase;
       font-family: var(--acuminThin);
       font-size: calc(24px + 1vw);
       color: var(--green);
+
+      @media (--large-min) {
+        text-align: right;
+      }
 
       & span {
         display: block;
@@ -117,10 +145,14 @@
         content: "";
         position: absolute;
         top: 0;
-        right: 0;
         width: 60%;
         background-color: var(--green);
         height: 1px;
+
+        @media (--large-min) {
+          right: 0;
+        }
+
       }
 
     }
@@ -134,7 +166,11 @@
 .image-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr) 10vw;
-  grid-template-rows: repeat(4, 15vh);
+  grid-template-rows: repeat(3, 15vh);
+
+  @media (--large-min) {
+    grid-template-rows: repeat(4, 15vh);
+  }
 
   & > div {
     overflow: hidden;
@@ -142,6 +178,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    grid-column-start: 1;
+    grid-column-end: 6;
+    grid-row-start: 1;
+    grid-row-end: span 1;
 
     &:before, &:after {
       content: "";
@@ -236,10 +276,13 @@
   }
 
   & .steak {
-    grid-column-start: 1;
-    grid-column-end: 3;
-    grid-row-start: 1;
-    grid-row-end: span 4;
+
+    @media (--large-min) {
+      grid-column-start: 1;
+      grid-column-end: 3;
+      grid-row-start: 1;
+      grid-row-end: span 4;
+    }
 
     &:before {
       background-image: url(/images/about/example-steak.jpg);
@@ -252,10 +295,17 @@
   }
 
   & .vegan {
-    grid-column-start: 3;
-    grid-column-end: 6;
-    grid-row-start: 1;
-    grid-row-end: span 2;
+
+    @media (--medium-max) {
+      grid-row-start: 2;
+    }
+
+    @media (--large-min) {
+      grid-column-start: 3;
+      grid-column-end: 6;
+      grid-row-start: 1;
+      grid-row-end: span 2;
+    }
 
     &:before {
       background-image: url(/images/about/example-vegan.jpg);
@@ -269,10 +319,18 @@
   }
 
   & .chicken {
-    grid-column-start: 3;
-    grid-column-end: 6;
-    grid-row-start: 3;
-    grid-row-end: span 4;
+
+    @media (--medium-max) {
+      grid-row-start: 3;
+    }
+
+    @media (--large-min) {
+      grid-column-start: 3;
+      grid-column-end: 6;
+      grid-row-start: 3;
+      grid-row-end: span 4;
+    }
+
 
     &:before {
       background-image: url(/images/about/example-chicken.jpg);
@@ -293,6 +351,18 @@
 
 #mission {
 
+  & .two-column-text {
+
+    & .summary {
+
+      @media (--large-min) {
+        order: 2;
+      }
+
+    }
+
+  }
+
 }
 
 #story {
@@ -305,4 +375,8 @@
     left: 0;
   }
 
+}
+
+#fact {
+  background: var(--light-yellow);
 }
