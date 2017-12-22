@@ -78,6 +78,10 @@
 
     }
 
+    @supports(display: -ms-grid) {
+      display: flex;
+    }
+
   }
 
   & .meal-entry {
@@ -100,6 +104,16 @@
         margin-bottom: 20px;
       }
 
+    }
+
+    @supports(display: -ms-grid) {
+      @media (--large-min) {
+        width: 45%;
+      }
+
+      @media (--desktop-min) {
+        width: 30%;
+      }
     }
 
     &:hover .meal-detail .overlay {
