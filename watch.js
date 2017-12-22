@@ -28,6 +28,7 @@ const config = {
       about: 'source/styles/pages/about.css',
       generic: 'source/styles/pages/generic.css',
       faq: 'source/styles/pages/faq.css',
+      contact: 'source/styles/pages/contact.css',
       shippingInstructions: 'source/styles/pages/shipping-instructions.css',
       shopdetails: 'source/styles/shop/shopDetails.css',
       quickorder: 'source/styles/shop/quick-order.css',
