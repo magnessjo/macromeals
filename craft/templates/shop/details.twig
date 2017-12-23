@@ -3,6 +3,12 @@
 {% includeCssFile "/shopdetails.css" %}
 {% includeJsFile "/shopdetails.js" %}
 
+{% do craft.sproutSeo.meta({
+  section: 'commerce_products:meals',
+  title: product.title,
+  description: product.variants[0].description|striptags|slice(0, 150),
+}) %}
+
 {% block main %}
 
   <script type="text/javascript">
