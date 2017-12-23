@@ -6,5 +6,109 @@
 
 {% block main %}
 
+<section>
+
+  <div class="lock">
+
+    <form method="POST" id="contact">
+
+      <p class="acumin-medium-bold">Contact</p>
+
+      <div class="field" data-required="true" valid="true">
+        <label for="firstName"><span>First Name</span></label>
+        <div class="input">
+          <input type="text"
+                 name="firstName"
+                 id="firstName"
+                 placeholder="Bob"
+                 value="" />
+
+          <div class="errors">
+           <p class="required">First Name is a required field</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="field" data-required="true" valid="true">
+        <label for="lastName"><span>Last Name</span></label>
+        <div class="input">
+          <input type="text"
+                 name="lastName"
+                 id="lastName"
+                 placeholder="Handsome"
+                 value="" />
+
+            <div class="errors">
+              <p class="required">Last Name is a required field</p>
+            </div>
+
+        </div>
+      </div>
+
+      <div class="field" data-required="true" valid="false">
+        <label for="password"><span>Email Address</span></label>
+        <div class="input">
+          <input type="email"
+                 name="email"
+                 id="email"
+                 validation="checkForEmail"
+                 placeholder="macro-meals-are-great@gmail.com"
+                 value="" />
+
+          <div class="errors">
+            <p class="required">Email is a required field</p>
+            <p class="email">Email Address is invalid</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="field" data-required="true" valid="false">
+        <label for="password"><span>Phone Number</span></label>
+        <div class="input">
+          <input type="text"
+                 name="phone"
+                 id="phone"
+                 placeholder="867-5309 (Jenny)"
+                 value="" />
+
+          <div class="errors">
+            <p class="required">Phone number is a required field</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="field" data-required="true" valid="false">
+        <label for="password"><span>Message</span></label>
+        <div class="input">
+          <textarea type="message"
+                 name="message"
+                 id="message"
+                 validation="checkForLetter"
+                 placeholder="Your Message Here"
+                 value="">
+            </textarea>
+
+          <div class="errors">
+            <p class="required">Message is a required field</p>
+            <p class="letter">Message is invalid</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions">
+        <input type="submit" value="Submit" class="call-to-action">
+      </div>
+
+      <div class="confirmation">
+        <p>Thank you!</p>
+        <p>Your message has been received and we will get respond as soon as possible.</p>
+      </div>
+
+    </form>
+
+  </div>
+
+</section>
+
 
 {% endblock %}
