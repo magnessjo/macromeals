@@ -17,9 +17,9 @@ export default function fetchData(data, url) {
         'X-Requested-With': 'XMLHttpRequest'
       },
       credentials: "same-origin"
-    }).then(function(response) {
+    }).then( (response) => {
       resolve(response.json());
-    }, function(error) {
+    }, (error) => {
       console.log(`error : ${error.message }`);
       reject(error);
     });

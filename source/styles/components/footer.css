@@ -99,10 +99,14 @@ footer {
       }
 
       & > div {
-        display: flex;
-        justify-content: space-between;
-        max-width: 80%;
-        margin: 0 auto;
+
+        @media (--large-min) {
+          display: flex;
+          justify-content: space-between;
+          max-width: 80%;
+          margin: 0 auto;
+        }
+
       }
 
       & a {
@@ -110,6 +114,10 @@ footer {
         background-position: center;
         background-size: contain;
         color: var(--white);
+
+        @media (--medium-max) {
+          margin-right: 20px;
+        }
 
         & span {
           font-size: 32px;
@@ -136,19 +144,19 @@ footer {
     & a {
       position: relative;
 
-      @media (--tablet-min) {
+      @media (--desktop-min) {
         padding-left: 10px;
         margin-left: 10px;
       }
 
-      @media (--large-max) {
+      @media (--tablet-max) {
         display: block;
         margin-top: 10px;
       }
 
       &:before {
 
-        @media (--tablet-min) {
+        @media (--desktop-min) {
           content: "";
           position: absolute;
           left: 0;
@@ -192,7 +200,7 @@ footer {
 
     & span {
 
-      @media (--large-max) {
+      @media (--tablet-max) {
         display: none;
       }
 
@@ -212,6 +220,10 @@ footer {
 
       @media (--large-max) {
         width: 155px;
+      }
+
+      @media (--tablet-max) {
+        width: 205px;
       }
 
     }
