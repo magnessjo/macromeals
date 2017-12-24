@@ -13,6 +13,7 @@ const firstNameInput = form.querySelector('input[name="firstName"]');
 const lastNameInput = form.querySelector('input[name="lastName"]');
 const emailInput = form.querySelector('input[name="email"]');
 const phoneInput = form.querySelector('input[name="phone"]');
+const messageInput = form.querySelector('textarea');
 
 const firstNameParent = findParentNode(firstNameInput, 'field');
 const lastNameParent = findParentNode(lastNameInput, 'field');
@@ -20,7 +21,7 @@ const emailParent = findParentNode(emailInput, 'field');
 const phoneParent = findParentNode(phoneInput, 'field');
 
 const confirmation = document.querySelector('.confirmation');
-const inputs = [firstNameInput, lastNameInput, emailInput, phoneInput];
+const inputs = [firstNameInput, lastNameInput, emailInput, phoneInput, messageInput];
 
 // Function submit
 
@@ -35,7 +36,13 @@ function submitForm(e) {
     if (inputs.length - 1 != i) data += '&';
   });
 
-  fetchData(data, '/actions/users/saveUser').then( (response) => {
+  fetchData(data, '/actions/MacroCommerce/Contact/setEmails').then( (response) => {
+    if( response.success ) {
+      form.style.display = 'none';
+      confirmation.style.display = 'block';
+    } else {
+
+    }
 
   });
 
