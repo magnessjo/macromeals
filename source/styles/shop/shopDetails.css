@@ -260,6 +260,66 @@
 
 #product-actions {
 
+  & .lock {
+
+    @media (--large-min) {
+      display: flex;
+    }
+
+  }
+
+  & .form-text {
+
+    @media (--large-min) {
+      width: 40%;
+      padding-top: 20px;
+    }
+
+    & h1 {
+      margin-bottom: 10px;
+      font-size: 18px;
+      font-family: var(--acuminRegular);
+      text-transform: capitalize;
+
+      & span {
+        display: block;
+        font-size: calc(18px + .5vw);
+        line-height: 1.2em;
+        text-transform: uppercase;
+        margin-bottom: 20px;
+      }
+
+    }
+
+    & ul {
+
+    }
+
+    & li {
+      list-style: none;
+      margin-bottom: 10px;
+      text-transform: capitalize;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+
+    }
+
+  }
+
+  & .form-actions {
+
+    @media (--large-min) {
+      width: 60%;
+    }
+
+  }
+
+  & form {
+    width: 100%;
+  }
+
   & input[type="submit"] {
     margin-right: 10%;
     margin-bottom: 20px;

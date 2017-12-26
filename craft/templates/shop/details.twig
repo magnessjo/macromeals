@@ -50,7 +50,7 @@
 
           </div>
 
-          <h2 class="acumin-medium">Full Nutrition Totals</h2>
+          <h2 class="acumin-medium">Nutrition Totals</h2>
 
           <div class="fact-tab">
 
@@ -116,57 +116,76 @@
 
     <section id="product-actions">
 
-      <form method="POST" id="product-addition" class="fixed-form">
+      <div class="lock">
 
-        {% for purchasable in product.variants %}
+        <div class="form-text">
 
-          <div class="variant-row input-container">
-            <div class="flex">
+          <h1><span>{{ product.title }}</span> available options:</h1>
+          <ul>
+          {% for purchasable in product.variants %}
+            <li>{{ purchasable.description }}</li>
+          {% endfor %}
+          </ul>
 
-              <input type="hidden" name="qty" value="0">
-              <input type="hidden" name="purchasableId" value="{{ purchasable.purchasableId }}">
-              <div class="size">{{ purchasable.description }}</div>
-              <div class="price">
-                {% if purchasable.salesApplied | length > 0 %}
-                  <div class="sale-price"><span>{{ purchasable.price | commerceCurrency(cart.currency) }}</span></div>
-                {% endif %}
-                <span>{{ purchasable.salePrice | commerceCurrency(cart.currency) }}</span>
-              </div>
-
-              <div class="quantity field" valid="true">
-                <div class="input">
-                  <input type="number"
-                         pattern="\d*"
-                         value="0"
-                         data-id="{{ purchasable.purchasableId }}"
-                         validation="checkForNumber" />
-                </div>
-              </div>
-            </div>
-
-            {% include "components/stock-error.twig" %}
-
-          </div>
-
-        {% endfor %}
-
-        <div class="summary">
-          <div class="variant-row">
-            <div class="flex">
-              <p class="acumin-small-bold">Total</p>
-              <p class="acumin-small-bold quantity" data-total="price"></p>
-            </div>
-          </div>
-          <input type="submit" value="Add To Cart" disabled />
         </div>
 
-      </form>
+        <div class="form-actions">
 
-      <div class="product-post-submission">
-        <p class="acumin-small-bold">Your items have been added to your cart</p>
-        <a href="/checkout" class="call-to-action">Checkout Now</a>
-        <span class="acumin-medium">OR</span>
-        <a href="/shop" class="call-to-action">View More Meals</a>
+          <form method="POST" id="product-addition" class="fixed-form">
+
+            {% for purchasable in product.variants %}
+
+              <div class="variant-row input-container">
+                <div class="flex">
+
+                  <input type="hidden" name="qty" value="0">
+                  <input type="hidden" name="purchasableId" value="{{ purchasable.purchasableId }}">
+                  <div class="size">{{ purchasable.description }}</div>
+                  <div class="price">
+                    {% if purchasable.salesApplied | length > 0 %}
+                      <div class="sale-price"><span>{{ purchasable.price | commerceCurrency(cart.currency) }}</span></div>
+                    {% endif %}
+                    <span>{{ purchasable.salePrice | commerceCurrency(cart.currency) }}</span>
+                  </div>
+
+                  <div class="quantity field" valid="true">
+                    <div class="input">
+                      <input type="number"
+                             pattern="\d*"
+                             value="0"
+                             data-id="{{ purchasable.purchasableId }}"
+                             validation="checkForNumber" />
+                    </div>
+                  </div>
+                </div>
+
+                {% include "components/stock-error.twig" %}
+
+              </div>
+
+            {% endfor %}
+
+            <div class="summary">
+              <div class="variant-row">
+                <div class="flex">
+                  <p class="acumin-small-bold">Total</p>
+                  <p class="acumin-small-bold quantity" data-total="price"></p>
+                </div>
+              </div>
+              <input type="submit" value="Add To Cart" disabled />
+            </div>
+
+          </form>
+
+          <div class="product-post-submission">
+            <p class="acumin-small-bold">Your items have been added to your cart</p>
+            <a href="/checkout" class="call-to-action">Checkout Now</a>
+            <span class="acumin-medium">OR</span>
+            <a href="/shop" class="call-to-action">View More Meals</a>
+          </div>
+
+        </div>
+
       </div>
 
     </section>
