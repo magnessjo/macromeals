@@ -281,10 +281,6 @@ form#product-addition {
 
   }
 
-  & input[type="submit"] {
-    display: none;
-  }
-
   & input[type="number"] {
     margin-bottom: 0;
     text-align: center;

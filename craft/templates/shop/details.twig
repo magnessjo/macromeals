@@ -25,159 +25,148 @@
       </div>
     </section>
 
-    <section id="details">
+    <section id="product-details">
+
+      {% if product.productImage|length > 0 %}
+        {% set image = product.productImage[0].url %}
+      {% else %}
+        {% set image = '/images/products/placeholder.jpg' %}
+      {% endif %}
 
       <div class="lock">
 
-        <div class="flex-wrapper">
+        <div>
+          <h1 class="acumin-medium sr-only">Product Summary</h1>
 
-          <div id="product-actions" class="flex-actions">
-
-            <div class="fixed-wrapper">
-
-              <form method="POST" id="product-addition" class="fixed-form">
-
-                <div class="variant-row descriptions">
-                  <div class="flex">
-                    <div class="size">Options</div>
-                    <div class="price">Price</div>
-                    <div class="quantity">Quantity</div>
-                  </div>
-                </div>
-
-                {% for purchasable in product.variants %}
-
-                  <div class="variant-row input-container">
-                    <div class="flex">
-
-                      <input type="hidden" name="qty" value="0">
-                      <input type="hidden" name="purchasableId" value="{{ purchasable.purchasableId }}">
-                      <div class="size">{{ purchasable.description }}</div>
-                      <div class="price">
-                        {% if purchasable.salesApplied | length > 0 %}
-                          <div class="sale-price"><span>{{ purchasable.price | commerceCurrency(cart.currency) }}</span></div>
-                        {% endif %}
-                        <span>{{ purchasable.salePrice | commerceCurrency(cart.currency) }}</span>
-                      </div>
-
-                      <div class="quantity field" valid="true">
-                        <div class="input">
-                          <input type="number"
-                                 pattern="\d*"
-                                 value="0"
-                                 data-id="{{ purchasable.purchasableId }}"
-                                 validation="checkForNumber" />
-                        </div>
-                      </div>
-                    </div>
-
-                    {% include "components/stock-error.twig" %}
-
-                  </div>
-
-                {% endfor %}
-
-                <div class="summary">
-                  <div class="variant-row">
-                    <div class="flex">
-                      <p class="acumin-small-bold">Total</p>
-                      <p class="acumin-small-bold quantity" data-total="price"></p>
-                    </div>
-                  </div>
-                  <input type="submit" value="Add To Cart" />
-                </div>
-
-              </form>
-
-              <div class="product-post-submission">
-                <p class="acumin-small-bold">Your items have been added to your cart</p>
-                <a href="/checkout" class="call-to-action">Checkout Now</a>
-                <span class="acumin-medium">OR</span>
-                <a href="/shop" class="call-to-action">View More Meals</a>
-              </div>
-
-            </div>
-
-          </div>
-
-          <div id="product-details" class=" flex-descriptions">
+          <div class="intro-wrapper">
 
             {% if product.productSummary %}
-              <p>{{ product.productSummary }}</p>
-            {% endif %}
-
-            {% if product.productImage|length > 0 %}
-              {% set image = product.productImage[0].url %}
-            {% else %}
-              {% set image = '/images/products/placeholder.jpg' %}
+              <p class="summary">{{ product.productSummary }}</p>
             {% endif %}
 
             <div class="product-image">
               <img src="{{ image }}" alt="image of {{ product.title}} {{ product.subTitle }}" />
             </div>
 
-            <h2 class="acumin-medium">Full Nutrition Totals</h2>
+          </div>
 
-            <div class="fact-tab">
+          <h2 class="acumin-medium">Full Nutrition Totals</h2>
 
-              <div class="controller">
-                {% for purchasable in product.variants %}
-                  <button class="{% if purchasable.isDefault %} active-button {% endif %}">{{ purchasable.title }}</button>
-                {% endfor %}
-              </div>
+          <div class="fact-tab">
 
+            <div class="controller">
               {% for purchasable in product.variants %}
+                <button class="{% if purchasable.isDefault %} active-button {% endif %}">{{ purchasable.title }}</button>
+              {% endfor %}
+            </div>
 
-                <div class="fact-info {% if purchasable.isDefault %} active-info {% endif %}" data-type="{{ purchasable.title }}">
+            {% for purchasable in product.variants %}
 
-                  <div class="facts">
+              <div class="fact-info {% if purchasable.isDefault %} active-info {% endif %}" data-type="{{ purchasable.title }}">
 
-                  <div>
+                <div class="facts">
 
-                    {% for row in purchasable.productMacros %}
-                      {% if row.calories %}<p class="acumin-small"><span>CALORIES:</span> {{ row.calories }}</p>{% endif %}
-                      {% if row.protein %}<p class="acumin-small protein"><span>PROTEIN:</span> {{ row.protein }}g</p>{% endif %}
-                      {% if row.carbs %}<p class="acumin-small carbs"><span>CARBS:</span> {{ row.carbs }}g</p>{% endif %}
-                      {% if row.fat %}<p class="acumin-small fat"><span>FAT:</span> {{ row.fat }}g</p>{% endif %}
-                    {% endfor %}
-                  </div>
+                <div>
 
-                  {% include "components/pie-chart.twig" with { 'macros': purchasable.productMacros } %}
+                  {% for row in purchasable.productMacros %}
+                    {% if row.calories %}<p class="acumin-small"><span>CALORIES:</span> {{ row.calories }}</p>{% endif %}
+                    {% if row.protein %}<p class="acumin-small protein"><span>PROTEIN:</span> {{ row.protein }}g</p>{% endif %}
+                    {% if row.carbs %}<p class="acumin-small carbs"><span>CARBS:</span> {{ row.carbs }}g</p>{% endif %}
+                    {% if row.fat %}<p class="acumin-small fat"><span>FAT:</span> {{ row.fat }}g</p>{% endif %}
+                  {% endfor %}
+                </div>
 
-                  </div>
-
-                  {# <div class="full-facts">
-
-                    <div class="table-head">
-                      <div>Item</div>
-                      <div>Calories</div>
-                      <div>Protein</div>
-                      <div>Carbs</div>
-                      <div>Fat</div>
-                    </div>
-
-                    {% for row in purchasable.ingredients %}
-                      <div class="table-row">
-                        <div data-attr="Item"><span>{{ row.item }}</span></div>
-                        <div data-attr="Calories">{{ row.calories }}</div>
-                        <div data-attr="Protein">{{ row.protein }}g</div>
-                        <div data-attr="Carbs">{{ row.carbs }}g</div>
-                        <div data-attr="Fat">{{ row.fat }}g</div>
-                      </div>
-                    {% endfor %}
-
-                  </div> #}
+                {% include "components/pie-chart.twig" with { 'macros': purchasable.productMacros } %}
 
                 </div>
 
-              {% endfor %}
+                {# <div class="full-facts">
 
-            </div>
+                  <div class="table-head">
+                    <div>Item</div>
+                    <div>Calories</div>
+                    <div>Protein</div>
+                    <div>Carbs</div>
+                    <div>Fat</div>
+                  </div>
+
+                  {% for row in purchasable.ingredients %}
+                    <div class="table-row">
+                      <div data-attr="Item"><span>{{ row.item }}</span></div>
+                      <div data-attr="Calories">{{ row.calories }}</div>
+                      <div data-attr="Protein">{{ row.protein }}g</div>
+                      <div data-attr="Carbs">{{ row.carbs }}g</div>
+                      <div data-attr="Fat">{{ row.fat }}g</div>
+                    </div>
+                  {% endfor %}
+
+                </div> #}
+
+              </div>
+
+            {% endfor %}
 
           </div>
 
         </div>
 
+      </div>
+
+    </section>
+
+    <section id="product-actions">
+
+      <form method="POST" id="product-addition" class="fixed-form">
+
+        {% for purchasable in product.variants %}
+
+          <div class="variant-row input-container">
+            <div class="flex">
+
+              <input type="hidden" name="qty" value="0">
+              <input type="hidden" name="purchasableId" value="{{ purchasable.purchasableId }}">
+              <div class="size">{{ purchasable.description }}</div>
+              <div class="price">
+                {% if purchasable.salesApplied | length > 0 %}
+                  <div class="sale-price"><span>{{ purchasable.price | commerceCurrency(cart.currency) }}</span></div>
+                {% endif %}
+                <span>{{ purchasable.salePrice | commerceCurrency(cart.currency) }}</span>
+              </div>
+
+              <div class="quantity field" valid="true">
+                <div class="input">
+                  <input type="number"
+                         pattern="\d*"
+                         value="0"
+                         data-id="{{ purchasable.purchasableId }}"
+                         validation="checkForNumber" />
+                </div>
+              </div>
+            </div>
+
+            {% include "components/stock-error.twig" %}
+
+          </div>
+
+        {% endfor %}
+
+        <div class="summary">
+          <div class="variant-row">
+            <div class="flex">
+              <p class="acumin-small-bold">Total</p>
+              <p class="acumin-small-bold quantity" data-total="price"></p>
+            </div>
+          </div>
+          <input type="submit" value="Add To Cart" disabled />
+        </div>
+
+      </form>
+
+      <div class="product-post-submission">
+        <p class="acumin-small-bold">Your items have been added to your cart</p>
+        <a href="/checkout" class="call-to-action">Checkout Now</a>
+        <span class="acumin-medium">OR</span>
+        <a href="/shop" class="call-to-action">View More Meals</a>
       </div>
 
     </section>
