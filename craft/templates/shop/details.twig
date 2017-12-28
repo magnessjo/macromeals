@@ -120,18 +120,14 @@
 
         <div class="form-text">
 
-          <h1><span>{{ product.title }}</span> available options:</h1>
-          <ul>
-          {% for purchasable in product.variants %}
-            <li>{{ purchasable.description }}</li>
-          {% endfor %}
+          <h1>Add {{ product.title }}<span>To Your Cart</span></h1>
           </ul>
 
         </div>
 
         <div class="form-actions">
 
-          <form method="POST" id="product-addition" class="fixed-form">
+          <form method="POST" id="product-addition">
 
             {% for purchasable in product.variants %}
 
@@ -148,14 +144,17 @@
                     <span>{{ purchasable.salePrice | commerceCurrency(cart.currency) }}</span>
                   </div>
 
-                  <div class="quantity field" valid="true">
+                  <div class="quantity increment field" valid="true">
+                    <button class="icons minus"></button>
                     <div class="input">
                       <input type="number"
                              pattern="\d*"
                              value="0"
                              data-id="{{ purchasable.purchasableId }}"
+                             data-cost="{{ purchasable.price }}"
                              validation="checkForNumber" />
                     </div>
+                    <button class="icons plus"></button>
                   </div>
                 </div>
 
@@ -169,7 +168,7 @@
               <div class="variant-row">
                 <div class="flex">
                   <p class="acumin-small-bold">Total</p>
-                  <p class="acumin-small-bold quantity" data-total="price"></p>
+                  <p class="acumin-small-bold quantity" data-total="price">$0.00</p>
                 </div>
               </div>
               <input type="submit" value="Add To Cart" disabled />

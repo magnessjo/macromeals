@@ -46,21 +46,23 @@
 
     & .controller {
       overflow: hidden;
-      text-align: center;
 
       & button {
         display: inline;
-        width: 100px;
         color: var(--green);
-        text-align: right;
         height: 40px;
         line-height: 40px;
         border-radius: 0;
-        text-transform: capitalize;
+        text-transform: uppercase;
+        float: left;
+        font-family: var(--acuminExtraLightItalic);
+
+        @media (--medium-max) {
+          width: 50%;
+        }
 
         @media (--large-min) {
           width: 200px;
-          text-align: center;
         }
 
       }
@@ -110,7 +112,6 @@
 
     & .facts {
       padding: 30px 0;
-      margin-bottom: 50px;
       border-bottom: 1px solid var(--green);
       border-top: 1px solid var(--green);
 
@@ -264,16 +265,12 @@
 
     @media (--large-min) {
       display: flex;
+      justify-content: space-between;
     }
 
   }
 
   & .form-text {
-
-    @media (--large-min) {
-      width: 40%;
-      padding-top: 20px;
-    }
 
     & h1 {
       margin-bottom: 10px;
@@ -291,42 +288,28 @@
 
     }
 
-    & ul {
-
-    }
-
-    & li {
-      list-style: none;
-      margin-bottom: 10px;
-      text-transform: capitalize;
-
-      &:last-of-type {
-        margin-bottom: 0;
-      }
-
-    }
-
   }
 
   & .form-actions {
 
     @media (--large-min) {
       width: 60%;
+      padding-left: 10%;
     }
 
   }
 
   & form {
     width: 100%;
-  }
 
-  & input[type="submit"] {
-    margin-right: 10%;
-    margin-bottom: 20px;
+    & > div.variant-row:first-of-type {
+      padding-top: 0;
+    }
+
   }
 
   & .variant-row {
-    padding: 20px 10%;
+    padding: 20px 0;
     position: relative;
 
     &:before {
@@ -335,7 +318,7 @@
       bottom: 0;
       height: 1px;
       background-color: var(--green);
-      width: 90%;
+      width: 100%;
       left: 50%;
       transform: translateX(-50%);
     }
@@ -347,12 +330,11 @@
     }
 
     & .size {
-      width: 50%;
+      width: 30%;
       text-transform: capitalize;
     }
 
     & .price {
-      text-align: center;
       width: 20%;
 
       @media (--large-min) {
@@ -379,13 +361,8 @@
     }
 
     & .quantity {
-      width: 30%;
+      width: 100px;
       text-align: center;
-
-      @media (--large-min) {
-        width: 20%;
-      }
-
     }
 
   }
@@ -403,11 +380,6 @@
 
     & .variant-row:before {
       display: none;
-    }
-
-    & .quantity {
-      width: 40%;
-      text-align: right;
     }
 
   }
