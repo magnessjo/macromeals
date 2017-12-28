@@ -42,58 +42,57 @@
 
   }
 
-  & .fact-tab {
+  & .nutrition-headline {
+    font-family: var(--acuminThinItalic);
+    font-size: calc(26px + 1vw);
+    color: var(--green);
+    text-transform: uppercase;
+    line-height: 1em;
+  }
 
-    & .controller {
-      overflow: hidden;
+  & .fact-info {
+    border-bottom: 1px solid var(--green);
+    border-top: 1px solid var(--green);
+    padding: 30px 0;
 
-      & button {
-        display: inline;
-        color: var(--green);
-        height: 40px;
-        line-height: 40px;
-        border-radius: 0;
-        text-transform: uppercase;
-        float: left;
-        font-family: var(--acuminExtraLightItalic);
+    & > div {
+      max-width: 800px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
 
-        @media (--medium-max) {
-          width: 50%;
-        }
-
-        @media (--large-min) {
-          width: 200px;
-        }
-
-      }
-
-      &:last-of-type {
-        margin-left: -4px;
-      }
-
-      & .active-button {
-        background-color: var(--green);
-        color: var(--white);
+      @media (--large-min) {
+        align-items: center;
+        justify-content: space-between;
       }
 
     }
 
-  }
-
-  & .fact-info {
-    display: none;
-
     & .acumin-small {
       margin-bottom: 10px;
+      font-size: 16px;
+      line-height: 1em;
       font-weight: 700;
+      font-family: var(--acuminSemiBold);
+
+      &:first-of-type {
+        text-transform: uppercase;
+        font-size: 20px;
+
+        & span {
+          font-family: var(--acuminSemiBold);
+        }
+
+      }
 
       & span {
-        width: 50%;
-        min-width: 140px;
+        width: 80px;
         display: inline-block;
         font-size: inherit;
         font-weight: 400;
         margin-right: 40px;
+        font-weight: 400;
+        font-family: var(--acuminLight);
       }
 
       &.protein {
@@ -111,23 +110,11 @@
     }
 
     & .facts {
-      padding: 30px 0;
-      border-bottom: 1px solid var(--green);
-      border-top: 1px solid var(--green);
 
-      @media (--large-min) {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      & > div {
-
-        @media (--medium-max) {
-          margin: 0 auto;
-          width: 70%;
-        }
-
+      @media (--large-max) {
+        order: 1;
+        margin-bottom: 30px;
+        width: 100%;
       }
 
     }
@@ -137,120 +124,23 @@
       width: 180px;
       display: block;
 
-      @media (--medium-max) {
-        margin: 0 auto;
+      @media (--large-max) {
+        order: 2;
       }
 
-      @media (--large-min) {
-        margin-left: 50px;
+      @media (--tablet-min) {
+        height: 140px;
+        width: 140px;
+      }
+
+      @media (--desktop-min) {
+        height: 180px;
+        width: 180px;
       }
 
       & canvas {
         max-height: 180px;
         max-width: 180px;
-      }
-
-    }
-
-  }
-
-  & .active-info {
-    display: block;
-  }
-
-  & .table-head, & .table-row {
-    font-size: 14px;
-    padding: 10px;
-
-    @media (--large-min) {
-      display: flex;
-    }
-
-    & div {
-
-      @media (--large-min) {
-        width: 20%;
-      }
-
-    }
-
-  }
-
-  & .table-head {
-
-    @media (--medium-max) {
-      display: none;
-    }
-
-    & > div {
-      text-transform: uppercase;
-      text-align: center;
-    }
-
-  }
-
-  & .table-row {
-
-    @media (--medium-max) {
-      margin-bottom: 30px;
-    }
-
-    &:nth-of-type(odd) {
-
-      @media (--large-min) {
-        background-color: var(--light-gray);
-      }
-
-    }
-
-    & > div {
-      position: relative;
-      padding: 0 5px;
-      text-align: center;
-
-      @media (--medium-max) {
-        padding-left: 50%;
-        margin-bottom: 5px;
-        height: 20px;
-      }
-
-      &:before {
-
-        @media (--medium-max) {
-          content: attr(data-attr);
-          position: absolute;
-          width: calc(50% - 20px);
-          left: 0;
-          text-align: right;
-          text-transform: uppercase;
-        }
-
-      }
-
-    }
-
-    & > div:first-of-type {
-      text-align: left;
-
-      @media (--medium-max) {
-        width: 100%;
-        text-align: center;
-        font-size: 18px;
-        padding-left: 0;
-        margin-bottom: 10px;
-        text-transform: uppercase;
-      }
-
-      & span {
-
-        @media (--medium-max) {
-          border-bottom: 1px solid var(--green);
-        }
-
-      }
-
-      &:before {
-        display: none;
       }
 
     }

@@ -50,24 +50,16 @@
 
           </div>
 
-          <h2 class="acumin-medium">Nutrition Totals</h2>
+          <h2 class="nutrition-headline">Nutrition Totals</h2>
 
-          <div class="fact-tab">
+          <div class="fact-info">
 
-            <div class="controller">
+            <div>
+
               {% for purchasable in product.variants %}
-                <button class="{% if purchasable.isDefault %} active-button {% endif %}">{{ purchasable.title }}</button>
-              {% endfor %}
-            </div>
-
-            {% for purchasable in product.variants %}
-
-              <div class="fact-info {% if purchasable.isDefault %} active-info {% endif %}" data-type="{{ purchasable.title }}">
 
                 <div class="facts">
-
-                <div>
-
+                  <p class="acumin-small"><span>{{ purchasable.title }}</span></p>
                   {% for row in purchasable.productMacros %}
                     {% if row.calories %}<p class="acumin-small"><span>CALORIES:</span> {{ row.calories }}</p>{% endif %}
                     {% if row.protein %}<p class="acumin-small protein"><span>PROTEIN:</span> {{ row.protein }}g</p>{% endif %}
@@ -76,35 +68,13 @@
                   {% endfor %}
                 </div>
 
-                {% include "components/pie-chart.twig" with { 'macros': purchasable.productMacros } %}
+                {% if loop.index0 == 0 %}
+                  {% include "components/pie-chart.twig" with { 'macros': purchasable.productMacros } %}
+                {% endif %}
 
-                </div>
+              {% endfor %}
 
-                {# <div class="full-facts">
-
-                  <div class="table-head">
-                    <div>Item</div>
-                    <div>Calories</div>
-                    <div>Protein</div>
-                    <div>Carbs</div>
-                    <div>Fat</div>
-                  </div>
-
-                  {% for row in purchasable.ingredients %}
-                    <div class="table-row">
-                      <div data-attr="Item"><span>{{ row.item }}</span></div>
-                      <div data-attr="Calories">{{ row.calories }}</div>
-                      <div data-attr="Protein">{{ row.protein }}g</div>
-                      <div data-attr="Carbs">{{ row.carbs }}g</div>
-                      <div data-attr="Fat">{{ row.fat }}g</div>
-                    </div>
-                  {% endfor %}
-
-                </div> #}
-
-              </div>
-
-            {% endfor %}
+            </div>
 
           </div>
 
@@ -190,5 +160,27 @@
     </section>
 
   {% endfor %}
+
+  {# <div class="full-facts">
+
+    <div class="table-head">
+      <div>Item</div>
+      <div>Calories</div>
+      <div>Protein</div>
+      <div>Carbs</div>
+      <div>Fat</div>
+    </div>
+
+    {% for row in purchasable.ingredients %}
+      <div class="table-row">
+        <div data-attr="Item"><span>{{ row.item }}</span></div>
+        <div data-attr="Calories">{{ row.calories }}</div>
+        <div data-attr="Protein">{{ row.protein }}g</div>
+        <div data-attr="Carbs">{{ row.carbs }}g</div>
+        <div data-attr="Fat">{{ row.fat }}g</div>
+      </div>
+    {% endfor %}
+
+  </div> #}
 
 {% endblock %}
