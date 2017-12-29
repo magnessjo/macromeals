@@ -2,17 +2,14 @@
 // Imports
 
 import findParentNode from 'scripts/helpers/findParentNode.js';
-import updateCartItem from 'scripts/helpers/cart/updateCartItem.js';
-import displayCartTotalInHeader from 'scripts/helpers/cart/displayCartTotalInHeader.js';
-import formatStringForDollar from 'scripts/helpers/formatStringForDollar.js';
-import updateCartTotals from 'scripts/helpers/cart/updateCartTotals.js';
+import updateDom from './updateDom.js';
 
 // Variables
 
 const form = document.querySelector('form#product-addition');
 const buttons = Array.from(form.querySelectorAll('.increment button'));
 const inputs = Array.from(form.querySelectorAll('input[type="number"]'));
-const totalElement = form.querySelector('[data-total="price"]');
+
 
 // Disable Buttons
 
@@ -24,22 +21,6 @@ function enableButttons(buttons) {
 
 function disableButttons(buttons) {
   buttons.forEach( (button) => { button.disabled = true });
-}
-
-function updateTotal() {
-
-  let total = 0;
-
-  inputs.forEach( (input) => {
-
-    const id = input.getAttribute('data-id');
-    const cost = input.getAttribute('data-cost');
-    total += parseInt(input.value) * parseFloat(cost);
-
-  });
-
-  totalElement.innerHTML = `$${total}`;
-
 }
 
 
@@ -57,8 +38,9 @@ function update(button, increase) {
     input.value = increase ? 1 : 0;
   }
 
+  updateDom.button();
   disableButttons(buttons);
-  updateTotal();
+  updateDom.total();
 
   setTimeout( () => {
     enableButttons(buttons);
