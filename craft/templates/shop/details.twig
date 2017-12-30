@@ -41,7 +41,10 @@
           <div class="intro-wrapper">
 
             {% if product.productSummary %}
-              <p class="summary">{{ product.productSummary }}</p>
+              <div class="summary">
+                <p>{{ product.productSummary }}</p>
+                <button class="call-to-action" data-action="scroll-to-form">See purchase options</button>
+              </div>
             {% endif %}
 
             <div class="product-image">

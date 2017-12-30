@@ -3,6 +3,10 @@
 
 #product-details {
 
+  @media (--large-max) {
+    margin-bottom: 40px;
+  }
+
   & .intro-wrapper {
 
     @media (--large-min) {
@@ -15,8 +19,16 @@
       line-height: 1.4em;
       font-size: calc(18px + .7vw);
 
+      @media (--medium-max) {
+        margin-bottom: 40px;
+      }
+
       @media (--large-min) {
         width: 60%;
+      }
+
+      & .call-to-action {
+        font-size: 14px;
       }
 
     }
@@ -162,8 +174,11 @@
 
   & .form-text {
 
+    @media (--large-max) {
+      margin-bottom: 40px;
+    }
+
     & h1 {
-      margin-bottom: 10px;
       font-size: 18px;
       font-family: var(--acuminRegular);
       text-transform: capitalize;
@@ -173,7 +188,6 @@
         font-size: calc(18px + .5vw);
         line-height: 1.2em;
         text-transform: uppercase;
-        margin-bottom: 20px;
       }
 
     }
