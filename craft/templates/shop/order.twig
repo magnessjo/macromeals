@@ -1,0 +1,92 @@
+
+{% extends "_layout" %}
+{% includeCssFile "/order.css" %}
+{% includeJsFile "/order.js" %}
+
+{% block main %}
+
+  <section id="stage" class="slim-stage">
+    <div class="image"></div>
+    <div class="lock">
+      <h1 class="acumin-stage"><div>Quick Order</div></h1>
+    </div>
+  </section>
+
+  <a href="/checkout" class="ready-to-add">Ready to Checkout?</a>
+
+  <form method="POST" id="product-addition" data-redirect="checkout">
+
+    <section id="order-form">
+
+      <div class="lock">
+
+        <div id="category-group" class="flex-descriptions">
+
+          <h1 class="category-headline"><span>Lunch & Dinner</span></h1>
+
+          <div class="group-body">
+
+            {% for product in craft.commerce.products.order('title') %}
+
+              <div class="product input-container">
+
+                <h2 class="title">
+                  <span class="acumin-small-bold">{{ product.title }}</span>
+                  <a href="/shop/details/{{ product.slug }}">See Details</a>
+                </h2>
+
+                {% for purchasable in product.variants %}
+
+                  <div class="variant-row">
+                    <input type="hidden" name="qty" value="0">
+                    <input type="hidden" name="purchasableId" value="{{ purchasable.purchasableId }}">
+
+                    <div class="variant-info">
+                      <div class="option">{{ purchasable.description }}</div>
+                      <div class="price">
+                        {% if purchasable.salesApplied | length > 0 %}
+                          <div class="sale-price">{{ purchasable.price | commerceCurrency(cart.currency) }}</div>
+                        {% endif %}
+                        <span>{{ purchasable.salePrice | commerceCurrency(cart.currency) }}</span>
+                      </div>
+                    </div>
+
+                    <div class="quantity increment field" valid="true">
+                      <button class="icons minus"></button>
+                      <div class="input">
+                        <input type="number"
+                               pattern="\d*"
+                               value="0"
+                               data-id="{{ purchasable.purchasableId }}"
+                               data-cost="{{ purchasable.price }}"
+                               data-size="{{ purchasable.description }}"
+                               data-title="{{ product.title }}"
+                               validation="checkForNumber" />
+                      </div>
+                      <button class="icons plus"></button>
+                    </div>
+
+                  </div>
+                {% endfor %}
+
+                <div class="addition-text">
+                  <span>1 Medium and 2 Large</span> Autumn Flavor meals has been added to your cart
+                </div>
+
+               {% include "components/stock-error.twig" %}
+
+              </div>
+
+            {% endfor %}
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </form>
+
+{% endblock %}
