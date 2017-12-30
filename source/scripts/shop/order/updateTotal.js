@@ -21,8 +21,9 @@ function updateCart(input) {
     const postData = `${window.csrfTokenName}=${window.csrfTokenValue}&purchasableId=${itemId}&qty=${quantity}`;
 
     postToCart(postData).then( (response) => {
+      const lineItems = response.cart.lineItems;
 
-      for (const key in response.cart.lineItems) {
+      for (const key in lineItems) {
         if (lineItems[key].purchasableId == parseInt(itemId)) input.setAttribute('data-item-id', lineItems[key].id );
       }
       displayCartTotalInHeader();
