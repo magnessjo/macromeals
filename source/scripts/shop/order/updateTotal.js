@@ -2,6 +2,47 @@
 // Import
 
 import findParentNode from 'scripts/helpers/findParentNode.js';
+import postToCart from 'scripts/helpers/cart/postToCart.js';
+import updateCartItem from 'scripts/helpers/cart/updateCartItem.js';
+import displayCartTotalInHeader from 'scripts/helpers/cart/displayCartTotalInHeader.js';
+
+// Update Cart
+
+function updateCart(input) {
+
+  const quantity = input.value;
+  const itemId = input.getAttribute('data-id');
+  const lineId = input.getAttribute('data-item-id');
+
+  if (lineId == null) {
+
+    // Set new line update
+
+    const postData = `${window.csrfTokenName}=${window.csrfTokenValue}&purchasableId=${itemId}&qty=${quantity}`;
+
+    postToCart(postData).then( (response) => {
+
+      for (const key in response.cart.lineItems) {
+        if (lineItems[key].purchasableId == parseInt(itemId)) input.setAttribute('data-item-id', lineItems[key].id );
+      }
+      displayCartTotalInHeader();
+    });
+
+  } else {
+
+    // Update Existing
+
+    const postData = `${window.csrfTokenName}=${window.csrfTokenValue}&lineItemId=${lineId}&qty=${quantity}`;
+
+    updateCartItem(postData).then( (response) => {
+      displayCartTotalInHeader();
+    });
+
+  }
+
+
+
+}
 
 // Variables
 
@@ -15,6 +56,8 @@ export default function(element) {
   let message = '';
   let totalQuantity = 0;
   let andText = false;
+
+  updateCart(element);
 
   inputs.forEach( (input, i) => {
 
@@ -36,8 +79,8 @@ export default function(element) {
 
   if (showAdditionMessage) {
     additionText.style.display = 'block';
-    const mealText = totalQuantity > 1 ? 'meals' : 'meal'
-    additionText.innerHTML = `<span>${message}</span> ${title} ${mealText} has been added to your cart`;
+    const mealText = totalQuantity > 1 ? 'meals have' : 'meal has'
+    additionText.innerHTML = `<span>${message}</span> ${title} ${mealText} been added to your cart`;
   } else {
     additionText.style.display = 'none';
   }

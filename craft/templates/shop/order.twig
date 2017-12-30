@@ -51,12 +51,24 @@
                       </div>
                     </div>
 
+                    {% set inputValue = 0 %}
+                    {% set lineItemNumber = null %}
+                    {% for item in cart.lineItems %}
+                      {% if item.purchasableId == purchasable.purchasableId %}
+                        {% set inputValue = item.qty %}
+                        {% set lineItemNumber = item.id %}
+                      {% endif %}
+                    {% endfor %}
+
                     <div class="quantity increment field" valid="true">
                       <button class="icons minus"></button>
                       <div class="input">
                         <input type="number"
                                pattern="\d*"
-                               value="0"
+                               value="{{ inputValue }}"
+                               {% if lineItemNumber is not null %}
+                               data-item-id="{{ lineItemNumber }}"
+                               {% endif %}
                                data-id="{{ purchasable.purchasableId }}"
                                data-cost="{{ purchasable.price }}"
                                data-size="{{ purchasable.description }}"

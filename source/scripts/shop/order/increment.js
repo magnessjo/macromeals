@@ -39,7 +39,7 @@ function update(button, increase) {
   }
 
   disableButttons(buttons);
-  updateTotal(parent);
+  updateTotal(input);
 
   setTimeout( () => {
     enableButttons(buttons);
