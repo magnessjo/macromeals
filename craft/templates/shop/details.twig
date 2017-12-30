@@ -122,6 +122,7 @@
                              value="0"
                              data-id="{{ purchasable.purchasableId }}"
                              data-cost="{{ purchasable.price }}"
+                             data-size="{{ purchasable.description }}"
                              validation="checkForNumber" />
                     </div>
                     <button class="icons plus"></button>
@@ -146,13 +147,22 @@
 
           </form>
 
-          <div class="product-post-submission">
-            <p class="acumin-small-bold">Your items have been added to your cart</p>
-            <a href="/checkout" class="call-to-action">Checkout Now</a>
-            <span class="acumin-medium">OR</span>
-            <a href="/shop" class="call-to-action">View More Meals</a>
-          </div>
+        </div>
 
+      </div>
+
+    </section>
+
+    <section id="post-submission">
+
+      <div class="lock">
+
+        <div>
+          <p class="order"></p>
+          <p>Ready to checkout now?</p>
+          <a href="/checkout" class="call-to-action">Checkout Now</a>
+          <p>Want to see more meals?</p>
+          <a href="/shop" class="call-to-action">View More Meals</a>
         </div>
 
       </div>
