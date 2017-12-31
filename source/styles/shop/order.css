@@ -27,6 +27,11 @@
   z-index: 99;
 }
 
+.disclaimer-text {
+  font-family: var(--acuminMediumItalic);
+  margin-bottom: 40px;
+}
+
 #category-group {
 
   & .category-headline {
@@ -63,7 +68,7 @@
   & .title {
     position: relative;
     margin-bottom: 20px;
-    text-transform: uppercase;
+    text-transform: capitalize;
 
     & a {
       font-size: 10px;
@@ -86,6 +91,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    text-transform: capitalize;
 
     @media (--medium-max) {
       flex-wrap: wrap;
