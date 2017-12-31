@@ -1,0 +1,170 @@
+{% extends "calendar/layouts/_layout.html" %}
+{% import "_includes/forms" as forms %}
+
+{% set selectedSubnavItem = currentView %}
+{% set title = "Calendar: {view}"|t({view: currentView|t|ucfirst}) %}
+
+{% set settingsJs %}
+    window.csrfTokenName = "{{ craft.config.csrfTokenName|e('js') }}";
+    window.csrfTokenValue = "{{ craft.request.csrfToken|e('js') }}";
+
+    var calendarTimeFormat = "{{ craft.i18n.timepickerJsFormat }}";
+    var calendarLocale = '{{ calendarLocale }}';
+    var calendarOverlapThreshold = {{ craft.calendar.settings.overlapThreshold }};
+    var calendarFirstDayOfWeek = {{ currentUser is defined and currentUser ? currentUser.weekStartDay : craft.config.defaultWeekStartDay }};
+    var canQuickCreate = {{ isQuickCreateEnabled ? "true" : "false" }};
+    var currentLocaleId = "{{ currentLocaleId }}";
+    var localeMap = {{ localeMap|json_encode|raw }};
+    
+    {% if currentUser and currentUser.can('calendar-manageEvents') and calendarOptions is not empty %}
+        var canEditEvents = true;
+    {% else %}
+        var canEditEvents = false;
+    {% endif %}
+    {% if currentDay|default %}
+        var calendarCurrentDay = "{{ currentDay.toDateString }}";
+    {% endif %}
+{% endset %}
+{% includeJs settingsJs %}
+
+{% includeJsFile resourceUrl('calendar/js/json/jquery.json'~(craft.config.useCompressedJs ? '.min' : '')~'.js') %}
+{% includeCssFile resourceUrl('calendar/css/fullcalendar/fullcalendar.css') %}
+{% includeJsFile resourceUrl('calendar/js/fullcalendar/fullcalendar'~(craft.config.useCompressedJs ? '.min' : '')~'.js') %}
+
+{% includeJsFile resourceUrl('calendar/js/qtip/jquery.qtip'~(craft.config.useCompressedJs ? '.min' : '')~'.js') %}
+{% includeJsFile resourceUrl('calendar/js/qtip/imagesloaded.pkg.min.js') %}
+{% includeCssFile resourceUrl('calendar/css/qtip/jquery.qtip.css') %}
+
+{% includeCssFile resourceUrl('calendar/css/calendar.css') %}
+{% includeJsFile resourceUrl('calendar/js/calendar'~(craft.config.useCompressedJs ? '.min' : '')~'.js') %}
+{% includeJsFile resourceUrl('calendar/js/calendar-popups'~(craft.config.useCompressedJs ? '.min' : '')~'.js') %}
+{% includeJsFile resourceUrl('calendar/js/calendar-fullcalendar-methods'~(craft.config.useCompressedJs ? '.min' : '')~'.js') %}
+{% includeJsFile resourceUrl('calendar/js/widget/month'~(craft.config.useCompressedJs ? '.min' : '')~'.js') %}
+
+{% if calendarLocale != 'en' %}
+    {% includeJsFile resourceUrl('calendar/js/fullcalendar/lang/'~calendarLocale~'.js') %}
+{% endif %}
+
+{% block content %}
+
+    {% set showBanner = craft.calendar.showDemoTemplateBanner %}
+
+    {% if calendarView == "month" and showBanner and currentUser is defined and currentUser.admin %}
+        <div class="alert alert-info alert-dismissible">
+            <a class="close"></a>
+
+            {{ 'Get Calendar up and running on the front end with just a couple clicks! <a href="{link}" class="alert-link">Click here to install the Demo templates.</a>'|t({link: url('calendar/settings/demo-templates')})|raw }}
+        </div>
+    {% endif %}
+
+    <div id="solspace-calendar" class="calendar-agenda" data-view="{{ calendarView }}"></div>
+
+    {% set dateFormat = craft.i18n.localeData.dateFormatter.datepickerPhpFormat %}
+    {% set timeFormat = craft.i18n.localeData.dateFormatter.timepickerPhpFormat %}
+
+    {% set dateFormat = dateFormat|replace('n', 'm')|replace('j', 'd') %}
+    {% set timeFormat = timeFormat|replace('g', 'h')|replace('i', 'mm')|replace('A', 'tt') %}
+
+    {% macro dateTimeField(fieldName, label, datePlaceholder, timePlaceholder) %}
+
+        {% import "_includes/forms" as forms %}
+
+        {% set input %}
+            {{ forms.date({
+                id:          fieldName,
+                name:        fieldName,
+                placeholder: datePlaceholder,
+            }) }}
+
+            {{ forms.time({
+                id:          fieldName,
+                name:        fieldName,
+                placeholder: timePlaceholder,
+            }) }}
+        {% endset %}
+
+        {{ forms.field({
+            label:    label,
+            first:    (fieldName == 'startDate'),
+            required: true
+        }, input) }}
+
+    {% endmacro %}
+
+    {% from _self import dateTimeField %}
+
+
+
+    <div id="event-creator">
+        {{ forms.textField({
+            label: "Title"|t,
+            id: 'title',
+            name: 'title',
+            first: true,
+            required: true
+        }) }}
+
+        {{ forms.selectField({
+            label: "Calendar"|t,
+            name: 'calendarId',
+            options: calendarOptions,
+            required: true,
+        }) }}
+
+        {{ dateTimeField('startDate', 'Start Date'|t, dateFormat, timeFormat) }}
+        {{ dateTimeField('endDate', 'End Date'|t, dateFormat, timeFormat) }}
+
+        {{ forms.lightswitchField({
+            label: "All Day"|t,
+            name: 'allDay',
+            on: false,
+        }) }}
+
+        <ul class="errors"></ul>
+
+        <div class="buttons">
+            <button type="button" class="btn small submit">{{ 'Save'|t }}</button>
+            <button type="button" class="btn small delete">{{ 'Cancel'|t }}</button>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block sidebar %}
+    {% if craft.calendar.settings.miniCalEnabled %}
+        <div class="calendar-mini-cal"
+             id="calendar-mini-cal"
+        ></div>
+
+        <nav>
+            <ul class="calendar-list">
+                <li class="heading">
+                    <a href="#" class="sel" style="display: none;">{{ "Calendars"|t }}</a>
+                    <span>
+                        {{ "Calendars"|t }}
+                    </span>
+                </li>
+                {% for id, calendar in craft.calendar.calendars %}
+                    <li class="item">
+                        <input type="checkbox"
+                               name="calendar[]"
+                               id="calendar-item-{{ calendar.id }}"
+                               value="{{ calendar.id }}"
+                               checked />
+                        <label for="calendar-item-{{ calendar.id }}">
+                            <span style="background: {{ calendar.color }}; color: {{ calendar.contrastColor }}; border-color: {{ calendar.darkerColor }};"></span>
+                            {{ calendar.name }}
+                        </label>
+                    </li>
+                {% endfor %}
+            </ul>
+        </nav>
+    {% endif %}
+{% endblock %}
+
+{% set miniCal %}
+    $(function() {
+        initiateMiniCal($("#calendar-mini-cal"));
+    });
+{% endset %}
+{% includeJs miniCal %}

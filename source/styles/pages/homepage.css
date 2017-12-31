@@ -333,13 +333,13 @@
   background-color: var(--light-green);
   overflow: hidden;
   padding: 40px 0;
-  color: black;
+  color: var(--black);
 
   & .headline-with-underline {
-    color: white;
+    color: var(--black);
 
     &:before {
-      background-color: white;
+      background-color: var(--black);
     }
 
   }

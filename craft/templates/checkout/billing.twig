@@ -21,16 +21,61 @@
 
   {% include "components/breadcrumb.twig" %}
 
-  <section id="customer-info">
+  <section id="order-summary">
 
-    <div class="lock">
+    <div class="lock small-lock">
 
-      <form method="POST" id="payment" data-cost="{{ cart.totalPrice | commerceCurrency(cart.currency, convert = true, format = false, stripZeros = true) }}" payment-request="true">
+      <h1 class="acumin-headline">Order Summary</h1>
+      <p class="list-item">Total Due <span>{{ cart.totalPrice | commerceCurrency(cart.currency, stripZeros = true) }}</span></p>
+
+    </div>
+
+  </section>
+
+  <section id="payment-method">
+
+    <div class="lock small-lock">
+
+      <div class="payment-type">
+
+        {% if craft.commerce.paymentMethods|length %}
+          <form method="POST" id="paymentMethod">
+
+            <h1 class="acumin-headline">Select your payment type</h1>
+
+            <select id="paymentMethodId" name="paymentMethodId">
+              {% for id,name in craft.commerce.paymentMethods %}
+                {% if name == "Dummy Payment" %}
+                  {% if currentUser.admin %}
+                    <option value="{{ id }}" {% if id == cart.paymentMethod.id %}selected{% endif %}>{{ name }}</option>
+                  {% endif %}
+                {% else %}
+                  <option value="{{ id }}" {% if id == cart.paymentMethod.id %}selected{% endif %}>{{ name }}</option>
+                {% endif %}
+              {% endfor %}
+            </select>
+
+          </form>
+        {% endif %}
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <section id="payment-options">
+
+    <div class="lock small-lock">
+
+      {# Stripe #}
+
+      <form method="POST" id="payment" data-id='2' data-cost="{{ cart.totalPrice | commerceCurrency(cart.currency, convert = true, format = false, stripZeros = true) }}" payment-request="true">
 
         <input type="hidden" name="action" value="commerce/payments/pay" />
         <input type="hidden" name="redirect" value="/checkout/complete?order={{cart.number}}" />
 
-        <h1 class="acumin-medium-bold">Billing</h1>
+        <h1 class="acumin-headline">Credit Card Information</h1>
 
         <div class="request-button">
 
@@ -84,6 +129,65 @@
         </div>
 
       </form>
+
+      {% if currentUser.admin %}
+
+        {# Dummy Payment #}
+
+        <form id="dummy" data-id='3'>
+
+          <div class="field">
+            <label>Dummy First Name</label>
+            <div class="input">
+              <input type="text" id="firstName" name="firstName" value="Bob" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Dummy Last Name</label>
+            <div class="input">
+              <input type="text" id="lastName" name="lastName" value="Handsome" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Dummy Month</label>
+            <div class="input">
+              <input type="text" id="month" name="month" value="12" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Dummy Month</label>
+            <div class="input">
+              <input type="text" id="year" name="year" value="2020" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Dummy CVV</label>
+            <div class="input">
+              <input type="text" id="cvv" name="cvv" value="342" />
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Dummy Number</label>
+            <div class="input">
+              <input type="text" id="number" name="number" value="4929000000006" />
+            </div>
+          </div>
+
+          <div class="checkout-actions">
+
+            <a href="/checkout/summary" class="icons">Back <span>to Your Order Summary</span></a>
+            <input type="submit" value="Submit Order" class="call-to-action">
+
+          </div>
+
+        </form>
+
+      {% endif %}
 
     </div>
 

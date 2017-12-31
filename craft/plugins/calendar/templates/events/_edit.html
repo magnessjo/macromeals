@@ -1,0 +1,231 @@
+{% extends "calendar/layouts/_layoutWithoutSettings" %}
+{% import "_includes/forms" as forms %}
+
+{% set calendarHandle = calendar.handle|default %}
+{% set selectedSubnavItem = 'events' %}
+{% set saveShortcutRedirect = 'calendar/events/{id}/{locale}' %}
+{% set title = "Calendar: Events - {title}"|t({title: title}) %}
+
+{% set crumbs = [
+{ label: "Calendar"|t, url: url('calendar') },
+{ label: "Events"|t, url: url('calendar/events') },
+{ label: event.title ? event.title : 'New Event'|t, url: '' },
+] %}
+
+{% set calendarDatePickerSettings %}
+    var calendarTimeInterval = {{ craft.calendar.settings.timeInterval }};
+    var calendarEventDuration = {{ craft.calendar.settings.eventDuration }};
+{% endset %}
+{% includeJs calendarDatePickerSettings %}
+
+{% includeJsFile resourceUrl('calendar/js/event-edit'~(craft.config.useCompressedJs ? '.min' : '')~'.js') %}
+{% includeCssFile resourceUrl('calendar/css/event-edit.css') %}
+
+{% set fullPageForm %}
+    <form id="event-form" method="post" accept-charset="UTF-8" data-saveshortcut="1" data-saveshortcut-redirect="{{ continueEditingUrl }}">
+{% endset %}
+
+{% block saveButton %}
+    <div class="buttons">
+        <div class="btngroup submit">
+            <input type="submit" class="btn submit" value="{{ 'Save'|t }}">
+
+            <div class="btn submit menubtn"></div>
+            <div class="menu">
+                <ul>
+                    <li>
+                        <a class="formsubmit" data-redirect="{{ continueEditingUrl }}">
+                            {{ "Save and continue editing"|t }}
+                            <span class="shortcut">⌘S</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="formsubmit" data-redirect="calendar/events/new/{{ calendarHandle }}">{{ "Save and add another"|t }}</a>
+                    </li>
+                    {% if event.id %}
+                        <li><a class="formsubmit" data-param="eventId"
+                               data-value=""
+                               data-redirect="{{ continueEditingUrl }}">{{ "Save as a new event"|t }}</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block main %}
+
+    <input type="hidden" name="action" value="calendar/events/saveEvent">
+    <input type="hidden" name="redirect" value="calendar/events">
+    {% if craft.isLocalized() %}<input type="hidden" name="locale" value="{{ event.locale }}">{% endif %}
+    {% if event.id %}<input type="hidden" name="eventId" value="{{ event.id }}">{% endif %}
+    <input type="hidden" name="{{ name ~ "[calendarId]" }}" value="{{ event.calendarId }}">
+    {{ getCsrfInput() }}
+
+
+    <div class="grid first" data-max-cols="3">
+        <div class="item" data-position="left" data-colspan="2">
+            <div id="fields" class="pane">
+                {% if event.getFieldLayout().getTabs()|length > 1 %}
+                    <nav id="tabs" class="tabs">
+                        <ul>
+                            {% for tab in event.getFieldLayout().getTabs() %}
+                                {% set hasError = false %}
+                                {% if loop.index0 > 0 %}
+                                    {% for field in tab.fields %}
+                                        {% if event.getErrors(field.field.handle) %}
+                                            {% set hasError = true %}
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endif %}
+
+                                <li>
+                                    <a href="javascript:;"
+                                       data-tab-id="{{ tab.id }}"
+                                       class="tab{% if loop.first %} sel{% endif %}{{ hasError ? " error" : "" }}">
+                                        {{ tab.name }}
+                                    </a>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </nav>
+                {% endif %}
+
+
+                {% for tab in event.getFieldLayout().getTabs() %}
+                    <div class="field tab-content{% if not loop.first %} hidden{% endif %}" data-for-tab="{{ tab.id }}">
+
+                        {# ===================================== #}
+                        {# Only show event data in the first tab #}
+                        {# ===================================== #}
+                        {% if loop.first %}
+                            {% include "calendar/events/_event_editor" %}
+                        {% endif %}
+
+                        {% include "_includes/fields" with {
+                        fields: tab.getFields(),
+                        element: event
+                        } only %}
+
+                    </div>
+                {% else %}
+                    {% include "calendar/events/_event_editor" %}
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="item" data-position="right">
+            
+            {% if showPreviewBtn %}
+                {% include "_includes/previewbtns" %}
+            {% endif %}
+
+            {% if craft.isLocalized() and event.calendar.getLocales() | length > 1 %}
+                <ul id="locales" class="pane">
+                    {% for localeId in localeIds if currentUser.can("editLocale:"~localeId) %}
+                        {% set localeName = craft.i18n.getLocaleById(localeId).name %}
+                        <li{% if localeId == event.locale %} class="sel"{% endif %}>
+                            {%- if localeId == event.locale -%}
+                                {{ localeName }}
+                                {{ forms.lightswitch({
+                                    name: 'localeEnabled',
+                                    on:   event.localeEnabled,
+                                    small: true,
+                                }) }}
+                            {%- else -%}
+                                {% if event.id %}
+                                    {% set localeUrl = url('calendar/events/'~event.id~'/'~localeId) -%}
+                                {% else %}
+                                    {% set localeUrl = url('calendar/events/new/'~calendar.handle~'/'~localeId) -%}
+                                {% endif %}
+                                <a href="{{ localeUrl }}">{{ localeName }}</a>
+                                <div class="status {{ localeId in enabledLocales ? 'enabled' : 'disabled' }}"></div>
+                            {%- endif -%}
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+
+            <div id="settings" class="pane meta">
+
+                {% set calendarStrip %}
+                    <span class="color-indicator" style="background-color: {{ calendar.color }}"></span>
+                    {{ calendar.name }}
+                {% endset %}
+
+                {{ forms.field({
+                    label: "Calendar"|t,
+                }, calendarStrip) }}
+
+                {{ forms.textField({
+                    label: "Slug"|t,
+                    locale: event.locale,
+                    id: 'slug',
+                    name: 'slug',
+                    value: event.slug,
+                    placeholder: "Enter slug"|t,
+                    errors: event.getErrors('slug')|merge(event.getErrors('uri')),
+                }) }}
+
+                {% if CraftEdition == CraftPro %}
+                    {{ forms.elementSelectField({
+                        label: "Author"|t,
+                        id: 'author',
+                        name: 'author',
+                        elementType: userElementType,
+                        selectionLabel: "Choose"|t,
+                        criteria: {},
+                        limit: 1,
+                        elements: (event.authorId is defined and event.author ? [event.author])
+                    }) }}
+                {% endif %}
+
+                {% set statusInput %}
+                    <div class="left">
+                        {{ forms.lightswitch({
+                            id: 'enabled',
+                            name: 'enabled',
+                            on: event.enabled,
+                        }) }}
+                    </div>
+
+                    {% if event.id %}
+                        <div class="right">
+                            <input type="button" class="btn small formsubmit" value="{{ 'Delete'|t }}" data-action="calendar/events/deleteEvent"
+                                   data-confirm="{{ 'Are you sure you want to delete this event?'|t }}"
+                                   data-redirect="calendar/events">
+                        </div>
+                    {% endif %}
+                {% endset %}
+
+                {{ forms.field({
+                    label: "Enabled"|t,
+                    id: 'enabled'
+                }, statusInput) }}
+            </div>
+
+
+            {% if event.id %}
+                <div class="pane lightpane meta">
+                    <div class="data">
+                        <h5 class="heading">{{ "Date Created"|t }}</h5>
+                        <div class="value">{{ event.dateCreated.localeDate() }} {{ event.dateCreated.localeTime() }}</div>
+                    </div>
+                    <div class="data">
+                        <h5 class="heading">{{ "Date Updated"|t }}</h5>
+                        <div class="value">{{ event.dateUpdated.localeDate() }} {{ event.dateUpdated.localeTime() }}</div>
+                    </div>
+                </div>
+            {% endif %}
+
+            {# Give plugins a chance to add other panes here #}
+            {% hook "cp.calendar_events.edit.right-pane" %}
+        </div>
+    </div>
+
+{% endblock %}
+
+{% if not event.slug %}
+    {% includejs "window.slugGenerator = new Craft.SlugGenerator('#title', '#slug');" %}
+{% endif %}

@@ -1,7 +1,65 @@
 
+section:not(#stage) {
+  margin-bottom: 0;
+
+  &:last-of-type .lock {
+    margin-bottom: 80px;
+    padding-bottom: 0;
+
+    &:before {
+      display: none;
+    }
+
+  }
+
+  & .lock {
+    padding-bottom: 60px;
+    margin-bottom: 60px;
+    position: relative;
+
+    &:before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      width: 90%;
+      transform: translateX(-50%);
+      height: 1px;
+      background-color: var(--green);
+    }
+
+  }
+
+}
+
+#order-summary {
+
+  & .list-item {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  & span {
+    font-family: var(--acuminSemiBold);
+    font-size: 22px;
+  }
+
+}
+
+#payment-options {
+
+  & form {
+    display: none;
+
+    &:first-of-type {
+      display: block;
+    }
+
+  }
+
+}
+
 #payment {
-  max-width: 640px;
-  margin: 0 auto;
 
   & .form-group {
     margin-bottom: 40px;

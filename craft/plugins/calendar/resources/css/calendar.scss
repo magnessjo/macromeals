@@ -1,0 +1,45 @@
+@import "variables";
+@import "mixins";
+@import "alerts";
+@import "qTipCraft";
+@import "calendarList";
+@import "fullcalendarCustom";
+
+.qtip-event {
+  max-width: 400px !important;
+
+  .qtip-content {
+    div > label {
+      display: inline-block;
+      width: 80px;
+
+      font-weight: bold;
+    }
+
+    div.separator {
+      margin-top: 5px;
+      padding-top: 5px;
+      border-top: 1px dotted $dottedBorderColor;
+    }
+  }
+}
+
+#event-creator {
+  position: absolute;
+  left: -9999px;
+  visibility: hidden;
+
+  &.shown {
+    position: relative;
+    left: 0;
+    visibility: visible;
+  }
+
+  .field {
+    margin: 9px 0;
+  }
+}
+
+.ui-timepicker-wrapper {
+  z-index: 15000;
+}

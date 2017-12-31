@@ -2,13 +2,17 @@
 // Imports
 
 import modifyFormValueForResize from 'scripts/helpers/form/modifyFormValueForResize.js';
-import submitForm from './submitForm.js';
+import submitStripe from './submitStripe.js';
+import dPayment from './dPayment.js';
+import switchPaymentMethod from './switchPaymentMethod.js';
 
 // Load
 
 document.addEventListener('DOMContentLoaded', () => {
 
   modifyFormValueForResize();
-  submitForm();
+  switchPaymentMethod();
+  submitStripe();
+  dPayment();
 
 });
