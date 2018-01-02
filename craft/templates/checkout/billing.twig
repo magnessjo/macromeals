@@ -25,7 +25,7 @@
 
     <div class="lock small-lock">
 
-      <h1 class="acumin-headline">Order Summary</h1>
+      <h1 class="sr-only">Order Summary</h1>
       <p class="list-item">Total Due <span>{{ cart.totalPrice | commerceCurrency(cart.currency, stripZeros = true) }}</span></p>
 
     </div>
@@ -41,19 +41,25 @@
         {% if craft.commerce.paymentMethods|length %}
           <form method="POST" id="paymentMethod">
 
-            <h1 class="acumin-headline">Select your payment type</h1>
+            <h1>Select your form of payment</h1>
 
-            <select id="paymentMethodId" name="paymentMethodId">
-              {% for id,name in craft.commerce.paymentMethods %}
-                {% if name == "Dummy Payment" %}
-                  {% if currentUser.admin %}
-                    <option value="{{ id }}" {% if id == cart.paymentMethod.id %}selected{% endif %}>{{ name }}</option>
-                  {% endif %}
-                {% else %}
-                  <option value="{{ id }}" {% if id == cart.paymentMethod.id %}selected{% endif %}>{{ name }}</option>
-                {% endif %}
-              {% endfor %}
-            </select>
+            <div class='type payment-request-wrapper' data-cost="{{ cart.totalPrice | commerceCurrency(cart.currency, convert = true, format = false, stripZeros = true) }}">
+              <div id="payment-request-button"></div>
+            </div>
+
+            <div class='type' active="true">
+              <button data-attr="2">Credit Card</button>
+            </div>
+
+            {# <div class='type' disabled="true">
+              <button>PayPal (Coming Soon)</button>
+            </div> #}
+
+            {% if currentUser.admin %}
+              <div class='type'>
+                <button data-attr="3">Dummy Payment</button>
+              </div>
+            {% endif %}
 
           </form>
         {% endif %}
@@ -70,21 +76,12 @@
 
       {# Stripe #}
 
-      <form method="POST" id="payment" data-id='2' data-cost="{{ cart.totalPrice | commerceCurrency(cart.currency, convert = true, format = false, stripZeros = true) }}" payment-request="true">
+      <form method="POST" id="payment" data-id='2'>
 
         <input type="hidden" name="action" value="commerce/payments/pay" />
         <input type="hidden" name="redirect" value="/checkout/complete?order={{cart.number}}" />
 
         <h1 class="acumin-headline">Credit Card Information</h1>
-
-        <div class="request-button">
-
-          <div id="payment-request-button"></div>
-          <p class="divider"><span>OR</span></p>
-
-          <p>Enter Credit Card Information</p>
-
-        </div>
 
         <div class="form-group">
 

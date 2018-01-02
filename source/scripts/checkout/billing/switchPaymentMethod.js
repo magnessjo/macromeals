@@ -2,7 +2,7 @@
 // Variables
 
 const form = document.querySelector('#paymentMethod');
-const select = form.querySelector('select');
+const buttons = Array.from(form.querySelectorAll('button'));
 const formsWrapper = document.querySelector('#payment-options');
 const forms = Array.from(formsWrapper.querySelectorAll('form'));
 
@@ -10,19 +10,19 @@ const forms = Array.from(formsWrapper.querySelectorAll('form'));
 
 export default function() {
 
-  select.addEventListener('change', e => {
+  buttons.forEach( (button) => {
 
-    const value = select.options[select.selectedIndex].value;
+    button.addEventListener('click', e => {
 
-    forms.forEach( (form) => {
+      const attr = button.getAttribute('data-attr');
+      e.preventDefault();
 
-      const id = form.getAttribute('data-id');
+      forms.forEach( (form) => {
 
-      if (id == value) {
-        form.style.display = 'block';
-      } else {
-        form.style.display = 'none';
-      }
+        const id = form.getAttribute('data-id');
+        form.style.display = attr != id ? 'none' : 'block';
+
+      });
 
     });
 

@@ -1,33 +1,8 @@
 
 section:not(#stage) {
-  margin-bottom: 0;
-
-  &:last-of-type .lock {
-    margin-bottom: 80px;
-    padding-bottom: 0;
-
-    &:before {
-      display: none;
-    }
-
-  }
 
   & .lock {
-    padding-bottom: 60px;
-    margin-bottom: 60px;
     position: relative;
-
-    &:before {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      width: 90%;
-      transform: translateX(-50%);
-      height: 1px;
-      background-color: var(--green);
-    }
-
   }
 
 }
@@ -46,6 +21,47 @@ section:not(#stage) {
 
 }
 
+#payment-method {
+
+  & h1 {
+    margin-bottom: 10px;
+  }
+
+  & .type {
+
+    &[active="true"] button {
+      background-color: var(--white);
+      border: 1px solid var(--black);
+      color: var(--black);
+    }
+
+    &:last-of-type button {
+      margin-bottom: 0;
+    }
+
+  }
+
+  & button {
+    width: 100%;
+    text-align: center;
+    background-color: var(--black);
+    height: 44px;
+    color: var(--white);
+    margin-bottom: 10px;
+    text-transform: capitalize;
+    font-family: var(--acuminMediumItalic);
+    font-size: 18px;
+    letter-spacing: 1px;
+    border-radius: 5px;
+  }
+
+  & .payment-request-wrapper {
+    margin-bottom: 5px;
+    display: none;
+  }
+
+}
+
 #payment-options {
 
   & form {
@@ -57,110 +73,110 @@ section:not(#stage) {
 
   }
 
-}
+  & form#payment {
 
-#payment {
-
-  & .form-group {
-    margin-bottom: 40px;
-
-    & > div {
-      background: var(--white);
-    }
-
-    & > div[valid="true"] {
-
-      & label {
-        color: var(--green);
-      }
+    & .form-group {
+      margin-bottom: 40px;
 
       & > div {
-        border: 1px solid var(--green);
+        background: var(--white);
       }
 
-    }
+      & > div[valid="true"] {
 
-    & > div[valid="false"] {
+        & label {
+          color: var(--green);
+        }
+
+        & > div {
+          border: 1px solid var(--green);
+        }
+
+      }
+
+      & > div[valid="false"] {
+
+        & label {
+          color: var(--red);
+        }
+
+        & > div {
+          border: 1px solid var(--red);
+        }
+
+      }
 
       & label {
-        color: var(--red);
+        position: relative;
+        margin-bottom: 0;
+        width: 100%;
+        margin-bottom: 5px;
+        font-family: var(--acuminSemiBold);
+        font-size: 14px;
+
+        & span {
+          display: block;
+          font-weight: 700;
+          padding-left: 5px;
+        }
+
       }
 
-      & > div {
-        border: 1px solid var(--red);
+      & .input {
+        background: transparent;
+        color: var(--black);
+        cursor: text;
+        font-weight: 300;
+        margin-bottom: 30px;
+        border: 1px solid #999;
+        padding: 14px 20px;
+
+        &::-webkit-input-placeholder {
+          color: #333333;
+        }
+
+        &::-moz-placeholder {
+          color: #333333;
+        }
+
+        & > div {
+          margin-top: 13px !important;
+        }
+
       }
 
-    }
-
-    & label {
-      position: relative;
-      margin-bottom: 0;
-      width: 100%;
-      margin-bottom: 5px;
-      font-family: var(--acuminSemiBold);
-      font-size: 14px;
-
-      & span {
+      & input {
+        height: 18px;
+        margin: inherit;
+        border: none;
+        font-weight: 400;
+        margin-bottom: 0;
+        background-color: transparent;
+        padding: 0;
+        width: 100%;
         display: block;
-        font-weight: 700;
-        padding-left: 5px;
+        font-weight: 400;
+
+        &::-webkit-input-placeholder {
+          color: #333333;
+        }
+
+        &::placeholder {
+          color: #333333;
+        }
+
       }
 
     }
 
-    & .input {
-      background: transparent;
-      color: var(--black);
-      cursor: text;
-      font-weight: 300;
-      margin-bottom: 30px;
-      border: 1px solid #999;
-      padding: 14px 20px;
-
-      &::-webkit-input-placeholder {
-        color: #333333;
-      }
-
-      &::-moz-placeholder {
-        color: #333333;
-      }
-
-      & > div {
-        margin-top: 13px !important;
-      }
-
+    & #card-errors {
+      padding: 20px 0;
+      margin-bottom: 40px;
+      text-transform: uppercase;
+      color: red;
+      display: none;
     }
 
-    & input {
-      height: 18px;
-      margin: inherit;
-      border: none;
-      font-weight: 400;
-      margin-bottom: 0;
-      background-color: transparent;
-      padding: 0;
-      width: 100%;
-      display: block;
-      font-weight: 400;
-
-      &::-webkit-input-placeholder {
-        color: #333333;
-      }
-
-      &::placeholder {
-        color: #333333;
-      }
-
-    }
-
-  }
-
-  & #card-errors {
-    padding: 20px 0;
-    margin-bottom: 40px;
-    text-transform: uppercase;
-    color: red;
-    display: none;
   }
 
 }
