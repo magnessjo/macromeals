@@ -56,7 +56,7 @@ section:not(#stage) {
   }
 
   & .payment-request-wrapper {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
     display: none;
   }
 
