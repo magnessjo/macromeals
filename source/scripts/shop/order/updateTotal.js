@@ -5,6 +5,7 @@ import findParentNode from 'scripts/helpers/findParentNode.js';
 import postToCart from 'scripts/helpers/cart/postToCart.js';
 import updateCartItem from 'scripts/helpers/cart/updateCartItem.js';
 import displayCartTotalInHeader from 'scripts/helpers/cart/displayCartTotalInHeader.js';
+import checkButtonAddition from './checkButtonAddition.js';
 
 // Update Cart
 
@@ -47,9 +48,8 @@ function updateCart(input) {
 
   }
 
-
-
 }
+
 
 // Variables
 
@@ -65,6 +65,7 @@ export default function(element) {
   let andText = false;
 
   updateCart(element);
+  checkButtonAddition();
 
   inputs.forEach( (input, i) => {
 
