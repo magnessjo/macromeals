@@ -10,20 +10,6 @@ const form = document.querySelector('form#product-addition');
 const buttons = Array.from(form.querySelectorAll('.increment button'));
 const inputs = Array.from(form.querySelectorAll('input[type="number"]'));
 
-
-// Disable Buttons
-
-function enableButttons(buttons) {
-  buttons.forEach( (button) => { button.disabled = false });
-}
-
-// Disable Buttons
-
-function disableButttons(buttons) {
-  buttons.forEach( (button) => { button.disabled = true });
-}
-
-
 // Update DOM
 
 function update(button, increase) {
@@ -38,12 +24,7 @@ function update(button, increase) {
     input.value = increase ? 1 : 0;
   }
 
-  disableButttons(buttons);
   updateTotal(input);
-
-  setTimeout( () => {
-    enableButttons(buttons);
-  }, 100)
 
 }
 

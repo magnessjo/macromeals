@@ -11,8 +11,15 @@ import displayCartTotalInHeader from 'scripts/helpers/cart/displayCartTotalInHea
 function updateCart(input) {
 
   const quantity = input.value;
+  const parent = findParentNode(input, 'field');
   const itemId = input.getAttribute('data-id');
   const lineId = input.getAttribute('data-item-id');
+  const buttons = Array.from(parent.querySelectorAll('button'));
+
+  console.log(input);
+  console.log(quantity);
+
+  buttons.forEach( (button) => { button.disabled = true } );
 
   if (lineId == null) {
 
@@ -21,11 +28,12 @@ function updateCart(input) {
     const postData = `${window.csrfTokenName}=${window.csrfTokenValue}&purchasableId=${itemId}&qty=${quantity}`;
 
     postToCart(postData).then( (response) => {
-      const lineItems = response.cart.lineItems;
 
+      const lineItems = response.cart.lineItems;
       for (const key in lineItems) {
         if (lineItems[key].purchasableId == parseInt(itemId)) input.setAttribute('data-item-id', lineItems[key].id );
       }
+      buttons.forEach( (button) => { button.disabled = false } );
       displayCartTotalInHeader();
     });
 
@@ -37,6 +45,7 @@ function updateCart(input) {
 
     updateCartItem(postData).then( (response) => {
       displayCartTotalInHeader();
+      buttons.forEach( (button) => { button.disabled = false } );
     });
 
   }

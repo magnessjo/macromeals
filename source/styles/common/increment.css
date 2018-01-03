@@ -24,7 +24,7 @@
   & button {
     position: relative;
 
-    &:disabled {
+    &[disabled] {
       opacity: .2;
     }
 
