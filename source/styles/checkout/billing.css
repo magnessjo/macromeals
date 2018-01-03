@@ -29,12 +29,6 @@ section:not(#stage) {
 
   & .type {
 
-    &[active="true"] button {
-      background-color: var(--white);
-      border: 1px solid var(--black);
-      color: var(--black);
-    }
-
     &:last-of-type button {
       margin-bottom: 0;
     }
@@ -53,6 +47,13 @@ section:not(#stage) {
     font-size: 18px;
     letter-spacing: 1px;
     border-radius: 5px;
+
+    &:hover {
+      background-color: var(--white);
+      border: 1px solid var(--black);
+      color: var(--black);
+    }
+
   }
 
   & .payment-request-wrapper {

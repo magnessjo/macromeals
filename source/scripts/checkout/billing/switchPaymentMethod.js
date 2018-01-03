@@ -1,4 +1,8 @@
 
+// Import
+
+import scrollToLocation from 'scripts/helpers/scrollToLocation.js';
+
 // Variables
 
 const form = document.querySelector('#paymentMethod');
@@ -16,6 +20,7 @@ export default function() {
 
       const attr = button.getAttribute('data-attr');
       e.preventDefault();
+      scrollToLocation(formsWrapper, 100);
 
       forms.forEach( (form) => {
 
