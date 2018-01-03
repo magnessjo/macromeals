@@ -16,9 +16,6 @@ function updateCart(input) {
   const lineId = input.getAttribute('data-item-id');
   const buttons = Array.from(parent.querySelectorAll('button'));
 
-  console.log(input);
-  console.log(quantity);
-
   buttons.forEach( (button) => { button.disabled = true } );
 
   if (lineId == null) {
