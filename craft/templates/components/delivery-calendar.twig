@@ -1,0 +1,51 @@
+
+<div class="month-calendar">
+  <table>
+    <thead>
+      <tr class="list-month">
+        <th colspan="7">{{ month.date.format('F Y') }}</th>
+      </tr>
+      <tr class="list-days">
+        {% for day in month|first %}
+          <th>{{ day.date.format('D')|first }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+    {% for week in month %}
+      <tr>
+        {% for day in week %}
+
+          {% set shouldShow = true %}
+
+          {% for event in day.events %}
+            {% if event.title == 'Remove From Delivery' %}
+              {% set shouldShow = false %}
+            {% endif %}
+          {% endfor %}
+
+          {% set formattedDay = day.startDate.format('D') %}
+          {% set isDeliveryDate = false %}
+
+          {% if formattedDay == 'Tue' or formattedDay == 'Wed' or formattedDay == 'Thu' or formattedDay == 'Fri' or formattedDay == 'Sat' %}
+            {% set isDeliveryDate = true %}
+            {% if shouldShow == false %}
+              {% set isDeliveryDate = false %}
+            {% endif %}
+          {% endif %}
+
+          <td class="
+            {{ month.containsDate(day.date) ? isDeliveryDate ? "delivery" }}
+            {{ day.date.isToday ? "today" }}" >
+            <div>
+              {% if month.containsDate(day.date) %}
+                {{ day.date.format('j') }}
+              {% endif %}
+            </div>
+          </td>
+        {% endfor %}
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>

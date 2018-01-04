@@ -182,3 +182,71 @@
   }
 
 }
+
+#calendar {
+
+  & .calendars {
+
+    @media (--large-min) {
+      display: flex;
+      justify-content: center;
+    }
+
+  }
+
+  & .month-calendar:nth-of-type(2n) {
+
+    @media (--medium-max) {
+      margin-top: 20px;
+    }
+
+    @media (--large-min) {
+      margin-left: 40px;
+    }
+
+  }
+
+  & table {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+
+  & td, & th {
+    vertical-align: middle;
+    text-align: center;
+    padding: 6px;
+  }
+
+  & tr td {
+    border-bottom: 1px solid var(--light-gray);
+    border-left: 1px solid var(--light-gray);
+
+    &:nth-of-type(6n + 1) {
+      border-right: 1px solid var(--light-gray);
+    }
+
+  }
+
+  & .list-month {
+
+  }
+
+  & .list-days {
+
+    & th {
+      border-bottom: 1px solid var(--black);
+      border-top: 1px solid var(--black);
+    }
+
+  }
+
+  & .delivery {
+    background-color: var(--light-green);
+  }
+
+  & .today {
+    background-color: var(--green);
+    color: var(--white);
+  }
+
+}
