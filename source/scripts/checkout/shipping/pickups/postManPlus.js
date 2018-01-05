@@ -1,7 +1,7 @@
 
 // Imports
 
-import styles from './mapStyles.js';
+import styles from '../mapStyles.js';
 
 export default function() {
 

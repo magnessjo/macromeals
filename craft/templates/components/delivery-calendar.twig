@@ -29,14 +29,28 @@
 
           {% if formattedDay == 'Tue' or formattedDay == 'Wed' or formattedDay == 'Thu' or formattedDay == 'Fri' or formattedDay == 'Sat' %}
             {% set isDeliveryDate = true %}
+
+            {# Check for override from CMS #}
             {% if shouldShow == false %}
               {% set isDeliveryDate = false %}
             {% endif %}
+
+            {# Check for date being before today #}
+            {% if day.date.timestamp < expectedDate|date_modify("-1 day").getTimestamp() %}
+              {% set isDeliveryDate = false %}
+            {% endif %}
+
           {% endif %}
 
           <td class="
-            {{ month.containsDate(day.date) ? isDeliveryDate ? "delivery" }}
-            {{ day.date.isToday ? "today" }}" >
+              {{ month.containsDate(day.date) ? isDeliveryDate ? "delivery" }}
+              {{ day.date.isToday ? "today" }}
+            "
+            data-year="{{ day.date.year }}"
+            data-month="{{ day.date.month }}"
+            data-day="{{ day.date.day }}"
+            >
+
             <div>
               {% if month.containsDate(day.date) %}
                 {{ day.date.format('j') }}

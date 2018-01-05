@@ -242,6 +242,7 @@
 
   & .delivery {
     background-color: var(--light-green);
+    cursor: pointer;
   }
 
   & .today {
