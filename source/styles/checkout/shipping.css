@@ -245,6 +245,11 @@
     cursor: pointer;
   }
 
+  & .expected-delivery-date {
+    background-color: var(--light-yellow);
+    cursor: default;
+  }
+
   & .today {
     background-color: var(--green);
     color: var(--white);

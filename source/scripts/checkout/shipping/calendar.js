@@ -4,6 +4,8 @@
 const container = document.querySelector('#calendar');
 const deliveryDates = Array.from(container.querySelectorAll('.delivery'));
 const deliveryText = container.querySelector('.expected-date');
+const currentDateClass = 'expected-delivery-date';
+let currentDate = container.querySelector(`.${currentDateClass}`);
 
 function getMonth(month) {
 
@@ -91,10 +93,12 @@ export default function() {
       const date = new Date(yearData, monthData, dayData);
       const month = getMonth(date.getMonth());
       const dayOfWeek = getDay(date.getDay());
-      const day = date.getDate();
-      const year = date.getFullYear()
+      const day = ('0' + date.getDate()).slice(-2);
+      const year = date.getFullYear();
 
-      console.log(dayOfWeek);
+      currentDate.classList.remove(currentDateClass);
+      entry.classList.add(currentDateClass);
+      currentDate = entry;
 
       deliveryText.innerHTML = `Your current delivery date is ${dayOfWeek}, ${month} ${day}, ${year}.`;
 
