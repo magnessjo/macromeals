@@ -19,7 +19,6 @@
 
   & .pickup-list {
 
-
     @media (--large-min) {
       display: flex;
       align-items: center;
