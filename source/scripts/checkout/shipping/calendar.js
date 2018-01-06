@@ -1,4 +1,8 @@
 
+// Import
+
+import fetchData from 'scripts/helpers/fetchPostData.js';
+
 // Variables
 
 const container = document.querySelector('#calendar');
@@ -100,7 +104,11 @@ export default function() {
       entry.classList.add(currentDateClass);
       currentDate = entry;
 
-      deliveryText.innerHTML = `Your current delivery date is ${dayOfWeek}, ${month} ${day}, ${year}.`;
+      deliveryText.innerHTML = `Your delivery date is ${dayOfWeek}, ${month} ${day}, ${year}.`;
+
+      fetchData(`${window.csrfTokenName}=${window.csrfTokenValue}&deliveryDate=${year}-${date.getMonth() + 1}-${day} 05:00:00`, '/actions/MacroCommerce/Cart/setDeliveryDate').then( (response) => {
+        console.log(response);
+      });
 
     });
 

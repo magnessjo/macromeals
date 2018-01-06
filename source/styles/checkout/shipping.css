@@ -186,6 +186,7 @@
 #calendar {
 
   & .calendars {
+    margin-bottom: 20px;
 
     @media (--large-min) {
       display: flex;
@@ -253,6 +254,40 @@
   & .today {
     background-color: var(--green);
     color: var(--white);
+  }
+
+  & .color-code {
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+
+    & div > div {
+      display: flex;
+      align-items: center;
+    }
+
+    & > div div span {
+      display: inline-block;
+      background-color: var(--light-green);
+      height: 15px;
+      width: 15px;
+      border: 1px solid var(--black);
+      margin-right: 10px;
+    }
+
+    & .delivery-date-options span {
+      background-color: var(--light-green);
+    }
+
+    & .current-delivery-date span {
+      background-color: var(--light-yellow);
+    }
+
+    & .today-date span {
+      background-color: var(--green);
+    }
+
+
   }
 
 }
