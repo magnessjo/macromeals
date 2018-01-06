@@ -7,7 +7,7 @@ section:not(#stage) {
 
 }
 
-#order-summary {
+#billing-order-summary {
 
   & .list-item {
     display: flex;
@@ -23,10 +23,6 @@ section:not(#stage) {
 }
 
 #payment-method {
-
-  & h1 {
-    margin-bottom: 10px;
-  }
 
   & .type {
 

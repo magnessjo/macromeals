@@ -53,11 +53,18 @@
 }
 
 .acumin-headline {
-  font-family: var(--acuminExtraLightItalic);
-  font-size: calc(18px + .5vw);
+  font-family: var(--acuminMediumItalic);
+  font-size: 22px;
   width: 100%;
-  margin-bottom: 20px;
-  text-transform: capitalize;
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  line-height: 1.4em;
+
+  & span {
+    position: relative;
+    border-bottom: 1px solid var(--black);
+  }
+
 }
 
 .acumin-small {
