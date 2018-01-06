@@ -12,11 +12,12 @@ section:not(#stage) {
   & .list-item {
     display: flex;
     justify-content: space-between;
-  }
 
-  & span {
-    font-family: var(--acuminSemiBold);
-    font-size: 22px;
+    & span {
+      font-family: var(--acuminSemiBold);
+      font-size: 22px;
+    }
+
   }
 
 }
