@@ -53,21 +53,17 @@
 
                  <div class="shipping-type" data-handle="{{ handle }}" data-name="{{ method.name }}" data-cost="0">
                    <div class="shop-details">
-                     <h2>1) Post Man Plus</h2>
+                     <h2>Post Man Plus</h2>
                      <address>
                        <p>3438 Emmorton Rd<br> Abingdon, MD 21009</p>
                      </address>
                      <a target="_blank" href="https://www.google.com/maps/place/Postman+Plus/@39.4674016,-76.3152994,17z/data=!3m1!4b1!4m7!3m6!1s0x0:0xf0f6718230cd08b7!8m2!3d39.4674016!4d-76.3131107!9m1!1b1">View on Map</a>
-                   </div>
-                   <div class="map">
-                     <div id="postManPlusMap"></div>
                    </div>
                    {% if currentShippingMethod.handle == handle %}
                     <button disabled>Selected</button>
                    {% else %}
                     <button>Select</button>
                    {% endif %}
-
                 </div>
 
                 {% endif %}
@@ -96,17 +92,6 @@
 
     </section>
 
-    <section id="shipping-summary">
-
-      <div class="lock">
-
-        <p class="summary-method">Your current shipping method <span>{{ currentShippingMethod.name }}</span></p>
-        <p class="summary-cost">Your current shipping cost <span>${{ cart.totalShippingCost | number_format(2, '.', ',') }}</span></p>
-
-      </div>
-
-    </section>
-
     <section id="calendar">
 
       <div class="lock">
@@ -128,8 +113,6 @@
           {% set deliveryDate = expectedDate %}
         {% endif %}
 
-        <p class="expected-date">Your delivery date is {{ deliveryDate|date("l, F d, Y") }}.</p>
-
         {% set month = craft.calendar.month({ date: targetDate }) %}
         {% set nextMonth = craft.calendar.month({ date: month.nextDate }) %}
 
@@ -147,6 +130,18 @@
             <div class="today-date"><span></span> Today</div>
           </div>
         </div>
+
+      </div>
+
+    </section>
+
+    <section id="shipping-summary">
+
+      <div class="lock">
+
+        <p class="summary-method">Your current shipping method <span>{{ currentShippingMethod.name }}</span></p>
+        <p class="expected-date">Your scheduled delivery date is <span>{{ deliveryDate|date("l, F d, Y") }}</span></p>
+        <p class="summary-cost">Your current shipping cost <span>${{ cart.totalShippingCost | number_format(2, '.', ',') }}</span></p>
 
       </div>
 
