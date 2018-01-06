@@ -6,8 +6,10 @@ import fetchData from 'scripts/helpers/fetchPostData.js';
 // Variables
 
 const container = document.querySelector('#calendar');
+const summaryContainer = document.querySelector('#shipping-summary');
 const deliveryDates = Array.from(container.querySelectorAll('.delivery'));
-const deliveryText = container.querySelector('.expected-date span');
+const deliveryText = summaryContainer.querySelector('.expected-date span');
+const dateInput = document.querySelector('input[name="fields[deliveryDate][date]"]');
 const currentDateClass = 'expected-delivery-date';
 let currentDate = container.querySelector(`.${currentDateClass}`);
 
@@ -105,10 +107,7 @@ export default function() {
       currentDate = entry;
 
       deliveryText.innerHTML = `${dayOfWeek}, ${month} ${day}, ${year}.`;
-
-      fetchData(`${window.csrfTokenName}=${window.csrfTokenValue}&deliveryDate=${year}-${date.getMonth() + 1}-${day} 05:00:00`, '/actions/MacroCommerce/Cart/setDeliveryDate').then( (response) => {
-        console.log(response);
-      });
+      dateInput.value = `${date.getMonth() + 1}/${day}/${year}`;
 
     });
 

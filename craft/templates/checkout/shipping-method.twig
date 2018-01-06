@@ -27,7 +27,8 @@
 
       <div class="lock">
 
-        <h1 class="acumin-medium-bold">Shipping methods</h1>
+        <h1 class="acumin-headline">Select your shipping Method</h1>
+        <p>Delivery is the default option for orders.  You can select any of the pickup locations listed for a reduced cost in shipping.</p>
 
         <div class="shipping-type" data-handle="overnight" data-name="Overnight" data-cost="{{ cart.totalShippingCost | number_format(2, '.', ',') }}">
           <div class="shop-details">
@@ -41,9 +42,10 @@
        </div>
 
        <div class="pickup-options">
-         <button class="show-pickups">See List of Pickup Options for Maryland Customers</button>
 
          <div class="pickup-list">
+
+           <h2>Pickup <span>Options</span></h2>
 
            <div class="wrapper">
 
@@ -53,7 +55,7 @@
 
                  <div class="shipping-type" data-handle="{{ handle }}" data-name="{{ method.name }}" data-cost="0">
                    <div class="shop-details">
-                     <h2>Post Man Plus</h2>
+                     <h3>Post Man Plus</h3>
                      <address>
                        <p>3438 Emmorton Rd<br> Abingdon, MD 21009</p>
                      </address>
@@ -78,9 +80,6 @@
                       </address>
                       <a target="_blank" href="https://www.google.com/maps/place/Harford+Pack+%26+Ship/@39.5368548,-76.3499856,17.19z/data=!4m12!1m6!3m5!1s0x0:0x4c98b3c65231cd99!2sUnited+States+Postal+Service!8m2!3d39.5288131!4d-76.3614044!3m4!1s0x0:0xbfee7307036b8e3!8m2!3d39.534975!4d-76.3466113">View on Map</a>
                     </div>
-                    <div class="map">
-                      <div id="harfordPackMap"></div>
-                    </div>
                     <button>Select</button>
                  </div> #}
 
@@ -95,6 +94,9 @@
     <section id="calendar">
 
       <div class="lock">
+
+        <h1 class="acumin-headline">Select your Delivery Date</h1>
+        <p>Select your preferred date for your delivery to arrive or your pickup to be scheduled.  Dates are not guaranteed but we do our best to ensure your packages arrive via FedEx when stated or we will notify you.</p>
 
         {% set targetDate = "today" %}
         {% set expectedDate = "now"|date_modify("+3 day") %}
@@ -113,22 +115,29 @@
           {% set deliveryDate = expectedDate %}
         {% endif %}
 
+        <input type="hidden" name="fields[deliveryDate][date]" value="{{ deliveryDate.format('m/d/Y') }}">
+        <input type="hidden" name="fields[deliveryDate][time]" value="5:00 AM">
+
         {% set month = craft.calendar.month({ date: targetDate }) %}
         {% set nextMonth = craft.calendar.month({ date: month.nextDate }) %}
 
-        <div class="calendars">
-          {% include "components/delivery-calendar.twig" with { 'month' : month, 'expectedDate' :  expectedDate, 'deliveryDate' :  deliveryDate } %}
-          {% if expectedDate.format('d') > 20 %}
-            {% include "components/delivery-calendar.twig" with { 'month' : nextMonth, 'expectedDate' :  expectedDate, 'deliveryDate' :  deliveryDate } %}
-          {% endif %}
-        </div>
+        <div class="calendar-wrapper">
 
-        <div class="color-code">
-          <div>
-            <div class="current-delivery-date"><span></span> Current Delivery Date</div>
-            <div class="delivery-date-options"><span></span> Available Delivery Dates</div>
-            <div class="today-date"><span></span> Today</div>
+          <div class="calendars">
+            {% include "components/delivery-calendar.twig" with { 'month' : month, 'expectedDate' :  expectedDate, 'deliveryDate' :  deliveryDate } %}
+            {% if expectedDate.format('d') > 20 %}
+              {% include "components/delivery-calendar.twig" with { 'month' : nextMonth, 'expectedDate' :  expectedDate, 'deliveryDate' :  deliveryDate } %}
+            {% endif %}
           </div>
+
+          <div class="color-code">
+            <div>
+              <div class="current-delivery-date"><span></span> Current Delivery Date</div>
+              <div class="delivery-date-options"><span></span> Available Delivery Dates</div>
+              <div class="today-date"><span></span> Today</div>
+            </div>
+          </div>
+
         </div>
 
       </div>
@@ -139,6 +148,7 @@
 
       <div class="lock">
 
+        <h1 class="acumin-headline">Shipping Summary</h1>
         <p class="summary-method">Your current shipping method <span>{{ currentShippingMethod.name }}</span></p>
         <p class="expected-date">Your scheduled delivery date is <span>{{ deliveryDate|date("l, F d, Y") }}</span></p>
         <p class="summary-cost">Your current shipping cost <span>${{ cart.totalShippingCost | number_format(2, '.', ',') }}</span></p>
