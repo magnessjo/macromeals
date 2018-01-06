@@ -13,6 +13,10 @@ section:not(#stage) {
     display: flex;
     justify-content: space-between;
 
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
     & span {
       font-family: var(--acuminSemiBold);
       font-size: 22px;
