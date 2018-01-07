@@ -69,17 +69,10 @@ form {
 
     &:disabled {
       opacity: .3;
+      cursor: default;
     }
 
   }
-
-  /* & h1 {
-    font-family: var(--acuminExtraLightItalic);
-    font-size: calc(18px + .5vw);
-    width: 100%;
-    margin-bottom: 20px;
-    text-transform: capitalize;
-  } */
 
   & .checkbox-field {
     margin-bottom: 20px;

@@ -20,8 +20,6 @@ export default function(cart) {
 
   }
 
-  console.log(cart);
-
   if (cartTotal) {
 
     const totalElement = cartTotal.querySelector('[data-type="total-amount"]');

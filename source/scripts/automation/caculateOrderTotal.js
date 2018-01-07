@@ -1,8 +1,7 @@
 
 // Variables
 
-const container = document.querySelector('#orders-automation');
-
+const container = document.querySelector('#today');
 
 function updateTotal(foodArray) {
 

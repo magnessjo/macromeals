@@ -21,11 +21,12 @@
 
   {% include "components/breadcrumb.twig" %}
 
-  <section id="order-summary">
+  <section id="billing-order-summary">
 
     <div class="lock small-lock">
 
-      <h1 class="sr-only">Order Summary</h1>
+      <h1 class="acumin-headline"><span>Order Summary</span></h1>
+      <p class="list-item">Expected Delivery Date <span>{{ cart.deliveryDate.format('l, F d, Y') }}</span></p>
       <p class="list-item">Total Due <span>{{ cart.totalPrice | commerceCurrency(cart.currency, stripZeros = true) }}</span></p>
 
     </div>
@@ -41,7 +42,7 @@
         {% if craft.commerce.paymentMethods|length %}
           <form method="POST" id="paymentMethod">
 
-            <h1>Select your form of payment</h1>
+            <h1 class="acumin-headline"><span>Select your form of payment</span></h1>
 
             <div class='type payment-request-wrapper' data-cost="{{ cart.totalPrice | commerceCurrency(cart.currency, convert = true, format = false, stripZeros = true) }}">
               <div id="payment-request-button"></div>
@@ -81,7 +82,7 @@
         <input type="hidden" name="action" value="commerce/payments/pay" />
         <input type="hidden" name="redirect" value="/checkout/complete?order={{cart.number}}" />
 
-        <h1 class="acumin-headline">Credit Card Information</h1>
+        <h1 class="acumin-headline"><span>Credit Card Information</span></h1>
 
         <div class="form-group">
 

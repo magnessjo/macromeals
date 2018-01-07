@@ -7,25 +7,26 @@ section:not(#stage) {
 
 }
 
-#order-summary {
+#billing-order-summary {
 
   & .list-item {
     display: flex;
     justify-content: space-between;
-  }
 
-  & span {
-    font-family: var(--acuminSemiBold);
-    font-size: 22px;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    & span {
+      font-family: var(--acuminSemiBold);
+      font-size: 22px;
+    }
+
   }
 
 }
 
 #payment-method {
-
-  & h1 {
-    margin-bottom: 10px;
-  }
 
   & .type {
 

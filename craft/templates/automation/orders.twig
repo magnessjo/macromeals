@@ -3,7 +3,7 @@
 {% includeJsFile "/automation.js" %}
 {% set bodyClass = 'with-border' %}
 
-{% set orders = craft.commerce.orders.orderStatusId(3) %}
+{% set orders = craft.commerce.orders.orderStatusId(3).order('deliveryDate desc') %}
 
 {% block main %}
 
@@ -11,45 +11,96 @@
 
     {% if currentUser.admin %}
 
-      <section id="orders-automation">
+      {% set expectedDate = "now"|date_modify("+3 day") %}
+
+      <section id="today" class="orders-automation">
 
         <div class="lock">
 
+          <h1>Current Orders</h1>
+
           {% for order in orders | reverse %}
 
-          {% set customer = order.shippingAddress %}
+            {% if expectedDate.format('d') >= order.deliveryDate.format('d') %}
 
-          <div class="order">
+              {% set customer = order.shippingAddress %}
 
-            <div class="person">
-              <h1>Order Number: {{ loop.index }}</h1>
-              <p>{{ customer.firstName }} {{ customer.lastName }}</p>
-              <p class="method">Shippment Method : {{ order.shippingMethodHandle }}</p>
-              {% if order.shippingMethodHandle != 'pickup' %}
-                <address>
-                  <p>{{ customer.address1 }}</p>
-                  <p><span>{{ customer.city }},</span> <span>{{ customer.state }} </span><span>{{ customer.zipCode }}</span>
-                </address>
-              {% endif %}
-            </div>
+              <div class="order">
 
-            <div class="food">
-              {% for item in order.lineItems %}
-                {% set variant = item.purchasable %}
-                {% set product = variant.product %}
-                <p class="food-item" food-total="{{ item.qty }}" food-type="{{ product.title }} {{ variant.title }}">{{ item.qty }} {{ product.title }} {{ variant.title }}</p>
-              {% endfor %}
-            </div>
+                <div class="person">
+                  <h2>Order Number: {{ loop.index }}</h2>
+                  <h3>Delivery Date: <br>{{ order.deliveryDate.format('l, F d, Y') }}</h3>
+                  <p>{{ customer.firstName }} {{ customer.lastName }}</p>
+                  <p class="method">Shippment Method : {{ order.shippingMethodHandle }}</p>
+                  {% if order.shippingMethodHandle != 'pickup' %}
+                    <address>
+                      <p>{{ customer.address1 }}</p>
+                      <p><span>{{ customer.city }},</span> <span>{{ customer.state }} </span><span>{{ customer.zipCode }}</span></p>
+                    </address>
+                  {% endif %}
+                </div>
 
-          </div>
+                <div class="food">
+                  {% for item in order.lineItems %}
+                    {% set variant = item.purchasable %}
+                    {% set product = variant.product %}
+                    <p class="food-item" food-total="{{ item.qty }}" food-type="{{ product.title }} {{ variant.title }}">{{ item.qty }} {{ product.title }} {{ variant.title }}</p>
+                  {% endfor %}
+                </div>
+
+              </div>
+
+            {% endif %}
 
           {% endfor %}
 
           <div class="total">
-
             <h1>Totals</h1>
-
           </div>
+
+        </div>
+
+      </section>
+
+      <section id="future" class="orders-automation">
+
+        <div class="lock">
+
+          <h1>Future Orders</h1>
+
+          {% for order in orders | reverse %}
+
+            {% if expectedDate.format('d') < order.deliveryDate.format('d') %}
+
+              {% set customer = order.shippingAddress %}
+
+              <div class="order">
+
+                <div class="person">
+                  <h3>Delivery Date: <br>{{ order.deliveryDate.format('l, F d, Y') }}</h3>
+                  <p>{{ customer.firstName }} {{ customer.lastName }}</p>
+                  <p class="method">Shippment Method : {{ order.shippingMethodHandle }}</p>
+                  {% if order.shippingMethodHandle != 'pickup' %}
+                    <address>
+                      <p>{{ customer.address1 }}</p>
+                      <p><span>{{ customer.city }},</span> <span>{{ customer.state }} </span><span>{{ customer.zipCode }}</span></p>
+                    </address>
+                  {% endif %}
+                </div>
+
+                <div class="food">
+                  {% for item in order.lineItems %}
+                    {% set variant = item.purchasable %}
+                    {% set product = variant.product %}
+                    <p class="food-item" food-total="{{ item.qty }}" food-type="{{ product.title }} {{ variant.title }}">{{ item.qty }} {{ product.title }} {{ variant.title }}</p>
+                  {% endfor %}
+                </div>
+
+              </div>
+
+            {% endif %}
+
+         {% endfor %}
 
         </div>
 
