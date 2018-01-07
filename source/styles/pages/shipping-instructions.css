@@ -5,27 +5,27 @@
   background-image: url(/images/stage/shipping.jpg);
 }
 
-#shipping-info {
-  overflow: hidden;
+.text {
+  margin-bottom: 40px;
 
-  & .text {
-    margin-bottom: 40px;
+  & p {
+    font-family: var(--acuminLightItalic);
+    font-size: calc(22px + .2vw);
 
-    & p {
-      font-family: var(--acuminLightItalic);
-      font-size: calc(22px + .2vw);
-
-      &:last-of-type {
-        margin-bottom: 0;
-      }
-
-    }
-
-    & span {
-      font-family: var(--acuminBold);
+    &:last-of-type {
+      margin-bottom: 0;
     }
 
   }
+
+  & span {
+    font-family: var(--acuminBold);
+  }
+
+}
+
+#shipping-info {
+  overflow: hidden;
 
   & li {
     list-style: none;
@@ -39,7 +39,6 @@
 
   & form {
     position: relative;
-    margin-bottom: 40px;
 
     & > p {
       font-size: 20px;
@@ -81,6 +80,7 @@
   }
 
   & .map {
+    margin-bottom: 40px;
 
     & > p {
       font-size: 20px;
@@ -96,6 +96,7 @@
   & ul {
     margin-bottom: 0;
     display: block;
+    margin-top: 20px;
   }
 
 
