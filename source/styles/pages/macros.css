@@ -25,7 +25,7 @@
   margin-bottom: 40px;
 
   @media (--desktop-min) {
-    margin-bottom: 120px;
+    margin-bottom: 100px;
   }
 
   & .text {
@@ -40,8 +40,9 @@
     margin: 0 auto;
 
     @media (--desktop-min) {
-      width: 50vw;
+      width: 50%;
       height: 36vw;
+      margin: 0;
     }
 
   }
@@ -111,7 +112,7 @@
 
 }
 
-.row:nth-of-type(even) .two-column {
+.two-column:nth-of-type(odd) {
 
   & .text {
 
@@ -132,7 +133,7 @@
 
 }
 
-.row:nth-of-type(odd) .two-column {
+.two-column:nth-of-type(even) {
 
   & .text {
 
