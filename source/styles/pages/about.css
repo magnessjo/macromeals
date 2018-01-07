@@ -247,12 +247,17 @@
       width: 100%;
       left: 0;
       padding: 40px;
-      background-color: rgba(255, 255, 255, .35);
+
       display: flex;
       align-items: center;
       justify-content: center;
       height: 100%;
       z-index: 999;
+
+      @media (--tablet-max) {
+        background-color: rgba(0, 0, 0, .35);
+        color: var(--white);
+      }
 
       @media (--desktop-min) {
         background-color: rgba(255, 255, 255, .93);
