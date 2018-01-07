@@ -10,7 +10,11 @@
 
 }
 
-#orders-automation {
+#today {
+  margin-bottom: 400px;
+}
+
+.orders-automation {
 
   & .order {
     border-bottom: 1px solid var(--black);
@@ -30,6 +34,19 @@
 
   & h1 {
     font-size: 22px;
+    text-transform: uppercase;
+    font-family: var(--acuminBold);
+    margin-bottom: 40px;
+  }
+
+  & h2 {
+    font-size: 22px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  & h3 {
+    font-size: 18px;
     text-transform: uppercase;
     margin-bottom: 10px;
   }
