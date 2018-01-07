@@ -21,6 +21,7 @@ function postSubmission() {
 
   const postSection = document.querySelector('#post-submission');
   const orderText = postSection.querySelector('.order');
+  let totalQuantity = 0;
   let text = '';
 
   items.forEach( (item, i) => {
@@ -28,7 +29,7 @@ function postSubmission() {
     text += `${item.qty} ${item.size}`;
   });
 
-  orderText.innerHTML = `Your order of<span>${text}</span> steak with asparagus have been added to your cart.`
+  orderText.innerHTML = `Your order of<span>${text}</span> ${items[0].name} has been added to your cart.`
   postSection.style.display = 'block';
   scrollToLocation(postSection, 120);
 
@@ -51,11 +52,13 @@ export default function() {
 
       const id = input.getAttribute('data-id');
       const size = input.getAttribute('data-size');
+      const name = input.getAttribute('data-name');
       let data = `${window.csrfTokenName}=${window.csrfTokenValue}&`;
       let obj = {};
 
       obj.size = size;
       obj.qty = input.value;
+      obj.name = name;
       items.push(obj);
 
       data += `purchasableId=${id}&qty=${input.value}`;
