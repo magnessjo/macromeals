@@ -21,6 +21,33 @@
   font-size: calc(22px + .5vw);
 }
 
+.basic {
+  margin-bottom: 40px;
+
+  @media (--desktop-min) {
+    margin-bottom: 120px;
+  }
+
+  & .text {
+    margin-bottom: 40px;
+  }
+
+  & .image {
+    width: 100%;
+    height: 72vw;
+    background-position: center;
+    background-size: cover;
+    margin: 0 auto;
+
+    @media (--desktop-min) {
+      width: 50vw;
+      height: 36vw;
+    }
+
+  }
+
+}
+
 .row {
   margin-bottom: 0;
 
@@ -59,15 +86,14 @@
 
     & .image {
       background-position: center;
-      background-size: contain;
-      height: 20vh;
+      background-size: cover;
 
-      @media (--large-min) {
-        height: 50vh;
+      @media (--tablet-max) {
+        height: 50vw;
+        width: 100%;
       }
 
       @media (--desktop-min) {
-        background-size: cover;
         height: inherit;
       }
 
