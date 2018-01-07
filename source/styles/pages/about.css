@@ -87,9 +87,6 @@
 
 }
 
-
-
-
 .two-column-text {
   display: flex;
   margin-bottom: 50px;
@@ -168,7 +165,7 @@
   @supports(display: grid) {
     display: grid;
     grid-template-columns: repeat(4, 1fr) 10vw;
-    grid-template-rows: repeat(3, 15vh);
+    grid-template-rows: repeat(3, 20vh);
   }
 
   @supports(display: -ms-grid) {
@@ -236,6 +233,11 @@
       & span {
         opacity: 1;
         transform: opacity .5s;
+
+        @media (--tablet-max) {
+          opacity: 0;
+        }
+
       }
 
     }
@@ -245,14 +247,18 @@
       width: 100%;
       left: 0;
       padding: 40px;
-      background-color: rgba(255, 255, 255, .93);
-      transform: translateX(-100%);
-      transition: transform .5s;
+      background-color: rgba(255, 255, 255, .35);
       display: flex;
       align-items: center;
       justify-content: center;
       height: 100%;
       z-index: 999;
+
+      @media (--desktop-min) {
+        background-color: rgba(255, 255, 255, .93);
+        transform: translateX(-100%);
+        transition: transform .2s;
+      }
 
       & > div {
         overflow-y: scroll;
@@ -292,8 +298,12 @@
   }
 
   & > div:hover:after {
-    background-color: transparent;
-    transition: background 1s;
+
+    @media (--desktop-min) {
+      background-color: transparent;
+      transition: background 1s;
+    }
+
   }
 
   & .steak {
