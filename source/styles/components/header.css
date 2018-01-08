@@ -418,7 +418,7 @@ menu {
   height: 0;
   overflow: hidden;
 
-  @media (--large-min) {
+  @media (--tablet-min) {
     display: none;
   }
 
