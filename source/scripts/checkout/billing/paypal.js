@@ -7,9 +7,11 @@ import submitToken from './submitToken.js';
 
 export default function() {
 
+  const environment = window.location.origin == 'https://www.macromeals.life' ? 'production' : 'sandbox';
+
   paypal.Button.render({
 
-      env: 'sandbox',
+      env: environment,
 
       client: {
         sandbox: 'Abc9fvPP9RHFiUaZebFdLyqDxwxrrdzOFwnrJDMD0lyN1MF-OJGa9g4HkRT2i_0GxsUtjyFbviFfScBF',
@@ -34,13 +36,10 @@ export default function() {
 
           if (data.paymentToken) {
 
-            submitToken.paypal(data.paymentToken).then( (response) => {
-
-              console.log(response);
+            submitToken.paypal(data.paymentID).then( (response) => {
 
               if (response.error) {
 
-                submitButton.disabled = false;
                 loader.style.display = 'none';
 
                 errorElement.innerHTML = `
