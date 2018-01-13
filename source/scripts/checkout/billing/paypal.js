@@ -3,11 +3,17 @@
 
 import submitToken from './submitToken.js';
 
+// Variables
+
+const form = document.querySelector('#paymentMethod');
+const costString = form.getAttribute('data-cost');
+const environment = window.location.origin == 'https://www.macromeals.life' ? 'production' : 'sandbox';
+
 // Export
 
 export default function() {
 
-  const environment = window.location.origin == 'https://www.macromeals.life' ? 'production' : 'sandbox';
+  console.log(costString);
 
   paypal.Button.render({
 
@@ -20,11 +26,18 @@ export default function() {
 
       commit: true,
 
+      style: {
+        size: 'responsive',
+        color: 'black',
+        shape: 'rect',
+        label: 'paypal'
+      },
+
       payment: function(data, actions) {
         return actions.payment.create({
           payment: {
             transactions: [{
-              amount: { total: '0.01', currency: 'USD' }
+              amount: { total: costString, currency: 'USD' }
             }]
           }
         });

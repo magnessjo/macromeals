@@ -38,11 +38,11 @@
       <div class="payment-type">
 
         {% if craft.commerce.paymentMethods|length %}
-          <form method="POST" id="paymentMethod">
+          <form method="POST" id="paymentMethod" data-cost="{{ cart.totalPrice | commerceCurrency(cart.currency, convert = true, format = false, stripZeros = true) }}">
 
             <h1 class="acumin-headline"><span>Select your form of payment</span></h1>
 
-            <div class='type payment-request-wrapper' data-cost="{{ cart.totalPrice | commerceCurrency(cart.currency, convert = true, format = false, stripZeros = true) }}">
+            <div class='type payment-request-wrapper'>
               <div id="payment-request-button"></div>
             </div>
 
@@ -50,19 +50,15 @@
               <button data-attr="2">Credit Card</button>
             </div>
 
-            <div class='type' active="true">
-              <div id="paypal-button-container"></div>
-            </div>
-
-            {# <div class='type' disabled="true">
-              <button>PayPal (Coming Soon)</button>
-            </div> #}
-
             {% if currentUser.admin %}
               <div class='type'>
                 <button data-attr="3">Dummy Payment</button>
               </div>
             {% endif %}
+
+            <div class='type' active="true">
+              <div id="paypal-button-container"></div>
+            </div>
 
           </form>
         {% endif %}

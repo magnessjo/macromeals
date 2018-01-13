@@ -6,9 +6,10 @@ import submitToken from './submitToken.js';
 
 // Variables
 
+const form = document.querySelector('#paymentMethod');
 const paymentRequestWrapper = document.querySelector('.payment-request-wrapper');
 const paymentRequestElement = document.querySelector('#payment-request-button');
-const costString = paymentRequestWrapper.getAttribute('data-cost');
+const costString = form.getAttribute('data-cost');
 const totalCostInCents = parseInt(costString * 100);
 
 // Export
