@@ -9,7 +9,7 @@ function stripe(token) {
 
   return new Promise( (resolve, reject) => {
 
-    fetchPostData(`${window.csrfTokenName}=${window.csrfTokenValue}&stripeToken=${token}`, '/actions/commerce/payments/pay').then( (response) => {
+    fetchPostData(`${window.csrfTokenName}=${window.csrfTokenValue}&paymentMethodId=2&stripeToken=${token}`, '/actions/commerce/payments/pay').then( (response) => {
 
       if (response.success) {
 
