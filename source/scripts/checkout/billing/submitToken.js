@@ -28,9 +28,35 @@ function stripe(token) {
 
 }
 
+// Paypal
+
+function paypal(token) {
+
+  return new Promise( (resolve, reject) => {
+
+    fetchPostData(`${window.csrfTokenName}=${window.csrfTokenValue}&paymentMethodId=4&stripeToken=${token}`, '/actions/commerce/payments/pay').then( (response) => {
+
+      if (response.success) {
+
+        window.location.href = '/checkout/complete';
+        resolve(response);
+
+      } else {
+        console.log(response);
+        resolve(response);
+
+      }
+
+    });
+
+  });
+
+}
+
 
 const obj = {
   stripe,
+  paypal,
 }
 
 export default obj;

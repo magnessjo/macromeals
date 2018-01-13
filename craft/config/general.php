@@ -11,6 +11,7 @@ return [
     'requireMatchingUserAgentForSession' => false,
     'autoLoginAfterAccountActivation' => true,
     'enableCsrfProtection' => true,
+    'tokenParam' => 'craftToken',
     'environmentVariables' => [
       'siteUrl'  => 'https://www.macromeals.life/',
       'basePath' => '/srv/http/macromeals/shared/uploads/',

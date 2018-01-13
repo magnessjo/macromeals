@@ -17,8 +17,6 @@
     window.csrfTokenValue = "{{ craft.request.csrfToken|e('js') }}";
   </script>
 
-  <script src="https://js.stripe.com/v3/"></script>
-
   {% include "components/breadcrumb.twig" %}
 
   <section id="billing-order-summary">
@@ -50,6 +48,10 @@
 
             <div class='type' active="true">
               <button data-attr="2">Credit Card</button>
+            </div>
+
+            <div class='type' active="true">
+              <div id="paypal-button-container"></div>
             </div>
 
             {# <div class='type' disabled="true">
@@ -190,5 +192,8 @@
     </div>
 
   </section>
+
+  <script src="https://js.stripe.com/v3/"></script>
+  <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 
 {% endblock %}

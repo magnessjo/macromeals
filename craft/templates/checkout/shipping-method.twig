@@ -110,7 +110,11 @@
         {% endif %}
 
         {% if cart.deliveryDate %}
-          {% set deliveryDate = cart.deliveryDate %}
+          {% if cart.deliveryDate > expectedDate %}
+            {% set deliveryDate = cart.deliveryDate %}
+          {% else %}
+            {% set deliveryDate = expectedDate %}
+          {% endif %}
         {% else %}
           {% set deliveryDate = expectedDate %}
         {% endif %}
@@ -120,6 +124,9 @@
 
         {% set month = craft.calendar.month({ date: targetDate }) %}
         {% set nextMonth = craft.calendar.month({ date: month.nextDate }) %}
+
+        {{ expectedDate.format('d') }}
+        {{ deliveryDate.format('d') }}
 
         <div class="calendar-wrapper">
 
