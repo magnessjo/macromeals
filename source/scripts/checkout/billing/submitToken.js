@@ -32,9 +32,7 @@ function paypal(token) {
 
   return new Promise( (resolve, reject) => {
 
-    console.log(token);
-
-    fetchPostData(`${window.csrfTokenName}=${window.csrfTokenValue}&paymentMethodId=4&paypalToken=${token}`, '/actions/commerce/payments/pay').then( (response) => {
+    fetchPostData(`${window.csrfTokenName}=${window.csrfTokenValue}&paymentMethodId=4&paymentID=${token}`, '/actions/commerce/payments/pay').then( (response) => {
 
       if (response.success) {
 
@@ -42,7 +40,6 @@ function paypal(token) {
         resolve(response);
 
       } else {
-        console.log(response);
         resolve(response);
 
       }

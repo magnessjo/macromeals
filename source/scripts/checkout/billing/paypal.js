@@ -48,6 +48,8 @@ export default function() {
 
             submitToken.paypal(data.paymentID).then( (response) => {
 
+              console.log(response);
+
               if (response.error) {
 
                 errorElement.innerHTML = `
