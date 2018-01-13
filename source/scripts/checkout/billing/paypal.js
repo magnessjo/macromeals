@@ -13,8 +13,6 @@ const environment = window.location.origin == 'https://www.macromeals.life' ? 'p
 
 export default function() {
 
-  console.log(costString);
-
   paypal.Button.render({
 
       env: environment,
@@ -27,10 +25,9 @@ export default function() {
       commit: true,
 
       style: {
-        size: 'responsive',
-        color: 'black',
+        size: 'medium',
+        color: 'gold',
         shape: 'rect',
-        label: 'paypal'
       },
 
       payment: function(data, actions) {

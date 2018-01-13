@@ -40,21 +40,11 @@
         {% if craft.commerce.paymentMethods|length %}
           <form method="POST" id="paymentMethod" data-cost="{{ cart.totalPrice | commerceCurrency(cart.currency, convert = true, format = false, stripZeros = true) }}">
 
-            <h1 class="acumin-headline"><span>Select your form of payment</span></h1>
+            <h1 class="acumin-headline sr-only"><span>Pay with electronic payment vendors</span></h1>
 
             <div class='type payment-request-wrapper'>
               <div id="payment-request-button"></div>
             </div>
-
-            <div class='type' active="true">
-              <button data-attr="2">Credit Card</button>
-            </div>
-
-            {% if currentUser.admin %}
-              <div class='type'>
-                <button data-attr="3">Dummy Payment</button>
-              </div>
-            {% endif %}
 
             <div class='type' active="true">
               <div id="paypal-button-container"></div>
@@ -73,6 +63,8 @@
 
     <div class="lock small-lock">
 
+      <p class="divider"><span>Or</span></p>
+
       {# Stripe #}
 
       <form method="POST" id="payment" data-id='2'>
@@ -80,7 +72,7 @@
         <input type="hidden" name="action" value="commerce/payments/pay" />
         <input type="hidden" name="redirect" value="/checkout/complete?order={{cart.number}}" />
 
-        <h1 class="acumin-headline"><span>Credit Card Information</span></h1>
+        <h1 class="acumin-headline"><span>Pay with Credit Card</span></h1>
 
         <div class="form-group">
 
@@ -126,9 +118,17 @@
 
       </form>
 
-      {% if currentUser.admin %}
+    </div>
 
-        {# Dummy Payment #}
+  </section>
+
+  {% if currentUser.admin %}
+
+    <section>
+
+      <div class="lock small-lock">
+
+        <h1 class="acumin-headline"><span>Admin Checkout</span></h1>
 
         <form id="dummy" data-id='3'>
 
@@ -183,11 +183,11 @@
 
         </form>
 
-      {% endif %}
+      </div>
 
-    </div>
+    </section>
 
-  </section>
+  {% endif %}
 
   <script src="https://js.stripe.com/v3/"></script>
   <script src="https://www.paypalobjects.com/api/checkout.js"></script>

@@ -21,7 +21,6 @@ const style = {
   },
 }
 
-
 // Export
 
 export default function(stripeRef, elementsRef) {

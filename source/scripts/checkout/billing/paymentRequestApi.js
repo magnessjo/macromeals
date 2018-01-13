@@ -9,6 +9,7 @@ import submitToken from './submitToken.js';
 const form = document.querySelector('#paymentMethod');
 const paymentRequestWrapper = document.querySelector('.payment-request-wrapper');
 const paymentRequestElement = document.querySelector('#payment-request-button');
+const errorElement = document.getElementById('card-errors');
 const costString = form.getAttribute('data-cost');
 const totalCostInCents = parseInt(costString * 100);
 
@@ -29,11 +30,11 @@ export default function(stripeRef, elementsRef) {
   });
   const paymentRequestbutton = elements.create('paymentRequestButton', {
     paymentRequest: paymentRequest,
-    label: 'text',
+    label: 'Macro Meals',
     style: {
       paymentRequestButton: {
-        type: 'default',
-        theme: 'dark',
+        type: 'buy',
+        theme: 'light',
         height: '44px',
       },
     },

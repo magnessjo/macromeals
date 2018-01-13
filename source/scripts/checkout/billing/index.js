@@ -6,7 +6,6 @@ import submitStripe from './stripe.js';
 import dPayment from './dPayment.js';
 import paypal from './paypal.js';
 import paymentRequestApi from './paymentRequestApi.js';
-import switchPaymentMethod from './switchPaymentMethod.js';
 
 // Variables
 
@@ -18,7 +17,6 @@ const elements = stripe.elements();
 document.addEventListener('DOMContentLoaded', () => {
 
   modifyFormValueForResize();
-  switchPaymentMethod();
   submitStripe(stripe, elements);
   paymentRequestApi(stripe, elements);
   dPayment();

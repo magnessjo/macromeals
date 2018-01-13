@@ -66,56 +66,6 @@
 
   }
 
-  & .divider {
-    text-align: center;
-    padding: 40px 0;
-    color: var(--green);
-    margin-bottom: 0;
-    font-family: var(--acuminThinItalic);
-
-    @media (--desktop-min) {
-      padding: 50px 0;
-    }
-
-    & span {
-      position: relative;
-      font-size: 60px;
-      display: inline-block;
-      text-transform: uppercase;
-      line-height: 1em;
-
-      &:before, &:after {
-        content: '';
-        position: absolute;
-        height: 2px;
-        width: 100px;
-        top: 50%;
-        transform: rotateY(-50%);
-
-        @media (--tablet-min) {
-          width: 200px;
-        }
-
-        @media (--desktop-min) {
-          width: 300px;
-        }
-
-      }
-
-      &:before {
-        background: linear-gradient(90deg, transparent 0%, var(--green) 100%);
-        right: 100px;
-      }
-
-      &:after {
-        background: linear-gradient(90deg, var(--green) 0%, transparent 100%);
-        left: 100px;
-      }
-
-    }
-
-  }
-
   & .guest-checkout {
 
     @media (--tablet-min) {
