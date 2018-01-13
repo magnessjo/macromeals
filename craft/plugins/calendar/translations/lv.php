@@ -1,4 +1,13 @@
 <?php
+/**
+ * Calendar for Craft
+ *
+ * @package       Solspace:Calendar
+ * @author        Solspace, Inc.
+ * @copyright     Copyright (c) 2010-2018, Solspace, Inc.
+ * @link          https://solspace.com/craft/calendar
+ * @license       https://solspace.com/software/license-agreement
+ */
 
 $plugin = array(
     'Create full-featured calendars and recurring events with exceptions.' => 'Izveidojiet kalendārus un atkārtojošos pasākumus.',

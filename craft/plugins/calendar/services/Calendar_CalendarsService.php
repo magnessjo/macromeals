@@ -1,4 +1,13 @@
 <?php
+/**
+ * Calendar for Craft
+ *
+ * @package       Solspace:Calendar
+ * @author        Solspace, Inc.
+ * @copyright     Copyright (c) 2010-2018, Solspace, Inc.
+ * @link          https://solspace.com/craft/calendar
+ * @license       https://solspace.com/software/license-agreement
+ */
 
 namespace Craft;
 
@@ -184,12 +193,15 @@ class Calendar_CalendarsService extends BaseApplicationComponent
         $isNewCalendar = !$calendar->id;
         if ($isNewCalendar) {
             $calendarRecord = new Calendar_CalendarRecord();
+            $oldCalendar    = null;
         } else {
             $calendarRecord = Calendar_CalendarRecord::model()->findById($calendar->id);
 
             if (!$calendarRecord) {
                 throw new Exception(Craft::t('No calendar exists with the ID "{id}"', array('id' => $calendar->id)));
             }
+
+            $oldCalendar = Calendar_CalendarModel::populateModel($calendarRecord);
         }
 
         $beforeSaveCalendar = $this->onBeforeSave($calendar, $isNewCalendar);
@@ -224,14 +236,15 @@ class Calendar_CalendarsService extends BaseApplicationComponent
         if ($beforeSaveCalendar->performAction && !$calendar->hasErrors()) {
             $transaction = craft()->db->getCurrentTransaction() === null ? craft()->db->beginTransaction() : null;
             try {
-                if (isset($_POST["fieldLayout"])) {
-                    if (!$isNewCalendar && $calendar->fieldLayoutId) {
+                $fieldLayout = $calendar->getFieldLayout();
+
+                if (!$fieldLayout->id) {
+                    if (!$isNewCalendar && $oldCalendar->fieldLayoutId) {
                         // Drop the old field layout
-                        craft()->fields->deleteLayoutById($calendar->fieldLayoutId);
+                        craft()->fields->deleteLayoutById($oldCalendar->fieldLayoutId);
                     }
 
                     // Save the new one
-                    $fieldLayout = $calendar->getFieldLayout();
                     craft()->fields->saveLayout($fieldLayout);
 
                     // Update the calendar record/model with the new layout ID
@@ -245,93 +258,65 @@ class Calendar_CalendarsService extends BaseApplicationComponent
                     $calendar->id = $calendarRecord->id;
                 }
 
-                if (isset($_POST['locales'])) {
-                    // Update the calendar_calendars_i18n table
-                    $newLocaleData = array();
+                // Update the calendar_calendars_i18n table
+                $newLocaleData = array();
 
-                    if (!$isNewCalendar) {
-                        // Get the old calendar locales
-                        $oldCalendarLocaleRecords = Calendar_CalendarLocaleRecord::model()->findAllByAttributes(
-                            array('calendarId' => $calendar->id)
-                        );
-
-                        $oldCalendarLocales = Calendar_CalendarLocaleModel::populateModels(
-                            $oldCalendarLocaleRecords,
-                            'locale'
-                        );
-                    }
-
-                    foreach ($calendarLocales as $localeId => $locale) {
-                        // Was this already selected?
-                        if (!$isNewCalendar && isset($oldCalendarLocales[$localeId])) {
-                            $oldLocale = $oldCalendarLocales[$localeId];
-
-                            // Has anything changed?
-                            if (
-                                $locale->enabledByDefault != $oldLocale->enabledByDefault ||
-                                $locale->eventUrlFormat != $oldLocale->eventUrlFormat
-                            ) {
-                                craft()->db->createCommand()->update(
-                                    Calendar_CalendarLocaleRecord::TABLE,
-                                    array(
-                                        'enabledByDefault' => (int) $locale->enabledByDefault,
-                                        'eventUrlFormat'   => $locale->eventUrlFormat,
-                                    ),
-                                    array('id' => $oldLocale->id)
-                                );
-                            }
-                        } else {
-                            $newLocaleData[] = array(
-                                (int) $calendar->id,
-                                $localeId,
-                                (int) $locale->enabledByDefault,
-                                $locale->eventUrlFormat,
-                            );
-                        }
-                    }
-
-                    // Insert the new locales
-                    craft()->db->createCommand()->insertAll(
-                        Calendar_CalendarLocaleRecord::TABLE,
-                        array('calendarId', 'locale', 'enabledByDefault', 'eventUrlFormat'),
-                        $newLocaleData
+                if (!$isNewCalendar) {
+                    // Get the old calendar locales
+                    $oldCalendarLocaleRecords = Calendar_CalendarLocaleRecord::model()->findAllByAttributes(
+                        array('calendarId' => $calendar->id)
                     );
 
-                    if (!$isNewCalendar) {
-                        $droppedLocaleIds = array_diff(array_keys($oldCalendarLocales), array_keys($calendarLocales));
+                    $oldCalendarLocales = Calendar_CalendarLocaleModel::populateModels(
+                        $oldCalendarLocaleRecords,
+                        'locale'
+                    );
+                }
 
-                        if ($droppedLocaleIds) {
-                            craft()->db->createCommand()->delete(
+                foreach ($calendarLocales as $localeId => $locale) {
+                    // Was this already selected?
+                    if (!$isNewCalendar && isset($oldCalendarLocales[$localeId])) {
+                        $oldLocale = $oldCalendarLocales[$localeId];
+
+                        // Has anything changed?
+                        if (
+                            $locale->enabledByDefault != $oldLocale->enabledByDefault ||
+                            $locale->eventUrlFormat != $oldLocale->eventUrlFormat
+                        ) {
+                            craft()->db->createCommand()->update(
                                 Calendar_CalendarLocaleRecord::TABLE,
-                                array('and', 'calendarId = :calendarId', array('in', 'locale', $droppedLocaleIds)),
-                                array(':calendarId' => $calendar->id)
+                                array(
+                                    'enabledByDefault' => (int) $locale->enabledByDefault,
+                                    'eventUrlFormat'   => $locale->eventUrlFormat,
+                                ),
+                                array('id' => $oldLocale->id)
                             );
                         }
-                    }
-                } else if ($isNewCalendar) {
-                    foreach ($calendarLocales as $localeId => $localeModel) {
-                        craft()->db->createCommand()->insert(
-                            Calendar_CalendarLocaleRecord::TABLE,
-                            array(
-                                'calendarId'       => $calendar->id,
-                                'locale'           => $localeId,
-                                'enabledByDefault' => 1,
-                                'eventUrlFormat'   => null,
-                            )
+                    } else {
+                        $newLocaleData[] = array(
+                            (int) $calendar->id,
+                            $localeId,
+                            (int) $locale->enabledByDefault,
+                            $locale->eventUrlFormat,
                         );
                     }
-                } else {
-                    foreach ($calendarLocales as $localeId => $localeModel) {
-                        craft()->db->createCommand()->update(
+                }
+
+                // Insert the new locales
+                craft()->db->createCommand()->insertAll(
+                    Calendar_CalendarLocaleRecord::TABLE,
+                    array('calendarId', 'locale', 'enabledByDefault', 'eventUrlFormat'),
+                    $newLocaleData
+                );
+
+                if (!$isNewCalendar) {
+                    $droppedLocaleIds = array_diff(array_keys($oldCalendarLocales), array_keys($calendarLocales));
+
+                    if ($droppedLocaleIds) {
+                        craft()->db->createCommand()->delete(
                             Calendar_CalendarLocaleRecord::TABLE,
-                            array(
-                                'enabledByDefault' => 1,
-                                'eventUrlFormat'   => $localeModel->eventUrlFormat,
-                            ),
-                            array(
-                                'calendarId' => $calendar->id,
-                                'locale'     => $localeId,
-                            )
+                            array('and', 'calendarId = :calendarId', array('in', 'locale', $droppedLocaleIds)),
+                            array(':calendarId' => $calendar->id)
                         );
                     }
                 }

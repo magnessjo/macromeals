@@ -1,4 +1,13 @@
 <?php
+/**
+ * Calendar for Craft
+ *
+ * @package       Solspace:Calendar
+ * @author        Solspace, Inc.
+ * @copyright     Copyright (c) 2010-2018, Solspace, Inc.
+ * @link          https://solspace.com/craft/calendar
+ * @license       https://solspace.com/software/license-agreement
+ */
 
 namespace Craft;
 
@@ -22,7 +31,7 @@ class CalendarPlugin extends BasePlugin
     const PERMISSIONS_HELP_LINK = 'https://solspace.com/craft/calendar/docs/demo-templates';
 
     /** @var string */
-    private $version = '1.10.3';
+    private $version = '1.10.4';
 
     /** @var string */
     private $schemaVersion = '1.5.5';
