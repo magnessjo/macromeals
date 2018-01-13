@@ -40,8 +40,6 @@ export default function() {
 
               if (response.error) {
 
-                loader.style.display = 'none';
-
                 errorElement.innerHTML = `
                   <p>${response.error}</p>
                   <p>Your cart has been saved.  Please contact our support team at <a href="help@macromeals.life">help@macromeals.life</a> to process your payment.</p>
