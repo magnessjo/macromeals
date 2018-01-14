@@ -10,7 +10,7 @@ const form = document.querySelector('form#payment');
 const errorElement = document.getElementById('card-errors');
 const cardNameElement = form.querySelector('#card-name-element');
 const submitButton = form.querySelector('input[type="submit"]');
-const loader = form.querySelector('.loader');
+const loader = form.querySelector('.overlay-loader');
 
 const style = {
   base: {

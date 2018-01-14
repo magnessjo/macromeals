@@ -6,67 +6,38 @@ import submitToken from './submitToken.js';
 // Variables
 
 const form = document.querySelector('#paymentMethod');
-const costString = form.getAttribute('data-cost');
-const environment = window.location.origin == 'https://www.macromeals.life' ? 'production' : 'sandbox';
+const container = document.querySelector('.paypal');
+const button = container.querySelector('button');
+const overlay = document.querySelector('.overlay-loader');
 
 // Export
 
 export default function() {
 
-  paypal.Button.render({
+  button.addEventListener('click', e => {
 
-      env: environment,
+    e.preventDefault();
 
-      client: {
-        sandbox: 'Abc9fvPP9RHFiUaZebFdLyqDxwxrrdzOFwnrJDMD0lyN1MF-OJGa9g4HkRT2i_0GxsUtjyFbviFfScBF',
-        production: 'AThP6kzuAdgNgb_962Y51My9Ntg7rabWTNgr8oY_NuyPv3_H8-ah3oCjStWJ_ea_KtvJCMc-OeraMwg0'
-      },
+    button.disabled = true;
+    overlay.style.display = 'block';
 
-      commit: true,
+    submitToken.paypal().then( (response) => {
 
-      style: {
-        size: 'medium',
-        color: 'gold',
-        shape: 'rect',
-      },
+      if (response.error) {
 
-      payment: function(data, actions) {
-        return actions.payment.create({
-          payment: {
-            transactions: [{
-              amount: { total: costString, currency: 'USD' }
-            }]
-          }
-        });
-      },
+        button.disabled = false;
+        overlay.style.display = 'none';
 
-      onAuthorize: function(data, actions) {
+        errorElement.innerHTML = `
+          <p>${response.error}</p>
+          <p>Your cart has been saved.  Please contact our support team at <a href="help@macromeals.life">help@macromeals.life</a> to process your payment.</p>
+        `;
 
-        return actions.payment.execute().then( (token) =>  {
-
-          if (data.paymentToken) {
-
-            submitToken.paypal(data.paymentID).then( (response) => {
-
-              console.log(response);
-
-              if (response.error) {
-
-                errorElement.innerHTML = `
-                  <p>${response.error}</p>
-                  <p>Your cart has been saved.  Please contact our support team at <a href="help@macromeals.life">help@macromeals.life</a> to process your payment.</p>
-                `;
-
-                errorElement.style.display = 'block';
-              }
-
-            });
-
-          }
-
-        });
+        errorElement.style.display = 'block';
       }
 
-  }, '#paypal-button-container');
+    });
+
+  });
 
 }

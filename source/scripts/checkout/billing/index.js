@@ -4,7 +4,7 @@
 import modifyFormValueForResize from 'scripts/helpers/form/modifyFormValueForResize.js';
 import submitStripe from './stripe.js';
 import dPayment from './dPayment.js';
-// import paypal from './paypal.js';
+import paypal from './paypal.js';
 import paymentRequestApi from './paymentRequestApi.js';
 
 // Variables
@@ -20,6 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
   submitStripe(stripe, elements);
   paymentRequestApi(stripe, elements);
   dPayment();
-  // paypal();
+  paypal();
 
 });

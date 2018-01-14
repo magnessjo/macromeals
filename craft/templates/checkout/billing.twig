@@ -17,6 +17,12 @@
     window.csrfTokenValue = "{{ craft.request.csrfToken|e('js') }}";
   </script>
 
+  <div class="overlay-loader">
+    <div class="loader">
+      <span>Processing</span>
+    </div>
+  </div>
+
   {% include "components/breadcrumb.twig" %}
 
   <section id="billing-order-summary">
@@ -46,9 +52,12 @@
               <div id="payment-request-button"></div>
             </div>
 
-            {# <div class='type' active="true">
-              <div id="paypal-button-container"></div>
-            </div> #}
+            <div class='type paypal'>
+              <button class="paypal">
+                <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_200x51.png" alt="PayPal Logo">
+                <span>Checkout</span>
+              </button>
+            </div>
 
           </form>
         {% endif %}
@@ -75,8 +84,6 @@
         <h1 class="acumin-headline"><span>Pay with Credit Card</span></h1>
 
         <div class="form-group">
-
-          <div class="loader"></div>
 
           <div class="field card-name">
             <label><span>Name</span></label>
@@ -194,6 +201,5 @@
   {% endif %}
 
   <script src="https://js.stripe.com/v3/"></script>
-  <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 
 {% endblock %}

@@ -28,15 +28,15 @@ function stripe(token) {
 
 // Paypal
 
-function paypal(token) {
+function paypal(data) {
 
   return new Promise( (resolve, reject) => {
 
-    fetchPostData(`${window.csrfTokenName}=${window.csrfTokenValue}&paymentMethodId=4&paymentID=${token}`, '/actions/commerce/payments/pay').then( (response) => {
+    fetchPostData(`${window.csrfTokenName}=${window.csrfTokenValue}&paymentMethodId=4&redirect=/checkout/complete`, '/actions/commerce/payments/pay').then( (response) => {
 
       if (response.success) {
 
-        window.location.href = '/checkout/complete';
+        window.location.href = response.redirect;
         resolve(response);
 
       } else {

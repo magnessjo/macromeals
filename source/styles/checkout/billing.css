@@ -7,6 +7,38 @@ section:not(#stage) {
 
 }
 
+.overlay-loader {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: rgba(255, 255, 255, .85);
+  z-index: 9999;
+  display: none;
+
+  & .loader {
+    display: block;
+
+    & span {
+      display: block;
+      font-size: 40px;
+      color: var(--green);
+      height: 20px;
+      width: 300px;
+      margin-left: -150px;
+      z-index: 99;
+      position: absolute;
+      top: 70px;
+      text-indent: 0;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+  }
+
+}
+
 #billing-order-summary {
 
   & .list-item {
@@ -38,6 +70,28 @@ section:not(#stage) {
   & .payment-request-wrapper {
     margin-bottom: 10px;
     display: none;
+  }
+
+  & .paypal {
+
+    & button {
+      background-color: #ffc439;
+      padding: 10px 40px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      margin: 0 auto;
+    }
+
+    & img {
+      max-height: 30px;
+    }
+
+    & span {
+      margin-left: 5px;
+      margin-top: 8px;
+    }
+
   }
 
 }
