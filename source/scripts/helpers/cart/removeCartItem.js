@@ -7,9 +7,9 @@ import fetchData from 'scripts/helpers/fetchPostData.js';
 
 export default function postToCart(data) {
 
-  return new Promise((resolve, reject) => {
+  return new Promise( (resolve, reject) => {
 
-    fetchData(data, '/actions/commerce/cart/removeLineItem').then((response) => {
+    fetchData(data, '/actions/commerce/cart/removeLineItem').then( (response) => {
       resolve(response);
     });
 
