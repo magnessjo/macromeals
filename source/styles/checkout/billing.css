@@ -42,8 +42,11 @@ section:not(#stage) {
 #billing-order-summary {
 
   & .list-item {
-    display: flex;
-    justify-content: space-between;
+
+    @media (--large-min) {
+      display: flex;
+      justify-content: space-between;
+    }
 
     &:last-of-type {
       margin-bottom: 0;
@@ -52,6 +55,11 @@ section:not(#stage) {
     & span {
       font-family: var(--acuminSemiBold);
       font-size: 22px;
+
+      @media (--medium-max) {
+        display: block;
+      }
+
     }
 
   }
