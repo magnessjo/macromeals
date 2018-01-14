@@ -25,11 +25,16 @@
   margin-bottom: 40px;
 
   @media (--desktop-min) {
-    margin-bottom: 100px;
+    margin-bottom: 50px;
   }
 
   & .text {
     margin-bottom: 40px;
+
+    & p {
+      font-size: calc(22px + .5vw);
+    }
+
   }
 
   & .image {
@@ -40,11 +45,24 @@
     margin: 0 auto;
 
     @media (--desktop-min) {
-      width: 50%;
-      height: 36vw;
-      margin: 0;
+      margin: 0 auto;
+      height: 50vh;
+      background-size: contain;
     }
 
+  }
+
+}
+
+.overview-text {
+  margin-bottom: 50px;
+
+  & p {
+    font-size: calc(20px + .2vw);
+  }
+
+  & p:last-of-type {
+    margin-bottom: 0;
   }
 
 }
