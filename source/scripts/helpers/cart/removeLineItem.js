@@ -53,7 +53,6 @@ function showModal(button) {
     removeCartItem(data).then( (data) => {
 
       parent.remove();
-      removeCartItem();
       removeModal();
       displayCartTotalInHeader();
       updateCartTotals(data.cart);
