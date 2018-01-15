@@ -21,7 +21,7 @@ return [
 
   '.me' => [
     'devMode' => false,
-    'enableCsrfProtection' => false,
+    'enableCsrfProtection' => true,
     'environmentVariables' => [
       'siteUrl'  => 'https://macromeals.joshmagness.me/',
       'basePath' => '/srv/http/macromeals/shared/uploads/',
@@ -31,7 +31,7 @@ return [
 
   '.dev' => [
     'devMode' => true,
-    'enableCsrfProtection' => false,
+    'enableCsrfProtection' => true,
     'environmentVariables' => [
       'siteUrl'  => 'https://macromeals.localhost.dev/',
       'basePath' => '/Users/magnessjo/Sites/personal/macromeals/source/assets/uploads',

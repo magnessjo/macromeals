@@ -72,9 +72,7 @@ export default function() {
       return;
     } else {
 
-      const userdata = `
-        ${window.csrfTokenName}=${window.csrfTokenValue}&loginName=${userNameInput.value}&password=${passwordInput.value}&rememberMe=${rememberUser.value}
-      `;
+      const userdata = `${window.csrfTokenName}=${window.csrfTokenValue}&loginName=${userNameInput.value}&password=${passwordInput.value}&rememberMe=${rememberUser.value}`;
 
       postLogin(userdata).then( (response) => {
 
