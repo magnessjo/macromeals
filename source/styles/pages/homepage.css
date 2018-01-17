@@ -234,55 +234,6 @@
 
 }
 
-/* #delivery {
-
-  & > .lock {
-    color: var(--green);
-
-    @media (--large-max) {
-      text-align: center;
-    }
-
-    @media (--tablet-min) {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-  }
-
-  & p {
-    margin-bottom: 10px;
-
-    @media (--tablet-min) {
-      margin-bottom: 0;
-    }
-
-  }
-
-  & img {
-    width: 60px;
-    height: auto;
-    margin-right: 30px;
-
-    @media (--large-max) {
-      display: none;
-    }
-
-  }
-
-  & a {
-    text-decoration: underline;
-    color: var(--green);
-
-    @media (--tablet-min) {
-      margin-left: 20px;
-    }
-
-  }
-
-} */
-
 .meals-by-category {
   margin-bottom: 80px;
 
