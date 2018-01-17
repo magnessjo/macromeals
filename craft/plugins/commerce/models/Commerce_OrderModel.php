@@ -286,7 +286,7 @@ class Commerce_OrderModel extends BaseElementModel
     {
         $totalPaid = CommerceCurrencyHelper::round($this->totalPaid);
         $totalPrice = CommerceCurrencyHelper::round($this->totalPrice);
-        
+
         return $totalPrice - $totalPaid;
     }
 
@@ -466,7 +466,7 @@ class Commerce_OrderModel extends BaseElementModel
 
         return $value;
     }
-    
+
     /**
      * Returns the total of adjustments made to order.
      * @return float|int
@@ -554,6 +554,10 @@ class Commerce_OrderModel extends BaseElementModel
      */
     public function setShippingAddress(Commerce_AddressModel $address)
     {
+        if ($address->id)
+        {
+           $this->shippingAddressId = $address->id;
+        }
         $this->_shippingAddress = $address;
     }
 
@@ -575,6 +579,10 @@ class Commerce_OrderModel extends BaseElementModel
      */
     public function setBillingAddress(Commerce_AddressModel $address)
     {
+        if ($address->id)
+        {
+            $this->billingAddressId = $address->id;
+        }
         $this->_billingAddress = $address;
     }
 
@@ -656,6 +664,7 @@ class Commerce_OrderModel extends BaseElementModel
      */
     public static function populateModel($row)
     {
+        /** @var Commerce_OrderModel $model */
         $model = parent::populateModel($row);
         $model->setEmail($row['email']);
         return $model;
@@ -667,7 +676,7 @@ class Commerce_OrderModel extends BaseElementModel
      */
     public function showAddress()
     {
-        craft()->deprecator->log('Commerce_OrderModel::showAddress():removed', 'You should no longer use `cart.showAddress` in twig to determine whether to show the address form. Do your own check in twig like this `{% if cart.linItems|length > 0 %}`');
+        craft()->deprecator->log('Commerce_OrderModel::showAddress():removed', 'You should no longer use `cart.showAddress` in twig to determine whether to show the address form. Do your own check in twig like this `{% if cart.lineItems|length > 0 %}`');
 
         return count($this->getLineItems()) > 0;
     }
@@ -678,7 +687,7 @@ class Commerce_OrderModel extends BaseElementModel
      */
     public function showPayment()
     {
-        craft()->deprecator->log('Commerce_OrderModel::showPayment():removed', 'You should no longer use `cart.showPayment` in twig to determine whether to show the payment form. Do your own check in twig like this `{% if cart.linItems|length > 0 and cart.billingAddressId and cart.shippingAddressId %}`');
+        craft()->deprecator->log('Commerce_OrderModel::showPayment():removed', 'You should no longer use `cart.showPayment` in twig to determine whether to show the payment form. Do your own check in twig like this `{% if cart.lineItems|length > 0 and cart.billingAddressId and cart.shippingAddressId %}`');
 
         return count($this->getLineItems()) > 0 && $this->billingAddressId && $this->shippingAddressId;
     }

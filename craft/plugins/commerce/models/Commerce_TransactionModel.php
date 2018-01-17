@@ -89,11 +89,12 @@ class Commerce_TransactionModel extends BaseModel
 
         // check transaction hasn't already been captured
         $criteria = [
-            'condition' => 'type = ? AND status = ? AND orderId = ?',
+            'condition' => 'type = ? AND status = ? AND orderId = ? AND reference = ?',
             'params' => [
                 Commerce_TransactionRecord::TYPE_CAPTURE,
                 Commerce_TransactionRecord::STATUS_SUCCESS,
-                $this->orderId
+                $this->orderId,
+                $this->reference
             ],
         ];
         $exists = craft()->commerce_transactions->transactionExists($criteria);

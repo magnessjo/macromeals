@@ -172,7 +172,8 @@ class CommercePlugin extends BasePlugin
                         'm170426_010101_Commerce_IncreaseTaxRateDecimal',
                         'm170609_010101_Commerce_AddRecieptEmailSettingToStripeGateway',
                         'm170727_010101_Commerce_AddPercentageOffOption',
-                        'm170801_010101_Commerce_DropCustomerEmail'
+                        'm170801_010101_Commerce_DropCustomerEmail',
+                        'm171122_010101_Commerce_IncreaseTaxRateDecimalAgain'
                     );
 
                     foreach ($migrations as $migrationClass) {
@@ -316,7 +317,7 @@ class CommercePlugin extends BasePlugin
      */
     public function getVersion()
     {
-        return '1.2.1351';
+        return '1.2.1352';
     }
 
     /**
@@ -326,7 +327,7 @@ class CommercePlugin extends BasePlugin
      */
     public function getSchemaVersion()
     {
-        return '1.2.80';
+        return '1.2.81';
     }
 
     /**

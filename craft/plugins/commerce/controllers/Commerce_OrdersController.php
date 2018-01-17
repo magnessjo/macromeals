@@ -382,6 +382,49 @@ class Commerce_OrdersController extends Commerce_BaseCpController
     }
 
     /**
+     * Update Order Status Id
+     */
+    public function actionUpdateEmail()
+    {
+        $this->requireAjaxRequest();
+        $orderId = craft()->request->getParam('orderId');
+        $email = craft()->request->getParam('email');
+
+        /** @var Commerce_OrderModel $order */
+        $order = craft()->commerce_orders->getOrderById($orderId);
+
+        $validator = new \CEmailValidator;
+        $validator->allowEmpty = false;
+
+        if (!$order->isCompleted)
+        {
+            $this->returnErrorJson(Craft::t('Can only change email of a completed order.'));
+        }
+
+        if (!$validator->validateValue($email))
+        {
+            $this->returnErrorJson(Craft::t('Bad Order or Email'));
+        }
+
+        if (!$order)
+        {
+            $this->returnErrorJson(Craft::t('Not an Order ID'));
+        }
+
+        if (!$order->isGuest())
+        {
+            $this->returnErrorJson(Craft::t('Can\'t change email address of an individual order when the order is owned by a registered user. Change user\'s email instead.'));
+        }
+
+        $order->email = $email;
+
+        if (craft()->commerce_orders->saveOrder($order))
+        {
+            $this->returnJson(['success' => true]);
+        }
+    }
+
+    /**
      *
      * @throws Exception
      * @throws HttpException

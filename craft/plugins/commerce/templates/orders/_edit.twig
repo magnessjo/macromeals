@@ -28,8 +28,15 @@
 				</tr>
 				<tr>
 					<td><strong>{{ "Customer"|t }}</strong></td>
-					<td>{% if order.customer.user %}<a
-							href="{{ order.customer.user.cpEditUrl }}">{{ order.email }}</a>{% else %}{{ order.email }}&nbsp;({{ "Guest"|t }}) {% endif %}
+					<td>
+						{% if order.customer.user %}
+							<a href="{{ order.customer.user.cpEditUrl }}">{{ order.email }}</a>
+						{% else %}
+							<div id="order-email" data="{{ order.email }}">
+								<div>{{ order.email }} ({{ "Guest"|t }})</div>
+								{% if order.isCompleted %}<a href="#" class="updateemail btn small"> {{ "Update Email"|t }}</a>{% endif %}
+							</div>
+						{% endif %}
 					</td>
 				</tr>
 				<tr>

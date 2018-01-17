@@ -22,6 +22,7 @@ Craft.Commerce.OrderEdit = Garnish.Base.extend(
 
         this.$status = $('#order-status');
         this.$completion = $('#order-completion');
+        this.$email = $('#order-email');
         this.$makePayment = $('#make-payment');
 
         this.billingAddress = new Craft.Commerce.AddressBox($('#billingAddressBox'), {
@@ -36,6 +37,11 @@ Craft.Commerce.OrderEdit = Garnish.Base.extend(
         this.addListener(this.$completion.find('.updatecompletion'), 'click', function (ev) {
             ev.preventDefault();
             this._markOrderCompleted();
+        });
+
+        this.addListener(this.$email.find('.updateemail'), 'click', function (ev) {
+            ev.preventDefault();
+            this._updateEmail();
         });
 
         this.$status.toggleClass('hidden');
@@ -87,6 +93,24 @@ Craft.Commerce.OrderEdit = Garnish.Base.extend(
     },
     _markOrderCompleted: function () {
         Craft.postActionRequest('commerce/orders/completeOrder', {orderId: this.orderId}, function (response) {
+            if (response.success) {
+                //Reload for now, until we build a full order screen SPA
+                window.location.reload();
+            } else {
+                alert(response.error);
+            }
+        });
+    },
+    _updateEmail: function () {
+        var oldEmail = this.$email.data('email');
+        var newEmail = prompt(Craft.t('New Email Address'), oldEmail);
+
+        if (!newEmail || newEmail == oldEmail)
+        {
+            return;
+        }
+
+        Craft.postActionRequest('commerce/orders/updateEmail', {orderId: this.orderId, email : newEmail}, function (response) {
             if (response.success) {
                 //Reload for now, until we build a full order screen SPA
                 window.location.reload();

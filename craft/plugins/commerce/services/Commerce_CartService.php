@@ -405,27 +405,37 @@ class Commerce_CartService extends BaseApplicationComponent
                 $this->_cart->paymentCurrency = craft()->commerce_paymentCurrencies->getPrimaryPaymentCurrencyIso();
             }
 
-            if (
-                $autoSetAddresses = craft()->config->get('autoSetNewCartAddresses', 'commerce') &&
-                $customer = craft()->commerce_customers->getCustomerById($this->_cart->customerId)
-            )
+            // Does a plugin want to set a default shipping address
+            if(!$this->_cart->shippingAddressId) {
+                $defaultShippingAddress = craft()->plugins->callFirst('commerce_defaultCartShippingAddress', [$this->_cart]);
+                if ($defaultShippingAddress) {
+                    $this->_cart->setShippingAddress($defaultShippingAddress);
+                }
+            }
+
+            if (!$this->_cart->billingAddressId) {
+                $defaultBillingAddress = craft()->plugins->callFirst('commerce_defaultCartBillingAddress', [$this->_cart]);
+                if ($defaultBillingAddress) {
+                    $this->_cart->setBillingAddress($defaultBillingAddress);
+                }
+            }
+
+            if ($autoSetAddresses = craft()->config->get('autoSetNewCartAddresses', 'commerce') && $customer = craft()->commerce_customers->getCustomerById($this->_cart->customerId))
             {
                 if (
                     !$this->_cart->shippingAddressId &&
                     ($lastShippingAddressId = $customer->lastUsedShippingAddressId) &&
                     ($address = craft()->commerce_addresses->getAddressById($lastShippingAddressId))
-                )
-                {
-                    $this->_cart->shippingAddressId = $address->id;
+                ) {
+                    $this->_cart->setShippingAddress($address);
                 }
 
                 if (
                     !$this->_cart->billingAddressId &&
                     ($lastBillingAddressId = $customer->lastUsedBillingAddressId) &&
                     ($address = craft()->commerce_addresses->getAddressById($lastBillingAddressId))
-                )
-                {
-                    $this->_cart->billingAddressId = $address->id;
+                ) {
+                    $this->_cart->setBillingAddress($address);
                 }
             }
 
@@ -437,8 +447,6 @@ class Commerce_CartService extends BaseApplicationComponent
                 if($customer->getUser())
                 {
                     $this->_cart->setEmail($customer->getUser()->email);
-                }else{
-                    $this->_cart->setEmail('');
                 }
 
                 $this->_cart->billingAddressId = null;
