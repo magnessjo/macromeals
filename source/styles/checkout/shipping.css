@@ -150,6 +150,10 @@
       margin-bottom: 20px;
     }
 
+    @media (--large-min) {
+      display: flex;
+    }
+
   }
 
   & .calendar-wrapper {

@@ -125,9 +125,6 @@
         {% set month = craft.calendar.month({ date: targetDate }) %}
         {% set nextMonth = craft.calendar.month({ date: month.nextDate }) %}
 
-        {{ expectedDate.format('d') }}
-        {{ deliveryDate.format('d') }}
-
         <div class="calendar-wrapper">
 
           <div class="calendars">
