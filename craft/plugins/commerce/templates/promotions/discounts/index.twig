@@ -39,7 +39,7 @@
                     -
                     {{ (discount.dateTo ? discount.dateTo.localeDate() : '∞') }}
                 </td>
-                <td data-title="{{ 'Times Coupon Used'|t }}">{% if discount.coupon and discount.totalUseLimit > 0 %}{{ discount.totalUses }}{% else  %}{{ 'NA'|t }}{% endif %}</td>
+                <td data-title="{{ 'Times Coupon Used'|t }}">{% if discount.totalUseLimit > 0 %}{{ discount.totalUses }}{% else  %}{{ 'NA'|t }}{% endif %}</td>
                 <td data-title="{{ 'Can Stop Processing?'|t }}">{% if discount.stopProcessing %}<span data-icon="check" title="{{ 'Yes'|t }}"></span>{% endif %}</td>
                 <td class="thin">
                     <a class="move icon disabled" title="{{ 'Delete'|t }}" role="button"></a>
