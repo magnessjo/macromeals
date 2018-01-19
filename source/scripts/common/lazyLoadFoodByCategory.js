@@ -29,16 +29,13 @@ function createMeal(data, parent) {
 
     // Add properties to link
 
-    const isImage = item.image[0].filename;
-
-    if (isImage) {
+    if (item.image[0]) {
       image.setAttribute('src', `/uploads/products/${item.image[0].filename}`);
     } else {
       image.setAttribute('src', `/images/products/placeholder-circle.png`);
     }
 
     image.setAttribute('alt', `image of ${item.title} ${item.subTitle} `);
-
 
     // Add properties to overlay
 
