@@ -24,6 +24,7 @@
     "chart.js": "^2.7.1",
     "deploy": "git+ssh://git@bitbucket.org/magnessjo/deployment.git",
     "gaze": "^1.1.2",
+    "uglifyjs-webpack-plugin": "^1.1.6",
     "whatwg-fetch": "^2.0.3"
   },
   "babel": {
