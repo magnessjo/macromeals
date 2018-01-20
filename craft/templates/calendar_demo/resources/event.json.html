@@ -1,5 +1,0 @@
-{% set events = craft.calendar.events({
-    dateRangeStart: craft.request.param("dateRangeStart"),
-    dateRangeEnd: craft.request.param("dateRangeEnd"),
-}) %}
-{{ events.eventsAsSimpleObject|json_encode|raw }}
