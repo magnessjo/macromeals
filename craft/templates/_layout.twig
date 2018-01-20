@@ -51,6 +51,9 @@
 
     {% include "components/footer.twig" %}
 
+    {% if stylesheet is defined %}
+      <link rel="stylesheet" type="text/css" href="{{ stylesheet }}" />
+    {% endif %}
     <script src="/common.js"></script>
     <link rel="stylesheet" type="text/css" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css" />
 
