@@ -28,7 +28,7 @@
 
               {% if order.shippingMethodHandle == 'overnight' %}
                 {% set text = 'Your Tracking Number is '~order.message  %}
-                {% set link = 'https://www.fedex.com/apps/fedextrack/?action=track&trackingnumber='~order.message~'&cntry_code=us' %}
+                {% set link = 'http://wwwapps.ups.com/WebTracking/track?track=yes&trackNums='~order.message~'' %}
                 {% include "emails/components/email-text-cta.twig" with {'text' : text, 'link': link, 'linkText': 'Track Order'} %}
               {% else %}
                 {% include "emails/components/email-text-cta.twig" with {'text' : 'Your order has been completed and will be ready for you to pickup on Tuesday at the YMCA in Abingdon' } %}
@@ -37,6 +37,7 @@
               <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
                   <th class="column-top" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top; Margin:0" valign="top" width="270">
+                    {% include "emails/components/email-order-number.twig" with {'number' : order.shortNumber } %}
                     {% include "emails/components/email-shipping-method.twig" %}
                   </th>
                   <th class="column-top" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top; Margin:0" valign="top" width="20">
@@ -46,13 +47,13 @@
                       </tr>
                   </table>
                   </th>
-                  <th class="column-top" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top; Margin:0" valign="top" width="270">
+                  <th class="column-top" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top; margin:0" valign="top" width="270">
                     <table width="100%" border="0" cellspacing="0" cellpadding="0">
                       <tr>
                         <td>
 
+                          {% include "emails/components/email-order-date.twig" with {'date' : order.dateOrdered.format('F d, Y') } %}
                           {% include "emails/components/email-order-delivery.twig" with {'shippingMethod' : order.shippingMethodHandle } %}
-                          {% include "emails/components/email-order-number.twig" with {'number' : order.shortNumber } %}
 
                        </td>
                      </tr>
