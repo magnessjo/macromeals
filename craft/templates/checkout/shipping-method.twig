@@ -130,7 +130,7 @@
           <div class="calendars">
             {% include "components/delivery-calendar.twig" with { 'month' : month, 'expectedDate' :  expectedDate, 'deliveryDate' :  deliveryDate } %}
             {% if expectedDate.format('d') > 20 %}
-              {% include "components/delivery-calendar.twig" with { 'month' : nextMonth, 'expectedDate' :  expectedDate, 'deliveryDate' :  deliveryDate } %}
+              {% include "components/delivery-calendar.twig" with { 'month' : nextMonth, 'expectedDate' :  expectedDate, 'deliveryDate' :  null  } %}
             {% endif %}
           </div>
 
