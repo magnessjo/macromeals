@@ -113,6 +113,10 @@
 
   & .summary {
 
+    @media (--medium-max) {
+      margin-bottom: 20px;
+    }
+
     @media (--large-min) {
       width: 30%;
     }
@@ -122,6 +126,7 @@
       font-family: var(--acuminThin);
       font-size: calc(24px + 1vw);
       color: var(--green);
+      margin-bottom: 0;
 
       @media (--large-min) {
         text-align: right;
@@ -417,12 +422,122 @@
     text-align: left;
   }
 
+  & .two-column-text {
+    margin-bottom: 0;
+
+    & p:last-of-type {
+      margin-bottom: 0;
+    }
+
+  }
+
   & .two-column-text .summary p span:last-of-type:before {
     left: 0;
   }
 
 }
 
-#fact {
-  background: var(--light-yellow);
+#becky {
+  background: var(--light-green);
+  padding: 40px 0;
+
+  & .lock {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  & .image {
+
+    @media (--large-max) {
+      margin: 0 auto;
+      width: 280px;
+      order: 2;
+    }
+
+    @media (--tablet-min) {
+      order: 1;
+      width: 200px;
+    }
+
+    @media (--desktop-min) {
+      width: 280px;
+    }
+
+    & img {
+      border: 5px solid var(--white);
+    }
+
+    & p {
+      font-family: var(--acuminExtraLightItalic);
+      font-size: 16px;
+      text-align: right;
+    }
+
+  }
+
+  & .text {
+    width: 100%;
+    order: 1;
+
+    @media (--tablet-min) {
+      order: 2;
+      width: calc(100% - 200px);
+      padding-left: 40px;
+    }
+
+    @media (--desktop-min) {
+      width: calc(100% - 280px);
+    }
+
+  }
+
+  & h1 {
+    font-family: var(--acuminMedium);
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+
+  & h2 {
+    font-size: 20px;
+    margin-bottom: 20px;
+  }
+
+}
+
+#reviews {
+
+  & .call-to-action {
+    font-size: 16px;
+  }
+
+  & .statement > div {
+    margin-bottom: 40px;
+    overflow: hidden;
+
+    & p {
+      line-height: 1.4em;
+      font-weight: 300;
+      margin-bottom: 5px;
+    }
+
+    & span {
+      font-size: 16px;
+    }
+
+  }
+
+  & .two-column-text {
+
+    & .summary {
+
+      @media (--large-min) {
+        order: 2;
+      }
+
+    }
+
+  }
+
 }
