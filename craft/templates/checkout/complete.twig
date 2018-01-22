@@ -1,11 +1,22 @@
 
 {% extends "_layout" %}
 {% includeCssFile "/checkout.css" %}
+{% includeJsFile "/complete.js" %}
 {% set bodyClass = 'with-border' %}
 {% set queryString = craft.request.getQuery('order') %}
 {% set lastOrder = craft.commerce.orders.number(queryString) %}
 
 {% block main %}
+
+  <div id="fb-root"></div>
+  <script>(function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = 'https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.11&appId=535636233485417&autoLogAppEvents=1';
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));</script>
+
 
   <section id="complete">
 
@@ -13,15 +24,27 @@
 
       <div class="lock">
 
-        <h1 class="acumin-large-bold">Thank you!</h1>
-        <h2 class="acumin-medium">Your order is being processed</h2>
-        <p>Your will receive an email with your details.</p>
-        <p>Your order number is {{ lastOrder[0].shortNumber }}</p>
+        <h1>Thank you!</h1>
 
-        {% if currentUser %}
-          <a href="/account/orders" class="call-to-action">View Previous Orders</a>
-        {% endif %}
+        <div class="summary">
+          <p>Your order has been received.</p>
+          <p>Your will receive an email with your details.</p>
+          <p>Your order number is {{ lastOrder[0].shortNumber }}</p>
+        </div>
 
+        <div class="steps">
+          <h2>What happens now?</h2>
+          <p>1) We buy all your ingredients from local vendors to ensure freshness.</p>
+          <p>2) We will prepare all your ingredients by hand to ensure the quality.</p>
+          <p>3) We will cook your meals to perfection so your meals will still be great reheating in the oven or microwave.</p>
+        </div>
+
+        <div class="share">
+          <h3>Want to share this milestone in your quest?</h3>
+          <div class="options">
+            <button class="fb-share"></button>
+          </div>
+        </div>
 
       </div>
 

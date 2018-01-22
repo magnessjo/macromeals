@@ -59,6 +59,7 @@ const config = {
       summary: `source/scripts/checkout/summary`,
       billing: `source/scripts/checkout/billing`,
       cart: `source/scripts/checkout/cart`,
+      complete: `source/scripts/checkout/complete`,
       register: `source/scripts/account/register`,
     },
   },

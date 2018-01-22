@@ -6,8 +6,57 @@
   justify-content: center;
   text-align: center;
 
-  & p:last-of-type {
-    margin-bottom: 60px;
+  & h1 {
+    font-family: var(--acuminBold);
+    font-size: calc(24px + 2vw);
+    margin-bottom: 10px;
+  }
+
+  & h2 {
+    font-family: var(--acuminBold);
+    font-size: calc(24px + 1vw);
+    margin-bottom: 10px;
+  }
+
+  & h3 {
+    font-family: var(--acuminBold);
+    font-size: 22px;
+    margin-bottom: 20px;
+  }
+
+  & .summary {
+    margin-bottom: 40px;
+
+    & p {
+      font-size: 16px;
+      margin-bottom: 5px;
+    }
+
+  }
+
+  & .steps {
+    margin-bottom: 40px;
+
+    & p {
+      margin-bottom: 10px;
+    }
+
+  }
+
+  & .share {
+
+    & .options {
+      display: flex;
+      justify-content: center;
+    }
+
+  }
+
+  & .fb-share {
+    background-image: url('/images/checkout/fb-share.svg');
+    height: 44px;
+    width: 44px;
+    display: block;
   }
 
 }
