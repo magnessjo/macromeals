@@ -11,7 +11,7 @@
         {% if order.shippingMethodHandle == 'overnight' %}
           {% include "emails/components/email-statement.twig" with {'small' : 'Your Order', 'big': 'HAS SHIPPED'} %}
         {% else %}
-          {% include "emails/components/email-statement.twig" with {'small' : 'Your Pickup', 'big': 'IS CONFIRMED'} %}
+          {% include "emails/components/email-statement.twig" with {'small' : 'Your Order', 'big': 'IS READY FOR PICKUP'} %}
         {% endif %}
 
         <!-- Body -->
@@ -28,10 +28,11 @@
               {% if order.shippingMethodHandle == 'overnight' %}
                 {% set text = 'Your Tracking Number is '~order.message  %}
                 {% set link = 'http://wwwapps.ups.com/WebTracking/track?track=yes&trackNums='~order.message~'' %}
-                {% include "emails/components/email-text-cta.twig" with {'text' : text, 'link': link, 'linkText': 'Track Order'} %}
+                {% if order.message %}
+                  {% include "emails/components/email-text-cta.twig" with {'text' : text, 'link': link, 'linkText': 'Track Order'} %}
+                {% endif %}
               {% else %}
-                <div class="h3-1-center" style="color:#1e1e1e; font-family:Georgia, serif; min-width:auto !important; font-size:20px; line-height:26px; text-align:center">Your order has been completed and will be ready for you to pickup on {{ order.deliveryDate.format('F d, Y') }} at the {{ order.getShippingmethod.name }}.  Please check with them for their operating times.</div>
-
+                <div class="h3-1-center" style="color:#1e1e1e; font-family:Helvetica, Helvetica, Arial, sans-serif; min-width:auto !important; font-size:20px; line-height:26px; text-align:left">Your order has been completed and will be ready for you to pickup on <b>{{ order.deliveryDate.format('F d, Y') }}</b> at the <b>{{ order.getShippingmethod.name }}.</b><br>  {{ order.message }}.</div>
               {% endif %}
 
               <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">
