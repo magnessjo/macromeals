@@ -22,7 +22,7 @@
               </table>
 
               {% if currentUser %}
-                {% include "emails/components/email-text-cta.twig" with {'text' : 'Review your invoice below or click the button to view you account', 'link': 'https://www.macromeals.life/account', 'linkText': 'My Account'} %}
+                {% include "emails/components/email-text-cta.twig" with {'text' : 'Review your invoice below or click the button to view you account', 'link': 'https://www.macromeals.life/account/login?page=account', 'linkText': 'My Account'} %}
               {% else %}
                 {% include "emails/components/email-text-cta.twig" with {'text' : 'Review your invoice below' } %}
               {% endif %}
