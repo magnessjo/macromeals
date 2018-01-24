@@ -51,7 +51,7 @@ export default function() {
 
   // Submit Form
 
-  loginForm.addEventListener('submit', (e) => {
+  loginForm.addEventListener('submit', e => {
 
     e.preventDefault();
     submitButton.disabled = true;
@@ -90,8 +90,14 @@ export default function() {
           const body = document.querySelector('body');
           const parent = loginForm.parentNode;
           const redirectPath = loginForm.getAttribute('data-redirect');
+          const queryString = new URLSearchParams(window.location.search);
           body.setAttribute('logged-in', true);
           parent.setAttribute('aria-hidden', true);
+
+          if (queryString.get('page') == 'account') {
+            window.location.pathname = `/account`;
+            return;
+          }
 
           if (redirectPath) {
             window.location.pathname = `${redirectPath}`;
