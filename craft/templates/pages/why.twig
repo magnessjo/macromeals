@@ -1,7 +1,6 @@
 
 {% extends "_layout" %}
-{% includeCssFile "/about.css" %}
-{% includeJsFile "/about.js" %}
+{% includeCssFile "/why.css" %}
 
 {% block main %}
 
@@ -12,67 +11,52 @@
     </div>
   </section>
 
-  <section id="why">
+  <section id="service-types">
 
     <div class="lock">
 
-      <div class="transform">
+      <h1>There are three categories of food delivery companies: <span>Prepared Meals, Meal Kit, and Frozen Meals.</span></h1>
 
-        <div class="size-row">
-          <div class="text">
-            <div class="shopping">
-              <h1 class="acumin-medium-bold">Shopping</h1>
-              <p>Shopping is a hassle. The grocery store can be a time consuming, over crowded nightmare. It is often difficult to determine the nutrients that your body needs and how that translates into what you are putting in your cart.</p>
-              <p>The food industry uses misleading labeling to lure you into buying their products. They use terms like “low fat”, “all natural”, or “superfood” to make you think that you are making healthy choices. Often times these quick and inexpensive food options are processed with preservatives and added sugar which make them calorie dense and nutrient poor.</p>
-              <p>Our meals are prepared with fresh whole foods, that are nutrient rich.  Each meal is designed to give your body a balanced macro nutrient content, depending on your needs and goals. In addition, we pledge to partner with local farmers as often as possible to provide the freshest local ingredients.</p>
-            </div>
-          </div>
-          <div class="images">
-            <div class="image previous" style="background-image:url(/images/homepage/transform/pre-nightmare.jpg)"></div>
-            <div class="image current" style="background-image:url(/images/homepage/transform/pre.jpg)"></div>
-          </div>
+      <div class="types">
+
+        <div>
+          <h2>Prepared Meals</h2>
+          <p>Includes companies such as Macro Meals, Bite Meals, Territory Foods, and Factor 75.</p>
+          <p>This type of service deliver fresh prepared meals that can heated in microwave or oven for convenience.</p>
+          <p>These types of plans offer a user nutritious meals that can heated quickly for busy individuals looking for health options.</p>
+          <p>Obviously we favored this service type since we opened our version of it.  Some of the negatives to this type of service are:</p>
+          <ul>
+            <li>Cost of shipping.  Most of these companies are region based due to the overnight shipping requirement of freshly cooked meals.</li>
+            <li>Inconsistency.  One of the companies that we tried was extremely inconsistent food quality and size (look at you Jimmy's).</li>
+            <li>Dryness.  The microwave will dry out food in general but especially meats.  Often, chicken wouldn't be overcooked compared to the vegetables.</li>
+          </ul>
         </div>
 
-        <div class="size-row">
-          <div class="text">
-            <div>
-              <h1 class="acumin-medium-bold">Cooking</h1>
-              <p>Cooking is fun but it can also become an unwanted burden on busy schedule.  No one can afford the time to prepare three balanced meals at day from scratch.  An active life requires meals on the go. Planning ahead is the only way to succeed in maintaining your healthy way of life. Macro Meals can help by providing nutrient dense, quick meals that allow you the flexibility to do all the things that your life demands of you.</p>
-              <p>Unlike other food prep companies, our meals are prepared from scratch.  Ingredients are reviewed for freshness and meals are prepared based on macronutrients to give your body what it needs.</p>
-            </div>
-          </div>
-          <div class="images">
-            <div class="image previous" style="background-image:url(/images/homepage/transform/cooking-nightmare.jpg)"></div>
-            <div class="image current" style="background-image:url(/images/homepage/transform/cooking.jpg)"></div>
-          </div>
+        <div>
+          <h2>Meal Kits</h2>
+          <p>Includes companies such as Purple Carrot, Platted, Hello Fresh, and Blue Apron.</p>
+          <p>This type of service deliver fresh ingredients with chef selected recipes with a weekly subscription.</p>
+          <p>These types of plans offer a user a convenient way to get a variety of meals each week at a cost slightly above a grocery store.</p>
+          <p>Our experience with these services (and the companies listed) was fairly consistent.  Though we did have a positive experience with each company, we cancelled our subscription after a short period of time due to:</p>
+          <ul>
+            <li>Time.  Cooking times ranged from an hour to hour and half per meal.</li>
+            <li>Selection.  Commonly, only half of the meals were good.</li>
+            <li>Taste over Nutrition. We had to modify recipes for size or use smaller than recommend serving sizes of ingredients (butter).</li>
+            <li>Hassle.  Skipping a delivery was a hassle due to the subscription model.  We had meals delivered twice while on vacation (yes we are stupid).</li>
+          </ul>
         </div>
 
-        <div class="size-row">
-          <div class="text">
-            <div>
-              <h1 class="acumin-medium-bold">Eating</h1>
-              <p>Healthy food should still taste good.  Vegan food should still taste good.  You shouldn't have to sacrifice taste to eat healthy. But you do have to give up the preservatives and processed foods items that most Americans view as food. If it doesn't look like a chicken breast, or a potato don't eat it. The nutrients have been processed out of it.</p>
-              <p>Our talented team has been making vegan food for over a decade and doesn't sacrifice taste for calories. All of our food is prepared in a way that preserves the food’s nutrients and natural flavors. Every meal comes with customized macronutrient ratios so you can feel good about what you are eating and plan your workouts correctly.</p>
-            </div>
-          </div>
-          <div class="images">
-            <div class="image previous" style="background-image:url(/images/homepage/transform/food-nightmare.jpg)"></div>
-            <div class="image current" style="background-image:url(/images/homepage/transform/food.jpg)"></div>
-          </div>
-        </div>
-
-        <div class="size-row">
-          <div class="text">
-            <div>
-              <h1 class="acumin-medium-bold">Cleaning</h1>
-              <p>Cooking may be fun, but the clean up never is.  Food preparation can take an entire day or more with the cleanup.</p>
-              <p>Macro Meals deliver in 100% recyclable materials to keep your food fresh and the reduce our carbon footprint. The containers are also reusable and dishwasher safe. All meals have an enjoy by date of at least five days. You can enjoy your week and as things come up adjust your meal schedule without the worry of food expiring too quickly.</p>
-            </div>
-          </div>
-          <div class="images">
-            <div class="image previous" style="background-image:url(/images/homepage/transform/post-nightmare.jpg)"></div>
-            <div class="image current" style="background-image:url(/images/homepage/transform/post.jpg)"></div>
-          </div>
+        <div>
+          <h2>Frozen Meals</h2>
+          <p>Includes companies such as Top Chef Meals, Schwan's, and your local grocery store.</p>
+          <p>This type of service is generally a pickup at the local grocery store, but could also be a delivery.</p>
+          <p>These types of plans offer a cheap and convenient food option.</p>
+          <p>The negatives or frozen food have been publicized for decades, but some reasons that we generally avoid them:</p>
+          <ul>
+            <li>Preservatives.  Frozen food often comes with preservatives to keep the ingredients biologically enhanced for freshness.</li>
+            <li>Taste.  Frozen food tastes awful.  It is generally masked with cheese, sauce, cream, or ketchup to make it taste better.</li>
+            <li>Nutrition.  Frozen food can lose nutrition density when frozen.</li>
+          </ul>
         </div>
 
       </div>

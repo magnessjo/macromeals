@@ -1,0 +1,60 @@
+
+@import "../master.css";
+
+.slim-stage .image {
+  background-image: url(/images/stage/why.jpg);
+}
+
+#service-types {
+
+  & h1 {
+    margin-bottom: 40px;
+    font-family: var(--acuminExtraLight);
+    font-size: calc(22px + .5vw);
+    line-height: 1.2em;
+
+    & span {
+      display: block;
+      font-size: calc(22px + .2vw);
+      font-family: var(--acuminBold);
+    }
+
+  }
+
+  & h2 {
+    margin-bottom: 20px;
+    font-family: var(--acuminMedium);
+    font-size: calc(20px + .4vw);
+  }
+
+  & ul {
+    margin-left: 20px;
+
+    & li {
+      margin-bottom: 10px;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+
+    }
+
+  }
+
+  & .types {
+    display: flex;
+    flex-wrap: wrap;
+
+    & > div {
+      width: 100%;
+      margin-bottom: 40px;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+
+    }
+
+  }
+
+}
