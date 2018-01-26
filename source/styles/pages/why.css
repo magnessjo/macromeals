@@ -101,6 +101,7 @@
     @media (--tablet-min) {
       padding-left: 60px;
       align-self: flex-start;
+      width: 80%;
     }
 
     & > div {
@@ -113,6 +114,10 @@
 
     @media (--large-max) {
       margin-bottom: 30px;
+    }
+
+    @media (--tablet-min) {
+      width: 20%;
     }
 
     & > div {
