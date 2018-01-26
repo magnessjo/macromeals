@@ -494,7 +494,7 @@
 
   & h1 {
     font-family: var(--acuminMedium);
-    font-size: 24px;
+    font-size: calc(22px + .2vw);
     margin-bottom: 20px;
     text-transform: uppercase;
   }
@@ -502,6 +502,10 @@
   & h2 {
     font-size: 20px;
     margin-bottom: 20px;
+  }
+
+  & p {
+    font-size: calc(18px + .2vw);
   }
 
 }
@@ -520,10 +524,11 @@
       line-height: 1.4em;
       font-weight: 300;
       margin-bottom: 5px;
+      font-size: calc(18px + .2vw);
     }
 
     & span {
-      font-size: 16px;
+      font-size: 18px;
     }
 
   }
