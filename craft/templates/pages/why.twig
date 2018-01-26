@@ -1,6 +1,7 @@
 
 {% extends "_layout" %}
 {% includeCssFile "/why.css" %}
+{% includeJsFile "/why.js" %}
 
 {% block main %}
 
@@ -11,52 +12,141 @@
     </div>
   </section>
 
+  <section id="service-comparison">
+
+    <div class="lock">
+
+      <div class="advantage">
+        <h1 class="headline-with-underline">Our Advantage</h1>
+        <p>Macro Meals was created because we were disappointed with other companies.  We believed we could do better so we created a service that delivers a great healthy meals with a good shelf life for a decent cost.  We deliver on that promise because we do things different:</p>
+
+        <div>
+          <h2>Our order process</h2>
+          <p>Unlike our competitors and brick and mortar restaurants; We buy all of the ingredients once the order is placed to ensure your get the freshest products.  This process does require another day of lead time, but we believe the tradeoff is worth it.  Orders placed usually have a three day lead time for delivery</p>
+        </div>
+
+        <div>
+          <h2>Our cooking process</h2>
+          <p>All of our meats are prepared to stay juicy and delicious for you during the reheat process.  We don't ever use weights on our meats so they maintain their juices.  All of our sides and sauces are slowed cooked so they also maintain their juices during the reheating process.</p>
+        </div>
+
+        <div>
+          <h2>Our quality</h2>
+          <p>Ingredients for each meal are selected for macro density, but we go further.  Each meal is scrutinized for taste, texture, flavor, and overall composure for reheating.</p>
+          <p>Each meal goes through a through taste tasting process before it's added to the menu.  Not every meals makes it through the vetting process and we are proud of that.  We sneak meals into customer orders at times to get feedback from you so we can deliver the best meals possible.</p>
+          <p>Every meals is cooked to our specification and reviewed for consistency and quality.  No meals leaves our kitchen without being reviewed by two employees or an owner.</p>
+        </div>
+
+        <div>
+          <h2>Our costs</h2>
+          <p>The costs of our meals and shipping options are cheaper than our competitors and we don't sacrifice food quality to achieve it.</p>
+          <p>How do we do it?</p>
+          <p>For our food, we give credit to the Macro Meals team.  Everyone on our team is willing to go the extra mile for you.  They have a passion for food, health, and success.  Everyone is willing to rollup their sleeves and do every job.  Everyone cooks, cleans, answers customer communications, engages with local farmers regarding future produce, updates the website for meal quantity.</p>
+          <p>For shipping options, we work with local vendors to provide pickup locations in Maryland so the cost is zero for our customers.  For deliveries, we work with UPS API's to be able to determine what best shipping options for our customers when they checkout.</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
   <section id="service-types">
 
     <div class="lock">
 
-      <h1>There are three categories of food delivery companies: <span>Prepared Meals, Meal Kit, and Frozen Meals.</span></h1>
+      <h1 class="headline-with-underline">About the industry</h1>
+
+      <h2>There are three categories of food delivery companies: <span>Prepared Meals, Meal Kit, and Frozen Meals.</span></h2>
 
       <div class="types">
 
         <div>
-          <h2>Prepared Meals</h2>
-          <p>Includes companies such as Macro Meals, Bite Meals, Territory Foods, and Factor 75.</p>
-          <p>This type of service deliver fresh prepared meals that can heated in microwave or oven for convenience.</p>
-          <p>These types of plans offer a user nutritious meals that can heated quickly for busy individuals looking for health options.</p>
-          <p>Obviously we favored this service type since we opened our version of it.  Some of the negatives to this type of service are:</p>
-          <ul>
-            <li>Cost of shipping.  Most of these companies are region based due to the overnight shipping requirement of freshly cooked meals.</li>
-            <li>Inconsistency.  One of the companies that we tried was extremely inconsistent food quality and size (look at you Jimmy's).</li>
-            <li>Dryness.  The microwave will dry out food in general but especially meats.  Often, chicken wouldn't be overcooked compared to the vegetables.</li>
-          </ul>
+
+          <div class="wrapper">
+
+            <div class="images">
+              <h3>Prepared Meals</h3>
+              <img src="/images/why/competitors/bitemeals.png" />
+              <img src="/images/why/competitors/territory.png" />
+              <img src="/images/why/competitors/factor.png" />
+            </div>
+
+            <div class="text">
+              <p>This type of service delivers freshly prepared meals that can heated in microwave or oven for convenience.</p>
+              <p>These types of plans offer a user nutritious meals that can heated quickly for busy individuals looking for health options.</p>
+              <p>Some drawbacks of this service are:</p>
+              <div>
+                <h4>Cost of shipping</h4>
+                <p>Most of these companies are region based due to the overnight shipping requirement of freshly cooked meals.</p>
+                <h4>Dryness</h4>
+                <p>The microwave will dry out food in general unless they are cooked fresh and slow cooked.</p>
+                <h4>Inconsistency</h4>
+                <p>All restaurants and food delivery companies have a tendency to produce inconsistent food due to the menu size and not enough quality checking.</p>
+              </div>
+            </div>
+
+          </div>
+
         </div>
 
         <div>
-          <h2>Meal Kits</h2>
-          <p>Includes companies such as Purple Carrot, Platted, Hello Fresh, and Blue Apron.</p>
-          <p>This type of service deliver fresh ingredients with chef selected recipes with a weekly subscription.</p>
-          <p>These types of plans offer a user a convenient way to get a variety of meals each week at a cost slightly above a grocery store.</p>
-          <p>Our experience with these services (and the companies listed) was fairly consistent.  Though we did have a positive experience with each company, we cancelled our subscription after a short period of time due to:</p>
-          <ul>
-            <li>Time.  Cooking times ranged from an hour to hour and half per meal.</li>
-            <li>Selection.  Commonly, only half of the meals were good.</li>
-            <li>Taste over Nutrition. We had to modify recipes for size or use smaller than recommend serving sizes of ingredients (butter).</li>
-            <li>Hassle.  Skipping a delivery was a hassle due to the subscription model.  We had meals delivered twice while on vacation (yes we are stupid).</li>
-          </ul>
+
+          <div class="wrapper">
+
+            <div class="images">
+              <h3>Meal Kits</h3>
+              <img src="/images/why/competitors/platted.svg" />
+              <img src="/images/why/competitors/hellofresh.svg" />
+              <img src="/images/why/competitors/purple-carrot.png" />
+              <img src="/images/why/competitors/blue-apron.png" />
+            </div>
+
+            <div class="text">
+              <p>This type of service deliver fresh ingredients with chef selected recipes with a weekly subscription.</p>
+              <p>These types of plans offer a user a convenient way to get a variety of meals each week at a cost slightly above a grocery store.</p>
+              <p>Some drawbacks of this service are:</p>
+              <div>
+                <h4>Time</h4>
+                <p>Meals can take between an hour to two to cook (don't believe their packaging).</p>
+                <h4>Forced Selection</h4>
+                <p>Companies require you to modify your order a week or longer in advance of shipping in order to skip meals.</p>
+                <h4>Taste over Nutrition</h4>
+                <p>Meals are generally loaded with fat and have more oils than protein grams.</p>
+              </div>
+
+            </div>
+
+          </div>
+
         </div>
 
         <div>
-          <h2>Frozen Meals</h2>
-          <p>Includes companies such as Top Chef Meals, Schwan's, and your local grocery store.</p>
-          <p>This type of service is generally a pickup at the local grocery store, but could also be a delivery.</p>
-          <p>These types of plans offer a cheap and convenient food option.</p>
-          <p>The negatives or frozen food have been publicized for decades, but some reasons that we generally avoid them:</p>
-          <ul>
-            <li>Preservatives.  Frozen food often comes with preservatives to keep the ingredients biologically enhanced for freshness.</li>
-            <li>Taste.  Frozen food tastes awful.  It is generally masked with cheese, sauce, cream, or ketchup to make it taste better.</li>
-            <li>Nutrition.  Frozen food can lose nutrition density when frozen.</li>
-          </ul>
+
+          <div class="wrapper">
+
+            <div class="images">
+              <h3>Frozen Meals</h3>
+              <img src="/images/why/competitors/wegmans.svg" />
+              <img src="/images/why/competitors/schwans.svg" />
+              <img src="/images/why/competitors/top-chef.png" />
+            </div>
+
+            <div class="text">
+              <p>This type of service is generally a pickup at the local grocery store, but could also be a delivery.</p>
+              <p>These types of plans offer a cheap and convenient food option.</p>
+              <p>Some drawbacks of this service are:</p>
+              <div>
+                <h4>Preservatives</h4>
+                <p>Frozen food often comes with preservatives to keep the ingredients biologically enhanced for freshness.</p>
+                <h4>Taste</h4>
+                <p>Frozen food tastes awful.  It is generally masked with cheese, sauce, cream, or ketchup to make it taste better.</p>
+                <h4>Nutrition</h4>
+                <p>Frozen food can lose nutrition density when frozen.</p>
+              </div>
+
+          </div>
+
         </div>
 
       </div>

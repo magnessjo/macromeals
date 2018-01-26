@@ -5,26 +5,53 @@
   background-image: url(/images/stage/why.jpg);
 }
 
-#service-types {
+#service-comparison {
 
-  & h1 {
-    margin-bottom: 40px;
-    font-family: var(--acuminExtraLight);
-    font-size: calc(22px + .5vw);
-    line-height: 1.2em;
+  & h2 {
+    font-family: var(--acuminBold);
+    text-transform: uppercase;
+    font-size: calc(18px + .2vw);
+    margin-bottom: 20px;
+  }
 
-    & span {
-      display: block;
-      font-size: calc(22px + .2vw);
-      font-family: var(--acuminBold);
+  & .advantage {
+
+    & > p {
+      font-size: calc(18px + .5vw);
+
+      &:last-of-type {
+        margin-bottom: 40px;
+      }
+
+    }
+
+    & > div {
+      margin-bottom: 40px;
     }
 
   }
 
+}
+
+#service-types {
+
   & h2 {
-    margin-bottom: 20px;
-    font-family: var(--acuminMedium);
-    font-size: calc(20px + .4vw);
+    margin-bottom: 60px;
+    font-size: calc(18px + .5vw);
+  }
+
+  & h3 {
+    font-family: var(--acuminBold);
+    text-transform: uppercase;
+    font-size: calc(18px + .2vw);
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  & h4 {
+    font-family: var(--acuminBold);
+    margin-bottom: 10px;
+    text-transform: uppercase;
   }
 
   & ul {
@@ -41,16 +68,52 @@
 
   }
 
-  & .types {
+  & .types > div {
+    margin-bottom: 40px;
+    border-bottom: 1px solid var(--green);
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 40px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+  }
+
+  & .wrapper {
     display: flex;
-    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  & .text {
+    padding-left: 60px;
 
     & > div {
-      width: 100%;
-      margin-bottom: 40px;
+      padding-left: 20px;
+    }
+
+  }
+
+  & .images {
+
+    & img {
+      display: block;
+      width: 70%;
+      margin: 0 auto 30px auto;
 
       &:last-of-type {
         margin-bottom: 0;
+      }
+
+      &[src*="factor"] {
+        width: 50%;
+      }
+
+      &[src*="hello"] {
+        width: 50%;
       }
 
     }

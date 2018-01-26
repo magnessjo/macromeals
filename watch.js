@@ -50,6 +50,7 @@ const config = {
       about: `source/scripts/pages/about`,
       faq: `source/scripts/pages/faq`,
       contact: `source/scripts/pages/contact`,
+      why: `source/scripts/pages/why`,
       shippingInstructions: 'source/scripts/pages/shipping-instructions',
       shopdetails: `source/scripts/shop/details`,
       order: `source/scripts/shop/order`,
