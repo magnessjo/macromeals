@@ -1,10 +1,14 @@
 
 @import "../dependencies/root.css";
 
+@page {
+  size: 8.5in 11in;
+}
+
 @media print, screen {
 
   * {
-    font-size: 10px;
+    font-size: 7pt;
     padding: 0;
     margin: 0;
     font-family: var(--acuminExtaLight);
@@ -12,159 +16,119 @@
     line-height: 1.2em;
   }
 
-  html {
-    height: 100%;
-  }
+  .page {
+    padding-top: .02in;
 
-  body {
-    height: 100%;
-  }
+    &:first-of-type {
+      padding-top: 0;
+    }
 
-  main {
-    height: 100%;
   }
 
   section {
     background-color: white;
-    height: calc(50% - .6in);
-    width: 50%;
-    float: left;
-    display: flex;
     overflow: hidden;
-    padding: .3in 0;
+    margin-top: .34in;
+    margin-bottom: .34in;
+  }
+
+  .sticker {
+    width: 5in;
+    height: 3in;
+    display: flex;
+    margin: 0 auto;
+    /* border: 1px solid var(--black); */
+    border-radius: 20px;
   }
 
   .info {
-    width: 60%;
-    align-self: flex-start;
-    padding: 10px 20px;
+    width: 3in;
+    padding: .2in;
     overflow: hidden;
-    padding-bottom: 40px;
     position: relative;
-    height: calc(100% - 50px);
 
-    & .logo {
-      margin-bottom: 15px;
-      height: 50px;
-      margin: 0 auto;
-      display: block;
+    & h1 {
+      font-family: var(--acuminBold);
+      font-size: 12pt;
+      margin-bottom: .1in;
+      text-transform: uppercase;
+      color: #816553;
+    }
+
+    & h2 {
+      display: inline;
+      text-transform: uppercase;
     }
 
     & .description {
-      height: calc(100% - 80px);
-
-      & > div {
-        margin-bottom: 15px;
-
-        &:last-of-type {
-          margin-bottom: 0;
-        }
-
-      }
-
+      margin-bottom: .1in;
+      font-size: 5.5pt;
     }
 
-    & h1 {
-      font-family: var(--acuminLight);
-      font-size: 18px;
-      margin-bottom: 15px;
-
-      & span {
-        display: block;
-        font-size: 14px;
-        font-family: var(--acuminLight);
-      }
-
-    }
-
-    & h3 {
-      text-transform: uppercase;
-      margin-bottom: 3px;
-      font-size: 12px;
-    }
-
-    & .alerts {
-      display: flex;
-      justify-content: space-between;
-
-      & > div {
-        width: 45%;
-      }
-
-      & .headline {
-        text-transform: uppercase;
-      }
-
-    }
-
-    & .connect {
-      position: absolute;
-      bottom: 20px;
-      height: 40px;
-      width: 100%;
-
-      & h4 {
-        font-size: 12px;
-        text-transform: uppercase;
-        font-family: var(--acuminLight);
-      }
+    & .instructions {
+      margin-bottom: .1in;
 
       & p {
-        font-size: 18px;
+        font-size: 8pt;
+        color: #816553;
+        font-family: var(--acuminSemiBold);
       }
 
     }
 
+    & .allergy {
+      margin-top: .1in;
+    }
 
   }
 
   .facts {
-    width: 40%;
-    background-color: var(--light-gray);
-    padding: 20px;
+    width: 2in;
+    padding: .15in .25in;
 
     & .list {
-      background-color: var(--white);
-      padding: 20px;
-      height: 70%;
-      position: relative;
-    }
-
-    & h2 {
-      margin-bottom: 20px;
+      text-align: center;
     }
 
     & p {
-      margin-bottom: 2px;
-      line-height: 1em;
+      font-size: 8pt;
       margin-top: 0;
+      display: flex;
+      justify-content: center;
+      width: 1.5in;
+      margin: 0 auto .02in auto;
+      padding-left: .2in;
 
       & span {
-        width: 70px;
+        width: 50%;
+      }
+
+      & span:first-of-type {
         display: inline-block;
+        font-family: var(--acuminBold);
+        text-align: right;
+        margin-right: .1in;
       }
 
-      &.protein {
-        color: var(--auburn);
-      }
-
-      &.carbs {
-        color: var(--green);
-      }
-
-      &.fat {
-        color: var(--blue);
+      & span:last-of-type {
+        text-align: left;
       }
 
     }
 
     & .pie-chart {
-      position: absolute;
-      left: 50%;
-      bottom: 0;
-      margin-bottom: -60px;
-      width: 150px;
-      margin-left: -75px;
+      width: 1.5in;
+      height: 1.5in;
+      margin-bottom: .2in;
+      margin-top: .2in;
+      margin-left: auto;
+      margin-right: auto;
+
+      & canvas {
+        width: 1.5in !important;
+        height: 1.5in !important;
+      }
+
     }
 
   }
