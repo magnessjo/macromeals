@@ -4,6 +4,7 @@ const segment = url.match(/([^\/]*)\/*$/)[1];
 let button;
 let value;
 let data;
+let text;
 let isMobileValueSet = false;
 
 // Function
@@ -13,13 +14,13 @@ function modifyValue() {
   if (window.innerWidth < 480) {
 
     if (!isMobileValueSet) {
-      button.value = data;
+      text == '' ? button.value = data : button.innerHTML = data;
       isMobileValueSet = true;
     }
 
   } else {
 
-    button.value = value;
+    text == '' ? button.value = value : button.innerHTML = text;
     isMobileValueSet = false;
 
   }
@@ -30,14 +31,16 @@ function modifyValue() {
 
 export default function () {
 
-  button = document.querySelector('input[data-button="continue"]');
+  button = document.querySelector('[data-button="continue"]');
 
   if (button) {
 
+    text = button.innerHTML;
     value = button.value;
     data = button.getAttribute('data-button');
 
-    if (segment == 'process') data = 'submit';
+    console.log(text);
+
     window.addEventListener('resize', modifyValue);
     modifyValue();
 

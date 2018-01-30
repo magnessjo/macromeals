@@ -27,11 +27,13 @@
     & h2 {
 
       @media (--medium-max) {
-        display: none;
+        width: 100%;
+        padding: 20px 0;
       }
 
       @media (--large-min) {
         width: 200px;
+        text-align: right;
       }
 
       & span {
@@ -49,6 +51,22 @@
       @media (--large-min) {
         width: calc(100% - 200px);
         padding-left: 40px;
+      }
+
+      & .shipping-type {
+
+        @media (--medium-max) {
+          display: block;
+        }
+
+      }
+
+      & button {
+
+        @media (--large-max) {
+          text-align: left;
+        }
+
       }
 
     }
@@ -69,6 +87,7 @@
       padding: 40px 0;
       display: flex;
       justify-content: space-between;
+      margin-bottom: 20px;
 
       & h2 {
         margin-bottom: 0;

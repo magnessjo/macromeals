@@ -28,7 +28,8 @@
       <div class="lock">
 
         <h1 class="acumin-headline"><span>Select your shipping Method</span></h1>
-        <p>Delivery is the default option for orders.  You can select any of the pickup locations listed for a reduced cost in shipping.</p>
+        <p>Delivery is the default option for orders.</p>
+        <p>You can select any of the pickup locations listed to reduce shipping cost to $0.</p>
 
         <div class="shipping-type" data-handle="overnight" data-name="Overnight" data-cost="{{ cart.totalShippingCost | number_format(2, '.', ',') }}">
           <div class="shop-details">
@@ -168,11 +169,12 @@
 
     </section>
 
-    <section class="action">
+    <section class="checkout-actions">
 
       <div class="lock">
 
         <div class="actions">
+          <a href="/checkout" class="icons">Back <span>to Customer Information</span></a>
           <input type="submit" data-button="continue" value="Continue to Order Summary" class="call-to-action">
         </div>
 

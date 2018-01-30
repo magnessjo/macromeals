@@ -57,7 +57,11 @@ form {
     color: var(--white);
     text-transform: uppercase;
     cursor: pointer;
-    font-size: 16px;
+    font-size: 14px;
+
+    @media (--medium-min) {
+      font-size: 16px;
+    }
 
     &:disabled {
       opacity: .3;
