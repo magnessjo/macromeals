@@ -128,9 +128,16 @@
         <div class="calendar-wrapper">
 
           <div class="calendars">
-            {% include "components/delivery-calendar.twig" with { 'month' : month, 'expectedDate' :  expectedDate, 'deliveryDate' :  deliveryDate } %}
-            {% if expectedDate.format('d') > 20 %}
-              {% include "components/delivery-calendar.twig" with { 'month' : nextMonth, 'expectedDate' :  expectedDate, 'deliveryDate' :  null  } %}
+            {% if now|date("d") > 20 and deliveryDate.format('d') < 5 %}
+              {% include "components/delivery-calendar.twig" with { 'month' : month, today: true, 'expectedDate' :  expectedDate, 'deliveryDate' :  null } %}
+            {% else %}
+              {% include "components/delivery-calendar.twig" with { 'month' : month, today: true,  'expectedDate' :  expectedDate, 'deliveryDate' :  deliveryDate } %}
+            {% endif %}
+
+            {% if now|date("d") > 20 and deliveryDate.format('d') < 5 %}
+              {% include "components/delivery-calendar.twig" with { 'month' : nextMonth, today: false, 'expectedDate' :  expectedDate, 'deliveryDate' :  deliveryDate  } %}
+            {% else %}
+              {% include "components/delivery-calendar.twig" with { 'month' : nextMonth, today: false, 'expectedDate' :  expectedDate, 'deliveryDate' :  null  } %}
             {% endif %}
           </div>
 

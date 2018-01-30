@@ -44,9 +44,12 @@
 
           <td class="
               {{ month.containsDate(day.date) ? isDeliveryDate ? "delivery" }}
-              {{ day.date.isToday ? "today" }}
 
-              {% if deliveryDate is not null %}
+              {% if today %}
+                {{ day.date.isToday ? "today" }}
+              {% endif %}
+
+              {% if deliveryDate is not null and day.date.format('m') == month.endDate.format('m') %}
                 {% if day.date.format('d') == deliveryDate.format('d') %}expected-delivery-date{% endif %}
               {% endif %}
             "
