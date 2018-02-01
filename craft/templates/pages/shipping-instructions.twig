@@ -39,26 +39,62 @@
 
             <p>Get a quote for your zip code:</p>
 
-            <div class="input-wrapper">
+            <div class="field" data-required="true" valid="false">
+              <label for="address"><span>Street Address</span></label>
+              <div class="input">
+                <input type="text"
+                       name="address"
+                       id="address"
+                       placeholder="" />
 
-              <div class="field" data-required="true" valid="false">
-                <label for="zipCode"><span>Zip Code</span></label>
-                <div class="input">
-                  <input type="number"
-                         name="zipCode"
-                         id="zipCode"
-                         placeholder=""
-                         maxlength="5" />
-
-                  <div class="errors">
-                    <p class="required">Zip Code is a required field</p>
-                  </div>
+                <div class="errors">
+                  <p class="required">Street Address is a required field</p>
                 </div>
               </div>
-
-              <input type="submit" value="Get Estimate" />
-
             </div>
+
+            <div class="field" data-required="true" valid="false">
+              <label for="city"><span>City</span></label>
+              <div class="input">
+                <input type="text"
+                       name="city"
+                       id="city"
+                       placeholder="" />
+
+                <div class="errors">
+                  <p class="required">City is a required field</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="field" data-required="true" valid="false">
+              <label for="zipCode"><span>Zip Code</span></label>
+              <div class="input">
+                <input type="number"
+                       name="zipCode"
+                       id="zipCode"
+                       placeholder=""
+                       maxlength="5" />
+
+                <div class="errors">
+                  <p class="required">Zip Code is a required field</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="field" data-required="true" valid="true">
+              <label for="state"><span>State</span></label>
+              <div class="input">
+                <select name="state" >
+                  <option disabled selected value> Please Choose </option>
+                  {% for state in craft.commerce.states %}
+                    <option value="{{ state.abbreviation }}">{{ state.name }}</option>
+                  {% endfor %}
+                </select>
+              </div>
+            </div>
+
+            <input type="submit" value="Get Estimate" />
 
             <div class="result"></div>
 

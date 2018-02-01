@@ -21,8 +21,14 @@ const submit = shippingForm.querySelector('input[type="submit"]');
 function setRate() {
 
   const url = '/actions/MacroCommerce/ShippingRates';
+  const address = shippingForm.querySelector('input[name="address"]').value;
+  const city = shippingForm.querySelector('input[name="city"]').value;
   const zip = shippingForm.querySelector('input[name="zipCode"]').value;
-  let data = `${window.csrfTokenName}=${window.csrfTokenValue}&zip=${zip}&quantity=1`;
+  const select = shippingForm.querySelector('select[name="state"]');
+  const state = select.options[select.selectedIndex].value;
+  let data = `${window.csrfTokenName}=${window.csrfTokenValue}&address=${address}&city=${city}&zip=${zip}&state=${state}&quantity=1`;
+
+  console.log(data);
 
   fetchPostData(data,url).then( (response) => {
 

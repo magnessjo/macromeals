@@ -60,6 +60,10 @@
 
     }
 
+    & select {
+      margin-bottom: 40px;
+    }
+
     & .result {
       clear: both;
 
