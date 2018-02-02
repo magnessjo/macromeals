@@ -60,8 +60,6 @@ function setRate() {
 
     } else {
 
-      console.log(result.error);
-
       if (result.error) {
         result.innerHTML = `There was an error getting your estimate.  ${result.error}.  Please contact us directly at <a href="info@macromeals.life">info@macromeals.life</a> for an estimate.`;
       } else {

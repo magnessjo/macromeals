@@ -139,7 +139,7 @@
           </div>
         </div>
 
-        <div class="field" data-required="true" valid="true">
+        <div class="field" data-required="true" valid="false">
           <label for="state"><span>Shipping State</span></label>
           <div class="input">
             <select name="shippingAddress[stateId]" >
@@ -160,6 +160,9 @@
 
               {% endfor %}
             </select>
+            <div class="errors">
+              <p class="required">State is a required field</p>
+            </div>
           </div>
 
         </div>
