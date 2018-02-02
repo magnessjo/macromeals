@@ -4,7 +4,9 @@
 import fetchPostData from 'scripts/helpers/fetchPostData.js';
 import inputQuery from 'scripts/helpers/form/inputQuery.js';
 import checkFormFieldsForValidAttribute from 'scripts/helpers/form/checkFormFieldsForValidAttribute.js';
+import checkSelectFields from 'scripts/helpers/form/checkSelectFields.js';
 import findParentNode from 'scripts/helpers/findParentNode.js';
+import validation from 'scripts/helpers/form/validation.js';
 
 // Variables
 
@@ -12,7 +14,8 @@ const shippingForm = document.querySelector('#shipping-calculator');
 const loaderAnimation = shippingForm.querySelector('.loader');
 const result = shippingForm.querySelector('.result');
 
-const inputs = shippingForm.querySelectorAll('input:not([type="submit"])')
+const inputs = shippingForm.querySelectorAll('input:not([type="submit"])');
+const selects = shippingForm.querySelectorAll('select');
 const submit = shippingForm.querySelector('input[type="submit"]');
 
 
@@ -28,31 +31,33 @@ function setRate() {
   const state = select.options[select.selectedIndex].value;
   let data = `${window.csrfTokenName}=${window.csrfTokenValue}&address=${address}&city=${city}&zip=${zip}&state=${state}&quantity=1`;
 
-  console.log(data);
-
   fetchPostData(data,url).then( (response) => {
 
     loaderAnimation.style.display = 'none';
 
     if (response.success) {
+
       const cost = parseInt(response.amount);
-      const isGround = response.type == 'ground';
+      const isGround = response.service == 'GND';
 
-      if (isGround) {
-        if (response.itemSubtotal > 50) {
-          result.innerHTML = `<p>Your Estimate<span>$${cost.toFixed(2)}</span></p>`;
-        } else {
-          result.innerHTML = `
-            <p>Your Estimate<span>$${cost.toFixed(2)}</span></p>
-            <p class="">Orders over $50 ship for $10.00</p>
-          `;
-        }
+      // Post Submission State
 
-      } else {
-        result.innerHTML = `<p>Your Estimate<span>$${cost.toFixed(2)}</span></p>`;
-      }
+      result.innerHTML = `<p>Your Estimate<span>$${cost.toFixed(2)}</span></p>`;
 
-      inputs.forEach( (input) => input.value = '');
+      inputs.forEach( (input) => {
+        const parent = findParentNode(input, 'field');
+        input.value = '';
+        parent.setAttribute('valid', false);
+        parent.removeAttribute('has-error', false);
+      });
+
+      selects.forEach( (select) => {
+        const parent = findParentNode(select, 'field');
+        select.selectedIndex = 0;
+        parent.setAttribute('valid', false);
+        parent.removeAttribute('has-error');
+      });
+
     } else {
       result.innerHTML = `There was an error getting your estimate.  Please contact us directly at <a href="info@macromeals.life">info@macromeals.life</a> for an estimate.`;
     }
@@ -65,15 +70,26 @@ function setRate() {
 
 export default function() {
 
+  // Event Listeners For Inputs
+
+  checkSelectFields(selects);
+  inputQuery(shippingForm);
+
+  // Shipping Form
+
   shippingForm.addEventListener('submit', (e) => {
 
     e.preventDefault();
 
-    loaderAnimation.style.display = 'block';
+    const isInputsValid = checkFormFieldsForValidAttribute(inputs);
+    const isSelectsValid = checkFormFieldsForValidAttribute(selects);
     inputQuery(shippingForm, false);
+    checkSelectFields(selects, true);
 
-    const isValid = checkFormFieldsForValidAttribute(inputs);
-    if (isValid) setRate();
+    if (isInputsValid && isSelectsValid) {
+      loaderAnimation.style.display = 'block';
+      setRate();
+    }
 
     ga('send', {
       hitType: 'event',

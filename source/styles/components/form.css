@@ -119,6 +119,10 @@ form {
       visibility: hidden;
     }
 
+    & select {
+      border: red 1px solid;
+    }
+
   }
 
 
@@ -132,6 +136,10 @@ form {
     & input[type="password"],
     & input[type="text"] {
       border: 1px solid green;
+    }
+
+    & select {
+      border: green 1px solid;
     }
 
   }
