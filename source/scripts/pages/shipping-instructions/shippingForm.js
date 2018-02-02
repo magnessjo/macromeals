@@ -59,7 +59,15 @@ function setRate() {
       });
 
     } else {
-      result.innerHTML = `There was an error getting your estimate.  Please contact us directly at <a href="info@macromeals.life">info@macromeals.life</a> for an estimate.`;
+
+      console.log(result.error);
+
+      if (result.error) {
+        result.innerHTML = `There was an error getting your estimate.  ${result.error}.  Please contact us directly at <a href="info@macromeals.life">info@macromeals.life</a> for an estimate.`;
+      } else {
+        result.innerHTML = `There was an error getting your estimate.  Please contact us directly at <a href="info@macromeals.life">info@macromeals.life</a> for an estimate.`;
+      }
+
     }
 
   });
