@@ -14,8 +14,8 @@ const shippingForm = document.querySelector('#shipping-calculator');
 const loaderAnimation = shippingForm.querySelector('.loader');
 const result = shippingForm.querySelector('.result');
 
-const inputs = shippingForm.querySelectorAll('input:not([type="submit"])');
-const selects = shippingForm.querySelectorAll('select');
+const inputs = Array.from(shippingForm.querySelectorAll('input:not([type="submit"])'));
+const selects = Array.from(shippingForm.querySelectorAll('select'));
 const submit = shippingForm.querySelector('input[type="submit"]');
 
 
