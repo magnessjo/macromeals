@@ -129,16 +129,15 @@
         <div class="calendar-wrapper">
 
           <div class="calendars">
-            {% if now|date("d") > 20 and deliveryDate.format('d') < 5 %}
+
+            {% if now|date("d") > 20 and deliveryDate.format('d') < 3 %}
               {% include "components/delivery-calendar.twig" with { 'month' : month, today: true, 'expectedDate' :  expectedDate, 'deliveryDate' :  null } %}
             {% else %}
               {% include "components/delivery-calendar.twig" with { 'month' : month, today: true,  'expectedDate' :  expectedDate, 'deliveryDate' :  deliveryDate } %}
             {% endif %}
 
-            {% if now|date("d") > 20 and deliveryDate.format('d') < 5 %}
+            {% if now|date("d") > 20 and deliveryDate.format('d') < 3 %}
               {% include "components/delivery-calendar.twig" with { 'month' : nextMonth, today: false, 'expectedDate' :  expectedDate, 'deliveryDate' :  deliveryDate  } %}
-            {% else %}
-              {% include "components/delivery-calendar.twig" with { 'month' : nextMonth, today: false, 'expectedDate' :  expectedDate, 'deliveryDate' :  null  } %}
             {% endif %}
           </div>
 
