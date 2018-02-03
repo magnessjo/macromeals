@@ -302,6 +302,11 @@
         text-align: center;
       }
 
+      &.disclaimer {
+        font-size: 14px;
+        font-family: var(--acumin);
+      }
+
     }
 
   }

@@ -163,7 +163,7 @@
         <h1 class="acumin-headline"><span>Shipping Summary</span></h1>
         <p class="summary-method">Your current shipping method <span>{{ currentShippingMethod.name }}</span></p>
         <p class="expected-date">Your scheduled delivery date is <span>{{ deliveryDate|date('l, F d, Y') }}</span></p>
-        <p class="summary-cost">Your current shipping cost <span>${{ cart.totalShippingCost | number_format(2, '.', ',') }}</span></p>
+        <p class="summary-cost">Your current shipping cost <span>${{ cart.totalShippingCost | number_format(2, '.', ',') }}</span>{% if cart.message %}<span class="disclaimer"> ({{ cart.message }})</span>{% endif %}</p>
 
       </div>
 
