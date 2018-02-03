@@ -1,6 +1,7 @@
 
 // Import
 
+import postToCart from 'scripts/helpers/cart/postToCart.js';
 import scrollToLocation from 'scripts/helpers/scrollToLocation.js';
 import inputQuery from 'scripts/helpers/form/inputQuery.js';
 import checkSelectFields from 'scripts/helpers/form/checkSelectFields.js';
@@ -9,8 +10,8 @@ import checkSelectFields from 'scripts/helpers/form/checkSelectFields.js';
 
 const form = document.querySelector('form#address-info');
 const requiredFields = Array.from(form.querySelectorAll('[data-required]'));
-const inputs = Array.from(form.querySelectorAll('inputs[type="text"]'));
-const selects = form.querySelectorAll('select');
+const inputs = Array.from(form.querySelectorAll('input[type="text"]'));
+const selects = Array.from(form.querySelectorAll('select'));
 
 // Export
 
@@ -50,7 +51,40 @@ export default function() {
       } else {
 
         if (i == fields.length - 1) {
+
           form.submit();
+
+          // const id = form.querySelector('input[name="shippingAddressId"]').value;
+          // const countryId = form.querySelector('input[name="shippingAddress[countryId]"]').value;
+          // let data = `${window.csrfTokenName}=${window.csrfTokenValue}&sameAddress=1&shippingAddressId=${id}&shippingAddress[countryId]=${countryId}`;
+          //
+          // inputs.forEach( (input) => {
+          //
+          //   const name = input.getAttribute('name');
+          //   const value = input.value;
+          //
+          //   data += `${name}=${value}&`;
+          //
+          // });
+          //
+          // selects.forEach( (select) => {
+          //
+          //   const name = select.getAttribute('name');
+          //   const value = select.options[select.selectedIndex].value;
+          //
+          //   data += `${name}=${value}`;
+          //
+          // });
+          //
+          //
+          // console.log(data);
+          //
+          // postToCart(data).then( (response) => {
+          //
+          //    window.location.href = '/checkout';
+          //
+          // });
+
         }
 
       }
