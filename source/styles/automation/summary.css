@@ -1,0 +1,57 @@
+
+@import "../dependencies/root.css";
+
+@media print, screen {
+
+  * {
+    padding: 0;
+    margin: 0;
+  }
+
+  .page {
+    height: 7.3in !important;
+    width: 10in !important;
+    padding: .5in;
+  }
+
+  hr {
+    margin: .5in 0;
+    width: 100%;
+    background-color: var(--green);
+  }
+
+  img {
+    max-height: 1in;
+    margin-bottom: .2in;
+  }
+
+  h1 {
+    text-transform: uppercase;
+    font-family: var(--calvertBold);
+    font-size: 22pt;
+    margin-bottom: .1in;
+  }
+
+  h2 {
+    font-size: 16pt;
+    margin-bottom: .1in;
+  }
+
+  .items {
+
+    & p {
+      font-size: 12pt;
+    }
+
+    & .quantity {
+      font-family: var(--calvertBold);
+    }
+
+    & .size {
+      font-size: 10pt;
+      font-family: var(--acuminMediumItalic);
+    }
+
+  }
+
+}

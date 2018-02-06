@@ -1,0 +1,74 @@
+
+{% includeCssFile "/automationSummary.css" %}
+{% set orders = craft.commerce.orders.orderStatusId(4) %}
+
+<!DOCTYPE html>
+<html>
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  </head>
+
+  <body>
+
+    {% if currentUser %}
+
+      {% if currentUser.admin %}
+
+        {% set number = 0 %}
+
+        <main>
+
+          {% for order in orders | reverse %}
+
+            <div class="page">
+
+              <section id="order-summary">
+
+                <img src="/images/logo/green.svg" />
+
+                <h1>Thank you for your order!</h1>
+                <h2>In the box you will find:</h2>
+
+                <div class="items">
+
+                  {% for item in order.lineItems %}
+
+                    {% set variant = item.purchasable %}
+                    {% set product = variant.product %}
+                    {% set quantity = item.qty | number_format %}
+
+                    <p><span class="quantity">{{ quantity }}</span> {{ product.title }} <span class="size">{{ variant.title }}</span></p>
+
+                  {% endfor %}
+
+                </div>
+
+                <hr>
+
+                <h1>Coming Soon</h1>
+
+                <p>We have two new meals coming in the next week.  We have four meals being reviewed by our team and taste testers.  We hope to officially announce two additions by mid February, but we will tell you a little bit if you can keep it a secret 🤫</p>
+                <p>We have our first salad menu item coming and we have our first breakfast menu item.</p>
+                <hr>
+
+                <h1>Coming This Year</h1>
+
+              </section>
+
+            </div>
+
+            {% endfor %}
+
+        </main>
+
+      {% endif %}
+
+    {% endif %}
+
+  </body>
+
+</html>

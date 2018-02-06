@@ -1,95 +1,95 @@
 
 @import "../master.css";
 
-@media print {
+@media print, screen {
 
   header,
   footer {
     display: none;
   }
 
-}
-
-#today {
-  margin-bottom: 400px;
-}
-
-.orders-automation {
-
-  & .order {
-    border-bottom: 1px solid var(--black);
-    padding: 20px;
-    margin-bottom: 40px;
-
-    @media (--large-min) {
-      display: flex;
-      justify-content: space-between;
-    }
-
-    &:first-of-type {
-      padding-top: 0;
-    }
-
+  #today {
+    margin-bottom: 400px;
   }
 
-  & h1 {
-    font-size: 22px;
-    text-transform: uppercase;
-    font-family: var(--acuminBold);
-    margin-bottom: 40px;
-  }
+  .orders-automation {
 
-  & h2 {
-    font-size: 22px;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-  }
+    & .order {
+      border-bottom: 1px solid var(--black);
+      padding: 20px;
+      margin-bottom: 40px;
 
-  & h3 {
-    font-size: 18px;
-    text-transform: uppercase;
-    margin-bottom: 10px;
-  }
+      @media (--large-min) {
+        display: flex;
+        justify-content: space-between;
+      }
 
-  & .person {
-    margin-bottom: 40px;
-    width: 280px;
+      &:first-of-type {
+        padding-top: 0;
+      }
 
-    & p {
-      margin-bottom: 0;
     }
-
-    & .method {
-      text-transform: capitalize;
-    }
-
-    & address {
-      padding-top: 10px;
-      font-style: normal;
-    }
-
-  }
-
-  & .food {
-     margin-bottom: 20px;
-     width: 280px;
-
-    & p {
-      margin-bottom: 5px;
-    }
-
-  }
-
-  & .total {
-    padding: 20px;
-    padding-bottom: 0;
 
     & h1 {
-      margin-bottom: 20px;
+      font-size: 22px;
+      text-transform: uppercase;
+      font-family: var(--acuminBold);
+      margin-bottom: 40px;
     }
 
-    & p {
-      margin-bottom: 5px;
+    & h2 {
+      font-size: 22px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    & h3 {
+      font-size: 18px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    & .person {
+      margin-bottom: 40px;
+      width: 280px;
+
+      & p {
+        margin-bottom: 0;
+      }
+
+      & .method {
+        text-transform: capitalize;
+      }
+
+      & address {
+        padding-top: 10px;
+        font-style: normal;
+      }
+
+    }
+
+    & .food {
+       margin-bottom: 20px;
+       width: 280px;
+
+      & p {
+        margin-bottom: 5px;
+      }
+
+    }
+
+    & .total {
+      padding: 20px;
+      padding-bottom: 0;
+
+      & h1 {
+        margin-bottom: 20px;
+      }
+
+      & p {
+        margin-bottom: 5px;
+      }
+
     }
 
   }

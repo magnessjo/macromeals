@@ -37,6 +37,7 @@ const config = {
       checkout: 'source/styles/checkout/index.css',
       labels: 'source/styles/automation/labels.css',
       automation: 'source/styles/automation/index.css',
+      automationSummary: `source/styles/automation/summary.css`,
       account: 'source/styles/account/index.css',
     },
   },
