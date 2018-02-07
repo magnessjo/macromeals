@@ -15,7 +15,6 @@
 
   <body>
 
-
     {% if currentUser %}
 
       {% if currentUser.admin %}
@@ -83,6 +82,7 @@
                       {% include "components/pie-chart.twig" with { 'macros': variant.productMacros } %}
 
                       <div class="list">
+                        <div>{{variant.title}}</div>
                         {% for row in variant.productMacros %}
                           {% if row.calories %}
                             <p>
