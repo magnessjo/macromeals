@@ -15,32 +15,37 @@
   }
 
   hr {
-    margin: .5in 0;
+    margin: .3in 0;
     width: 100%;
     background-color: var(--green);
   }
 
   img {
-    max-height: 1in;
+    max-height: .5in;
     margin-bottom: .2in;
   }
 
   h1 {
     text-transform: uppercase;
     font-family: var(--calvertBold);
-    font-size: 22pt;
-    margin-bottom: .1in;
+    font-size: 20pt;
+    margin-bottom: .07in;
   }
 
   h2 {
-    font-size: 16pt;
-    margin-bottom: .1in;
+    font-size: 14pt;
+    margin-bottom: .05in;
+  }
+
+  p {
+    margin-bottom: .05in;
+    font-size: 10pt;
   }
 
   .items {
 
     & p {
-      font-size: 12pt;
+      font-size: 8pt;
     }
 
     & .quantity {
