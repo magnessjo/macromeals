@@ -84,32 +84,40 @@ function getDay(day) {
 
 }
 
+// Update Summary Text
+
+function updateText(entry) {
+
+  const yearData = parseInt(entry.getAttribute('data-year'));
+  const dayData = parseInt(entry.getAttribute('data-day'));
+  const monthData = parseInt(entry.getAttribute('data-month') - 1);
+
+  const date = new Date(yearData, monthData, dayData);
+  const month = getMonth(date.getMonth());
+  const dayOfWeek = getDay(date.getDay());
+  const day = ('0' + date.getDate()).slice(-2);
+  const year = date.getFullYear();
+
+  currentDate.classList.remove(currentDateClass);
+  entry.classList.add(currentDateClass);
+  currentDate = entry;
+
+  deliveryText.innerHTML = `${dayOfWeek}, ${month} ${day}, ${year}.`;
+  dateInput.value = `${date.getMonth() + 1}/${day}/${year}`;
+
+}
+
 // Export
 
 export default function() {
 
   deliveryDates.forEach( (entry) => {
 
-    entry.addEventListener('click', () => {
+    entry.addEventListener('click', () => {  updateText(entry) });
 
-      const yearData = parseInt(entry.getAttribute('data-year'));
-      const dayData = parseInt(entry.getAttribute('data-day'));
-      const monthData = parseInt(entry.getAttribute('data-month') - 1);
-
-      const date = new Date(yearData, monthData, dayData);
-      const month = getMonth(date.getMonth());
-      const dayOfWeek = getDay(date.getDay());
-      const day = ('0' + date.getDate()).slice(-2);
-      const year = date.getFullYear();
-
-      currentDate.classList.remove(currentDateClass);
-      entry.classList.add(currentDateClass);
-      currentDate = entry;
-
-      deliveryText.innerHTML = `${dayOfWeek}, ${month} ${day}, ${year}.`;
-      dateInput.value = `${date.getMonth() + 1}/${day}/${year}`;
-
-    });
+    if (entry.classList.contains('expected-delivery-date')) {
+      updateText(entry);
+    }
 
   });
 
