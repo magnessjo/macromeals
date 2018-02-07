@@ -21,6 +21,11 @@
           {% for event in day.events %}
             {% if event.title == 'Remove From Delivery' %}
               {% set shouldShow = false %}
+
+              {% if day.date.format('d') == deliveryDate.format('d') %}
+                {% set deliveryDate = deliveryDate|date_modify("+1 day") %}
+              {% endif %}
+
             {% endif %}
           {% endfor %}
 
