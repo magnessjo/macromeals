@@ -11,18 +11,13 @@ namespace Craft;
  * @package   craft.plugins.commerce.controllers
  * @since     1.0
  */
-class Commerce_ShippingRulesController extends Commerce_BaseAdminController
+class Commerce_ShippingRulesController extends Commerce_BaseAdminShippingController
 {
     /**
      * @throws HttpException
      */
     public function actionIndex()
     {
-        if (!craft()->userSession->getUser()->can('manageCommerce'))
-        {
-            throw new HttpException(403, Craft::t('This action is not allowed for the current user.'));
-        }
-
         $methodsExist = craft()->commerce_shippingMethods->ShippingMethodExists();
         $shippingRules = craft()->commerce_shippingRules->getAllShippingRules([
             'order' => 't.methodId, t.name',
@@ -40,11 +35,6 @@ class Commerce_ShippingRulesController extends Commerce_BaseAdminController
      */
     public function actionEdit(array $variables = [])
     {
-        if (!craft()->userSession->getUser()->can('manageCommerce'))
-        {
-            throw new HttpException(403, Craft::t('This action is not allowed for the current user.'));
-        }
-
         if (empty($variables['methodId']))
         {
             throw new HttpException(404);
@@ -123,11 +113,6 @@ class Commerce_ShippingRulesController extends Commerce_BaseAdminController
      */
     public function actionSave()
     {
-        if (!craft()->userSession->getUser()->can('manageCommerce'))
-        {
-            throw new HttpException(403, Craft::t('This action is not allowed for the current user.'));
-        }
-
         $this->requirePostRequest();
 
         $shippingRule = new Commerce_ShippingRuleModel();

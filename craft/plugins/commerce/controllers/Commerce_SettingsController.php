@@ -15,11 +15,32 @@ class Commerce_SettingsController extends Commerce_BaseAdminController
 {
 
     /**
+     * @inheritDoc BaseController::init()
+     *
+     * @throws HttpException
+     * @return null
+     */
+    public function init()
+    {
+        // do not check for admin only, since the index controller will redirect.
+    }
+
+    /**
      * Commerce Settings Index
      */
     public function actionIndex()
     {
-        $this->redirect('commerce/settings/general');
+        if (craft()->userSession->isAdmin()) {
+            $this->redirect('commerce/settings/general');
+        }
+
+        if (craft()->userSession->checkPermission('commerce-manageShipping')) {
+            $this->redirect('commerce/settings/shippingmethods');
+        }
+
+        if (craft()->userSession->checkPermission('commerce-manageShipping')) {
+            $this->redirect('commerce/settings/taxrates');
+        }
     }
 
     /**
@@ -27,14 +48,15 @@ class Commerce_SettingsController extends Commerce_BaseAdminController
      */
     public function actionEdit()
     {
+        $this->requireAdmin();
+
         $settings = craft()->commerce_settings->getSettings();
 
         $craftSettings = craft()->email->getSettings();
         $settings->emailSenderAddressPlaceholder = (isset($craftSettings['emailAddress']) ? $craftSettings['emailAddress'] : '');
         $settings->emailSenderNamePlaceholder = (isset($craftSettings['senderName']) ? $craftSettings['senderName'] : '');
 
-        $this->renderTemplate('commerce/settings/general',
-            ['settings' => $settings]);
+        $this->renderTemplate('commerce/settings/general', ['settings' => $settings]);
     }
 
     /**
@@ -42,6 +64,8 @@ class Commerce_SettingsController extends Commerce_BaseAdminController
      */
     public function actionSaveSettings()
     {
+        $this->requireAdmin();
+
         $this->requirePostRequest();
         $postData = craft()->request->getPost('settings');
         $settings = Commerce_SettingsModel::populateModel($postData);

@@ -199,6 +199,27 @@ class Commerce_PaymentsController extends Commerce_BaseFrontEndController
         // This also confirms the products are available and discounts are current.
         if (craft()->commerce_orders->saveOrder($order))
         {
+
+            // Shipping method can be removed (during recalc) if no longer matching the cart, so check it is still there.
+            if (craft()->config->get('requireShippingMethodSelectionAtCheckout', 'commerce'))
+            {
+                /** Order $order */
+                if (!$order->getShippingMethodId)
+                {
+                    $error = Craft::t('There is no shipping method selected for this order.');
+                    if (craft()->request->isAjaxRequest())
+                    {
+                        $this->returnErrorJson($error);
+                    }
+                    else
+                    {
+                        craft()->userSession->setFlash('error', $error);
+                    }
+
+                    return;
+                }
+            }
+
             $totalPriceChanged = $originalTotalPrice != $order->outstandingBalance();
             $totalQtyChanged = $originalTotalQty != $order->getTotalQty();
             $totalAdjustmentsChanged = $originalTotalAdjustments != count($order->getAdjustments());
@@ -238,8 +259,6 @@ class Commerce_PaymentsController extends Commerce_BaseFrontEndController
 
         $redirect = '';
         $paymentForm->validate();
-
-        
         if (!$paymentForm->hasErrors() && !$order->hasErrors())
         {
             $success = craft()->commerce_payments->processPayment($order, $paymentForm, $redirect, $customError);

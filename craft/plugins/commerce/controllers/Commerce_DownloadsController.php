@@ -49,6 +49,7 @@ class Commerce_DownloadsController extends Commerce_BaseFrontEndController
         }
 
         $html = $templatesService->render($template, compact('order', 'option'));
+        $html = preg_replace('/>\s+</', '><', $html);
 
         // Set the config options
         $pathService = craft()->path;

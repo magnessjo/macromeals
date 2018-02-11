@@ -11,7 +11,7 @@ namespace Craft;
  * @package   craft.plugins.commerce.controllers
  * @since     1.0
  */
-class Commerce_ShippingZonesController extends Commerce_BaseAdminController
+class Commerce_ShippingZonesController extends Commerce_BaseAdminShippingController
 {
     /**
      * @throws HttpException

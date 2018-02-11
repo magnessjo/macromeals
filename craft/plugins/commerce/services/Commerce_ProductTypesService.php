@@ -399,6 +399,7 @@ class Commerce_ProductTypesService extends BaseApplicationComponent
                                         // The default variant must always be enabled.
                                         $variant->enabled = true;
                                         craft()->commerce_variants->saveVariant($variant);
+                                        craft()->db->createCommand()->update('commerce_products', ['defaultVariantId' => $variant->id], ['id' => $product->id]);
                                     }
                                 }
                             }

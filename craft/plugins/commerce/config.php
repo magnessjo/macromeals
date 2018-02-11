@@ -10,6 +10,7 @@ return [
     'useBillingAddressForTax' => false,
     'requireShippingAddressAtCheckout' => false,
     'requireBillingAddressAtCheckout' => false,
+    'requireShippingMethodSelectionAtCheckout' => false,
     'pdfPaperSize' => 'letter',
     'pdfPaperOrientation' => 'portrait',
     'pdfAllowRemoteImages' => false,

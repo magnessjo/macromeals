@@ -22,10 +22,6 @@ class Commerce_ProductTypesController extends Commerce_BaseAdminController
 
     public function actionEditProductType(array $variables = [])
     {
-        if (!craft()->userSession->getUser()->can('manageCommerce')) {
-            throw new HttpException(403, Craft::t('This action is not allowed for the current user.'));
-        }
-
         $variables['brandNewProductType'] = false;
 
         if (empty($variables['productType'])) {
@@ -53,10 +49,6 @@ class Commerce_ProductTypesController extends Commerce_BaseAdminController
 
     public function actionSaveProductType()
     {
-        if (!craft()->userSession->getUser()->can('manageCommerce')) {
-            throw new HttpException(403, Craft::t('This action is not allowed for the current user.'));
-        }
-
         $this->requirePostRequest();
 
         $productType = new Commerce_ProductTypeModel();
