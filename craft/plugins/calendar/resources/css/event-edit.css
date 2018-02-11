@@ -358,6 +358,8 @@ ul.date-list > li {
   position: initial;
   top: 0;
   left: 0; }
+  .lp-editor .recurrence-choices.no-show {
+    display: none; }
   .lp-editor .recurrence-choices > .side-label:last-child {
     min-width: 100%; }
 .lp-editor .recurrence-wrapper .months {

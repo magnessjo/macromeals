@@ -31,7 +31,7 @@ class CalendarPlugin extends BasePlugin
     const PERMISSIONS_HELP_LINK = 'https://solspace.com/craft/calendar/docs/demo-templates';
 
     /** @var string */
-    private $version = '1.10.4';
+    private $version = '1.10.5';
 
     /** @var string */
     private $schemaVersion = '1.5.5';

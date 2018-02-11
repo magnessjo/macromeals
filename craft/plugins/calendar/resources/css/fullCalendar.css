@@ -80,27 +80,32 @@
     color: #000; }
   .calendar-agenda.fc.fc-unthemed .fc-day-grid .fc-other-month {
     background-color: #fcfcfc !important; }
-  .calendar-agenda.fc.fc-unthemed .fc-day-number > a {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    display: inline-block;
-    width: 27px;
-    height: 27px;
-    padding-top: 4px;
-    -webkit-border-radius: 25px;
-    -moz-border-radius: 25px;
-    border-radius: 25px;
-    font-size: 16px;
-    color: inherit;
-    text-align: center; }
-    .calendar-agenda.fc.fc-unthemed .fc-day-number > a:hover {
-      cursor: pointer;
-      text-decoration: none; }
-  .calendar-agenda.fc.fc-unthemed .fc-day-number.fc-today > a {
-    background-color: #D85B4C;
-    font-weight: bold;
-    color: white; }
+  .calendar-agenda.fc.fc-unthemed .fc-day-top {
+    padding: 2px; }
+    .calendar-agenda.fc.fc-unthemed .fc-day-top > a {
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      display: inline-block;
+      float: right;
+      width: 27px;
+      height: 27px;
+      padding-top: 4px;
+      -webkit-border-radius: 25px;
+      -moz-border-radius: 25px;
+      border-radius: 25px;
+      font-size: 16px;
+      color: inherit;
+      text-align: center; }
+      .calendar-agenda.fc.fc-unthemed .fc-day-top > a:hover {
+        cursor: pointer;
+        text-decoration: none; }
+    .calendar-agenda.fc.fc-unthemed .fc-day-top.fc-today > a {
+      background-color: #D85B4C;
+      font-weight: bold;
+      color: white; }
+    .calendar-agenda.fc.fc-unthemed .fc-day-top .fc-day-number {
+      float: none; }
   .calendar-agenda.fc.fc-unthemed .fc-day-header.fc-widget-header > a {
     position: relative;
     display: block;
@@ -108,7 +113,7 @@
     color: #000000; }
     .calendar-agenda.fc.fc-unthemed .fc-day-header.fc-widget-header > a:hover {
       text-decoration: none; }
-    .calendar-agenda.fc.fc-unthemed .fc-day-header.fc-widget-header > a > span {
+    .calendar-agenda.fc.fc-unthemed .fc-day-header.fc-widget-header > a > span > span {
       position: absolute;
       right: 0;
       top: -4px;
@@ -124,7 +129,7 @@
       -moz-border-radius: 30px;
       border-radius: 30px;
       text-align: center; }
-    .calendar-agenda.fc.fc-unthemed .fc-day-header.fc-widget-header > a.fc-title-today > span {
+    .calendar-agenda.fc.fc-unthemed .fc-day-header.fc-widget-header > a.fc-title-today > span > span {
       color: #FFFFFF;
       background: #D85B4C; }
   .calendar-agenda.fc.fc-unthemed .fc-agendaDay-view .fc-widget-content {
@@ -194,4 +199,5 @@
       .calendar-agenda.fc.fc-unthemed td.fc-event-container a.fc-event.fc-event-disabled .fc-time {
         color: black; }
 
-/*# sourceMappingURL=fullCalendar.css.map */
+.spinner {
+  height: 28px !important; }

@@ -139,7 +139,7 @@ class Calendar_EventsController extends BaseController
         }
 
         craft()->templates->includeJs('Craft.LivePreview.init('.JsonHelper::encode(array(
-                'fields'        => '#title-field, #fields > div > div > .field',
+                'fields'        => '#title-field, #fields > div > div > .field, #fields > div > .field',
                 'extraFields'   => '#settings',
                 'previewUrl'    => $event->getUrl(),
                 'previewAction' => 'calendar/events/preview',
@@ -320,6 +320,7 @@ class Calendar_EventsController extends BaseController
             return;
         }
 
+        $event->rrule      = null;
         $event->freq       = null;
         $event->interval   = null;
         $event->until      = null;

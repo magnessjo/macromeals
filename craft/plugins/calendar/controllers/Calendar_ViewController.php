@@ -113,7 +113,7 @@ class Calendar_ViewController extends BaseController
 
         $calendarLocale   = craft()->locale->id;
         $calendarLocale   = str_replace('_', '-', strtolower($calendarLocale));
-        $localeModulePath = CRAFT_PLUGINS_PATH . 'calendar/resources/js/fullcalendar/lang/' . $calendarLocale . '.js';
+        $localeModulePath = CRAFT_PLUGINS_PATH . 'calendar/resources/js/fullcalendar/locale/' . $calendarLocale . '.js';
         if (!IOHelper::fileExists($localeModulePath)) {
             $calendarLocale = 'en';
         }

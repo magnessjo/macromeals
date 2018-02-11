@@ -299,6 +299,10 @@ ul.date-list {
     top: 0;
     left: 0;
 
+    &.no-show {
+      display: none;
+    }
+
     > .side-label:last-child {
       min-width: 100%;
     }
@@ -315,4 +319,6 @@ ul.date-list {
       }
     }
   }
+
+
 }

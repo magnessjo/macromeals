@@ -184,8 +184,8 @@ function buildEventPopup(event, element) {
   if (event.allDay) {
     end.subtract(1, 'days');
   } else {
-    var timeFormat = calendarTimeFormat == "H:i" ? "HH:mm" : "h:mma"
-    dateFormat = dateFormat + ' \\a\\t ' + timeFormat;
+    var timeFormat = calendarTimeFormat == "H:i" ? "HH:mm" : "h:mma";
+    dateFormat = dateFormat + ' [at] ' + timeFormat;
   }
 
   var eventRange = $('<div>', {

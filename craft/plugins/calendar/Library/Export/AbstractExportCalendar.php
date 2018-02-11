@@ -22,7 +22,7 @@ abstract class AbstractExportCalendar implements ExportCalendarInterface
     /**
      * @param EventList $events
      */
-    public final function __construct(EventList $events)
+    final public function __construct(EventList $events)
     {
         $this->events = $events;
     }
@@ -33,7 +33,7 @@ abstract class AbstractExportCalendar implements ExportCalendarInterface
      *
      * @return string
      */
-    public final function export()
+    final public function export()
     {
         header('Content-type: text/calendar; charset=utf-8');
         header('Content-Disposition: attachment; filename=' . time() . '.ics');
@@ -49,7 +49,7 @@ abstract class AbstractExportCalendar implements ExportCalendarInterface
      *
      * @return string
      */
-    public final function output()
+    final public function output()
     {
         return $this->prepareStringForExport();
     }
@@ -65,7 +65,7 @@ abstract class AbstractExportCalendar implements ExportCalendarInterface
     /**
      * @return EventList
      */
-    protected final function getEvents()
+    final protected function getEvents()
     {
         return $this->events;
     }
@@ -75,12 +75,13 @@ abstract class AbstractExportCalendar implements ExportCalendarInterface
      *
      * @return string
      */
-    protected final function escapeString($string)
+    final protected function prepareString($string)
     {
-        $string = preg_replace('/([\,;])/', '\\\$1', $string);
-        $string = preg_replace('/^\h*\v+/m', '', $string);
-        $string = chunk_split($string, 50, "\r\n");
-        $string = preg_replace('/\r\n$/', '', $string);
+        $string = (string) preg_replace('/(\r\n|\r|\n)+/', ' ', $string);
+        $string = (string) preg_replace('/([\,;])/', '\\\$1', $string);
+        $string = (string) preg_replace('/^\h*\v+/m', '', $string);
+        $string = chunk_split($string, 60, "\r\n ");
+        $string = trim($string);
 
         return $string;
     }

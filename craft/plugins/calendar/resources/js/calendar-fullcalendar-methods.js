@@ -1,3 +1,4 @@
+var $solspaceCalendar = $("#solspace-calendar");
 var $solspaceCalendarSpinner = null;
 
 /**
@@ -200,7 +201,7 @@ function getDayViewLink(date) {
  */
 function getEvents(start, end, timezone, callback) {
 
-  $solspaceCalendarSpinner.fadeIn("fast");
+  getSpinner().fadeIn("fast");
 
   var $calendarList = $("ul.calendar-list");
 
@@ -226,7 +227,7 @@ function getEvents(start, end, timezone, callback) {
     dataType: 'json',
     success: function (eventList) {
       callback(eventList);
-      $solspaceCalendarSpinner.fadeOut("fast");
+      getSpinner().fadeOut("fast");
     }
   });
 }
@@ -276,4 +277,13 @@ function closeAllQTips() {
 
 function enableQTips() {
   qTipsEnabled = true;
+}
+
+function getSpinner() {
+  if (!$solspaceCalendarSpinner) {
+    $solspaceCalendar.find(".fc-right").prepend('<div id="solspace-calendar-spinner" class="spinner" style="display: none;"></div>');
+    $solspaceCalendarSpinner = $("#solspace-calendar-spinner");
+  }
+
+  return $solspaceCalendarSpinner;
 }

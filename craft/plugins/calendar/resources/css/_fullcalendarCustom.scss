@@ -112,12 +112,15 @@ $color-todayHighlight: #D85B4C;
     }
   }
 
-  .fc-day-number {
+  .fc-day-top {
+    padding: 2px;
+
     > a {
       $size: 25px;
 
       @include box-sizing;
       display: inline-block;
+      float: right;
       width: 27px;
       height: 27px;
       padding-top: 4px;
@@ -139,6 +142,10 @@ $color-todayHighlight: #D85B4C;
       font-weight: bold;
       color: white;
     }
+
+    .fc-day-number {
+      float: none;
+    }
   }
 
   /* ========= */
@@ -159,7 +166,7 @@ $color-todayHighlight: #D85B4C;
         text-decoration: none;
       }
 
-      > span {
+      > span > span {
         position: absolute;
         right: 0;
         top: -4px;
@@ -178,7 +185,7 @@ $color-todayHighlight: #D85B4C;
       }
 
       &.fc-title-today {
-        > span {
+        > span > span {
           color: #FFFFFF;
           background: $color-todayHighlight;
         }
@@ -332,4 +339,8 @@ $color-todayHighlight: #D85B4C;
       }
     }
   }
+}
+
+.spinner {
+  height: 28px !important;
 }

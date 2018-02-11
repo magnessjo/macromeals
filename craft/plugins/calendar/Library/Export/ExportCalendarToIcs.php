@@ -39,11 +39,17 @@ class ExportCalendarToIcs extends AbstractExportCalendar
 
         /** @var Event $event */
         foreach ($events as $event) {
-            $exportString .= $this->combineExportString($event, $event->getStartDate());
+            $startDate    = $event->getStartDate();
+            $exportString .= $this->combineExportString($event, $startDate);
             
             if ($event->getSelectDates()) {
                 foreach ($event->getSelectDates() as $date) {
                     $dateCarbon = Carbon::createFromTimestampUTC($date->getTimestamp());
+                    $dateCarbon->setTime(
+                        $startDate->hour,
+                        $startDate->minute,
+                        $startDate->second
+                    );
                     
                     $exportString .= $this->combineExportString($event, $dateCarbon);
                 }
@@ -92,10 +98,10 @@ class ExportCalendarToIcs extends AbstractExportCalendar
         $exportString .= sprintf("DTSTAMP:%s\r\n", $this->now->format(self::DATE_TIME_FORMAT));
 
         if ($description) {
-            $exportString .= sprintf("DESCRIPTION:%s\r\n", $this->escapeString(strip_tags($description)));
+            $exportString .= sprintf("DESCRIPTION:%s\r\n", $this->prepareString(strip_tags($description)));
         }
         if ($location) {
-            $exportString .= sprintf("LOCATION:%s\r\n", $this->escapeString(strip_tags($location)));
+            $exportString .= sprintf("LOCATION:%s\r\n", $this->prepareString(strip_tags($location)));
         }
 
         if ($event->isAllDay()) {
@@ -137,7 +143,7 @@ class ExportCalendarToIcs extends AbstractExportCalendar
             }
         }
 
-        $exportString .= sprintf("SUMMARY:%s\r\n", $this->escapeString($title));
+        $exportString .= sprintf("SUMMARY:%s\r\n", $this->prepareString($title));
         $exportString .= "END:VEVENT\r\n";
 
         return $exportString;
