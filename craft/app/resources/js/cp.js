@@ -187,7 +187,7 @@ Craft.CP = Garnish.Base.extend(
 			});
 		}
 
-		Garnish.$doc.on('ready', $.proxy(function()
+		Garnish.$doc.ready($.proxy(function()
 		{
 			// Look for forms that we should watch for changes on
 			this.$confirmUnloadForms = $('form[data-confirm-unload]');
@@ -245,6 +245,14 @@ Craft.CP = Garnish.Base.extend(
 		{
 			this.addListener(this.$edition, 'click', 'showUpgradeModal');
 		}
+
+		// Open outbound links in new windows
+		// hat tip: https://stackoverflow.com/a/2911045/1688568
+		$('a').each(function() {
+			if (this.hostname.length && this.hostname !== location.hostname && typeof $(this).attr('target') === 'undefined') {
+				$(this).attr('target', '_blank')
+			}
+		});
 	},
 
 	submitPrimaryForm: function()
@@ -257,7 +265,7 @@ Craft.CP = Garnish.Base.extend(
 			$('<input type="hidden" name="redirect" value="'+this.$primaryForm.data('saveshortcut-redirect')+'"/>').appendTo(this.$primaryForm);
 		}
 
-		this.$primaryForm.submit();
+		this.$primaryForm.trigger('submit');
 	},
 
 	updateSidebarMenuLabel: function()
