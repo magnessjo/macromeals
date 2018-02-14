@@ -55,7 +55,7 @@
               {% endif %}
 
               {% if deliveryDate is not null and day.date.format('m') == month.endDate.format('m') %}
-                {% if day.date.format('d') == deliveryDate.format('d') %}expected-delivery-date{% endif %}
+                {% if day.date.format('d') == deliveryDate.format('d') %}delivery expected-delivery-date{% endif %}
               {% endif %}
             "
             data-year="{{ day.date.year }}"
