@@ -3,7 +3,7 @@
 
 const header = document.querySelector('header');
 const button = header.querySelector('.menu-toggle');
-const menu = document.querySelector('menu');
+const menu = document.querySelector('#menu');
 const wrapper = menu.querySelector('.mobile-nav');
 const overlays = Array.from(header.querySelectorAll('.header-overlay'));
 

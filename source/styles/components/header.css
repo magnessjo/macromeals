@@ -413,7 +413,7 @@ header {
 
 }
 
-menu {
+#menu {
   transition: height .7s ease-out;
   height: 0;
   overflow: hidden;
@@ -497,7 +497,7 @@ body[logged-in='true'] {
     display: block;
   }
 
-  & menu .current-user-nav {
+  & #menu .current-user-nav {
     display: flex;
   }
 
