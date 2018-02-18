@@ -1,0 +1,35 @@
+
+#pickup-summary {
+
+  & .options {
+
+    & > div {
+      padding-bottom: 30px;
+      margin-bottom: 30px;
+      border-bottom: 1px solid var(--black);
+
+      &:last-of-type {
+        padding-bottom: 0px;
+        margin-bottom: 0px;
+        border-bottom: none;
+      }
+
+    }
+
+    & h2 {
+      font-family: var(--acuminBold);
+      text-transform: uppercase;
+      margin-bottom: 15px;
+    }
+
+    & address {
+
+      & p {
+        margin-bottom: 0;
+      }
+
+    }
+
+  }
+
+}

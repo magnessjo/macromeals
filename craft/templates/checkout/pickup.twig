@@ -1,0 +1,97 @@
+
+{% extends "_layout" %}
+{% includeCssFile "/checkout.css" %}
+{% includeJsFile "/pickup.js" %}
+
+{% set cart = craft.commerce.getCart %}
+
+{% block main %}
+
+  {% if cart.email == '' %}
+    {% redirect "/account/login" 301 %}
+  {% endif %}
+
+  {% include "components/breadcrumb.twig" %}
+
+  <form method="POST" id="pickup-options">
+
+    {{ getCsrfInput() }}
+
+    <input type="hidden" name="action" value="commerce/cart/updateCart">
+    <input type="hidden" name="redirect" value="/checkout/billing">
+    <input type="hidden" name="shippingMethod" value='pickup' />
+    <input type="hidden" name="fields[deliveryDate][date]" value="">
+    <input type="hidden" name="fields[deliveryDate][time]" value="5:00 AM">
+
+    <section id="pickup-summary">
+
+      <div class="lock">
+
+        <h1 class="acumin-headline"><span>Pickups cost $0 for shipping</span></h1>
+        <div class="options">
+
+          <div>
+            <h2>Abingdon Post Man Plus</h2>
+            <address>
+            <p>3438 Emmorton Rd</p>
+            <p>Abingdon, MD 21009</p>
+            </address>
+          </div>
+
+          <div>
+            <h2>Kelly & Associates</h2>
+            <address>
+            <p> 1 Kelly Way</p>
+            <p>Sparks Glencoe, MD 21152</p>
+            </address>
+          </div>
+
+          <div>
+            <h2>Canton Broom Factory</h2>
+            <address>
+            <p>3500 Boston St</p>
+            <p>Baltimore, MD 21224</p>
+            </address>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section id="calendar">
+
+      <div class="lock">
+
+        <h1 class="acumin-headline"><span>Select your Delivery Date For </span></h1>
+
+        {# Abingdon Calendar  #}
+        {% include "components/calendar-includes.twig" with { 'location' : 'Abingdon' } %}
+
+        {# Canton Calendar  #}
+        {% include "components/calendar-includes.twig" with { 'location' : 'Canton' } %}
+
+        {# Kelly Calendar  #}
+        {% include "components/calendar-includes.twig" with { 'location' : 'Kelly' } %}
+
+      </div>
+
+    </section>
+
+    <section class="checkout-actions">
+
+      <div class="lock">
+
+        <div class="actions">
+          <a href="/checkout" class="icons">Back <span>to Cart Summary</span></a>
+          <input type="submit" data-button="continue" value="Continue to Billing" class="call-to-action">
+        </div>
+
+      </div>
+
+    </section>
+
+  </form>
+
+{% endblock %}

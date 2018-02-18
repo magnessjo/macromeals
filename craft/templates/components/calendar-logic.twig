@@ -1,0 +1,90 @@
+
+{% set isExpectedDateSet = false %}
+{% set nowDate = "now"|date_modify("+0 day") %}
+
+<div class="month-calendar">
+  <table>
+    <thead>
+      <tr class="list-month">
+        <th colspan="7">{{ month.date.format('F Y') }}</th>
+      </tr>
+      <tr class="list-days">
+        {% for day in month|first %}
+          <th>{{ day.date.format('D')|first }}</th>
+        {% endfor %}
+      </tr>
+    </thead>
+    <tbody>
+    {% for week in month %}
+      <tr>
+        {% for day in week %}
+
+          {% set availableDay = false %}
+          {% set formattedDay = day.startDate.format('D') %}
+          {% set isExpectedDay = false %}
+
+          {% for event in day.events %}
+
+             {% if event.title == location %}
+                {% set availableDay = true %}
+
+                {% if nowDate.format('m') == month.date.format('m') and expectedDate.format('d') > 3 %}
+                  {% if isExpectedDateSet == false %}
+                    {% if day.date.format('d') > expectedDate.format('d') %}
+                      {% set isExpectedDay = true %}
+                      {% set isExpectedDateSet = true %}
+                    {% endif %}
+                  {% endif %}
+                {% endif %}
+
+                {% if nowDate.format('m') != month.date.format('m') and expectedDate.format('d') < 4 %}
+                  {% if isExpectedDateSet == false and month.containsDate(day.date) %}
+                    {% set isExpectedDay = true %}
+                    {% set isExpectedDateSet = true %}
+                  {% endif %}
+                {% endif %}
+
+             {% endif %}
+
+          {% endfor %}
+
+          <td class="
+
+              {% if today %}
+                {{ day.date.isToday ? "today" }}
+              {% endif %}
+
+              {% if month.containsDate(day.date) %}
+                {% if availableDay %}
+                  {% if today %}
+                    {% if day.date.format('d') > expectedDate.format('d') %}
+                      delivery
+                    {% endif %}
+                  {% else %}
+                    delivery
+                  {% endif %}
+                {% endif %}
+              {% endif %}
+
+              {% if isExpectedDay %}
+                expected-delivery-date
+              {% endif %}
+
+            "
+            data-year="{{ day.date.year }}"
+            data-month="{{ day.date.month }}"
+            data-day="{{ day.date.day }}"
+            >
+
+            <div>
+              {% if month.containsDate(day.date) %}
+                {{ day.date.format('j') }}
+              {% endif %}
+            </div>
+          </td>
+        {% endfor %}
+      </tr>
+    {% endfor %}
+    </tbody>
+  </table>
+</div>
