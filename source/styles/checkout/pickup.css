@@ -3,10 +3,16 @@
 
   & .options {
 
-    & > div {
+    & .info {
       padding-bottom: 30px;
       margin-bottom: 30px;
       border-bottom: 1px solid var(--black);
+
+      @media (--large-min) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
 
       &:last-of-type {
         padding-bottom: 0px;
@@ -30,6 +36,26 @@
 
     }
 
+    & button {
+      cursor: pointer;
+    }
+
+    & button[data-selected="true"] {
+      background-color: var(--white);
+      color: var(--green);
+      border: 1px solid var(--green);
+      cursor: default;
+    }
+
+  }
+
+}
+
+#pickup-options #calendar {
+  display: none;
+
+  & .calendar-wrapper {
+    display: none;
   }
 
 }

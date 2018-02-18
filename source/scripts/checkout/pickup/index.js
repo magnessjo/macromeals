@@ -2,6 +2,7 @@
 // Imports
 
 import calendar from 'scripts/helpers/calendar.js';
+import selection from './selection.js';
 import modifyFormValueForResize from 'scripts/helpers/form/modifyFormValueForResize.js';
 
 // Load
@@ -9,6 +10,7 @@ import modifyFormValueForResize from 'scripts/helpers/form/modifyFormValueForRes
 document.addEventListener('DOMContentLoaded', () => {
 
   calendar();
+  selection();
   modifyFormValueForResize();
 
 });
