@@ -1,6 +1,4 @@
 
-// Variables
-
 // Get Month
 
 function getMonth(month) {

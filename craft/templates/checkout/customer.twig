@@ -193,77 +193,21 @@
 
     </section>
 
-    {# <section id="calendar">
+    <section id="calendar">
 
       <div class="lock">
 
         <h1 class="acumin-headline"><span>Select your Delivery Date</span></h1>
 
-        {% set targetDate = "today" %}
-        {% set expectedDate = "now"|date_modify("+3 day") %}
-
-        {% if expectedDate|date("D") == 'Sun' %}
-          {% set expectedDate = "now"|date_modify("+5 day") %}
-        {% endif %}
-
-        {% if expectedDate|date("D") == 'Mon' %}
-          {% set expectedDate = "now"|date_modify("+4 day") %}
-        {% endif %}
-
-        {% if cart.deliveryDate %}
-          {% if cart.deliveryDate > expectedDate %}
-            {% set deliveryDate = cart.deliveryDate %}
-          {% else %}
-            {% set deliveryDate = expectedDate %}
-          {% endif %}
-        {% else %}
-          {% set deliveryDate = expectedDate %}
-        {% endif %}
-
-        <input type="hidden" name="fields[deliveryDate][date]" value="{{ deliveryDate.format('m/d/Y') }}">
+        <input type="hidden" name="fields[deliveryDate][date]" value="">
         <input type="hidden" name="fields[deliveryDate][time]" value="5:00 AM">
 
-        {% set month = craft.calendar.month({ date: targetDate }) %}
-        {% set nextMonth = craft.calendar.month({ date: month.nextDate }) %}
-
-        <div class="calendar-wrapper">
-
-          <div class="calendars">
-
-            {% set nowDate = "now"|date_modify("+0 day") %}
-
-            {% include "components/delivery-calendar.twig" with {
-              'month' : month,
-              'today': true,
-              'expectedDate' : expectedDate,
-              'deliveryDate' : deliveryDate.format('d') > 4 ? deliveryDate : null
-              }
-            %}
-
-            {% if nowDate.format('d') > 20 %}
-              {% include "components/delivery-calendar.twig" with {
-                'month' : nextMonth,
-                'today': nowDate.format('d') > 1 ? true : false,
-                'expectedDate' : expectedDate,
-                'deliveryDate' : deliveryDate.format('d') < 4 ? deliveryDate : null
-                }
-              %}
-            {% endif %}
-          </div>
-
-          <div class="color-code">
-            <div>
-              <div class="current-delivery-date"><span></span> Current Delivery Date</div>
-              <div class="delivery-date-options"><span></span> Available Delivery Dates</div>
-              <div class="today-date"><span></span> Today</div>
-            </div>
-          </div>
-
-        </div>
+        {# Delivery Calendar  #}
+        {% include "components/calendar-includes.twig" with { 'location' : 'Delivery' } %}
 
       </div>
 
-    </section> #}
+    </section>
 
     <section class="checkout-actions">
 
