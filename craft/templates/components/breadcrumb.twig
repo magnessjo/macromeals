@@ -7,15 +7,11 @@
 
     <h1>
 
-      {% if segment == 'checkout' %}
+      {% if segment == 'customer' %}
         <span>Customer</span>Information
       {% endif %}
 
-      {% if segment == 'shipping-method' %}
-        Shipping
-      {% endif %}
-
-      {% if segment == 'summary' %}
+      {% if segment == 'checkout' %}
         <span>Order</span>Summary
       {% endif %}
 
@@ -27,32 +23,15 @@
 
     <div>
 
-      {% if segment=="checkout" %}
+      {% if segment=="customer" %}
+        <a href="/checkout/" class='completed'><span>Order</span> Summary</a>
         <p class='active'>Customer <span>Information</span></p>
-        <p>Shipping <span>Method</span></p>
-        <p><span>Order</span> Summary</p>
-        <p><span>Order</span> Billing</p>
-      {% endif %}
-
-
-      {% if segment=="shipping-method" %}
-        <a href="/checkout" class='completed'>Customer <span>Information</span></a>
-        <p class='active'>Shipping <span>Method</span></p>
-        <p><span>Order</span> Summary</p>
-        <p><span>Order</span> Billing</p>
-      {% endif %}
-
-      {% if segment=="summary" %}
-        <a href="/checkout" class='completed'>Customer <span>Information</span></a>
-        <a href="/checkout/shipping-method" class='completed'>Shipping <span>Method</span></a>
-        <p class="active"><span>Order</span> Summary</p>
         <p><span>Order</span> Billing</p>
       {% endif %}
 
       {% if segment=="billing" %}
-        <a href="/checkout" class='completed'>Customer <span>Information</span></a>
-        <a href="/checkout/shipping-method" class='completed'>Shipping <span>Method</span></a>
-        <a href="/checkout/summary" class='completed'><span>Order</span> Summary</a>
+        <a href="/checkout/" class='completed'><span>Order</span> Summary</a>
+        <a href="/checkout/customer" class='completed'>Customer <span>Information</span></a>
         <p class="active"><span>Order</span> Billing</p>
       {% endif %}
 
