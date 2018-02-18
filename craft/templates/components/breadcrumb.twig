@@ -15,6 +15,10 @@
         <span>Order</span>Summary
       {% endif %}
 
+      {% if segment == 'pickup' %}
+        <span>Pickup</span>Options
+      {% endif %}
+
       {% if segment == 'billing' %}
         <span>Order</span>Billing
       {% endif %}
@@ -26,6 +30,12 @@
       {% if segment=="customer" %}
         <a href="/checkout/" class='completed'><span>Order</span> Summary</a>
         <p class='active'>Customer <span>Information</span></p>
+        <p><span>Order</span> Billing</p>
+      {% endif %}
+
+      {% if segment=="pickup" %}
+        <a href="/checkout/" class='completed'><span>Order</span> Summary</a>
+        <p class='active'>Pickup <span>Options</span></p>
         <p><span>Order</span> Billing</p>
       {% endif %}
 
