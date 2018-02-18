@@ -41,7 +41,11 @@
 
       {% if segment=="billing" %}
         <a href="/checkout/" class='completed'><span>Order</span> Summary</a>
-        <a href="/checkout/customer" class='completed'>Customer <span>Information</span></a>
+        {% if cart.shippingMethod.handle == 'overnight' %}
+          <a href="/checkout/customer" class='completed'>Customer <span>Information</span></a>
+        {% else %}
+          <a href="/checkout/pickup" class='completed'>Pickup <span>Options</span></a>
+        {% endif %}
         <p class="active"><span>Order</span> Billing</p>
       {% endif %}
 
