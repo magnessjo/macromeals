@@ -28,17 +28,34 @@ export default function(cart) {
     const shippingElement = cartTotal.querySelector('[data-type="shipping-amount"]');
     const discountElement = cartTotal.querySelector('[data-type="discount-amount"]');
 
-    const totalNumber = formatStringForDollar(cart.totalPrice);
-    const subTotalNumber = formatStringForDollar(cart.itemSubtotal);
-    const taxNumber = formatStringForDollar(cart.totalTax);
-    const shippingNumber = formatStringForDollar(cart.baseShippingCost);
-    const discountNumber = formatStringForDollar(discountCalcNumber);
+    if (totalElement) {
+      const totalNumber = formatStringForDollar(cart.totalPrice);
+      totalElement.innerHTML = `$${totalNumber}`;
+    }
 
-    totalElement.innerHTML = `$${totalNumber}`;
-    subTotalElement.innerHTML = subTotalNumber;
-    taxElement.innerHTML = taxNumber;
-    shippingElement.innerHTML = shippingNumber;
-    discountElement.innerHTML = `(${discountNumber})`;
+    if (subTotalElement) {
+      const subTotalNumber = formatStringForDollar(cart.itemSubtotal);
+      subTotalElement.innerHTML = subTotalNumber;
+    }
+
+    if (taxElement) {
+      const taxNumber = formatStringForDollar(cart.totalTax);
+      taxElement.innerHTML = taxNumber;
+    }
+
+    if (shippingElement) {
+      const shippingNumber = formatStringForDollar(cart.baseShippingCost);
+      shippingElement.innerHTML = shippingNumber;
+    }
+
+    if (discountElement) {
+
+      const discountNumber = formatStringForDollar(discountCalcNumber);
+      discountElement.innerHTML = `(${discountNumber})`;
+
+      discountCalcNumber > 0 ? discountElement.setAttribute('data-show', true) : discountElement.setAttribute('data-show', false);
+
+    }
 
   }
 

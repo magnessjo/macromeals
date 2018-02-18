@@ -48,3 +48,35 @@
   }
 
 }
+
+.summary-checkout-actions {
+
+  & .call-to-action {
+    clear: both;
+    width: 280px;
+    text-align: center;
+    position: relative;
+
+    @media (--medium-min) {
+      width: 320px;
+    }
+
+    &:first-of-type {
+      margin-bottom: 60px;
+
+      &:after {
+        content: "OR";
+        position: absolute;
+        bottom: -30px;
+        left: 150px;
+        font-size: 12px;
+        color: var(--black);
+        margin-bottom: -9px;
+        margin-right: -9px;
+      }
+
+    }
+
+  }
+
+}

@@ -1,8 +1,16 @@
 
 {% extends "_layout" %}
 {% includeCssFile "/checkout.css" %}
-{% includeJsFile "/shipping.js" %}
-{% set bodyClass = 'with-border' %}
+{% includeJsFile "/summary.js" %}
+
+{% set cart = craft.commerce.getCart %}
+{% set coolerClubAdjustment = false %}
+
+{% for adjuster in cart.adjustments %}
+  {% if adjuster.name == 'Cooler Club Item Discount' and adjuster.amount < 0  %}
+    {% set coolerClubAdjustment = true %}
+  {% endif %}
+{% endfor %}
 
 {% block main %}
 
@@ -10,58 +18,98 @@
     {% redirect "/account/login" 301 %}
   {% endif %}
 
-  <form method="POST" id="shipping-selection">
+  {% include "components/breadcrumb.twig" %}
 
-    {{ getCsrfInput() }}
+  <form id="product-list">
 
-    <input type="hidden" name="action" value="commerce/cart/updateCart">
-    <input type="hidden" name="redirect" value="checkout/customer">
-    <input type="hidden" name="shippingMethod" value='overnight' />
+    {% include "components/order-summary.twig" %}
 
-    <section id="shipment-type-selection">
+    {% if cart.lineItems | length != 0 %}
 
-      <div class="lock">
+      <section id="cart-total">
 
-        <h1 class="acumin-headline">Select your shipping method:</h1>
+        <div class="lock">
 
-        <div class="options">
+          <div>
 
-          <div class="delivery">
-            <h2><span>Delivery</span></h2>
-            <div>
-              <p>Delivery costs vary based on your location.</p>
-              <p>Average costs for common delivery locations:</p>
-              <ul>
-                <li><span>$15</span> Baltimore, Maryland</li>
-                <li><span>$11</span> District of Columbia</li>
-                <li><span>$15</span> Dover, Delaware</li>
-                <li><span>$11</span> Manhattan, New York</li>
-                <li><span>$5</span> Most of Harford County, Maryland</li>
-              </ul>
-              <button>Get an estimate</button>
-              <a href="/checkout/delivery" class="call-to-action" data-option="overnight">Select Delivery</a>
+            {% if currentUser %}
+
+              {% if currentUser.isInGroup('coolerclub') %}
+
+                <div class="adjustment-section cooler-club">
+                  <label>Cooler Club</label>
+                  <p>The cooler club is for family/friends who would rather pick a cooler from us than pay for the normal packaging.</p>
+                  <p>Each item is reduced $1 and shipping and handling is $0</p>
+                  <p>We don't advertise this service so don't tell anyone 🤫</p>
+                  <div>
+                    <button class="call-to-action" {% if coolerClubAdjustment == false %}data-adjustment="true"{% else %}data-adjustment="false"{% endif %}>{% if coolerClubAdjustment == false %}Apply{% else %}Remove{% endif %}</button>
+                  </div>
+                </div>
+
+              {% endif %}
+
+            {% endif %}
+
+            <div class="adjustment-section promo">
+
+              <label>Promotional Code</label>
+              <div>
+                <input type="text" name="couponCode" value="{{ cart.couponCode }}" placeholder="Code" />
+                <button class="call-to-action">{% if cart.couponCode %}Change{% else %}Apply{% endif %}</button>
+                <p class="promo-error">The promotional code that you have entered could not be found</p>
+              </div>
+
             </div>
-          </div>
 
-          <div class="pickup">
-            <h2><span>Pickup</span></h2>
-            <div>
-              <p>Current pickup locations include:</p>
-              <ul>
-                <li><span>Abingdon, Maryland</span></li>
-                <li><span>Canton, Maryland</span></li>
-                <li><span>Hunt Valley, Maryland</span></li>
-              </ul>
-              <p>Pickup costs are $0.</p>
-              <a href="/checkout/pickup" class="call-to-action" data-option="pickup">Select Pickup</a>
+            <div class='totals'>
+
+              <p>
+                <span class="title">SubTotal</span>
+                <span class="cost" data-type="items-amount">{{ cart.itemSubtotal | number_format(2, '.', ',')}}</span>
+              </p>
+
+              <p class="discount" data-show="false">
+                <span class="title">Discount</span>
+                <span class="cost" data-type="discount-amount">({{ cart.totalDiscount | number_format(2, '.', ',') }})</span>
+              </p>
+
+              <p>
+                <span class="title">Tax</span>
+                <span class="cost" data-type="tax-amount">{{ cart.totalTax | number_format(2, '.', ',') }}</span>
+              </p>
+
+              <p class="total">
+                <span class="title">Total</span>
+                <span class="cost" data-type="total-amount">{{ cart.totalPrice | commerceCurrency(cart.currency, stripZeros = true) }}</span>
+              </p>
+
             </div>
+
           </div>
 
         </div>
 
-      </div>
+      </section>
 
-    </section>
+    {% endif %}
+
+    {# Checkout Actions #}
+
+    {% if cart.lineItems | length != 0 %}
+
+      <section class="checkout-actions summary-checkout-actions">
+
+        <div class="lock">
+
+          {# <a href="/checkout/shipping-method" class="icons">Back <span>to Customer Information</span></a> #}
+          <a href="/checkout/pickup" class="call-to-action" data-button="Pickup Options">Pickup Options</a>
+          <a href="/checkout/customer" class="call-to-action" data-button="Delivery Options">Delivery Options</a>
+
+        </div>
+
+      </section>
+
+    {% endif %}
 
   </form>
 

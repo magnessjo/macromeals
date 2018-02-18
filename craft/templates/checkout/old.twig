@@ -1,0 +1,68 @@
+
+{% extends "_layout" %}
+{% includeCssFile "/checkout.css" %}
+{% includeJsFile "/shipping.js" %}
+{% set bodyClass = 'with-border' %}
+
+{% block main %}
+
+  {% if cart.email == '' %}
+    {% redirect "/account/login" 301 %}
+  {% endif %}
+
+  <form method="POST" id="shipping-selection">
+
+    {{ getCsrfInput() }}
+
+    <input type="hidden" name="action" value="commerce/cart/updateCart">
+    <input type="hidden" name="redirect" value="checkout/customer">
+    <input type="hidden" name="shippingMethod" value='overnight' />
+
+    <section id="shipment-type-selection">
+
+      <div class="lock">
+
+        <h1 class="acumin-headline">Select your shipping method:</h1>
+
+        <div class="options">
+
+          <div class="delivery">
+            <h2><span>Delivery</span></h2>
+            <div>
+              <p>Delivery costs vary based on your location.</p>
+              <p>Average costs for common delivery locations:</p>
+              <ul>
+                <li><span>$15</span> Baltimore, Maryland</li>
+                <li><span>$11</span> District of Columbia</li>
+                <li><span>$15</span> Dover, Delaware</li>
+                <li><span>$11</span> Manhattan, New York</li>
+                <li><span>$5</span> Most of Harford County, Maryland</li>
+              </ul>
+              <button>Get an estimate</button>
+              <a href="/checkout/delivery" class="call-to-action" data-option="overnight">Select Delivery</a>
+            </div>
+          </div>
+
+          <div class="pickup">
+            <h2><span>Pickup</span></h2>
+            <div>
+              <p>Current pickup locations include:</p>
+              <ul>
+                <li><span>Abingdon, Maryland</span></li>
+                <li><span>Canton, Maryland</span></li>
+                <li><span>Hunt Valley, Maryland</span></li>
+              </ul>
+              <p>Pickup costs are $0.</p>
+              <a href="/checkout/pickup" class="call-to-action" data-option="pickup">Select Pickup</a>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+  </form>
+
+{% endblock %}
