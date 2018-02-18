@@ -1,7 +1,12 @@
 
+// Imports
+
+import setCalendarDateInput from 'scripts/helpers/setCalendarDateInput.js';
+
 // Variables
 
 const form = document.querySelector('#pickup-options');
+const submitButton = form.querySelector('input[type="submit"]');
 const buttons = Array.from(form.querySelectorAll('.options button'));
 const calendarContainer = document.querySelector('#calendar');
 const calendars = Array.from(calendarContainer.querySelectorAll('.calendar-wrapper'));
@@ -16,7 +21,9 @@ function showCalendar(id, name) {
     const attr = calendar.getAttribute('data-calendar');
 
     if (attr == id) {
+      const currentDateSelected = calendar.querySelector(`.expected-delivery-date`);
       calendar.style.display = 'flex';
+      setCalendarDateInput(currentDateSelected);
     } else {
       calendar.style.display = 'none';
     }
@@ -25,6 +32,7 @@ function showCalendar(id, name) {
 
   calendarContainer.style.display = 'block';
   textHeadline.innerHTML = `Select your Delivery Date For ${name}`;
+  submitButton.disabled = false;
 
 }
 
