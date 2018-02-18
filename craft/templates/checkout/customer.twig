@@ -1,0 +1,188 @@
+
+{% extends "_layout" %}
+{% includeCssFile "/checkout.css" %}
+{% includeJsFile "/customer.js" %}
+
+{% set cart = craft.commerce.getCart %}
+{% set shippingModel = cart.shippingAddress %}
+{% set addresses = craft.commerce.customer.addresses|last %}
+
+{% set states = craft.commerce.statesArray["233"] %}
+
+{% block main %}
+
+  {% if cart.email == '' %}
+    {% redirect "/account/login" 301 %}
+  {% endif %}
+
+  {% include "components/breadcrumb.twig" %}
+
+  <form method="POST" id="address-info">
+
+    {{ getCsrfInput() }}
+
+    <input type="hidden" name="action" value="commerce/cart/updateCart">
+
+    <input type="hidden" name="redirect" value="checkout/shipping-method">
+    <input type='hidden' name="sameAddress" value="1" />
+    <input type="hidden" name="shippingAddressId" value="new">
+
+    <input type="hidden" name="shippingAddress[countryId]" value='233' />
+    <input type="hidden" name="quantity" value='{{ cart.totalQty }}' />
+    <input type="hidden" name="shippingMethod" value='overnight' />
+
+    <section id="contact-details">
+
+      <div class="lock">
+
+        <p class="required required-disclaimer"><span>Required Field</span></p>
+
+        <h1 class="acumin-headline"><span>Contact Details</span></h1>
+
+        <div class="field" data-required="true" valid="false">
+          <label for="firstName"><span>First Name</span></label>
+          <div class="input">
+            <input type="text"
+                   name="shippingAddress[firstName]"
+                   id="firstName"
+                   validation="checkForLetterWithSpaceDash"
+                   value="{{ shippingModel.firstName ?? addresses.firstName ?? '' }}" />
+
+            <div class="errors">
+              <p class="required">First name is a required field</p>
+              <p class="letters">First name can only contain letters, dashes and spaces</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="field" data-required="true" valid="false">
+          <label for="lastName"><span>Last Name</span></label>
+          <div class="input">
+            <input type="text"
+                   name="shippingAddress[lastName]"
+                   id="lastName"
+                   validation="checkForLetterWithSpaceDash"
+                   value="{{ shippingModel.lastName ?? addresses.lastName ?? '' }}" />
+
+            <div class="errors">
+              <p class="required">Last name is a required field</p>
+              <p class="letters">Last name can only contain letters and spaces</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <section id="customer-address">
+
+      <div class="lock">
+
+        <h1 class="acumin-headline"><span>Shipping Address</span></h1>
+
+        <div class="field" data-required="true" valid="false">
+          <label for="address"><span>Shipping Address 1</span></label>
+          <div class="input">
+            <input type="text"
+                   name="shippingAddress[address1]"
+                   id="address1"
+                   value="{{ shippingModel.address1 ?? addresses.address1 ?? '' }}" />
+
+            <div class="errors">
+              <p class="required">Shipping address is a required field</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="field" valid="true">
+          <label for="address-two">Shipping Address 2</label>
+          <div class="input">
+            <input type="text"
+                   name="shippingAddress[address2]"
+                   id="address2"
+                   value="{{ shippingModel.address2 ?? addresses.address2 ?? '' }}" />
+
+            <div class="errors"></div>
+          </div>
+        </div>
+
+        <div class="field" data-required="true" valid="false">
+          <label for="city"><span>Shipping City</span></label>
+          <div class="input">
+            <input type="text"
+                   name="shippingAddress[city]"
+                   id="city"
+                   value="{{ shippingModel.city ?? addresses.city ?? '' }}" />
+
+            <div class="errors">
+              <p class="required">Shipping city is a required field</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="field" data-required="true" valid="false">
+          <label for="zip"><span>Shipping Zip</span></label>
+          <div class="input">
+            <input type="text"
+                   name="shippingAddress[zipCode]"
+                   id="zipCode"
+                   maxLength="5"
+                   value="{{ shippingModel.zipCode ?? addresses.zipCode ?? '' }}" />
+
+            <div class="errors">
+              <p class="required">Shipping zip code is a required field</p>
+            </div>
+            <div class="shipping-cost">
+              <p></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="field" data-required="true" valid="false">
+          <label for="state"><span>Shipping State</span></label>
+          <div class="input">
+            <select name="shippingAddress[stateId]" >
+              <option disabled selected value> Please Choose </option>
+              {% for state in craft.commerce.states %}
+
+                {% if shippingModel %}
+
+                  {% if shippingModel.state == state %}
+                    <option value="{{ shippingModel.stateId }}" selected> {{ shippingModel.state }}</option>
+                  {% else %}
+                    <option value="{{ state.id }}">{{ state.name }}</option>
+                  {% endif %}
+
+                {% else %}
+                  <option value="{{ state.id }}">{{ state.name }}</option>
+                {% endif %}
+
+              {% endfor %}
+            </select>
+            <div class="errors">
+              <p class="required">State is a required field</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    <section class="action">
+
+      <div class="lock">
+
+        <div class="actions">
+          <input type="submit" data-button="continue" value="Continue to Shipping Method" class="call-to-action">
+        </div>
+
+      </div>
+
+    </section>
+
+  </form>
+
+{% endblock %}

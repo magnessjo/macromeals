@@ -1,6 +1,7 @@
 
 @import "../master.css";
 
+@import "./shipping-select.css";
 @import "./customer.css";
 @import "./shipping.css";
 @import "./summary.css";
@@ -11,7 +12,8 @@
   margin-bottom: 80px;
 }
 
-form#address-info {
+form#address-info,
+form#shipping-selection {
   max-width: 700px;
   margin: 0 auto;
 }

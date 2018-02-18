@@ -22,9 +22,12 @@
             {% if event.title == 'Remove From Delivery' %}
               {% set shouldShow = false %}
 
-              {% if day.date.format('d') == deliveryDate.format('d') %}
-                {% set deliveryDate = deliveryDate|date_modify("+1 day") %}
+              {% if deliveryDate %}
+                {% if day.date.format('d') == deliveryDate.format('d') %}
+                  {% set deliveryDate = deliveryDate|date_modify("+1 day") %}
+                {% endif %}
               {% endif %}
+
 
             {% endif %}
           {% endfor %}
@@ -55,7 +58,11 @@
               {% endif %}
 
               {% if deliveryDate is not null and day.date.format('m') == month.endDate.format('m') %}
-                {% if day.date.format('d') == deliveryDate.format('d') %}delivery expected-delivery-date{% endif %}
+                {% if day.date.format('d') == deliveryDate.format('d') %}
+                  {% if today %}
+                    delivery expected-delivery-date
+                  {% endif %}
+                {% endif %}
               {% endif %}
             "
             data-year="{{ day.date.year }}"

@@ -6,12 +6,8 @@ import fetchData from 'scripts/helpers/fetchPostData.js';
 // Variables
 
 const container = document.querySelector('#calendar');
-const summaryContainer = document.querySelector('#shipping-summary');
-const deliveryDates = Array.from(container.querySelectorAll('.delivery'));
-const deliveryText = summaryContainer.querySelector('.expected-date span');
-const dateInput = document.querySelector('input[name="fields[deliveryDate][date]"]');
 const currentDateClass = 'expected-delivery-date';
-let currentDate = container.querySelector(`.${currentDateClass}`);
+let currentDate;
 
 function getMonth(month) {
 
@@ -88,6 +84,8 @@ function getDay(day) {
 
 function updateText(entry) {
 
+  const dateInput = document.querySelector('input[name="fields[deliveryDate][date]"]');
+
   const yearData = parseInt(entry.getAttribute('data-year'));
   const dayData = parseInt(entry.getAttribute('data-day'));
   const monthData = parseInt(entry.getAttribute('data-month') - 1);
@@ -102,7 +100,7 @@ function updateText(entry) {
   entry.classList.add(currentDateClass);
   currentDate = entry;
 
-  deliveryText.innerHTML = `${dayOfWeek}, ${month} ${day}, ${year}.`;
+  // deliveryText.innerHTML = `${dayOfWeek}, ${month} ${day}, ${year}.`;
   dateInput.value = `${date.getMonth() + 1}/${day}/${year}`;
 
 }
@@ -111,14 +109,23 @@ function updateText(entry) {
 
 export default function() {
 
-  deliveryDates.forEach( (entry) => {
+  if (container) {
 
-    entry.addEventListener('click', () => {  updateText(entry) });
+    const deliveryDates = Array.from(container.querySelectorAll('.delivery'));
+    currentDate = container.querySelector(`.${currentDateClass}`);
 
-    if (entry.classList.contains('expected-delivery-date')) {
-      updateText(entry);
-    }
+    deliveryDates.forEach( (entry) => {
 
-  });
+      entry.addEventListener('click', () => {  updateText(entry) });
+
+      if (entry.classList.contains('expected-delivery-date')) {
+        updateText(entry);
+      }
+
+    });
+
+  }
+
+
 
 }
