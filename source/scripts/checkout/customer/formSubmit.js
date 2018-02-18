@@ -54,37 +54,6 @@ export default function() {
 
           form.submit();
 
-          // const id = form.querySelector('input[name="shippingAddressId"]').value;
-          // const countryId = form.querySelector('input[name="shippingAddress[countryId]"]').value;
-          // let data = `${window.csrfTokenName}=${window.csrfTokenValue}&sameAddress=1&shippingAddressId=${id}&shippingAddress[countryId]=${countryId}`;
-          //
-          // inputs.forEach( (input) => {
-          //
-          //   const name = input.getAttribute('name');
-          //   const value = input.value;
-          //
-          //   data += `${name}=${value}&`;
-          //
-          // });
-          //
-          // selects.forEach( (select) => {
-          //
-          //   const name = select.getAttribute('name');
-          //   const value = select.options[select.selectedIndex].value;
-          //
-          //   data += `${name}=${value}`;
-          //
-          // });
-          //
-          //
-          // console.log(data);
-          //
-          // postToCart(data).then( (response) => {
-          //
-          //    window.location.href = '/checkout';
-          //
-          // });
-
         }
 
       }

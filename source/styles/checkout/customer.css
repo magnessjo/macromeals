@@ -1,17 +1,21 @@
 
-#notice {
-  background-color: var(--light-yellow);
-  padding: 50px 0;
-  font-size: 16px;
+#delivery-summary {
 
-  & h1 {
-    font-family: var(--acuminSemiBoldItalic);
-    font-size: 24px;
+  & p {
     margin-bottom: 10px;
   }
 
-  & .lock > p {
-    font-size: 24px;
+  & ul {
+    padding-left: 20px;
+  }
+
+  & li {
+    list-style: none;
+
+    & span {
+      font-family: var(--acuminSemiBold);
+    }
+
   }
 
 }

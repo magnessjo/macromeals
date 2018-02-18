@@ -1,6 +1,7 @@
 
 // Imports
 
+import calendar from 'scripts/helpers/calendar.js';
 import modifyFormValueForResize from 'scripts/helpers/form/modifyFormValueForResize.js';
 import formSubmit from './formSubmit.js';
 
@@ -8,6 +9,7 @@ import formSubmit from './formSubmit.js';
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  calendar();
   modifyFormValueForResize();
   formSubmit();
 
