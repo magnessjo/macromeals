@@ -41,6 +41,24 @@ section:not(#stage) {
 
 #billing-order-summary {
 
+  & .cart-summary {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--light-gray);
+
+    & p {
+      margin-bottom: 5px;
+
+      &:last-of-type {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid var(--light-gray);
+      }
+
+    }
+
+  }
+
   & .list-item {
 
     @media (--large-min) {
@@ -68,7 +86,10 @@ section:not(#stage) {
 
 #payment-method {
   margin-bottom: 0;
-  text-align: center;
+
+  & h1 {
+    margin-bottom: 60px;
+  }
 
   & #payment-request-button {
     width: 250px;

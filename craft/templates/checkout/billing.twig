@@ -30,7 +30,17 @@
 
       <h1 class="acumin-headline"><span>Order Summary</span></h1>
       <p class="list-item">Expected Delivery Date <span>{{ cart.deliveryDate.format('l, F d, Y') }}</span></p>
-      <p class="list-item">Total Due <span>{{ cart.totalPrice | commerceCurrency(cart.currency, stripZeros = true) }}</span></p>
+      <div class="cart-summary">
+        <p class="list-item">SubTotal <span>{{ cart.itemSubtotal | commerceCurrency(cart.currency, stripZeros = true) }}</span></p>
+        {% if cart.totalShippingCost > 0 %}
+          <p class="list-item">Shipping Cost <span>{{ cart.totalShippingCost | commerceCurrency(cart.currency, stripZeros = true) }}</span></p>
+        {% endif %}
+        {% if cart.totalDiscount < 0 %}
+          <p class="list-item">Discount <span>({{ cart.totalDiscount | number_format(2, '.', ',') }})</span>
+        {% endif %}
+        <p class="list-item">Tax <span>{{ cart.totalTax | commerceCurrency(cart.currency, stripZeros = true) }}</span></p>
+        <p class="list-item">Total Due <span>{{ cart.totalPrice | commerceCurrency(cart.currency, stripZeros = true) }}</span></p>
+      </div>
 
     </div>
 
@@ -60,6 +70,8 @@
     <section id="payment-method">
 
       <div class="lock small-lock">
+
+        <h1 class="acumin-headline"><span>billing Options</span></h1>
 
         <div class="payment-type">
 
@@ -100,8 +112,6 @@
 
           <input type="hidden" name="action" value="commerce/payments/pay" />
           <input type="hidden" name="redirect" value="/checkout/complete?order={{cart.number}}" />
-
-          <h1 class="acumin-headline"><span>Pay with Credit Card</span></h1>
 
           <div class="form-group">
 
