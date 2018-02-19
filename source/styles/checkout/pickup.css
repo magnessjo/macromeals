@@ -1,6 +1,15 @@
 
 #pickup-summary {
 
+  & .acumin-headline {
+    margin-bottom: 5px;
+  }
+
+  & h2 {
+    margin-bottom: 40px;
+    font-family: var(--acuminBold);
+  }
+
   & .options {
 
     & .info {

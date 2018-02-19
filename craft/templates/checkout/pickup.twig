@@ -20,14 +20,63 @@
     <input type="hidden" name="action" value="commerce/cart/updateCart">
     <input type="hidden" name="redirect" value="/checkout/billing">
     <input type="hidden" name="shippingMethod" value='pickup' />
+    <input type='hidden' name="sameAddress" value="1" />
+    <input type="hidden" name="shippingAddressId" value="new">
+    <input type="hidden" name="shippingAddress[countryId]" value='233' />
     <input type="hidden" name="fields[deliveryDate][date]" value="">
     <input type="hidden" name="fields[deliveryDate][time]" value="5:00 AM">
+
+    <section id="contact-details">
+
+      <div class="lock">
+
+        <p class="required required-disclaimer"><span>Required Field</span></p>
+
+        <h1 class="acumin-headline"><span>Contact Details</span></h1>
+
+        <div class="field" data-required="true" valid="false">
+          <label for="firstName"><span>First Name</span></label>
+          <div class="input">
+            <input type="text"
+                   name="shippingAddress[firstName]"
+                   id="firstName"
+                   validation="checkForLetterWithSpaceDash"
+                   value="{{ shippingModel.firstName ?? addresses.firstName ?? '' }}" />
+
+            <div class="errors">
+              <p class="required">First name is a required field</p>
+              <p class="letters">First name can only contain letters, dashes and spaces</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="field" data-required="true" valid="false">
+          <label for="lastName"><span>Last Name</span></label>
+          <div class="input">
+            <input type="text"
+                   name="shippingAddress[lastName]"
+                   id="lastName"
+                   validation="checkForLetterWithSpaceDash"
+                   value="{{ shippingModel.lastName ?? addresses.lastName ?? '' }}" />
+
+            <div class="errors">
+              <p class="required">Last name is a required field</p>
+              <p class="letters">Last name can only contain letters and spaces</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
 
     <section id="pickup-summary">
 
       <div class="lock">
 
-        <h1 class="acumin-headline">Pickups costs are $0 for shipping</h1>
+        <h1 class="acumin-headline"><span>Pickup Locations</span></h1>
+        <h2>Pickups costs are $0 for shipping</h2>
+
         <div class="options">
 
           <div class="info">
