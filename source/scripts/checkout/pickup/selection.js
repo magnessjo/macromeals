@@ -2,6 +2,7 @@
 // Imports
 
 import setCalendarDateInput from 'scripts/helpers/setCalendarDateInput.js';
+import scrollToLocation from 'scripts/helpers/scrollToLocation.js';
 
 // Variables
 
@@ -33,6 +34,7 @@ function showCalendar(id, name) {
   calendarContainer.style.display = 'block';
   textHeadline.innerHTML = `Select your Delivery Date For ${name}`;
   submitButton.disabled = false;
+  scrollToLocation(calendarContainer, 30);
 
 }
 
