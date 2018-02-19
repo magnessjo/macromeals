@@ -138,7 +138,12 @@
 
           <div class="checkout-actions">
 
-            <a href="/checkout/summary" class="icons">Back <span>to Your Order Summary</span></a>
+            {% if cart.shippingMethod.handle == 'overnight' %}
+              <a href="/checkout/customer" class="icons">Back <span>to Customer Information</span></a>
+            {% else %}
+              <a href="/checkout/pickup" class="icons">Back <span>to Pickup Options</span></a>
+            {% endif %}
+
             <input type="submit" value="Submit Order" class="call-to-action">
 
           </div>
