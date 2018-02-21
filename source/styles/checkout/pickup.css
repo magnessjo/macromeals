@@ -47,6 +47,11 @@
 
     & button {
       cursor: pointer;
+
+      @media (--large-max) {
+        margin-top: 20px;
+      }
+
     }
 
     & button[data-selected="true"] {
