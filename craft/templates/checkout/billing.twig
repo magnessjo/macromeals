@@ -29,7 +29,7 @@
     <div class="lock small-lock">
 
       <h1 class="acumin-headline"><span>Order Summary</span></h1>
-      <p class="list-item">Expected Delivery Date <span>{{ cart.deliveryDate.format('l, F d, Y') }}</span></p>
+      <p class="list-item expected-date">Expected Delivery Date <span>{{ cart.deliveryDate.format('l, F d, Y') }}</span></p>
       <div class="cart-summary">
         <p class="list-item">SubTotal <span>{{ cart.itemSubtotal | commerceCurrency(cart.currency, stripZeros = true) }}</span></p>
         {% if cart.totalDiscount < 0 %}

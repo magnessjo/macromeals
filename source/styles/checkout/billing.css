@@ -75,11 +75,9 @@ section:not(#stage) {
   }
 
   & .list-item {
+    display: flex;
+    justify-content: space-between;
 
-    @media (--large-min) {
-      display: flex;
-      justify-content: space-between;
-    }
 
     &:last-of-type {
       margin-bottom: 0;
@@ -93,6 +91,14 @@ section:not(#stage) {
         display: block;
       }
 
+    }
+
+  }
+
+  & .expected-date {
+
+    @media (--large-max) {
+      display: block;
     }
 
   }
