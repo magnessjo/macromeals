@@ -68,14 +68,9 @@
                 <span class="cost" data-type="items-amount">{{ cart.itemSubtotal | number_format(2, '.', ',')}}</span>
               </p>
 
-              <p class="discount" data-show="false">
+              <p class="discount" {% if cart.baseDiscount != 0 %}data-show="true"{% else %}data-show="false"{% endif %}>
                 <span class="title">Discount</span>
                 <span class="cost" data-type="discount-amount">({{ cart.totalDiscount | number_format(2, '.', ',') }})</span>
-              </p>
-
-              <p>
-                <span class="title">Tax</span>
-                <span class="cost" data-type="tax-amount">{{ cart.totalTax | number_format(2, '.', ',') }}</span>
               </p>
 
               <p class="total">

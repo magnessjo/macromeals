@@ -12,21 +12,24 @@ export default function(cart) {
   const discounts = typeof adjustments !== 'undefined' ? adjustments.Discount : 'undefined';
   let discountCalcNumber = 0;
 
-  if (typeof discounts !== 'undefined' && discounts.length > 0) {
+  if (typeof discounts !== 'undefined' && Math.abs(discounts.length) > 0) {
 
     discounts.forEach( (discount) => {
-      discountCalcNumber += discount.amount;
+      discountCalcNumber += Math.abs(discount.amount);
     });
 
   }
 
   if (cartTotal) {
 
+    console.log(cart);
+
     const totalElement = cartTotal.querySelector('[data-type="total-amount"]');
     const subTotalElement = cartTotal.querySelector('[data-type="items-amount"]');
     const taxElement = cartTotal.querySelector('[data-type="tax-amount"]');
     const shippingElement = cartTotal.querySelector('[data-type="shipping-amount"]');
     const discountElement = cartTotal.querySelector('[data-type="discount-amount"]');
+    const dicountParent = cartTotal.querySelector('.discount');
 
     if (totalElement) {
       const totalNumber = formatStringForDollar(cart.totalPrice);
@@ -51,9 +54,10 @@ export default function(cart) {
     if (discountElement) {
 
       const discountNumber = formatStringForDollar(discountCalcNumber);
-      discountElement.innerHTML = `(${discountNumber})`;
+      discountElement.innerHTML = `(-${discountNumber})`;
 
       discountCalcNumber > 0 ? discountElement.setAttribute('data-show', true) : discountElement.setAttribute('data-show', false);
+      discountCalcNumber > 0 ? dicountParent.setAttribute('data-show', true) : dicountParent.setAttribute('data-show', false);
 
     }
 

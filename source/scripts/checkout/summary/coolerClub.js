@@ -49,8 +49,6 @@ export default function() {
 
           updateCartItem(data).then((response) => {
 
-            console.log(response);
-
             if (response.success) {
               updateCartTotals(response.cart);
             } else {
