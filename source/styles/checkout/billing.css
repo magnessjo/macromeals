@@ -55,6 +55,21 @@ section:not(#stage) {
         border-top: 1px solid var(--light-gray);
       }
 
+      &.address {
+        margin-top: 15px;
+      }
+
+      &.pickup {
+        text-align: right;
+        font-size: 14px;
+        margin-top: 5px;
+
+        & a {
+          color: var(--black);
+        }
+
+      }
+
     }
 
   }

@@ -32,13 +32,14 @@
       <p class="list-item">Expected Delivery Date <span>{{ cart.deliveryDate.format('l, F d, Y') }}</span></p>
       <div class="cart-summary">
         <p class="list-item">SubTotal <span>{{ cart.itemSubtotal | commerceCurrency(cart.currency, stripZeros = true) }}</span></p>
-        {% if cart.totalShippingCost > 0 %}
-          <p class="list-item">Shipping Cost <span>{{ cart.totalShippingCost | commerceCurrency(cart.currency, stripZeros = true) }}</span></p>
-        {% endif %}
         {% if cart.totalDiscount < 0 %}
           <p class="list-item">Discount <span>({{ cart.totalDiscount | number_format(2, '.', ',') }})</span>
         {% endif %}
-        <p class="list-item">Tax <span>{{ cart.totalTax | commerceCurrency(cart.currency, stripZeros = true) }}</span></p>
+        <p class="list-item">Tax <span>${{ cart.totalTax | number_format(2, '.', ',') }}</span></p>
+        {% if cart.totalShippingCost > 0 %}
+          <p class="list-item shipping">Shipping Cost <span>${{ cart.totalShippingCost | number_format(2, '.', ',') }}</span></p>
+          <p class="pickup"><a href="/checkout/pickup">Prefer a $0 pickup option?</a></p>
+        {% endif %}
         <p class="list-item">Total Due <span>{{ cart.totalPrice | commerceCurrency(cart.currency, stripZeros = true) }}</span></p>
       </div>
 
