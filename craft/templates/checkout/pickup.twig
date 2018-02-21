@@ -4,6 +4,8 @@
 {% includeJsFile "/pickup.js" %}
 
 {% set cart = craft.commerce.getCart %}
+{% set shippingModel = cart.shippingAddress %}
+{% set addresses = craft.commerce.customer.addresses|last %}
 
 {% block main %}
 
