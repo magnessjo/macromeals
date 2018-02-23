@@ -73,4 +73,22 @@ export default function() {
 
   });
 
+  // Hack fix for templating language issue
+
+  calendars.forEach( (calendar) => {
+
+    const expectedDates = Array.from(calendar.querySelectorAll('.expected-delivery-date'));
+
+    if (expectedDates.length > 0) {
+
+      expectedDates.forEach( (elm, i) => {
+
+        if (i != 0) elm.classList.remove('expected-delivery-date');
+
+      });
+
+    }
+
+  });
+
 }

@@ -37,7 +37,7 @@
                   {% endif %}
                 {% endif %}
 
-                {% if nowDate.format('m') != month.date.format('m') and expectedDate.format('d') < 4 %}
+                {% if nowDate.format('m') != month.date.format('m') %}
                   {% if isExpectedDateSet == false and month.containsDate(day.date) %}
                     {% set isExpectedDay = true %}
                     {% set isExpectedDateSet = true %}
