@@ -4,7 +4,7 @@
   display: inline-block;
   text-transform: uppercase;
   color: var(--green);
-  font-size: calc(22px + 2vw);
+  font-size: calc(22px + 1vw);
   font-family: var(--parklane);
   line-height: 1em;
   padding-bottom: 20px;
