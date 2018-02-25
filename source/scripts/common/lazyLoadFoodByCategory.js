@@ -25,6 +25,11 @@ function createMeal(data, parent) {
 
       container.classList.add('meal-entry');
 
+      for (const protein in item.protein) {
+        const obj = item.protein[protein];
+        container.setAttribute(`data-${obj.slug}`, true);
+      }
+
       // Add properties to image
 
       container.classList.add('meal-detail');

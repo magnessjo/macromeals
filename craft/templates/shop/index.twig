@@ -2,6 +2,7 @@
 {% extends "_layout" %}
 {% includeCssFile "/meals.css" %}
 {% includeJsFile "/meals.js" %}
+{% set mealTypes = craft.categories.group('mealCategory') %}
 {% set categories = craft.categories.group('protein') %}
 
 {% block main %}
@@ -79,11 +80,11 @@
 
       </div>
 
-      <div>
+      <div class="meals">
 
         <div class="lock">
 
-          {% for category in categories %}
+          {% for category in mealTypes %}
 
             {% set entries = craft.commerce.products.relatedTo(category) %}
 
