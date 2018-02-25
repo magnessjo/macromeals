@@ -48,7 +48,7 @@
     position: relative;
 
     & h1 {
-      font-family: var(--acuminBold);
+      font-family: var(--parklaneBold);
       font-size: 12pt;
       margin-bottom: .1in;
       text-transform: uppercase;
@@ -94,6 +94,7 @@
       font-size: 10pt;
       margin-bottom: .05in;
       text-transform: uppercase;
+      font-family: var(--parklaneBold);
     }
 
     & p {
@@ -125,7 +126,7 @@
     & .pie-chart {
       width: 1.5in;
       height: 1.5in;
-      margin-bottom: .2in;
+      margin-bottom: .1in;
       margin-top: .2in;
       margin-left: auto;
       margin-right: auto;
