@@ -96,13 +96,20 @@
 }
 
 @font-face {
-  font-family: "calvert-bold";
-  font-weight: 700;
+  font-family: "park-lane";
+  font-weight: 600;
   font-style: normal;
-  src: url("/fonts/Calvert-Bold.woff2") format("woff2"),
-       url("/fonts/Calvert-Bold.woff") format("woff");
+  src: url("/fonts/ParkLane-Light.woff2") format("woff2"),
+       url("/fonts/ParkLane-Light.woff") format("woff");
 }
 
+@font-face {
+  font-family: "park-lane-bold";
+  font-weight: 700;
+  font-style: normal;
+  src: url("/fonts/ParkLane-Bold.woff2") format("woff2"),
+       url("/fonts/ParkLane-Bold.woff") format("woff");
+}
 
 :root {
 
@@ -120,7 +127,8 @@
   --acuminMediumItalic: 'acumin-pro-wide-medium-italic','arial', sans-serif;
   --acuminSemiBoldItalic: 'acumin-pro-wide-semi-bold','arial', sans-serif;
 
-  --calvertBold: 'calvert-bold', Serif;
+  --parklane: 'park-lane', Serif;
+  --parklaneBold: 'park-lane-bold', Serif;
 
   --white:        #ffffff;
   --black:        #171717;

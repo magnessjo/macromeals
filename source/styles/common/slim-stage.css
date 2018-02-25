@@ -47,6 +47,16 @@
     z-index: 9;
     color: var(--green);
     margin-bottom: 0;
+    font-family: var(--parklane);
+    text-transform: uppercase;
+    font-size: 40px;
+    font-size: calc(30px + 2vw);
+    text-transform: capitalize;
+    line-height: 1em;
+    z-index: 9;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-weight: 300;
 
     @media (--large-max) {
       position: absolute;
@@ -94,6 +104,17 @@
 
     & div {
       position: relative;
+      display: block;
+    }
+
+    & span {
+      display: block;
+      line-height: 1.8em;
+      font-size: calc(12px + .5vw);
+      margin-top: 0;
+      font-family: var(--acuminMediumItalic);
+      line-height: 1em;
+      padding-left: 5px;
     }
 
   }

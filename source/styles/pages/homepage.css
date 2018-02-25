@@ -100,20 +100,24 @@
 
     & > p {
       position: relative;
-      padding: 12px 0;
       margin: 10px 0;
       line-height: .8em;
       text-transform: uppercase;
-      font-family: var(--acuminLight);
+      font-family: var(--parklane);
       white-space: nowrap;
+      font-weight: 300;
 
       @media (--small-max) {
-        font-size: 26px;
+        font-size: 32px;
+        padding-top: 9px;
+        padding-bottom: 3px;
       }
 
       @media (--medium-min) {
         font-size: 40px;
         font-size: calc(30px + 3.25vw);
+        padding-top: 17px;
+        padding-bottom: 0;
       }
 
       &:before, &:after {
@@ -137,17 +141,18 @@
     }
 
     & span {
-      text-transform: capitalize;
-      font-family: var(--acuminExtraLight);
+      text-transform: uppercase;
       line-height: 1em;
 
       @media (--small-max) {
-        font-size: 18px;
+        font-size: 14px;
+        font-family: var(--acuminMediumItalic);
       }
 
       @media (--medium-min) {
-        font-size: 26px;
-        font-size: calc(20px + 1.75vw);
+        font-size: calc(18px + .3vw);
+        letter-spacing: 3px;
+        font-family: var(--acuminSemiBoldItalic);
       }
 
     }

@@ -1,6 +1,14 @@
 
 @import "../master.css";
 
+.slim-stage h1 {
+
+  @media (--medium-max) {
+    font-size: calc(14px + 2vw);
+  }
+
+}
+
 .slim-stage .image {
   background-image: url(/images/stage/why.jpg);
 }

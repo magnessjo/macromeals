@@ -5,6 +5,14 @@
   background-image: url(/images/stage/assortment.jpg);
 }
 
+.slim-stage h1 {
+
+  @media (--medium-max) {
+    font-size: calc(20px + 1vw);
+  }
+
+}
+
 .slim-stage h1:before {
 
   background: radial-gradient(ellipse,

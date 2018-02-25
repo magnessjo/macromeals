@@ -9,7 +9,7 @@
   <section id="stage" class="slim-stage">
     <div class="image"></div>
     <div class="lock">
-      <h1 class="acumin-stage"><div>Meals</div></h1>
+      <h1><div>Meals</div></h1>
     </div>
   </section>
 
@@ -23,7 +23,7 @@
 
           <form id="checkbox" class="checkbox-options">
 
-            <p>Filter Meals by the Type of Protein</p>
+            <h1>Meal Options</h1>
 
             <div>
 
@@ -33,10 +33,19 @@
 
                 {% if entries | length > 0 %}
 
-                  <label for="{{ cat }}">
-                    <input type="checkbox" id="{{ cat }}" name="{{ cat }}" value="{{ cat }}">
-                    <span>{{ cat }}</span>
-                  </label>
+                  {% if loop.index == 0 %}
+                    <p>Filter Meals by the Type of Protein</p>
+                  {% endif %}
+
+
+                  <div class="protein-list">
+
+                    <label for="{{ cat }}">
+                      <input type="checkbox" id="{{ cat }}" name="{{ cat }}" value="{{ cat }}" checked>
+                      <span>{{ cat }}</span>
+                    </label>
+
+                  </div>
 
                 {% endif %}
 

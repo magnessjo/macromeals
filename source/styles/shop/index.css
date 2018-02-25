@@ -1,6 +1,10 @@
 
 @import "../master.css";
 
+#stage {
+  /* margin-bottom: 0; */
+}
+
 .slim-stage .image {
   background-image: url(/images/stage/featured-meal.jpg);
 }

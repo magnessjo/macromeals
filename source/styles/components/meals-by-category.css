@@ -1,38 +1,42 @@
 
 .meals-by-category {
-  margin-bottom: 0;
 
   & .meals-controller {
-    background-color: var(--light-yellow);
-    margin-bottom: 30px;
     padding: 20px 0;
-    text-align: center;
+    margin-bottom: 80px;
     display: none;
 
-    & form {
+    & h1 {
+      font-family: var(--calvertBold);
+      font-size: calc(18px + 1vw);
+      text-transform: uppercase;
+      margin-bottom: 30px;
+    }
+
+    & .protein-list {
 
       & > div {
         display: flex;
-        justify-content: center;
+      }
+
+      & > p {
+        margin-bottom: 10px;
+        font-family: var(--acuminMediumItalic);
+      }
+
+      & label {
+        margin-bottom: 0;
+        margin-left: 30px;
+        width: inherit;
+
+        &:first-of-type {
+          margin-left: 0;
+        }
+
       }
 
     }
 
-    & form p {
-      margin-bottom: 10px;
-      font-family: var(--acuminMediumItalic);
-    }
-
-    & label {
-      margin-bottom: 0;
-      margin-left: 30px;
-      width: inherit;
-
-      &:first-of-type {
-        margin-left: 0;
-      }
-
-    }
 
   }
 
