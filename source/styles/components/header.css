@@ -3,6 +3,7 @@ header {
   background-color: var(--white);
   z-index: 999;
   position: relative;
+  display: block;
 
   & .lock {
     display: flex;

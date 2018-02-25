@@ -16,6 +16,7 @@ body {
   position: relative;
   min-width: 320px;
   background-color: var(--white);
+  display: block;
 }
 
 section {
