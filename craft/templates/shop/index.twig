@@ -23,32 +23,53 @@
 
           <form id="checkbox" class="checkbox-options">
 
-            <h1>Meal Options</h1>
+            <h1>Filter By</h1>
 
-            <div>
+            <div class="filters">
 
-              {% for cat in craft.categories.group('protein') %}
+              {% set options = {
+                  protein: { text: 'Protein', cat: 'protein', cssClass: 'protein'},
+                  types: { text: 'Meal Type', cat: 'mealCategory', cssClass: 'types'}
+                }
+              %}
 
-                {% set entries = craft.commerce.products.relatedTo(cat) %}
+              {% macro filters(options) %}
 
-                {% if entries | length > 0 %}
+                {% for option in options %}
 
-                  {% if loop.index == 0 %}
-                    <p>Filter Meals by the Type of Protein</p>
-                  {% endif %}
+                  <div class="{{ option.cssClass }}">
 
-                  <div class="protein-list">
+                    <p>{{ option.text }}</p>
+                    <div class="filter-cats">
 
-                    <label for="{{ cat }}">
-                      <input type="checkbox" id="{{ cat }}" name="{{ cat }}" value="{{ cat }}" checked>
-                      <span>{{ cat }}</span>
-                    </label>
+                      {% for cat in craft.categories.group( option.cat ) %}
+
+                        {% set entries = craft.commerce.products.relatedTo( cat ) %}
+
+                        {% if entries | length > 0 %}
+
+                          <div>
+
+                            <label for="{{ cat }}">
+                              <input type="checkbox" id="{{ cat }}" name="{{ cat }}" value="{{ cat }}" checked>
+                              <span>{{ cat }}</span>
+                            </label>
+
+                          </div>
+
+                        {% endif %}
+
+                      {% endfor %}
+
+                    </div>
 
                   </div>
 
-                {% endif %}
+                {% endfor %}
 
-              {% endfor %}
+              {% endmacro %}
+
+              {{ _self.filters(options) }}
 
             </div>
 

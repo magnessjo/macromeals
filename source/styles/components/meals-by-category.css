@@ -4,29 +4,62 @@
   & .meals-controller {
     padding: 20px 0;
     margin-bottom: 80px;
-    display: none;
+    background-color: #f9f9f9;
 
-    & h1 {
-      font-size: calc(18px + 1vw);
-      text-transform: uppercase;
-      margin-bottom: 30px;
-    }
+    & form {
 
-    & .protein-list {
-
-      & > div {
+      @media (--large-min) {
         display: flex;
+        align-items: center;
       }
 
-      & > p {
+    }
+
+    & h1 {
+      text-transform: uppercase;
+      font-family: var(--acuminBold);
+
+      @media (--medium-max) {
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 1px solid var(--black);
+        font-size: 18px;
+      }
+
+      @media (--large-min) {
+        font-size: 28px;
+      }
+
+    }
+
+    & .filters {
+
+      @media (--large-min) {
+        border-left: 1px solid var(--black);
+        margin-left: 40px;
+        padding-left: 40px;
+      }
+
+      & > div {
+        margin-bottom: 30px;
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+
+      }
+
+      & p {
         margin-bottom: 10px;
-        font-family: var(--acuminMediumItalic);
+        font-family: var(--parklane);
+        font-size: 22px;
       }
 
       & label {
         margin-bottom: 0;
         margin-left: 30px;
         width: inherit;
+        width: 100%;
 
         &:first-of-type {
           margin-left: 0;
@@ -36,6 +69,33 @@
 
     }
 
+    & .filter-cats {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+
+      & > div {
+
+        @media (--medium-max) {
+          width: 50%;
+        }
+
+        @media (--large-min) {
+          margin-left: 30px;
+        }
+
+        &:first-of-type {
+          margin-left: 0;
+        }
+
+      }
+
+    }
+
+    & .protein .filter-cats {
+
+
+    }
 
   }
 
