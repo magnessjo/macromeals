@@ -136,11 +136,14 @@
         display: block;
         position: relative;
         line-height: 1em;
+        font-size: calc(22px + .2vw);
       }
 
       & span:last-of-type {
         margin-top: 10px;
         padding-top: 10px;
+        font-family: var(--parklane);
+        font-size: calc(24px + 1vw);
       }
 
       & span:last-of-type:before {

@@ -9,7 +9,7 @@ footer {
 
   & .headline {
     text-transform: uppercase;
-    font-family: var(--acuminThin);
+    font-family: var(--parklane);
     font-size: 22px;
     letter-spacing: .5px;
     margin-bottom: 10px;
