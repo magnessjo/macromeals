@@ -66,7 +66,7 @@
     color: var(--green);
 
     & span {
-      font-family: var(--acumin);
+      font-family: var(--parklane);
       font-size: calc(20px + 1vw);
       display: inline-block;
       text-transform: uppercase;

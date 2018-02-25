@@ -27,7 +27,7 @@
 
   h1 {
     text-transform: uppercase;
-    font-family: var(--calvertBold);
+    font-family: var(--parklane);
     font-size: 20pt;
     margin-bottom: .07in;
   }
@@ -49,7 +49,7 @@
     }
 
     & .quantity {
-      font-family: var(--calvertBold);
+      font-family: var(--parklane);
     }
 
     & .size {

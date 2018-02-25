@@ -5,9 +5,10 @@
   text-transform: uppercase;
   color: var(--green);
   font-size: calc(22px + 2vw);
-  font-family: var(--acuminThinItalic);
+  font-family: var(--parklane);
   line-height: 1em;
-  padding-bottom: 40px;
+  padding-bottom: 20px;
+  letter-spacing: 2px;
 
   @media (--medium-max) {
     width: 100%;

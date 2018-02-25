@@ -7,7 +7,6 @@
     display: none;
 
     & h1 {
-      font-family: var(--calvertBold);
       font-size: calc(18px + 1vw);
       text-transform: uppercase;
       margin-bottom: 30px;
@@ -38,6 +37,12 @@
     }
 
 
+  }
+
+  & .cat-description {
+    max-width: 800px;
+    font-size: 22px;
+    margin-bottom: 30px;
   }
 
   & .category-headline {
@@ -150,10 +155,15 @@
       }
 
       & .meal-title {
-        font-family: var(--acuminExtraLight);
-        font-size: calc(12px + .75vw);
+        font-family: var(--parklane);
+        font-size: 16px;
         display: block;
-        height: 55px;
+        height: 35px;
+
+        @media (--medium-min) {
+          font-size: 20px;
+          height: 43px;
+        }
 
         & span {
           display: block;
@@ -163,6 +173,7 @@
           left: 50%;
           top: 10px;
           transform: translateX(-50%);
+          letter-spacing: 1px;
 
           &:after {
             content: "";
@@ -171,7 +182,12 @@
             position: absolute;
             left: 10%;
             right: 10%;
-            top: 35px;
+            top: 22px;
+
+            @media (--medium-min) {
+              top: 27px;
+            }
+
           }
 
         }
