@@ -35,17 +35,22 @@
 
       {% set featuredCategory = craft.categories.group('mealType').slug('featured').first() %}
 
-      <div class="meal-list">
+      <div class="lock">
 
-        <div class="lock">
+        <div class="meal-group">
+          <div class="loader"></div>
 
-          <div class="featured">
-            <h2 class="headline-with-underline">Featured Meals</h2>
-          </div>
-          <div class="entries">
-            <div class="entries-group" data-category-id="{{ featuredCategory.id }}">
-              <a href="/shop" class="call-to-action">See all Meals</a>
+          <div class="meal-list">
+
+            <div class="featured">
+              <h2 class="headline-with-underline">Featured Meals</h2>
             </div>
+            <div class="entries">
+              <div class="entries-group" data-category-id="{{ featuredCategory.id }}">
+                <a href="/shop" class="call-to-action">See all Meals</a>
+              </div>
+            </div>
+
           </div>
 
         </div>
@@ -82,17 +87,22 @@
 
       {% set seasonalCategory = craft.categories.group('mealType').slug('seasonal').first() %}
 
-      <div class="meal-list">
+      <div class="lock">
 
-        <div class="lock">
+        <div class="meal-group">
+          <div class="loader"></div>
 
-          <div class="seasonal">
-            <h2 class="headline-with-underline">Seasonal Meals</h2>
-          </div>
-          <div class="entries">
-            <div class="entries-group" data-category-id="{{ seasonalCategory.id }}">
-              <a href="/shop" class="call-to-action">See all Meals</a>
+          <div class="meal-list">
+
+            <div class="featured">
+              <h2 class="headline-with-underline">Seasonal Meals</h2>
             </div>
+            <div class="entries">
+              <div class="entries-group" data-category-id="{{ seasonalCategory.id }}">
+                <a href="/shop" class="call-to-action">See all Meals</a>
+              </div>
+            </div>
+
           </div>
 
         </div>

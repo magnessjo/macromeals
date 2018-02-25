@@ -37,7 +37,6 @@
                     <p>Filter Meals by the Type of Protein</p>
                   {% endif %}
 
-
                   <div class="protein-list">
 
                     <label for="{{ cat }}">
@@ -59,7 +58,7 @@
 
       </div>
 
-      <div class="meal-list">
+      <div>
 
         <div class="lock">
 
@@ -69,12 +68,17 @@
 
             {% if entries|length > 0 %}
 
-              <div>
+              <div class="meal-group">
+                <div class="loader"></div>
 
-                <h2 class="headline-with-underline {{ category.slug }}">{{ category.title }}</h2>
-                <p class="cat-description">{{ category.plainText }}</p>
+                <div class="meal-list">
 
-                <div class="entries-group" data-category-id="{{ category.id }}">
+                  <h2 class="headline-with-underline {{ category.slug }}">{{ category.title }}</h2>
+                  <p class="cat-description">{{ category.plainText }}</p>
+
+                  <div class="entries-group" data-category-id="{{ category.id }}">
+
+                  </div>
 
                 </div>
 

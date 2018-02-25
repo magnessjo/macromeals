@@ -1,66 +1,79 @@
 
 import fetchPostData from 'scripts/helpers/fetchPostData.js';
+import findParentNode from 'scripts/helpers/findParentNode.js';
 
 // Variables
 
-const groups = Array.from(document.querySelectorAll('.entries-group'));
+const groups = Array.from(document.querySelectorAll('.meal-group'));
 
 // Create Meal
 
 function createMeal(data, parent) {
 
-  data.forEach( (item) => {
+  return new Promise( (resolve, reject) => {
 
-    const container = document.createElement('div');
-    const link = document.createElement('a');
-    const image = document.createElement('img');
-    const overlay = document.createElement('div');
-    const title = document.createElement('p');
-    const detailsText = document.createElement('p');
+    data.forEach( (item, i) => {
 
-    // Add properties to container
+      const container = document.createElement('div');
+      const link = document.createElement('a');
+      const image = document.createElement('img');
+      const overlay = document.createElement('div');
+      const title = document.createElement('p');
+      const detailsText = document.createElement('p');
 
-    container.classList.add('meal-entry');
+      // Add properties to container
 
-    // Add properties to image
+      container.classList.add('meal-entry');
 
-    container.classList.add('meal-detail');
-    link.setAttribute('href', `/shop/details/${item.slug}`);
+      // Add properties to image
 
-    // Add properties to link
+      container.classList.add('meal-detail');
+      link.setAttribute('href', `/shop/details/${item.slug}`);
 
-    if (item.image[0]) {
-      image.setAttribute('src', `/uploads/products/${item.image[0].filename}`);
-    } else {
-      image.setAttribute('src', `/images/products/placeholder-circle.png`);
-    }
+      // Add properties to link
 
-    image.setAttribute('alt', `image of ${item.title} ${item.subTitle} `);
+      if (item.image[0]) {
+        image.setAttribute('src', `/uploads/products/${item.image[0].filename}`);
+      } else {
+        image.setAttribute('src', `/images/products/placeholder-circle.png`);
+      }
 
-    // Add properties to overlay
+      image.setAttribute('alt', `image of ${item.title} ${item.subTitle} `);
 
-    overlay.classList.add('overlay');
+      // Add properties to overlay
 
-    // Add properties to overlay
+      overlay.classList.add('overlay');
 
-    title.classList.add('meal-title');
-    title.innerHTML = `<span>${item.title}</span>`;
+      // Add properties to overlay
 
-    // Add properties to Details
+      title.classList.add('meal-title');
+      title.innerHTML = `<span>${item.title}</span>`;
 
-    detailsText.innerHTML = 'See Details';
+      // Add properties to Details
 
-    // Append Children
+      detailsText.innerHTML = 'See Details';
 
-    overlay.appendChild(title);
-    overlay.appendChild(detailsText);
+      // Append Children
 
-    link.appendChild(image);
-    link.appendChild(overlay);
+      overlay.appendChild(title);
+      overlay.appendChild(detailsText);
 
-    container.appendChild(link);
+      link.appendChild(image);
+      link.appendChild(overlay);
 
-    parent.insertBefore(container, parent.childNodes[0]);
+      container.appendChild(link);
+
+      parent.insertBefore(container, parent.childNodes[0]);
+
+      if (data.length - 1 == i) {
+
+        image.addEventListener('load', e => {
+          resolve();
+        });
+
+      }
+
+    });
 
   });
 
@@ -68,14 +81,21 @@ function createMeal(data, parent) {
 
 // Get Meals
 
-function getMeals(categoryId, group) {
+function getMeals(categoryId, group, container) {
 
   const postData = `${window.csrfTokenName}=${window.csrfTokenValue}&id=${categoryId}`;
 
   fetchPostData(postData, '/actions/MacroCommerce/Food/productByCategory').then( (response) => {
 
     const entries = Array.reverse(response.entries);
-    createMeal(entries, group);
+    createMeal(entries, group).then( () => {
+
+      const list = container.querySelector('.meal-list');
+      const loader = container.querySelector('.loader');
+      loader.style.display = 'none';
+      list.style.display = 'block';
+
+    });
 
   });
 
@@ -83,10 +103,13 @@ function getMeals(categoryId, group) {
 
 export default function() {
 
-  groups.forEach( (group) => {
+  const numberOfGroups = groups.length - 1;
 
-    const id = group.getAttribute('data-category-id');
-    getMeals(id, group);
+  groups.forEach( (group, i) => {
+
+    const entriesContainer = group.querySelector('.entries-group');
+    const id = entriesContainer.getAttribute('data-category-id');
+    getMeals(id, entriesContainer, group);
 
   });
 

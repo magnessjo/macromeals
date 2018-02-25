@@ -39,6 +39,20 @@
 
   }
 
+  & .meal-group {
+    position: relative;
+    min-height: 250px;
+
+    & .loader {
+      display: block;
+    }
+
+  }
+
+  & .meal-list {
+    display: none;
+  }
+
   & .cat-description {
     max-width: 800px;
     font-size: 22px;
