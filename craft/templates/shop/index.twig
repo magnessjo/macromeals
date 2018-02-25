@@ -52,7 +52,7 @@
                           <div>
 
                             <label for="{{ cat }}">
-                              <input type="checkbox" id="{{ cat }}" name="{{ cat }}" value="{{ cat }}" checked>
+                              <input type="checkbox" id="{{ cat }}" name="{{ cat }}" value="{{ cat.slug }}" checked disabled>
                               <span>{{ cat }}</span>
                             </label>
 
@@ -90,7 +90,7 @@
 
             {% if entries|length > 0 %}
 
-              <div class="meal-group">
+              <div class="meal-group" data-group="{{ category.slug }}" aria-hidden="false">
                 <div class="loader"></div>
 
                 <div class="meal-list">

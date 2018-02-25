@@ -1,6 +1,7 @@
 
 import fetchPostData from 'scripts/helpers/fetchPostData.js';
 import findParentNode from 'scripts/helpers/findParentNode.js';
+import filterMeals from 'scripts/helpers/filterMeals.js';
 
 // Variables
 
@@ -86,7 +87,7 @@ function createMeal(data, parent) {
 
 // Get Meals
 
-function getMeals(categoryId, group, container) {
+function getMeals(categoryId, group, container, isLast) {
 
   const postData = `${window.csrfTokenName}=${window.csrfTokenValue}&id=${categoryId}`;
 
@@ -97,8 +98,17 @@ function getMeals(categoryId, group, container) {
 
       const list = container.querySelector('.meal-list');
       const loader = container.querySelector('.loader');
+      const filter = document.querySelector('.meals-controller');
       loader.style.display = 'none';
       list.style.display = 'block';
+
+      if (filter && isLast) {
+        const inputs = Array.from(filter.querySelectorAll('input[type="checkbox"]'));
+
+        filter.style.opacity = 1;
+        inputs.forEach( (input) => input.disabled = false);
+        filterMeals();
+      }
 
     });
 
@@ -114,7 +124,7 @@ export default function() {
 
     const entriesContainer = group.querySelector('.entries-group');
     const id = entriesContainer.getAttribute('data-category-id');
-    getMeals(id, entriesContainer, group);
+    getMeals(id, entriesContainer, group, (groups.length - 1 == i));
 
   });
 
