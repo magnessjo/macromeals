@@ -7,20 +7,21 @@
   text-align: center;
 
   & h1 {
-    font-family: var(--acuminBold);
+    font-family: var(--parklaneBold);
     font-size: calc(24px + 2vw);
     margin-bottom: 10px;
+    text-transform: uppercase;
   }
 
   & h2 {
     font-family: var(--acuminBold);
-    font-size: calc(24px + 1vw);
+    font-size: calc(24px + .5vw);
     margin-bottom: 10px;
   }
 
   & h3 {
     font-family: var(--acuminBold);
-    font-size: 22px;
+    font-size: 20px;
     margin-bottom: 20px;
   }
 
