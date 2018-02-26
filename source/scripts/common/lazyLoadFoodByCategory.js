@@ -71,6 +71,10 @@ function createMeal(data, parent) {
 
       parent.insertBefore(container, parent.childNodes[0]);
 
+      if (i == 0) {
+        resolve();
+      }
+
       if (data.length - 1 == i) {
 
         image.addEventListener('load', e => {
@@ -87,7 +91,7 @@ function createMeal(data, parent) {
 
 // Get Meals
 
-function getMeals(categoryId, group, container, isLast) {
+function getMeals(categoryId, group, container) {
 
   const postData = `${window.csrfTokenName}=${window.csrfTokenValue}&id=${categoryId}`;
 
@@ -102,7 +106,7 @@ function getMeals(categoryId, group, container, isLast) {
       loader.style.display = 'none';
       list.style.display = 'block';
 
-      if (filter && isLast) {
+      if (filter) {
         const inputs = Array.from(filter.querySelectorAll('input[type="checkbox"]'));
 
         filter.style.opacity = 1;
@@ -124,7 +128,7 @@ export default function() {
 
     const entriesContainer = group.querySelector('.entries-group');
     const id = entriesContainer.getAttribute('data-category-id');
-    getMeals(id, entriesContainer, group, (groups.length - 1 == i));
+    getMeals(id, entriesContainer, group);
 
   });
 
