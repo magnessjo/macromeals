@@ -1,4 +1,8 @@
 
+// Import
+
+import findParentNode from 'scripts/helpers/findParentNode.js';
+
 // Variables
 
 const filteredOut = [];
@@ -7,21 +11,21 @@ const filteredOut = [];
 
 function filterDom(entries) {
 
-  entries.forEach( (entry) => {
+  entries.forEach( (entry, i) => {
 
-    let showShow = true;
+    let shouldShow = true;
 
     filteredOut.forEach( (cat) => {
 
       const catString = `data-${cat}`;
 
       if(entry.hasAttribute(catString)) {
-        showShow = false;
+        shouldShow = false;
       }
 
     });
 
-    if (showShow == false) {
+    if (shouldShow == false) {
       entry.style.display = 'none';
     } else {
       entry.style.display = 'block';
@@ -70,14 +74,15 @@ export default function() {
 
       const value = input.value;
       const element = document.querySelector(`div[data-group="${value}"]`);
+      const entries = element.querySelector('.entries-group');
       const ariaHidden = element.getAttribute('aria-hidden');
 
       if (ariaHidden == 'true') {
         element.setAttribute('aria-hidden', false);
-        element.style.display = 'block';
+        entries.style.display = 'grid';
       } else {
         element.setAttribute('aria-hidden', true);
-        element.style.display = 'none';
+        entries.style.display = 'none';
       }
 
     });

@@ -112,9 +112,23 @@
       display: block;
     }
 
+    &[aria-hidden='true'] {
+
+      & .no-entries {
+        display: block;
+      }
+
+    }
+
   }
 
   & .meal-list {
+    display: none;
+  }
+
+  & .no-entries {
+    max-width: 800px;
+    font-size: 22px;
     display: none;
   }
 
