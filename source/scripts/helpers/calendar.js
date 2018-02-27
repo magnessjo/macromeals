@@ -20,8 +20,20 @@ export default function() {
     calendars.forEach( (calendar) => {
 
       const deliveryDates = Array.from(calendar.querySelectorAll('.delivery'));
+      let removeDelivery = true;
 
       deliveryDates.forEach( (entry) => {
+
+        // Hack
+
+        if (removeDelivery && !entry.classList.contains('expected-delivery-date')) {
+          entry.classList.remove('delivery');
+          return;
+        } else {
+          removeDelivery = false;
+        }
+
+        // Event
 
         entry.addEventListener('click', () => {
 

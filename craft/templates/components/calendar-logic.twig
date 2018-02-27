@@ -56,11 +56,7 @@
 
               {% if month.containsDate(day.date) %}
                 {% if availableDay %}
-                  {% if today %}
-                    {% if day.date.format('d') > expectedDate.format('d') %}
-                      delivery
-                    {% endif %}
-                  {% else %}
+                  {% if day.date.format('d') >= expectedDate.format('d') %}
                     delivery
                   {% endif %}
                 {% endif %}
