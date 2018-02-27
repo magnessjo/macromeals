@@ -39,8 +39,10 @@
 
                 {% if nowDate.format('m') != month.date.format('m') %}
                   {% if isExpectedDateSet == false and month.containsDate(day.date) %}
-                    {% set isExpectedDay = true %}
-                    {% set isExpectedDateSet = true %}
+                    {% if day.date.format('d') > expectedDate.format('d') %}
+                      {% set isExpectedDay = true %}
+                      {% set isExpectedDateSet = true %}
+                    {% endif %}
                   {% endif %}
                 {% endif %}
 
@@ -56,9 +58,7 @@
 
               {% if month.containsDate(day.date) %}
                 {% if availableDay %}
-                  {% if day.date.format('d') >= expectedDate.format('d') %}
-                    delivery
-                  {% endif %}
+                  delivery
                 {% endif %}
               {% endif %}
 
