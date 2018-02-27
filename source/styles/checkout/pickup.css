@@ -70,6 +70,7 @@
 
   & .calendar-wrapper {
     display: none;
+    flex-wrap: wrap;
   }
 
 }
