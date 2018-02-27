@@ -12,6 +12,7 @@ const buttons = Array.from(form.querySelectorAll('.options button'));
 const calendarContainer = document.querySelector('#calendar');
 const calendars = Array.from(calendarContainer.querySelectorAll('.calendar-wrapper'));
 const textHeadline = calendarContainer.querySelector('h1');
+const inputMethod = document.querySelector('input[name="shippingMethod"]');
 
 // Show Calendars
 
@@ -58,8 +59,10 @@ export default function() {
             btn.innerHTML = 'Select';
           } else {
             const id = btn.getAttribute('data-id');
+            const method = btn.getAttribute('data-method');
             const parent = button.parentNode;
             const name = parent.querySelector('h2');
+            inputMethod.value = method;
             btn.setAttribute('data-selected', true);
             btn.innerHTML = 'Selected';
             showCalendar(id, name.innerHTML);
