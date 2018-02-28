@@ -8,7 +8,6 @@
     color: var(--black);
     font-size: 14px;
     padding-left: 12px;
-    font-family: var(--acumin);
     position: relative;
 
     &:after {
