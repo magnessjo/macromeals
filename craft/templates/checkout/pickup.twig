@@ -132,14 +132,16 @@
 
         <h1 class="acumin-headline"><span>Select your Delivery Date For </span></h1>
 
+        {% set expectedDate = "now"|date_modify("+2 day") %}
+
         {# Abingdon Calendar  #}
-        {% include "components/calendar-includes.twig" with { 'location' : 'Abingdon' } %}
+        {% include "components/calendar-includes.twig" with { 'location' : 'Abingdon', 'expectedDate' : expectedDate } %}
 
         {# Canton Calendar  #}
-        {% include "components/calendar-includes.twig" with { 'location' : 'Canton' } %}
+        {% include "components/calendar-includes.twig" with { 'location' : 'Canton', 'expectedDate' : expectedDate } %}
 
         {# Kelly Calendar  #}
-        {% include "components/calendar-includes.twig" with { 'location' : 'Kelly' } %}
+        {% include "components/calendar-includes.twig" with { 'location' : 'Kelly', 'expectedDate' : expectedDate } %}
 
       </div>
 

@@ -1,6 +1,5 @@
 
 {% set nowDate = "now"|date_modify("+0 day") %}
-{% set expectedDate = "now"|date_modify("+3 day") %}
 {% set month = craft.calendar.month({ date: "today" }) %}
 {% set nextMonth = craft.calendar.month({ date: month.nextDate }) %}
 

@@ -181,7 +181,8 @@
         <input type="hidden" name="fields[deliveryDate][time]" value="5:00 AM">
 
         {# Delivery Calendar  #}
-        {% include "components/calendar-includes.twig" with { 'location' : 'Delivery' } %}
+        {% set expectedDate = "now"|date_modify("+3 day") %}
+        {% include "components/calendar-includes.twig" with { 'location' : 'Delivery','expectedDate' : expectedDate } %}
 
       </div>
 
