@@ -1,12 +1,11 @@
 
-import builder from 'builder';
 import deploy from 'deploy';
 import config from './config.json';
 import symlink from './symlink.js';
 import shell from 'shelljs';
 
-const logger = builder.logger;
-const Client = builder.remote;
+const logger = deploy.logger;
+const Client = deploy.remote;
 const name = process.argv[2] || process.env.DEPLOY_TARGET || config.default;
 const target = config.targets[name];
 const remote = new Client(target.user, target.host, target.env);

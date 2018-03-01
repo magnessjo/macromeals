@@ -49,7 +49,6 @@ module.exports = {
     filename: '[name].js',
   },
 
-  // stats: 'normal',
   devtool: 'none',
 
   stats: {
