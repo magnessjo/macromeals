@@ -28,9 +28,9 @@
              {% if event.title == location %}
                 {% set availableDay = true %}
 
-                {% if nowDate.format('m') == month.date.format('m') and expectedDate.format('d') > 3 %}
+                {% if nowDate.format('m') == month.date.format('m') and expectedDate.format('d') >= 3 %}
                   {% if isExpectedDateSet == false %}
-                    {% if day.date.format('d') > expectedDate.format('d') %}
+                    {% if day.date.format('d') > expectedDate.format('d') and month.containsDate(day.date) %}
                       {% set isExpectedDay = true %}
                       {% set isExpectedDateSet = true %}
                     {% endif %}
@@ -38,7 +38,7 @@
                 {% endif %}
 
                 {% if nowDate.format('m') != month.date.format('m') %}
-                  {% if isExpectedDateSet == false and month.containsDate(day.date) %}
+                  {% if isExpectedDateSet == false and month.containsDate(day.date) and month.containsDate(day.date) %}
                     {% if day.date.format('d') > expectedDate.format('d') %}
                       {% set isExpectedDay = true %}
                       {% set isExpectedDateSet = true %}
