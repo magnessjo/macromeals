@@ -12,6 +12,7 @@
 {% block main %}
 
   {% if cart.email == '' %}
+    {% set nextPage = 'customer' %}
     {% redirect "/account/login/customer" 301 %}
   {% endif %}
 

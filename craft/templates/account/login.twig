@@ -33,7 +33,12 @@
           <form method="POST" id="guest-form">
 
             <input type="hidden" name="action" value="commerce/cart/updateCart" />
-            <input type="hidden" name="redirect" value="/checkout">
+
+            {% if craft.request.lastSegment == 'pickup' %}
+              <input type="hidden" name="redirect" value="/checkout/pickup">
+            {% else %}
+              <input type="hidden" name="redirect" value="/checkout/customer">
+            {% endif %}
             {{ getCsrfInput() }}
 
             <div class="">

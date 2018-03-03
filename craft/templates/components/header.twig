@@ -21,7 +21,9 @@
 
     <div class="overlay-actions">
 
-      <button class="login account" data-overlay="login-form">Login</button>
+      {% if not cart.email %}
+        <button class="login account" data-overlay="login-form">Login</button>
+      {% endif %}
       <a href="/account" class="account">Account</a>
 
       <div class="menu-toggle" data-showing='false'>
