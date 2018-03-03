@@ -1,5 +1,7 @@
 
-<form method="POST" id="login-form" class="registered-form" {% if bodyLoginForm is defined %}data-redirect="/checkout"{% endif %} accept-charset="UTF-8">
+{% set lastSegment = craft.request.lastSegment() %}
+
+<form method="POST" id="login-form" class="registered-form" {% if bodyLoginForm is defined %}data-redirect="/checkout/{{ lastSegment }}"{% endif %} accept-charset="UTF-8">
 
   <div class="field" data-required="true" valid="false">
     <label for="loginName"><span>Username</span></label>

@@ -7,57 +7,62 @@ import updateCartTotals from 'scripts/helpers/cart/updateCartTotals.js';
 // Variables
 
 const section = document.querySelector('#cart-total');
-const container = section.querySelector('.promo');
-const error = container.querySelector('.promo-error');
-const button = container.querySelector('button');
-const input = container.querySelector('input[type="text"]');
-const text = container.querySelector('.text');
-const discountElement = section.querySelector('[data-type="discount-amount"]');
-const parent = discountElement.parentNode;
 
 // Export
 
 export default function() {
 
-  button.addEventListener('click', (e) => {
+  if (section) {
 
-    e.preventDefault();
+    const container = section.querySelector('.promo');
+    const error = container.querySelector('.promo-error');
+    const button = container.querySelector('button');
+    const input = container.querySelector('input[type="text"]');
+    const text = container.querySelector('.text');
+    const discountElement = section.querySelector('[data-type="discount-amount"]');
+    const parent = discountElement.parentNode;
 
-    const discountApplied = button.getAttribute('data-discount');
-    const value = input.value;
-    const name = input.getAttribute('name');
-    let postData = `${window.csrfTokenName}=${window.csrfTokenValue}`;
+    button.addEventListener('click', (e) => {
 
-    if (discountApplied) {
-      postData += `&${name}=""`;
-    } else {
-      postData += `&${name}=${value}`;
-    }
+      e.preventDefault();
 
-    postToCart(postData).then( (data) => {
+      const discountApplied = button.getAttribute('data-discount');
+      const value = input.value;
+      const name = input.getAttribute('name');
+      let postData = `${window.csrfTokenName}=${window.csrfTokenValue}`;
 
-      if (data.error) {
-        error.style.display = 'block';
+      if (discountApplied) {
+        postData += `&${name}=""`;
       } else {
+        postData += `&${name}=${value}`;
+      }
 
-        const cart = data.cart;
-        const adjustments = cart.adjustments;
-        const discounts = typeof adjustments !== 'undefined' ? adjustments.Discount : 'undefined';
+      postToCart(postData).then( (data) => {
 
-        error.style.display = 'none';
+        if (data.error) {
+          error.style.display = 'block';
+        } else {
 
-        if (typeof discounts !== 'undefined') {
-          const discount = adjustments.Discount[0].amount;
-          discountElement.innerHTML = `(${discount.toFixed(2)})`;
-          updateCartTotals(cart);
-          parent.style.display = 'block';
-          button.innerHTML = 'change';
+          const cart = data.cart;
+          const adjustments = cart.adjustments;
+          const discounts = typeof adjustments !== 'undefined' ? adjustments.Discount : 'undefined';
+
+          error.style.display = 'none';
+
+          if (typeof discounts !== 'undefined') {
+            const discount = adjustments.Discount[0].amount;
+            discountElement.innerHTML = `(${discount.toFixed(2)})`;
+            updateCartTotals(cart);
+            parent.style.display = 'block';
+            button.innerHTML = 'change';
+          }
+
         }
 
-      }
+      });
 
     });
 
-  });
+  }
 
 }

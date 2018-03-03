@@ -14,10 +14,6 @@
 
 {% block main %}
 
-  {% if cart.email == '' %}
-    {% redirect "/account/login" 301 %}
-  {% endif %}
-
   {% include "components/breadcrumb.twig" %}
 
   <form id="product-list">
