@@ -108,3 +108,21 @@ form#pickup-options {
   }
 
 }
+
+.weekly-reminder {
+  padding-top: 10px;
+
+  & label {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  & span {
+    padding-left: 5px;
+    line-height: 1em;
+    text-transform: none;
+    font-size: 16px;
+  }
+
+}

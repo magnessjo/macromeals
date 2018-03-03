@@ -96,6 +96,9 @@ form {
 
   }
 
+  & input[type="checkbox"] {
+  }
+
   /* Errors */
 
   & [has-error="true"] {

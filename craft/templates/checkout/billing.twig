@@ -29,7 +29,12 @@
     <div class="lock small-lock">
 
       <h1 class="acumin-headline"><span>Order Summary</span></h1>
-      <p class="list-item expected-date">Expected Delivery Date <span>{{ cart.deliveryDate.format('l, F d, Y') }}</span></p>
+
+      {% set shippingType = "Pickup" %}
+        {% if cart.shippingMethod.handle == 'overnight' %}
+          {% set shippingType = "Delivery" %}
+        {% endif %}
+      <p class="list-item expected-date">Expected {{ shippingType }} Date <span>{{ cart.deliveryDate.format('l, F d, Y') }}</span></p>
       <div class="cart-summary">
         <p class="list-item">SubTotal <span>{{ cart.itemSubtotal | commerceCurrency(cart.currency, stripZeros = true) }}</span></p>
         {% if cart.totalDiscount < 0 %}
@@ -38,7 +43,7 @@
         <p class="list-item">Tax <span>${{ cart.totalTax | number_format(2, '.', ',') }}</span></p>
         {% if cart.totalShippingCost > 0 %}
           <p class="list-item shipping">Shipping Cost <span>${{ cart.totalShippingCost | number_format(2, '.', ',') }}</span></p>
-          <p class="pickup"><a href="/checkout/pickup">Prefer a $0 pickup option?</a></p>
+          <p class="pickup">Prefer a $0 pickup option? <a href="/checkout/pickup">See options</a></p>
         {% endif %}
         <p class="list-item">Total Due <span>{{ cart.totalPrice | commerceCurrency(cart.currency, stripZeros = true) }}</span></p>
       </div>

@@ -95,6 +95,11 @@
 
       }
 
+      & label {
+        display: flex;
+        align-items: center;
+      }
+
     }
 
     & .protein .filter-cats {

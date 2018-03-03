@@ -19,6 +19,11 @@
 
     {{ getCsrfInput() }}
 
+    <script type="text/javascript">
+      window.csrfTokenName = "{{ craft.config.csrfTokenName|e('js') }}";
+      window.csrfTokenValue = "{{ craft.request.csrfToken|e('js') }}";
+    </script>
+
     <input type="hidden" name="action" value="commerce/cart/updateCart">
     <input type="hidden" name="redirect" value="/checkout/billing">
     <input type="hidden" name="shippingMethod" value='pickup' />
@@ -27,6 +32,13 @@
     <input type="hidden" name="shippingAddress[countryId]" value='233' />
     <input type="hidden" name="fields[deliveryDate][date]" value="">
     <input type="hidden" name="fields[deliveryDate][time]" value="5:00 AM">
+    <input type="hidden" name="emailAddress" value="{{ cart.email }}">
+
+    <div class="overlay-loader">
+      <div class="loader">
+        <span>Processing</span>
+      </div>
+    </div>
 
     <section id="contact-details">
 
@@ -66,6 +78,13 @@
               <p class="letters">Last name can only contain letters and spaces</p>
             </div>
           </div>
+        </div>
+
+        <div class="weekly-reminder">
+          <label>
+            <input type="checkbox" checked>
+            <span>Would you like to receive an email reminder on Wednesday for available order dates</span>
+          </label>
         </div>
 
       </div>
