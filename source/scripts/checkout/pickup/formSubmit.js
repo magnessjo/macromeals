@@ -57,9 +57,8 @@ export default function() {
 
         if (i == fields.length - 1) {
 
-          weeklyReminderEmail(form).then(() => {
-            form.submit();
-          });
+          weeklyReminderEmail(form);
+          form.submit();
 
         }
 
