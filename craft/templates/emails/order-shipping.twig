@@ -32,7 +32,7 @@
                   {% include "emails/components/email-text-cta.twig" with {'text' : text, 'link': link, 'linkText': 'Track Order'} %}
                 {% endif %}
               {% else %}
-                <div class="h3-1-center" style="color:#1e1e1e; font-family:Helvetica, Helvetica, Arial, sans-serif; min-width:auto !important; font-size:20px; line-height:26px; text-align:left">Your order has been completed and will be ready for you to pickup on <b>{{ order.deliveryDate.format('F d, Y') }}</b> at the <b>{{ order.getShippingmethod.name }}.</b><br>  {{ order.message }}.</div>
+                <div class="h3-1-center" style="color:#1e1e1e; font-family:Helvetica, Helvetica, Arial, sans-serif; min-width:auto !important; font-size:20px; line-height:26px; text-align:left">Your order has been completed and will be ready for you to pickup on <b>{{ order.deliveryDate.format('F d, Y') }}</b> at the <b>{{ order.getShippingmethod.name }}.</b>{% if order.message %}<br> {{ order.message }} .{% endif %}</div>
               {% endif %}
 
               <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">
