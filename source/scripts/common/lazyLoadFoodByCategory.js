@@ -93,9 +93,17 @@ function createMeal(data, parent) {
 
 function getMeals(categoryId, group, container) {
 
-  const postData = `${window.csrfTokenName}=${window.csrfTokenValue}&id=${categoryId}`;
+  let postData = `${window.csrfTokenName}=${window.csrfTokenValue}&`;
+  let url = '';
 
-  fetchPostData(postData, '/actions/MacroCommerce/Food/productByCategory').then( (response) => {
+  if (categoryId != null) {
+    postData += `id=${categoryId}`;
+    url = '/actions/MacroCommerce/Food/productByCategory';
+  } else {
+    url = '/actions/MacroCommerce/Food/lastestProducts';
+  }
+
+  fetchPostData(postData, url).then( (response) => {
 
     const entries = Array.reverse(response.entries);
     createMeal(entries, group).then( () => {
