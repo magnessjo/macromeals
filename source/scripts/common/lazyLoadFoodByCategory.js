@@ -91,7 +91,7 @@ function createMeal(data, parent) {
 
 // Get Meals
 
-function getMeals(categoryId, group, container) {
+function getMeals(categoryId, group, container, isLast) {
 
   let postData = `${window.csrfTokenName}=${window.csrfTokenValue}&`;
   let url = '';
@@ -119,7 +119,10 @@ function getMeals(categoryId, group, container) {
 
         filter.style.opacity = 1;
         inputs.forEach( (input) => input.disabled = false);
-        filterMeals();
+
+        if (isLast) {
+          filterMeals();
+        }
       }
 
     });
@@ -136,7 +139,7 @@ export default function() {
 
     const entriesContainer = group.querySelector('.entries-group');
     const id = entriesContainer.getAttribute('data-category-id');
-    getMeals(id, entriesContainer, group);
+    getMeals(id, entriesContainer, group, groups.length - 1 == i);
 
   });
 
