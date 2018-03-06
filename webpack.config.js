@@ -4,6 +4,7 @@ const webpack = require( 'webpack' );
 const CopyWebpackPlugin = require( 'copy-webpack-plugin' );
 const ExtractTextPlugin = require( 'extract-text-webpack-plugin' );
 const ImageminPlugin = require( 'imagemin-webpack-plugin' ).default;
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 module.exports = {
 
@@ -97,7 +98,10 @@ module.exports = {
       { from: 'uploads/**/*', to: '', context: 'source/assets/'},
       { from: 'source/assets/craft/**/*', to: '', flatten: true },
     ]),
-    new ExtractTextPlugin( '[name].css' )
+    new ExtractTextPlugin( '[name].css' ),
+    new UglifyJsPlugin({
+      test: /\.js($|\?)/i
+    })
   ],
 
   resolve: {
