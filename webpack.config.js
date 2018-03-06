@@ -27,6 +27,7 @@ module.exports = {
     cart: path.resolve(`source/scripts/checkout/cart`),
     complete: path.resolve(`source/scripts/checkout/complete`),
     register: path.resolve(`source/scripts/account/register`),
+    serviceWorker: path.resolve(`source/scripts/serviceWorker.js`),
     homepageStyle: path.resolve('source/styles/pages/homepage.css'),
     macrosStyle: path.resolve('source/styles/pages/macros.css'),
     aboutStyle: path.resolve('source/styles/pages/about.css'),
