@@ -125,6 +125,7 @@
     align-items: center;
     justify-content: space-between;
     text-transform: capitalize;
+    margin-bottom: 20px;
 
     @media (--medium-max) {
       flex-wrap: wrap;
@@ -134,8 +135,8 @@
       padding: 0 30px;
     }
 
-    &:first-of-type {
-      margin-bottom: 20px;
+    &:last-of-type {
+      margin-bottom: 0;
       position: relative;
     }
 
