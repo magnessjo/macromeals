@@ -13,7 +13,7 @@ import loginUser from './loginUserForm.js';
 document.addEventListener('DOMContentLoaded', () => {
 
   if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/service-workers.js').then( (reg) => {
+    navigator.serviceWorker.register('/serviceWorker.js').then( (reg) => {
       console.log('Registration succeeded. Scope is ' + reg.scope);
     }).catch( (error) => {
       console.log('Registration failed with ' + error);
