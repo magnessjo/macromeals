@@ -21,6 +21,18 @@ const style = {
   },
 }
 
+const styleZip = {
+  base: {
+    iconColor: '#000',
+    color: '#000',
+    fontFamily: 'acumin-pro, arial, sans-serif',
+    fontWeight: 400,
+    '::placeholder': {
+      color: '#fff',
+    },
+  },
+}
+
 // Export
 
 export default function(stripeRef, elementsRef) {
@@ -30,7 +42,7 @@ export default function(stripeRef, elementsRef) {
   const cardNumberElement = elements.create('cardNumber', { style: style });
   const cardExpiryElement = elements.create('cardExpiry', { style: style });
   const cardCvcElement = elements.create('cardCvc', { style: style });
-  const postalCodeElement = elements.create('postalCode', { style: style });
+  const postalCodeElement = elements.create('postalCode', { style: styleZip } );
   const inputs = [ cardNumberElement, cardExpiryElement, cardCvcElement, postalCodeElement ];
   const card = cardNumberElement;
 
