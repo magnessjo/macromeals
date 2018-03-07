@@ -57,23 +57,25 @@
 
           <div class="fact-info">
 
-            <div>
+            <div data-count="{{ product.variants | length }}">
 
               {% for purchasable in product.variants %}
 
-                <div class="facts">
-                  <p class="acumin-small"><span>{{ purchasable.title }}</span></p>
-                  {% for row in purchasable.productMacros %}
-                    {% if row.calories %}<p class="acumin-small"><span>CALORIES:</span> {{ row.calories }}</p>{% endif %}
-                    {% if row.protein %}<p class="acumin-small protein"><span>PROTEIN:</span> {{ row.protein }}g</p>{% endif %}
-                    {% if row.carbs %}<p class="acumin-small carbs"><span>CARBS:</span> {{ row.carbs }}g</p>{% endif %}
-                    {% if row.fat %}<p class="acumin-small fat"><span>FAT:</span> {{ row.fat }}g</p>{% endif %}
-                  {% endfor %}
-                </div>
+                <div>
+                  <h3>{{ purchasable.title }}</h3>
 
-                {% if loop.index0 == 0 %}
+                  <div class="facts">
+                    {% for row in purchasable.productMacros %}
+                      {% if row.calories %}<p class="acumin-small"><span>CALORIES:</span> {{ row.calories }}</p>{% endif %}
+                      {% if row.protein %}<p class="acumin-small protein"><span>PROTEIN:</span> {{ row.protein }}g</p>{% endif %}
+                      {% if row.carbs %}<p class="acumin-small carbs"><span>CARBS:</span> {{ row.carbs }}g</p>{% endif %}
+                      {% if row.fat %}<p class="acumin-small fat"><span>FAT:</span> {{ row.fat }}g</p>{% endif %}
+                    {% endfor %}
+                  </div>
+
                   {% include "components/pie-chart.twig" with { 'macros': purchasable.productMacros } %}
-                {% endif %}
+
+                </div>
 
               {% endfor %}
 

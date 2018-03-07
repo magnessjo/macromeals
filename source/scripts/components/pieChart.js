@@ -76,10 +76,16 @@ const drawItemsValuesPlugin = {
 
         // Set Text
 
-        ctx.font = `${labelSize}px acumin-pro-condensed`;
-        ctx.fillText(label, model.x + x, model.y + y);
+        if (label == 'PROTEIN' && percent < 30 || percent < 15) {
+          percentPosition = 5;
+          textAxisModify = 0;
+        } else {
+          ctx.font = `${labelSize}px acumin-pro-condensed`;
+          ctx.fillText(label, model.x + x, model.y + y);
+        }
 
         ctx.font = `bold ${labelSize}px acumin-pro`;
+        ctx.textAlign = 'center';
         ctx.fillText(`${percent}%`, model.x + x + textAxisModify, model.y + y + percentPosition);
 
       }
