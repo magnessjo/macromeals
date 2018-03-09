@@ -475,6 +475,8 @@ class Commerce_CartService extends BaseApplicationComponent
             craft()->userSession->saveCookie($cookieId, $cartNumber, $cartExpiry);
         }
 
+
+
         return $cartNumber;
     }
 

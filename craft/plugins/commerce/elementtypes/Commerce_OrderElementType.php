@@ -376,7 +376,9 @@ class Commerce_OrderElementType extends Commerce_BaseElementType
 			'user' => AttributeType::Mixed,
 			'isPaid' => AttributeType::Bool,
 			'isUnpaid' => AttributeType::Bool,
-			'hasPurchasables' => AttributeType::Mixed
+			'hasPurchasables' => AttributeType::Mixed,
+			'shippingMethod' => AttributeType::Mixed,
+			'shippingMethodId' => AttributeType::Mixed
 		];
 	}
 
@@ -506,6 +508,21 @@ class Commerce_OrderElementType extends Commerce_BaseElementType
 
         if ($criteria->paymentMethodId) {
             $query->andWhere(DbHelper::parseParam('orders.paymentMethodId', $criteria->paymentMethodId, $query->params));
+        }
+
+        if ($criteria->shippingMethod) {
+            if ($criteria->shippingMethod instanceof Commerce_ShippingMethodModel) {
+                if ($criteria->shippingMethod->id) {
+                    $criteria->shippingMethodid = $criteria->shippingMethod->id;
+                    $criteria->shippingMethod = null;
+                } else {
+                    return false;
+                }
+            }
+        }
+
+        if ($criteria->shippingMethodId) {
+            $query->andWhere(DbHelper::parseParam('orders.shippingMethod', $criteria->shippingMethodId, $query->params));
         }
 
 		if ($criteria->updatedOn) {

@@ -175,9 +175,6 @@ class Commerce_OrdersService extends BaseApplicationComponent
             $order->customerId = craft()->commerce_customers->getCustomerId();
         }
 
-        // Will not adjust a completed order, we don't want totals to change.
-        $this->calculateAdjustments($order);
-
         $oldStatusId = $orderRecord->orderStatusId;
 
         //raising event
@@ -185,6 +182,9 @@ class Commerce_OrdersService extends BaseApplicationComponent
             'order' => $order
         ]);
         $this->onBeforeSaveOrder($event);
+
+        // Will not adjust a completed order, we don't want totals to change.
+        $this->calculateAdjustments($order);
 
         $orderRecord->number = $order->number;
         $orderRecord->itemTotal = $order->itemTotal;

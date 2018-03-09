@@ -89,14 +89,15 @@ class Commerce_TransactionModel extends BaseModel
 
         // check transaction hasn't already been captured
         $criteria = [
-            'condition' => 'type = ? AND status = ? AND orderId = ? AND reference = ?',
+            'condition' => 'type = ? AND status = ? AND orderId = ? AND parentId = ?',
             'params' => [
                 Commerce_TransactionRecord::TYPE_CAPTURE,
                 Commerce_TransactionRecord::STATUS_SUCCESS,
                 $this->orderId,
-                $this->reference
+                $this->id
             ],
         ];
+
         $exists = craft()->commerce_transactions->transactionExists($criteria);
 
         return !$exists;
@@ -126,11 +127,12 @@ class Commerce_TransactionModel extends BaseModel
 
         // check transaction hasn't already been refunded
         $criteria = [
-            'condition' => 'type = ? AND status = ? AND orderId = ?',
+            'condition' => 'type = ? AND status = ? AND orderId = ? AND parentId = ?',
             'params' => [
                 Commerce_TransactionRecord::TYPE_REFUND,
                 Commerce_TransactionRecord::STATUS_SUCCESS,
-                $this->orderId
+                $this->orderId,
+                $this->id
             ],
         ];
         $exists = craft()->commerce_transactions->transactionExists($criteria);

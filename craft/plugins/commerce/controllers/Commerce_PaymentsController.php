@@ -22,29 +22,36 @@ class Commerce_PaymentsController extends Commerce_BaseFrontEndController
 
         $customError = '';
 
+        $order = null;
+
+        // Get the order number from the cookie
+        $cartCookieNumber = craft()->userSession->getStateCookieValue('commerce_cookie');
+
+        // Do we have an explicit order number submitted?
         if (($number = craft()->request->getParam('orderNumber')) !== null)
         {
             $order = craft()->commerce_orders->getOrderByNumber($number);
-            if (!$order)
-            {
-                $error = Craft::t('Can not find an order to pay.');
-                if (craft()->request->isAjaxRequest())
-                {
-                    $this->returnErrorJson($error);
-                }
-                else
-                {
-                    craft()->userSession->setFlash('error', $error);
-                }
-
-                return;
-            }
         }
 
-        // Get the cart if no order number was passed.
-        if (!isset($order) && !$number)
+
+        // If we didn't have an explicit order number passed, but we have a cookie, grab the active cart
+        if (!$order && !$number && $cartCookieNumber)
         {
             $order = craft()->commerce_cart->getCart();
+        }
+
+        // Still can't find an order then abort
+        if (!$order)
+        {
+            $error = Craft::t('Cart no longer exists or can not find an order to pay.');
+            if (craft()->request->isAjaxRequest())
+            {
+                $this->returnErrorJson($error);
+            }
+
+            craft()->userSession->setFlash('error', $error);
+
+            return;
         }
 
         // Are we paying anonymously?
@@ -184,6 +191,48 @@ class Commerce_PaymentsController extends Commerce_BaseFrontEndController
 
             return;
         }
+
+        // Double check stock
+        $stockByVariantId = [];
+        $purchasables = [];
+        foreach ($order->getLineItems() as $lineItem)
+        {
+            $purchasable = $lineItem->getPurchasable();
+            if($purchasable && $purchasable instanceof Commerce_VariantModel && !$purchasable->unlimitedStock)
+            {
+                $purchasables[] = $purchasable;
+                if(isset($stockByVariantId[$purchasable->id]))
+                {
+                    $stockByVariantId[$purchasable->id] += $lineItem->qty;
+                }else{
+                    $stockByVariantId[$purchasable->id] = $lineItem->qty;
+                }
+            }
+        }
+
+        foreach($purchasables as $purchasable)
+        {
+            if ($stockByVariantId[$purchasable->id] > $purchasable->stock)
+            {
+                $error = Craft::t('{product} now only has {num} in stock. Please removed {diff} of them from the cart before retrying payment.', [
+                        'num' => $purchasable->stock,
+                        'product' => $purchasable->getDescription(),
+                        'diff' => $stockByVariantId[$purchasable->id] - $purchasable->stock
+                ]);
+
+                if (craft()->request->isAjaxRequest())
+                {
+                    $this->returnErrorJson($error);
+                }
+                else
+                {
+                    craft()->userSession->setFlash('error', $error);
+                }
+
+                return;
+            }
+        }
+
 
         // Save the return and cancel URLs to the order
         $returnUrl = craft()->request->getValidatedPost('redirect');
