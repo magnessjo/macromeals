@@ -63,6 +63,14 @@
           width: 45%;
         }
 
+        &:first-of-type {
+
+          @media (--large-max) {
+            margin-bottom: 20px;
+          }
+
+        }
+
       }
 
     }
@@ -88,8 +96,11 @@
 
   & .error {
     padding-top: 20px;
-    text-align: center;
     display: none;
+
+    @media (--tablet-min) {
+      text-align: center;
+    }
 
     & p {
       font-size: 18px;
@@ -143,6 +154,7 @@
   }
 
   & [data-field="height"] {
+    overflow: hidden;
 
     & .field {
       width: 45%;
@@ -172,8 +184,20 @@
 
       & > div {
 
+        @media (--large-max) {
+          margin-bottom: 20px;
+        }
+
         @media (--tablet-min) {
           width: 30%;
+        }
+
+        &:last-of-type {
+
+          @media (--large-max) {
+            margin-bottom: 0;
+          }
+
         }
 
       }
