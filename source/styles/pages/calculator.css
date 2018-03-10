@@ -30,12 +30,6 @@
     position: relative;
     border: none;
 
-    @media (--tablet-min) {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
     &:last-of-type {
       padding-bottom: 0;
 
@@ -55,10 +49,20 @@
       background-color: var(--green);
     }
 
-    & > * {
+    & .wrapper {
 
       @media (--tablet-min) {
-        width: 45%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      & > * {
+
+        @media (--tablet-min) {
+          width: 45%;
+        }
+
       }
 
     }
@@ -78,9 +82,35 @@
     margin-bottom: 0;
   }
 
-  & [data-field="gender"] {
+  & [data-error="true"] .error {
+    display: block;
+  }
 
-    & > div:last-of-type {
+  & .error {
+    padding-top: 20px;
+    text-align: center;
+    display: none;
+
+    & p {
+      font-size: 18px;
+      text-transform: capitalize;
+
+      @media (--large-min) {
+        display: inline-block;
+      }
+
+    }
+
+    & p:first-of-type {
+      text-transform: uppercase;
+      color: var(--red);
+    }
+
+  }
+
+  & [data-field="gender"] .wrapper {
+
+    & > div:last-of-type  {
       display: flex;
 
       & label {
@@ -95,7 +125,7 @@
 
   }
 
-  & [data-field="age"] {
+  & [data-field="age"] .wrapper {
 
     & > div:last-of-type {
       display: flex;
@@ -126,14 +156,14 @@
 
   }
 
-  & [data-field="block-buttons"] {
+  & .block-buttons {
     display: block;
 
     & > * {
       width: 100%;
     }
 
-    & > div {
+    & > div:not(.error) {
 
       @media (--tablet-min) {
         display: flex;
@@ -171,6 +201,11 @@
         color: var(--white);
       }
 
+      &[data-active="true"] {
+        background-color: var(--green);
+        color: var(--white);
+      }
+
       & span {
         display: block;
         font-size: 12px;
@@ -182,7 +217,5 @@
     }
 
   }
-
-
 
 }

@@ -18,87 +18,124 @@
         <div class="details">
 
           <div class="fieldset" data-field="gender">
-            <div>
-              <h2>Gender</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper ante non augue.</p>
+
+            <div class="wrapper">
+              <div>
+                <h2>Gender</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper ante non augue.</p>
+              </div>
+              <div>
+                <label>
+                  <input type="radio" name="gender" value="female" />
+                  <span>Female</span>
+                </label>
+                <label>
+                  <input type="radio" name="gender" value="male" />
+                  <span>Male</span>
+                </label>
+              </div>
             </div>
-            <div>
-              <label>
-                <input type="radio" name="gender" value="female" />
-                <span>Female</span>
-              </label>
-              <label>
-                <input type="radio" name="gender" value="male" />
-                <span>Male</span>
-              </label>
+
+            <div class="error">
+              <p>Error: </p>
+              <p>A gender must be selected</p>
             </div>
+
           </div>
 
           <div class="fieldset" data-field="age">
-            <div>
-              <h2>Age</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper ante non augue.</p>
-            </div>
-            <div>
+
+            <div class="wrapper">
               <div>
-                <label>Age</label>
-                <input type="text" name="age" value="" />
+                <h2>Age</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper ante non augue.</p>
+              </div>
+              <div>
+                <div>
+                  <label>Age</label>
+                  <input type="text" name="age" placeholder="40" value="" />
+                </div>
               </div>
             </div>
+
+            <div class="error">
+              <p>Error: </p>
+              <p>Age is required and must be only numbers</p>
+            </div>
+
           </div>
 
           <div class="fieldset" data-field="height">
-            <div>
-              <h2>Height</h2>
-              <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper ante non augue.</p>
-            </div>
-            <div>
-              <div class="field">
-                <label>Feet</label>
-                <input type="text" name="feet" value="" />
+
+            <div class="wrapper">
+              <div>
+                <h2>Height</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper ante non augue.</p>
               </div>
-              <div class="field">
-                <label>Inches</label>
-                <input type="text" name="inches" value="" />
+              <div>
+                <div class="field">
+                  <label>Feet</label>
+                  <input type="text" name="feet" placeholder="5" value="" />
+                </div>
+                <div class="field">
+                  <label>Inches</label>
+                  <input type="text" name="inches" placeholder="1" value="" />
+                </div>
               </div>
             </div>
+
+            <div class="error">
+              <p>Error: </p>
+              <p>Feet and Inches are required</p>
+            </div>
+
           </div>
 
-          <div class="fieldset" data-field="block-buttons">
-            <input type="hidden" name="exercise" value="" />
+          <div class="fieldset block-buttons" data-field="exercise">
             <h2>Exercise</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper ante non augue.  Etiam ut pretium nisl. In non metus maximus, interdum orci a, luctus augue. Cras egestas lobortis rhoncus. Morbi pellentesque erat tempor mauris volutpat, ac ornare risus mollis. Praesent scelerisque iaculis elit non dignissim.</p>
             <div>
               <div>
-                <button>Sedentary <span>Very little exercise</span></button>
+                <button data-type="sedentary">Sedentary <span>Very little exercise</span></button>
               </div>
               <div>
-                <button>Moderate <span>2-5 workouts a week</span></button>
+                <button data-type="moderate">Moderate <span>2-5 workouts a week</span></button>
               </div>
               <div>
-                <button>Active <span>5+ workouts a week</span></button>
+                <button data-type="active">Active <span>5+ workouts a week</span></button>
               </div>
             </div>
+
+            <div class="error">
+              <p>Error: </p>
+              <p>An exercise selection is required</p>
+            </div>
+
           </div>
 
-          <div class="fieldset" data-field="block-buttons">
-            <input type="hidden" name="exercise" value="" />
+          <div class="fieldset block-buttons" data-field="goal">
             <h2>Primary Goal</h2>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper ante non augue.  Etiam ut pretium nisl. In non metus maximus, interdum orci a, luctus augue. Cras egestas lobortis rhoncus. Morbi pellentesque erat tempor mauris volutpat, ac ornare risus mollis. Praesent scelerisque iaculis elit non dignissim.</p>
             <div>
               <div>
-                <button>Lose Weight</button>
+                <button data-type="lose">Lose Weight</button>
                 <span></span>
               </div>
               <div>
-                <button>Gain Weight/Muscle Mass</button>
+                <button data-type="gain">Gain Weight/Muscle Mass</button>
                 <span></span>
               </div>
               <div>
-                <button>Recovery</button>
+                <button data-type="recovery">Recovery</button>
                 <span></span>
               </div>
             </div>
+
+            <div class="error">
+              <p>Error: </p>
+              <p>An goal selection is required</p>
+            </div>
+
           </div>
 
           <input type="submit" value="calculate">
