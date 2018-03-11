@@ -11,7 +11,8 @@
     <div class="lock">
 
       <h1>Macro Calculator</h1>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper ante non augue faucibus rutrum. Nulla volutpat blandit convallis. Sed varius est id nulla consequat molestie.</p>
+      <p>Calculators for any type of body metric are only an estimate.  A nutritionist or personal trainer can give you a more accurate estimation of your BMR (Basal Metabolic Rate) and best macro ratio for your activity level and goal after getting your body fat percentage.  Please email us directly at <a href="mailto:info@macromeals.life">info@macromeals.life</a> if you have your body fat percentage or if you would like help getting your body fat percentage.</p>
+      <p>We are using Mifflin equation to determine your BMR without your body fat percentage.</p>
 
       <form id="macro-calculator">
 
@@ -22,7 +23,7 @@
             <div class="wrapper">
               <div>
                 <h2>Gender</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper ante non augue.</p>
+                <p>Your gender determines the formula that is used.  Generalizations for metabolism and testosterone levels are some of the factors lead to inaccuracy with BMR formulas.</p>
               </div>
               <div>
                 <label>
@@ -48,7 +49,7 @@
             <div class="wrapper">
               <div>
                 <h2>Age</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper ante non augue.</p>
+                <p>Your metabolism decreases with age so a person requires less calories per day as a result.</p>
               </div>
               <div>
                 <div>
@@ -70,7 +71,7 @@
             <div class="wrapper">
               <div>
                 <h2>Height</h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper ante non augue.</p>
+                <p>Height is one of the body metrics used by the formula to calculate your calorie intake.</p>
               </div>
               <div>
                 <div class="field">
@@ -91,18 +92,46 @@
 
           </div>
 
+          <div class="fieldset" data-field="weight">
+
+            <div class="wrapper">
+              <div>
+                <h2>Weight</h2>
+                <p>Weight is one of the body metrics used by the formula to calculate your calorie intake.</p>
+              </div>
+              <div>
+                <div>
+                  <label>Weight</label>
+                  <input type="text" name="weight" placeholder="" value="" />
+                </div>
+              </div>
+            </div>
+
+            <div class="error">
+              <p>Error: </p>
+              <p>Weight is required</p>
+            </div>
+
+          </div>
+
           <div class="fieldset block-buttons" data-field="exercise">
             <h2>Exercise</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper ante non augue.  Etiam ut pretium nisl. In non metus maximus, interdum orci a, luctus augue. Cras egestas lobortis rhoncus. Morbi pellentesque erat tempor mauris volutpat, ac ornare risus mollis. Praesent scelerisque iaculis elit non dignissim.</p>
+            <p>Your exercise activity level provides a multiplier that is used in conjuction with the BMR to give you the total calories range that your body which try to intake per day.</p>
             <div>
               <div>
                 <button data-type="sedentary">Sedentary <span>Very little exercise</span></button>
               </div>
               <div>
-                <button data-type="moderate">Moderate <span>2-5 workouts a week</span></button>
+                <button data-type="light">Light Activity <span>1-3 workouts a week</span></button>
               </div>
               <div>
-                <button data-type="active">Active <span>5+ workouts a week</span></button>
+                <button data-type="moderate">Moderate Activity <span>4-5 workouts a week</span></button>
+              </div>
+              <div>
+                <button data-type="very">Very Active <span>5+ workouts a week</span></button>
+              </div>
+              <div>
+                <button data-type="competitive">Competitive Training <span></span></button>
               </div>
             </div>
 
@@ -115,19 +144,22 @@
 
           <div class="fieldset block-buttons" data-field="goal">
             <h2>Primary Goal</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum semper ante non augue.  Etiam ut pretium nisl. In non metus maximus, interdum orci a, luctus augue. Cras egestas lobortis rhoncus. Morbi pellentesque erat tempor mauris volutpat, ac ornare risus mollis. Praesent scelerisque iaculis elit non dignissim.</p>
+            <p>The macro amounts are determined by goal and activity level.  A balanced diet of macronutrients is 35% carbohydrates, 35% protein, and 30% fat.  Research has shown that modifying the macro ratio for higher carbohydrates and protein will help an individual lose weight.  The change in percentage for protein and carbs is determined by your exercise amount.  For example, someone trying to lose weight with a sedentary lifestyle should favor healthy fats (avocado, nuts, etc) over carbohydrates.</p>
+            <p>The macronutrients ratios (before exercise activity) are:</p>
+            <ul>
+              <li>Weight Lost : <span>30%/50%/20%</span></li>
+              <li>Gain Weight/Muscle Mass <span>45%/45%/10%</span></li>
+              <li>Maintain <span>35%/35%/30%</span></li>
+            </ul>
             <div>
               <div>
                 <button data-type="lose">Lose Weight</button>
-                <span></span>
               </div>
               <div>
-                <button data-type="gain">Gain Weight/Muscle Mass</button>
-                <span></span>
+                <button data-type="gain">Gain Weight/Muscle Mass <span>45%/45%/10%</span></button>
               </div>
               <div>
-                <button data-type="recovery">Recovery</button>
-                <span></span>
+                <button data-type="maintain">Maintain <span>35%/35%/30%</span></button>
               </div>
             </div>
 
@@ -143,6 +175,18 @@
         </div>
 
       </form>
+
+      <div class="results">
+
+        <div class="protein">
+
+        </div>
+
+        <div class="carbs">
+
+        </div>
+
+      </div>
 
     </div>
 

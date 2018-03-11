@@ -21,7 +21,11 @@
 
   & .lock > p {
     max-width: 800px;
-    margin-bottom: 0;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
   }
 
   & .fieldset {
@@ -136,7 +140,8 @@
 
   }
 
-  & [data-field="age"] .wrapper {
+  & [data-field="age"] .wrapper,
+  & [data-field="weight"] .wrapper {
 
     & > div:last-of-type {
       display: flex;
@@ -168,6 +173,24 @@
 
   }
 
+  & [data-field="goal"] {
+
+    & p:last-of-type {
+      margin-bottom: 10px;
+    }
+
+    & ul {
+      padding-left: 20px;
+      margin-bottom: 30px;
+    }
+
+    & li {
+      list-style: none;
+      font-size: 14px;
+    }
+
+  }
+
   & .block-buttons {
     display: block;
 
@@ -176,10 +199,31 @@
     }
 
     & > div:not(.error) {
+      flex-wrap: wrap;
 
       @media (--tablet-min) {
         display: flex;
         justify-content: space-between;
+      }
+
+      @supports (display: grid) {
+        display: grid;
+        grid-template-columns: 1fr;
+        padding: 0;
+
+        @media (--large-min) {
+          grid-template-columns: 1fr 1fr;
+          grid-gap: 20px;
+        }
+
+        @media (--desktop-min) {
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        @supports(display: -ms-grid) {
+          display: flex;
+        }
+
       }
 
       & > div {
@@ -190,6 +234,16 @@
 
         @media (--tablet-min) {
           width: 30%;
+        }
+
+        @supports (display: grid) {
+          width: 100%;
+        }
+
+        @supports(display: -ms-grid) {
+          @media (--tablet-min) {
+            width: 30%;
+          }
         }
 
         &:last-of-type {

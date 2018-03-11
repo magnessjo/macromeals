@@ -15,6 +15,9 @@ const ageInput = ageContainer.querySelector('input[type="text"]');
 const heightContainer = document.querySelector('div[data-field="height"]');
 const heightInputs = Array.from(heightContainer.querySelectorAll('input[type="text"]'));
 
+const weightContainer = document.querySelector('div[data-field="weight"]');
+const weightInput = weightContainer.querySelector('input[type="text"]');
+
 const exerciseContainer = document.querySelector('div[data-field="exercise"]');
 const exerciseButtons = Array.from(exerciseContainer.querySelectorAll('button'));
 let selectedExercise;
@@ -78,6 +81,20 @@ function validateHeightInputs() {
 
 }
 
+// Validate Weight
+
+function validateAge() {
+
+  if (ageInput.value != '') {
+    return true;
+  } else {
+    ageContainer.setAttribute(errorAttribute, true);
+    return false;
+  }
+
+}
+
+
 // Validate Form Fields
 
 function validateForm() {
@@ -87,22 +104,102 @@ function validateForm() {
     const isGenderValid = validateRadioButtons();
     const isAgeValid = validateAge();
     const isHeightValid = validateHeightInputs();
+    const isWeightValid = validateAge();
 
-    const isExerciseValid = selectedExercise == undefined;
-    const isGoalValid = selectedGoal == undefined;
+    const isExerciseValid = selectedExercise != undefined;
+    const isGoalValid = selectedGoal != undefined;
 
-    if (isExerciseValid) exerciseContainer.setAttribute(errorAttribute, true);
-    if (isGoalValid) goalContainer.setAttribute(errorAttribute, true);
+    if (!isExerciseValid) exerciseContainer.setAttribute(errorAttribute, true);
+    if (!isGoalValid) goalContainer.setAttribute(errorAttribute, true);
 
-    if (!isGenderValid)  scrollToLocation(genderContainer, 80);
-    if (isGenderValid && !isAgeValid)  scrollToLocation(ageContainer, 80);
-    if (isGenderValid && isAgeValid && !isHeightValid)  scrollToLocation(heightContainer, 80);
-    if (isGenderValid && isAgeValid && isHeightValid && !isExerciseValid)  scrollToLocation(exerciseContainer, 80);
-    if (isGenderValid && isAgeValid && isHeightValid && isExerciseValid && !isGoalValid)  scrollToLocation(goalContainer, 80);
+    var scroll = function(container) {
+      scrollToLocation(container, 80);
+    }
 
-    resolve(true);
+    if (!isGenderValid) scroll(genderContainer);
+    if (isGenderValid && !isAgeValid) scroll(ageContainer);
+    if (isGenderValid && isAgeValid && !isHeightValid) scroll(heightContainer);
+    if (isGenderValid && isAgeValid && isHeightValid && !isWeightValid) scroll(weightContainer);
+    if (isGenderValid && isAgeValid && isHeightValid && isWeightValid && !isExerciseValid) scroll(exerciseContainer);
+    if (isGenderValid && isAgeValid && isHeightValid && isWeightValid &&  isExerciseValid && !isGoalValid) scroll(goalContainer);
+
+    if (isGenderValid && isAgeValid && isHeightValid && isWeightValid && isExerciseValid && isGoalValid) resolve();
 
   });
+
+}
+
+// Scope Activity Level
+
+function activityLevel(type) {
+
+  switch(type) {
+      case 'sedentary':
+        return 1.1
+        break;
+      case 'light':
+        return 1.3
+        break;
+      case 'moderate':
+        return 1.5
+        break;
+      case 'very':
+        return 1.7
+        break;
+      case 'competitive':
+        return 1.9
+        break;
+
+  }
+
+}
+
+// Scope Goals
+
+function goalLevel(type, activity) {
+
+  if (type == 'lose') {
+    let protein = .50;
+    let carbs = .20;
+    let fat = .30;
+
+    if (activity == 'sedentary') { carbs = .10; fat = .40; }
+    if (activity == 'light') { carbs = .15; fat = .35; }
+    if (activity == 'competitive') { carbs = .30; fat = .20; }
+
+    return {
+      protein: protein,
+      carbs: carbs,
+      fat: fat,
+    }
+
+  }
+
+  if (type == 'gain') {
+    let protein = .45;
+    let carbs = .45;
+    let fat = .10;
+
+    return {
+      protein: protein,
+      carbs: carbs,
+      fat: fat,
+    }
+
+  }
+
+  if (type == 'maintain') {
+    let protein = .35;
+    let carbs = .35;
+    let fat = .30;
+
+    return {
+      protein: protein,
+      carbs: carbs,
+      fat: fat,
+    }
+
+  }
 
 }
 
@@ -169,6 +266,37 @@ export default function() {
     e.preventDefault();
 
     validateForm().then(() => {
+
+      const selectedRadio = form.querySelector('input[type="radio"]:checked');
+      const ageValue = ageInput.value;
+      const weightValue = weightInput.value;
+      const convertedWeightValue = 0.45359237 * weightValue;
+      const feetValue = parseFloat(heightInputs[0].value);
+      const inchValue = parseInt(heightInputs[1].value);
+      const convertedHeightValue = (( feetValue * 12) + inchValue) * 2.54;
+      const activityMultiplier = activityLevel(selectedExercise);
+      const macroMultiplier = goalLevel(selectedGoal, selectedExercise);
+      let BMR = ( (10 * convertedWeightValue) + (6.25 * convertedHeightValue) ) - (5 * ageValue);
+      BMR = selectedRadio.value == 'male' ? BMR + 5 : BMR - 161;
+
+      const calorieIntake = BMR * activityMultiplier;
+      const proteinCalories = Math.floor(calorieIntake * parseFloat(macroMultiplier.protein));
+      const carbCalories = Math.floor(calorieIntake * parseFloat(macroMultiplier.carbs));
+      const fatCalories = Math.floor(calorieIntake * parseFloat(macroMultiplier.fat));
+
+      const proteinGrams = Math.floor(proteinCalories / 4);
+      const carbGrams = Math.floor(carbCalories / 4);
+      const fatGrams = Math.floor(fatCalories / 9);
+
+      console.log(BMR);
+      console.log(calorieIntake);
+      console.log(proteinCalories);
+      console.log(carbCalories);
+      console.log(fatCalories);
+
+      console.log(proteinGrams);
+      console.log(carbGrams);
+      console.log(fatGrams);
 
     });
 
