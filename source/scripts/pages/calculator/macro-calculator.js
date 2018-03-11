@@ -177,6 +177,7 @@ function goalLevel(type, activity) {
 
     if (activity == 'sedentary') { carbs = .10; fat = .40; }
     if (activity == 'light') { carbs = .15; fat = .35; }
+    if (activity == 'very') { carbs = .25; fat = .25; }
     if (activity == 'competitive') { carbs = .30; fat = .20; }
 
     return {
@@ -192,6 +193,11 @@ function goalLevel(type, activity) {
     let carbs = .45;
     let fat = .10;
 
+    if (activity == 'sedentary') { protein = .70; carbs = .15; fat = .15; }
+    if (activity == 'light') { protein = .60; carbs = .20; fat = .20; }
+    if (activity == 'very') { protein = .45; carbs = .55; fat = .10; }
+    if (activity == 'competitive') { protein = .40; carbs = .50; fat = .10; }
+
     return {
       protein: protein,
       carbs: carbs,
@@ -204,6 +210,11 @@ function goalLevel(type, activity) {
     let protein = .35;
     let carbs = .35;
     let fat = .30;
+
+    if (activity == 'sedentary') { protein = .30; carbs = .39; fat = .32; }
+    if (activity == 'light') { protein = .30; carbs = .38; fat = .32; }
+    if (activity == 'very') { protein = .40; carbs = .40; fat = .20; }
+    if (activity == 'competitive') { protein = .40; carbs = .45; fat = .15; }
 
     return {
       protein: protein,
