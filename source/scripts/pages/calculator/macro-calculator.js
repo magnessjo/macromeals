@@ -3,6 +3,7 @@
 
 import findParentNode from 'scripts/helpers/findParentNode.js';
 import scrollToLocation from 'scripts/helpers/scrollToLocation.js';
+import pieChart from 'scripts/components/pieChart.js';
 
 // Variables
 
@@ -35,6 +36,7 @@ const caloriesContainer = resultContainer.querySelector('[data-type="calories"] 
 const carbsContainer = resultContainer.querySelector('[data-type="carbs"] span');
 const proteinContainer = resultContainer.querySelector('[data-type="protein"] span');
 const fatContainer = resultContainer.querySelector('[data-type="fat"] span');
+const pieChartContainer = resultContainer.querySelector('canvas');
 
 let firstIteration = false;
 
@@ -315,17 +317,21 @@ export default function() {
       const carbGrams = Math.floor(carbCalories / 4);
       const fatGrams = Math.floor(fatCalories / 9);
 
-      if (!firstIteration) {
-        submitButton.value = 'change';
-        firstIteration = true;
-        setResultsDisplay();
-      }
-
       caloriesContainer.innerHTML = `${calorieIntake}`;
       carbsContainer.innerHTML = `${proteinGrams}g`;
       proteinContainer.innerHTML = `${carbGrams}g`;
       fatContainer.innerHTML = `${fatGrams}g`;
 
+      pieChartContainer.setAttribute('data-pie', `${macroMultiplier.protein * 100}%,${macroMultiplier.carbs * 100}%,${macroMultiplier.fat * 100}%`)
+
+      pieChart();
+      scrollToLocation(resultContainer, 80);
+
+      if (!firstIteration) {
+        submitButton.value = 'change';
+        firstIteration = true;
+        setResultsDisplay();
+      }
 
     });
 
