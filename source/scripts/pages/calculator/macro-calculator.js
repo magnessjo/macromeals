@@ -7,6 +7,8 @@ import scrollToLocation from 'scripts/helpers/scrollToLocation.js';
 // Variables
 
 const form = document.querySelector('#macro-calculator');
+const submitButton = form.querySelector('input[type="submit"]');
+
 const genderContainer = document.querySelector('div[data-field="gender"]');
 
 const ageContainer = document.querySelector('div[data-field="age"]');
@@ -27,6 +29,14 @@ const goalButtons = Array.from(goalContainer.querySelectorAll('button'));
 let selectedGoal;
 
 const errorAttribute = 'data-error';
+
+const resultContainer = document.querySelector('#results');
+const caloriesContainer = resultContainer.querySelector('[data-type="calories"] span');
+const carbsContainer = resultContainer.querySelector('[data-type="carbs"] span');
+const proteinContainer = resultContainer.querySelector('[data-type="protein"] span');
+const fatContainer = resultContainer.querySelector('[data-type="fat"] span');
+
+let firstIteration = false;
 
 // Validate Radio Buttons
 
@@ -261,6 +271,23 @@ export default function() {
 
   });
 
+  function setResultsDisplay() {
+
+    const resultLock = resultContainer.querySelector('.lock');
+
+    function resize(transform = true) {
+
+      const size = resultLock.offsetHeight;
+      resultContainer.style.height = `${size}px`;
+      if (transform) resultContainer.style.transition = `height 1s`;
+
+    }
+
+    window.addEventListener('resize', resize);
+    resize(false);
+
+  }
+
   form.addEventListener('submit', e => {
 
     e.preventDefault();
@@ -279,24 +306,26 @@ export default function() {
       let BMR = ( (10 * convertedWeightValue) + (6.25 * convertedHeightValue) ) - (5 * ageValue);
       BMR = selectedRadio.value == 'male' ? BMR + 5 : BMR - 161;
 
-      const calorieIntake = BMR * activityMultiplier;
-      const proteinCalories = Math.floor(calorieIntake * parseFloat(macroMultiplier.protein));
-      const carbCalories = Math.floor(calorieIntake * parseFloat(macroMultiplier.carbs));
-      const fatCalories = Math.floor(calorieIntake * parseFloat(macroMultiplier.fat));
+      const calorieIntake = Math.floor(BMR * activityMultiplier);
+      const proteinCalories = calorieIntake * macroMultiplier.protein;
+      const carbCalories = calorieIntake * macroMultiplier.carbs;
+      const fatCalories = calorieIntake * macroMultiplier.fat;
 
       const proteinGrams = Math.floor(proteinCalories / 4);
       const carbGrams = Math.floor(carbCalories / 4);
       const fatGrams = Math.floor(fatCalories / 9);
 
-      console.log(BMR);
-      console.log(calorieIntake);
-      console.log(proteinCalories);
-      console.log(carbCalories);
-      console.log(fatCalories);
+      if (!firstIteration) {
+        submitButton.value = 'change';
+        firstIteration = true;
+        setResultsDisplay();
+      }
 
-      console.log(proteinGrams);
-      console.log(carbGrams);
-      console.log(fatGrams);
+      caloriesContainer.innerHTML = `${calorieIntake}`;
+      carbsContainer.innerHTML = `${proteinGrams}g`;
+      proteinContainer.innerHTML = `${carbGrams}g`;
+      fatContainer.innerHTML = `${fatGrams}g`;
+
 
     });
 
