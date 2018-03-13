@@ -41,7 +41,6 @@ section:not(#stage) {
     display: flex;
     justify-content: space-between;
 
-
     &:last-of-type {
       margin-bottom: 0;
     }
@@ -64,6 +63,12 @@ section:not(#stage) {
       display: block;
     }
 
+  }
+
+  & .cart-message {
+    padding-top: 10px;
+    font-family: var(--acuminSemiBold);
+    font-size: 14px;
   }
 
 }

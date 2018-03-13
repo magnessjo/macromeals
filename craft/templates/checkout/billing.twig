@@ -41,6 +41,9 @@
           <p class="list-item">Discount <span>({{ cart.totalDiscount | number_format(2, '.', ',') }})</span>
         {% endif %}
         <p class="list-item">Tax <span>${{ cart.totalTax | number_format(2, '.', ',') }}</span></p>
+        {% if cart.message %}
+          <p class="cart-message">{{ cart.message }}</p>
+        {% endif %}
         {% if cart.totalShippingCost > 0 %}
           <p class="list-item shipping">Shipping Cost <span>${{ cart.totalShippingCost | number_format(2, '.', ',') }}</span></p>
           <p class="pickup">Prefer a $0 pickup option? <a href="/checkout/pickup">See options</a></p>
