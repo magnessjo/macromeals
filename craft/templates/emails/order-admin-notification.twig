@@ -1,0 +1,69 @@
+
+{% if order is not defined %}
+  {% set order = craft.commerce.orders.first() %}
+{% endif %}
+
+<style>
+
+  * {
+    margin: 0;
+    padding: 0;
+  }
+
+  section {
+    padding: 50px;
+  }
+
+  h1 {
+    margin-bottom: 10px;
+  }
+
+  h2 {
+    margin-bottom: 20px;
+  }
+
+  p {
+    font-size: 18px;
+  }
+
+  .wrapper {
+    margin-bottom: 30px;
+  }
+
+</style>
+
+<section>
+
+  <div class="wrapper">
+    <h1>Hi Becky,</h1>
+    <p>A new order has been submitted</p>
+  </div>
+
+  <div class="wrapper">
+    {% if order.message %}
+      <h2>Known issues:</h2>
+      <p>There was an issue with the order shipping address</p>
+    {% endif %}
+  </div>
+
+  <div class="wrapper">
+    <h2>Contact Details:</h2>
+    <p>{{ order.shippingAddress.firstName }} {{ order.shippingAddress.lastName }}</p>
+    {% if order.shippingAddress.address1 %}
+      <p>{{ order.shippingAddress.address1 }}</p>
+      <p>{{ order.shippingAddress.address2 }}</p>
+      <p>{{ order.shippingAddress.city }}</p>
+      <p>{{ order.shippingAddress.zipCode }}</p>
+    {% endif %}
+  </div>
+
+  <div class="wrapper">
+    <h2>Line Items:</h2>
+    {% for item in order.lineItems %}
+      {% set variant = item.purchasable %}
+      {% set product = variant.product %}
+      <p>{{ item.qty }} {{ product.title }} <span>{{ variant.title }}</span></p>
+    {% endfor %}
+  </div>
+
+</section>
