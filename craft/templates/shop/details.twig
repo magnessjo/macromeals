@@ -6,7 +6,7 @@
 {% do craft.sproutSeo.meta({
   section: 'commerce_products:meals',
   title: product.title,
-  description: product.variants[0].description|striptags|slice(0, 150),
+  description: product.productSummary|striptags|slice(0, 150),
 }) %}
 
 {% block main %}
@@ -24,6 +24,13 @@
         <h1><div>{{ product.title }}<span> {{ product.subTitle }}</span></div></h1>
       </div>
     </section>
+
+    <div class="icon-legend">
+      <div>
+        <img src="/images/icons/gain.svg" alt="image of the gain muscle icon" />
+        <p>Gain</p>
+      </div>
+    </div>
 
     <section id="product-details">
 
