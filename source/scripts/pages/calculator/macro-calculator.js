@@ -36,7 +36,7 @@ const caloriesContainer = resultContainer.querySelector('[data-type="calories"] 
 const carbsContainer = resultContainer.querySelector('[data-type="carbs"] span');
 const proteinContainer = resultContainer.querySelector('[data-type="protein"] span');
 const fatContainer = resultContainer.querySelector('[data-type="fat"] span');
-const pieChartContainer = resultContainer.querySelector('canvas');
+const pieChartContainer = resultContainer.querySelector('.pie-chart');
 
 let firstIteration = false;
 
@@ -333,7 +333,15 @@ export default function() {
       proteinContainer.innerHTML = `${carbGrams}g`;
       fatContainer.innerHTML = `${fatGrams}g`;
 
-      pieChartContainer.setAttribute('data-pie', `${macroMultiplier.protein * 100}%,${macroMultiplier.carbs * 100}%,${macroMultiplier.fat * 100}%`)
+      pieChartContainer.innerHTML = '';
+      const canvas = document.createElement('canvas');
+      canvas.setAttribute('width', 200);
+      canvas.setAttribute('height', 200);
+      canvas.setAttribute('data-pie', `${macroMultiplier.protein * 100}%,${macroMultiplier.carbs * 100}%,${macroMultiplier.fat * 100}%`);
+      pieChartContainer.appendChild(canvas);
+
+
+      // pieChartContainer.setAttribute('data-pie', `${macroMultiplier.protein * 100}%,${macroMultiplier.carbs * 100}%,${macroMultiplier.fat * 100}%`)
 
       pieChart();
       scrollToLocation(resultContainer, 80);

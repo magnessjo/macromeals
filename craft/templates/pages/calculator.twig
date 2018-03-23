@@ -2,15 +2,21 @@
 {% extends "_layout" %}
 {% includeCssFile "/calculatorStyle.css" %}
 {% includeJsFile "/calculator.js" %}
-{% set bodyClass = 'with-border' %}
 
 {% block main %}
+
+  <section id="stage" class="slim-stage">
+    <div class="image"></div>
+    <div class="lock">
+      <h1><div>Macro Calculator</div></h1>
+    </div>
+  </section>
 
   <section id="calculator">
 
     <div class="lock">
 
-      <h1>Macro Calculator</h1>
+      <h1>Learn your macronutrient ratio</h1>
       <p>Calculators for any type of body metric are only an estimate.  A nutritionist or personal trainer can give you a more accurate estimation of your BMR (Basal Metabolic Rate) and best macro ratio for your activity level and goal after getting your body fat percentage.  Please email us directly at <a href="mailto:info@macromeals.life">info@macromeals.life</a> if you have your body fat percentage or if you would like help getting your body fat percentage.</p>
       <p>We are using Mifflin equation to determine your BMR without your body fat percentage.</p>
 
@@ -147,9 +153,30 @@
             <p>The macro amounts are determined by goal and activity level.  A balanced diet of macronutrients is 35% carbohydrates, 35% protein, and 30% fat.  Research has shown that modifying the macro ratio for higher carbohydrates and protein will help an individual lose weight.  The change in percentage for protein and carbs is determined by your exercise amount.  For example, someone trying to lose weight with a sedentary lifestyle should favor healthy fats (avocado, nuts, etc) over carbohydrates.</p>
             <p>The macronutrients ratios (before exercise activity) are:</p>
             <ul>
-              <li>Weight Lost : <span>30%/50%/20%</span></li>
-              <li>Gain Weight/Muscle Mass <span>45%/45%/10%</span></li>
-              <li>Maintain <span>35%/35%/30%</span></li>
+              <li>
+                <span class="instructions"></span>
+                <span class="carbs">Carbs</span>
+                <span class="protein">Protein</span>
+                <span class="fat">Fat</span>
+              </li>
+              <li>
+                <span class="instructions">Weight Lost:</span>
+                <span class="carbs">30%</span>
+                <span class="protein">50%</span>
+                <span class="fat">20%</span>
+              </li>
+              <li>
+                <span class="instructions">Gain Muscle:</span>
+                <span class="carbs">45%</span>
+                <span class="protein">45%</span>
+                <span class="fat">10%</span>
+              </li>
+              <li>
+                <span class="instructions">Maintain:</span>
+                <span class="carbs">35%</span>
+                <span class="protein">35%</span>
+                <span class="fat">30%</span>
+              </li>
             </ul>
             <div>
               <div>
@@ -213,7 +240,7 @@
         </div>
 
         <div class="pie-chart">
-          <canvas height="200" width="200"></canvas>
+
         </div>
 
       </div>
