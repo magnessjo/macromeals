@@ -14,9 +14,7 @@
 
     <nav>
       <a href="/" class="icons ion-ios-home"><span>Home</span></a>
-      <a href="/shop/"><span>Meals</span></a>
-      <a href="/shop/order"><span>Order</span></a>
-      <a href="/pages/shipping-instructions"><div>Shipping</div></a>
+      {% include "components/nav.twig" %}
     </nav>
 
     <div class="overlay-actions">
@@ -61,10 +59,8 @@
 
   <div id="menu">
 
-    <div class='mobile-nav'>
-      <a href="/shop/"><span>Meals</span></a>
-      <a href="/shop/order"><div>Order</div></a>
-      <a href="/pages/shipping-instructions"><div>Shipping</div></a>
+    <div class='mobile-nav' aria-hidden="true">
+      {% include "components/nav.twig" %}
       {% if currentUser %}
         <a href="/account"><div>Account</div></a>
       {% else %}

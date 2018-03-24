@@ -25,23 +25,28 @@ header {
   & nav {
     display: flex;
     align-items: center;
-    margin-left: 40px;
+    padding: 0 30px;
     height: 100%;
 
     @media (--large-max) {
       display: none;
     }
 
-    & a , & button{
+    & a , & button, & .dropdown button {
       text-transform: uppercase;
       color: var(--green);
       line-height: 1em;
       height: 100%;
       display: flex;
       align-items: center;
-      font-size: 16px;
-      padding: 0 20px;
+      font-size: 15px;
+      padding: 0 15px;
       border-radius: 0;
+
+      @media (--desktop-min) {
+        padding: 0 20px;
+        font-size: 16px;
+      }
 
       &:hover {
         background-color: var(--green);
@@ -54,6 +59,35 @@ header {
 
       &[href="/"] span {
         text-indent: -9999px;
+      }
+
+    }
+
+    & .dropdown {
+      position: relative;
+
+      &:hover .nav-expand {
+        left: 0;
+      }
+
+    }
+
+    & .nav-expand {
+      position: absolute;
+      top: 60px;
+      left: -10000px;
+      background-color: var(--green);
+
+      & a {
+        border-top: 1px solid var(--white);
+        padding: 20px;
+        white-space: nowrap;
+        color: var(--white);
+
+        &:first-of-type {
+          border-top: 0;
+        }
+
       }
 
     }
@@ -423,34 +457,7 @@ header {
     display: none;
   }
 
-  & button {
-    height: 40px;
-    display: block;
-    width: 100%;
-    padding-left: 30px;
-    text-transform: uppercase;
-    color: var(--black);
-    text-align: left;
-    font-size: 12px;
-    letter-spacing: 1px;
-    position: relative;
-    border-bottom: 1px solid var(--mid-gray);
-
-    &:before, &:after {
-      content: "";
-      position: absolute;
-      top: 0;
-      height: 14px;
-      width: 2px;
-      top: 50%;
-      margin-top: -7px;
-      left: 20px;
-      background-color: var(--black);
-    }
-
-  }
-
-  & a {
+  & .mobile-nav > a, & .dropdown button {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -459,20 +466,57 @@ header {
     height: 60px;
     color: var(--black);
     font-size: 16px;
-    padding-left: 20px;
+    padding: 0 20px;
     border-top: 1px solid var(--green);
+    position: relative;
+    width: 100%;
   }
 
-  & .mobile-nav > div {
+  & .dropdown span {
+    position: relative;
+  }
+
+  & .dropdown span:after {
+    content: "";
+    position: absolute;
+    right: -20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 6px solid var(--green);
+    border-left: 7px solid transparent;
+    border-right: 7px solid transparent;
+
+  }
+
+  & .nav-expand {
+    height: 0;
     overflow: hidden;
 
-    & a {
-      width: 50%;
-      float: left;
+    & > div {
+      margin-top: -20px;
     }
 
-    & a:last-of-type {
-      border-left: 1px solid var(--mid-gray);
+    & a {
+      display: block;
+      padding: 20px 30px;
+      position: relative;
+
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 30px;
+        right: 30px;
+        background-color: var(--green);
+        height: 1px;
+      }
+
+      &:last-of-type:after {
+        display: none;
+      }
+
     }
 
   }

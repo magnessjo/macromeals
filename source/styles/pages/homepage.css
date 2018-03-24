@@ -3,7 +3,6 @@
 
 #stage {
   position: relative;
-  margin-bottom: 0;
   width: 100%;
 
   @media (--tablet-min) {
