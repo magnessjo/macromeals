@@ -83,26 +83,22 @@
 
     </section>
 
-    <section class="meals-by-category">
-
-      {% set seasonalCategory = craft.categories.group('mealType').slug('seasonal').first() %}
+    <section id="calculator" class="callout">
 
       <div class="lock">
 
-        <div class="meal-group">
-          <div class="loader"></div>
+        <h1 class="headline-with-underline">Macro Calculator</h1>
 
-          <div class="meal-list">
+        <div class="columns">
 
-            <div class="featured">
-              <h2 class="headline-with-underline">New Meals</h2>
-            </div>
-            <div class="entries">
-              <div class="entries-group">
-                <a href="/shop" class="call-to-action">See all Meals</a>
-              </div>
-            </div>
+          <div class="image">
+            <img src="/images/homepage/happy-scale.jpg" alt="image of a excited person on a scale" />
+          </div>
 
+          <div class="text">
+            <p>It's important to understand how nutrients affect your body, but it's just as important to understand the correct balance of nutrients for your body and goals.  A well balanced diet will lead to immediate health improvements, but calculating your nutrient intake will lead to improvements in body composition, strength, and endurance.</p>
+            <p>Our calculator provides an estimated calories range using the Mifflin formula and then estimates your macronutrient percentages based on activity level and goals.</p>
+            <a href="/pages/calculator" class="call-to-action">Get an estimate</a>
           </div>
 
         </div>
@@ -134,7 +130,35 @@
 
     </section>
 
-    <section id="help" class="callout">
+    <section class="meals-by-category">
+
+      {% set seasonalCategory = craft.categories.group('mealType').slug('seasonal').first() %}
+
+      <div class="lock">
+
+        <div class="meal-group">
+          <div class="loader"></div>
+
+          <div class="meal-list">
+
+            <div class="featured">
+              <h2 class="headline-with-underline">New Meals</h2>
+            </div>
+            <div class="entries">
+              <div class="entries-group">
+                <a href="/shop" class="call-to-action">See all Meals</a>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+    {# <section id="help" class="callout">
 
       <div class="lock">
 
@@ -160,7 +184,7 @@
 
       </div>
 
-    </section>
+    </section> #}
 
   </div>
 
