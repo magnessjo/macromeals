@@ -141,6 +141,42 @@ function validateForm() {
 
 }
 
+// Scope Goals
+
+function goalLevel(type) {
+
+  if (type == 'lose') {
+
+    return {
+      protein: .50,
+      carbs: .20,
+      fat: .30,
+    }
+
+  }
+
+  if (type == 'gain') {
+
+    return {
+      protein: .45,
+      carbs: .45,
+      fat: .10,
+    }
+
+  }
+
+  if (type == 'maintain') {
+
+    return {
+      protein: .35,
+      carbs: .35,
+      fat: .30,
+    }
+
+  }
+
+}
+
 // Scope Activity Level
 
 function activityLevel(type) {
@@ -166,62 +202,20 @@ function activityLevel(type) {
 
 }
 
-// Scope Goals
+// Calorie Multiplier
 
-function goalLevel(type, activity) {
+function caloriesGoal(calories, type) {
 
-  if (type == 'lose') {
-    let protein = .50;
-    let carbs = .20;
-    let fat = .30;
-
-    if (activity == 'sedentary') { carbs = .10; fat = .40; }
-    if (activity == 'light') { carbs = .15; fat = .35; }
-    if (activity == 'very') { carbs = .25; fat = .25; }
-    if (activity == 'competitive') { carbs = .30; fat = .20; }
-
-    return {
-      protein: protein,
-      carbs: carbs,
-      fat: fat,
-    }
-
-  }
-
-  if (type == 'gain') {
-    let protein = .45;
-    let carbs = .45;
-    let fat = .10;
-
-    if (activity == 'sedentary') { protein = .70; carbs = .15; fat = .15; }
-    if (activity == 'light') { protein = .60; carbs = .20; fat = .20; }
-    if (activity == 'very') { protein = .45; carbs = .55; fat = .10; }
-    if (activity == 'competitive') { protein = .40; carbs = .50; fat = .10; }
-
-    return {
-      protein: protein,
-      carbs: carbs,
-      fat: fat,
-    }
-
-  }
-
-  if (type == 'maintain') {
-    let protein = .35;
-    let carbs = .35;
-    let fat = .30;
-
-    if (activity == 'sedentary') { protein = .30; carbs = .39; fat = .32; }
-    if (activity == 'light') { protein = .30; carbs = .38; fat = .32; }
-    if (activity == 'very') { protein = .40; carbs = .40; fat = .20; }
-    if (activity == 'competitive') { protein = .40; carbs = .45; fat = .15; }
-
-    return {
-      protein: protein,
-      carbs: carbs,
-      fat: fat,
-    }
-
+  switch(type) {
+      case 'lose':
+        return parseFloat(calories - 500);
+        break;
+      case 'gain':
+        return parseFloat(calories + 250);
+        break;
+      case 'maintain':
+        return calories;
+        break;
   }
 
 }
@@ -315,11 +309,12 @@ export default function() {
       const inchValue = parseInt(heightInputs[1].value);
       const convertedHeightValue = (( feetValue * 12) + inchValue) * 2.54;
       const activityMultiplier = activityLevel(selectedExercise);
-      const macroMultiplier = goalLevel(selectedGoal, selectedExercise);
+      const macroMultiplier = goalLevel(selectedGoal);
       let BMR = ( (10 * convertedWeightValue) + (6.25 * convertedHeightValue) ) - (5 * ageValue);
       BMR = selectedRadio.value == 'male' ? BMR + 5 : BMR - 161;
+      const caloriteMultipler = Math.floor(BMR * activityMultiplier);
+      const calorieIntake = caloriesGoal(caloriteMultipler, selectedGoal);
 
-      const calorieIntake = Math.floor(BMR * activityMultiplier);
       const proteinCalories = calorieIntake * macroMultiplier.protein;
       const carbCalories = calorieIntake * macroMultiplier.carbs;
       const fatCalories = calorieIntake * macroMultiplier.fat;
@@ -329,8 +324,8 @@ export default function() {
       const fatGrams = Math.floor(fatCalories / 9);
 
       caloriesContainer.innerHTML = `${calorieIntake}`;
-      carbsContainer.innerHTML = `${proteinGrams}g`;
-      proteinContainer.innerHTML = `${carbGrams}g`;
+      carbsContainer.innerHTML = `${carbGrams}g`;
+      proteinContainer.innerHTML = `${proteinGrams}g`;
       fatContainer.innerHTML = `${fatGrams}g`;
 
       pieChartContainer.innerHTML = '';
@@ -339,9 +334,6 @@ export default function() {
       canvas.setAttribute('height', 200);
       canvas.setAttribute('data-pie', `${macroMultiplier.protein * 100}%,${macroMultiplier.carbs * 100}%,${macroMultiplier.fat * 100}%`);
       pieChartContainer.appendChild(canvas);
-
-
-      // pieChartContainer.setAttribute('data-pie', `${macroMultiplier.protein * 100}%,${macroMultiplier.carbs * 100}%,${macroMultiplier.fat * 100}%`)
 
       pieChart();
       scrollToLocation(resultContainer, 80);
