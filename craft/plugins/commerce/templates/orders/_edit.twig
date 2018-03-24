@@ -152,7 +152,7 @@
 					{ label: "Tax (Included)", value: lineItem.taxIncluded|currency(order.currency) },
 					{ label: "Shipping Cost", value: lineItem.shippingCost|currency(order.currency) },
 					{ label: "Discount", value: lineItem.discount|currency(order.currency) },
-					{ label: "Total", value: lineItem.subtotal|currency(order.currency) },
+					{ label: "Total", value: lineItem.total|currency(order.currency) },
 				] %}
 
 				<tr class="infoRow" data-id="{{lineItem.id}}" data-info="{{ info|json_encode }}">
