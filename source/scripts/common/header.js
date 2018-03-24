@@ -4,37 +4,6 @@
 const header = document.querySelector('header');
 const mobileMenu = header.querySelector('#menu');
 
-// Add Overlay from Selection
-
-function addOverlay() {
-
-  const nav = header.querySelector('nav');
-  const buttons = Array.from(nav.querySelectorAll('button'));
-
-  buttons.forEach((button) => {
-
-    button.addEventListener('click', () => {
-
-      const parent = button.parentNode;
-      const overlay = parent.querySelector('.options');
-      const isHidden = overlay.getAttribute('aria-hidden');
-
-      if (isHidden == 'true') {
-        overlay.setAttribute('aria-hidden', 'false');
-        parent.setAttribute('showing', 'true');
-        overlay.style.visibility = 'visible';
-      } else {
-        overlay.setAttribute('aria-hidden', 'true');
-        parent.setAttribute('showing', 'false');
-        setTimeout(() => { overlay.style.visibility = 'hidden' }, 1000);
-      }
-
-    });
-
-  });
-
-}
-
 // Mobile Expand
 
 function mobileExpand() {
@@ -80,7 +49,7 @@ function mobileExpand() {
 
 export default function() {
 
-  addOverlay();
+  // addOverlay();
   mobileExpand();
 
 }

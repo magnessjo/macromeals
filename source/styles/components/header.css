@@ -32,7 +32,7 @@ header {
       display: none;
     }
 
-    & a , & button, & .dropdown button {
+    & a , & button, & .dropdown {
       text-transform: uppercase;
       color: var(--green);
       line-height: 1em;
@@ -61,6 +61,12 @@ header {
         text-indent: -9999px;
       }
 
+    }
+
+    & .dropdown button {
+      padding: 0;
+      background-color: inherit;
+      color: inherit;
     }
 
     & .dropdown {
