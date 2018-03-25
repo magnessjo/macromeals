@@ -338,6 +338,13 @@ export default function() {
       pieChart();
       scrollToLocation(resultContainer, 80);
 
+      ga('send', {
+        hitType: 'event',
+        eventCategory: 'Calculator',
+        eventAction: 'Submit',
+        eventLabel: 'Get a macro estimate'
+      });
+
       if (!firstIteration) {
         submitButton.value = 'change';
         firstIteration = true;
