@@ -1,0 +1,256 @@
+
+{% extends "_layout" %}
+{% includeCssFile "/calculatorStyle.css" %}
+{% includeJsFile "/calculator.js" %}
+
+{% block main %}
+
+  <section id="stage" class="slim-stage">
+    <div class="image"></div>
+    <div class="lock">
+      <h1><div>Macro Calculator</div></h1>
+    </div>
+  </section>
+
+  <section id="calculator">
+
+    <div class="lock">
+
+      {# <h1>Learn your macronutrient ratio</h1> #}
+      <p>Calorie calculators are only an estimate. A nutritionist or dietician can give you a more accurate calculation of your BMR (Basal Metabolic Rate) based upon your specific body fat content. They can also recommend the best macro ratio for your activity level and fitness goal. </p>
+      <p>A great starting point is with generalized information that can get you very close to your ideal calorie range and macro ratio. More exact numbers can be calculated but most ways are cumbersome and costly. These estimations are perfectly sound for those that are starting a health journey and need a helping hand. </p>
+      <p>Please email us directly at mailto:info@macromeals.life if you have your body fat percentage or if you would like more help getting your body fat percentage, or nutrient ratios.</p>
+      <p>We are using Mifflin equation to determine your BMR without your body fat percentage.</p>
+      {# <p>Calculators for any type of body metric are only an estimate.  A nutritionist or personal trainer can give you a more accurate estimation of your BMR (Basal Metabolic Rate) and best macro ratio for your activity level and goal after getting your body fat percentage.  Please email us directly at <a href="mailto:info@macromeals.life">info@macromeals.life</a> if you have your body fat percentage or if you would like help getting your body fat percentage.</p>
+      <p>We are using Mifflin equation to determine your BMR without your body fat percentage.</p> #}
+
+      <form id="macro-calculator">
+
+        <div class="details">
+
+          <div class="fieldset" data-field="gender">
+
+            <div class="wrapper">
+              <div>
+                <h2>Gender</h2>
+                <p>Your gender determines the formula that is used.  Generalizations for metabolism and testosterone levels are some of the factors lead to inaccuracy with BMR formulas.</p>
+              </div>
+              <div>
+                <label>
+                  <input type="radio" name="gender" value="female" />
+                  <span>Female</span>
+                </label>
+                <label>
+                  <input type="radio" name="gender" value="male" />
+                  <span>Male</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="error">
+              <p>Error: </p>
+              <p>A gender must be selected</p>
+            </div>
+
+          </div>
+
+          <div class="fieldset" data-field="age">
+
+            <div class="wrapper">
+              <div>
+                <h2>Age</h2>
+                <p>Your metabolism decreases with age so a person requires less calories per day as a result.</p>
+              </div>
+              <div>
+                <div>
+                  <label>Age</label>
+                  <input type="text" name="age" placeholder="40" value="" />
+                </div>
+              </div>
+            </div>
+
+            <div class="error">
+              <p>Error: </p>
+              <p>Age is required and must be only numbers</p>
+            </div>
+
+          </div>
+
+          <div class="fieldset" data-field="height">
+
+            <div class="wrapper">
+              <div>
+                <h2>Height</h2>
+                <p>Height is one of the body metrics used by the formula to calculate your calorie intake.</p>
+              </div>
+              <div>
+                <div class="field">
+                  <label>Feet</label>
+                  <input type="text" name="feet" placeholder="5" value="" />
+                </div>
+                <div class="field">
+                  <label>Inches</label>
+                  <input type="text" name="inches" placeholder="1" value="" />
+                </div>
+              </div>
+            </div>
+
+            <div class="error">
+              <p>Error: </p>
+              <p>Feet and Inches are required</p>
+            </div>
+
+          </div>
+
+          <div class="fieldset" data-field="weight">
+
+            <div class="wrapper">
+              <div>
+                <h2>Weight</h2>
+                <p>Weight is one of the body metrics used by the formula to calculate your calorie intake.</p>
+              </div>
+              <div>
+                <div>
+                  <label>Weight</label>
+                  <input type="text" name="weight" placeholder="" value="" />
+                </div>
+              </div>
+            </div>
+
+            <div class="error">
+              <p>Error: </p>
+              <p>Weight is required</p>
+            </div>
+
+          </div>
+
+          <div class="fieldset block-buttons" data-field="goal">
+            <h2>Primary Goal</h2>
+            <p>The macro amounts are determined by goal and activity level.  A balanced diet of macronutrients is 35% carbohydrates, 35% protein, and 30% fat.  Research has shown that modifying the macro ratio for higher carbohydrates and protein will help an individual lose weight.  The change in percentage for protein and carbs is determined by your exercise amount.  For example, someone trying to lose weight with a sedentary lifestyle should favor healthy fats (avocado, nuts, etc) over carbohydrates.</p>
+            <p>The macronutrients ratios (before exercise activity) are:</p>
+            <ul>
+              <li>
+                <span class="instructions"></span>
+                <span class="carbs">Carbs</span>
+                <span class="protein">Protein</span>
+                <span class="fat">Fat</span>
+              </li>
+              <li>
+                <span class="instructions">Weight Lost:</span>
+                <span class="carbs">30%</span>
+                <span class="protein">50%</span>
+                <span class="fat">20%</span>
+              </li>
+              <li>
+                <span class="instructions">Gain Muscle:</span>
+                <span class="carbs">45%</span>
+                <span class="protein">45%</span>
+                <span class="fat">10%</span>
+              </li>
+              <li>
+                <span class="instructions">Maintain:</span>
+                <span class="carbs">35%</span>
+                <span class="protein">35%</span>
+                <span class="fat">30%</span>
+              </li>
+            </ul>
+            <div>
+              <div>
+                <button data-type="lose">Lose Weight</button>
+              </div>
+              <div>
+                <button data-type="gain">Gain Weight/Muscle Mass</button>
+              </div>
+              <div>
+                <button data-type="maintain">Maintain</button>
+              </div>
+            </div>
+
+            <div class="error">
+              <p>Error: </p>
+              <p>An goal selection is required</p>
+            </div>
+
+          </div>
+
+          <div class="fieldset block-buttons" data-field="exercise">
+            <h2>Exercise</h2>
+            <p>Your exercise activity level provides a multiplier that is used in conjunction with the BMR to give you the total calories range that your body which try to intake per day.</p>
+            <div>
+              <div>
+                <button data-type="sedentary">Sedentary <span>Very little exercise</span></button>
+              </div>
+              <div>
+                <button data-type="light">Light Activity <span>1-3 workouts a week</span></button>
+              </div>
+              <div>
+                <button data-type="moderate">Moderate Activity <span>4-5 workouts a week</span></button>
+              </div>
+              <div>
+                <button data-type="very">Very Active <span>5+ workouts a week</span></button>
+              </div>
+              <div>
+                <button data-type="competitive">Competitive Training <span></span></button>
+              </div>
+            </div>
+
+            <div class="error">
+              <p>Error: </p>
+              <p>An exercise selection is required</p>
+            </div>
+
+          </div>
+
+          <input type="submit" value="calculate">
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </section>
+
+  <section id="results">
+
+    <div class="lock">
+
+      <h1>Your Estimates</h1>
+
+      <div class="totals">
+
+        <div>
+
+          <div class="data" data-type="calories">
+            <h2>Calories</h2>
+            <span></span>
+          </div>
+
+          <div class="data" data-type="carbs">
+            <h2>Carbohydrates</h2>
+            <span></span>
+          </div>
+
+          <div class="data" data-type="protein">
+            <h2>Protein</h2>
+            <span></span>
+          </div>
+
+          <div class="data" data-type="fat">
+            <h2>Fat</h2>
+            <span></span>
+          </div>
+
+        </div>
+
+        <div class="pie-chart">
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+{% endblock %}

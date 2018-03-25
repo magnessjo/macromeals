@@ -5,7 +5,7 @@ import chartJs from 'chart.js';
 
 // Variables
 
-const pies = Array.from(document.querySelectorAll('[data-pie]'));
+let pies;
 
 // Set Text
 
@@ -155,6 +155,7 @@ function create(element) {
 
 export default function() {
 
+  pies = Array.from(document.querySelectorAll('[data-pie]'));
   pies.forEach((chart) => { create(chart) });
 
 }

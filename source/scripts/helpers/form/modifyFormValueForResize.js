@@ -39,8 +39,6 @@ export default function () {
     value = button.value;
     data = button.getAttribute('data-button');
 
-    console.log(text);
-
     window.addEventListener('resize', modifyValue);
     modifyValue();
 

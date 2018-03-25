@@ -9,7 +9,7 @@
     padding: 0 30px;
   }
 
-  @media (--tablet-min) {
+  @media (--desktop-min) {
     padding: 0 40px;
   }
 

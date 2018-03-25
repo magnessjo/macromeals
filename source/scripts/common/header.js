@@ -2,33 +2,54 @@
 // Variables
 
 const header = document.querySelector('header');
-const nav = header.querySelector('nav');
-const buttons = Array.from(nav.querySelectorAll('button'));
+const mobileMenu = header.querySelector('#menu');
 
-// Export
+// Mobile Expand
 
-export default function() {
+function mobileExpand() {
 
-  buttons.forEach((button) => {
+  const mobileNavContainer = header.querySelector('.mobile-nav');
+  const dropdowns = Array.from(mobileNavContainer.querySelectorAll('.dropdown'));
 
-    button.addEventListener('click', () => {
+  dropdowns.forEach( (item) => {
 
-      const parent = button.parentNode;
-      const overlay = parent.querySelector('.options');
-      const isHidden = overlay.getAttribute('aria-hidden');
+    item.addEventListener('click', () => {
 
-      if (isHidden == 'true') {
-        overlay.setAttribute('aria-hidden', 'false');
-        parent.setAttribute('showing', 'true');
-        overlay.style.visibility = 'visible';
+      const isShowing = item.getAttribute('data-showing');
+      const linksContainer = item.querySelector('.nav-expand');
+      const linksWrapper = linksContainer.querySelector('div');
+      const linkOffset = linksWrapper.offsetHeight - 20;
+
+      if (isShowing == 'false') {
+
+        linksContainer.style.height = `${linkOffset}px`;
+        linksContainer.style.transition = 'height 1s';
+
+        mobileMenu.style.height = `${mobileNavContainer.offsetHeight + linkOffset}px`;
+        mobileMenu.style.height = 'height 1s';
+        item.setAttribute('data-showing', true);
+
       } else {
-        overlay.setAttribute('aria-hidden', 'true');
-        parent.setAttribute('showing', 'false');
-        setTimeout(() => { overlay.style.visibility = 'hidden' }, 1000);
+        linksContainer.style.height = 0;
+        linksContainer.style.transition = 'height 1s';
+
+        mobileMenu.style.height = `${mobileNavContainer.offsetHeight - linkOffset}px`;
+        mobileMenu.style.height = 'height .5s';
+        item.setAttribute('data-showing', false);
+
       }
 
     });
 
   });
+
+}
+
+// Export
+
+export default function() {
+
+  // addOverlay();
+  mobileExpand();
 
 }

@@ -1,0 +1,430 @@
+
+@import "../master.css";
+
+.slim-stage .image {
+  background-image: url(/images/stage/calculator.jpg);
+}
+
+#calculator, #results {
+  max-width: 1000px;
+  margin: 0 auto;
+
+  & h1 {
+    font-family: var(--acuminExtraLight);
+    font-size: 24px;
+    font-size: calc(22px + .5vw);
+    text-transform: uppercase;
+    margin-bottom: 10px;
+  }
+
+  & h2 {
+    font-family: var(--parklane);
+    font-size: 22px;
+    text-transform: uppercase;
+  }
+
+}
+
+#calculator {
+
+  & .lock > p {
+    max-width: 800px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+  }
+
+  & .fieldset {
+    margin-bottom: 50px;
+    padding-bottom: 50px;
+    position: relative;
+    border: none;
+
+    &:last-of-type {
+      padding-bottom: 0;
+
+      &:after {
+        display: none;
+      }
+
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      background-color: var(--green);
+    }
+
+    & .wrapper {
+
+      @media (--tablet-min) {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      & > * {
+
+        @media (--tablet-min) {
+          width: 45%;
+        }
+
+        &:first-of-type {
+
+          @media (--large-max) {
+            margin-bottom: 20px;
+          }
+
+        }
+
+      }
+
+    }
+
+    & p {
+      margin-bottom: 0;
+      font-size: 14px;
+    }
+
+  }
+
+  & form {
+    padding: 80px 0;
+  }
+
+  & input[type="text"] {
+    margin-bottom: 0;
+  }
+
+  & [data-error="true"] .error {
+    display: block;
+  }
+
+  & .error {
+    padding-top: 20px;
+    display: none;
+
+    @media (--tablet-min) {
+      text-align: center;
+    }
+
+    & p {
+      font-size: 18px;
+      text-transform: capitalize;
+
+      @media (--large-min) {
+        display: inline-block;
+      }
+
+    }
+
+    & p:first-of-type {
+      text-transform: uppercase;
+      color: var(--red);
+    }
+
+  }
+
+  & [data-field="gender"] .wrapper {
+
+    & > div:last-of-type  {
+      display: flex;
+
+      & label {
+        width: auto;
+      }
+
+      & label:last-of-type {
+        margin-left: 30px;
+      }
+
+    }
+
+  }
+
+  & [data-field="age"] .wrapper,
+  & [data-field="weight"] .wrapper {
+
+    & > div:last-of-type {
+      display: flex;
+
+      & > div {
+        width: 100px;
+      }
+
+    }
+
+    & label {
+      width: auto;
+    }
+
+  }
+
+  & [data-field="height"] {
+    overflow: hidden;
+
+    & .field {
+      width: 45%;
+      float: left;
+
+      &:last-of-type {
+        margin-left: 10%;
+      }
+
+    }
+
+  }
+
+  & [data-field="goal"] {
+
+    & p:last-of-type {
+      margin-bottom: 10px;
+    }
+
+    & ul {
+      padding-left: 0;
+      margin-bottom: 30px;
+    }
+
+    & li {
+      font-size: 14px;
+      display: flex;
+
+      & span {
+        text-align: center;
+      }
+
+      & .instructions {
+        width: 100px;
+        text-align: left;
+      }
+
+      & .carbs {
+        width: 60px;
+      }
+
+      & .protein {
+        width: 60px;
+      }
+
+      & .fat {
+        width: 60px;
+      }
+
+    }
+
+  }
+
+  & .block-buttons {
+    display: block;
+
+    & > * {
+      width: 100%;
+    }
+
+    & > div:not(.error) {
+      flex-wrap: wrap;
+
+      @media (--tablet-min) {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      @supports (display: grid) {
+        display: grid;
+        grid-template-columns: 1fr;
+        padding: 0;
+
+        @media (--large-min) {
+          grid-template-columns: 1fr 1fr;
+          grid-gap: 20px;
+        }
+
+        @media (--desktop-min) {
+          grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        @supports(display: -ms-grid) {
+          display: flex;
+        }
+
+      }
+
+      & > div {
+
+        @media (--large-max) {
+          margin-bottom: 20px;
+        }
+
+        @media (--tablet-min) {
+          width: 30%;
+        }
+
+        @supports (display: grid) {
+          width: 100%;
+        }
+
+        @supports(display: -ms-grid) {
+          @media (--tablet-min) {
+            width: 30%;
+          }
+        }
+
+        &:last-of-type {
+
+          @media (--large-max) {
+            margin-bottom: 0;
+          }
+
+        }
+
+      }
+
+    }
+
+    & p {
+      margin-bottom: 30px;
+    }
+
+    & button {
+      border: 1px solid var(--green);
+      display: block;
+      width: 100%;
+      text-align: center;
+      padding: 10px;
+      line-height: 1em;
+      text-transform: uppercase;
+      min-height: 44px;
+      font-family: var(--acuminSemiBold);
+      font-size: 14px;
+
+      &:hover {
+        background-color: var(--green);
+        color: var(--white);
+      }
+
+      &[data-active="true"] {
+        background-color: var(--green);
+        color: var(--white);
+      }
+
+      & span {
+        display: block;
+        font-size: 12px;
+        text-align: center;
+        font-family: var(--acuminRegular);
+        text-transform: none;
+      }
+
+    }
+
+  }
+
+}
+
+#results {
+  margin-bottom: 80px;
+  height: 0;
+
+  & h1 {
+    margin-bottom: 40px;
+  }
+
+  & .totals {
+
+    @media (--tablet-min) {
+      display: flex;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    &:before {
+
+      @media (--tablet-min) {
+        content: "";
+        width: 1px;
+        top: 0;
+        bottom: 0;
+        position: absolute;
+        left: 50%;
+        background-color: var(--green);
+      }
+
+    }
+
+    & > div {
+
+      @media (--tablet-min) {
+        width: 45%;
+      }
+
+    }
+
+  }
+
+  & .data {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    & > * {
+      width: 47%;
+    }
+
+    & h2 {
+      text-align: right;
+      align-self: center;
+      padding-top: 10px;
+    }
+
+    & span {
+      font-family: var(--acuminBold);
+      font-size: 30px;
+      line-height: 1em;
+    }
+
+  }
+
+  & canvas {
+    max-width: 200px;
+    max-height: 200px;
+    display: block;
+    margin: 0 auto;
+  }
+
+  & [data-type="carbs"] {
+
+    & h2, & span {
+      color: var(--green);
+    }
+
+  }
+
+  & [data-type="protein"] {
+
+    & h2, & span {
+      color: var(--auburn);
+    }
+
+  }
+
+  & [data-type="fat"] {
+
+    & h2, & span {
+      color: var(--blue);
+    }
+
+  }
+
+}

@@ -1,0 +1,128 @@
+
+{% extends "_layout" %}
+{% includeCssFile "/whyStyle.css" %}
+{% includeJsFile "/why.js" %}
+
+{% block main %}
+
+  <section id="stage" class="slim-stage">
+    <div class="image"></div>
+    <div class="lock">
+      <h1><div>Prepared Meals</div></h1>
+    </div>
+  </section>
+
+  <section id="service-types">
+
+    <div class="lock">
+
+      <h1 class="headline-with-underline">About the industry</h1>
+
+      <h2>There are three categories of food delivery companies: <span>Prepared Meals, Meal Kit, and Frozen Meals.</span></h2>
+
+      <div class="types">
+
+        <div>
+
+          <div class="wrapper">
+
+            <div class="images">
+              <h3>Prepared Meals</h3>
+              <div>
+                <img src="/images/why/competitors/bitemeals.png" />
+                <img src="/images/why/competitors/territory.png" />
+                <img src="/images/why/competitors/factor.png" />
+              </div>
+            </div>
+
+            <div class="text">
+              <p>This type of service delivers freshly prepared meals that can heated in microwave or oven for convenience.</p>
+              <p>These types of plans offer a user nutritious meals that can heated quickly for busy individuals looking for health options.</p>
+              <p>Some drawbacks of this service are:</p>
+              <div>
+                <h4>Cost of shipping</h4>
+                <p>Most of these companies are region based due to the overnight shipping requirement of freshly cooked meals.</p>
+                <h4>Dryness</h4>
+                <p>The microwave will dry out food in general unless they are cooked fresh and slow cooked.</p>
+                <h4>Inconsistency</h4>
+                <p>All restaurants and food delivery companies have a tendency to produce inconsistent food due to the menu size and not enough quality checking.</p>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div>
+
+          <div class="wrapper">
+
+            <div class="images">
+              <h3>Meal Kits</h3>
+
+              <div>
+                <img src="/images/why/competitors/platted.svg" />
+                <img src="/images/why/competitors/hellofresh.svg" />
+                <img src="/images/why/competitors/blue-apron.png" />
+              </div>
+
+            </div>
+
+            <div class="text">
+              <p>This type of service deliver fresh ingredients with chef selected recipes with a weekly subscription.</p>
+              <p>These types of plans offer a user a convenient way to get a variety of meals each week at a cost slightly above a grocery store.</p>
+              <p>Some drawbacks of this service are:</p>
+              <div>
+                <h4>Time</h4>
+                <p>Meals can take between an hour to two to cook (don't believe their packaging).</p>
+                <h4>Forced Selection</h4>
+                <p>Companies require you to modify your order a week or longer in advance of shipping in order to skip meals.</p>
+                <h4>Taste over Nutrition</h4>
+                <p>Meals are generally loaded with fat and have more oils than protein grams.</p>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+        <div>
+
+          <div class="wrapper">
+
+            <div class="images">
+              <h3>Frozen Meals</h3>
+
+              <div>
+                <img src="/images/why/competitors/wegmans.svg" />
+                <img src="/images/why/competitors/schwans.svg" />
+                <img src="/images/why/competitors/top-chef.png" />
+              </div>
+
+            </div>
+
+            <div class="text">
+              <p>This type of service is generally a pickup at the local grocery store, but could also be a delivery.</p>
+              <p>These types of plans offer a cheap and convenient food option.</p>
+              <p>Some drawbacks of this service are:</p>
+              <div>
+                <h4>Preservatives</h4>
+                <p>Frozen food often comes with preservatives to keep the ingredients biologically enhanced for freshness.</p>
+                <h4>Taste</h4>
+                <p>Frozen food tastes awful.  It is generally masked with cheese, sauce, cream, or ketchup to make it taste better.</p>
+                <h4>Nutrition</h4>
+                <p>Frozen food can lose nutrition density when frozen.</p>
+              </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+{% endblock %}

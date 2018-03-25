@@ -12,13 +12,18 @@ import loginUser from './loginUserForm.js';
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/serviceWorker.js').then( (reg) => {
-      console.log('Registration succeeded. Scope is ' + reg.scope);
-    }).catch( (error) => {
-      console.log('Registration failed with ' + error);
-    });
-  }
+  // if ('serviceWorker' in navigator) {
+  //   navigator.serviceWorker.register('/serviceWorker.js').then( (reg) => {
+  //     console.log('Registration succeeded. Scope is ' + reg.scope);
+  //   }).catch( (error) => {
+  //     console.log('Registration failed with ' + error);
+  //   });
+  // }
+
+  navigator.serviceWorker.getRegistrations().then(function(registrations) {
+   for(let registration of registrations) {
+    registration.unregister()
+  } })
 
   header();
   menu();

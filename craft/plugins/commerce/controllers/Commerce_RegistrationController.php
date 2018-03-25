@@ -31,15 +31,6 @@ class Commerce_RegistrationController extends Commerce_BaseAdminController
         $this->_sendSuccessResponse();
     }
 
-    public function actionUnregister()
-    {
-        $this->requirePostRequest();
-        $this->requireAjaxRequest();
-
-        $etResponse = craft()->et->unregisterPlugin('Commerce');
-        $this->_handleEtResponse($etResponse);
-    }
-
     public function actionUpdateLicenseKey()
     {
         $this->requirePostRequest();
@@ -57,7 +48,7 @@ class Commerce_RegistrationController extends Commerce_BaseAdminController
             }
 
             // Register it with Elliott
-            $etResponse = craft()->et->registerPlugin('Commerce');
+            $etResponse = craft()->et->ping();
             $this->_handleEtResponse($etResponse);
         } else {
             // Just clear our record of the license key
@@ -65,15 +56,6 @@ class Commerce_RegistrationController extends Commerce_BaseAdminController
             craft()->plugins->setPluginLicenseKeyStatus('Commerce', LicenseKeyStatus::Unknown);
             $this->_sendSuccessResponse();
         }
-    }
-
-    public function actionTransfer()
-    {
-        $this->requirePostRequest();
-        $this->requireAjaxRequest();
-
-        $etResponse = craft()->et->transferPlugin('Commerce');
-        $this->_handleEtResponse($etResponse);
     }
 
     /**
