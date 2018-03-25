@@ -15,7 +15,7 @@ module.exports = env =>  {
       { from: 'fonts/**/*', to: '', context: 'source/assets/'},
       { from: 'images/**/*', to: '', context: 'source/assets/' },
       { from: 'uploads/**/*', to: '', context: 'source/assets/'},
-      { from: 'source/assets/craft/**/*', to: '', flatten: true },
+      { from: 'source/craft/**/*', to: '', flatten: true },
     ]),
     new ExtractTextPlugin( '[name].css' ),
   ]
