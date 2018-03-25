@@ -1,7 +1,0 @@
-{
-"version": 3,
-"mappings": "AAAA,gBAAiB;EACf,KAAK,EAAE,IAAI;EACX,eAAe,EAAE,QAAQ;EAGvB,yBAAG;IACD,OAAO,EAAE,KAAK;IAEZ,UAAG,EAAE,kBAAkB;IACvB,aAAM,EAAE,kBAAkB;IAG5B,8BAAK;MACH,KAAK,EAAE,kBAAkB;MACzB,WAAW,EAAE,MAAM",
-"sources": ["upcoming-events.scss"],
-"names": [],
-"file": "upcoming-events.css"
-}
