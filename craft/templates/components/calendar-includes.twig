@@ -85,16 +85,16 @@
         <table>
           <thead>
             <tr class="list-month">
-              <th colspan="7">{{ month.date.format('F Y') }}</th>
+              <th colspan="7">{{ nextMonth.date.format('F Y') }}</th>
             </tr>
             <tr class="list-days">
-              {% for day in month|first %}
+              {% for day in nextMonth|first %}
                 <th>{{ day.date.format('D')|first }}</th>
               {% endfor %}
             </tr>
           </thead>
           <tbody>
-          {% for week in month %}
+          {% for week in nextMonth %}
             <tr>
               {% for day in week %}
 
@@ -103,12 +103,12 @@
                 {% for event in day.events %}
 
                   {% if event.title == location %}
-                     {% set availableDay = true %}
+                    {% set availableDay = true %}
 
                       {% if isExpectedDateSet == false %}
-                       {% if month.containsDate(day.date) %}
-                         {% set isExpectedDay = true %}
-                       {% endif %}
+                        {% if nextMonth.containsDate(day.date) %}
+                          {% set isExpectedDay = true %}
+                        {% endif %}
                       {% endif %}
 
                   {% endif %}
@@ -121,7 +121,7 @@
 
                 <td class="
 
-                    {% if month.containsDate(day.date) %}
+                    {% if nextMonth.containsDate(day.date) %}
                       {% if availableDay %}
                         delivery
                       {% endif %}
@@ -139,7 +139,7 @@
                   >
 
                   <div>
-                    {% if month.containsDate(day.date) %}
+                    {% if nextMonth.containsDate(day.date) %}
                       {{ day.date.format('j') }}
                     {% endif %}
                   </div>
