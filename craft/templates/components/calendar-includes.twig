@@ -3,27 +3,156 @@
 {% set month = craft.calendar.month({ date: "today" }) %}
 {% set nextMonth = craft.calendar.month({ date: month.nextDate }) %}
 
+{% set isExpectedDateSet = false %}
+{% set isExpectedDay = false %}
+{% set nowDate = "now"|date_modify("+0 day") %}
+
 <div class="calendar-wrapper" data-calendar="{{ location }}">
 
   <div class="calendars">
 
-    {% include "components/calendar-logic.twig" with {
-      'month' : month,
-      'today': true,
-      'expectedDate' : expectedDate,
-      'location' : location
-      }
-    %}
+    <div class="month-calendar">
+      <table>
+        <thead>
+          <tr class="list-month">
+            <th colspan="7">{{ month.date.format('F Y') }}</th>
+          </tr>
+          <tr class="list-days">
+            {% for day in month|first %}
+              <th>{{ day.date.format('D')|first }}</th>
+            {% endfor %}
+          </tr>
+        </thead>
+        <tbody>
+        {% for week in month %}
+          <tr>
+            {% for day in week %}
+
+              {% set availableDay = false %}
+
+              {% for event in day.events %}
+
+                 {% if event.title == location %}
+                    {% set availableDay = true %}
+
+                    {% if isExpectedDateSet == false %}
+                      {% if day.date.format('d') > expectedDate.format('d') and month.containsDate(day.date) %}
+                        {% set isExpectedDay = true %}
+                      {% endif %}
+                    {% endif %}
+
+                 {% endif %}
+
+              {% endfor %}
+
+              <td class="
+
+                  {{ day.date.isToday ? "today" }}
+
+                  {% if month.containsDate(day.date) %}
+                    {% if availableDay %}
+                      delivery
+                    {% endif %}
+                  {% endif %}
+
+                  {% if isExpectedDateSet == false and isExpectedDay %}
+                    expected-delivery-date
+                    {% set isExpectedDateSet = true %}
+                  {% endif %}
+
+                "
+                data-year="{{ day.date.year }}"
+                data-month="{{ day.date.month }}"
+                data-day="{{ day.date.day }}"
+                >
+
+                <div>
+                  {% if month.containsDate(day.date) %}
+                    {{ day.date.format('j') }}
+                  {% endif %}
+                </div>
+              </td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
 
     {% if nowDate.format('d') > 16 %}
-      {% include "components/calendar-logic.twig" with {
-        'month' : nextMonth,
-        'today': null,
-        'expectedDate' : expectedDate,
-        'location' : location
-        }
-      %}
+
+      <div class="month-calendar">
+        <table>
+          <thead>
+            <tr class="list-month">
+              <th colspan="7">{{ month.date.format('F Y') }}</th>
+            </tr>
+            <tr class="list-days">
+              {% for day in month|first %}
+                <th>{{ day.date.format('D')|first }}</th>
+              {% endfor %}
+            </tr>
+          </thead>
+          <tbody>
+          {% for week in month %}
+            <tr>
+              {% for day in week %}
+
+                {% set availableDay = false %}
+
+                {% for event in day.events %}
+
+                  {% if event.title == location %}
+                     {% set availableDay = true %}
+
+                      {% if isExpectedDateSet == false %}
+                       {% if month.containsDate(day.date) %}
+                         {% set isExpectedDay = true %}
+                       {% endif %}
+                      {% endif %}
+
+                  {% endif %}
+
+                  {% if event.title == location %}
+                    {% set availableDay = true %}
+                  {% endif %}
+
+                {% endfor %}
+
+                <td class="
+
+                    {% if month.containsDate(day.date) %}
+                      {% if availableDay %}
+                        delivery
+                      {% endif %}
+                    {% endif %}
+
+                    {% if isExpectedDateSet == false and isExpectedDay %}
+                      expected-delivery-date
+                      {% set isExpectedDateSet = true %}
+                    {% endif %}
+
+                  "
+                  data-year="{{ day.date.year }}"
+                  data-month="{{ day.date.month }}"
+                  data-day="{{ day.date.day }}"
+                  >
+
+                  <div>
+                    {% if month.containsDate(day.date) %}
+                      {{ day.date.format('j') }}
+                    {% endif %}
+                  </div>
+                </td>
+              {% endfor %}
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+
     {% endif %}
+
   </div>
 
   <div class="color-code">

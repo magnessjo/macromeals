@@ -25,6 +25,7 @@ function showCalendar(id, name) {
     if (attr == id) {
       const currentDateSelected = calendar.querySelector(`.expected-delivery-date`);
       calendar.style.display = 'flex';
+      console.log(currentDateSelected);
       setCalendarDateInput(currentDateSelected);
     } else {
       calendar.style.display = 'none';
