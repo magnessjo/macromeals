@@ -21,7 +21,8 @@
   "require": {
     "craftcms/cms": "^3.0.0-RC1",
     "vlucas/phpdotenv": "^2.4.0",
-    "craftcms/commerce": "dev-develop as 2.0.0-alpha.99"
+    "craftcms/commerce": "dev-develop as 2.0.0-alpha.99",
+    "macromeals/macromeals-commerce": "^1.0.0"
   },
   "autoload": {
     "psr-4": {
@@ -43,10 +44,16 @@
       "@php craft setup/welcome"
     ]
   },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
   "repositories": [
     {
       "type": "vcs",
       "url": "https://github.com/craftcms/commerce"
+    },
+    {
+      "type": "path",
+      "url": "~/Sites/plugins/macromeals-commerce"
     }
   ]
 }
