@@ -11,13 +11,9 @@ const groups = Array.from(document.querySelectorAll('.meal-group'));
 
 function createMeal(data, parent) {
 
-  console.log(data);
-
   return new Promise( (resolve, reject) => {
 
     data.forEach( (item, i) => {
-
-      console.log(item);
 
       const container = document.createElement('div');
       const link = document.createElement('a');
@@ -32,7 +28,6 @@ function createMeal(data, parent) {
 
       for (const protein in item.protein) {
         const obj = item.protein[protein];
-        console.log(obj);
         container.setAttribute(`data-${obj.slug}`, true);
       }
 
@@ -42,6 +37,8 @@ function createMeal(data, parent) {
       link.setAttribute('href', `/shop/details/${item.slug}`);
 
       // Add properties to link
+
+      console.log(item.image);
 
       if (item.image[0]) {
         image.setAttribute('src', `/uploads/products/${item.image[0].filename}`);
