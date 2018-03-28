@@ -100,7 +100,7 @@ function getMeals(categoryId, group, container, isLast) {
     postData += `id=${categoryId}`;
     url = '/productsByCategory';
   } else {
-    url = '/actions/macromeals-commerce/food/lastestProducts';
+    url = '/latestProducts';
   }
 
   fetchPostData(postData, url).then( (response) => {
