@@ -38,10 +38,8 @@ function createMeal(data, parent) {
 
       // Add properties to link
 
-      console.log(item.image);
-
       if (item.image[0]) {
-        image.setAttribute('src', `/uploads/products/${item.image[0].filename}`);
+        image.setAttribute('src', `${item.image}`);
       } else {
         image.setAttribute('src', `/images/products/placeholder-circle.png`);
       }
