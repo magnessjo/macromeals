@@ -18,6 +18,7 @@ return [
     'tokenParam' => 'craftToken',
     'siteUrl'  => 'https://www.macromeals.life/',
     'aliases' => [
+      '@siteUrl' => 'https://www.macromeals.life/',
       '@assetBaseUrl' => 'https://www.macromeals.life/',
       '@assetBasePath' => '/srv/http/macromeals/shared/uploads/',
       '@pluginPath' => '/srv/http/macromeals/craft/plugins',
@@ -29,6 +30,7 @@ return [
     'devMode' => true,
     'siteUrl'  => 'https://macrocommerce.localhost.dev/',
     'aliases' => [
+      '@siteUrl' => 'https://macrocommerce.localhost.dev/',
       '@assetBaseUrl' => 'https://macrocommerce.localhost.dev/',
       '@assetBasePath' => '/Users/magnessjo/Sites/personal/macrocommerce/source/assets/uploads',
       '@pluginPath' => '/Users/magnessjo/Sites/personal/macrocommerce/craft/plugins',

@@ -11,9 +11,13 @@ const groups = Array.from(document.querySelectorAll('.meal-group'));
 
 function createMeal(data, parent) {
 
+  console.log(data);
+
   return new Promise( (resolve, reject) => {
 
     data.forEach( (item, i) => {
+
+      console.log(item);
 
       const container = document.createElement('div');
       const link = document.createElement('a');
@@ -28,6 +32,7 @@ function createMeal(data, parent) {
 
       for (const protein in item.protein) {
         const obj = item.protein[protein];
+        console.log(obj);
         container.setAttribute(`data-${obj.slug}`, true);
       }
 
@@ -98,9 +103,9 @@ function getMeals(categoryId, group, container, isLast) {
 
   if (categoryId != null) {
     postData += `id=${categoryId}`;
-    url = '/actions/MacroCommerce/Food/productByCategory';
+    url = '/productsByCategory';
   } else {
-    url = '/actions/MacroCommerce/Food/lastestProducts';
+    url = '/actions/macromeals-commerce/food/lastestProducts';
   }
 
   fetchPostData(postData, url).then( (response) => {

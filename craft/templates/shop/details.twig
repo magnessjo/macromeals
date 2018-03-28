@@ -3,11 +3,11 @@
 {% includeCssFile "/shopdetailsStyle.css" %}
 {% includeJsFile "/shopdetails.js" %}
 
-{% do craft.sproutSeo.meta({
+{# {% do craft.sproutSeo.meta({
   section: 'commerce_products:meals',
   title: product.title,
   description: product.productSummary|striptags|slice(0, 150),
-}) %}
+}) %} #}
 
 {% block main %}
 
