@@ -1,0 +1,40 @@
+
+{% extends "_layout" %}
+{% includeJsFile "/homepage.js" %}
+{% set stylesheet = '/homepageStyle.css' %}
+
+{% block main %}
+
+  {% if cart.email == '' %}
+    {% set nextPage = 'customer' %}
+    {% redirect "/account/login/customer" 301 %}
+  {% endif %}
+
+  {% include "components/breadcrumb.twig" %}
+
+  <form method="POST" id="address-info">
+
+    {{ getCsrfInput() }}
+
+    <input type="hidden" name="action" value="commerce/cart/update-cart">
+    <input type="hidden" name="redirect" value="/">
+
+    <section id="customer-address">
+
+      <div class="lock">
+
+        <input type="text" name="purchasableId" value="670">
+        <input type="text" name="qty" value="1">
+
+      </div>
+
+    </section>
+
+
+
+
+    <input type="submit">
+
+  </form>
+
+{% endblock %}

@@ -15,8 +15,6 @@ function createMeal(data, parent) {
 
     data.forEach( (item, i) => {
 
-      console.log(item);
-
       const container = document.createElement('div');
       const link = document.createElement('a');
       const image = document.createElement('img');
@@ -27,8 +25,6 @@ function createMeal(data, parent) {
       // Add properties to container
 
       container.classList.add('meal-entry');
-
-      console.log(item.protein);
 
       for (const protein in item.protein) {
         container.setAttribute(`data-${item.protein}`, true);
