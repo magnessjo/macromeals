@@ -16,7 +16,7 @@
     window.csrfTokenValue = "{{ craft.request.csrfToken|e('js') }}";
   </script>
 
-  {% for product in craft.commerce.products.slug(craft.request().lastSegment()) %}
+  {% for product in craft.products.slug(craft.request().lastSegment()) %}
 
     <section id="stage" class="slim-stage">
       <div class="image"></div>
