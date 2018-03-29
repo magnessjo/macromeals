@@ -36,7 +36,7 @@
                     {% set availableDay = true %}
 
                     {% if isExpectedDateSet == false %}
-                      {% if day.date.format('d') > expectedDate.format('d') and month.containsDate(day.date) %}
+                      {% if day.date.format('mm d') > expectedDate.format('mm d') and month.containsDate(day.date) %}
                         {% set isExpectedDay = true %}
                       {% endif %}
                     {% endif %}
