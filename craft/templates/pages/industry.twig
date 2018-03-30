@@ -1,7 +1,7 @@
 
 {% extends "_layout" %}
-{% includeCssFile "/whyStyle.css" %}
-{% includeJsFile "/why.js" %}
+{% do view.registerCssFile('/whyStyle.css') %}
+{% do view.registerJsFile('/why.js') %}
 
 {% block main %}
 

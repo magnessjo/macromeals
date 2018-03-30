@@ -1,7 +1,7 @@
 
 {% extends "_layout" %}
-{% includeCssFile "/contactStyle.css" %}
-{% includeJsFile "/contact.js" %}
+{% do view.registerCssFile('/contactStyle.css') %}
+{% do view.registerJsFile('/contact.js') %}
 {% set bodyClass = 'with-border' %}
 
 {% block main %}

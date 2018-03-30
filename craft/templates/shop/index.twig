@@ -1,7 +1,7 @@
 
 {% extends "_layout" %}
-{% includeCssFile "/mealsStyle.css" %}
-{% includeJsFile "/meals.js" %}
+{% do view.registerCssFile('/mealsStyle.css') %}
+{% do view.registerJsFile('/meals.js') %}
 {% set mealTypes = craft.categories.group('mealCategory') %}
 
 {% block main %}

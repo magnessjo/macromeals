@@ -1,7 +1,7 @@
 
 {% extends "_layout" %}
-{% includeCssFile "/shopdetailsStyle.css" %}
-{% includeJsFile "/shopdetails.js" %}
+{% do view.registerCssFile('/shopdetailsStyle.css') %}
+{% do view.registerJsFile('/shopdetails.js') %}
 
 {# {% do craft.sproutSeo.meta({
   section: 'commerce_products:meals',

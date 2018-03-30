@@ -1,7 +1,7 @@
 
 {% extends "_layout" %}
-{% includeCssFile "/shippingInstructionsStyle.css" %}
-{% includeJsFile "/shippingInstructions.js" %}
+{% do view.registerCssFile('/shippingInstructionsStyle.css') %}
+{% do view.registerJsFile('/shippingInstructions.js') %}
 
 {% block main %}
 

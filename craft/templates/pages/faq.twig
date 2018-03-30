@@ -1,7 +1,7 @@
 
 {% extends "_layout" %}
-{% includeCssFile "/faqStyle.css" %}
-{% includeJsFile "/faq.js" %}
+{% do view.registerCssFile('/faqStyle.css') %}
+{% do view.registerJsFile('/faq.js') %}
 
 {% block main %}
 

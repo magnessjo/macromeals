@@ -1,7 +1,7 @@
 
 {% extends "_layout" %}
-{% includeCssFile "/calculatorStyle.css" %}
-{% includeJsFile "/calculator.js" %}
+{% do view.registerCssFile('/calculatorStyle.css') %}
+{% do view.registerJsFile('/calculator.js') %}
 
 {% block main %}
 
