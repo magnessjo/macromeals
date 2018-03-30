@@ -1,5 +1,5 @@
 
-{% set lastSegment = craft.request.lastSegment() %}
+{% set lastSegment = craft.app.request.segments|last %}
 
 <form method="POST" id="login-form" class="registered-form" {% if bodyLoginForm is defined %} {% if lastSegment !="login" %}data-redirect="/checkout/{{ lastSegment }}"{% endif %}{% endif %} accept-charset="UTF-8">
 
@@ -10,7 +10,7 @@
              name="loginName"
              id="loginName"
              placeholder="johndoe"
-             value="{{ craft.session.rememberedUsername ?? '' }}" />
+             value="{{ craft.app.user.rememberedUsername ?? '' }}" />
 
       <div class="errors">
         <p class="required">Username is a required field</p>
