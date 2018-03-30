@@ -42,7 +42,7 @@
                     <p>{{ option.text }}</p>
                     <div class="filter-cats">
 
-                      {% for cat in craft.categories.group( option.cat ) %}
+                      {% for cat in craft.categories.group( option.cat ).all %}
 
                         {% set entries = craft.products.relatedTo( cat ) %}
 
@@ -84,7 +84,7 @@
 
         <div class="lock">
 
-          {% for category in mealTypes %}
+          {% for category in mealTypes.all %}
 
             {% set entries = craft.products.relatedTo(category) %}
 
