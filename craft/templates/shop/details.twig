@@ -11,7 +11,7 @@
 
 {% block main %}
 
-  {% for product in craft.products.slug(craft.app.request.segments|last) %}
+  {% for product in craft.products.slug(craft.app.request.segments|last).all %}
 
     <section id="stage" class="slim-stage">
       <div class="image"></div>
