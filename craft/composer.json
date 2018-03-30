@@ -20,16 +20,9 @@
   },
   "require": {
     "craftcms/cms": "3.0.0-RC17.1",
-    "vlucas/phpdotenv": "v2.4.0",
-    "craftcms/commerce": "dev-develop#e8cb587ea47a2c053ad37f767d9d321a36426e91 as 2.0.0-alpha.99",
-    "macromeals/macromeals-commerce": "1.0.0",
-    "dannyvankooten/vat.php": "1.1.2",
-    "dompdf/dompdf": "v0.8.2",
-    "moneyphp/money": "v3.1.3",
-    "phenx/php-font-lib": "0.5.1",
-    "phenx/php-svg-lib": "v0.3",
-    "psr/simple-cache": "1.0.1",
-    "sabberworm/php-css-parser": "8.1.0"
+    "vlucas/phpdotenv": "^2.4.0",
+    "craftcms/commerce": "dev-develop as 2.0.0-alpha.99",
+    "macromeals/macromeals-commerce": "^1.0.0"
   },
   "autoload": {
     "psr-4": {
