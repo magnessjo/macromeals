@@ -1,5 +1,5 @@
 
-{% set segment = craft.request().getLastSegment() %}
+{% set segment = craft.app.request.segments | last %}
 
 <div class="cart-breadcrumb">
 

@@ -3,7 +3,7 @@
 {% do view.registerCssFile('/checkoutStyle.css') %}
 {% do view.registerJsFile('/summary.js') %}
 
-{% set cart = craft.commerce.getCart %}
+{% set cart = craft.commerce.carts.cart %}
 {% set coolerClubAdjustment = false %}
 
 {% for adjuster in cart.adjustments %}
