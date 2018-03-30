@@ -7,7 +7,9 @@ import fetchData from 'scripts/helpers/fetchPostData.js';
 
 export default function postToCart(data) {
 
-  return new Promise((resolve, reject) => {
+  return new Promise( (resolve, reject) => {
+
+    console.log(data);
 
     fetchData(data, '/actions/commerce/cart/update-cart').then( (response) => {
 
