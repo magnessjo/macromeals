@@ -29,7 +29,7 @@
 
           {% for category in mealTypes %}
 
-            {% set entries = craft.commerce.products.relatedTo(category).order('title') %}
+            {% set entries = craft.products.relatedTo(category).order('title') %}
 
             {% if entries|length > 0 %}
 
