@@ -14,21 +14,21 @@ const headerCartActions = cartSummary.querySelector('.header-cart-actions');
 
 // Update DOM
 
-function updateDOM(data) {
+function updateDOM(items) {
 
-  return new Promise((resolve, reject) => {
+  return new Promise( (resolve, reject) => {
 
-    if (data.length == 0) {
+    if (items.length == 0) {
       wrapper.innerHTML = `<p class="cart-alert">Your Cart is Empty</p>`;
       headerCartActions.style.display = 'none';
       resolve();
     }
 
-    data.sort( (a, b) => {
+    items.sort( (a, b) => {
        return a.title.localeCompare(b.title);
     });
 
-    data.forEach((content, i) => {
+    items.forEach( (content, i) => {
 
       const div = document.createElement('div');
       const headline = document.createElement('h2');
@@ -46,7 +46,7 @@ function updateDOM(data) {
       wrapper.appendChild(div);
       headerCartActions.style.display = 'block';
 
-      if (i == data.length - 1) {
+      if (i == items.length - 1) {
         resolve();
       }
 
@@ -60,7 +60,7 @@ function updateDOM(data) {
 
 function removeContent() {
 
-  return new Promise((resolve, reject) => {
+  return new Promise( (resolve, reject) => {
 
     wrapper.innerHTML = '';
     resolve();
@@ -79,8 +79,8 @@ export default function() {
 
     if (isShown == 'true') {
 
-      getCartItems().then((data) => {
-        updateDOM(data).then(() => {
+      getCartItems().then( (data) => {
+        updateDOM(data.items).then( e => {
           cartSummary.setAttribute('aria-hidden', 'false');
           loginForm.setAttribute('aria-hidden', 'true')
         });
