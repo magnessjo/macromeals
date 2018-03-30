@@ -1,7 +1,7 @@
 
 {% extends "_layout" %}
-{% includeJsFile "/homepage.js" %}
 {% set stylesheet = '/homepageStyle.css' %}
+{% do view.registerJsFile('/homepage.js') %}
 
 {% block main %}
 
@@ -33,7 +33,7 @@
 
     <section class="meals-by-category">
 
-      {% set featuredCategory = craft.categories.group('mealType').slug('featured').first() %}
+      {% set featuredCategory = craft.categories.group('mealType').slug('featured').one() %}
 
       <div class="lock">
 
@@ -132,7 +132,7 @@
 
     <section class="meals-by-category">
 
-      {% set seasonalCategory = craft.categories.group('mealType').slug('seasonal').first() %}
+      {% set seasonalCategory = craft.categories.group('mealType').slug('seasonal').one() %}
 
       <div class="lock">
 
