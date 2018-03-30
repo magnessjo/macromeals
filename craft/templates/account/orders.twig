@@ -2,7 +2,7 @@
 {% extends "_layout" %}
 {% do view.registerCssFile('/accountStyle.css') %}
 {% set bodyClass = 'with-border' %}
-{% set pastOrders = craft.commerce.orders.customer(craft.commerce.customer).find() %}
+{% set pastOrders = craft.orders.customer(craft.commerce.customers.customer).all() %}
 
 {% block main %}
 
@@ -27,7 +27,7 @@
             <div class="order-entry">
 
               <div class="date">
-                <p>{{ order.dateOrdered.format('F d, Y') }}</p>
+                <p>{{ order.dateOrdered | date('F d, Y') }}</p>
                 <p class="acumin-tiny">Order Number: {{ order.shortNumber }}</p>
               </div>
 
@@ -48,16 +48,16 @@
 
                 <div class="flex item">
                   <div class="title">Shipping Cost</div>
-                  <div class="cost">{{ order.totalShippingCost | currency(cart.currency) }}</div>
+                  <div class="cost">{{ order.totalShippingCost("shipping") | currency(cart.currency) }}</div>
                 </div>
 
                 {% endif %}
 
-                {% if order.baseDiscount != 0 %}
+                {% if order.totalDiscount != 0 %}
 
                 <div class="flex item">
                   <div class="title">Discount</div>
-                  <div class="cost">{{ order.baseDiscount | currency(cart.currency) }}</div>
+                  <div class="cost">{{ order.totalDiscount | currency(cart.currency) }}</div>
                 </div>
 
                 {% endif %}
