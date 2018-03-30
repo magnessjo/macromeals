@@ -11,12 +11,7 @@
 
 {% block main %}
 
-  <script type="text/javascript">
-    window.csrfTokenName = "{{ craft.config.csrfTokenName|e('js') }}";
-    window.csrfTokenValue = "{{ craft.request.csrfToken|e('js') }}";
-  </script>
-
-  {% for product in craft.products.slug(craft.request().lastSegment()) %}
+  {% for product in craft.products.slug(craft.app.request.segments|last) %}
 
     <section id="stage" class="slim-stage">
       <div class="image"></div>
@@ -110,10 +105,10 @@
                 <div class="flex">
 
                   <input type="hidden" name="qty" value="0">
-                  <input type="hidden" name="purchasableId" value="{{ purchasable.purchasableId }}">
+                  <input type="hidden" name="purchasableId" value="{{ purchasable.id }}">
                   <div class="size">{{ purchasable.description }}</div>
                   <div class="price">
-                    {% if purchasable.salesApplied | length > 0 %}
+                    {% if purchasable.sales | length > 0 %}
                       <div class="sale-price"><span>{{ purchasable.price | commerceCurrency(cart.currency) }}</span></div>
                     {% endif %}
                     <span>{{ purchasable.salePrice | commerceCurrency(cart.currency) }}</span>
@@ -125,7 +120,7 @@
                       <input type="number"
                              pattern="\d*"
                              value="0"
-                             data-id="{{ purchasable.purchasableId }}"
+                             data-id="{{ purchasable.id }}"
                              data-name="{{ product.title }}"
                              data-cost="{{ purchasable.price }}"
                              data-size="{{ purchasable.description }}"

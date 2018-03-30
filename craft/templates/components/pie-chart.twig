@@ -1,5 +1,5 @@
 
-{% set url = craft.request.lastSegment() %}
+{% set url = craft.app.request.segments|last %}
 {% set protein = '' %}
 {% set carbs = '' %}
 {% set fat = '' %}
