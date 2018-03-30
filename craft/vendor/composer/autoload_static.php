@@ -82,7 +82,6 @@ class ComposerStaticInite688f9a47a1238f00a84fb5d717e4aa5
             'Psr\\SimpleCache\\' => 16,
             'Psr\\Log\\' => 8,
             'Psr\\Http\\Message\\' => 17,
-            'PhpUnitsOfMeasure\\' => 18,
         ),
         'M' => 
         array (
@@ -291,10 +290,6 @@ class ComposerStaticInite688f9a47a1238f00a84fb5d717e4aa5
         'Psr\\Http\\Message\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/http-message/src',
-        ),
-        'PhpUnitsOfMeasure\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/php-units-of-measure/php-units-of-measure/source',
         ),
         'Money\\' => 
         array (
@@ -1385,32 +1380,6 @@ class ComposerStaticInite688f9a47a1238f00a84fb5d717e4aa5
         'Money\\Parser\\DecimalMoneyParser' => __DIR__ . '/..' . '/moneyphp/money/src/Parser/DecimalMoneyParser.php',
         'Money\\Parser\\IntlLocalizedDecimalParser' => __DIR__ . '/..' . '/moneyphp/money/src/Parser/IntlLocalizedDecimalParser.php',
         'Money\\Parser\\IntlMoneyParser' => __DIR__ . '/..' . '/moneyphp/money/src/Parser/IntlMoneyParser.php',
-        'PhpUnitsOfMeasure\\AbstractPhysicalQuantity' => __DIR__ . '/..' . '/php-units-of-measure/php-units-of-measure/source/AbstractPhysicalQuantity.php',
-        'PhpUnitsOfMeasure\\Exception\\AbstractPhysicalQuantityException' => __DIR__ . '/..' . '/php-units-of-measure/php-units-of-measure/source/Exception/AbstractPhysicalQuantityException.php',
-        'PhpUnitsOfMeasure\\Exception\\DuplicateUnitNameOrAlias' => __DIR__ . '/..' . '/php-units-of-measure/php-units-of-measure/source/Exception/DuplicateUnitNameOrAlias.php',
-        'PhpUnitsOfMeasure\\Exception\\NonNumericValue' => __DIR__ . '/..' . '/php-units-of-measure/php-units-of-measure/source/Exception/NonNumericValue.php',
-        'PhpUnitsOfMeasure\\Exception\\NonStringUnitName' => __DIR__ . '/..' . '/php-units-of-measure/php-units-of-measure/source/Exception/NonStringUnitName.php',
-        'PhpUnitsOfMeasure\\Exception\\PhysicalQuantityMismatch' => __DIR__ . '/..' . '/php-units-of-measure/php-units-of-measure/source/Exception/PhysicalQuantityMismatch.php',
-        'PhpUnitsOfMeasure\\Exception\\UnknownUnitOfMeasure' => __DIR__ . '/..' . '/php-units-of-measure/php-units-of-measure/source/Exception/UnknownUnitOfMeasure.php',
-        'PhpUnitsOfMeasure\\HasSIUnitsTrait' => __DIR__ . '/..' . '/php-units-of-measure/php-units-of-measure/source/HasSIUnitsTrait.php',
-        'PhpUnitsOfMeasure\\PhysicalQuantityInterface' => __DIR__ . '/..' . '/php-units-of-measure/php-units-of-measure/source/PhysicalQuantityInterface.php',
-        'PhpUnitsOfMeasure\\PhysicalQuantity\\Acceleration' => __DIR__ . '/..' . '/php-units-of-measure/php-units-of-measure/source/PhysicalQuantity/Acceleration.php',
-        'PhpUnitsOfMeasure\\PhysicalQuantity\\Angle' => __DIR__ . '/..' . '/php-units-of-measure/php-units-of-measure/source/PhysicalQuantity/Angle.php',
-        'PhpUnitsOfMeasure\\PhysicalQuantity\\Area' => __DIR__ . '/..' . '/php-units-of-measure/php-units-of-measure/source/PhysicalQuantity/Area.php',
-        'PhpUnitsOfMeasure\\PhysicalQuantity\\ElectricCurrent' => __DIR__ . '/..' . '/php-units-of-measure/php-units-of-measure/source/PhysicalQuantity/ElectricCurrent.php',
-        'PhpUnitsOfMeasure\\PhysicalQuantity\\Energy' => __DIR__ . '/..' . '/php-units-of-measure/php-units-of-measure/source/PhysicalQuantity/Energy.php',
-        'PhpUnitsOfMeasure\\PhysicalQuantity\\Length' => __DIR__ . '/..' . '/php-units-of-measure/php-units-of-measure/source/PhysicalQuantity/Length.php',
-        'PhpUnitsOfMeasure\\PhysicalQuantity\\LuminousIntensity' => __DIR__ . '/..' . '/php-units-of-measure/php-units-of-measure/source/PhysicalQuantity/LuminousIntensity.php',
-        'PhpUnitsOfMeasure\\PhysicalQuantity\\Mass' => __DIR__ . '/..' . '/php-units-of-measure/php-units-of-measure/source/PhysicalQuantity/Mass.php',
-        'PhpUnitsOfMeasure\\PhysicalQuantity\\Pressure' => __DIR__ . '/..' . '/php-units-of-measure/php-units-of-measure/source/PhysicalQuantity/Pressure.php',
-        'PhpUnitsOfMeasure\\PhysicalQuantity\\Quantity' => __DIR__ . '/..' . '/php-units-of-measure/php-units-of-measure/source/PhysicalQuantity/Quantity.php',
-        'PhpUnitsOfMeasure\\PhysicalQuantity\\SolidAngle' => __DIR__ . '/..' . '/php-units-of-measure/php-units-of-measure/source/PhysicalQuantity/SolidAngle.php',
-        'PhpUnitsOfMeasure\\PhysicalQuantity\\Temperature' => __DIR__ . '/..' . '/php-units-of-measure/php-units-of-measure/source/PhysicalQuantity/Temperature.php',
-        'PhpUnitsOfMeasure\\PhysicalQuantity\\Time' => __DIR__ . '/..' . '/php-units-of-measure/php-units-of-measure/source/PhysicalQuantity/Time.php',
-        'PhpUnitsOfMeasure\\PhysicalQuantity\\Velocity' => __DIR__ . '/..' . '/php-units-of-measure/php-units-of-measure/source/PhysicalQuantity/Velocity.php',
-        'PhpUnitsOfMeasure\\PhysicalQuantity\\Volume' => __DIR__ . '/..' . '/php-units-of-measure/php-units-of-measure/source/PhysicalQuantity/Volume.php',
-        'PhpUnitsOfMeasure\\UnitOfMeasure' => __DIR__ . '/..' . '/php-units-of-measure/php-units-of-measure/source/UnitOfMeasure.php',
-        'PhpUnitsOfMeasure\\UnitOfMeasureInterface' => __DIR__ . '/..' . '/php-units-of-measure/php-units-of-measure/source/UnitOfMeasureInterface.php',
         'Psr\\Http\\Message\\MessageInterface' => __DIR__ . '/..' . '/psr/http-message/src/MessageInterface.php',
         'Psr\\Http\\Message\\RequestInterface' => __DIR__ . '/..' . '/psr/http-message/src/RequestInterface.php',
         'Psr\\Http\\Message\\ResponseInterface' => __DIR__ . '/..' . '/psr/http-message/src/ResponseInterface.php',
@@ -3183,7 +3152,9 @@ class ComposerStaticInite688f9a47a1238f00a84fb5d717e4aa5
         'enshrined\\svgSanitize\\data\\AttributeInterface' => __DIR__ . '/..' . '/enshrined/svg-sanitize/src/data/AttributeInterface.php',
         'enshrined\\svgSanitize\\data\\TagInterface' => __DIR__ . '/..' . '/enshrined/svg-sanitize/src/data/TagInterface.php',
         'macromeals\\macromealscommerce\\MacroMealsCommerce' => __DIR__ . '/..' . '/macromeals/macromeals-commerce/src/MacroMealsCommerce.php',
+        'macromeals\\macromealscommerce\\controllers\\CartController' => __DIR__ . '/..' . '/macromeals/macromeals-commerce/src/controllers/CartController.php',
         'macromeals\\macromealscommerce\\controllers\\FoodController' => __DIR__ . '/..' . '/macromeals/macromeals-commerce/src/controllers/FoodController.php',
+        'macromeals\\macromealscommerce\\controllers\\ShippingController' => __DIR__ . '/..' . '/macromeals/macromeals-commerce/src/controllers/ShippingController.php',
         'macromeals\\macromealscommerce\\migrations\\Install' => __DIR__ . '/..' . '/macromeals/macromeals-commerce/src/migrations/Install.php',
         'mikehaertl\\shellcommand\\Command' => __DIR__ . '/..' . '/mikehaertl/php-shellcommand/src/Command.php',
         'modules\\Module' => __DIR__ . '/../..' . '/modules/Module.php',

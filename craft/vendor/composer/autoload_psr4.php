@@ -47,7 +47,6 @@ return array(
     'Psr\\SimpleCache\\' => array($vendorDir . '/psr/simple-cache/src'),
     'Psr\\Log\\' => array($vendorDir . '/psr/log/Psr/Log'),
     'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
-    'PhpUnitsOfMeasure\\' => array($vendorDir . '/php-units-of-measure/php-units-of-measure/source'),
     'Money\\' => array($vendorDir . '/moneyphp/money/src'),
     'LitEmoji\\' => array($vendorDir . '/elvanto/litemoji/src'),
     'League\\OAuth2\\Client\\' => array($vendorDir . '/league/oauth2-client/src'),
