@@ -27,9 +27,9 @@
 
           <h1 class="sr-only"><span>Healthy Meals Delivered to You</span></h1>
 
-          {% for category in mealTypes %}
+          {% for category in mealTypes.all %}
 
-            {% set entries = craft.products.relatedTo(category).order('title') %}
+            {% set entries = craft.products.relatedTo(category).orderBy('title') %}
 
             {% if entries|length > 0 %}
 
@@ -41,7 +41,7 @@
 
               <div class="group-body">
 
-                {% for product in entries %}
+                {% for product in entries.all %}
 
                   <div class="product input-container">
 
@@ -54,12 +54,12 @@
 
                       <div class="variant-row">
                         <input type="hidden" name="qty" value="0">
-                        <input type="hidden" name="purchasableId" value="{{ purchasable.purchasableId }}">
+                        <input type="hidden" name="purchasableId" value="{{ purchasable.id }}">
 
                         <div class="variant-info">
                           <div class="option">{{ purchasable.description }}</div>
                           <div class="price">
-                            {% if purchasable.salesApplied | length > 0 %}
+                            {% if purchasable.sales | length > 0 %}
                               <div class="sale-price">{{ purchasable.price | commerceCurrency(cart.currency) }}</div>
                             {% endif %}
                             <span>{{ purchasable.salePrice | commerceCurrency(cart.currency) }}</span>
@@ -69,7 +69,7 @@
                         {% set inputValue = 0 %}
                         {% set lineItemNumber = null %}
                         {% for item in cart.lineItems %}
-                          {% if item.purchasableId == purchasable.purchasableId %}
+                          {% if item.purchasableId == purchasable.id %}
                             {% set inputValue = item.qty %}
                             {% set lineItemNumber = item.id %}
                           {% endif %}
@@ -84,7 +84,7 @@
                                    {% if lineItemNumber is not null %}
                                    data-item-id="{{ lineItemNumber }}"
                                    {% endif %}
-                                   data-id="{{ purchasable.purchasableId }}"
+                                   data-id="{{ purchasable.id }}"
                                    data-cost="{{ purchasable.price }}"
                                    data-size="{{ purchasable.description }}"
                                    data-title="{{ product.title }}"
