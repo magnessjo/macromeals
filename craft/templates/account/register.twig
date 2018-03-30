@@ -1,7 +1,7 @@
 
 {% extends "_layout" %}
-{% includeCssFile "/accountStyle.css" %}
-{% includeJsFile "/register.js" %}
+{% do view.registerCssFile('/accountStyle.css') %}
+{% do view.registerJsFile('/register.js') %}
 {% set bodyClass = 'with-border' %}
 
 {% set cart = craft.commerce.getCart() %}

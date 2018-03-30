@@ -1,6 +1,6 @@
 
-{% includeCssFile "/labelsStyle.css" %}
-{% includeJsFile "/automation.js" %}
+{% do view.registerCssFile('/labelsStyle.css') %}
+{% do view.registerJsFile('/automation.js') %}
 {% set orders = craft.commerce.orders.orderStatusId(4) %}
 
 <!DOCTYPE html>

@@ -1,6 +1,6 @@
 
 {% extends "_layout" %}
-{% includeCssFile "/accountStyle.css" %}
+{% do view.registerCssFile('/accountStyle.css') %}
 {% set bodyClass = 'with-border' %}
 
 {% block main %}

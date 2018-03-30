@@ -1,7 +1,7 @@
 
 {% extends "_layout" %}
-{% includeCssFile "/checkoutStyle.css" %}
-{% includeJsFile "/customer.js" %}
+{% do view.registerCssFile('/checkoutStyle.css') %}
+{% do view.registerJsFile('/customer.js') %}
 
 {% set cart = craft.commerce.getCart %}
 {% set shippingModel = cart.shippingAddress %}

@@ -1,7 +1,7 @@
 
 {% extends "_layout" %}
-{% includeCssFile "/checkoutStyle.css" %}
-{% includeJsFile "/summary.js" %}
+{% do view.registerCssFile('/checkoutStyle.css') %}
+{% do view.registerJsFile('/summary.js') %}
 
 {% set cart = craft.commerce.getCart %}
 {% set coolerClubAdjustment = false %}

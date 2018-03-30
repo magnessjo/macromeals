@@ -1,7 +1,8 @@
 
 {% extends "_layout" %}
-{% includeCssFile "/checkoutStyle.css" %}
-{% includeJsFile "/complete.js" %}
+{% do view.registerCssFile('/checkoutStyle.css') %}
+{% do view.registerJsFile('/complete.js') %}
+
 {% set bodyClass = 'with-border' %}
 {% set queryString = craft.request.getQuery('order') %}
 {% set lastOrder = craft.commerce.orders.number(queryString) %}

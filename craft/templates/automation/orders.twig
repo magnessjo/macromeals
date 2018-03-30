@@ -1,6 +1,7 @@
+
 {% extends "_layout" %}
-{% includeCssFile "/automationStyle.css" %}
-{% includeJsFile "/automation.js" %}
+{% do view.registerCssFile('/automationStyle.css') %}
+{% do view.registerJsFile('/automation.js') %}
 {% set bodyClass = 'with-border' %}
 
 {% set orders = craft.commerce.orders.orderStatusId(3).order('deliveryDate desc') %}
