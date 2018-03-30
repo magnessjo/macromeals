@@ -7,7 +7,7 @@ import 'whatwg-fetch';
 
 export default function fetchData(data, url) {
 
-  return new Promise((resolve, reject) => {
+  return new Promise( (resolve, reject) => {
 
     fetch(url, {
       method: "POST",
@@ -15,11 +15,10 @@ export default function fetchData(data, url) {
       headers: {
         "Content-Type": 'application/x-www-form-urlencoded',
         'X-Requested-With': 'XMLHttpRequest',
-        'Accept': 'application/json'
+        'Accept': 'application/json',
       },
       credentials: "same-origin"
     }).then( (response) => {
-      console.log(response);
       resolve(response.json());
     }, (error) => {
       console.log(`error : ${error.message }`);

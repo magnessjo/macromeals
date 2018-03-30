@@ -9,7 +9,7 @@ export default function postToCart(data) {
 
   return new Promise((resolve, reject) => {
 
-    fetchData(data, '/update-cart').then((response) => {
+    fetchData(data, '/actions/commerce/cart/update-cart').then( (response) => {
       resolve(response);
     });
 
