@@ -1,7 +1,7 @@
 
 // Variables
 
-const url = '/actions/MacroCommerce/Cart/getLines';
+const url = '/cartItems';
 
 // Export
 

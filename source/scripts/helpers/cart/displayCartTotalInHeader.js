@@ -13,15 +13,21 @@ const buttonNumber = button.querySelector('.number');
 
 export default function() {
 
-  getCartItems().then((data) => {
+  getCartItems().then( (response) => {
 
-    let total = 0;
+    if (response.success) {
 
-    data.forEach((item) => {
-      total += parseInt(item.quantity);
-    });
+      let total = 0;
 
-    buttonNumber.innerHTML = total;
+      response.items.forEach( (item) => {
+        total += parseInt(item.quantity);
+      });
+
+      buttonNumber.innerHTML = total;
+
+    }
+
+
 
   });
 
