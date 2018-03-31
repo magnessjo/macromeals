@@ -463,12 +463,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/craftcms/commerce.git",
-                "reference": "275d59c5f11785b7cbd1ef6d718795ea41e6e2c1"
+                "reference": "c3835da9cf1d0116d2e83b8b082b9922a70a2458"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/commerce/zipball/275d59c5f11785b7cbd1ef6d718795ea41e6e2c1",
-                "reference": "275d59c5f11785b7cbd1ef6d718795ea41e6e2c1",
+                "url": "https://api.github.com/repos/craftcms/commerce/zipball/c3835da9cf1d0116d2e83b8b082b9922a70a2458",
+                "reference": "c3835da9cf1d0116d2e83b8b082b9922a70a2458",
                 "shasum": ""
             },
             "require": {
@@ -508,7 +508,7 @@
                 "docs": "https://github.com/craftcms/docs",
                 "rss": "https://github.com/craftcms/commerce/releases.atom"
             },
-            "time": "2018-03-31T05:58:14+00:00"
+            "time": "2018-03-31T19:20:14+00:00"
         },
         {
             "name": "craftcms/commerce-omnipay",
