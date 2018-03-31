@@ -22,7 +22,8 @@
     "craftcms/cms": "3.0.0-RC17.1",
     "vlucas/phpdotenv": "^2.4.0",
     "craftcms/commerce": "dev-develop as 2.0.0-alpha.99",
-    "macromeals/macromeals-commerce": "^1.0.0"
+    "macromeals/macromeals-commerce": "^1.0.0",
+    "solspace/craft3-calendar": "v2.0.0-beta.7"
   },
   "autoload": {
     "psr-4": {
