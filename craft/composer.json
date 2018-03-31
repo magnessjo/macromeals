@@ -24,7 +24,10 @@
     "craftcms/commerce": "dev-develop as 2.0.0-alpha.99",
     "macromeals/macromeals-commerce": "^1.0.0",
     "solspace/craft3-calendar": "v2.0.0-beta.7",
-    "craftcms/mandrill": "1.2.0"
+    "craftcms/mandrill": "1.2.0",
+    "craftcms/commerce-stripe": "dev-master as 1.0.0-alpha.99",
+    "craftcms/commerce-omnipay": "dev-master as 1.0.0-alpha.99",
+    "craftcms/commerce-paypal": "dev-master as 1.0.0-alpha.99"
   },
   "autoload": {
     "psr-4": {
@@ -52,6 +55,18 @@
     {
       "type": "vcs",
       "url": "https://github.com/craftcms/commerce"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/craftcms/commerce-stripe"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/craftcms/commerce-paypal"
+    },
+    {
+      "type": "vcs",
+      "url": "https://github.com/craftcms/commerce-omnipay"
     },
     {
       "type": "path",
