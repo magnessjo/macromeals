@@ -106,7 +106,7 @@
                     {% set availableDay = true %}
 
                       {% if isExpectedDateSet == false %}
-                        {% if nextMonth.containsDate(day.date) %}
+                        {% if day.date.format('mm d') > expectedDate.format('mm d') and nextMonth.containsDate(day.date) %}
                           {% set isExpectedDay = true %}
                         {% endif %}
                       {% endif %}
