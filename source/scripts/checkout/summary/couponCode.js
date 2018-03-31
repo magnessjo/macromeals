@@ -45,16 +45,20 @@ export default function() {
 
           const cart = data.cart;
           const adjustments = cart.adjustments;
-          const discounts = typeof adjustments !== 'undefined' ? adjustments.Discount : 'undefined';
+          const discounts = typeof adjustments !== 'undefined' ? adjustments.discount : 'undefined';
 
           error.style.display = 'none';
 
+          updateCartTotals(cart);
+
           if (typeof discounts !== 'undefined') {
-            const discount = adjustments.Discount[0].amount;
+            const discount = adjustments.discount[0].amount;
             discountElement.innerHTML = `(${discount.toFixed(2)})`;
-            updateCartTotals(cart);
             parent.style.display = 'block';
             button.innerHTML = 'change';
+          } else {
+            discountElement.innerHTML = `0`;
+            parent.style.display = 'none';
           }
 
         }

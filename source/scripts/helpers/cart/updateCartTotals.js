@@ -7,57 +7,59 @@ import formatStringForDollar from 'scripts/helpers/formatStringForDollar.js';
 
 export default function(cart) {
 
-  const cartTotal = document.querySelector('#cart-total');
-  const adjustments = cart.adjustments;
-  const discounts = typeof adjustments !== 'undefined' ? adjustments.Discount : 'undefined';
-  let discountCalcNumber = 0;
+  if (cart) {
 
-  if (typeof discounts !== 'undefined' && Math.abs(discounts.length) > 0) {
+    const cartTotal = document.querySelector('#cart-total');
+    const adjustments = cart.adjustments;
+    const discounts = typeof adjustments !== 'undefined' ? adjustments.discount : 'undefined';
+    let discountCalcNumber = 0;
 
-    discounts.forEach( (discount) => {
-      discountCalcNumber += Math.abs(discount.amount);
-    });
+    if (typeof discounts !== 'undefined' && Math.abs(discounts.length) > 0) {
 
-  }
+      discounts.forEach( (discount) => {
+        discountCalcNumber += Math.abs(discount.amount);
+      });
 
-  if (cartTotal) {
-
-    console.log(cart);
-
-    const totalElement = cartTotal.querySelector('[data-type="total-amount"]');
-    const subTotalElement = cartTotal.querySelector('[data-type="items-amount"]');
-    const taxElement = cartTotal.querySelector('[data-type="tax-amount"]');
-    const shippingElement = cartTotal.querySelector('[data-type="shipping-amount"]');
-    const discountElement = cartTotal.querySelector('[data-type="discount-amount"]');
-    const dicountParent = cartTotal.querySelector('.discount');
-
-    if (totalElement) {
-      const totalNumber = formatStringForDollar(cart.totalPrice);
-      totalElement.innerHTML = `$${totalNumber}`;
     }
 
-    if (subTotalElement) {
-      const subTotalNumber = formatStringForDollar(cart.itemSubtotal);
-      subTotalElement.innerHTML = subTotalNumber;
-    }
+    if (cartTotal) {
 
-    if (taxElement) {
-      const taxNumber = formatStringForDollar(cart.totalTax);
-      taxElement.innerHTML = taxNumber;
-    }
+      const totalElement = cartTotal.querySelector('[data-type="total-amount"]');
+      const subTotalElement = cartTotal.querySelector('[data-type="items-amount"]');
+      const taxElement = cartTotal.querySelector('[data-type="tax-amount"]');
+      const shippingElement = cartTotal.querySelector('[data-type="shipping-amount"]');
+      const discountElement = cartTotal.querySelector('[data-type="discount-amount"]');
+      const dicountParent = cartTotal.querySelector('.discount');
 
-    if (shippingElement) {
-      const shippingNumber = formatStringForDollar(cart.baseShippingCost);
-      shippingElement.innerHTML = shippingNumber;
-    }
+      if (totalElement) {
+        const totalNumber = formatStringForDollar(cart.totalPrice);
+        totalElement.innerHTML = `$${totalNumber}`;
+      }
 
-    if (discountElement) {
+      if (subTotalElement) {
+        const subTotalNumber = formatStringForDollar(cart.itemSubtotal);
+        subTotalElement.innerHTML = `$${subTotalNumber}`;
+      }
 
-      const discountNumber = formatStringForDollar(discountCalcNumber);
-      discountElement.innerHTML = `(-${discountNumber})`;
+      if (taxElement) {
+        const taxNumber = formatStringForDollar(cart.totalTax);
+        taxElement.innerHTML = taxNumber;
+      }
 
-      discountCalcNumber > 0 ? discountElement.setAttribute('data-show', true) : discountElement.setAttribute('data-show', false);
-      discountCalcNumber > 0 ? dicountParent.setAttribute('data-show', true) : dicountParent.setAttribute('data-show', false);
+      if (shippingElement) {
+        const shippingNumber = formatStringForDollar(cart.baseShippingCost);
+        shippingElement.innerHTML = shippingNumber;
+      }
+
+      if (discountElement) {
+
+        const discountNumber = formatStringForDollar(discountCalcNumber);
+        discountElement.innerHTML = `(-${discountNumber})`;
+
+        discountCalcNumber > 0 ? discountElement.setAttribute('data-show', true) : discountElement.setAttribute('data-show', false);
+        discountCalcNumber > 0 ? dicountParent.setAttribute('data-show', true) : dicountParent.setAttribute('data-show', false);
+
+      }
 
     }
 
