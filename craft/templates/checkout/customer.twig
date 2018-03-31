@@ -3,11 +3,11 @@
 {% do view.registerCssFile('/checkoutStyle.css') %}
 {% do view.registerJsFile('/customer.js') %}
 
-{% set cart = craft.commerce.getCart %}
+{% set cart = craft.commerce.carts.cart %}
 {% set shippingModel = cart.shippingAddress %}
-{% set addresses = craft.commerce.customer.addresses|last %}
+{% set addresses = craft.commerce.customers.customer.addresses|last %}
 
-{% set states = craft.commerce.statesArray["233"] %}
+{% set states = craft.commerce.states.allStatesAsList["233"] %}
 
 {% block main %}
 
@@ -20,7 +20,7 @@
 
   <form method="POST" id="address-info">
 
-    {{ getCsrfInput() }}
+    {{ csrfInput() }}
 
     <input type="hidden" name="action" value="commerce/cart/updateCart">
 
