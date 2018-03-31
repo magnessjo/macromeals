@@ -61,9 +61,9 @@
                   {% endif %}
 
                 "
-                data-year="{{ day.date.year }}"
-                data-month="{{ day.date.month }}"
-                data-day="{{ day.date.day }}"
+                data-year="{{ day.date | date('Y') }}"
+                data-month="{{ day.date | date('n') }}"
+                data-day="{{ day.date | date('j') }}"
                 >
 
                 <div>
@@ -133,9 +133,9 @@
                     {% endif %}
 
                   "
-                  data-year="{{ day.date.year }}"
-                  data-month="{{ day.date.month }}"
-                  data-day="{{ day.date.day }}"
+                  data-year="{{ day.date | date('Y') }}"
+                  data-month="{{ day.date | date('n') }}"
+                  data-day="{{ day.date | date('j') }}"
                   >
 
                   <div>
