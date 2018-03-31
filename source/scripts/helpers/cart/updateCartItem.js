@@ -7,7 +7,7 @@ import fetchData from 'scripts/helpers/fetchPostData.js';
 
 export default function(data) {
 
-  return new Promise((resolve, reject) => {
+  return new Promise( (resolve, reject) => {
 
     fetchData(data, '/actions/commerce/cart/update-line-item').then( (response) => {
       resolve(response);

@@ -9,7 +9,7 @@ export default function postToCart(data) {
 
   return new Promise( (resolve, reject) => {
 
-    fetchData(data, '/actions/commerce/cart/removeLineItem').then( (response) => {
+    fetchData(data, '/actions/commerce/cart/remove-line-item').then( (response) => {
       resolve(response);
     });
 
