@@ -3382,5 +3382,146 @@
             }
         ],
         "description": "The most powerful event management plugin for Craft."
+    },
+    {
+        "name": "mandrill/mandrill",
+        "version": "1.0.55",
+        "version_normalized": "1.0.55.0",
+        "dist": {
+            "type": "zip",
+            "url": "https://bitbucket.org/mailchimp/mandrill-api-php/get/da3adc10042eafac2e53de141b358a52b8e53596.zip",
+            "reference": "da3adc10042eafac2e53de141b358a52b8e53596",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.2.0"
+        },
+        "time": "2015-09-22T13:58:03+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Mandrill": "src/"
+            }
+        },
+        "license": [
+            "Apache-2.0"
+        ],
+        "authors": [
+            {
+                "name": "Mandrill Devs",
+                "email": "community@mandrill.com",
+                "homepage": "http://mandrill.com",
+                "role": "Developer"
+            }
+        ],
+        "description": "API client library for the Mandrill email as a service platform",
+        "homepage": "https://bitbucket.org/mailchimp/mandrill-api-php",
+        "keywords": [
+            "api",
+            "email"
+        ]
+    },
+    {
+        "name": "accord/mandrill-swiftmailer",
+        "version": "2.1.0",
+        "version_normalized": "2.1.0.0",
+        "target-dir": "Accord/MandrillSwiftMailer",
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/AccordGroup/MandrillSwiftMailer/zipball/ad087de3797c12f3984515c7f9f072987cf83668",
+            "reference": "ad087de3797c12f3984515c7f9f072987cf83668",
+            "shasum": ""
+        },
+        "require": {
+            "mandrill/mandrill": "~1.0",
+            "php": ">=7.0",
+            "swiftmailer/swiftmailer": "~6.0"
+        },
+        "time": "2017-06-29T14:48:41+00:00",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "2.0.x-dev"
+            }
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-0": {
+                "Accord\\MandrillSwiftMailer": ""
+            }
+        },
+        "license": [
+            "GPL-2.0+"
+        ],
+        "authors": [
+            {
+                "name": "James Rattue",
+                "email": "james.rattue@accordgroup.co.uk"
+            },
+            {
+                "name": "James Willans",
+                "email": "james.willans@accordgroup.co.uk"
+            }
+        ],
+        "description": "A SwiftMailer transport implementation for Mandrill",
+        "homepage": "https://github.com/AccordGroup/MandrillSwiftMailer",
+        "keywords": [
+            "mandrill",
+            "swiftmailer"
+        ]
+    },
+    {
+        "name": "craftcms/mandrill",
+        "version": "1.2.0",
+        "version_normalized": "1.2.0.0",
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/craftcms/mandrill/zipball/8593393b8da4320b2389a6ea002e30082ed84e11",
+            "reference": "8593393b8da4320b2389a6ea002e30082ed84e11",
+            "shasum": ""
+        },
+        "require": {
+            "accord/mandrill-swiftmailer": "^2.1.0",
+            "craftcms/cms": "^3.0.0-beta.35"
+        },
+        "time": "2018-01-15T18:08:42+00:00",
+        "type": "craft-plugin",
+        "extra": {
+            "name": "Mandrill",
+            "handle": "mandrill",
+            "changelogUrl": "https://raw.githubusercontent.com/craftcms/mandrill/master/CHANGELOG.md",
+            "downloadUrl": "https://github.com/craftcms/mandrill/archive/master.zip"
+        },
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "craft\\mandrill\\": "src/"
+            }
+        },
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Pixel & Tonic",
+                "homepage": "https://pixelandtonic.com/"
+            }
+        ],
+        "description": "Mandrill Adapter for Craft CMS",
+        "keywords": [
+            "cms",
+            "craftcms",
+            "mailer",
+            "mandrill",
+            "yii2"
+        ],
+        "support": {
+            "email": "support@craftcms.com",
+            "issues": "https://github.com/craftcms/mandrill/issues?state=open",
+            "source": "https://github.com/craftcms/mandrill",
+            "docs": "https://github.com/craftcms/mandrill",
+            "rss": "https://github.com/craftcms/mandrill/commits/master.atom"
+        }
     }
 ]

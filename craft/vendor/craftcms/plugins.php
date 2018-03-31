@@ -58,4 +58,23 @@ return array (
     'changelogUrl' => 'https://raw.githubusercontent.com/solspace/craft3-calendar/master/CHANGELOG.md',
     'hasCpSection' => true,
   ),
+  'craftcms/mandrill' => 
+  array (
+    'class' => 'craft\\mandrill\\Plugin',
+    'basePath' => $vendorDir . '/craftcms/mandrill/src',
+    'handle' => 'mandrill',
+    'aliases' => 
+    array (
+      '@craft/mandrill' => $vendorDir . '/craftcms/mandrill/src',
+    ),
+    'name' => 'Mandrill',
+    'version' => '1.2.0',
+    'description' => 'Mandrill Adapter for Craft CMS',
+    'developer' => 'Pixel & Tonic',
+    'developerUrl' => 'https://pixelandtonic.com/',
+    'developerEmail' => 'support@craftcms.com',
+    'documentationUrl' => 'https://github.com/craftcms/mandrill',
+    'changelogUrl' => 'https://raw.githubusercontent.com/craftcms/mandrill/master/CHANGELOG.md',
+    'downloadUrl' => 'https://github.com/craftcms/mandrill/archive/master.zip',
+  ),
 );

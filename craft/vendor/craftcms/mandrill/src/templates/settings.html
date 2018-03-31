@@ -1,0 +1,19 @@
+{% import "_includes/forms" as forms %}
+
+{{ forms.textField({
+    label: "API Key"|t('mandrill'),
+    instructions: "You can find this in your Mandrill settings."|t('mandrill'),
+    id: 'apiKey',
+    name: 'apiKey',
+    value: adapter.apiKey,
+    errors: adapter.getErrors('apiKey')
+}) }}
+
+{{ forms.textField({
+    label: "Subaccount"|t('mandrill'),
+    instructions: "If you want to send mail using a [subaccount], enter its unique identifier here."|t('mandrill')~"\n\n[subaccount]: https://mandrill.zendesk.com/hc/en-us/articles/205583357-About-Subaccounts",
+    id: 'subaccount',
+    name: 'subaccount',
+    value: adapter.subaccount,
+    errors: adapter.getErrors('subaccount')
+}) }}

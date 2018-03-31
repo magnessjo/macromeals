@@ -50,6 +50,7 @@ class ComposerStaticInite688f9a47a1238f00a84fb5d717e4aa5
         array (
             'creocoder\\nestedsets\\' => 21,
             'craftcms\\oauth2\\client\\' => 23,
+            'craft\\mandrill\\' => 15,
             'craft\\composer\\' => 15,
             'craft\\commerce\\' => 15,
             'craft\\' => 6,
@@ -218,6 +219,10 @@ class ComposerStaticInite688f9a47a1238f00a84fb5d717e4aa5
         'craftcms\\oauth2\\client\\' => 
         array (
             0 => __DIR__ . '/..' . '/craftcms/oauth2-craftid/src',
+        ),
+        'craft\\mandrill\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/craftcms/mandrill/src',
         ),
         'craft\\composer\\' => 
         array (
@@ -424,6 +429,13 @@ class ComposerStaticInite688f9a47a1238f00a84fb5d717e4aa5
                 0 => __DIR__ . '/..' . '/sabberworm/php-css-parser/lib',
             ),
         ),
+        'M' => 
+        array (
+            'Mandrill' => 
+            array (
+                0 => __DIR__ . '/..' . '/mandrill/mandrill/src',
+            ),
+        ),
         'I' => 
         array (
             'Imagine' => 
@@ -445,9 +457,20 @@ class ComposerStaticInite688f9a47a1238f00a84fb5d717e4aa5
                 0 => __DIR__ . '/..' . '/doctrine/lexer/lib',
             ),
         ),
+        'A' => 
+        array (
+            'Accord\\MandrillSwiftMailer' => 
+            array (
+                0 => __DIR__ . '/..' . '/accord/mandrill-swiftmailer',
+            ),
+        ),
     );
 
     public static $classMap = array (
+        'Accord\\MandrillSwiftMailer\\SwiftMailer\\MandrillTransport' => __DIR__ . '/..' . '/accord/mandrill-swiftmailer/Accord/MandrillSwiftMailer/SwiftMailer/MandrillTransport.php',
+        'Accord\\MandrillSwiftMailer\\Tests\\SwiftMailer\\MandrillTransportTest' => __DIR__ . '/..' . '/accord/mandrill-swiftmailer/Accord/MandrillSwiftMailer/Tests/SwiftMailer/MandrillTransportTest.php',
+        'Accord\\MandrillSwiftMailer\\Tests\\SwiftMailer\\MessageSendConfiguration' => __DIR__ . '/..' . '/accord/mandrill-swiftmailer/Accord/MandrillSwiftMailer/Tests/SwiftMailer/MessageSendConfiguration.php',
+        'Accord\\MandrillSwiftMailer\\Tests\\SwiftMailer\\MessageSendConfigurationTest' => __DIR__ . '/..' . '/accord/mandrill-swiftmailer/Accord/MandrillSwiftMailer/Tests/SwiftMailer/MessageSendConfigurationTest.php',
         'ArithmeticError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/ArithmeticError.php',
         'AssertionError' => __DIR__ . '/..' . '/symfony/polyfill-php70/Resources/stubs/AssertionError.php',
         'Carbon\\Carbon' => __DIR__ . '/..' . '/nesbot/carbon/src/Carbon/Carbon.php',
@@ -1394,6 +1417,53 @@ class ComposerStaticInite688f9a47a1238f00a84fb5d717e4aa5
         'League\\OAuth2\\Client\\Tool\\RequestFactory' => __DIR__ . '/..' . '/league/oauth2-client/src/Tool/RequestFactory.php',
         'League\\OAuth2\\Client\\Tool\\RequiredParameterTrait' => __DIR__ . '/..' . '/league/oauth2-client/src/Tool/RequiredParameterTrait.php',
         'LitEmoji\\LitEmoji' => __DIR__ . '/..' . '/elvanto/litemoji/src/LitEmoji.php',
+        'Mandrill' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill.php',
+        'Mandrill_Error' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Exceptions.php',
+        'Mandrill_Exports' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Exports.php',
+        'Mandrill_HttpError' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Exceptions.php',
+        'Mandrill_IP_ProvisionLimit' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Exceptions.php',
+        'Mandrill_Inbound' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Inbound.php',
+        'Mandrill_Internal' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Internal.php',
+        'Mandrill_Invalid_CustomDNS' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Exceptions.php',
+        'Mandrill_Invalid_CustomDNSPending' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Exceptions.php',
+        'Mandrill_Invalid_DeleteDefaultPool' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Exceptions.php',
+        'Mandrill_Invalid_DeleteNonEmptyPool' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Exceptions.php',
+        'Mandrill_Invalid_EmptyDefaultPool' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Exceptions.php',
+        'Mandrill_Invalid_Key' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Exceptions.php',
+        'Mandrill_Invalid_Reject' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Exceptions.php',
+        'Mandrill_Invalid_Tag_Name' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Exceptions.php',
+        'Mandrill_Invalid_Template' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Exceptions.php',
+        'Mandrill_Ips' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Ips.php',
+        'Mandrill_Messages' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Messages.php',
+        'Mandrill_Metadata' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Metadata.php',
+        'Mandrill_Metadata_FieldLimit' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Exceptions.php',
+        'Mandrill_NoSendingHistory' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Exceptions.php',
+        'Mandrill_PaymentRequired' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Exceptions.php',
+        'Mandrill_PoorReputation' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Exceptions.php',
+        'Mandrill_Rejects' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Rejects.php',
+        'Mandrill_Senders' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Senders.php',
+        'Mandrill_ServiceUnavailable' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Exceptions.php',
+        'Mandrill_Subaccounts' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Subaccounts.php',
+        'Mandrill_Tags' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Tags.php',
+        'Mandrill_Templates' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Templates.php',
+        'Mandrill_Unknown_Export' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Exceptions.php',
+        'Mandrill_Unknown_IP' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Exceptions.php',
+        'Mandrill_Unknown_InboundDomain' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Exceptions.php',
+        'Mandrill_Unknown_InboundRoute' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Exceptions.php',
+        'Mandrill_Unknown_Message' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Exceptions.php',
+        'Mandrill_Unknown_MetadataField' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Exceptions.php',
+        'Mandrill_Unknown_Pool' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Exceptions.php',
+        'Mandrill_Unknown_Sender' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Exceptions.php',
+        'Mandrill_Unknown_Subaccount' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Exceptions.php',
+        'Mandrill_Unknown_Template' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Exceptions.php',
+        'Mandrill_Unknown_TrackingDomain' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Exceptions.php',
+        'Mandrill_Unknown_Url' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Exceptions.php',
+        'Mandrill_Unknown_Webhook' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Exceptions.php',
+        'Mandrill_Urls' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Urls.php',
+        'Mandrill_Users' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Users.php',
+        'Mandrill_ValidationError' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Exceptions.php',
+        'Mandrill_Webhooks' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Webhooks.php',
+        'Mandrill_Whitelists' => __DIR__ . '/..' . '/mandrill/mandrill/src/Mandrill/Whitelists.php',
         'Money\\Calculator' => __DIR__ . '/..' . '/moneyphp/money/src/Calculator.php',
         'Money\\Calculator\\BcMathCalculator' => __DIR__ . '/..' . '/moneyphp/money/src/Calculator/BcMathCalculator.php',
         'Money\\Calculator\\GmpCalculator' => __DIR__ . '/..' . '/moneyphp/money/src/Calculator/GmpCalculator.php',
@@ -3040,6 +3110,8 @@ class ComposerStaticInite688f9a47a1238f00a84fb5d717e4aa5
         'craft\\mail\\transportadapters\\Sendmail' => __DIR__ . '/..' . '/craftcms/cms/src/mail/transportadapters/Sendmail.php',
         'craft\\mail\\transportadapters\\Smtp' => __DIR__ . '/..' . '/craftcms/cms/src/mail/transportadapters/Smtp.php',
         'craft\\mail\\transportadapters\\TransportAdapterInterface' => __DIR__ . '/..' . '/craftcms/cms/src/mail/transportadapters/TransportAdapterInterface.php',
+        'craft\\mandrill\\MandrillAdapter' => __DIR__ . '/..' . '/craftcms/mandrill/src/MandrillAdapter.php',
+        'craft\\mandrill\\Plugin' => __DIR__ . '/..' . '/craftcms/mandrill/src/Plugin.php',
         'craft\\migrations\\CreateMatrixContentTable' => __DIR__ . '/..' . '/craftcms/cms/src/migrations/CreateMatrixContentTable.php',
         'craft\\migrations\\Install' => __DIR__ . '/..' . '/craftcms/cms/src/migrations/Install.php',
         'craft\\migrations\\m150403_183908_migrations_table_changes' => __DIR__ . '/..' . '/craftcms/cms/src/migrations/m150403_183908_migrations_table_changes.php',
