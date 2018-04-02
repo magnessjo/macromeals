@@ -7,6 +7,7 @@ import checkFormFieldsForValidAttribute from 'scripts/helpers/form/checkFormFiel
 import checkSelectFields from 'scripts/helpers/form/checkSelectFields.js';
 import findParentNode from 'scripts/helpers/findParentNode.js';
 import validation from 'scripts/helpers/form/validation.js';
+import shippingAlternatives from 'scripts/components/shipping-validation-alternatives.js';
 
 // Variables
 
@@ -18,10 +19,48 @@ const inputs = Array.from(shippingForm.querySelectorAll('input:not([type="submit
 const selects = Array.from(shippingForm.querySelectorAll('select'));
 const submit = shippingForm.querySelector('input[type="submit"]');
 
+// Clear Form Values
+
+function clearFormValues() {
+
+  inputs.forEach( (input) => {
+    const parent = findParentNode(input, 'field');
+    input.value = '';
+    parent.setAttribute('valid', false);
+    parent.removeAttribute('has-error', false);
+  });
+
+  selects.forEach( (select) => {
+    const parent = findParentNode(select, 'field');
+    select.selectedIndex = 0;
+    parent.setAttribute('valid', false);
+    parent.removeAttribute('has-error');
+  });
+
+}
+
+// Set Error
+
+function setError() {
+  result.innerHTML = `The address that you entered could not be validated.  Please contact us directly at <a href="info@macromeals.life">info@macromeals.life</a> for an estimate.`;
+}
 
 // Set Rate
 
-function setRate() {
+function setRate(data) {
+
+  const cost = parseInt(data.amount);
+
+  // Post Submission State
+
+  result.innerHTML = `<p>Your Estimate<span>$${cost.toFixed(2)}</span></p>`;
+  // clearFormValues();
+
+}
+
+// Fetch Rate
+
+function fetchRate() {
 
   const url = '/shippingRates';
   const address = shippingForm.querySelector('input[name="address"]').value;
@@ -29,49 +68,26 @@ function setRate() {
   const zip = shippingForm.querySelector('input[name="zipCode"]').value;
   const select = shippingForm.querySelector('select[name="state"]');
   const state = select.options[select.selectedIndex].value;
-  let data = `${window.csrfTokenName}=${window.csrfTokenValue}&address=${address}&city=${city}&zip=${zip}&state=${state}&quantity=1`;
-
-  data = `${window.csrfTokenName}=${window.csrfTokenValue}&`;
-
-  data += `address=500 chesley ln&city=Bel Air&zip=21009&state=MN&quantity=1`;
-
-  console.log(data);
+  const data = `${window.csrfTokenName}=${window.csrfTokenValue}&address=${address}&city=${city}&zip=${zip}&state=${state}&quantity=1`;
 
   fetchPostData(data, url).then( (response) => {
 
     loaderAnimation.style.display = 'none';
 
-    if (response.success) {
+    console.log(response);
 
-      const cost = parseInt(response.amount);
-      const isGround = response.service == 'GND';
+    if (!response.success) {
 
-      // Post Submission State
-
-      result.innerHTML = `<p>Your Estimate<span>$${cost.toFixed(2)}</span></p>`;
-
-      inputs.forEach( (input) => {
-        const parent = findParentNode(input, 'field');
-        input.value = '';
-        parent.setAttribute('valid', false);
-        parent.removeAttribute('has-error', false);
-      });
-
-      selects.forEach( (select) => {
-        const parent = findParentNode(select, 'field');
-        select.selectedIndex = 0;
-        parent.setAttribute('valid', false);
-        parent.removeAttribute('has-error');
-      });
-
-    } else {
-
-      if (result.error) {
-        result.innerHTML = `There was an error getting your estimate.  ${result.error}.  Please contact us directly at <a href="info@macromeals.life">info@macromeals.life</a> for an estimate.`;
+      if (response.alternatives && response.alternatives.length > 0) {
+        shippingAlternatives(response.alternatives, fetchRate, setError);
       } else {
-        result.innerHTML = `There was an error getting your estimate.  Please contact us directly at <a href="info@macromeals.life">info@macromeals.life</a> for an estimate.`;
+        setError();
       }
 
+    }
+
+    if (response.success) {
+      setRate(response);
     }
 
   });
@@ -103,7 +119,7 @@ export default function() {
     //   setRate();
     // }
 
-      setRate();
+    fetchRate();
 
     ga('send', {
       hitType: 'event',

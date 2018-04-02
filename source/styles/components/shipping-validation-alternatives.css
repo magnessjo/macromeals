@@ -1,0 +1,85 @@
+
+#shipping-validation-alternatives {
+  background-color: rgba(0, 0, 0, .8);
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  display: none;
+
+  & .modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 80%;
+    width: 80%;
+    max-width: 800px;
+    max-height: 800px;
+    background-color: white;
+    padding: 40px;
+  }
+
+  & .icons {
+    position: absolute;
+    right: 10px;
+    top: 0px;
+    font-size: 32px;
+
+    &:after {
+      content: "\f404";
+    }
+
+  }
+
+  & .instructions {
+    margin-bottom: 60px;
+
+    & p {
+      margin-bottom: 10px;
+      font-size: 20px;
+      font-family: var(--acuminMediumItalic);
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+
+    }
+
+  }
+
+  & .alternatives {
+
+    & > div {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 30px;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+
+    }
+
+    & button {
+      justify-content: flex-end;
+      text-transform: uppercase;
+      font-style: 28px;
+      font-family: var(--acuminBold);
+      font-weight: bold;
+    }
+
+    & p {
+      margin-bottom: 5px;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+
+    }
+
+  }
+
+}
