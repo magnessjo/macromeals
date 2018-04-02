@@ -463,12 +463,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/craftcms/commerce.git",
-                "reference": "ec34bc35ccfa11439554d627e71f2f3e42fa6050"
+                "reference": "6c1eee510ae8717730a76ca421521de5404f8e35"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/commerce/zipball/ec34bc35ccfa11439554d627e71f2f3e42fa6050",
-                "reference": "ec34bc35ccfa11439554d627e71f2f3e42fa6050",
+                "url": "https://api.github.com/repos/craftcms/commerce/zipball/6c1eee510ae8717730a76ca421521de5404f8e35",
+                "reference": "6c1eee510ae8717730a76ca421521de5404f8e35",
                 "shasum": ""
             },
             "require": {
@@ -508,7 +508,7 @@
                 "docs": "https://github.com/craftcms/docs",
                 "rss": "https://github.com/craftcms/commerce/releases.atom"
             },
-            "time": "2018-04-01T19:58:17+00:00"
+            "time": "2018-04-02T05:12:43+00:00"
         },
         {
             "name": "craftcms/commerce-omnipay",
@@ -516,16 +516,16 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/craftcms/commerce-omnipay.git",
-                "reference": "b5c2cef1591165f810a4d72dd1a4d4b57f5d42f7"
+                "reference": "010581061ebe577bb906b4403ef46dbc38240b52"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/commerce-omnipay/zipball/b5c2cef1591165f810a4d72dd1a4d4b57f5d42f7",
-                "reference": "b5c2cef1591165f810a4d72dd1a4d4b57f5d42f7",
+                "url": "https://api.github.com/repos/craftcms/commerce-omnipay/zipball/010581061ebe577bb906b4403ef46dbc38240b52",
+                "reference": "010581061ebe577bb906b4403ef46dbc38240b52",
                 "shasum": ""
             },
             "require": {
-                "craftcms/commerce": "^2.0.0-alpha.6",
+                "craftcms/commerce": "^2.0.0-alpha.7",
                 "omnipay/common": "~2.3"
             },
             "type": "library",
@@ -563,7 +563,7 @@
                 "docs": "https://github.com/craftcms/commerce-omnipay",
                 "rss": "https://github.com/craftcms/commerce-omnipay/commits/master.atom"
             },
-            "time": "2018-03-30T05:04:16+00:00"
+            "time": "2018-04-02T03:02:04+00:00"
         },
         {
             "name": "craftcms/commerce-paypal",
@@ -628,12 +628,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/craftcms/commerce-stripe.git",
-                "reference": "24fa4db2da51e717fe052f36d0a78c0139a80df4"
+                "reference": "2c2add25430d0934c71e9004ac6e38ac8946895c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/commerce-stripe/zipball/24fa4db2da51e717fe052f36d0a78c0139a80df4",
-                "reference": "24fa4db2da51e717fe052f36d0a78c0139a80df4",
+                "url": "https://api.github.com/repos/craftcms/commerce-stripe/zipball/2c2add25430d0934c71e9004ac6e38ac8946895c",
+                "reference": "2c2add25430d0934c71e9004ac6e38ac8946895c",
                 "shasum": ""
             },
             "require": {
@@ -675,7 +675,7 @@
                 "docs": "https://github.com/craftcms/commerce-stripe",
                 "rss": "https://github.com/craftcms/commerce-stripe/commits/master.atom"
             },
-            "time": "2018-03-29T22:41:06+00:00"
+            "time": "2018-04-01T21:57:43+00:00"
         },
         {
             "name": "craftcms/mandrill",
@@ -3207,7 +3207,7 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v2.8.36",
+            "version": "v2.8.37",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/event-dispatcher.git",
@@ -3704,16 +3704,16 @@
         },
         {
             "name": "twig/twig",
-            "version": "v2.4.7",
+            "version": "v2.4.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/twigphp/Twig.git",
-                "reference": "69aacd44dbbaa3199d5afb68605c996d577896fc"
+                "reference": "7b604c89da162034bdf4bb66310f358d313dd16d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/twigphp/Twig/zipball/69aacd44dbbaa3199d5afb68605c996d577896fc",
-                "reference": "69aacd44dbbaa3199d5afb68605c996d577896fc",
+                "url": "https://api.github.com/repos/twigphp/Twig/zipball/7b604c89da162034bdf4bb66310f358d313dd16d",
+                "reference": "7b604c89da162034bdf4bb66310f358d313dd16d",
                 "shasum": ""
             },
             "require": {
@@ -3766,7 +3766,7 @@
             "keywords": [
                 "templating"
             ],
-            "time": "2018-03-20T04:31:17+00:00"
+            "time": "2018-04-02T09:24:19+00:00"
         },
         {
             "name": "vlucas/phpdotenv",
