@@ -87,7 +87,7 @@
               <div class="input">
                 <select name="state" >
                   <option disabled selected value> Please Choose </option>
-                  {% for state in craft.commerce.states %}
+                  {% for state in craft.commerce.states.allStates %}
                     <option value="{{ state.abbreviation }}">{{ state.name }}</option>
                   {% endfor %}
                 </select>

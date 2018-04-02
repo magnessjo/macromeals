@@ -471,12 +471,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/craftcms/commerce.git",
-            "reference": "58ba2fc38164476f78db90f6430ed5d91cca3f60"
+            "reference": "ec34bc35ccfa11439554d627e71f2f3e42fa6050"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/craftcms/commerce/zipball/58ba2fc38164476f78db90f6430ed5d91cca3f60",
-            "reference": "58ba2fc38164476f78db90f6430ed5d91cca3f60",
+            "url": "https://api.github.com/repos/craftcms/commerce/zipball/ec34bc35ccfa11439554d627e71f2f3e42fa6050",
+            "reference": "ec34bc35ccfa11439554d627e71f2f3e42fa6050",
             "shasum": ""
         },
         "require": {
@@ -485,7 +485,7 @@
             "dompdf/dompdf": "~0.8.2",
             "moneyphp/money": "^3.1.3"
         },
-        "time": "2018-03-31T19:54:08+00:00",
+        "time": "2018-04-01T19:58:17+00:00",
         "type": "craft-plugin",
         "extra": {
             "handle": "commerce",

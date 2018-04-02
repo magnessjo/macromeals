@@ -109,6 +109,9 @@ class AddressValidation extends Ups
      */
     public function validate(Address $address, $requestOption = self::REQUEST_OPTION_ADDRESS_VALIDATION, $maxSuggestion = 15)
     {
+
+        \Craft::info($requestOption, 'help');
+
         if ($maxSuggestion > 50) {
             throw new \Exception('Maximum of 50 suggestions allowed');
         }
@@ -116,6 +119,7 @@ class AddressValidation extends Ups
         if (!in_array($requestOption, range(1, 3))) {
             throw new \Exception('Invalid request option supplied');
         }
+
 
         $this->address = $address;
         $this->requestOption = $requestOption;

@@ -23,7 +23,7 @@ const submit = shippingForm.querySelector('input[type="submit"]');
 
 function setRate() {
 
-  const url = '/actions/MacroCommerce/ShippingRates';
+  const url = '/shippingRates';
   const address = shippingForm.querySelector('input[name="address"]').value;
   const city = shippingForm.querySelector('input[name="city"]').value;
   const zip = shippingForm.querySelector('input[name="zipCode"]').value;
@@ -31,7 +31,13 @@ function setRate() {
   const state = select.options[select.selectedIndex].value;
   let data = `${window.csrfTokenName}=${window.csrfTokenValue}&address=${address}&city=${city}&zip=${zip}&state=${state}&quantity=1`;
 
-  fetchPostData(data,url).then( (response) => {
+  data = `${window.csrfTokenName}=${window.csrfTokenValue}&`;
+
+  data += `address=500 chesley ln&city=Bel Air&zip=21009&state=MN&quantity=1`;
+
+  console.log(data);
+
+  fetchPostData(data, url).then( (response) => {
 
     loaderAnimation.style.display = 'none';
 
@@ -87,15 +93,17 @@ export default function() {
 
     e.preventDefault();
 
-    const isInputsValid = checkFormFieldsForValidAttribute(inputs);
-    const isSelectsValid = checkFormFieldsForValidAttribute(selects);
-    inputQuery(shippingForm, false);
-    checkSelectFields(selects, true);
+    // const isInputsValid = checkFormFieldsForValidAttribute(inputs);
+    // const isSelectsValid = checkFormFieldsForValidAttribute(selects);
+    // inputQuery(shippingForm, false);
+    // checkSelectFields(selects, true);
+    //
+    // if (isInputsValid && isSelectsValid) {
+    //   loaderAnimation.style.display = 'block';
+    //   setRate();
+    // }
 
-    if (isInputsValid && isSelectsValid) {
-      loaderAnimation.style.display = 'block';
       setRate();
-    }
 
     ga('send', {
       hitType: 'event',
