@@ -463,12 +463,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/craftcms/commerce.git",
-                "reference": "6c1eee510ae8717730a76ca421521de5404f8e35"
+                "reference": "4b37411da7385c314a5901072da9cdf32d029355"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/commerce/zipball/6c1eee510ae8717730a76ca421521de5404f8e35",
-                "reference": "6c1eee510ae8717730a76ca421521de5404f8e35",
+                "url": "https://api.github.com/repos/craftcms/commerce/zipball/4b37411da7385c314a5901072da9cdf32d029355",
+                "reference": "4b37411da7385c314a5901072da9cdf32d029355",
                 "shasum": ""
             },
             "require": {
@@ -508,7 +508,7 @@
                 "docs": "https://github.com/craftcms/docs",
                 "rss": "https://github.com/craftcms/commerce/releases.atom"
             },
-            "time": "2018-04-02T05:12:43+00:00"
+            "time": "2018-04-03T00:20:26+00:00"
         },
         {
             "name": "craftcms/commerce-omnipay",
@@ -516,12 +516,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/craftcms/commerce-omnipay.git",
-                "reference": "010581061ebe577bb906b4403ef46dbc38240b52"
+                "reference": "9db612e2fd65cdd02768e6f6e8fbf9e237ba344c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/commerce-omnipay/zipball/010581061ebe577bb906b4403ef46dbc38240b52",
-                "reference": "010581061ebe577bb906b4403ef46dbc38240b52",
+                "url": "https://api.github.com/repos/craftcms/commerce-omnipay/zipball/9db612e2fd65cdd02768e6f6e8fbf9e237ba344c",
+                "reference": "9db612e2fd65cdd02768e6f6e8fbf9e237ba344c",
                 "shasum": ""
             },
             "require": {
@@ -563,7 +563,7 @@
                 "docs": "https://github.com/craftcms/commerce-omnipay",
                 "rss": "https://github.com/craftcms/commerce-omnipay/commits/master.atom"
             },
-            "time": "2018-04-02T03:02:04+00:00"
+            "time": "2018-04-02T23:39:15+00:00"
         },
         {
             "name": "craftcms/commerce-paypal",
@@ -571,12 +571,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/craftcms/commerce-paypal.git",
-                "reference": "7af797beaff63921e926f5735cc52049081c09a4"
+                "reference": "1a5189ed8b6d4fb3d7c94e86f7d33c02b533a8f8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/commerce-paypal/zipball/7af797beaff63921e926f5735cc52049081c09a4",
-                "reference": "7af797beaff63921e926f5735cc52049081c09a4",
+                "url": "https://api.github.com/repos/craftcms/commerce-paypal/zipball/1a5189ed8b6d4fb3d7c94e86f7d33c02b533a8f8",
+                "reference": "1a5189ed8b6d4fb3d7c94e86f7d33c02b533a8f8",
                 "shasum": ""
             },
             "require": {
@@ -620,7 +620,7 @@
                 "docs": "https://github.com/craftcms/commerce-paypal",
                 "rss": "https://github.com/craftcms/commerce-paypal/commits/master.atom"
             },
-            "time": "2018-03-30T05:02:22+00:00"
+            "time": "2018-04-02T23:42:04+00:00"
         },
         {
             "name": "craftcms/commerce-stripe",
@@ -628,12 +628,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/craftcms/commerce-stripe.git",
-                "reference": "2c2add25430d0934c71e9004ac6e38ac8946895c"
+                "reference": "278da023b53be29292e22433eecc935af28c3e56"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/commerce-stripe/zipball/2c2add25430d0934c71e9004ac6e38ac8946895c",
-                "reference": "2c2add25430d0934c71e9004ac6e38ac8946895c",
+                "url": "https://api.github.com/repos/craftcms/commerce-stripe/zipball/278da023b53be29292e22433eecc935af28c3e56",
+                "reference": "278da023b53be29292e22433eecc935af28c3e56",
                 "shasum": ""
             },
             "require": {
@@ -675,7 +675,7 @@
                 "docs": "https://github.com/craftcms/commerce-stripe",
                 "rss": "https://github.com/craftcms/commerce-stripe/commits/master.atom"
             },
-            "time": "2018-04-01T21:57:43+00:00"
+            "time": "2018-04-02T23:40:44+00:00"
         },
         {
             "name": "craftcms/mandrill",

@@ -3032,6 +3032,7 @@ return array(
     'craft\\commerce\\migrations\\m180329_161901_gateway_send_cart_info' => $vendorDir . '/craftcms/commerce/src/migrations/m180329_161901_gateway_send_cart_info.php',
     'craft\\commerce\\migrations\\m180401_150701_primary_addresses' => $vendorDir . '/craftcms/commerce/src/migrations/m180401_150701_primary_addresses.php',
     'craft\\commerce\\migrations\\m180401_161901_first_last_name_optional' => $vendorDir . '/craftcms/commerce/src/migrations/m180401_161901_first_last_name_optional.php',
+    'craft\\commerce\\migrations\\m180402_161901_increase_size_of_snapshot' => $vendorDir . '/craftcms/commerce/src/migrations/m180402_161901_increase_size_of_snapshot.php',
     'craft\\commerce\\models\\Address' => $vendorDir . '/craftcms/commerce/src/models/Address.php',
     'craft\\commerce\\models\\Country' => $vendorDir . '/craftcms/commerce/src/models/Country.php',
     'craft\\commerce\\models\\Currency' => $vendorDir . '/craftcms/commerce/src/models/Currency.php',

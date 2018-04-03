@@ -3557,6 +3557,7 @@ class ComposerStaticInite688f9a47a1238f00a84fb5d717e4aa5
         'craft\\commerce\\migrations\\m180329_161901_gateway_send_cart_info' => __DIR__ . '/..' . '/craftcms/commerce/src/migrations/m180329_161901_gateway_send_cart_info.php',
         'craft\\commerce\\migrations\\m180401_150701_primary_addresses' => __DIR__ . '/..' . '/craftcms/commerce/src/migrations/m180401_150701_primary_addresses.php',
         'craft\\commerce\\migrations\\m180401_161901_first_last_name_optional' => __DIR__ . '/..' . '/craftcms/commerce/src/migrations/m180401_161901_first_last_name_optional.php',
+        'craft\\commerce\\migrations\\m180402_161901_increase_size_of_snapshot' => __DIR__ . '/..' . '/craftcms/commerce/src/migrations/m180402_161901_increase_size_of_snapshot.php',
         'craft\\commerce\\models\\Address' => __DIR__ . '/..' . '/craftcms/commerce/src/models/Address.php',
         'craft\\commerce\\models\\Country' => __DIR__ . '/..' . '/craftcms/commerce/src/models/Country.php',
         'craft\\commerce\\models\\Currency' => __DIR__ . '/..' . '/craftcms/commerce/src/models/Currency.php',

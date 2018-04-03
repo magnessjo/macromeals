@@ -60,6 +60,23 @@ return array (
     'changelogUrl' => 'https://raw.githubusercontent.com/craftcms/mandrill/master/CHANGELOG.md',
     'downloadUrl' => 'https://github.com/craftcms/mandrill/archive/master.zip',
   ),
+  'craftcms/commerce' => 
+  array (
+    'class' => 'craft\\commerce\\Plugin',
+    'basePath' => $vendorDir . '/craftcms/commerce/src',
+    'handle' => 'commerce',
+    'aliases' => 
+    array (
+      '@craft/commerce' => $vendorDir . '/craftcms/commerce/src',
+    ),
+    'name' => 'Craft Commerce',
+    'version' => 'dev-develop',
+    'description' => 'An amazingly powerful and flexible e-commerce platform for Craft CMS.',
+    'developer' => 'Pixel & Tonic',
+    'developerUrl' => 'https://craftcommerce.com',
+    'developerEmail' => 'support@craftcms.com',
+    'documentationUrl' => 'https://github.com/craftcms/docs',
+  ),
   'craftcms/commerce-paypal' => 
   array (
     'class' => 'craft\\commerce\\paypal\\Plugin',
@@ -78,23 +95,6 @@ return array (
     'documentationUrl' => 'https://github.com/craftcms/commerce-paypal',
     'changelogUrl' => 'https://raw.githubusercontent.com/craftcms/commerce-paypal/master/CHANGELOG.md',
     'downloadUrl' => 'https://github.com/craftcms/commerce-paypal/archive/master.zip',
-  ),
-  'craftcms/commerce' => 
-  array (
-    'class' => 'craft\\commerce\\Plugin',
-    'basePath' => $vendorDir . '/craftcms/commerce/src',
-    'handle' => 'commerce',
-    'aliases' => 
-    array (
-      '@craft/commerce' => $vendorDir . '/craftcms/commerce/src',
-    ),
-    'name' => 'Craft Commerce',
-    'version' => 'dev-develop',
-    'description' => 'An amazingly powerful and flexible e-commerce platform for Craft CMS.',
-    'developer' => 'Pixel & Tonic',
-    'developerUrl' => 'https://craftcommerce.com',
-    'developerEmail' => 'support@craftcms.com',
-    'documentationUrl' => 'https://github.com/craftcms/docs',
   ),
   'craftcms/commerce-stripe' => 
   array (
