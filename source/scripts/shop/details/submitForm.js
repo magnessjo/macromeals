@@ -65,7 +65,7 @@ export default function() {
 
       postToCart(data).then( (response) => {
 
-        if (response.success) {
+        if (response.cart) {
 
           input.value = 0;
           submit.disabled = true;

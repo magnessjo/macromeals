@@ -82,7 +82,7 @@ function submitForm(e) {
 
     const response = postToCart(data).then( (response) => {
 
-      if (response.success) {
+      if (response.cart) {
 
         input.value = 0;
 

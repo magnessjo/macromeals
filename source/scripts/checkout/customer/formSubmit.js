@@ -1,7 +1,6 @@
 
 // Import
 
-import postToCart from 'scripts/helpers/cart/postToCart.js';
 import scrollToLocation from 'scripts/helpers/scrollToLocation.js';
 import inputQuery from 'scripts/helpers/form/inputQuery.js';
 import checkSelectFields from 'scripts/helpers/form/checkSelectFields.js';
