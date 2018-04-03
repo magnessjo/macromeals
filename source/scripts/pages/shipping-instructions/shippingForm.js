@@ -8,6 +8,7 @@ import checkSelectFields from 'scripts/helpers/form/checkSelectFields.js';
 import findParentNode from 'scripts/helpers/findParentNode.js';
 import validation from 'scripts/helpers/form/validation.js';
 import shippingAlternatives from 'scripts/components/shipping-validation-alternatives.js';
+import scrollToLocation from 'scripts/helpers/scrollToLocation.js';
 
 // Variables
 
@@ -74,7 +75,7 @@ function fetchRate() {
 
     loaderAnimation.style.display = 'none';
 
-    console.log(response);
+    scrollToLocation(result, 120);
 
     if (!response.success) {
 
