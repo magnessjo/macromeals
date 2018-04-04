@@ -53,9 +53,7 @@ function setRate(data) {
   const cost = parseInt(data.amount);
 
   // Post Submission State
-
   result.innerHTML = `<p>Your Estimate<span>$${cost.toFixed(2)}</span></p>`;
-  // clearFormValues();
 
 }
 
@@ -110,15 +108,15 @@ export default function() {
 
     e.preventDefault();
 
-    // const isInputsValid = checkFormFieldsForValidAttribute(inputs);
-    // const isSelectsValid = checkFormFieldsForValidAttribute(selects);
-    // inputQuery(shippingForm, false);
-    // checkSelectFields(selects, true);
-    //
-    // if (isInputsValid && isSelectsValid) {
-    //   loaderAnimation.style.display = 'block';
-    //   setRate();
-    // }
+    const isInputsValid = checkFormFieldsForValidAttribute(inputs);
+    const isSelectsValid = checkFormFieldsForValidAttribute(selects);
+    inputQuery(shippingForm, false);
+    checkSelectFields(selects, true);
+
+    if (isInputsValid && isSelectsValid) {
+      loaderAnimation.style.display = 'block';
+      setRate();
+    }
 
     fetchRate();
 
