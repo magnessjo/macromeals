@@ -26,7 +26,7 @@
     "craftcms/mandrill": "1.2.0",
     "craftcms/commerce-stripe": "1.0.1",
     "craftcms/commerce-omnipay": "1.0.0",
-    "craftcms/commerce-paypal": "dev-master as 1.0.0-alpha.99",
+    "craftcms/commerce-paypal": "1.0.0",
     "gabrielbull/ups-api": "^0.8.0"
   },
   "autoload": {

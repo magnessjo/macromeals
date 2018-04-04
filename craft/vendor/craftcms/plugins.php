@@ -41,25 +41,6 @@ return array (
     'changelogUrl' => 'https://raw.githubusercontent.com/craftcms/mandrill/master/CHANGELOG.md',
     'downloadUrl' => 'https://github.com/craftcms/mandrill/archive/master.zip',
   ),
-  'craftcms/commerce-paypal' => 
-  array (
-    'class' => 'craft\\commerce\\paypal\\Plugin',
-    'basePath' => $vendorDir . '/craftcms/commerce-paypal/src',
-    'handle' => 'commerce-paypal',
-    'aliases' => 
-    array (
-      '@craft/commerce/paypal' => $vendorDir . '/craftcms/commerce-paypal/src',
-    ),
-    'name' => 'PayPal for Craft Commerce',
-    'version' => 'dev-master',
-    'description' => 'PayPal payment gateways plugin for Craft Commerce 2',
-    'developer' => 'Pixel & Tonic',
-    'developerUrl' => 'https://pixelandtonic.com/',
-    'developerEmail' => 'support@craftcms.com',
-    'documentationUrl' => 'https://github.com/craftcms/commerce-paypal',
-    'changelogUrl' => 'https://raw.githubusercontent.com/craftcms/commerce-paypal/master/CHANGELOG.md',
-    'downloadUrl' => 'https://github.com/craftcms/commerce-paypal/archive/master.zip',
-  ),
   'craftcms/commerce' => 
   array (
     'class' => 'craft\\commerce\\Plugin',
@@ -95,5 +76,24 @@ return array (
     'documentationUrl' => 'https://github.com/craftcms/commerce-stripe',
     'changelogUrl' => 'https://raw.githubusercontent.com/craftcms/commerce-stripe/master/CHANGELOG.md',
     'downloadUrl' => 'https://github.com/craftcms/commerce-stripe/archive/master.zip',
+  ),
+  'craftcms/commerce-paypal' => 
+  array (
+    'class' => 'craft\\commerce\\paypal\\Plugin',
+    'basePath' => $vendorDir . '/craftcms/commerce-paypal/src',
+    'handle' => 'commerce-paypal',
+    'aliases' => 
+    array (
+      '@craft/commerce/paypal' => $vendorDir . '/craftcms/commerce-paypal/src',
+    ),
+    'name' => 'PayPal for Craft Commerce',
+    'version' => '1.0.0',
+    'description' => 'PayPal payment gateways plugin for Craft Commerce 2',
+    'developer' => 'Pixel & Tonic',
+    'developerUrl' => 'https://pixelandtonic.com/',
+    'developerEmail' => 'support@craftcms.com',
+    'documentationUrl' => 'https://github.com/craftcms/commerce-paypal',
+    'changelogUrl' => 'https://raw.githubusercontent.com/craftcms/commerce-paypal/master/CHANGELOG.md',
+    'downloadUrl' => 'https://github.com/craftcms/commerce-paypal/archive/master.zip',
   ),
 );
