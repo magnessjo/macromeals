@@ -20,26 +20,6 @@ const inputs = Array.from(shippingForm.querySelectorAll('input:not([type="submit
 const selects = Array.from(shippingForm.querySelectorAll('select'));
 const submit = shippingForm.querySelector('input[type="submit"]');
 
-// Clear Form Values
-
-function clearFormValues() {
-
-  inputs.forEach( (input) => {
-    const parent = findParentNode(input, 'field');
-    input.value = '';
-    parent.setAttribute('valid', false);
-    parent.removeAttribute('has-error', false);
-  });
-
-  selects.forEach( (select) => {
-    const parent = findParentNode(select, 'field');
-    select.selectedIndex = 0;
-    parent.setAttribute('valid', false);
-    parent.removeAttribute('has-error');
-  });
-
-}
-
 // Set Error
 
 function setError() {
@@ -51,8 +31,6 @@ function setError() {
 function setRate(data) {
 
   const cost = parseInt(data.amount);
-
-  // Post Submission State
   result.innerHTML = `<p>Your Estimate<span>$${cost.toFixed(2)}</span></p>`;
 
 }
@@ -102,22 +80,34 @@ export default function() {
   checkSelectFields(selects);
   inputQuery(shippingForm);
 
-  // Shipping Form
+  // Check for Valid Form to show Submit Button
+
+  inputs.forEach( (input) => {
+
+    input.addEventListener('blur', () => {
+      const isInputsValid = checkFormFieldsForValidAttribute(inputs);
+      const isSelectsValid = checkFormFieldsForValidAttribute(selects);
+      if (isInputsValid && isSelectsValid) submit.disabled = false;
+    });
+
+  });
+
+  selects.forEach( (select) => {
+
+    select.addEventListener('change', () => {
+      const isInputsValid = checkFormFieldsForValidAttribute(inputs);
+      const isSelectsValid = checkFormFieldsForValidAttribute(selects);
+      if (isInputsValid && isSelectsValid) submit.disabled = false;
+    });
+
+  });
+
+  // Shipping Form Submit
 
   shippingForm.addEventListener('submit', (e) => {
 
     e.preventDefault();
-
-    const isInputsValid = checkFormFieldsForValidAttribute(inputs);
-    const isSelectsValid = checkFormFieldsForValidAttribute(selects);
-    inputQuery(shippingForm, false);
-    checkSelectFields(selects, true);
-
-    if (isInputsValid && isSelectsValid) {
-      loaderAnimation.style.display = 'block';
-      setRate();
-    }
-
+    loaderAnimation.style.display = 'block';
     fetchRate();
 
     ga('send', {
