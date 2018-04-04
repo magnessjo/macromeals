@@ -21,11 +21,10 @@
   "require": {
     "craftcms/cms": "3.0.0",
     "vlucas/phpdotenv": "^2.4.0",
-    "craftcms/commerce": "dev-develop as 2.0.0-alpha.99",
+    "craftcms/commerce": "2.0.0-beta.1",
     "macromeals/macromeals-commerce": "^1.0.0",
-    "solspace/craft3-calendar": "v2.0.0-beta.7",
     "craftcms/mandrill": "1.2.0",
-    "craftcms/commerce-stripe": "dev-master as 1.0.0-alpha.99",
+    "craftcms/commerce-stripe": "1.0.1",
     "craftcms/commerce-omnipay": "dev-master as 1.0.0-alpha.99",
     "craftcms/commerce-paypal": "dev-master as 1.0.0-alpha.99",
     "gabrielbull/ups-api": "^0.8.0"
