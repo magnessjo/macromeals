@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "7bca86ec798dd334d4a71cf76c33280a",
+    "content-hash": "cbd5f13ae1fce2375d2807d414a82364",
     "packages": [
         {
             "name": "accord/mandrill-swiftmailer",
@@ -511,7 +511,7 @@
         },
         {
             "name": "craftcms/commerce-omnipay",
-            "version": "dev-master",
+            "version": "1.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/craftcms/commerce-omnipay.git",
@@ -3960,18 +3960,11 @@
             "alias": "1.0.0-alpha.99",
             "alias_normalized": "1.0.0.0-alpha99",
             "version": "9999999-dev",
-            "package": "craftcms/commerce-omnipay"
-        },
-        {
-            "alias": "1.0.0-alpha.99",
-            "alias_normalized": "1.0.0.0-alpha99",
-            "version": "9999999-dev",
             "package": "craftcms/commerce-paypal"
         }
     ],
     "minimum-stability": "dev",
     "stability-flags": {
-        "craftcms/commerce-omnipay": 20,
         "craftcms/commerce-paypal": 20
     },
     "prefer-stable": true,
