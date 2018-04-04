@@ -381,17 +381,17 @@
     },
     {
         "name": "craftcms/cms",
-        "version": "3.0.0-RC17.1",
-        "version_normalized": "3.0.0.0-RC17.1",
+        "version": "3.0.0",
+        "version_normalized": "3.0.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/craftcms/cms.git",
-            "reference": "c638b66f752656ac56706a514d0e945319bd70ba"
+            "reference": "18263261a5a70f0f84d78db6c4449b6fe304224e"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/craftcms/cms/zipball/c638b66f752656ac56706a514d0e945319bd70ba",
-            "reference": "c638b66f752656ac56706a514d0e945319bd70ba",
+            "url": "https://api.github.com/repos/craftcms/cms/zipball/18263261a5a70f0f84d78db6c4449b6fe304224e",
+            "reference": "18263261a5a70f0f84d78db6c4449b6fe304224e",
             "shasum": ""
         },
         "require": {
@@ -432,12 +432,18 @@
             "bower-asset/punycode": "1.3.*",
             "bower-asset/yii2-pjax": "~2.0.1"
         },
+        "require-dev": {
+            "codeception/codeception": "~2.3.3",
+            "codeception/mockery-module": "~0.2.2",
+            "codeception/specify": "~0.4.6",
+            "codeception/verify": "~0.3.3"
+        },
         "suggest": {
             "ext-iconv": "Adds support for more character encodings than PHP’s built-in mb_convert_encoding() function, which Craft will take advantage of when converting strings to UTF-8.",
             "ext-imagick": "Adds support for more image processing formats and options.",
             "ext-intl": "Adds rich internationalization support."
         },
-        "time": "2018-03-29T22:24:07+00:00",
+        "time": "2018-04-04T16:12:24+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -445,6 +451,7 @@
                 "craft\\": "src/"
             }
         },
+        "notification-url": "https://packagist.org/downloads/",
         "license": [
             "proprietary"
         ],
@@ -454,15 +461,7 @@
             "cms",
             "craftcms",
             "yii2"
-        ],
-        "support": {
-            "email": "support@craftcms.com",
-            "issues": "https://github.com/craftcms/cms/issues?state=open",
-            "forum": "https://craftcms.stackexchange.com/",
-            "source": "https://github.com/craftcms/cms",
-            "docs": "https://github.com/craftcms/docs",
-            "rss": "https://github.com/craftcms/cms/releases.atom"
-        }
+        ]
     },
     {
         "name": "craftcms/commerce",
@@ -471,12 +470,12 @@
         "source": {
             "type": "git",
             "url": "https://github.com/craftcms/commerce.git",
-            "reference": "4b37411da7385c314a5901072da9cdf32d029355"
+            "reference": "7e98c6c745f1aabc77327cb24d0dcefa08aedd71"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/craftcms/commerce/zipball/4b37411da7385c314a5901072da9cdf32d029355",
-            "reference": "4b37411da7385c314a5901072da9cdf32d029355",
+            "url": "https://api.github.com/repos/craftcms/commerce/zipball/7e98c6c745f1aabc77327cb24d0dcefa08aedd71",
+            "reference": "7e98c6c745f1aabc77327cb24d0dcefa08aedd71",
             "shasum": ""
         },
         "require": {
@@ -485,7 +484,7 @@
             "dompdf/dompdf": "~0.8.2",
             "moneyphp/money": "^3.1.3"
         },
-        "time": "2018-04-03T00:20:26+00:00",
+        "time": "2018-04-04T15:33:00+00:00",
         "type": "craft-plugin",
         "extra": {
             "handle": "commerce",
@@ -642,19 +641,19 @@
         "source": {
             "type": "git",
             "url": "https://github.com/craftcms/commerce-stripe.git",
-            "reference": "278da023b53be29292e22433eecc935af28c3e56"
+            "reference": "2240d09d10e65d81a94a9e4179daf27b0331234c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/craftcms/commerce-stripe/zipball/278da023b53be29292e22433eecc935af28c3e56",
-            "reference": "278da023b53be29292e22433eecc935af28c3e56",
+            "url": "https://api.github.com/repos/craftcms/commerce-stripe/zipball/2240d09d10e65d81a94a9e4179daf27b0331234c",
+            "reference": "2240d09d10e65d81a94a9e4179daf27b0331234c",
             "shasum": ""
         },
         "require": {
             "craftcms/commerce": "^2.0.0-alpha.5",
             "stripe/stripe-php": "^6.1"
         },
-        "time": "2018-04-02T23:40:44+00:00",
+        "time": "2018-04-04T17:23:46+00:00",
         "type": "craft-plugin",
         "extra": {
             "name": "Stripe for Craft Commerce",
