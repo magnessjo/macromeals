@@ -96,4 +96,23 @@ return array (
     'changelogUrl' => 'https://raw.githubusercontent.com/craftcms/commerce-paypal/master/CHANGELOG.md',
     'downloadUrl' => 'https://github.com/craftcms/commerce-paypal/archive/master.zip',
   ),
+  'solspace/craft3-calendar' => 
+  array (
+    'class' => 'Solspace\\Calendar\\Calendar',
+    'basePath' => $vendorDir . '/solspace/craft3-calendar/src',
+    'handle' => 'calendar',
+    'aliases' => 
+    array (
+      '@Solspace/Calendar' => $vendorDir . '/solspace/craft3-calendar/src',
+    ),
+    'name' => 'Calendar',
+    'version' => '2.0.0-beta.9',
+    'schemaVersion' => '2.0.1',
+    'description' => 'The most powerful event management plugin for Craft.',
+    'developer' => 'Solspace',
+    'developerUrl' => 'https://solspace.com/craft/calendar',
+    'documentationUrl' => 'https://solspace.com/craft/calendar/docs',
+    'changelogUrl' => 'https://raw.githubusercontent.com/solspace/craft3-calendar/master/CHANGELOG.md',
+    'hasCpSection' => true,
+  ),
 );
