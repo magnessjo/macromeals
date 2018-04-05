@@ -350,85 +350,6 @@
         ]
     },
     {
-        "name": "craftcms/cms",
-        "version": "3.0.0",
-        "version_normalized": "3.0.0.0",
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/craftcms/cms/zipball/18263261a5a70f0f84d78db6c4449b6fe304224e",
-            "reference": "18263261a5a70f0f84d78db6c4449b6fe304224e",
-            "shasum": ""
-        },
-        "require": {
-            "composer/composer": "~1.5.2",
-            "craftcms/oauth2-craftid": "~1.0.0",
-            "craftcms/plugin-installer": "~1.5.0",
-            "craftcms/server-check": "~1.1.0",
-            "creocoder/yii2-nested-sets": "~0.9.0",
-            "danielstjules/stringy": "~3.1.0",
-            "elvanto/litemoji": "^1.3.1",
-            "enshrined/svg-sanitize": "~0.8.2",
-            "ext-curl": "*",
-            "ext-dom": "*",
-            "ext-json": "*",
-            "ext-mbstring": "*",
-            "ext-openssl": "*",
-            "ext-pcre": "*",
-            "ext-pdo": "*",
-            "ext-zip": "*",
-            "guzzlehttp/guzzle": "~6.3.0",
-            "league/flysystem": "~1.0.35",
-            "league/oauth2-client": "~2.2.1",
-            "mikehaertl/php-shellcommand": "~1.2.5",
-            "php": ">=7.0.0",
-            "pixelandtonic/imagine": "~0.7.1.2",
-            "seld/cli-prompt": "~1.0.3",
-            "twig/twig": "~2.4.4",
-            "yiisoft/yii2": "~2.0.15.1",
-            "yiisoft/yii2-debug": "~2.0.10",
-            "yiisoft/yii2-queue": "~2.0.1",
-            "yiisoft/yii2-swiftmailer": "~2.1.0",
-            "zendframework/zend-feed": "~2.8.0"
-        },
-        "provide": {
-            "bower-asset/bootstrap": "3.3.* | 3.2.* | 3.1.*",
-            "bower-asset/inputmask": "~3.2.2 | ~3.3.5",
-            "bower-asset/jquery": "3.2.*@stable | 3.1.*@stable | 2.2.*@stable | 2.1.*@stable | 1.11.*@stable | 1.12.*@stable",
-            "bower-asset/punycode": "1.3.*",
-            "bower-asset/yii2-pjax": "~2.0.1"
-        },
-        "require-dev": {
-            "codeception/codeception": "~2.3.3",
-            "codeception/mockery-module": "~0.2.2",
-            "codeception/specify": "~0.4.6",
-            "codeception/verify": "~0.3.3"
-        },
-        "suggest": {
-            "ext-iconv": "Adds support for more character encodings than PHP’s built-in mb_convert_encoding() function, which Craft will take advantage of when converting strings to UTF-8.",
-            "ext-imagick": "Adds support for more image processing formats and options.",
-            "ext-intl": "Adds rich internationalization support."
-        },
-        "time": "2018-04-04T16:12:24+00:00",
-        "type": "library",
-        "installation-source": "dist",
-        "autoload": {
-            "psr-4": {
-                "craft\\": "src/"
-            }
-        },
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "proprietary"
-        ],
-        "description": "Craft CMS",
-        "homepage": "https://craftcms.com",
-        "keywords": [
-            "cms",
-            "craftcms",
-            "yii2"
-        ]
-    },
-    {
         "name": "craftcms/commerce-omnipay",
         "version": "1.0.0",
         "version_normalized": "1.0.0.0",
@@ -4156,6 +4077,86 @@
             "source": "https://github.com/craftcms/commerce",
             "docs": "https://github.com/craftcms/docs",
             "rss": "https://github.com/craftcms/commerce/releases.atom"
+        }
+    },
+    {
+        "name": "craftcms/cms",
+        "version": "3.0.1",
+        "version_normalized": "3.0.1.0",
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/craftcms/cms/zipball/03289e4369d732093751f34484f3852885769808",
+            "reference": "03289e4369d732093751f34484f3852885769808",
+            "shasum": ""
+        },
+        "require": {
+            "composer/composer": "~1.5.2",
+            "craftcms/oauth2-craftid": "~1.0.0",
+            "craftcms/plugin-installer": "~1.5.0",
+            "craftcms/server-check": "~1.1.0",
+            "creocoder/yii2-nested-sets": "~0.9.0",
+            "danielstjules/stringy": "~3.1.0",
+            "elvanto/litemoji": "^1.3.1",
+            "enshrined/svg-sanitize": "~0.8.2",
+            "ext-curl": "*",
+            "ext-dom": "*",
+            "ext-json": "*",
+            "ext-mbstring": "*",
+            "ext-openssl": "*",
+            "ext-pcre": "*",
+            "ext-pdo": "*",
+            "ext-zip": "*",
+            "guzzlehttp/guzzle": "~6.3.0",
+            "league/flysystem": "~1.0.35",
+            "league/oauth2-client": "~2.2.1",
+            "mikehaertl/php-shellcommand": "~1.2.5",
+            "php": ">=7.0.0",
+            "pixelandtonic/imagine": "~0.7.1.2",
+            "seld/cli-prompt": "~1.0.3",
+            "twig/twig": "~2.4.4",
+            "yiisoft/yii2": "~2.0.15.1",
+            "yiisoft/yii2-debug": "~2.0.10",
+            "yiisoft/yii2-queue": "~2.0.1",
+            "yiisoft/yii2-swiftmailer": "~2.1.0",
+            "zendframework/zend-feed": "~2.8.0"
+        },
+        "provide": {
+            "bower-asset/bootstrap": "3.3.* | 3.2.* | 3.1.*",
+            "bower-asset/inputmask": "~3.2.2 | ~3.3.5",
+            "bower-asset/jquery": "3.2.*@stable | 3.1.*@stable | 2.2.*@stable | 2.1.*@stable | 1.11.*@stable | 1.12.*@stable",
+            "bower-asset/punycode": "1.3.*",
+            "bower-asset/yii2-pjax": "~2.0.1"
+        },
+        "suggest": {
+            "ext-iconv": "Adds support for more character encodings than PHP’s built-in mb_convert_encoding() function, which Craft will take advantage of when converting strings to UTF-8.",
+            "ext-imagick": "Adds support for more image processing formats and options.",
+            "ext-intl": "Adds rich internationalization support."
+        },
+        "time": "2018-04-04T23:55:39+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "craft\\": "src/"
+            }
+        },
+        "license": [
+            "proprietary"
+        ],
+        "description": "Craft CMS",
+        "homepage": "https://craftcms.com",
+        "keywords": [
+            "cms",
+            "craftcms",
+            "yii2"
+        ],
+        "support": {
+            "email": "support@craftcms.com",
+            "issues": "https://github.com/craftcms/cms/issues?state=open",
+            "forum": "https://craftcms.stackexchange.com/",
+            "source": "https://github.com/craftcms/cms",
+            "docs": "https://github.com/craftcms/docs",
+            "rss": "https://github.com/craftcms/cms/releases.atom"
         }
     }
 ]

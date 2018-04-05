@@ -4118,7 +4118,7 @@ class ComposerStaticInite688f9a47a1238f00a84fb5d717e4aa5
         'craft\\migrations\\m180217_172123_tiny_ints' => __DIR__ . '/..' . '/craftcms/cms/src/migrations/m180217_172123_tiny_ints.php',
         'craft\\migrations\\m180321_233505_small_ints' => __DIR__ . '/..' . '/craftcms/cms/src/migrations/m180321_233505_small_ints.php',
         'craft\\migrations\\m180328_115523_new_license_key_statuses' => __DIR__ . '/..' . '/craftcms/cms/src/migrations/m180328_115523_new_license_key_statuses.php',
-        'craft\\migrations\\m180402_234134_edition_changes' => __DIR__ . '/..' . '/craftcms/cms/src/migrations/m180402_234134_edition_changes.php',
+        'craft\\migrations\\m180404_182320_edition_changes' => __DIR__ . '/..' . '/craftcms/cms/src/migrations/m180404_182320_edition_changes.php',
         'craft\\models\\AssetIndexData' => __DIR__ . '/..' . '/craftcms/cms/src/models/AssetIndexData.php',
         'craft\\models\\AssetTransform' => __DIR__ . '/..' . '/craftcms/cms/src/models/AssetTransform.php',
         'craft\\models\\AssetTransformIndex' => __DIR__ . '/..' . '/craftcms/cms/src/models/AssetTransformIndex.php',

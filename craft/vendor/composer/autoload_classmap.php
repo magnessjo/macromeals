@@ -3593,7 +3593,7 @@ return array(
     'craft\\migrations\\m180217_172123_tiny_ints' => $vendorDir . '/craftcms/cms/src/migrations/m180217_172123_tiny_ints.php',
     'craft\\migrations\\m180321_233505_small_ints' => $vendorDir . '/craftcms/cms/src/migrations/m180321_233505_small_ints.php',
     'craft\\migrations\\m180328_115523_new_license_key_statuses' => $vendorDir . '/craftcms/cms/src/migrations/m180328_115523_new_license_key_statuses.php',
-    'craft\\migrations\\m180402_234134_edition_changes' => $vendorDir . '/craftcms/cms/src/migrations/m180402_234134_edition_changes.php',
+    'craft\\migrations\\m180404_182320_edition_changes' => $vendorDir . '/craftcms/cms/src/migrations/m180404_182320_edition_changes.php',
     'craft\\models\\AssetIndexData' => $vendorDir . '/craftcms/cms/src/models/AssetIndexData.php',
     'craft\\models\\AssetTransform' => $vendorDir . '/craftcms/cms/src/models/AssetTransform.php',
     'craft\\models\\AssetTransformIndex' => $vendorDir . '/craftcms/cms/src/models/AssetTransformIndex.php',
