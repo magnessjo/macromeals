@@ -1802,6 +1802,7 @@ return array(
     'Solspace\\Commons\\Exceptions\\Configurations\\ConfigurationException' => $vendorDir . '/solspace/craft3-commons/src/Exceptions/Configurations/ConfigurationException.php',
     'Solspace\\Commons\\Exceptions\\Database\\DatabaseException' => $vendorDir . '/solspace/craft3-commons/src/Exceptions/Database/DatabaseException.php',
     'Solspace\\Commons\\Helpers\\ColorHelper' => $vendorDir . '/solspace/craft3-commons/src/Helpers/ColorHelper.php',
+    'Solspace\\Commons\\Helpers\\ComparisonHelper' => $vendorDir . '/solspace/craft3-commons/src/Helpers/ComparisonHelper.php',
     'Solspace\\Commons\\Helpers\\CryptoHelper' => $vendorDir . '/solspace/craft3-commons/src/Helpers/CryptoHelper.php',
     'Solspace\\Commons\\Helpers\\PermissionHelper' => $vendorDir . '/solspace/craft3-commons/src/Helpers/PermissionHelper.php',
     'Solspace\\Commons\\Helpers\\StringHelper' => $vendorDir . '/solspace/craft3-commons/src/Helpers/StringHelper.php',

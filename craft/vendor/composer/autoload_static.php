@@ -2327,6 +2327,7 @@ class ComposerStaticInite688f9a47a1238f00a84fb5d717e4aa5
         'Solspace\\Commons\\Exceptions\\Configurations\\ConfigurationException' => __DIR__ . '/..' . '/solspace/craft3-commons/src/Exceptions/Configurations/ConfigurationException.php',
         'Solspace\\Commons\\Exceptions\\Database\\DatabaseException' => __DIR__ . '/..' . '/solspace/craft3-commons/src/Exceptions/Database/DatabaseException.php',
         'Solspace\\Commons\\Helpers\\ColorHelper' => __DIR__ . '/..' . '/solspace/craft3-commons/src/Helpers/ColorHelper.php',
+        'Solspace\\Commons\\Helpers\\ComparisonHelper' => __DIR__ . '/..' . '/solspace/craft3-commons/src/Helpers/ComparisonHelper.php',
         'Solspace\\Commons\\Helpers\\CryptoHelper' => __DIR__ . '/..' . '/solspace/craft3-commons/src/Helpers/CryptoHelper.php',
         'Solspace\\Commons\\Helpers\\PermissionHelper' => __DIR__ . '/..' . '/solspace/craft3-commons/src/Helpers/PermissionHelper.php',
         'Solspace\\Commons\\Helpers\\StringHelper' => __DIR__ . '/..' . '/solspace/craft3-commons/src/Helpers/StringHelper.php',
