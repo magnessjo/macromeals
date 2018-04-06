@@ -108,7 +108,7 @@ return array (
       '@craft/commerce' => $vendorDir . '/craftcms/commerce/src',
     ),
     'name' => 'Craft Commerce',
-    'version' => '2.0.0-beta.1.1',
+    'version' => '2.0.0-beta.1.3',
     'description' => 'An amazingly powerful and flexible e-commerce platform for Craft CMS.',
     'developer' => 'Pixel & Tonic',
     'developerUrl' => 'https://craftcommerce.com',
