@@ -31,21 +31,21 @@
       <h1 class="acumin-headline"><span>Order Summary</span></h1>
 
       {% set shippingType = "Pickup" %}
-        {% if cart.shippingMethod.handle == 'overnight' %}
+        {% if cart.shippingMethodHandle == 'overnight' %}
           {% set shippingType = "Delivery" %}
         {% endif %}
       <p class="list-item expected-date">Expected {{ shippingType }} Date <span>{{ cart.deliveryDate.format('l, F d, Y') }}</span></p>
       <div class="cart-summary">
         <p class="list-item">SubTotal <span>{{ cart.itemSubtotal | commerceCurrency(cart.currency, stripZeros = true) }}</span></p>
-        {% if cart.totalDiscount < 0 %}
-          <p class="list-item">Discount <span>({{ cart.totalDiscount | number_format(2, '.', ',') }})</span>
+        {% if cart.getAdjustmentsTotalByType('Discount') > 0 %}
+          <p class="list-item">Discount <span>({{ cart.getAdjustmentsTotalByType('Discount') | number_format(2, '.', ',') }})</span>
         {% endif %}
         <p class="list-item">Tax <span>${{ cart.totalTax | number_format(2, '.', ',') }}</span></p>
         {% if cart.message %}
           <p class="cart-message">{{ cart.message }}</p>
         {% endif %}
-        {% if cart.totalShippingCost > 0 %}
-          <p class="list-item shipping">Shipping Cost <span>${{ cart.totalShippingCost | number_format(2, '.', ',') }}</span></p>
+        {% if cart.getAdjustmentsTotalByType('Shipping') > 0 %}
+          <p class="list-item shipping">Shipping Cost <span>${{ cart.getAdjustmentsTotalByType('Shipping') | number_format(2, '.', ',') }}</span></p>
           <p class="pickup">Prefer a $0 pickup option? <a href="/checkout/pickup">See options</a></p>
         {% endif %}
         <p class="list-item">Total Due <span>{{ cart.totalPrice | commerceCurrency(cart.currency, stripZeros = true) }}</span></p>
@@ -157,7 +157,7 @@
 
           <div class="checkout-actions">
 
-            {% if cart.shippingMethod.handle == 'overnight' %}
+            {% if cart.shippingMethodHandle == 'overnight' %}
               <a href="/checkout/customer" class="icons">Back <span>to Customer Information</span></a>
             {% else %}
               <a href="/checkout/pickup" class="icons">Back <span>to Pickup Options</span></a>

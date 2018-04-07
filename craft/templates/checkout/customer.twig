@@ -5,7 +5,9 @@
 
 {% set cart = craft.commerce.carts.cart %}
 {% set shippingModel = cart.shippingAddress %}
-{% set addresses = craft.commerce.customers.customer.addresses|last %}
+{% set customer = craft.commerce.getCustomer() %}
+
+{% set addresses = customer.addresses|last %}
 
 {% set states = craft.commerce.states.allStatesAsList["233"] %}
 
@@ -22,15 +24,17 @@
 
     {{ csrfInput() }}
 
-    <input type="hidden" name="action" value="commerce/cart/updateCart">
+    <input type="hidden" name="action" value="commerce/cart/update-cart">
+    <input type='hidden' name="billingAddressSameAsShipping" value="1" />
+    {{ redirectInput('/checkout/billing') }}
 
-    <input type="hidden" name="redirect" value="/checkout/billing">
-    <input type='hidden' name="sameAddress" value="1" />
-    <input type="hidden" name="shippingAddressId" value="new">
+    {% if shippingModel.id %}
+      <input type="hidden" name="shippingAddress[id]" value="{{ shippingModel.id }}">
+    {% endif %}
 
     <input type="hidden" name="shippingAddress[countryId]" value='233' />
     <input type="hidden" name="quantity" value='{{ cart.totalQty }}' />
-    <input type="hidden" name="shippingMethod" value='overnight' />
+    <input type="hidden" name="shippingMethodHandle" value='overnight' />
     <input type="hidden" name="emailAddress" value="{{ cart.email }}">
 
     <div class="overlay-loader">
@@ -152,7 +156,8 @@
           <div class="input">
             <select name="shippingAddress[stateId]" >
               <option disabled selected value> Please Choose </option>
-              {% for state in craft.commerce.states %}
+
+              {% for state in craft.commerce.states.allStates %}
 
                 {% if shippingModel %}
 
