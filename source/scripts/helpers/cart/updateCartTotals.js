@@ -11,7 +11,7 @@ export default function(cart) {
 
     const cartTotal = document.querySelector('#cart-total');
     const adjustments = cart.adjustments;
-    const discounts = typeof adjustments !== 'undefined' ? adjustments.discount : 'undefined';
+    const discounts = typeof adjustments !== 'undefined' ? adjustments.Discount : 'undefined';
     let discountCalcNumber = 0;
 
     if (typeof discounts !== 'undefined' && Math.abs(discounts.length) > 0) {

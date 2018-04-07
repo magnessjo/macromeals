@@ -49,7 +49,7 @@ export default function() {
 
           updateCartItem(data).then( (response) => {
 
-            if (response.success) {
+            if (response.cart) {
               updateCartTotals(response.cart);
             } else {
               console.log(response);

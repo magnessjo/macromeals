@@ -64,9 +64,9 @@
                 <span class="cost" data-type="items-amount">${{ cart.itemSubtotal | number_format(2, '.', ',')}}</span>
               </p>
 
-              <p class="discount" {% if cart.getAdjustmentsTotalByType('discount') != 0 %}data-show="true"{% else %}data-show="false"{% endif %}>
+              <p class="discount" {% if cart.getAdjustmentsTotalByType('Discount') != 0 %}data-show="true"{% else %}data-show="false"{% endif %}>
                 <span class="title">Discount</span>
-                <span class="cost" data-type="discount-amount">({{ cart.getAdjustmentsTotalByType('discount') | number_format(2, '.', ',') }})</span>
+                <span class="cost" data-type="discount-amount">({{ cart.getAdjustmentsTotalByType('Discount') | number_format(2, '.', ',') }})</span>
               </p>
 
               <p class="total">
