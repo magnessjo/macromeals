@@ -35,7 +35,7 @@ export default function() {
 
       let data = `${window.csrfTokenName}=${window.csrfTokenValue}&apply=${isAdjusted}`;
 
-      fetchPostData(data, '/actions/MacroCommerce/Cart/setCoolerClub').then((response) => {
+      fetchPostData(data, '/coolerClub').then((response) => {
 
         button.disabled = false;
 
@@ -47,7 +47,7 @@ export default function() {
 
           data += `&lineItemId=${itemId}&qty=${qty}`;
 
-          updateCartItem(data).then((response) => {
+          updateCartItem(data).then( (response) => {
 
             if (response.success) {
               updateCartTotals(response.cart);
