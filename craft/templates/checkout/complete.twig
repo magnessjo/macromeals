@@ -5,7 +5,7 @@
 
 {% set bodyClass = 'with-border' %}
 {% set queryString = craft.request.getQuery('order') %}
-{% set lastOrder = craft.commerce.orders.number(queryString) %}
+{% set lastOrder = craft.orders.number(queryString) %}
 
 {% block main %}
 
