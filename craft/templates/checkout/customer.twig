@@ -6,8 +6,15 @@
 {% set cart = craft.commerce.carts.cart %}
 {% set shippingModel = cart.shippingAddress %}
 {% set customer = craft.commerce.customers.customer() %}
-
 {% set addresses = customer.addresses|last %}
+
+{% if addresses.address1 == '' %}
+  {% for entry in customer.addresses %}
+    {% if entry.address1 %}
+      {% set addresses = entry %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
 
 {% set states = craft.commerce.states.allStatesAsList["233"] %}
 
@@ -154,15 +161,17 @@
         <div class="field" data-required="true" valid="false">
           <label for="state"><span>Shipping State</span></label>
           <div class="input">
+            {% set stateId = shippingModel.stateId ?? addresses.stateId ?? '' %}
+            {% set stateAbr = shippingModel.state ?? addresses.state ?? '' %}
             <select name="shippingAddress[stateId]" >
               <option disabled selected value> Please Choose </option>
 
               {% for state in craft.commerce.states.allStates %}
 
-                {% if shippingModel %}
+                {% if addresses or shippingModel %}
 
-                  {% if shippingModel.state == state %}
-                    <option value="{{ shippingModel.stateId }}" selected> {{ shippingModel.state }}</option>
+                  {% if stateAbr == state %}
+                    <option value="{{ stateId }}" selected> {{ stateAbr }}</option>
                   {% else %}
                     <option value="{{ state.id }}">{{ state.name }}</option>
                   {% endif %}
