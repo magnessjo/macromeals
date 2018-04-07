@@ -3317,17 +3317,17 @@
     },
     {
         "name": "symfony/event-dispatcher",
-        "version": "v2.8.37",
-        "version_normalized": "2.8.37.0",
+        "version": "v2.8.38",
+        "version_normalized": "2.8.38.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/event-dispatcher.git",
-            "reference": "f5d2d7dcc33b89e20c2696ea9afcbddf6540081c"
+            "reference": "9b69aad7d4c086dc94ebade2d5eb9145da5dac8c"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/f5d2d7dcc33b89e20c2696ea9afcbddf6540081c",
-            "reference": "f5d2d7dcc33b89e20c2696ea9afcbddf6540081c",
+            "url": "https://api.github.com/repos/symfony/event-dispatcher/zipball/9b69aad7d4c086dc94ebade2d5eb9145da5dac8c",
+            "reference": "9b69aad7d4c086dc94ebade2d5eb9145da5dac8c",
             "shasum": ""
         },
         "require": {
@@ -3344,7 +3344,7 @@
             "symfony/dependency-injection": "",
             "symfony/http-kernel": ""
         },
-        "time": "2018-02-11T16:53:59+00:00",
+        "time": "2018-04-06T07:35:03+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
