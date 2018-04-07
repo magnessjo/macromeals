@@ -12,7 +12,7 @@ const buttons = Array.from(form.querySelectorAll('.options button'));
 const calendarContainer = document.querySelector('#calendar');
 const calendars = Array.from(calendarContainer.querySelectorAll('.calendar-wrapper'));
 const textHeadline = calendarContainer.querySelector('h1');
-const inputMethod = document.querySelector('input[name="shippingMethod"]');
+const inputMethod = document.querySelector('input[name="shippingMethodHandle"]');
 
 // Show Calendars
 

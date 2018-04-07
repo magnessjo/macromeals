@@ -3032,6 +3032,7 @@
                 "Solspace\\Calendar\\": "src/"
             }
         },
+        "notification-url": "https://packagist.org/downloads/",
         "authors": [
             {
                 "name": "Solspace",
