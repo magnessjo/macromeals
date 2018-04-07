@@ -85,26 +85,17 @@ export default function(stripeRef, elementsRef) {
     submitButton.disabled = true;
     loader.style.display = 'block';
 
-    stripe.createToken(card, {
-      name : nameInput.value,
-      address_country: 'US',
+    stripe.createSource(card, {
+      owner: {
+        name : nameInput.value,
+      }
     }).then( (result) => {
 
-      if (result.error) {
+      console.log(result);
 
-        submitButton.disabled = false;
-        loader.style.display = 'none';
+      if (result.source) {
 
-        errorElement.innerHTML = `
-          <p>${result.error.message}</p>
-          <p>If you feel that this error is incorrect:  Please contact our support team at <a href="help@macromeals.life">help@macromeals.life</a></p>
-        `;
-
-        errorElement.style.display = 'block';
-
-      } else {
-
-        submitToken.stripe(result.token.id).then( (response) => {
+        submitToken.stripe(result.source.id).then( (response) => {
 
           if (response.error) {
 
@@ -121,8 +112,19 @@ export default function(stripeRef, elementsRef) {
 
         });
 
-      }
+      } else {
 
+        submitButton.disabled = false;
+        loader.style.display = 'none';
+
+        errorElement.innerHTML = `
+          <p>${result.error.message}</p>
+          <p>If you feel that this error is incorrect:  Please contact our support team at <a href="help@macromeals.life">help@macromeals.life</a></p>
+        `;
+
+        errorElement.style.display = 'block';
+
+      }
 
     });
 

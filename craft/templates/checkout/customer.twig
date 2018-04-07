@@ -5,7 +5,7 @@
 
 {% set cart = craft.commerce.carts.cart %}
 {% set shippingModel = cart.shippingAddress %}
-{% set customer = craft.commerce.getCustomer() %}
+{% set customer = craft.commerce.customers.customer() %}
 
 {% set addresses = customer.addresses|last %}
 

@@ -2,7 +2,7 @@
 {% extends "_layout" %}
 {% do view.registerCssFile('/checkoutStyle.css') %}
 
-{% set cart = craft.commerce.getCart() %}
+{% set cart = craft.commerce.carts.cart() %}
 {% set shippingModel = cart.shippingAddress %}
 
 {% block main %}
@@ -12,8 +12,8 @@
   {% endif %}
 
   <script type="text/javascript">
-    window.csrfTokenName = "{{ craft.config.csrfTokenName|e('js') }}";
-    window.csrfTokenValue = "{{ craft.request.csrfToken|e('js') }}";
+    window.csrfTokenName = "{{ craft.app.config.general.csrfTokenName }}";
+    window.csrfTokenValue = "{{ craft.app.request.csrfToken }}";
   </script>
 
   <div class="overlay-loader">
@@ -40,7 +40,7 @@
         {% if cart.getAdjustmentsTotalByType('Discount') > 0 %}
           <p class="list-item">Discount <span>({{ cart.getAdjustmentsTotalByType('Discount') | number_format(2, '.', ',') }})</span>
         {% endif %}
-        <p class="list-item">Tax <span>${{ cart.totalTax | number_format(2, '.', ',') }}</span></p>
+        <p class="list-item">Tax <span>${{ cart.getAdjustmentsTotalByType('taxIncluded') | number_format(2, '.', ',') }}</span></p>
         {% if cart.message %}
           <p class="cart-message">{{ cart.message }}</p>
         {% endif %}
