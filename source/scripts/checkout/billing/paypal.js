@@ -9,6 +9,7 @@ const form = document.querySelector('#paymentMethod');
 const container = document.querySelector('.paypal');
 const button = container.querySelector('button');
 const overlay = document.querySelector('.overlay-loader');
+const redirect = button.getAttribute('data-redirect');
 
 // Export
 
@@ -21,7 +22,7 @@ export default function() {
     button.disabled = true;
     overlay.style.display = 'block';
 
-    submitToken.paypal().then( (response) => {
+    submitToken.paypal(redirect).then( (response) => {
 
       if (response.error) {
 
