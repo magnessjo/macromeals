@@ -1,7 +1,46 @@
+### [1.6.3] 2018-01-31
+
+  * Fixed GitLab downloads failing in some edge cases
+  * Fixed ctrl-C handling during create-project
+  * Fixed GitHub VCS repositories not prompting for a token in some conditions
+  * Fixed SPDX license identifiers being case sensitive
+  * Fixed and clarified a few dependency resolution error reporting strings
+  * Fixed SVN commit log fetching in verbose mode when using private repositories
+
+### [1.6.2] 2018-01-05
+
+  * Fixed more autoloader regressions
+  * Fixed support for updating dist refs in gitlab URLs
+
+### [1.6.1] 2018-01-04
+
+  * Fixed upgrade regression due to some autoloader cleanups
+  * Fixed some overly loose version constraints
+
+### [1.6.0] 2018-01-04
+
+  * Added support for SPDX license identifiers v3.0, deprecates GPL/LGPL/AGPL identifiers, which should now have a `-only` or `-or-later` suffix added.
+  * Added support for COMPOSER_MEMORY_LIMIT env var to make Composer set the PHP memory limit explicitly
+  * Added support for simple strings for the `bin`
+  * Fixed `check-platform-reqs` bug in version checking
+
+### [1.6.0-RC] 2017-12-19
+
+  * Improved performance of installs and updates from git clones when checking out known commits
+  * Added `check-platform-reqs` command that checks that your PHP and extensions versions match the platform requirements of the installed packages
+  * Added `--with-all-dependencies` to the `update` and `require` commands which updates all dependencies of the listed packages, including those that are direct root requirements
+  * Added `scripts-descriptions` key to composer.json to customize the description and document your custom commands
+  * Added support for the uppercase NO_PROXY env var
+  * Added support for COMPOSER_DEFAULT_{AUTHOR,LICENSE,EMAIL,VENDOR} env vars to pre-populate init command values
+  * Added support for local fossil repositories
+  * Added suggestions for alternative spellings when entering packages in `init` and `require` commands and nothing can be found
+  * Fixed installed.json data to be sorted alphabetically by package name
+  * Fixed compatibility with Symfony 4.x components that Composer uses
+
 ### [1.5.6] - 2017-12-18
 
   * Fixed root package version guessed when a tag is checked out
-  * Fixed support for GitLab reposhosted on non-standard ports
+  * Fixed support for GitLab repos hosted on non-standard ports
   * Fixed regression in require command when requiring unstable packages, part 3
 
 ### [1.5.5] - 2017-12-01
@@ -565,7 +604,7 @@
   * Added autoloading support for root packages that use target-dir
   * Added awareness of the root package presence and support for it's provide/replace/conflict keys
   * Added IOInterface::isDecorated to test for colored output support
-  * Added validation of licenses based on the [SPDX registry](http://www.spdx.org/licenses/)
+  * Added validation of licenses based on the [SPDX registry](https://spdx.org/licenses/)
   * Improved repository protocol to have large cacheable parts
   * Fixed various bugs relating to package aliasing, proxy configuration, binaries
   * Various bug fixes and docs improvements
@@ -589,6 +628,11 @@
 
   * Initial release
 
+[1.6.3]: https://github.com/composer/composer/compare/1.6.2...1.6.3
+[1.6.2]: https://github.com/composer/composer/compare/1.6.1...1.6.2
+[1.6.1]: https://github.com/composer/composer/compare/1.6.0...1.6.1
+[1.6.0]: https://github.com/composer/composer/compare/1.6.0-RC...1.6.0
+[1.6.0-RC]: https://github.com/composer/composer/compare/1.5.6...1.6.0-RC
 [1.5.6]: https://github.com/composer/composer/compare/1.5.5...1.5.6
 [1.5.5]: https://github.com/composer/composer/compare/1.5.4...1.5.5
 [1.5.4]: https://github.com/composer/composer/compare/1.5.3...1.5.4

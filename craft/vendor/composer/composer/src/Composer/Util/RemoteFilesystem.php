@@ -897,17 +897,7 @@ class RemoteFilesystem
         if (!isset($defaults['ssl']['cafile']) && !isset($defaults['ssl']['capath'])) {
             $result = CaBundle::getSystemCaRootBundlePath($caBundleLogger);
 
-            if (preg_match('{^phar://}', $result)) {
-                $hash = hash_file('sha256', $result);
-                $targetPath = rtrim(sys_get_temp_dir(), '\\/') . '/composer-cacert-' . $hash . '.pem';
-
-                if (!file_exists($targetPath) || $hash !== hash_file('sha256', $targetPath)) {
-                    $this->streamCopy($result, $targetPath);
-                    chmod($targetPath, 0666);
-                }
-
-                $defaults['ssl']['cafile'] = $targetPath;
-            } elseif (is_dir($result)) {
+            if (is_dir($result)) {
                 $defaults['ssl']['capath'] = $result;
             } else {
                 $defaults['ssl']['cafile'] = $result;
@@ -930,24 +920,6 @@ class RemoteFilesystem
         }
 
         return $defaults;
-    }
-
-    /**
-     * Uses stream_copy_to_stream instead of copy to work around https://bugs.php.net/bug.php?id=64634
-     *
-     * @param string $source
-     * @param string $target
-     */
-    private function streamCopy($source, $target)
-    {
-        $source = fopen($source, 'r');
-        $target = fopen($target, 'w+');
-
-        stream_copy_to_stream($source, $target);
-        fclose($source);
-        fclose($target);
-
-        unset($source, $target);
     }
 
     /**
@@ -1041,10 +1013,7 @@ class RemoteFilesystem
         // Path for a public download follows this pattern /{user}/{repo}/downloads/{whatever}
         // {@link https://blog.bitbucket.org/2009/04/12/new-feature-downloads/}
         $pathParts = explode('/', $path);
-        if (count($pathParts) >= 4 && $pathParts[3] == 'downloads') {
-            return true;
-        }
 
-        return false;
+        return count($pathParts) >= 4 && $pathParts[3] == 'downloads';
     }
 }

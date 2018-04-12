@@ -13,20 +13,20 @@
 namespace Composer\Command;
 
 use Composer\DependencyResolver\Pool;
-use Composer\Json\JsonFile;
 use Composer\Factory;
-use Composer\Repository\RepositoryFactory;
+use Composer\Json\JsonFile;
 use Composer\Package\BasePackage;
 use Composer\Package\Version\VersionParser;
 use Composer\Package\Version\VersionSelector;
 use Composer\Repository\CompositeRepository;
 use Composer\Repository\PlatformRepository;
+use Composer\Repository\RepositoryFactory;
 use Composer\Util\ProcessExecutor;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\Process\Process;
 use Symfony\Component\Process\ExecutableFinder;
+use Symfony\Component\Process\Process;
 
 /**
  * @author Justin Rainbow <justin.rainbow@gmail.com>
@@ -191,7 +191,9 @@ EOT
             $name = basename($cwd);
             $name = preg_replace('{(?:([a-z])([A-Z])|([A-Z])([A-Z][a-z]))}', '\\1\\3-\\2\\4', $name);
             $name = strtolower($name);
-            if (isset($git['github.user'])) {
+            if (!empty($_SERVER['COMPOSER_DEFAULT_VENDOR'])) {
+                $name = $_SERVER['COMPOSER_DEFAULT_VENDOR'] . '/' . $name;
+            } elseif (isset($git['github.user'])) {
                 $name = $git['github.user'] . '/' . $name;
             } elseif (!empty($_SERVER['USERNAME'])) {
                 $name = $_SERVER['USERNAME'] . '/' . $name;
@@ -240,8 +242,20 @@ EOT
         $input->setOption('description', $description);
 
         if (null === $author = $input->getOption('author')) {
-            if (isset($git['user.name']) && isset($git['user.email'])) {
-                $author = sprintf('%s <%s>', $git['user.name'], $git['user.email']);
+            if (!empty($_SERVER['COMPOSER_DEFAULT_AUTHOR'])) {
+                $author_name = $_SERVER['COMPOSER_DEFAULT_AUTHOR'];
+            } elseif (isset($git['user.name'])) {
+                $author_name = $git['user.name'];
+            }
+
+            if (!empty($_SERVER['COMPOSER_DEFAULT_EMAIL'])) {
+                $author_email = $_SERVER['COMPOSER_DEFAULT_EMAIL'];
+            } elseif (isset($git['user.email'])) {
+                $author_email = $git['user.email'];
+            }
+
+            if (isset($author_name) && isset($author_email)) {
+                $author = sprintf('%s <%s>', $author_name, $author_email);
             }
         }
 
@@ -291,7 +305,12 @@ EOT
         );
         $input->setOption('type', $type);
 
-        $license = $input->getOption('license') ?: false;
+        if (null === $license = $input->getOption('license')) {
+            if (!empty($_SERVER['COMPOSER_DEFAULT_LICENSE'])) {
+                $license = $_SERVER['COMPOSER_DEFAULT_LICENSE'];
+            }
+        }
+
         $license = $io->ask(
             'License [<comment>'.$license.'</comment>]: ',
             $license
@@ -366,8 +385,11 @@ EOT
             foreach ($requires as $requirement) {
                 if (!isset($requirement['version'])) {
                     // determine the best version automatically
-                    $version = $this->findBestVersionForPackage($input, $requirement['name'], $phpVersion, $preferredStability);
+                    list($name, $version) = $this->findBestVersionAndNameForPackage($input, $requirement['name'], $phpVersion, $preferredStability);
                     $requirement['version'] = $version;
+
+                    // replace package name from packagist.org
+                    $requirement['name'] = $name;
 
                     $io->writeError(sprintf(
                         'Using version <info>%s</info> for <info>%s</info>',
@@ -376,7 +398,10 @@ EOT
                     ));
                 } else {
                     // check that the specified version/constraint exists before we proceed
-                    $this->findBestVersionForPackage($input, $requirement['name'], $phpVersion, $preferredStability, $requirement['version'], 'dev');
+                    list($name, $version) = $this->findBestVersionAndNameForPackage($input, $requirement['name'], $phpVersion, $preferredStability, $requirement['version'], 'dev');
+
+                    // replace package name from packagist.org
+                    $requirement['name'] = $name;
                 }
 
                 $result[] = $requirement['name'] . ' ' . $requirement['version'];
@@ -394,7 +419,17 @@ EOT
                 $exactMatch = null;
                 $choices = array();
                 foreach ($matches as $position => $foundPackage) {
-                    $choices[] = sprintf(' <info>%5s</info> %s', "[$position]", $foundPackage['name']);
+                    $abandoned = '';
+                    if (isset($foundPackage['abandoned'])) {
+                        if (is_string($foundPackage['abandoned'])) {
+                            $replacement = sprintf('Use %s instead', $foundPackage['abandoned']);
+                        } else {
+                            $replacement = 'No replacement was suggested';
+                        }
+                        $abandoned = sprintf('<warning>Abandoned. %s.</warning>', $replacement);
+                    }
+
+                    $choices[] = sprintf(' <info>%5s</info> %s %s', "[$position]", $foundPackage['name'], $abandoned);
                     if ($foundPackage['name'] === $package) {
                         $exactMatch = true;
                         break;
@@ -464,7 +499,7 @@ EOT
                     );
 
                     if (false === $constraint) {
-                        $constraint = $this->findBestVersionForPackage($input, $package, $phpVersion, $preferredStability);
+                        list($name, $constraint) = $this->findBestVersionAndNameForPackage($input, $package, $phpVersion, $preferredStability);
 
                         $io->writeError(sprintf(
                             'Using version <info>%s</info> for <info>%s</info>',
@@ -631,17 +666,24 @@ EOT
      *
      * @param  InputInterface            $input
      * @param  string                    $name
-     * @param  string                    $phpVersion
+     * @param  string|null               $phpVersion
      * @param  string                    $preferredStability
+     * @param  string|null               $requiredVersion
      * @param  string                    $minimumStability
      * @throws \InvalidArgumentException
-     * @return string
+     * @return array name version
      */
-    private function findBestVersionForPackage(InputInterface $input, $name, $phpVersion, $preferredStability = 'stable', $requiredVersion = null, $minimumStability = null)
+    private function findBestVersionAndNameForPackage(InputInterface $input, $name, $phpVersion, $preferredStability = 'stable', $requiredVersion = null, $minimumStability = null)
     {
         // find the latest version allowed in this pool
         $versionSelector = new VersionSelector($this->getPool($input, $minimumStability));
         $package = $versionSelector->findBestCandidate($name, $requiredVersion, $phpVersion, $preferredStability);
+
+        // retry without phpVersion if platform requirements are ignored in case nothing was found
+        if ($input->hasOption('ignore-platform-reqs') && $input->getOption('ignore-platform-reqs')) {
+            $phpVersion = null;
+            $package = $versionSelector->findBestCandidate($name, $requiredVersion, $phpVersion, $preferredStability);
+        }
 
         if (!$package) {
             // Check whether the PHP version was the problem
@@ -662,6 +704,26 @@ EOT
                     'Could not find package %s in any version matching your PHP version (%s)', $name, $phpVersion
                 ));
             }
+
+            // Check for similar names/typos
+            $similar = $this->findSimilar($name);
+            if ($similar) {
+                // Check whether the minimum stability was the problem but the package exists
+                if ($requiredVersion === null && in_array($name, $similar, true)) {
+                    throw new \InvalidArgumentException(sprintf(
+                        'Could not find a version of package %s matching your minimum-stability (%s). Require it with an explicit version constraint allowing its desired stability.',
+                        $name,
+                        $this->getMinimumStability($input)
+                    ));
+                }
+
+                throw new \InvalidArgumentException(sprintf(
+                    "Could not find package %s.\n\nDid you mean " . (count($similar) > 1 ? 'one of these' : 'this') . "?\n    %s",
+                    $name,
+                    implode("\n    ", $similar)
+                ));
+            }
+
             throw new \InvalidArgumentException(sprintf(
                 'Could not find a matching version of package %s. Check the package spelling, your version constraint and that the package is available in a stability which matches your minimum-stability (%s).',
                 $name,
@@ -669,6 +731,27 @@ EOT
             ));
         }
 
-        return $versionSelector->findRecommendedRequireVersion($package);
+        return array(
+            $package->getPrettyName(),
+            $versionSelector->findRecommendedRequireVersion($package)
+        );
+    }
+
+    private function findSimilar($package)
+    {
+        try {
+            $results = $this->repos->search($package);
+        } catch (\Exception $e) {
+            // ignore search errors
+            return array();
+        }
+        $similarPackages = array();
+
+        foreach ($results as $result) {
+            $similarPackages[$result['name']] = levenshtein($package, $result['name']);
+        }
+        asort($similarPackages);
+
+        return array_keys(array_slice($similarPackages, 0, 5));
     }
 }

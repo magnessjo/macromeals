@@ -125,7 +125,8 @@ class Installer
      * @var array|null
      */
     protected $updateWhitelist = null;
-    protected $whitelistDependencies = false;
+    protected $whitelistDependencies = false; // TODO 2.0 rename to whitelistTransitiveDependencies
+    protected $whitelistAllDependencies = false;
 
     /**
      * @var SuggestedPackagesReporter
@@ -766,7 +767,7 @@ class Installer
             // is this a plugin or a dependency of a plugin?
             if ($isPlugin || count(array_intersect($package->getNames(), $pluginRequires))) {
                 // get the package's requires, but filter out any platform requirements or 'composer-plugin-api'
-                $requires = array_filter(array_keys($package->getRequires()), function($req) {
+                $requires = array_filter(array_keys($package->getRequires()), function ($req) {
                     return $req !== 'composer-plugin-api' && !preg_match(PlatformRepository::PLATFORM_PACKAGE_REGEX, $req);
                 });
 
@@ -1206,7 +1207,7 @@ class Installer
         if (preg_match('{^https?://(?:(?:www\.)?bitbucket\.org|(api\.)?github\.com)/}i', $package->getDistUrl())) {
             $package->setDistReference($reference);
             $package->setDistUrl(preg_replace('{(?<=/)[a-f0-9]{40}(?=/|$)}i', $reference, $package->getDistUrl()));
-        } else if ($package->getDistReference()) { // update the dist reference if there was one, but if none was provided ignore it
+        } elseif ($package->getDistReference()) { // update the dist reference if there was one, but if none was provided ignore it
             $package->setDistReference($reference);
         }
     }
@@ -1283,7 +1284,7 @@ class Installer
      *
      * Packages which are listed as requirements in the root package will be
      * skipped including their dependencies, unless they are listed in the
-     * update whitelist themselves.
+     * update whitelist themselves or $whitelistAllDependencies is true.
      *
      * @param RepositoryInterface $localOrLockRepo Use the locked repo if available, otherwise installed repo will do
      *                                             As we want the most accurate package list to work with, and installed
@@ -1305,8 +1306,10 @@ class Installer
         }
 
         $skipPackages = array();
-        foreach ($rootRequires as $require) {
-            $skipPackages[$require->getTarget()] = true;
+        if (!$this->whitelistAllDependencies) {
+            foreach ($rootRequires as $require) {
+                $skipPackages[$require->getTarget()] = true;
+            }
         }
 
         $pool = new Pool('dev');
@@ -1351,7 +1354,7 @@ class Installer
                 $seen[$package->getId()] = true;
                 $this->updateWhitelist[$package->getName()] = true;
 
-                if (!$this->whitelistDependencies) {
+                if (!$this->whitelistDependencies && !$this->whitelistAllDependencies) {
                     continue;
                 }
 
@@ -1652,14 +1655,41 @@ class Installer
     }
 
     /**
-     * Should dependencies of whitelisted packages be updated recursively?
-     *
-     * @param  bool      $updateDependencies
-     * @return Installer
+     * @deprecated use setWhitelistTransitiveDependencies instead
      */
     public function setWhitelistDependencies($updateDependencies = true)
     {
-        $this->whitelistDependencies = (bool) $updateDependencies;
+        return $this->setWhitelistTransitiveDependencies($updateDependencies);
+    }
+
+    /**
+     * Should dependencies of whitelisted packages (but not direct dependencies) be updated?
+     *
+     * This will NOT whitelist any dependencies that are also directly defined
+     * in the root package.
+     *
+     * @param  bool      $updateTransitiveDependencies
+     * @return Installer
+     */
+    public function setWhitelistTransitiveDependencies($updateTransitiveDependencies = true)
+    {
+        $this->whitelistDependencies = (bool) $updateTransitiveDependencies;
+
+        return $this;
+    }
+
+    /**
+     * Should all dependencies of whitelisted packages be updated recursively?
+     *
+     * This will whitelist any dependencies of the whitelisted packages, including
+     * those defined in the root package.
+     *
+     * @param  bool      $updateAllDependencies
+     * @return Installer
+     */
+    public function setWhitelistAllDependencies($updateAllDependencies = true)
+    {
+        $this->whitelistAllDependencies = (bool) $updateAllDependencies;
 
         return $this;
     }

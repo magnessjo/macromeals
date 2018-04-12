@@ -152,7 +152,7 @@ The recommended notation for the most common licenses is (alphabetical):
 - MIT
 
 Optional, but it is highly recommended to supply this. More identifiers are
-listed at the [SPDX Open Source License Registry](https://www.spdx.org/licenses/).
+listed at the [SPDX Open Source License Registry](https://spdx.org/licenses/).
 
 For closed-source software, you may use `"proprietary"` as the license identifier.
 
@@ -214,7 +214,7 @@ An example:
         {
             "name": "Jordi Boggiano",
             "email": "j.boggiano@seld.be",
-            "homepage": "http://seld.be",
+            "homepage": "https://seld.be",
             "role": "Developer"
         }
     ]
@@ -355,7 +355,6 @@ Example:
 > your system. You may use it to help you compile the list of extensions you
 > use and require. Alternatively you may use third party tools to analyze
 > your project for the list of extensions used.
-
 
 #### require
 
@@ -571,7 +570,7 @@ Example:
 #### Files
 
 If you want to require certain files explicitly on every request then you can use
-the 'files' autoloading mechanism. This is useful if your package includes PHP functions
+the `files` autoloading mechanism. This is useful if your package includes PHP functions
 that cannot be autoloaded by PHP.
 
 Example:
@@ -586,7 +585,7 @@ Example:
 
 #### Exclude files from classmaps
 
-If you want to exclude some files or folders from the classmap you can use the 'exclude-from-classmap' property.
+If you want to exclude some files or folders from the classmap you can use the `exclude-from-classmap` property.
 This might be useful to exclude test classes in your live environment, for example, as those will be skipped
 from the classmap even when building an optimized autoloader.
 
@@ -608,7 +607,7 @@ Example:
 
 The autoloader can have quite a substantial impact on your request time
 (50-100ms per request in large frameworks using a lot of classes). See the
-[`article about optimizing the autoloader`](articles/autoloader-optimization.md)
+[article about optimizing the autoloader](articles/autoloader-optimization.md)
 for more details on how to reduce this impact.
 
 ### autoload-dev <span>([root-only](04-schema.md#root-package))</span>
@@ -768,7 +767,7 @@ Example:
                 "name": "smarty/smarty",
                 "version": "3.1.7",
                 "dist": {
-                    "url": "http://www.smarty.net/files/Smarty-3.1.7.zip",
+                    "url": "https://www.smarty.net/files/Smarty-3.1.7.zip",
                     "type": "zip"
                 },
                 "source": {
@@ -883,7 +882,7 @@ but the same branch is installed (in the example: latest-testing).
 An example:
 
 If you have a testing branch, that is heavily maintained during a testing phase and is
-deployed to your staging environment, normally "composer show -s" will give you `versions : * dev-master`.
+deployed to your staging environment, normally `composer show -s` will give you `versions : * dev-master`.
 
 If you configure `latest-.*` as a pattern for non-feature-branches like this:
 
@@ -893,7 +892,7 @@ If you configure `latest-.*` as a pattern for non-feature-branches like this:
 }
 ```
 
-Then "composer show -s" will give you `versions : * dev-latest-testing`.
+Then `composer show -s` will give you `versions : * dev-latest-testing`.
 
 Optional.
 
