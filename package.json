@@ -5,7 +5,7 @@
   "author": "Josh Magness",
   "license": "MIT",
   "scripts": {
-    "start": "webpack -w"
+    "start": "webpack -w --env.NODE_ENV=local"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

@@ -1891,6 +1891,7 @@ return array(
     'Stripe\\Topup' => $vendorDir . '/stripe/stripe-php/lib/Topup.php',
     'Stripe\\Transfer' => $vendorDir . '/stripe/stripe-php/lib/Transfer.php',
     'Stripe\\TransferReversal' => $vendorDir . '/stripe/stripe-php/lib/TransferReversal.php',
+    'Stripe\\UsageRecord' => $vendorDir . '/stripe/stripe-php/lib/UsageRecord.php',
     'Stripe\\Util\\AutoPagingIterator' => $vendorDir . '/stripe/stripe-php/lib/Util/AutoPagingIterator.php',
     'Stripe\\Util\\DefaultLogger' => $vendorDir . '/stripe/stripe-php/lib/Util/DefaultLogger.php',
     'Stripe\\Util\\LoggerInterface' => $vendorDir . '/stripe/stripe-php/lib/Util/LoggerInterface.php',
