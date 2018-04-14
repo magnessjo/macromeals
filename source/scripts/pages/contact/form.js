@@ -36,7 +36,7 @@ function submitForm(e) {
     if (inputs.length - 1 != i) data += '&';
   });
 
-  fetchData(data, '/actions/MacroCommerce/Contact/setEmails').then( (response) => {
+  fetchData(data, '/contact').then( (response) => {
     if( response.success ) {
       form.style.display = 'none';
       confirmation.style.display = 'block';
