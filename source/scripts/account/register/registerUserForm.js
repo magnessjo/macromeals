@@ -34,7 +34,7 @@ function submitForm(e) {
     if (inputs.length - 1 != i) data += '&';
   });
 
-  fetchData(data, '/actions/users/saveUser').then( (response) => {
+  fetchData(data, '/actions/users/save-user').then( (response) => {
 
     if (response.errors) {
 
@@ -73,7 +73,7 @@ function submitForm(e) {
 
   if (localCheckBox.checked) {
 
-    fetchData(data, '/actions/MacroCommerce/Email/subscribeNewsletter').then( (response) => {});
+    fetchData(data, '/newsletter').then( (response) => {});
 
   }
 
