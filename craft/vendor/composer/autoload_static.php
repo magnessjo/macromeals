@@ -140,6 +140,7 @@ class ComposerStaticInite688f9a47a1238f00a84fb5d717e4aa5
         'D' => 
         array (
             'DvK\\Vat\\' => 8,
+            'DrewM\\MailChimp\\' => 16,
             'Dotenv\\' => 7,
             'Dompdf\\' => 7,
         ),
@@ -425,6 +426,10 @@ class ComposerStaticInite688f9a47a1238f00a84fb5d717e4aa5
         'DvK\\Vat\\' => 
         array (
             0 => __DIR__ . '/..' . '/dannyvankooten/vat.php/src',
+        ),
+        'DrewM\\MailChimp\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/drewm/mailchimp-api/src',
         ),
         'Dotenv\\' => 
         array (
@@ -872,6 +877,9 @@ class ComposerStaticInite688f9a47a1238f00a84fb5d717e4aa5
         'Dotenv\\Exception\\ValidationException' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Exception/ValidationException.php',
         'Dotenv\\Loader' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Loader.php',
         'Dotenv\\Validator' => __DIR__ . '/..' . '/vlucas/phpdotenv/src/Validator.php',
+        'DrewM\\MailChimp\\Batch' => __DIR__ . '/..' . '/drewm/mailchimp-api/src/Batch.php',
+        'DrewM\\MailChimp\\MailChimp' => __DIR__ . '/..' . '/drewm/mailchimp-api/src/MailChimp.php',
+        'DrewM\\MailChimp\\Webhook' => __DIR__ . '/..' . '/drewm/mailchimp-api/src/Webhook.php',
         'DvK\\Vat\\Countries' => __DIR__ . '/..' . '/dannyvankooten/vat.php/src/Countries.php',
         'DvK\\Vat\\Rates\\Caches\\NullCache' => __DIR__ . '/..' . '/dannyvankooten/vat.php/src/Rates/Caches/NullCache.php',
         'DvK\\Vat\\Rates\\Clients\\JsonVat' => __DIR__ . '/..' . '/dannyvankooten/vat.php/src/Rates/Clients/JsonVat.php',
@@ -4440,6 +4448,7 @@ class ComposerStaticInite688f9a47a1238f00a84fb5d717e4aa5
         'macromeals\\macromealscommerce\\adjusters\\CoolerAdjuster' => __DIR__ . '/..' . '/macromeals/macromeals-commerce/src/adjusters/CoolerAdjuster.php',
         'macromeals\\macromealscommerce\\adjusters\\ShippingAdjuster' => __DIR__ . '/..' . '/macromeals/macromeals-commerce/src/adjusters/ShippingAdjuster.php',
         'macromeals\\macromealscommerce\\controllers\\CartController' => __DIR__ . '/..' . '/macromeals/macromeals-commerce/src/controllers/CartController.php',
+        'macromeals\\macromealscommerce\\controllers\\ContactController' => __DIR__ . '/..' . '/macromeals/macromeals-commerce/src/controllers/ContactController.php',
         'macromeals\\macromealscommerce\\controllers\\FoodController' => __DIR__ . '/..' . '/macromeals/macromeals-commerce/src/controllers/FoodController.php',
         'macromeals\\macromealscommerce\\controllers\\ShippingController' => __DIR__ . '/..' . '/macromeals/macromeals-commerce/src/controllers/ShippingController.php',
         'macromeals\\macromealscommerce\\helpers\\UPS' => __DIR__ . '/..' . '/macromeals/macromeals-commerce/src/helpers/UPS.php',

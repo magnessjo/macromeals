@@ -4,13 +4,13 @@
 {% do view.registerJsFile('/register.js') %}
 {% set bodyClass = 'with-border' %}
 
-{% set cart = craft.commerce.getCart() %}
+{% set cart = craft.commerce.carts.cart() %}
 
 {% block main %}
 
   <script type="text/javascript">
-    window.csrfTokenName = "{{ craft.config.csrfTokenName|e('js') }}";
-    window.csrfTokenValue = "{{ craft.request.csrfToken|e('js') }}";
+    window.csrfTokenName = "{{ craft.app.config.general.csrfTokenName }}";
+    window.csrfTokenValue = "{{ craft.app.request.csrfToken }}";
   </script>
 
   <section id="register">

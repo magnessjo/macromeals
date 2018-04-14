@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "e597eb9d08c07ab093072df98953e896",
+    "content-hash": "ebc7ec398998ef74d2f70db35d232315",
     "packages": [
         {
             "name": "accord/mandrill-swiftmailer",
@@ -1112,6 +1112,49 @@
             "description": "DOMPDF is a CSS 2.1 compliant HTML to PDF converter",
             "homepage": "https://github.com/dompdf/dompdf",
             "time": "2017-11-26T14:49:08+00:00"
+        },
+        {
+            "name": "drewm/mailchimp-api",
+            "version": "v2.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/drewm/mailchimp-api.git",
+                "reference": "f532fa26cd6e7d17c9ba40a757d8c6bfee47dace"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/drewm/mailchimp-api/zipball/f532fa26cd6e7d17c9ba40a757d8c6bfee47dace",
+                "reference": "f532fa26cd6e7d17c9ba40a757d8c6bfee47dace",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "php": ">=5.3"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "7.0.*",
+                "vlucas/phpdotenv": "^2.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "DrewM\\MailChimp\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Drew McLellan",
+                    "email": "drew.mclellan@gmail.com",
+                    "homepage": "http://allinthehead.com/"
+                }
+            ],
+            "description": "Super-simple, minimum abstraction MailChimp API v3 wrapper",
+            "homepage": "https://github.com/drewm/mailchimp-api",
+            "time": "2018-02-16T15:31:05+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -2663,20 +2706,23 @@
         },
         {
             "name": "rlanvin/php-rrule",
-            "version": "v1.6.0",
+            "version": "v1.6.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/rlanvin/php-rrule.git",
-                "reference": "c543bda87d2f8b6c490210f1a6e2bf0d79162a4a"
+                "reference": "44b820dd1b72d497c0ed1e1e2cd8b14700b7780b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/rlanvin/php-rrule/zipball/c543bda87d2f8b6c490210f1a6e2bf0d79162a4a",
-                "reference": "c543bda87d2f8b6c490210f1a6e2bf0d79162a4a",
+                "url": "https://api.github.com/repos/rlanvin/php-rrule/zipball/44b820dd1b72d497c0ed1e1e2cd8b14700b7780b",
+                "reference": "44b820dd1b72d497c0ed1e1e2cd8b14700b7780b",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "<6"
             },
             "suggest": {
                 "ext-intl": "Intl extension is needed for humanReadable()"
@@ -2687,6 +2733,7 @@
                     "RRule\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -2699,7 +2746,7 @@
                 "recurring",
                 "rrule"
             ],
-            "time": "2017-10-11T12:23:40+00:00"
+            "time": "2018-04-13T09:24:21+00:00"
         },
         {
             "name": "sabberworm/php-css-parser",

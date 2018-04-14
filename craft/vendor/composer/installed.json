@@ -1147,6 +1147,51 @@
         "homepage": "https://github.com/dompdf/dompdf"
     },
     {
+        "name": "drewm/mailchimp-api",
+        "version": "v2.5",
+        "version_normalized": "2.5.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/drewm/mailchimp-api.git",
+            "reference": "f532fa26cd6e7d17c9ba40a757d8c6bfee47dace"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/drewm/mailchimp-api/zipball/f532fa26cd6e7d17c9ba40a757d8c6bfee47dace",
+            "reference": "f532fa26cd6e7d17c9ba40a757d8c6bfee47dace",
+            "shasum": ""
+        },
+        "require": {
+            "ext-curl": "*",
+            "php": ">=5.3"
+        },
+        "require-dev": {
+            "phpunit/phpunit": "7.0.*",
+            "vlucas/phpdotenv": "^2.0"
+        },
+        "time": "2018-02-16T15:31:05+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "DrewM\\MailChimp\\": "src"
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Drew McLellan",
+                "email": "drew.mclellan@gmail.com",
+                "homepage": "http://allinthehead.com/"
+            }
+        ],
+        "description": "Super-simple, minimum abstraction MailChimp API v3 wrapper",
+        "homepage": "https://github.com/drewm/mailchimp-api"
+    },
+    {
         "name": "egulias/email-validator",
         "version": "2.1.4",
         "version_normalized": "2.1.4.0",
@@ -2750,26 +2795,29 @@
     },
     {
         "name": "rlanvin/php-rrule",
-        "version": "v1.6.0",
-        "version_normalized": "1.6.0.0",
+        "version": "v1.6.1",
+        "version_normalized": "1.6.1.0",
         "source": {
             "type": "git",
             "url": "https://github.com/rlanvin/php-rrule.git",
-            "reference": "c543bda87d2f8b6c490210f1a6e2bf0d79162a4a"
+            "reference": "44b820dd1b72d497c0ed1e1e2cd8b14700b7780b"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/rlanvin/php-rrule/zipball/c543bda87d2f8b6c490210f1a6e2bf0d79162a4a",
-            "reference": "c543bda87d2f8b6c490210f1a6e2bf0d79162a4a",
+            "url": "https://api.github.com/repos/rlanvin/php-rrule/zipball/44b820dd1b72d497c0ed1e1e2cd8b14700b7780b",
+            "reference": "44b820dd1b72d497c0ed1e1e2cd8b14700b7780b",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.0"
         },
+        "require-dev": {
+            "phpunit/phpunit": "<6"
+        },
         "suggest": {
             "ext-intl": "Intl extension is needed for humanReadable()"
         },
-        "time": "2017-10-11T12:23:40+00:00",
+        "time": "2018-04-13T09:24:21+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -2777,6 +2825,7 @@
                 "RRule\\": "src/"
             }
         },
+        "notification-url": "https://packagist.org/downloads/",
         "license": [
             "MIT"
         ],
