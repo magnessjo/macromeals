@@ -25,7 +25,7 @@ export default function(form) {
 
         let data = `${window.csrfTokenName}=${window.csrfTokenValue}&email=${email.value}&firstName=${firstName.value}&lastName=${lastName.value}`;
 
-        fetchData(data, '/actions/MacroCommerce/Email/subscribeWeeklyList').then( (response) => {
+        fetchData(data, '/reminder').then( (response) => {
           resolve();
         });
 

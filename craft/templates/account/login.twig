@@ -4,7 +4,7 @@
 {% set bodyClass = 'with-border remove-login' %}
 {% set bodyLoginForm = true %}
 
-{% set cart = craft.commerce.getCart() %}
+{% set cart = craft.commerce.carts.cart() %}
 
 {% block main %}
 
@@ -32,7 +32,7 @@
 
           <form method="POST" id="guest-form">
 
-            <input type="hidden" name="action" value="commerce/cart/updateCart" />
+            <input type="hidden" name="action" value="commerce/cart/update-cart" />
 
             {% if craft.request.lastSegment == 'pickup' %}
               <input type="hidden" name="redirect" value="/checkout/pickup">

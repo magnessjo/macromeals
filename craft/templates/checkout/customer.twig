@@ -8,12 +8,14 @@
 {% set customer = craft.commerce.customers.customer() %}
 {% set addresses = customer.addresses|last %}
 
-{% if addresses.address1 == '' %}
-  {% for entry in customer.addresses %}
-    {% if entry.address1 %}
-      {% set addresses = entry %}
-    {% endif %}
-  {% endfor %}
+{% if addresses %}
+  {% if addresses.address1 == '' %}
+    {% for entry in customer.addresses %}
+      {% if entry.address1 %}
+        {% set addresses = entry %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
 {% endif %}
 
 {% set states = craft.commerce.states.allStatesAsList["233"] %}
@@ -35,7 +37,7 @@
     <input type='hidden' name="billingAddressSameAsShipping" value="1" />
     {{ redirectInput('/checkout/billing') }}
 
-    {% if shippingModel.id %}
+    {% if shippingModel and shippingModel.id %}
       <input type="hidden" name="shippingAddress[id]" value="{{ shippingModel.id }}">
     {% endif %}
 
