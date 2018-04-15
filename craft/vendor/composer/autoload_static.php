@@ -4449,6 +4449,7 @@ class ComposerStaticInite688f9a47a1238f00a84fb5d717e4aa5
         'macromeals\\macromealscommerce\\adjusters\\ShippingAdjuster' => __DIR__ . '/..' . '/macromeals/macromeals-commerce/src/adjusters/ShippingAdjuster.php',
         'macromeals\\macromealscommerce\\controllers\\CartController' => __DIR__ . '/..' . '/macromeals/macromeals-commerce/src/controllers/CartController.php',
         'macromeals\\macromealscommerce\\controllers\\ContactController' => __DIR__ . '/..' . '/macromeals/macromeals-commerce/src/controllers/ContactController.php',
+        'macromeals\\macromealscommerce\\controllers\\EmailController' => __DIR__ . '/..' . '/macromeals/macromeals-commerce/src/controllers/EmailController.php',
         'macromeals\\macromealscommerce\\controllers\\FoodController' => __DIR__ . '/..' . '/macromeals/macromeals-commerce/src/controllers/FoodController.php',
         'macromeals\\macromealscommerce\\controllers\\ShippingController' => __DIR__ . '/..' . '/macromeals/macromeals-commerce/src/controllers/ShippingController.php',
         'macromeals\\macromealscommerce\\helpers\\UPS' => __DIR__ . '/..' . '/macromeals/macromeals-commerce/src/helpers/UPS.php',

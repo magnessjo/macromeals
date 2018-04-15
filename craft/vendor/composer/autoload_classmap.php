@@ -3919,6 +3919,7 @@ return array(
     'macromeals\\macromealscommerce\\adjusters\\ShippingAdjuster' => $vendorDir . '/macromeals/macromeals-commerce/src/adjusters/ShippingAdjuster.php',
     'macromeals\\macromealscommerce\\controllers\\CartController' => $vendorDir . '/macromeals/macromeals-commerce/src/controllers/CartController.php',
     'macromeals\\macromealscommerce\\controllers\\ContactController' => $vendorDir . '/macromeals/macromeals-commerce/src/controllers/ContactController.php',
+    'macromeals\\macromealscommerce\\controllers\\EmailController' => $vendorDir . '/macromeals/macromeals-commerce/src/controllers/EmailController.php',
     'macromeals\\macromealscommerce\\controllers\\FoodController' => $vendorDir . '/macromeals/macromeals-commerce/src/controllers/FoodController.php',
     'macromeals\\macromealscommerce\\controllers\\ShippingController' => $vendorDir . '/macromeals/macromeals-commerce/src/controllers/ShippingController.php',
     'macromeals\\macromealscommerce\\helpers\\UPS' => $vendorDir . '/macromeals/macromeals-commerce/src/helpers/UPS.php',
