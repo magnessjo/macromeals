@@ -21,19 +21,20 @@
 
   img {
     max-height: .5in;
-    margin-bottom: .2in;
+    margin-bottom: .5in;
   }
 
   h1 {
     text-transform: uppercase;
     font-family: var(--parklane);
-    font-size: 20pt;
-    margin-bottom: .07in;
+    font-size: 16pt;
+    margin-bottom: .1in;
   }
 
   h2 {
     font-size: 14pt;
     margin-bottom: .05in;
+    padding-left: .1125in;
   }
 
   p {
@@ -42,6 +43,7 @@
   }
 
   .items {
+    padding-left: .25in;
 
     & p {
       font-size: 8pt;
