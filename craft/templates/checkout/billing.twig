@@ -94,7 +94,7 @@
               </div>
 
               <div class='type paypal'>
-                <button class="paypal" data-redirect="{{ '/checkout/complete'|hash }}">
+                <button class="paypal" data-redirect="{{ '/checkout/complete'|hash }}" data-cancel="{{ '/checkout/billing'|hash }}">
                   <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_200x51.png" alt="PayPal Logo">
                   <span>Checkout</span>
                 </button>
