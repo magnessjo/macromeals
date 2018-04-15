@@ -2,10 +2,12 @@
 // Import
 
 import submitToken from './submitToken.js';
+import scrollToLocation from 'scripts/helpers/scrollToLocation.js';
 
 // Variables
 
 const form = document.querySelector('#paymentMethod');
+const errorElement = document.getElementById('card-errors');
 const container = document.querySelector('.paypal');
 const button = container.querySelector('button');
 const overlay = document.querySelector('.overlay-loader');
@@ -25,6 +27,8 @@ export default function() {
 
     submitToken.paypal(redirect, cancel).then( (response) => {
 
+      console.log(response);
+
       if (response.error) {
 
         button.disabled = false;
@@ -36,6 +40,7 @@ export default function() {
         `;
 
         errorElement.style.display = 'block';
+        scrollToLocation(errorElement, 40);
       }
 
     });
