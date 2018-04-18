@@ -5,6 +5,10 @@
   background-image: url(/images/stage/subscriptions.jpg);
 }
 
+#stage h1 {
+  font-size: calc(22px + 2vw);
+}
+
 #subscription-details {
 
   & .lock > p {
@@ -68,7 +72,7 @@
             width: 90%;
             bottom: 0;
             height: 1px;
-            left: 5%;
+            left: 0;
           }
 
           @media (--desktop-min) {
@@ -93,5 +97,9 @@
     }
 
   }
+
+}
+
+#subscription-weekly {
 
 }

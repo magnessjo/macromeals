@@ -40,7 +40,7 @@ module.exports = env =>  {
     shopdetails: path.resolve(`source/scripts/shop/details`),
     order: path.resolve(`source/scripts/shop/order`),
     meals: path.resolve(`source/scripts/shop/meals`),
-    meals: path.resolve(`source/scripts/shop/subscriptions`),
+    subscriptions: path.resolve(`source/scripts/shop/subscriptions`),
     automation: path.resolve(`source/scripts/automation`),
     customer: path.resolve(`source/scripts/checkout/customer`),
     pickup: path.resolve(`source/scripts/checkout/pickup`),

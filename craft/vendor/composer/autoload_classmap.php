@@ -3922,6 +3922,7 @@ return array(
     'macromeals\\macromealscommerce\\controllers\\EmailController' => $vendorDir . '/macromeals/macromeals-commerce/src/controllers/EmailController.php',
     'macromeals\\macromealscommerce\\controllers\\FoodController' => $vendorDir . '/macromeals/macromeals-commerce/src/controllers/FoodController.php',
     'macromeals\\macromealscommerce\\controllers\\ShippingController' => $vendorDir . '/macromeals/macromeals-commerce/src/controllers/ShippingController.php',
+    'macromeals\\macromealscommerce\\controllers\\SubscriptionController' => $vendorDir . '/macromeals/macromeals-commerce/src/controllers/SubscriptionController.php',
     'macromeals\\macromealscommerce\\helpers\\UPS' => $vendorDir . '/macromeals/macromeals-commerce/src/helpers/UPS.php',
     'macromeals\\macromealscommerce\\migrations\\Install' => $vendorDir . '/macromeals/macromeals-commerce/src/migrations/Install.php',
     'macromeals\\macromealscommerce\\models\\CartModel' => $vendorDir . '/macromeals/macromeals-commerce/src/models/CartModel.php',

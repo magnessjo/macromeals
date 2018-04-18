@@ -29,7 +29,8 @@
     "gabrielbull/ups-api": "^0.8.0",
     "solspace/craft3-calendar": "v2.0.0-beta.9",
     "drewm/mailchimp-api": "^2.5",
-    "craftcms/commerce-paypal": "1.0.0"
+    "craftcms/commerce-paypal": "1.0.0",
+    "stripe/stripe-php": "^6.6"
   },
   "autoload": {
     "psr-4": {

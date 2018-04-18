@@ -1,0 +1,33 @@
+
+{% extends "_layout" %}
+{% do view.registerCssFile('/subscriptionsStyle.css') %}
+{% do view.registerJsFile('/subscriptions.js') %}
+
+{% block main %}
+
+  <section id="stage" class="slim-stage">
+    <div class="image"></div>
+    <div class="lock">
+      <h1><div>Subscriptions</div></h1>
+    </div>
+  </section>
+
+  <form method="POST" id="example">
+
+    <input type="hidden" />
+
+    <section id="subscription-weekly">
+
+      <div class="lock">
+
+        <h1 class="acumin-headline"><span>Weekly Meal Plan</span></h1>
+
+        <input type="submit" />
+
+      </div>
+
+    </section>
+
+  </form>
+
+{% endblock %}
