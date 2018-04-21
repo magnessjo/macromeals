@@ -346,12 +346,12 @@
     },
     {
         "name": "craftcms/cms",
-        "version": "3.0.3",
-        "version_normalized": "3.0.3.0",
+        "version": "3.0.3.1",
+        "version_normalized": "3.0.3.1",
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/craftcms/cms/zipball/baeca872d525008c3e1a73cad27b32196888a760",
-            "reference": "baeca872d525008c3e1a73cad27b32196888a760",
+            "url": "https://api.github.com/repos/craftcms/cms/zipball/6855a5f1c83205f1506aeb5a610964c58e67ca87",
+            "reference": "6855a5f1c83205f1506aeb5a610964c58e67ca87",
             "shasum": ""
         },
         "require": {
@@ -397,7 +397,7 @@
             "ext-imagick": "Adds support for more image processing formats and options.",
             "ext-intl": "Adds rich internationalization support."
         },
-        "time": "2018-04-17T19:02:57+00:00",
+        "time": "2018-04-18T13:58:37+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {

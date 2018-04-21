@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "12e313681f35feab5eff4a4a81b6f289",
+    "content-hash": "b86eb89076fc4715d294dd60330bfb88",
     "packages": [
         {
             "name": "accord/mandrill-swiftmailer",
@@ -341,11 +341,11 @@
         },
         {
             "name": "craftcms/cms",
-            "version": "3.0.3",
+            "version": "3.0.3.1",
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/craftcms/cms/zipball/baeca872d525008c3e1a73cad27b32196888a760",
-                "reference": "baeca872d525008c3e1a73cad27b32196888a760",
+                "url": "https://api.github.com/repos/craftcms/cms/zipball/6855a5f1c83205f1506aeb5a610964c58e67ca87",
+                "reference": "6855a5f1c83205f1506aeb5a610964c58e67ca87",
                 "shasum": ""
             },
             "require": {
@@ -415,7 +415,7 @@
                 "docs": "https://github.com/craftcms/docs",
                 "rss": "https://github.com/craftcms/cms/releases.atom"
             },
-            "time": "2018-04-17T19:02:57+00:00"
+            "time": "2018-04-18T13:58:37+00:00"
         },
         {
             "name": "craftcms/commerce",
