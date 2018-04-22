@@ -35,61 +35,31 @@
 
   & .plans {
 
-    @media (--desktop-min) {
-      display: flex;
-      justify-content: space-between;
+    & .call-to-action {
+      margin-top: 20px;
     }
 
     & > div {
       position: relative;
+      overflow: hidden;
 
       @media (--tablet-max) {
         width: 100%;
       }
 
-      @media (--desktop-min) {
-        width: 50%;
-      }
-
       &:first-of-type {
         position: relative;
-
-        @media (--tablet-max) {
-          margin-bottom: 50px;
-          padding-bottom: 50px;
-        }
-
-        @media (--desktop-min) {
-          padding-right: 5%;
-        }
+        margin-bottom: 50px;
+        padding-bottom: 50px;
 
         &:after {
           content: "";
           position: absolute;
           background-color: var(--green);
-
-          @media (--tablet-max) {
-            width: 90%;
-            bottom: 0;
-            height: 1px;
-            left: 0;
-          }
-
-          @media (--desktop-min) {
-            height: 60%;
-            top: 20%;
-            right: 0;
-            width: 1px;
-          }
-
-        }
-
-      }
-
-      &:last-of-type {
-
-        @media (--desktop-min) {
-          padding-left: 5%;
+          width: 90%;
+          bottom: 0;
+          height: 1px;
+          left: 0;
         }
 
       }
