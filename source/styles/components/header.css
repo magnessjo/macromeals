@@ -43,6 +43,11 @@ header {
       padding: 0 15px;
       border-radius: 0;
 
+      @media (--tablet-min) {
+        font-size: 13px;
+        padding: 0 10px;
+      }
+
       @media (--desktop-min) {
         padding: 0 20px;
         font-size: 16px;
