@@ -275,7 +275,8 @@ form#user-info {
   margin: 0 auto;
 }
 
-form#product-addition {
+form#product-addition,
+form#weekly-subscriptions {
 
   & .errors {
 
