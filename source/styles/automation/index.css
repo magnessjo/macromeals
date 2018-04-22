@@ -85,8 +85,14 @@
         margin-bottom: 20px;
       }
 
+      & h2 {
+        margin-bottom: 20px;
+        margin-top: 40px;
+      }
+
       & p {
         margin-bottom: 5px;
+        padding-left: 10px;
       }
 
     }
