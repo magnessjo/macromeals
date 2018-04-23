@@ -12,7 +12,7 @@
 
     {% if currentUser.admin %}
 
-      {% set expectedDate = "now"|date_modify("+3 day") %}
+      {% set expectedDate = "now"|date_modify("+4 day") %}
 
       <section id="today" class="orders-automation">
 
@@ -45,7 +45,12 @@
                   {% for item in order.lineItems %}
                     {% set variant = item.purchasable %}
                     {% set product = variant.product %}
-                    <p class="food-item" food-total="{{ item.qty }}" food-type="{{ product.title }} {{ variant.title }}">{{ item.qty }} {{ product.title }} {{ variant.title }}</p>
+                    <p class="food-item"
+                       food-total="{{ item.qty }}"
+                       {% if product.protein | length == 0 %} data-protein="Other" {% else %} data-protein="{{ product.protein[0] }}" {% endif %}
+                       food-type="{{ product.title }} {{ variant.title }}">
+                       {{ item.qty }} {{ product.title }} {{ variant.title }}
+                     </p>
                   {% endfor %}
                 </div>
 
@@ -57,6 +62,21 @@
 
           <div class="total">
             <h1>Totals</h1>
+            <div class="category Steak">
+              <h2>Steak</h2>
+            </div>
+            <div class="category Turkey">
+              <h2>Turkey</h2>
+            </div>
+            <div class="category Vegan">
+              <h2>Vegan</h2>
+            </div>
+            <div class="category Chicken">
+              <h2>Chicken</h2>
+            </div>
+            <div class="category Other">
+              <h2>Other</h2>
+            </div>
           </div>
 
         </div>
