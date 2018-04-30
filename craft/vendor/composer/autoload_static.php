@@ -157,7 +157,7 @@ class ComposerStaticInite688f9a47a1238f00a84fb5d717e4aa5
     public static $prefixDirsPsr4 = array (
         'yii\\swiftmailer\\' => 
         array (
-            0 => __DIR__ . '/..' . '/yiisoft/yii2-swiftmailer',
+            0 => __DIR__ . '/..' . '/yiisoft/yii2-swiftmailer/src',
         ),
         'yii\\queue\\sync\\' => 
         array (
@@ -4132,6 +4132,7 @@ class ComposerStaticInite688f9a47a1238f00a84fb5d717e4aa5
         'craft\\migrations\\m180404_182320_edition_changes' => __DIR__ . '/..' . '/craftcms/cms/src/migrations/m180404_182320_edition_changes.php',
         'craft\\migrations\\m180411_102218_fix_db_routes' => __DIR__ . '/..' . '/craftcms/cms/src/migrations/m180411_102218_fix_db_routes.php',
         'craft\\migrations\\m180416_205628_resourcepaths_table' => __DIR__ . '/..' . '/craftcms/cms/src/migrations/m180416_205628_resourcepaths_table.php',
+        'craft\\migrations\\m180418_205713_widget_cleanup' => __DIR__ . '/..' . '/craftcms/cms/src/migrations/m180418_205713_widget_cleanup.php',
         'craft\\models\\AssetIndexData' => __DIR__ . '/..' . '/craftcms/cms/src/models/AssetIndexData.php',
         'craft\\models\\AssetTransform' => __DIR__ . '/..' . '/craftcms/cms/src/models/AssetTransform.php',
         'craft\\models\\AssetTransformIndex' => __DIR__ . '/..' . '/craftcms/cms/src/models/AssetTransformIndex.php',
@@ -4457,7 +4458,9 @@ class ComposerStaticInite688f9a47a1238f00a84fb5d717e4aa5
         'macromeals\\macromealscommerce\\helpers\\UPS' => __DIR__ . '/..' . '/macromeals/macromeals-commerce/src/helpers/UPS.php',
         'macromeals\\macromealscommerce\\migrations\\Install' => __DIR__ . '/..' . '/macromeals/macromeals-commerce/src/migrations/Install.php',
         'macromeals\\macromealscommerce\\models\\CartModel' => __DIR__ . '/..' . '/macromeals/macromeals-commerce/src/models/CartModel.php',
+        'macromeals\\macromealscommerce\\models\\SubscriptionModel' => __DIR__ . '/..' . '/macromeals/macromeals-commerce/src/models/SubscriptionModel.php',
         'macromeals\\macromealscommerce\\records\\CartRecord' => __DIR__ . '/..' . '/macromeals/macromeals-commerce/src/records/CartRecord.php',
+        'macromeals\\macromealscommerce\\records\\SubscriptionRecord' => __DIR__ . '/..' . '/macromeals/macromeals-commerce/src/records/SubscriptionRecord.php',
         'macromeals\\macromealscommerce\\services\\CartService' => __DIR__ . '/..' . '/macromeals/macromeals-commerce/src/services/CartService.php',
         'mikehaertl\\shellcommand\\Command' => __DIR__ . '/..' . '/mikehaertl/php-shellcommand/src/Command.php',
         'modules\\Module' => __DIR__ . '/../..' . '/modules/Module.php',
@@ -4897,9 +4900,9 @@ class ComposerStaticInite688f9a47a1238f00a84fb5d717e4aa5
         'yii\\rest\\UpdateAction' => __DIR__ . '/..' . '/yiisoft/yii2/rest/UpdateAction.php',
         'yii\\rest\\UrlRule' => __DIR__ . '/..' . '/yiisoft/yii2/rest/UrlRule.php',
         'yii\\rest\\ViewAction' => __DIR__ . '/..' . '/yiisoft/yii2/rest/ViewAction.php',
-        'yii\\swiftmailer\\Logger' => __DIR__ . '/..' . '/yiisoft/yii2-swiftmailer/Logger.php',
-        'yii\\swiftmailer\\Mailer' => __DIR__ . '/..' . '/yiisoft/yii2-swiftmailer/Mailer.php',
-        'yii\\swiftmailer\\Message' => __DIR__ . '/..' . '/yiisoft/yii2-swiftmailer/Message.php',
+        'yii\\swiftmailer\\Logger' => __DIR__ . '/..' . '/yiisoft/yii2-swiftmailer/src/Logger.php',
+        'yii\\swiftmailer\\Mailer' => __DIR__ . '/..' . '/yiisoft/yii2-swiftmailer/src/Mailer.php',
+        'yii\\swiftmailer\\Message' => __DIR__ . '/..' . '/yiisoft/yii2-swiftmailer/src/Message.php',
         'yii\\test\\ActiveFixture' => __DIR__ . '/..' . '/yiisoft/yii2/test/ActiveFixture.php',
         'yii\\test\\ArrayFixture' => __DIR__ . '/..' . '/yiisoft/yii2/test/ArrayFixture.php',
         'yii\\test\\BaseActiveFixture' => __DIR__ . '/..' . '/yiisoft/yii2/test/BaseActiveFixture.php',
