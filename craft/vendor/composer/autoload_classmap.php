@@ -3218,6 +3218,7 @@ return array(
     'craft\\commerce\\web\\twig\\Extension' => $vendorDir . '/craftcms/commerce/src/web/twig/Extension.php',
     'craft\\commerce\\widgets\\Orders' => $vendorDir . '/craftcms/commerce/src/widgets/Orders.php',
     'craft\\commerce\\widgets\\Revenue' => $vendorDir . '/craftcms/commerce/src/widgets/Revenue.php',
+    'craft\\composer\\Factory' => $vendorDir . '/craftcms/cms/src/composer/Factory.php',
     'craft\\composer\\Installer' => $vendorDir . '/craftcms/plugin-installer/src/Installer.php',
     'craft\\composer\\InvalidPluginException' => $vendorDir . '/craftcms/plugin-installer/src/InvalidPluginException.php',
     'craft\\composer\\Plugin' => $vendorDir . '/craftcms/plugin-installer/src/Plugin.php',

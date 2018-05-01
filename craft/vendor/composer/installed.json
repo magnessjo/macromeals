@@ -346,12 +346,12 @@
     },
     {
         "name": "craftcms/cms",
-        "version": "3.0.4",
-        "version_normalized": "3.0.4.0",
+        "version": "3.0.5",
+        "version_normalized": "3.0.5.0",
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/craftcms/cms/zipball/d8420fe5c5a61887063fb49a3663c8649161b1b7",
-            "reference": "d8420fe5c5a61887063fb49a3663c8649161b1b7",
+            "url": "https://api.github.com/repos/craftcms/cms/zipball/610f7ac8016a5adcb8606b831afdd6322da57dea",
+            "reference": "610f7ac8016a5adcb8606b831afdd6322da57dea",
             "shasum": ""
         },
         "require": {
@@ -397,7 +397,7 @@
             "ext-imagick": "Adds support for more image processing formats and options.",
             "ext-intl": "Adds rich internationalization support."
         },
-        "time": "2018-04-24T18:12:44+00:00",
+        "time": "2018-05-01T17:07:42+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -3339,12 +3339,12 @@
     },
     {
         "name": "symfony/polyfill-mbstring",
-        "version": "v1.7.0",
-        "version_normalized": "1.7.0.0",
+        "version": "v1.8.0",
+        "version_normalized": "1.8.0.0",
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/78be803ce01e55d3491c1397cf1c64beb9c1b63b",
-            "reference": "78be803ce01e55d3491c1397cf1c64beb9c1b63b",
+            "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/3296adf6a6454a050679cde90f95350ad604b171",
+            "reference": "3296adf6a6454a050679cde90f95350ad604b171",
             "shasum": ""
         },
         "require": {
@@ -3353,11 +3353,11 @@
         "suggest": {
             "ext-mbstring": "For best performance"
         },
-        "time": "2018-01-30T19:27:44+00:00",
+        "time": "2018-04-26T10:06:28+00:00",
         "type": "library",
         "extra": {
             "branch-alias": {
-                "dev-master": "1.7-dev"
+                "dev-master": "1.8-dev"
             }
         },
         "installation-source": "dist",
@@ -3369,7 +3369,6 @@
                 "bootstrap.php"
             ]
         },
-        "notification-url": "https://packagist.org/downloads/",
         "license": [
             "MIT"
         ],

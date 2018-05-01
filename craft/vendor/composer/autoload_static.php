@@ -3748,6 +3748,7 @@ class ComposerStaticInite688f9a47a1238f00a84fb5d717e4aa5
         'craft\\commerce\\web\\twig\\Extension' => __DIR__ . '/..' . '/craftcms/commerce/src/web/twig/Extension.php',
         'craft\\commerce\\widgets\\Orders' => __DIR__ . '/..' . '/craftcms/commerce/src/widgets/Orders.php',
         'craft\\commerce\\widgets\\Revenue' => __DIR__ . '/..' . '/craftcms/commerce/src/widgets/Revenue.php',
+        'craft\\composer\\Factory' => __DIR__ . '/..' . '/craftcms/cms/src/composer/Factory.php',
         'craft\\composer\\Installer' => __DIR__ . '/..' . '/craftcms/plugin-installer/src/Installer.php',
         'craft\\composer\\InvalidPluginException' => __DIR__ . '/..' . '/craftcms/plugin-installer/src/InvalidPluginException.php',
         'craft\\composer\\Plugin' => __DIR__ . '/..' . '/craftcms/plugin-installer/src/Plugin.php',
