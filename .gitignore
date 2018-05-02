@@ -4,3 +4,4 @@ build
 /node_modules
 /craft/storage
 /craft/config/commerce-gateways.php
+/craft/web

@@ -77,7 +77,7 @@ module.exports = env =>  {
     entry: files,
 
     output: {
-      path: path.resolve('build'),
+      path: path.resolve('craft/web'),
       filename: '[name].js',
     },
 
