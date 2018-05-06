@@ -9,7 +9,7 @@ function stripe(token) {
 
   return new Promise( (resolve, reject) => {
 
-    fetchPostData(`${window.csrfTokenName}=${window.csrfTokenValue}&paymentMethodId=2&stripeToken=${token}`, '/actions/commerce/payments/pay').then( (response) => {
+    fetchPostData(`${window.csrfTokenName}=${window.csrfTokenValue}&gatewayId=2&stripeToken=${token}`, '/actions/commerce/payments/pay').then( (response) => {
 
       if (response.success) {
 
@@ -28,11 +28,11 @@ function stripe(token) {
 
 // Paypal
 
-function paypal(redirect, cancel) {
+function paypal(data, redirect, cancel) {
 
   return new Promise( (resolve, reject) => {
 
-    fetchPostData(`${window.csrfTokenName}=${window.csrfTokenValue}&paymentMethodId=4&redirect=${redirect}&cancelUrl=${cancel}`, '/actions/commerce/payments/pay').then( (response) => {
+    fetchPostData(`${window.csrfTokenName}=${window.csrfTokenValue}&gatewayId=6&redirect=${redirect}&cancelUrl=${cancel}&token=${data.paymentToken}`, '/actions/commerce/payments/pay').then( (response) => {
 
       if (response.success) {
 

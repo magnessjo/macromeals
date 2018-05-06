@@ -48,7 +48,7 @@
           <p class="list-item shipping">Shipping Cost <span>${{ cart.getAdjustmentsTotalByType('Shipping') | number_format(2, '.', ',') }}</span></p>
           <p class="pickup">Prefer a $0 pickup option? <a href="/checkout/pickup">See options</a></p>
         {% endif %}
-        <p class="list-item">Total Due <span>{{ cart.totalPrice | commerceCurrency(cart.currency, stripZeros = true) }}</span></p>
+        <p class="list-item"  >Total Due <span>{{ cart.totalPrice | commerceCurrency(cart.currency, stripZeros = true) }}</span></p>
       </div>
 
     </div>
@@ -94,10 +94,7 @@
               </div>
 
               <div class='type paypal'>
-                <button class="paypal" data-redirect="{{ '/checkout/complete'|hash }}" data-cancel="{{ '/checkout/billing'|hash }}">
-                  <img src="https://www.paypalobjects.com/webstatic/en_US/i/buttons/PP_logo_h_200x51.png" alt="PayPal Logo">
-                  <span>Checkout</span>
-                </button>
+                <button id="paypal-submit" class="paypal" data-total="{{ cart.totalPrice }}" data-redirect="{{ '/checkout/complete'|hash }}" data-cancel="{{ '/checkout/billing'|hash }}"></button>
               </div>
 
             </form>
@@ -174,6 +171,7 @@
     </section>
 
     <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
     <script src="/billing.js"></script>
 
   {% endif %}

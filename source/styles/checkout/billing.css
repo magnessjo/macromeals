@@ -90,26 +90,9 @@ section:not(#stage) {
     display: none;
   }
 
-  & .paypal {
-
-    & button {
-      background-color: #ffc439;
-      padding: 10px 40px;
-      border-radius: 20px;
-      display: flex;
-      align-items: center;
-      margin: 0 auto;
-    }
-
-    & img {
-      max-height: 30px;
-    }
-
-    & span {
-      margin-left: 5px;
-      margin-top: 8px;
-    }
-
+  & button.paypal {
+    margin: 0 auto;
+    display: block;
   }
 
 }

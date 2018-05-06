@@ -91,8 +91,6 @@ export default function(stripeRef, elementsRef) {
       }
     }).then( (result) => {
 
-      console.log(result);
-
       if (result.source) {
 
         submitToken.stripe(result.source.id).then( (response) => {
