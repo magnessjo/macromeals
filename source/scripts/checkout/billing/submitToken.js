@@ -32,7 +32,7 @@ function paypal(data, redirect, cancel) {
 
   return new Promise( (resolve, reject) => {
 
-    fetchPostData(`${window.csrfTokenName}=${window.csrfTokenValue}&gatewayId=6&redirect=${redirect}&cancelUrl=${cancel}&token=${data.paymentToken}`, '/actions/commerce/payments/pay').then( (response) => {
+    fetchPostData(`${window.csrfTokenName}=${window.csrfTokenValue}&gatewayId=4&redirect=${redirect}&cancelUrl=${cancel}&token=${data.paymentToken}`, '/actions/commerce/payments/pay').then( (response) => {
 
       if (response.success) {
 
