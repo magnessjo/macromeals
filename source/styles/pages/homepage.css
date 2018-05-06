@@ -1,9 +1,15 @@
 
 @import "../master.css";
 
+.notice .acumin-small:before,
+.notice .acumin-small:after {
+  display: none;
+}
+
 #stage {
   position: relative;
   width: 100%;
+  margin-bottom: 0;
 
   @media (--tablet-min) {
     padding: 70px 0;
