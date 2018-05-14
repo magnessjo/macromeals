@@ -380,7 +380,7 @@ class Commerce_VariantModel extends BasePurchasable
         }
 
         if (!$this->unlimitedStock && $qty[$lineItem->purchasableId] > $this->stock) {
-            $error = Craft::t('There are only {num} "{description}" items left in stock', ['num' => $this->stock, 'description' => $lineItem->purchasable->getDescription()]);
+            $error = Craft::t('There are {num} "{description}" item(s) left in stock', ['num' => $this->stock, 'description' => $lineItem->purchasable->getDescription()]);
             $lineItem->addError('qty', $error);
         }
 

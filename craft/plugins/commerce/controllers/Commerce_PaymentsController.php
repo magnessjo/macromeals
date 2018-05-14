@@ -214,7 +214,7 @@ class Commerce_PaymentsController extends Commerce_BaseFrontEndController
         {
             if ($stockByVariantId[$purchasable->id] > $purchasable->stock)
             {
-                $error = Craft::t('{product} now only has {num} in stock. Please removed {diff} of them from the cart before retrying payment.', [
+                $error = Craft::t('{product} now has {num} in stock. Please remove {diff} of the items from the cart before retrying payment.', [
                         'num' => $purchasable->stock,
                         'product' => $purchasable->getDescription(),
                         'diff' => $stockByVariantId[$purchasable->id] - $purchasable->stock

@@ -62,7 +62,15 @@ abstract class BaseGatewayAdapter extends BaseModel implements GatewayAdapterInt
 	 */
 	public function setAttributes($values)
 	{
-		parent::setAttributes($values);
+		if (is_array($values)) {
+			foreach ($values as $key => $value) {
+				if (in_array($key, $this->_booleans)) {
+					$values[$key] = (bool)$value;
+				}
+			}
+		}
+
+        parent::setAttributes($values);
 		if (is_array($values))
 		{
 			$this->getGateway()->initialize($values);
