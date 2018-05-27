@@ -30,11 +30,7 @@
 
       <h1 class="acumin-headline"><span>Order Summary</span></h1>
 
-      {% set shippingType = "Pickup" %}
-        {% if cart.shippingMethod.handle == 'overnight' %}
-          {% set shippingType = "Delivery" %}
-        {% endif %}
-      <p class="list-item expected-date">Expected {{ shippingType }} Date <span>{{ cart.deliveryDate.format('l, F d, Y') }}</span></p>
+      <p class="list-item expected-date">Expected Pickup Date <span>{{ cart.deliveryDate.format('l, F d, Y') }}</span></p>
       <div class="cart-summary">
         <p class="list-item">SubTotal <span>{{ cart.itemSubtotal | commerceCurrency(cart.currency, stripZeros = true) }}</span></p>
         {% if cart.totalDiscount < 0 %}
@@ -46,7 +42,6 @@
         {% endif %}
         {% if cart.totalShippingCost > 0 %}
           <p class="list-item shipping">Shipping Cost <span>${{ cart.totalShippingCost | number_format(2, '.', ',') }}</span></p>
-          <p class="pickup">Prefer a $0 pickup option? <a href="/checkout/pickup">See options</a></p>
         {% endif %}
         <p class="list-item">Total Due <span>{{ cart.totalPrice | commerceCurrency(cart.currency, stripZeros = true) }}</span></p>
       </div>
@@ -157,12 +152,7 @@
 
           <div class="checkout-actions">
 
-            {% if cart.shippingMethod.handle == 'overnight' %}
-              <a href="/checkout/customer" class="icons">Back <span>to Customer Information</span></a>
-            {% else %}
-              <a href="/checkout/pickup" class="icons">Back <span>to Pickup Options</span></a>
-            {% endif %}
-
+            <a href="/checkout/pickup" class="icons">Back <span>to Pickup Options</span></a>
             <input type="submit" value="Submit Order" class="call-to-action">
 
           </div>

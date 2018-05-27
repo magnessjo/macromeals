@@ -20,88 +20,10 @@
 
       <div class="shipping">
 
-          <div class="text">
-            <p>We ship with UPS next day air to every state in the United States.</p>
-            <p>We ship UPS ground with guaranteed next day delivery to the areas indicated below to reduce your shipping cost.</p>
-          </div>
-
-          <div class="map">
-
-            <p>Areas that are included in UPS Ground Overnight shipping cost</p>
-            <img src="/images/shipping/map.jpg" alt="image of the shipping area" />
-
-          </div>
-
-          <form id="shipping-calculator">
-
-            <div class="loader"></div>
-
-            <p>Get a quote for your zip code:</p>
-
-            <div class="field" data-required="true" valid="false">
-              <label for="address"><span>Street Address</span></label>
-              <div class="input">
-                <input type="text"
-                       name="address"
-                       id="address"
-                       placeholder="" />
-
-                <div class="errors">
-                  <p class="required">Street Address is a required field</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="field" data-required="true" valid="false">
-              <label for="city"><span>City</span></label>
-              <div class="input">
-                <input type="text"
-                       name="city"
-                       id="city"
-                       placeholder="" />
-
-                <div class="errors">
-                  <p class="required">City is a required field</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="field" data-required="true" valid="false">
-              <label for="zipCode"><span>Zip Code</span></label>
-              <div class="input">
-                <input type="number"
-                       name="zipCode"
-                       id="zipCode"
-                       placeholder=""
-                       maxlength="5" />
-
-                <div class="errors">
-                  <p class="required">Zip Code is a required field</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="field" data-required="true" valid="false">
-              <label for="state"><span>State</span></label>
-              <div class="input">
-                <select name="state" >
-                  <option disabled selected value> Please Choose </option>
-                  {% for state in craft.commerce.states %}
-                    <option value="{{ state.abbreviation }}">{{ state.name }}</option>
-                  {% endfor %}
-                </select>
-                <div class="errors">
-                  <p class="required">State is a required field</p>
-                </div>
-              </div>
-            </div>
-
-            <input type="submit" value="Get Estimate" />
-
-            <div class="result"></div>
-
-          </form>
-
+        <div class="text">
+          <p>We are no longer delivering outside of the Baltimore area.</p>
+          <p>We apologize for the inconvenience.  We've been up able to find a reliable source for overnight shipping.</p>
+          <p>Please send us an <a href="mailto:info@macromeals.life">email</a> if you are in the Baltimore Area and interested in getting your order delivered.</p>
         </div>
 
       </div>

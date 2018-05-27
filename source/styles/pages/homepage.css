@@ -9,7 +9,6 @@
 #stage {
   position: relative;
   width: 100%;
-  margin-bottom: 0;
 
   @media (--tablet-min) {
     padding: 70px 0;
