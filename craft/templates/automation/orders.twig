@@ -11,7 +11,7 @@
 
     {% if currentUser.admin %}
 
-      {% set expectedDate = "now"|date_modify("0 day") %}
+      {% set expectedDate = "now"|date_modify("+4 day") %}
 
       <section id="today" class="orders-automation">
 
@@ -20,6 +20,8 @@
           <h1>Current Orders</h1>
 
           {% for order in orders | reverse %}
+
+            {% if expectedDate.format('d') >= order.deliveryDate.format('d') %}
 
               {% set customer = order.shippingAddress %}
 
@@ -53,6 +55,8 @@
 
               </div>
 
+            {% endif %}
+
           {% endfor %}
 
           <div class="total">
@@ -73,6 +77,50 @@
               <h2>Other</h2>
             </div>
           </div>
+
+        </div>
+
+      </section>
+
+      <section id="future" class="orders-automation">
+
+        <div class="lock">
+
+          <h1>Future Orders</h1>
+
+          {% for order in orders | reverse %}
+
+            {% if expectedDate.format('d') < order.deliveryDate.format('d') %}
+
+              {% set customer = order.shippingAddress %}
+
+              <div class="order">
+
+                <div class="person">
+                  <h3>Delivery Date: <br>{{ order.deliveryDate.format('l, F d, Y') }}</h3>
+                  <p>{{ customer.firstName }} {{ customer.lastName }}</p>
+                  <p class="method">Shippment Method : {{ order.shippingMethodHandle }}</p>
+                  {% if order.shippingMethodHandle != 'pickup' %}
+                    <address>
+                      <p>{{ customer.address1 }}</p>
+                      <p><span>{{ customer.city }},</span> <span>{{ customer.state }} </span><span>{{ customer.zipCode }}</span></p>
+                    </address>
+                  {% endif %}
+                </div>
+
+                <div class="food">
+                  {% for item in order.lineItems %}
+                    {% set variant = item.purchasable %}
+                    {% set product = variant.product %}
+                    <p class="food-item" food-total="{{ item.qty }}" food-type="{{ product.title }} {{ variant.title }}">{{ item.qty }} {{ product.title }} {{ variant.title }}</p>
+                  {% endfor %}
+                </div>
+
+              </div>
+
+            {% endif %}
+
+         {% endfor %}
 
         </div>
 
