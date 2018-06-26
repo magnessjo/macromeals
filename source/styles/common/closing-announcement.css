@@ -1,0 +1,44 @@
+
+.closing-announcement {
+  position: fixed;
+  background-color: rgba(0, 0, 0, .8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  width: 100vw;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 9999;
+
+  & .wrapper {
+    position: relative;
+    max-width: 700px;
+    max-height: 700px;
+    overflow-y: scroll;
+    background-color: white;
+    z-index: 999;
+    padding: 20px;
+
+    @media (--tablet-min) {
+      padding: 50px;
+    }
+
+  }
+
+  & h2 {
+    margin-bottom: 20px;
+    text-transform: capitalize;
+    font-size: 24px;
+
+    & span {
+      display: inline-block;
+      border-bottom: 1px solid black;
+      padding-bottom: 5px;
+    }
+
+  }
+
+}
