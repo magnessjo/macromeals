@@ -6,13 +6,9 @@
   "license": "MIT",
   "scripts": {
     "prepare:staging": "babel-node deploy/prepare.js staging",
-    "prepare:production": "babel-node deploy/prepare.js production",
     "craft:staging": "babel-node deploy/craft.js staging",
-    "craft:production": "babel-node deploy/craft.js production",
     "release:staging": "babel-node deploy/release.js staging",
-    "release:production": "babel-node deploy/release.js production",
     "config:staging": "babel-node deploy/config.js staging",
-    "config:production": "babel-node deploy/config.js production",
     "uploads:staging": "babel-node deploy/uploads.js staging",
     "database:staging": "babel-node deploy/database.js staging",
     "start": "webpack -w"
